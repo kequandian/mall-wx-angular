@@ -1,0 +1,15 @@
+{
+  "name": "jquery-weui",
+  "homepage": "https://github.com/lihongxun945/jquery-weui",
+  "version": "0.6.1",
+  "_release": "0.6.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.6.1",
+    "commit": "c30382a96e6abb072d81857ad7e461ea8c20e463"
+  },
+  "_source": "https://github.com/lihongxun945/jquery-weui.git",
+  "_target": "~0.6.1",
+  "_originalSource": "jquery-weui",
+  "_direct": true
+}

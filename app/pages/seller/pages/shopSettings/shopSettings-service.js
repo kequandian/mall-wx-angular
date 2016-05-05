@@ -1,7 +1,7 @@
 angular.module('shopSettings.service', [])
     .factory('ShopSettingsFty', ['$http', '$q','GlobalVariable', function($http,$q,GlobalVariable) {
         return{
-            // 获取我的团队
+            // 鑾峰彇鎴戠殑鍥㈤槦
             shopSettingsService: function () {
                 var deferred = $q.defer();
                 var url = GlobalVariable.SERVER_PATH + "/seller";

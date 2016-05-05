@@ -8,3 +8,20 @@
 #shopSettings .shop-s-logo{
 
 }
+
+
+.expander {
+    border: 1px solid black;
+    width: 250px;
+}
+
+.expander>.title {
+    background-color: #CCC789;
+    color: black;
+    cursor: pointer;
+    text-align: center;
+}
+
+.expander>.body {
+    padding: .1em .3em;
+}
