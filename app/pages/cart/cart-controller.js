@@ -14,6 +14,7 @@ angular.module('cart.controller', ['cart.service'])
             })
         }
 
+        //商品数量增减
         $scope.downQuantity = function(id){
             angular.forEach($scope.carts, function(value, key){
                 console.log(id);
@@ -51,6 +52,7 @@ angular.module('cart.controller', ['cart.service'])
                 //取消操作
             });
         };
+
     }])
 
     .controller('SettlementController', ['$scope', '$state', 'CartFty', function($scope, $state, CartFty){

@@ -8,7 +8,7 @@
                 <ul class="cart-list" ng-repeat="cart in carts">
                     <li class="">
                         <div class="">
-                            <input class="cart-checkbox" type="checkbox" id="check{{cart.id}}" ng-checked="isCheckAll">
+                            <input class="cart-checkbox" type="checkbox" id="check{{cart.id}}" ng-checked="isCheckAll" ng-value="cart">
                             <label class="ion-android-checkbox-outline-blank active cart-item-label" for="check{{cart.id}}"></label>
                         </div>
                         <div class="item-info">
@@ -42,7 +42,7 @@
                 <input class="cart-checkbox" type="checkbox" value="全不选" id="selectAll" ng-model="isCheckAll">
                 <label id="checkAll" class="ion-android-checkbox-outline-blank active cart-item-label" for="selectAll"></label>
                 <div class="foot-info">
-                    <strong>合计:￥</strong>
+                    <strong>合计:￥{{myChoose}}</strong>
                 </div>
             </div>
             <a ui-sref="cart-settlement">
