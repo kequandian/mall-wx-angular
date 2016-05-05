@@ -1,0 +1,158 @@
+<html ng-app="myapp">
+
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS: ShoppingMall</title>
+  <!--<title>{{title}}</title>-->
+  <!-- WEUI CSS -->
+  <link rel="stylesheet" href="css/weui/weui.min.css">
+  <link rel="stylesheet" href="css/ionicons/ionicons.min.css">
+  <link rel="stylesheet" href="../node_modules/jquery-weui/dist/css/jquery-weui.css">
+
+  <!-- yourself CSS -->
+  <link href="css/common.css" rel="stylesheet">
+  <link href="css/home/homePage.css" rel="stylesheet">
+  <link href="css/goodsList/goodsList.css" rel="stylesheet">
+  <link href="css/details/details.css" rel="stylesheet">
+  <link href="css/addressManager/addressManager.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/cart/cart.css">
+  <link rel="stylesheet" href="css/cart/settlement.css">
+  <link rel="stylesheet" href="css/order/order.css">
+  <link rel="stylesheet" href="css/order/orderDetails.css">
+  <link rel="stylesheet" href="css/coupon/coupon.css">
+  <link rel="stylesheet" href="css/sellerPage/sellerPage.css">
+  <link rel="stylesheet" href="css/sellerPage/myTeam.css">
+  <link rel="stylesheet" href="css/sellerPage/promotionOrder.css">
+  <link rel="stylesheet" href="css/sellerPage/marketing.css">
+  <link rel="stylesheet" href="css/sellerPage/shopSettings.css">
+
+  <style>
+
+    body{
+      background-color: #f8f8f8;
+    }
+    .user-info {
+      padding: .3rem .3rem 0 .3rem;
+    }
+    .user-photo {
+      float: left;
+      margin-right: .80rem;
+      margin-left: .80rem;
+    }
+    .user-detail {
+      margin-top: 5px;
+      font-size: 13px;
+      display: block;
+      line-height: 1.6;
+    }
+    .weui_grids{
+      margin-top: 10px;
+      background-color: white;
+    }
+    .weui_grid {
+      padding: 10px;
+    }
+
+    .swiper-container {
+      width: 100%;
+    }
+
+    .swiper-container img {
+      display: block;
+      width: 100%;
+    }
+
+  </style>
+
+  <script>
+
+  </script>
+
+
+</head>
+<body ontouchstart="">
+<div id="container">
+  <div ui-view></div>
+</div>
+
+<!-- Angular -->
+<script src="bower_components/angular/angular.js"></script>
+<!-- UI-Router -->
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<!-- App Script -->
+<script src="js/app.js"></script>
+<script src="js/global.js"></script>
+<!-- jquery weui -->
+<script src="js/zepto.min.js"></script>
+<script src="js/weui.js"></script>
+
+<script src="../node_modules/jquery-weui/dist/lib/jquery-2.1.4.js"></script>
+<script src="../node_modules/jquery-weui/dist/js/jquery-weui.js"></script>
+<script src="../node_modules/jquery-weui/dist/js/swiper.js"></script>
+<!--<script src="../node_modules/jquery-weui/dist/js/city-picker.js"></script>-->
+<!-- app's js -->
+<script src="pages/my/order/order-route.js"></script>
+<script src="pages/my/order/order-controller.js"></script>
+<script src="pages/my/order/order-service.js"></script>
+
+<script src="pages/my/my-route.js"></script>
+<script src="pages/my/my-controller.js"></script>
+<script src="pages/my/my-service.js"></script>
+
+<script src="pages/home/home-route.js"></script>
+<script src="pages/home/home-controller.js"></script>
+
+<script src="pages/cart/cart-route.js"></script>
+<script src="pages/cart/cart-controller.js"></script>
+<script src="pages/cart/cart-service.js"></script>
+
+<script src="pages/seller/seller-route.js"></script>
+<script src="pages/seller/seller-controller.js"></script>
+<script src="pages/seller/seller-service.js"></script>
+
+<script src="pages/homePage/homePage-route.js"></script>
+<script src="pages/homePage/homePage-controller.js"></script>
+<script src="pages/homePage/homePage-service.js"></script>
+
+<script src="pages/goodsList/goodsList-route.js"></script>
+<script src="pages/goodsList/goodsList-controller.js"></script>
+<script src="pages/goodsList/goodsList-service.js"></script>
+
+<script src="pages/details/details-route.js"></script>
+<script src="pages/details/details-controller.js"></script>
+<script src="pages/details/details-service.js"></script>
+
+<script src="pages/my/addressManager/addressManager-route.js"></script>
+<script src="pages/my/addressManager/addressManager-controller.js"></script>
+<script src="pages/my/addressManager/addressManager-service.js"></script>
+
+<script src="pages/my/order/orderDetails/orderDetail-route.js"></script>
+<script src="pages/my/order/orderDetails/orderDetail-controller.js"></script>
+<script src="pages/my/order/orderDetails/orderDetail-service.js"></script>
+
+<script src="pages/my/coupon/coupon-route.js"></script>
+<script src="pages/my/coupon/coupon-controller.js"></script>
+<script src="pages/my/coupon/coupon-service.js"></script>
+
+<script src="pages/seller/pages/sellerPage/sellerPage-route.js"></script>
+<script src="pages/seller/pages/sellerPage/sellerPage-controller.js"></script>
+<script src="pages/seller/pages/sellerPage/sellerPage-service.js"></script>
+
+<script src="pages/seller/pages/myTeam/myTeam-route.js"></script>
+<script src="pages/seller/pages/myTeam/myTeam-controller.js"></script>
+<script src="pages/seller/pages/myTeam/myTeam-service.js"></script>
+
+<script src="pages/seller/pages/promotionOrder/promotionOrder-route.js"></script>
+<script src="pages/seller/pages/promotionOrder/promotionOrder-controller.js"></script>
+<script src="pages/seller/pages/promotionOrder/promotionOrder-service.js"></script>
+
+<script src="pages/seller/pages/marketing/marketing-route.js"></script>
+<script src="pages/seller/pages/marketing/marketing-controller.js"></script>
+<script src="pages/seller/pages/marketing/marketing-service.js"></script>
+
+<script src="pages/seller/pages/shopSettings/shopSettings-route.js"></script>
+<script src="pages/seller/pages/shopSettings/shopSettings-controller.js"></script>
+<script src="pages/seller/pages/shopSettings/shopSettings-service.js"></script>
+
+</body>
+</html>

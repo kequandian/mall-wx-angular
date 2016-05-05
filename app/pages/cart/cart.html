@@ -1,0 +1,55 @@
+<div class="">
+    <div class="view-cart">
+        <header class="bar top-bar clearfix cart-header">
+            <span class="cart-title">购物车</span>
+        </header>
+        <div class="cart-container">
+            <div class="">
+                <ul class="cart-list" ng-repeat="cart in carts">
+                    <li class="">
+                        <div class="">
+                            <input class="cart-checkbox" type="checkbox" id="check{{cart.id}}" ng-checked="isCheckAll">
+                            <label class="ion-android-checkbox-outline-blank active cart-item-label" for="check{{cart.id}}"></label>
+                        </div>
+                        <div class="item-info">
+                            <a href="" class="item-image">
+                                <img ng-src="{{cart.cover}}">
+                            </a>
+                            <div class="" style="display: block;">
+                                <a href="" class="item-title">{{cart.product_name}}</a>
+                                <span class="item-price">￥{{cart.price}}</span>
+                                <div class="">
+                                    <div class="cart-quantity-form">
+                                        <a href="javascript:void(0);" ng-click="downQuantity(cart.product_id)">
+                                            <span class="cart-quantity-decrement">-</span>
+                                        </a>
+                                        <input autocomplete="off" class="cart-quantity" value="{{ cart.quantity }}" type="text" readonly>
+                                        <a href="javascript:void(0);"  ng-click="upQuantity(cart.product_id)">
+                                            <span class="cart-quantity-increment">+</span>
+                                        </a>
+                                    </div>
+                                    <i class="ion-ios-close-empty ion-close" ng-click="showDeleteConfirm(cart.product_id)"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <footer id="foot">
+            <div class="footLeft">
+                <input class="cart-checkbox" type="checkbox" value="全不选" id="selectAll" ng-model="isCheckAll">
+                <label id="checkAll" class="ion-android-checkbox-outline-blank active cart-item-label" for="selectAll"></label>
+                <div class="foot-info">
+                    <strong>合计:￥</strong>
+                </div>
+            </div>
+            <a ui-sref="cart-settlement">
+                <div class="footRight" ng-click="">
+                    去结算
+                </div>
+            </a>
+        </footer>
+    </div>
+</div>

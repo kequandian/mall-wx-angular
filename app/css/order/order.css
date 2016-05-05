@@ -1,0 +1,177 @@
+#orders{
+    font-size: 14px;
+    background-color: #F8F8F8;
+}
+
+#orders #nav{
+    width:100%;
+    height:42px;
+    overflow:hidden;
+    position:relative;
+    background-color: #fff;
+}
+
+#orders .active {
+    background-color: #dfdfdf;
+}
+
+#orders .nav-warp{
+    height:42px;
+    /*overflow-x:scroll;*/
+    position:absolute;
+    left:0;
+    right:0;
+}
+
+#orders .nav-warp ul{
+    width:100%;
+    height:41px;
+    border-bottom:1px solid #dfdfdf;
+}
+#orders .nav-warp li{
+    float:left;
+    width:19.3%;
+    height:41px;
+    text-align:center;
+    line-height:41px;
+    border-left:1px solid #dcdcdc;
+}
+
+
+/*
+* all
+*/
+#orders .order-item{
+    width: 100%;
+    height: 143px;
+    background: white;
+    position: relative;
+    border-top:1px solid #dcdcdc;
+    border-bottom:1px solid #dcdcdc;
+    margin-bottom: 7px;
+}
+
+#orders .item-order-number{
+    height: 36px;
+    line-height: 36px;
+    margin-left: 7px;
+    margin-right: 7px;
+    border-bottom:1px solid #dcdcdc;
+}
+
+#orders .item-order-info{
+    height: 71px;
+    margin-left: 7px;
+    margin-right: 7px;
+    border-bottom:1px solid #dcdcdc;
+}
+
+#orders .o-i-left{
+    width: 70px;
+    padding-top: 10px;
+    padding-left: 7px;
+    float: left;
+}
+
+#orders .o-i-left img{
+    width: 50px;
+    height: 50px;
+}
+
+#orders .o-i-center{
+    height: 71px;
+    text-align: left;
+    line-height: 23px;
+    margin-top: 5px;
+    left: 75px;
+    right: 85px;
+    position: absolute;
+}
+
+#orders .o-i-center span{
+    font-size: 12px;
+    word-wrap: break-word;;
+    line-height: 23px;
+}
+
+#orders .o-i-right{
+    width: 80px;
+    right: 7px;
+    position: absolute;
+}
+
+#orders .o-i-right-span{
+    height:35px;
+    line-height: 35px;
+    right: 7px;
+    position: absolute;
+}
+
+#orders .o-i-right-i{
+    top:35px;
+    height: 35px;
+    line-height: 35px;
+    right: 7px;
+    position: absolute;
+}
+
+
+
+#orders .item-detail-btn{
+    width: 100%;
+    height: 36px;
+    line-height: 36px;
+    padding-left: 5px;
+}
+
+#orders .order-item-price{
+    height: 36px;
+    line-height: 36px;
+    padding-left: 5px;
+    position: absolute;
+    float: right;
+}
+
+#orders .item-btn-right{
+    width: 60px;
+    align-content: center;
+    position: absolute;
+    right: 7px;
+}
+
+#orders #content-footer{
+    width: 100%;
+    height: 50px;
+    text-align: center;
+}
+
+#orders .content-footer-div{
+    width:100%;
+    height: 50px;
+    font-size: 12px;
+    color: #4E4E4E;
+}
+
+#orders .c-f-d-right{
+    width:33%;
+    line-height: 50px;
+    text-align: right;
+    float: left;
+}
+
+#orders .c-f-d-center{
+    width:33%;
+    line-height: 50px;
+    text-align: center;
+    float: left;
+}
+
+#orders .c-f-d-left{
+    width:33%;
+    line-height: 50px;
+    text-align: left;
+    float: left;
+}
+
+
+

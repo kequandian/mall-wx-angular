@@ -1,0 +1,32 @@
+<div class="weui_tab">
+    <div class="weui_tab_bd">
+        <div ui-view></div>
+    </div>
+    <div class="weui_tabbar">
+        <a ui-sref="home.homePage" class="weui_tabbar_item weui_bar_item_on">
+            <div class="weui_tabbar_icon">
+                <img src="img/indexTab/icon_nav_article.png">
+            </div>
+            <p class="weui_tabbar_label">首页</p>
+        </a>
+        <!--<a ui-sref=".seller" class="weui_tabbar_item">-->
+        <a ui-sref=".sellerPage" class="weui_tabbar_item">
+            <div class="weui_tabbar_icon">
+                <img src="img/indexTab/icon_nav_msg.png">
+            </div>
+            <p class="weui_tabbar_label">成为分销商</p>
+        </a>
+        <a ui-sref="cart" class="weui_tabbar_item">
+            <div class="weui_tabbar_icon">
+                <img src="img/indexTab/icon_nav_search_bar.png">
+            </div>
+            <p class="weui_tabbar_label">购物车</p>
+        </a>
+        <a ui-sref=".my" class="weui_tabbar_item">
+            <div class="weui_tabbar_icon">
+                <img src="img/indexTab/icon_nav_panel.png">
+            </div>
+            <p class="weui_tabbar_label">个人中心</p>
+        </a>
+    </div>
+</div>

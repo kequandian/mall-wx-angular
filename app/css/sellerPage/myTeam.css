@@ -1,0 +1,62 @@
+#myTeam{
+    background-color: #F8F8F8;
+    min-height: 100%;
+}
+
+#myTeam .myTeam-content{
+
+}
+
+#myTeam .t-m-top{
+    height: 42px;
+    line-height: 42px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: white;
+    border-bottom: 1px solid #cccccc;
+}
+
+#myTeam .t-m-right{
+    height: 42px;
+    line-height: 42px;
+    float: right;
+}
+
+#myTeam .t-m-item{
+    font-size: 14px;
+    height: 60px;
+    background-color: white;
+    margin-top: 7px;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    padding-left: 5px;
+    padding-right: 5px;
+    position: relative;
+}
+
+#myTeam .item-left{
+    height: 60px;
+    position: absolute;
+}
+
+#myTeam .i-l-top{
+    height: 30px;
+    line-height: 30px;
+}
+
+#myTeam .i-l-bottom{
+    height: 30px;
+    line-height: 30px;
+}
+
+#myTeam .item-right{
+    right: 5px;
+    position: absolute;
+}
+
+#myTeam .item-right img{
+    margin-top: 15px;
+    width: 30px;
+    height: 30px;
+    background-color: #007aff;
+}

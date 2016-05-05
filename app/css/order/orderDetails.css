@@ -1,0 +1,252 @@
+#orderDetails{
+    font-size: 14px;
+    background-color: #F8F8F8;
+}
+
+#orderDetails .order-status{
+    height: 70px;
+    background-color: #65C3FF;
+    padding-top: 10px;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+#orderDetails .o-status-img{
+    height: 70px;
+    float: left;
+}
+
+#orderDetails .o-status-img img{
+    width: 30px;
+    height: 30px;
+    background-color: #04BE02;
+}
+
+#orderDetails .o-status-info{
+    margin-left: 10px;
+    float: left;
+}
+
+#orderDetails .o-status{
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+}
+
+#orderDetails .o-number{
+    font-size: 12px;
+    color: white;
+}
+
+#orderDetails .o-total{
+    font-size: 12px;
+    color: white;
+}
+
+#orderDetails .order-address{
+    height: 55px;
+    border-bottom: 1px solid #cccccc;
+    padding-top: 10px;
+    padding-left: 7px;
+    padding-right: 7px;
+    background-color: white;
+}
+
+#orderDetails .o-address-img{
+    height: 55px;
+    float: left;
+}
+
+#orderDetails .o-address-img img{
+    width: 30px;
+    height: 30px;
+    background-color: #04BE02;
+}
+
+#orderDetails .o-address-info{
+    margin-left: 10px;
+    float: left;
+}
+
+#orderDetails .mail-name{
+    width: 150px;
+    float: left;
+}
+
+#orderDetails .mail-phone{
+    min-width: 150px;
+    float: left;
+}
+
+#orderDetails .mail-address{
+}
+
+
+
+#orderDetails .order-detail{
+    margin-top: 7px;
+    background-color: white;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+}
+
+#orderDetails .item-order-info{
+    height: 71px;
+    margin-left: 7px;
+    margin-right: 7px;
+    border-bottom:1px solid #dcdcdc;
+}
+
+#orderDetails .o-i-left{
+    width: 70px;
+    padding-top: 10px;
+    float: left;
+}
+
+#orderDetails .o-i-left img{
+    width: 50px;
+    height: 50px;
+}
+
+#orderDetails .o-i-center{
+    height: 71px;
+    text-align: left;
+    line-height: 23px;
+    margin-top: 5px;
+    left:68px;
+    right: 85px;
+    position: absolute;
+}
+
+#orderDetails .o-i-center span{
+    font-size: 12px;
+    word-wrap: break-word;;
+    line-height: 23px;
+}
+
+#orderDetails .o-i-right{
+    width: 80px;
+    right: 7px;
+    position: absolute;
+}
+
+#orderDetails .o-i-right-span{
+    height:35px;
+    line-height: 35px;
+    right: 7px;
+    position: absolute;
+}
+
+#orderDetails .o-i-right-i{
+    top:35px;
+    height: 35px;
+    line-height: 35px;
+    right: 7px;
+    position: absolute;
+}
+
+
+#orderDetails .o-d-freight{
+    height: 40px;
+    line-height: 40px;
+    margin-left: 7px;
+    margin-right: 7px;
+    border-bottom:1px solid #dcdcdc;
+}
+
+#orderDetails .o-d-freight-i{
+    right: 7px;
+    margin-right: 7px;
+    position: absolute;
+}
+
+#orderDetails .buyer-message{
+    height: 40px;
+    line-height: 40px;
+    margin-left: 7px;
+    margin-right: 7px;
+    border-bottom:1px solid #dcdcdc;
+}
+
+#orderDetails .total-price{
+    height: 40px;
+    line-height: 40px;
+    margin-left: 7px;
+    margin-right: 7px;
+    border-bottom:1px solid #dcdcdc;
+}
+
+#orderDetails .total-price-i{
+    right: 7px;
+    margin-right: 7px;
+    position: absolute;
+}
+
+#orderDetails .closing-time{
+    height: 40px;
+    line-height: 40px;
+    margin-left: 7px;
+    margin-right: 7px;
+}
+
+
+
+
+
+
+#orderDetails #content-footer{
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+#orderDetails .content-footer-div{
+    width:100%;
+    height: 50px;
+    font-size: 12px;
+    color: #4E4E4E;
+}
+
+#orderDetails .c-f-d-right{
+    width:33%;
+    line-height: 50px;
+    text-align: right;
+    float: left;
+}
+
+#orderDetails .c-f-d-center{
+    width:33%;
+    line-height: 50px;
+    text-align: center;
+    float: left;
+}
+
+#orderDetails .c-f-d-left{
+    width:33%;
+    line-height: 50px;
+    text-align: left;
+    float: left;
+}
+
+
+
+
+
+#orderDetails .footer {
+    background-color: white;
+    width: 100%;
+    height: 35px;
+    clear:both;
+    position: fixed;
+    bottom: 2px;
+    right: 1px;
+    z-index: 101;
+}
+
+#orderDetails .item-button{
+    margin-top: 4px;
+    margin-right: 7px;
+    float: right;
+}
+
