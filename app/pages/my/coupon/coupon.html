@@ -1,0 +1,48 @@
+<div id="coupon">
+
+
+    <div id="coupon-content">
+
+        <nav id="nav">
+            <div class="nav-warp">
+                <ul>
+                    <li ng-class="{active : currentId == title.id}" ng-repeat="title in coupon_titles" ng-click="clickme(title.id);couponsOrderBy(title.id)">{{title.name}}</li>
+                </ul>
+            </div>
+        </nav>
+
+
+        <!--<div class="pro" ng-repeat="item in coupon_list | filter : {status : orderByResult}" style="{{coupon_show}}">-->
+        <div class="pro">
+
+            <div class="pro-warp">
+                <div class="pro-body">
+                    <!--<div class="pro-body-des">-->
+                    <div class="{{coupon_status_css}}">
+                        <div class="pro-body-des-text">
+                            <div class="item-input-inset" style="width: 100%; ">
+                                <div class="coupon-title-left">优惠券：</div>
+                                <div class="{{coupon_title_right}}">{{item.display_name}}</div>
+                            </div>
+                            <div class="item-input-inset item-icon-right" style="width: 100%;">
+                                <div class="{{coupon_price}}">￥{{item.money}}</div>
+                                <div class="coupon-price-shiyong">{{item.description}}</div>
+                                <!--<i id="arrow_color" class="icon ion-ios-arrow-right"></i>-->
+                            </div>
+                            <div style="width: 100%;height:1px;border-bottom:1px dashed #000;">
+                            </div>
+                            <div class="pwd_funtion">
+                                <i class="reset_pwd">详细信息</i>
+                                <i class="ret_pwd">{{item.valid_date}}</i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>

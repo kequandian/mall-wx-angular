@@ -1,0 +1,33 @@
+<div id="promotionOrder">
+
+    <div class="promotionOrder-content">
+
+        <nav id="nav">
+            <div class="nav-warp">
+                <ul>
+                    <li ng-class="{active : currentId == title.id}" ng-repeat="title in pro_order_titles"
+                        ng-click="clickme(title.id);">
+                        {{title.name}}
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="pro-order-body">
+
+            <div class="pro-order-not-data">
+                <div class="not-data-top">
+                    <img src="">
+                </div>
+                <div class="not-data-bottom">
+                    亲，你暂无分销订单信息
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>

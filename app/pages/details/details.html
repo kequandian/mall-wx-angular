@@ -1,0 +1,96 @@
+<div id="details">
+
+    <div class="content">
+
+        <!-- 商品图片 -->
+        <div class="product-img">
+            <div id="headerSlider" class="swiper-container">
+                <div class="swiper-wrapper">
+                    <!--<div class="swiper-slide">-->
+                        <!--<img ng-src="{{details.cover}}">-->
+                    <!--</div>-->
+                    <div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1n3rZHFXXXXX9XFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i4/TB10rkPGVXXXXXGapXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1kQI3HpXXXXbSXFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 商品内容 -->
+        <div class="product-content">
+            <div class="product-title">
+                {{details.name}}
+            </div>
+            <div class="product-price">￥{{details.price}}</div>
+
+            <div class="product-freight">
+                <div class="product-f-left">
+                    <span>运费：￥{{details.freight}}</span>
+                </div>
+                <div class="product-f-right">
+                    <span>销量：{{details.sales}}件</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 其他信息 -->
+        <div class="product-info">
+
+            <div class="p-info-tab">
+                <nav id="nav">
+                    <div class="nav-warp">
+                        <ul>
+                            <li ng-class="{active : currentId == title.id}" ng-repeat="title in detail_cate"
+                                ng-click="clickme(title.id);">
+                                {{title.name}}
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- 详情 -->
+            <div class="p-details" ng-hide="productDetails">
+                AAAAAAA
+            </div>
+
+            <!-- 参数 -->
+            <div class="p-parameter" ng-hide="productParameter">
+                BBBBBBB
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- 底部 -->
+    <div id="content-footer">
+        <div class="content-footer-div">
+            <div class="c-f-d-right">店铺主页</div>
+            <div class="c-f-d-center">会员中心</div>
+            <div class="c-f-d-left">推客申请</div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-home">
+            <div class="f-h-top">
+                <img src="">
+            </div>
+            <div class="f-h-bottom">
+                进店
+            </div>
+        </div>
+        <div class="item-button">
+            <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_primary"
+               style="width: 100px; height: 35px; text-align: center; padding-top: 4px;">
+                加入购物车
+            </a>
+            <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default"
+               style="width: 100px; height: 35px;text-align: center; padding-top: 4px;margin-top: 0;">
+                立即购买
+            </a>
+        </div>
+    </div>
+
+</div>

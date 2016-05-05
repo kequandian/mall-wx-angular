@@ -1,0 +1,62 @@
+#addressManager{
+    background-color: #F8F8F8;
+    min-height: 100%;
+}
+
+#addressManager .content{
+    z-index: 100;
+    margin-bottom: 50px;
+}
+
+#addressManager .address-item{
+    width: 100%;
+    height: 131px;
+    background-color: white;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    margin-top: 7px;
+}
+
+#addressManager .address-info{
+    height: 96px;
+    border-bottom: 1px solid #cccccc;
+}
+
+#addressManager .address-info .mail-name{
+    width: 50%;
+    height: 32px;
+    line-height: 32px;
+    float: left;
+}
+
+#addressManager .address-info .mail-phone{
+    width: 50%;
+    height: 32px;
+    line-height: 32px;
+    float: left;
+}
+
+#addressManager .item-button{
+    height: 35px;
+    line-height: 35px;
+    margin-top: 4px;
+    margin-right: 5px;
+    float: right;
+}
+
+
+
+
+
+
+
+
+#addressManager .footer {
+    width: 100%;
+    height: 40px;
+    clear:both;
+    position: fixed;
+    bottom: 6px;
+    right: 1px;
+    z-index: 101;
+}

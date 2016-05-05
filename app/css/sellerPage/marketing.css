@@ -1,0 +1,72 @@
+#marketing{
+
+}
+
+#marketing .account-info{
+    width: 100%;
+    text-align: center;
+}
+
+#marketing .account-cover{
+    width: 100%;
+    height: 90px;
+}
+
+#marketing .account-name{
+    height: 32px;
+    line-height: 32px;
+}
+
+#marketing .a-shop-name{
+    height: 32px;
+    line-height: 32px;
+}
+
+#marketing .account-cover img{
+    width: 70px;
+    height: 70px;
+    border-radius: 35px;
+    background-color: #007aff;
+    margin-top: 5px;
+}
+
+#marketing .shop-info{
+    width: 100%;
+    height: 120px;
+    text-align: center;
+    margin-top: 18px;
+}
+
+#marketing .shop-logo {
+    width: 100%;
+}
+
+#marketing .shop-logo img{
+    width: 120px;
+    height: 110px;
+}
+
+#marketing .shop-qrcode{
+    width: 100%;
+    height: 150px;
+    margin-top: 5px;
+    background-color: #10AEFF;
+}
+
+#marketing .footer{
+    width: 100%;
+    margin-top: 150px;
+    text-align: center;
+}
+
+#marketing .text-top{
+    height: 42px;
+    line-height: 42px;
+    background-color: #04BE02;
+}
+
+#marketing .text-bottom{
+    height: 42px;
+    line-height: 42px;
+    background-color: #97A9BE;
+}

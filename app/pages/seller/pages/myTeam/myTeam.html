@@ -1,0 +1,23 @@
+<div id="myTeam">
+
+
+    <div class="t-m-top">
+        <span class="">我的团队</span>
+        <span class="t-m-right">共{{myTeamList.length}}人</span>
+    </div>
+
+    <div class="myTeam-content">
+
+        <div class="t-m-item" ng-repeat="item in myTeamList">
+            <div class="item-left">
+                <div class="i-l-top">{{item.user_name}}</div>
+                <div class="i-l-bottom">{{isSeller(item.seller_ship)}}</div>
+            </div>
+            <div class="item-right">
+                <img src="">
+            </div>
+        </div>
+
+    </div>
+
+</div>
