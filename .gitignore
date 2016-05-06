@@ -1,12 +1,7 @@
 logs/*
 !.gitkeep
 node_modules/
-bower_components/angular/
-bower_components/angular-loader/
-bower_components/angular-mocks/
-bower_components/angular-route/
-bower_components/angular-ui-router/
-bower_components/html5-boilerplate/
+bower_components/
 tmp
 .DS_Store
 .idea

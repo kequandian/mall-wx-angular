@@ -22,18 +22,18 @@
           </div>
           <div class="weui_tab_bd">
 
-            <div class="weui-row box-header">
+            <div class="weui-row goods-box-header">
 
-              <div class="weui-col-50 box" ng-repeat="productItem in productList">
+              <div class="weui-col-50 goods-box" ng-repeat="productItem in productList">
                 <img ng-src="{{productItem.cover}}" class="goods-box-img" ui-sref="details({productId:productItem.id})">
-                <div class="box-text">
+                <div class="goods-box-text">
                   <div style=" word-wrap: break-word; word-break: normal;" ui-sref="details({productId:productItem.id})">
-                    {{productItem.name}}
+                    {{productItem.name | cutText:true:18:'...'}}
                   </div>
                 </div>
-                <div class="box-footer-text">
-                  <div class="c-left">文字</div>
-                  <div class="c-right">图片</div>
+                <div class="goods-box-footer-text">
+                  <div class="goods-c-left c-left">${{productItem.price}}</div>
+                  <div class="goods-c-right c-right">购物车</div>
                 </div>
               </div>
 

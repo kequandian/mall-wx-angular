@@ -12,13 +12,13 @@
 }
 
 
-#goodsList .box-header{
-  /*margin-top: 50px;*/
+#goodsList .goods-box-header{
+  margin-top: 5px;
   /*margin-bottom: 5px;*/
   margin-left: 5px;
 }
 
-#goodsList .box{
+#goodsList .goods-box{
   /*height: 205px;*/
   /*line-height: 175px;*/
   /*text-align: center;*/
@@ -27,6 +27,7 @@
   padding: 0;
   /*margin: 5px 5px 5px 10px;*/
   border:1px solid #cccccc;
+  background-color: white;
 }
 
 #goodsList .goods-box-img{
@@ -35,19 +36,33 @@
   /*background: #de7c23;*/
 }
 
-#goodsList .box-text{
+#goodsList .goods-box-text{
   width: 100%;
   height: 45px;
-  background: #84DE7E;
-  /*padding:5px 5px 0 ;*/
+  border-top: 1px solid #cccccc;
 }
 
-#goodsList .box-footer-text{
+#goodsList .goods-box-text div{
+  padding: 5px 5px 0 5px;
+}
+
+#goodsList .goods-box-footer-text{
   width: 100%;
   height: 30px;
   line-height: 30px;
-  background: #DE8BD4;
+  /*background: #DE8BD4;*/
   /*padding:0 5px 0 5px;*/
+  border-top: 1px solid #cccccc;
+}
+
+#goodsList .goods-c-left{
+  min-width: 30px;
+  padding: 0 5px 0 5px;
+  color:#F15353;
+}
+
+#goodsList .goods-c-right{
+  padding: 0 5px 0 5px;
 }
 
 #goodsList #footer{

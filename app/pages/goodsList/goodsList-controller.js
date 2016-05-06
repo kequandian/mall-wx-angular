@@ -9,7 +9,6 @@ angular.module('goodsList.controller', ['goodsList.service'])
                 .then(function(json){
                     if(json.status_code == 0){
                         $scope.productList = json.data[0].sub_categories;
-
                     }else{
                         console.log("获取失败")
                     }
