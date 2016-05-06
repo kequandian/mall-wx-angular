@@ -8,15 +8,16 @@
                 <ul class="cart-list" ng-repeat="cart in carts">
                     <li class="">
                         <div class="">
-                            <input class="cart-checkbox" type="checkbox" id="check{{cart.id}}" ng-checked="isCheckAll" ng-value="cart">
+                            <input class="cart-checkbox" type="checkbox" id="check{{cart.id}}"
+                                   ng-checked="isCheckAll" ng-value="cart.price*cart.quantity" ng-click="cartCounter($event,cart.product_id)">
                             <label class="ion-android-checkbox-outline-blank active cart-item-label" for="check{{cart.id}}"></label>
                         </div>
                         <div class="item-info">
                             <a href="" class="item-image">
                                 <img ng-src="{{cart.cover}}">
                             </a>
-                            <div class="" style="display: block;">
-                                <a href="" class="item-title">{{cart.product_name}}</a>
+                            <div class="">
+                                <a href=""><h4 class="item-title">{{cart.product_name}}</h4></a>
                                 <span class="item-price">￥{{cart.price}}</span>
                                 <div class="">
                                     <div class="cart-quantity-form">
@@ -42,7 +43,7 @@
                 <input class="cart-checkbox" type="checkbox" value="全不选" id="selectAll" ng-model="isCheckAll">
                 <label id="checkAll" class="ion-android-checkbox-outline-blank active cart-item-label" for="selectAll"></label>
                 <div class="foot-info">
-                    <strong>合计:￥{{myChoose}}</strong>
+                    <span style="float: left;margin-top: 4px;margin-right: 5px">全选</span><strong style="float: left">合计:￥{{total}}</strong>
                 </div>
             </div>
             <a ui-sref="cart-settlement">

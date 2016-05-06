@@ -25,9 +25,9 @@
                         <div class="weui_cells weui_cells_access">
                             <a class="weui_cell" href="javascript:;" id="showAddress">
                                 <div class="weui_cell_bd weui_cell_primary">
-                                    <p class="weui_media_desc address-info-space">{{currentContact.contact_user}} {{currentContact.phone}}</p>
+                                    <p class="weui_media_desc address-info-space">联系人：{{currentContact.contact_user}} {{currentContact.phone}}</p>
                                     <p class="weui_media_desc address-info-space">
-                                        {{currentContact.province}}{{currentContact.city}}{{currentContact.district}}
+                                        地址：{{currentContact.province}}{{currentContact.city}}{{currentContact.district}}
                                         {{currentContact.street}}{{currentContact.street_number}} {{currentContact.detail}}
                                         邮编：{{currentContact.zip}}
                                     </p>
@@ -69,7 +69,7 @@
 
                         <div class="weui_panel_bd" ng-repeat="contact in contacts">
                             <div class="weui_media_box weui_media_text">
-                                <div class="selectContact" ng-click="changeContact(contact.id)">
+                                <div class="selectContact" ng-click="changeContact(contact)">
                                     <h4 class="weui_media_desc">{{contact.contact_user}} {{contact.phone}}</h4>
                                     <p class="weui_media_desc">
                                         {{contact.province}}{{contact.city}}{{contact.district}}
@@ -79,7 +79,7 @@
                                 </div>
                                 <ul class="weui_media_info">
                                     <li class="weui_media_info_meta">收货时间</li>
-                                    <li class="weui_media_info_meta"><a href="" ng-click="editAddress()">修改</a></li>
+                                    <li class="weui_media_info_meta"><a href="" ng-click="editAddress(contact)">修改</a></li>
                                     <li class="weui_media_info_meta weui_media_info_meta_extra"><a href="" ng-click="deleteContact(contact.id)">删除</a></li>
                                 </ul>
                             </div>
@@ -87,7 +87,7 @@
 
                         <div class="weui_panel_bd">
                             <div class="weui_media_box weui_media_text">
-                                <a href="javascript:;" class="weui_btn weui_btn_plain_primary" ng-click="editAddress()">新增</a>
+                                <a href="javascript:;" class="weui_btn weui_btn_plain_primary" ng-click="addAddress()">新增</a>
                             </div>
                         </div>
                     </div>
@@ -175,16 +175,6 @@
                 </div>
                 <div class="weui_cell_ft">
                     <input type="radio" name="radio1" class="weui_check" id="x12" checked="checked">
-                    <span class="weui_icon_checked"></span>
-                </div>
-            </label>
-            <label class="weui_cell weui_check_label" for="x13">
-
-                <div class="weui_cell_bd weui_cell_primary">
-                    <p><div class="payment-method-icon"><img src="img/indexTab/icon_nav_cell.png"></div>支付宝</p>
-                </div>
-                <div class="weui_cell_ft">
-                    <input type="radio" name="radio1" class="weui_check" id="x13" checked="checked">
                     <span class="weui_icon_checked"></span>
                 </div>
             </label>

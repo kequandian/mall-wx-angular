@@ -64,7 +64,7 @@ input::-webkit-inner-spin-button {
     position: relative;
     z-index: 0;
     display: inline-block;
-    padding: 15px 0 20px 5px;
+    padding: 15px 0 20px 0;
     width: 30px;
     border-radius: 4px;
     list-style: none;
@@ -142,15 +142,13 @@ input::-webkit-inner-spin-button {
     -ms-flex:1;
     flex:1;
     position:relative;
-    padding-left: 60px;
+    padding-left: 50px;
     min-height:50px
 }
 .cart-list li .item-info .item-image {
     position:absolute;
     left:0;
     display:inline-block;
-    width: 50px;
-    height:50px;
     text-align:center
 }
 .cart-list li .item-info .item-image img {
@@ -158,13 +156,13 @@ input::-webkit-inner-spin-button {
     height:50px;
 }
 .cart-list li .item-info .item-title {
+    font-weight: 400;
     height: 30px;
     overflow:hidden;
     padding-right:50px;
     line-height:26px;
     font-size:13px;
     color:#222;
-    text-overflow:ellipsis
 }
 .cart-list li .item-info .item-price {
     position:absolute;

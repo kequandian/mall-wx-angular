@@ -53,6 +53,17 @@ angular.module('cart.controller', ['cart.service'])
             });
         };
 
+        //$scope.checkedCart= {};
+        $scope.total= 0;
+        $scope.cartCounter= function($event, id){
+            var checkbox = $event.target;
+            if(checkbox.checked){
+                $scope.total += parseInt(checkbox.value);
+            }else{
+                $scope.total -= parseInt(checkbox.value);
+            }
+        }
+
     }])
 
     .controller('SettlementController', ['$scope', '$state', 'CartFty', function($scope, $state, CartFty){
@@ -75,8 +86,20 @@ angular.module('cart.controller', ['cart.service'])
         }
 
         //新增地址
-        $scope.editAddress= function (){
-            $state.go('edit-address');
+        $scope.addAddress= function (){
+            $state.go('add-address');
+        };
+        //修改地址
+        $scope.editAddress= function (item){
+            console.log(item);
+            //angular.forEach($scope.contacts, function(data,index){
+            //    if(data.id == id){
+            //        $scope.editContact = data;
+            //    }
+            //});
+            //var editC = $scope.editContact;
+            //console.log(editC);
+            $state.go('edit-address', {data:item});
         };
         //删除地址
         $scope.deleteContact= function(id) {
@@ -94,15 +117,10 @@ angular.module('cart.controller', ['cart.service'])
             });
         };
 
-        //更改地址
-        $scope.changeContact= function(id) {
-            angular.forEach($scope.contacts, function(data,index){
-                if(data.id == id){
-                    $scope.currentContact = data;
-                    console.log($scope.currentContact);
-                }
-            });
-            //$scope.contactList= false;
+        //选择地址
+        $scope.changeContact= function(item) {
+            $scope.currentContact = item;
+            console.log($scope.currentContact);
         };
 
         //显示发票抬头
@@ -114,7 +132,37 @@ angular.module('cart.controller', ['cart.service'])
 
     }])
 
-    .controller('EditAddressController', ['$scope', '$state', 'CartFty', function($scope, $state, CartFty){
+    .controller('EditAddressController', ['$scope', '$state', '$stateParams', 'CartFty', function($scope, $state, $stateParams, CartFty){
+
+        $scope.contact={};
+        var editingContact = $stateParams.data;
+        if(editingContact != null){
+            $scope.editC= editingContact;
+            $scope.pcd= editingContact.province +' '+ editingContact.city +' '+ editingContact.district;
+            $scope.detail= editingContact.street + editingContact.detail + editingContact.street_number;
+        }
+
+        $scope.isDefault=[
+            {key:1,value:'是'},
+            {key:0,value:'否'}
+        ];
+        $scope.receivingTime=[
+            {key:'收货时间不限',value:'收货时间不限'},
+            {key:'周六日/节假日收货',value:'周六日/节假日收货'},
+            {key:'周一至周五收货',value:'周一至周五收货'}
+        ];
+
+        //添加地址
+        $scope.contact={};
+        $scope.addContactSubmit=function() {
+            CartFty.addContact($scope.contact).then(
+                function (result) {
+                    console.log(result);
+                    $state.go('cart-settlement');
+                },function (error){
+                    console.log(error);
+                });
+        };
 
         var pcd ;
         AllPCD();

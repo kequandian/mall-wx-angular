@@ -2,10 +2,10 @@
     <div class="view-cart">
         <!-- 头部 -->
         <header class="bar top-bar clearfix cart-header settlement-header">
-            <span class="cart-title">修改地址</span>
+            <span class="cart-title">添加地址</span>
         </header>
 
-        <form ng-submit="editContactSubmit()">
+        <form ng-submit="addContactSubmit()">
             <!-- 基本信息 -->
             <div class="weui_cells_title hide-area">&nbsp;</div>
             <div class="weui_cells weui_cells_form settlement-font">
@@ -14,7 +14,7 @@
                         <label class="weui_label">收货人</label>
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <input class="weui_input" type="text" placeholder="请输入姓名" ng-model="contact.contact_user" ng-init="contact.contact_user=editC.contact_user">
+                        <input class="weui_input" type="text" placeholder="请输入姓名" ng-model="contact.contact_user">
                     </div>
                 </div>
                 <div class="weui_cell">
@@ -22,7 +22,7 @@
                         <label class="weui_label">手机号</label>
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <input class="weui_input" type="tel" placeholder="手机号码" ng-model="contact.phone" ng-init="contact.phone=editC.phone">
+                        <input class="weui_input" type="tel" placeholder="手机号码" ng-model="contact.phone">
                     </div>
                 </div>
                 <div class="weui_cell weui_cell_select weui_select_after">
@@ -44,8 +44,8 @@
                         设为默认地址
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <select class="weui_select" name="select3" ng-init="contact.is_default=editC.is_default==1?1:0"
-                                ng-options="i.key as i.value for i in isDefault" ng-model="contact.is_default" >
+                        <select class="weui_select" name="select3" ng-options="i.key as i.value for i in isDefault"
+                                ng-init="contact.is_default=0" ng-model="contact.is_default" >
                             <!--<option value="1">是</option>-->
                             <!--<option value="0">否</option>-->
                         </select>
@@ -62,7 +62,7 @@
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
                         <input id="city-picker" type="text" class="weui_input settlement-font" ng-click="showPCD()"
-                               ng-model="contact.city" ng-init="contact.city=pcd||'广东 广州 越秀区'">
+                               ng-model="contact.province" ng-value="'广东 广州 越秀区'">
                     </div>
                 </div>
                 <div class="weui_cell settlement-font">
@@ -70,7 +70,7 @@
                         <label class="weui_label">邮编</label>
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <input class="weui_input" type="tel" placeholder="邮编" ng-model="contact.zip" ng-init="contact.zip=editC.zip">
+                        <input class="weui_input" type="tel" placeholder="邮编" ng-model="contact.zip">
                     </div>
                 </div>
             </div>
@@ -93,8 +93,7 @@
             <div class="weui_cells weui_cells_form">
                 <div class="weui_cell">
                     <div class="weui_cell_bd weui_cell_primary">
-                        <textarea class="weui_textarea settlement-font" placeholder="请输入详细地址信息" rows="3"
-                                  ng-model="contact.street" ng-init="contact.street=detail"></textarea>
+                        <textarea class="weui_textarea settlement-font" placeholder="请输入详细地址信息" rows="3" ng-model="contact.street"></textarea>
                         <div class="weui_textarea_counter"><span>0</span>/200</div>
                     </div>
                 </div>

@@ -11,9 +11,17 @@ angular.module('cart.route', [
         templateUrl: 'pages/cart/settlement/settlement.html',
         controller: 'SettlementController'
     })
+    .state('add-address', {
+        url:         '/addAddress',
+        templateUrl: 'pages/cart/settlement/addAddress.html',
+        controller: 'EditAddressController'
+    })
     .state('edit-address', {
         url:         '/editAddress',
         templateUrl: 'pages/cart/settlement/editAddress.html',
-        controller: 'EditAddressController'
+        controller: 'EditAddressController',
+        params: {
+            'data': null
+        }
     })
 }]);
