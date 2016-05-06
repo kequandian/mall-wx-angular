@@ -25,7 +25,7 @@
             <div class="weui-row box-header">
 
               <div class="weui-col-50 box" ng-repeat="productItem in productList">
-                <img src="{{productItem.cover}}" class="box-img" ui-sref="details({productId:productItem.id})">
+                <img ng-src="{{productItem.cover}}" class="goods-box-img" ui-sref="details({productId:productItem.id})">
                 <div class="box-text">
                   <div style=" word-wrap: break-word; word-break: normal;" ui-sref="details({productId:productItem.id})">
                     {{productItem.name}}
