@@ -98,6 +98,26 @@ angular.module('cart.service', [])
                 return deferred.promise;
             },
 
+            editContact: function (id, data) {
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + '/contact/' + id;
+                $http({
+                    method: 'PUT',
+                    url: url,
+                    data: data,
+                    headers: {
+                        'Authorization': 'eyJ0b2tlbiI6ImZjOWYzZjFmOWQ3MWFjYmU5YmJkMjUxNzIxMzY1MTU5Nzc0NzYyOTMiLCJsb2dpbl9uYW1lIjoiamluZ2ZlaSJ9'
+                    }
+                })
+                    .success(function (data) {
+                        deferred.resolve(data);
+                    })
+                    .error(function (data) {
+                        deferred.reject(data);
+                    });
+                return deferred.promise;
+            },
+
             getPCD: function () {
                 var deferred = $q.defer();
                 var url = GlobalVariable.SERVER_PATH + '/pcd?all=true';

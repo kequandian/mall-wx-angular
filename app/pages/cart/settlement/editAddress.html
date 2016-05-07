@@ -5,7 +5,7 @@
             <span class="cart-title">修改地址</span>
         </header>
 
-        <form ng-submit="editContactSubmit()">
+        <form ng-submit="editContactSubmit()" id="contactMan">
             <!-- 基本信息 -->
             <div class="weui_cells_title hide-area">&nbsp;</div>
             <div class="weui_cells weui_cells_form settlement-font">
@@ -14,6 +14,7 @@
                         <label class="weui_label">收货人</label>
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
+                        <input type="hidden" ng-model="contact.id" ng-init="contact.id=editC.id">
                         <input class="weui_input" type="text" placeholder="请输入姓名" ng-model="contact.contact_user" ng-init="contact.contact_user=editC.contact_user">
                     </div>
                 </div>
@@ -62,7 +63,7 @@
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
                         <input id="city-picker" type="text" class="weui_input settlement-font"
-                               ng-model="contact.city" ng-init="contact.city=pcd||'广东 广州 越秀区'" ng-click="showPCD()" readonly>
+                               ng-model="contact.pcd" ng-init="contact.pcd=pcd||'广东 广州 越秀区'" ng-click="showPCD()" readonly>
                     </div>
                 </div>
                 <div class="weui_cell settlement-font">
@@ -93,9 +94,9 @@
             <div class="weui_cells weui_cells_form">
                 <div class="weui_cell">
                     <div class="weui_cell_bd weui_cell_primary">
-                        <textarea class="weui_textarea settlement-font" placeholder="请输入详细地址信息" rows="3"
-                                  ng-model="contact.street" ng-init="contact.street=detail"></textarea>
-                        <div class="weui_textarea_counter"><span>0</span>/200</div>
+                        <textarea class="weui_textarea settlement-font" placeholder="请输入详细地址信息" rows="2"
+                                  ng-model="contact.detail" ng-init="contact.detail=editC.detail"></textarea>
+                        <!--<div class="weui_textarea_counter"><span>0</span>/200</div>-->
                     </div>
                 </div>
             </div>

@@ -108,9 +108,10 @@ $(function(){
         $(this).addClass('weui_bar_item_on').siblings('.weui_bar_item_on').removeClass('weui_bar_item_on');
     })
 
-    .on('click', '#city-picker', function(){
+    .on('click', '#contactMan', function(){
         $("#city-picker").cityPicker({
             title: "请选择收货地址"
         });
-    });
+    })
+    ;
 });

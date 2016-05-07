@@ -1,7 +1,7 @@
 angular.module('cart.route', [
     'cart.controller'
 ]).config(['$stateProvider', function($stateProvider) {
-    $stateProvider.state('cart', {
+    $stateProvider.state('home.cart', {
         url:         '/cart',
         templateUrl: 'pages/cart/cart.html',
         controller: 'CartController'

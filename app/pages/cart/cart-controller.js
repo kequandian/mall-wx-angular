@@ -53,16 +53,33 @@ angular.module('cart.controller', ['cart.service'])
             });
         };
 
-        //$scope.checkedCart= {};
-        $scope.total= 0;
-        $scope.cartCounter= function($event, id){
-            var checkbox = $event.target;
-            if(checkbox.checked){
-                $scope.total += parseInt(checkbox.value);
-            }else{
-                $scope.total -= parseInt(checkbox.value);
-            }
-        }
+        //选购结算
+        $scope.checkAll = function() {
+            $scope.carts.forEach(function (it) {
+                it.$checked = $scope.$allChecked;
+            });
+        };
+        $scope.checkItem = function(item) {
+            $scope.$allChecked = $scope.carts.every(function(it) {
+                return it.$checked;
+            });
+        };
+        $scope.totalToPay = function () {
+            return $scope.carts.reduce(function(prev, next) {
+                return next.$checked ? prev + next.quantity * next.price : prev;
+            }, 0);
+        };
+        $scope.someChecked = function() {
+            return $scope.carts.some(function(it) {
+                return it.$checked;
+            });
+        };
+
+        //去结算
+        $scope.goSettlement= function (){
+            console.log();
+            $state.go('cart-settlement');
+        };
 
     }])
 
@@ -92,13 +109,6 @@ angular.module('cart.controller', ['cart.service'])
         //修改地址
         $scope.editAddress= function (item){
             console.log(item);
-            //angular.forEach($scope.contacts, function(data,index){
-            //    if(data.id == id){
-            //        $scope.editContact = data;
-            //    }
-            //});
-            //var editC = $scope.editContact;
-            //console.log(editC);
             $state.go('edit-address', {data:item});
         };
         //删除地址
@@ -131,15 +141,18 @@ angular.module('cart.controller', ['cart.service'])
         };
 
     }])
-
     .controller('EditAddressController', ['$scope', '$state', '$stateParams', 'CartFty', function($scope, $state, $stateParams, CartFty){
 
         $scope.contact={};
         var editingContact = $stateParams.data;
         if(editingContact != null){
             $scope.editC= editingContact;
-            $scope.pcd= editingContact.province +' '+ editingContact.city +' '+ editingContact.district;
-            $scope.detail= editingContact.street + editingContact.detail + editingContact.street_number;
+            if(editingContact.province == null){
+                $scope.pcd = '广东 广州 越秀区';
+                console.log($scope.pcd);
+            }else{
+                $scope.pcd= editingContact.province +' '+ editingContact.city +' '+ editingContact.district;
+            }
         }
 
         $scope.isDefault=[
@@ -153,9 +166,19 @@ angular.module('cart.controller', ['cart.service'])
         ];
 
         //添加地址
-        $scope.contact={};
         $scope.addContactSubmit=function() {
+            console.log($scope.contact.is_default);
             CartFty.addContact($scope.contact).then(
+                function (result) {
+                    //console.log(result);
+                    $state.go('cart-settlement');
+                },function (error){
+                    console.log(error);
+                });
+        };
+        //修改地址
+        $scope.editContactSubmit= function(){
+            CartFty.editContact($scope.contact.id, $scope.contact).then(
                 function (result) {
                     console.log(result);
                     $state.go('cart-settlement');
@@ -172,12 +195,14 @@ angular.module('cart.controller', ['cart.service'])
                 function (result) {
                     //$scope.provinces = result.data;
                     pcd = result.data;
+                    showPCD();
                 },function (error){
                     console.log(error);
-            })
+                })
         }
 
-        $scope.showPCD = function (){
+        //$scope.showPCD = function (){
+        function showPCD(){
             // jshint ignore: start
             +function($){
 
@@ -323,7 +348,8 @@ angular.module('cart.controller', ['cart.service'])
                 };
 
             }($);
-        };
+        }
 
 
     }]);
+

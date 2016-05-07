@@ -5,7 +5,7 @@
             <span class="cart-title">添加地址</span>
         </header>
 
-        <form ng-submit="addContactSubmit()">
+        <form ng-submit="addContactSubmit()" id="contactMan">
             <!-- 基本信息 -->
             <div class="weui_cells_title hide-area">&nbsp;</div>
             <div class="weui_cells weui_cells_form settlement-font">
@@ -61,8 +61,8 @@
                         <label class="weui_label invoice-title">所在地区</label>
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <input id="city-picker" type="text" class="weui_input settlement-font" ng-click="showPCD()"
-                               ng-model="contact.province" ng-value="'广东 广州 越秀区'">
+                        <input id="city-picker" type="text" class="weui_input settlement-font" readonly
+                               ng-model="contact.pcd" ng-init="contact.pcd='广东 广州 越秀区'">
                     </div>
                 </div>
                 <div class="weui_cell settlement-font">
@@ -93,8 +93,7 @@
             <div class="weui_cells weui_cells_form">
                 <div class="weui_cell">
                     <div class="weui_cell_bd weui_cell_primary">
-                        <textarea class="weui_textarea settlement-font" placeholder="请输入详细地址信息" rows="3" ng-model="contact.street"></textarea>
-                        <div class="weui_textarea_counter"><span>0</span>/200</div>
+                        <textarea class="weui_textarea settlement-font" placeholder="请输入详细地址信息" rows="2" ng-model="contact.detail"></textarea>
                     </div>
                 </div>
             </div>
