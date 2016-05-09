@@ -44,7 +44,7 @@ angular.module('details.controller', ['details.service'])
                 }
             };
 
-            //滚动条
+            //滚动图片设置
             detailSwiper();
             function detailSwiper(){
                 var headerSwiper = new Swiper('#headerSlider', {

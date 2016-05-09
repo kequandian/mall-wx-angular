@@ -1,70 +1,81 @@
 <div id="content">
     <!-- 头部logo -->
     <div class="hd">
-        <!--<div class="h-header"></div>-->
-        <div class="h-logo"></div>
-        <div class="h-footer">
-            <div class="h-footer-div" style=" margin-right: 10px;">
-                <div style="height: 20px; text-align: center ">
-                    <img src="" style="width: 20px; height: 20px; background: red;">
-                </div>
-                <div class="h-f-d-text">会员中心</div>
-            </div>
 
-            <div class="h-footer-div">
-                <div style="height: 20px; text-align: center ">
-                    12
-                </div>
-                <div class="h-f-d-text">新上商品</div>
-            </div>
-
-            <div class="h-footer-div" ng-click="goToGoodsList()">
-                <div style="height: 20px; text-align: center ">
-                    12
-                </div>
-                <div class="h-f-d-text">全部商品</div>
-            </div>
+        <div class="home-logo">
+            <img src="img/home/shop-logo.png">
         </div>
+
+        <!-- 搜索框 -->
+        <div class="weui_search_bar home-title-center" id="search_bar">
+            <form class="weui_search_outer">
+                <div class="weui_search_inner">
+                    <i class="weui_icon_search" style="top: 7px;"></i>
+                    <input type="search" class="weui_search_input" id="search_input" placeholder="搜索" required/>
+                    <!--<a href="javascript:" class="weui_icon_clear" id="search_clear"></a>-->
+                </div>
+                <label for="search_input" class="weui_search_text" id="search_text">
+                    <i class="weui_icon_search"></i>
+                    <span>搜索</span>
+                </label>
+            </form>
+            <!--<a href="javascript:" class="weui_search_cancel" id="search_cancel">取消</a>-->
+        </div>
+
+        <div class="home-title-right">
+            <img src="img/home/follow-img.png">
+            <div>关注我们</div>
+        </div>
+
     </div>
 
     <!-- 滑动广告 -->
     <div id="ad">
-        <span>广告</span>
+        <!-- 广告图片 -->
+        <div id="homeHeaderSlider" class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1n3rZHFXXXXX9XFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i4/TB10rkPGVXXXXXGapXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1kQI3HpXXXXbSXFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
+            </div>
+        </div>
     </div>
 
-    <!-- 尺码分类 -->
-    <div class="weui_grids">
-        <a class="weui_grid js_grid" data-id="button">
-            <div class="weui_grid_icon">
-                <img src="./img/indexTab/icon_nav_button.png" alt="">
-            </div>
-            <p class="weui_grid_label">
-                小童
-            </p>
-        </a>
-        <a href="javascript:;" class="weui_grid js_grid" data-id="cell">
-            <div class="weui_grid_icon">
-                <img src="./img/indexTab/icon_nav_cell.png" alt="">
-            </div>
-            <p class="weui_grid_label">
-                中童
-            </p>
-        </a>
-        <a href="javascript:;" class="weui_grid js_grid" data-id="toast">
-            <div class="weui_grid_icon">
-                <img src="./img/indexTab/icon_nav_toast.png" alt="">
-            </div>
-            <p class="weui_grid_label">
-                大童
-            </p>
-        </a>
-    </div>
+    <!-- 功能导航 -->
+    <nav id="nav">
+
+        <span class="group-span-top">
+            <img ng-src="img/home/new-product.png" alt="">
+            <h2>新品优惠</h2>
+        </span>
+        <span class="group-span-top">
+             <img ng-src="img/home/selected-img.png" alt="">
+             <h2>每日精选</h2>
+        </span>
+
+        <span class="group-span-top">
+          <img ng-src="img/home/brand-img.png" alt="">
+          <h2>品牌推荐</h2>
+        </span>
+        <span class="group-span-top">
+          <img ng-src="img/home/more-cate.png" alt="">
+          <h2>更多分类</h2>
+        </span>
+
+    </nav>
+
+
+
+
+
 
     <!-- 活动 -->
     <div class="activity">
-        <div class="activity-1"></div>
-        <div class="activity-2"></div>
-        <div class="activity-3"></div>
+        <div class="activity-1">
+            <img src="img/home/snaps-img.png">
+        </div>
+        <!--<div class="activity-2"></div>
+        <div class="activity-3"></div>-->
     </div>
 
     <!-- 商品系列 -->
@@ -82,21 +93,6 @@
         </div>
     </div>
 
-    <!-- 搜索框 -->
-    <div class="weui_search_bar" id="search_bar" style="height: 40px;">
-        <form class="weui_search_outer">
-            <div class="weui_search_inner">
-                <i class="weui_icon_search" style="top: 7px;"></i>
-                <input type="search" class="weui_search_input" id="search_input" placeholder="搜索" required/>
-                <a href="javascript:" class="weui_icon_clear" id="search_clear"></a>
-            </div>
-            <label for="search_input" class="weui_search_text" id="search_text">
-                <i class="weui_icon_search"></i>
-                <span>搜索</span>
-            </label>
-        </form>
-        <a href="javascript:" class="weui_search_cancel" id="search_cancel">取消</a>
-    </div>
 
 
     <!-- 小童专区 -->
