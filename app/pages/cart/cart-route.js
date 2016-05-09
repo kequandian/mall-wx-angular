@@ -3,13 +3,19 @@ angular.module('cart.route', [
 ]).config(['$stateProvider', function($stateProvider) {
     $stateProvider.state('home.cart', {
         url:         '/cart',
+        cache: 'true',
         templateUrl: 'pages/cart/cart.html',
         controller: 'CartController'
     })
     .state('cart-settlement', {
         url: '/cart-settlement',
         templateUrl: 'pages/cart/settlement/settlement.html',
-        controller: 'SettlementController'
+        controller: 'SettlementController',
+        params: {
+            'carts': null,
+            'totalToPay': null,
+            'totalFreight':null
+        }
     })
     .state('add-address', {
         url:         '/addAddress',

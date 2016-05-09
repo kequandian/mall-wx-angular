@@ -43,7 +43,7 @@ angular.module('cart.controller', ['cart.service'])
                 CartFty.deleteCart(id).then(
                     function (result) {
                         console.log(result);
-                        $state.go('cart',{}, {reload: true});
+                        $state.go('home.cart',{}, {reload: true});
                     },function (error){
                         console.log(error);
                     });
@@ -69,6 +69,11 @@ angular.module('cart.controller', ['cart.service'])
                 return next.$checked ? prev + next.quantity * next.price : prev;
             }, 0);
         };
+        $scope.totalFreight = function () {
+            return $scope.carts.reduce(function(prev, next) {
+                return next.$checked ? prev + next.quantity * next.freight : prev;
+            }, 0);
+        };
         $scope.someChecked = function() {
             return $scope.carts.some(function(it) {
                 return it.$checked;
@@ -76,14 +81,23 @@ angular.module('cart.controller', ['cart.service'])
         };
 
         //去结算
-        $scope.goSettlement= function (){
-            console.log();
-            $state.go('cart-settlement');
+        $scope.checkedCarts=[];
+        $scope.goSettlement= function (pay,freight){
+            console.log(pay);
+            $scope.carts.some(function(it) {
+                if(it.$checked){
+                    $scope.checkedCarts.push(it);
+                }
+            });
+            //$scope.checkedCarts.push(pay);
+            //$scope.checkedCarts.push(freight);
+            console.log($scope.checkedCarts);
+            $state.go('cart-settlement', {carts:$scope.checkedCarts,totalToPay:pay,totalFreight:freight});
         };
 
     }])
 
-    .controller('SettlementController', ['$scope', '$state', 'CartFty', function($scope, $state, CartFty){
+    .controller('SettlementController', ['$scope', '$state', '$stateParams', 'CartFty', function($scope, $state, $stateParams, CartFty){
 
         AllContacts();
 
@@ -101,6 +115,11 @@ angular.module('cart.controller', ['cart.service'])
                     console.log(error);
             })
         }
+
+        //获取结算数据
+        $scope.settlementData=$stateParams.carts;
+        $scope.pay=$stateParams.totalToPay;
+        $scope.freight=$stateParams.totalFreight;
 
         //新增地址
         $scope.addAddress= function (){

@@ -1,6 +1,7 @@
 body, html {
     height: 100%;
-    -webkit-tap-highlight-color: transparent
+    -webkit-tap-highlight-color: transparent;
+    font-family: PingFang-SC-Regular,Helvetica Neue,Helvetica,microsoft yahei,sans-serif
 }
 
 .page, body {

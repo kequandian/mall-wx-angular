@@ -1,0 +1,44 @@
+
+.user-info {
+    padding: 1rem .3rem 1rem .3rem;
+    background-image: url(../../img/my/user-background.png);
+    height: 60px;
+}
+.user-photo {
+    float: left;
+    margin-right: .80rem;
+    margin-left: .80rem;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+.user-detail {
+    margin-top: 5px;
+    font-size: 13px;
+    display: block;
+    line-height: 1.6;
+    color: #fff;
+}
+
+.kqd_grid_4{
+    width: 25%;
+}
+.weui_grids:before {
+    border-top: 0;
+}
+.weui_grid:before {
+    border-right: 0;
+}
+
+.kqd_grid_img_large {
+    width: 60px;
+    height: 60px;
+}
+.weui_cells_access.kqd_cells_top {
+    margin-top: 0;
+}
+.weui_cell.kqd_cell_padding {
+    padding: 20px 15px;
+}
+.weui_cell_ft.kqd_cell_ft_font {
+    font-size: 14px;
+}
