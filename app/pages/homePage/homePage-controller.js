@@ -14,4 +14,24 @@ angular.module('homePage.controller', ['homePage.service'])
                 $state.go('home.goodsList');
             };
 
+
+
+            //滚动图片设置
+            detailSwiper();
+            function detailSwiper(){
+                var headerSwiper = new Swiper('#homeHeaderSlider', {
+                    slidesPerView: 1,
+                    paginationClickable: true,
+                    centeredSlides: true,
+                    autoplay: 2000,
+                    autoplayDisableOnInteraction: false,
+                    loop: true,
+                    // 如果需要分页器
+                    pagination: '.swiper-pagination',
+                    // 改变自动更新
+                    observer:true,
+                    observeParents:true
+                });
+            }
+
     }]);

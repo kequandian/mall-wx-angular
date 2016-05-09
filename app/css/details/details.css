@@ -5,6 +5,7 @@
 
 #details .content{
     z-index: 100;
+    min-height: 85%;
 }
 
 #details .product-img{

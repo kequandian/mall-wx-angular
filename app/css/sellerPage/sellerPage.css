@@ -1,10 +1,12 @@
 #sellerPage{
     background-color: #F8F8F8;
+    width: 100%;
     min-height: 100%;
 }
 
 #sellerPage .seller-page-content{
-
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 #sellerPage .account-info{

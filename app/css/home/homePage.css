@@ -13,64 +13,130 @@ body, html {
 }
 
 #content .hd {
-    height: 150px;
-    background: #4b8bf4;
+    width: 100%;
+    height: 45px;
+    /*background: #4b8bf4;*/
     position: relative;
 }
 
-/*#content .h-header{*/
-/*position: absolute;*/
-/*height: 100px;*/
-/*}*/
-
-#content .h-logo{
+#content .home-logo{
+    width: 80px;
+    height: 45px;
+    padding-left: 5px;
+    background-color: #EFEFF4;
     position: absolute;
-    width: 70px;
-    height: 60px;
-    background: #000000;
-    margin-left: 10px;
-    margin-bottom: 10px;
-    top: 80px;
-    z-index: 2;
-
 }
 
-#content .h-footer{
+#content .home-logo img{
+    width: 80px;
+    height: 30px;
+    margin-top:7px;
+}
+
+#content .home-title-center{
+    left: 85px;
+    right: 70px;
+    height: 45px;
     position: absolute;
-    background: white;
-    top: 110px;
-    width: 100%;
-    height: 40px;
-    z-index: 1;
 }
 
-#content .h-footer .h-footer-div{
-    /*background:#33cd5f;*/
+#content .home-title-right{
     width: 70px;
-    height: 40px;
-    float: right;
+    height: 45px;
+    right: 0;
+    text-align: center;
+    background-color: #EFEFF4;
+    position: absolute;
 }
 
-#content .h-footer .h-footer-div .h-f-d-text{
-    height: 20px;
-    color: #888;
+#content .home-title-right img{
+    width: 25px;
+    height: 17px;
+    margin-top: 5px;
+    right: 0;
+}
+
+#content .home-title-right div{
     font-size: 12px;
-    text-align: center
+    color: #9B9B9B;
 }
 
 #content #ad{
-    height: 150px;
-    background: #cccccc;
+    height: 180px;
+    /*background: #cccccc;*/
 }
+
+/*¹¦ÄÜµ¼º½*/
+#content #nav{
+    /*height:160px;*/
+    height:100px;
+    background-color:#fff;
+    overflow:hidden;
+    box-shadow:0 1px 1px #ebebeb;
+    margin-bottom: 8px;
+}
+/*#home #nav span{
+  display:block;
+  float:left;
+  width:25%;
+  height:60px;
+  margin-top:16px;
+}*/
+
+#content #nav .group-span-top{
+    display:block;
+    float:left;
+    width:25%;
+    height:60px;
+    margin-top:16px;
+}
+
+
+#content #nav span img{
+    display:block;
+    width:40px;
+    height:40px;
+    margin:0px auto;
+}
+#content #nav span h2{
+    font-size:14px;
+    font-weight: 300;
+    text-align:center;
+    margin-top: 10px;
+    color: #9B9B9B;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #content .activity{
     margin-left: 10px;
     margin-right: 10px;
 }
 #content .activity .activity-1{
-    height: 140px;
-    background: #cccccc;
+    width: 100%;
+    /*height: 140px;*/
+    /*background: #cccccc;*/
 }
+#content .activity .activity-1 img{
+    width: 100%;
+    height: 140px;
+    /*background: #cccccc;*/
+}
+
 #content .activity .activity-2{
     height: 140px;
     background: #cccccc;
