@@ -42,7 +42,7 @@
     </div>
 
     <!-- 功能导航 -->
-    <nav id="nav">
+    <nav id="nav" style="display: none">
 
         <span class="group-span-top">
             <img ng-src="img/home/new-product.png" alt="">
@@ -57,6 +57,7 @@
           <img ng-src="img/home/brand-img.png" alt="">
           <h2>品牌推荐</h2>
         </span>
+
         <span class="group-span-top">
           <img ng-src="img/home/more-cate.png" alt="">
           <h2>更多分类</h2>
@@ -65,166 +66,128 @@
     </nav>
 
 
+    <div class="weui_grids" style="height: 120px; border-bottom: 1px solid #cccccc;">
+        <a ui-sref="#" class="weui_grid home_grid">
+            <div class="weui_grid_icon kqd_grid_img_large">
+                <img src="img/home/new-product.png" alt="">
+            </div>
+            <p class="weui_grid_label">
+                新品优惠
+            </p>
+        </a>
+        <a ui-sref="#" class="weui_grid home_grid">
+            <div class="weui_grid_icon kqd_grid_img_large">
+                <img src="img/home/selected-img.png" alt="">
+            </div>
+            <p class="weui_grid_label">
+                每日精选
+            </p>
+        </a>
+        <a ui-sref="#" class="weui_grid home_grid">
+            <div class="weui_grid_icon kqd_grid_img_large">
+                <img src="img/home/brand-img.png" alt="">
+            </div>
+            <p class="weui_grid_label">
+                品牌推荐
+            </p>
+        </a>
+        <a ui-sref="#" class="weui_grid home_grid">
+            <div class="weui_grid_icon kqd_grid_img_large">
+                <img src="img/home/more-cate.png" alt="">
+            </div>
+            <p class="weui_grid_label">
+                更多分类
+            </p>
+        </a>
 
+    </div>
 
 
 
     <!-- 活动 -->
-    <div class="activity">
-        <div class="activity-1">
+    <div class="panic-buying-ad">
+        <div class="ad-1">
             <img src="img/home/snaps-img.png">
         </div>
-        <!--<div class="activity-2"></div>
-        <div class="activity-3"></div>-->
+        <!--<div class="ad-2"></div>
+        <div class="ad-3"></div>-->
     </div>
+
 
     <!-- 商品系列 -->
-    <div id="s-goods">
-        <div style="float: left; width: 50%; ">
-            <img src="" style="width: 95%; height: 140px; background: #C13E3E">
-        </div>
-        <div style="float: left; width: 50%;">
-            <div style="width: 100%;">
-                <img src="" style="width: 100%; height: 68px; background: #6AB2C1;">
+    <div id="panic-buying">
+        <div class="p-buying-left">
+            <div class="p-b-left">
+                <img src="">
             </div>
-            <div style="width: 100%; margin-top:6px;">
-                <img src="" style="width: 100%; height: 65px; background: #68C16D">
+            <div class="p-b-right">
+                <div style="font-size: 22px;">今日<span style="color: orange; font-weight: 600;">抢购</span></div>
+                <div style="font-size: 14px; color: #9B9B9B;">立即抢购>></div>
             </div>
         </div>
+        <div class="p-buying-right">
+
+            <div class="p-b-left">
+                <img src="">
+            </div>
+            <div class="p-b-right">
+                <div style="font-size: 22px;">每日<span style="color: #F945A3; font-weight: 600;">新品</span></div>
+                <div style="font-size: 14px; color: #9B9B9B;">立即抢购>></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 活动 -->
+    <div class="panic-buying-ad">
+        <div class="ad-1">
+            <img src="img/home/snaps-img-2.png">
+        </div>
+        <!--<div class="ad-2">
+        </div>-->
+        <!--<div class="ad-3"></div>-->
     </div>
 
 
 
-    <!-- 小童专区 -->
+    <!-- 化妆专区 -->
     <div id="s-size-area">
-        <div class="s-area-img"></div>
-        <div class="weui-row box-header">
-
-            <div class="weui-col-50 box">
-                <img src="" class="box-img">
-                <div class="box-text">
-                    <div style=" word-wrap: break-word; word-break: normal;">文字信息</div>
-                </div>
-                <div class="box-footer-text">
-                    <div class="c-left">文字</div>
-                    <div class="c-right">图片</div>
-                </div>
-            </div>
-
-            <div class="weui-col-50 box">
-                <img src="" class="box-img">
-                <div class="box-text">
-                    <div style=" word-wrap: break-word; word-break: normal;">文字信息</div>
-                </div>
-                <div class="box-footer-text">
-                    <div class="c-left">文字</div>
-                    <div class="c-right">图片</div>
-                </div>
-            </div>
-
-            <div class="weui-col-50 box">
-                <img src="" class="box-img">
-                <div class="box-text">
-                    <div style=" word-wrap: break-word; word-break: normal;">文字信息</div>
-                </div>
-                <div class="box-footer-text">
-                    <div class="c-left">文字</div>
-                    <div class="c-right">图片</div>
-                </div>
-            </div>
-
-
+        <div class="s-area-img">
+            <img src="img/home/area-img-1.png">
         </div>
-    </div>
 
-    <!-- 中童专区 -->
-    <div id="m-size-area">
-        <div class="m-area-img"></div>
-
-        <div class="weui-row box-header">
-
-            <div class="weui-col-50 box">
-                <img src="" class="box-img">
-                <div class="box-text">
-                    <div style=" word-wrap: break-word; word-break: normal;">文字信息</div>
+        <div class="area-product">
+            <div class="a-p-left">
+                <!--<div class="a-p-left-top-img">
+                    <img src="img/home/area-makeup-title.png">
                 </div>
-                <div class="box-footer-text">
-                    <div class="c-left">文字</div>
-                    <div class="c-right">图片</div>
-                </div>
+                <div class="a-p-left-bottom-img">
+                    <img src="img/home/area-makeup-1.png">
+                </div>-->
             </div>
 
-            <div class="weui-col-50 box">
-                <img src="" class="box-img">
-                <div class="box-text">
-                    <div style=" word-wrap: break-word; word-break: normal;">文字信息</div>
-                </div>
-                <div class="box-footer-text">
-                    <div class="c-left">文字</div>
-                    <div class="c-right">图片</div>
-                </div>
+            <div class="a-p-right">
+
             </div>
-
-            <div class="weui-col-50 box">
-                <img src="" class="box-img">
-                <div class="box-text">
-                    <div style=" word-wrap: break-word; word-break: normal;">文字信息</div>
-                </div>
-                <div class="box-footer-text">
-                    <div class="c-left">文字</div>
-                    <div class="c-right">图片</div>
-                </div>
-            </div>
-
-
-
-
         </div>
+
 
     </div>
 
-    <!-- 大童专区 -->
-    <div id="l-size-area">
-        <div class="l-area-img"></div>
 
-        <div class="weui-row box-header">
 
-            <div class="weui-col-50 box">
-                <img src="" class="box-img">
-                <div class="box-text">
-                    <div style=" word-wrap: break-word; word-break: normal;">文字信息</div>
-                </div>
-                <div class="box-footer-text">
-                    <div class="c-left">文字</div>
-                    <div class="c-right">图片</div>
-                </div>
-            </div>
 
-            <div class="weui-col-50 box">
-                <img src="" class="box-img">
-                <div class="box-text">
-                    <div style=" word-wrap: break-word; word-break: normal;">文字信息</div>
-                </div>
-                <div class="box-footer-text">
-                    <div class="c-left">文字</div>
-                    <div class="c-right">图片</div>
-                </div>
-            </div>
 
-            <div class="weui-col-50 box">
-                <img src="" class="box-img">
-                <div class="box-text">
-                    <div style=" word-wrap: break-word; word-break: normal;">文字信息</div>
-                </div>
-                <div class="box-footer-text">
-                    <div class="c-left">文字</div>
-                    <div class="c-right">图片</div>
-                </div>
-            </div>
 
-        </div>
 
-    </div>
+
+
+
+
+
+
+
+
 
     <!-- 底部 -->
     <div id="content-footer">
