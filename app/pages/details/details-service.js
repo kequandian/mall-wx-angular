@@ -16,6 +16,26 @@ angular.module('details.service', [])
                         return deferred.reject(data);
                     });
                 return deferred.promise;
+            },
+
+            //加入购物车
+            addProToCatService: function (productId) {
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + "/shopping_cart";
+                $http.post(url,[{
+                    "product_id": productId,
+                    "quantity": 1
+                }],{
+                    headers: {
+                        'Authorization': 'eyJ0b2tlbiI6ImZjOWYzZjFmOWQ3MWFjYmU5YmJkMjUxNzIxMzY1MTU5Nzc0NzYyOTMiLCJsb2dpbl9uYW1lIjoiamluZ2ZlaSJ9'
+                    }
+                })
+                    .success(function (data) {
+                        return deferred.resolve(data);
+                    }).error(function (data) {
+                        return deferred.reject(data);
+                    });
+                return deferred.promise;
             }
         }
     }]);
