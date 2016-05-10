@@ -140,7 +140,7 @@ angular.module('cart.service', [])
 
             wpay: function (order_number) {
                 var deferred = $q.defer();
-                var url = '/payment/wpay/'+ order_number;
+                var url = 'http://www.kequandian.net/payment/wpay/'+ order_number;
                 $http({
                     method: 'GET',
                     url: url,
