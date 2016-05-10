@@ -1,5 +1,5 @@
 <div id="settlement-page">
-    <form>
+    <form ng-submit="addOrderSubmit()">
         <div class="view-cart">
             <!-- 头部 -->
             <header class="bar top-bar clearfix cart-header settlement-header">
@@ -31,6 +31,9 @@
                                             地址：{{currentContact.province}}{{currentContact.city}}{{currentContact.district}}
                                             {{currentContact.street}}{{currentContact.street_number}} {{currentContact.detail}}
                                             邮编：{{currentContact.zip}}
+
+                                            <input type="hidden" ng-model="order.contact=currentContact">
+                                            <input type="hidden" ng-model="order.remark=null">
                                         </p>
                                     </div>
                                     <span class="weui_cell_ft"></span>
@@ -46,7 +49,7 @@
                                     收货时间
                                 </div>
                                 <div class="weui_cell_bd weui_cell_primary">
-                                    <select class="weui_select weui_media_desc" name="receiving_time" ng-options="t.key as t.value for t in receivingTime" ng-init="order.receiving_time='anytime'" ng-modle="order.receiving_time">
+                                    <select class="weui_select weui_media_desc" name="receiving_time" ng-options="t.key as t.value for t in receivingTime" ng-init="order.receiving_time='anytime'" ng-model="order.receiving_time">
                                         <!--<option value="1">收货时间不限</option>-->
                                         <!--<option value="2">周六日/节假日收货</option>-->
                                         <!--<option value="3">周一至周五收货</option>-->
@@ -100,56 +103,12 @@
                 </div>
             </div>
 
-            <!-- 收货时间列表 -->
-            <!--<div id="showReceivingTime_wrap">-->
-                <!--<div class="weui_mask_transition" id="mask_time"></div>-->
-                <!--<div class="weui_actionsheet" id="weui_actionsheet_time">-->
-                    <!--<div class="weui_actionsheet_menu">-->
-
-                        <!--<div class="weui_cells weui_cells_radio time-selection">-->
-                            <!--<label class="weui_cell weui_check_label" for="time1">-->
-                                <!--<div class="weui_cell_bd weui_cell_primary">-->
-                                    <!--<p class="settlement-font">收货时间不限</p>-->
-                                <!--</div>-->
-                                <!--<div class="weui_cell_ft">-->
-                                    <!--<input type="radio" class="weui_check" name="radio1" id="time1" checked="checked">-->
-                                    <!--<span class="weui_icon_checked"></span>-->
-                                <!--</div>-->
-                            <!--</label>-->
-                            <!--<label class="weui_cell weui_check_label" for="time2">-->
-
-                                <!--<div class="weui_cell_bd weui_cell_primary">-->
-                                    <!--<p class="settlement-font">周六日/节假日收货</p>-->
-                                <!--</div>-->
-                                <!--<div class="weui_cell_ft">-->
-                                    <!--<input type="radio" name="radio1" class="weui_check" id="time2">-->
-                                    <!--<span class="weui_icon_checked"></span>-->
-                                <!--</div>-->
-                            <!--</label>-->
-                            <!--<label class="weui_cell weui_check_label" for="time3">-->
-
-                                <!--<div class="weui_cell_bd weui_cell_primary">-->
-                                    <!--<p class="settlement-font">周一至周五收货</p>-->
-                                <!--</div>-->
-                                <!--<div class="weui_cell_ft">-->
-                                    <!--<input type="radio" name="radio1" class="weui_check" id="time3">-->
-                                    <!--<span class="weui_icon_checked"></span>-->
-                                <!--</div>-->
-                            <!--</label>-->
-                        <!--</div>-->
-
-                    <!--</div>-->
-                    <!--<div class="weui_actionsheet_action">-->
-                        <!--<div class="weui_actionsheet_cell" id="actionsheet_cancel_time">取消</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-
             <!-- 订单金额 -->
             <div class="weui_panel weui_panel_access">
                 <div class="weui_panel_bd">
                     <div class="weui_media_box weui_media_text">
                         <p class="weui_media_desc">商品金额<span class="order-money">{{pay|currency:'￥'}}</span></p>
+                        <input type="hidden" ng-model="order.order_items" ng-init="order.order_items=settlementData">
                     </div>
                     <div class="weui_media_box weui_media_text">
                         <p class="weui_media_desc">运费<span class="order-freight">{{freight|currency:'￥'}}</span></p>
@@ -211,7 +170,7 @@
                     <span>待支付:￥0.00</span>
                 </div>
                 <div class="order-submit-btn">
-                    <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_plain_primary">提交订单</a>
+                    <input type="submit" class="weui_btn weui_btn_mini weui_btn_plain_primary" value="提交订单">
                 </div>
             </div>
         </div>
