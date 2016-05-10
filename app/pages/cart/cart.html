@@ -44,8 +44,8 @@
                     <label id="checkAll" class="ion-android-checkbox-outline-blank active cart-item-label" for="selectAll"></label>
                     <div class="check-text">全选</div>
                     <div class="foot-info">
-                        <div>合计:￥<strong style="display: inline" ng-bind="totalToPay()"></strong></div>
-                        <span style="font-size: 12px;">运费:￥<span ng-bind="totalFreight()"></span></span>
+                        <div>合计:<strong style="display: inline" ng-bind="totalToPay()|currency:'￥'"></strong></div>
+                        <span style="font-size: 12px;">运费:<span ng-bind="totalFreight()|currency:'￥'"></span></span>
                     </div>
                 </div>
                 <button ng-click="goSettlement(totalToPay(),totalFreight())" ng-disabled="!someChecked()" style="border: 0">

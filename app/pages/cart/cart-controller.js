@@ -159,6 +159,9 @@ angular.module('cart.controller', ['cart.service'])
             $scope.invoiceTitle=!$scope.invoiceTitle;
         };
 
+        //收货时间选项
+        $scope.receivingTime=[{key:'anytime',value:'收货时间不限'},{key:'weekendOrHoliday',value:'周六日/节假日收货'},{key:'workDay',value:'周一至周五收货'}];
+
     }])
     .controller('EditAddressController', ['$scope', '$state', '$stateParams', 'CartFty', function($scope, $state, $stateParams, CartFty){
 
