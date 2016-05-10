@@ -117,9 +117,30 @@ angular.module('cart.controller', ['cart.service'])
         }
 
         //获取结算数据
-        $scope.settlementData=$stateParams.carts;
+        $scope.settlementData=[];
+        console.log("carts:"+$stateParams.carts);
+        angular.forEach($stateParams.carts, function(data,index){
+            $scope.settlementData[index]=({
+                "product_id": data.product_id,
+                "quantity": data.quantity
+            });
+        });
+        console.log($scope.settlementData);
         $scope.pay=$stateParams.totalToPay;
         $scope.freight=$stateParams.totalFreight;
+
+        //提交订单
+        $scope.order={};
+        $scope.addOrderSubmit=function() {
+            console.log($scope.order);
+            CartFty.addOrder($scope.order).then(
+                function (result) {
+                    console.log(result.data);
+                    $state.go('order-confirm',{data:result.data});
+                },function (error){
+                    console.log(error);
+                });
+        };
 
         //新增地址
         $scope.addAddress= function (){
@@ -162,6 +183,19 @@ angular.module('cart.controller', ['cart.service'])
         //收货时间选项
         $scope.receivingTime=[{key:'anytime',value:'收货时间不限'},{key:'weekendOrHoliday',value:'周六日/节假日收货'},{key:'workDay',value:'周一至周五收货'}];
 
+    }])
+    .controller('OrderConfirmController', ['$scope', '$state', '$stateParams', 'CartFty', function($scope, $state, $stateParams, CartFty){
+        $scope.orderData=$stateParams.data;
+        $scope.confirm=function(order_number){
+            console.log(order_number);
+            CartFty.wpay(order_number).then(
+                function (result) {
+                    console.log(result);
+                    //$state.go('cart-settlement',{}, {reload: true});
+                },function (error){
+                    console.log(error);
+                });
+        }
     }])
     .controller('EditAddressController', ['$scope', '$state', '$stateParams', 'CartFty', function($scope, $state, $stateParams, CartFty){
 

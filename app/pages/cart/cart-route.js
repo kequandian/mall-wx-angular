@@ -30,4 +30,12 @@ angular.module('cart.route', [
             'data': null
         }
     })
+    .state('order-confirm', {
+        url:         '/orderConfirm',
+        templateUrl: 'pages/cart/settlement/orderConfirm.html',
+        controller: 'OrderConfirmController',
+        params: {
+            'data': null
+        }
+    })
 }]);
