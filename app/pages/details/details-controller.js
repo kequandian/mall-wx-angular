@@ -79,5 +79,21 @@ angular.module('details.controller', ['details.service'])
                 }).appendTo($body);
             }
 
+            //添加购物车
+            $scope.addProductToCart = function(productId){
+                var proId = productId;
+                var count = 1;
+                DetailsFty.addProToCatService(proId)
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            console.log("添加成功")
+                        }else{
+                            console.log("添加失败")
+                        }
+                    }, function(error){
+                        console.log("添加失败")
+                    })
+            }
+
 
         }]);
