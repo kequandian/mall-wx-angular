@@ -6,4 +6,8 @@ angular.module('my.route', [
         url:         '/my',
         templateUrl: 'pages/my/my.html'
     })
+    .state('about', {
+        url:         '/about',
+        templateUrl: 'pages/my/about/about.html'
+    })
 }]);

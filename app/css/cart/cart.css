@@ -157,6 +157,7 @@ input::-webkit-inner-spin-button {
     display: block;
     min-width: 60px;
     margin-top: 2px;
+    margin-right: 2px;
 }
 .cart-list li .item-info .item-info-bottom .ion-close{
     position: relative;

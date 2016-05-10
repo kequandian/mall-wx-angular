@@ -11,12 +11,15 @@
     border-radius: 50%;
     border: 2px solid #fff;
 }
+.user-info-right {
+    margin-top: 10px;
+}
 .user-detail {
-    margin-top: 5px;
+    min-width: 200px;
     font-size: 13px;
-    display: block;
     line-height: 1.6;
     color: #fff;
+    float: left;
 }
 
 .kqd_grid_4{

@@ -19,7 +19,7 @@
                                 <div class="">
                                     <a href=""><h4 class="item-title">{{cart.product_name}}</h4></a>
                                     <div class="item-info-bottom">
-                                        <span class="item-price">￥{{cart.price}}</span>
+                                        <span class="item-price">{{cart.price|currency:'￥'}}</span>
                                         <div class="cart-quantity-form">
                                             <a href="javascript:void(0);" class="cart-quantity-decrement" ng-click="downQuantity(cart.product_id)">
                                                 <span>-</span>
