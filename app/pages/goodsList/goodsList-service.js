@@ -21,7 +21,7 @@ angular.module('goodsList.service', [])
                     method: 'GET',
                     url: url,
                     headers: {
-                        'Authorization': 'eyJ0b2tlbiI6ImZjOWYzZjFmOWQ3MWFjYmU5YmJkMjUxNzIxMzY1MTU5Nzc0NzYyOTMiLCJsb2dpbl9uYW1lIjoiamluZ2ZlaSJ9'
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
                     }
                 })
                     .success(function (data) {

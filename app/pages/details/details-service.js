@@ -7,7 +7,7 @@ angular.module('details.service', [])
                 var url = GlobalVariable.SERVER_PATH + "/product/" + productId;
                 $http.get(url,{
                     headers: {
-                        'Authorization': 'eyJ0b2tlbiI6ImZjOWYzZjFmOWQ3MWFjYmU5YmJkMjUxNzIxMzY1MTU5Nzc0NzYyOTMiLCJsb2dpbl9uYW1lIjoiamluZ2ZlaSJ9'
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
                     }
                 })
                     .success(function (data) {
@@ -27,7 +27,7 @@ angular.module('details.service', [])
                     "quantity": 1
                 }],{
                     headers: {
-                        'Authorization': 'eyJ0b2tlbiI6ImZjOWYzZjFmOWQ3MWFjYmU5YmJkMjUxNzIxMzY1MTU5Nzc0NzYyOTMiLCJsb2dpbl9uYW1lIjoiamluZ2ZlaSJ9'
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
                     }
                 })
                     .success(function (data) {

@@ -8,7 +8,7 @@ angular.module('cart.service', [])
                     method: 'GET',
                     url: url,
                     headers: {
-                        'Authorization': 'eyJ0b2tlbiI6ImZjOWYzZjFmOWQ3MWFjYmU5YmJkMjUxNzIxMzY1MTU5Nzc0NzYyOTMiLCJsb2dpbl9uYW1lIjoiamluZ2ZlaSJ9'
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
                     }
                 })
                     .success(function (data) {
@@ -28,7 +28,7 @@ angular.module('cart.service', [])
                     url: url,
                     data: [{product_id: id, quantity: 0}],
                     headers: {
-                        'Authorization': 'eyJ0b2tlbiI6ImZjOWYzZjFmOWQ3MWFjYmU5YmJkMjUxNzIxMzY1MTU5Nzc0NzYyOTMiLCJsb2dpbl9uYW1lIjoiamluZ2ZlaSJ9'
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
                     }
                 })
                     .success(function (data) {
@@ -48,7 +48,7 @@ angular.module('cart.service', [])
                     url: url,
                     data: data,
                     headers: {
-                        'Authorization': 'eyJ0b2tlbiI6ImZjOWYzZjFmOWQ3MWFjYmU5YmJkMjUxNzIxMzY1MTU5Nzc0NzYyOTMiLCJsb2dpbl9uYW1lIjoiamluZ2ZlaSJ9'
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
                     }
                 })
                     .success(function (data) {
@@ -67,7 +67,7 @@ angular.module('cart.service', [])
                     method: 'GET',
                     url: url,
                     headers: {
-                        'Authorization': 'eyJ0b2tlbiI6ImZjOWYzZjFmOWQ3MWFjYmU5YmJkMjUxNzIxMzY1MTU5Nzc0NzYyOTMiLCJsb2dpbl9uYW1lIjoiamluZ2ZlaSJ9'
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
                     }
                 })
                     .success(function (data) {
