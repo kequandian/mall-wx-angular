@@ -136,6 +136,23 @@
 <script src="pages/category/category-route.js"></script>
 <script src="pages/category/category-controller.js"></script>
 <script src="pages/category/category-service.js"></script>
+<script>
+  angular.module('global', [])
+          .constant('API', 'http://112.74.26.228:10080/rest')
 
+          .constant('GlobalVariable', {
+            // 服务器地址
+            SERVER_PATH: 'http://112.74.26.228:10080/rest'
+
+          })
+
+
+          .value('LoginSession', {
+            token: 'token'
+          })
+
+  ;
+
+</script>
 </body>
 </html>

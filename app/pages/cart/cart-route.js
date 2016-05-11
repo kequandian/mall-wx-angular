@@ -17,19 +17,6 @@ angular.module('cart.route', [
             'totalFreight':null
         }
     })
-    .state('add-address', {
-        url:         '/addAddress',
-        templateUrl: 'pages/cart/settlement/addAddress.html',
-        controller: 'EditAddressController'
-    })
-    .state('edit-address', {
-        url:         '/editAddress',
-        templateUrl: 'pages/cart/settlement/editAddress.html',
-        controller: 'EditAddressController',
-        params: {
-            'data': null
-        }
-    })
     .state('order-confirm', {
         url:         '/orderConfirm',
         templateUrl: 'pages/cart/settlement/orderConfirm.html',

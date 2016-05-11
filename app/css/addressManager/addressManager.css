@@ -58,5 +58,5 @@
     position: fixed;
     bottom: 6px;
     right: 1px;
-    z-index: 101;
+    /*z-index: 101;*/
 }

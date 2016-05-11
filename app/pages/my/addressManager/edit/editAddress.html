@@ -62,8 +62,8 @@
                         <label class="weui_label invoice-title">所在地区</label>
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <input id="city-picker" type="text" class="weui_input settlement-font"
-                               ng-model="contact.pcd" ng-init="contact.pcd=pcd||'广东 广州 越秀区'" ng-click="showPCD()" readonly>
+                        <input id="city-picker" type="text" class="weui_input settlement-font" cityPicker
+                               ng-model="contact.pcd" ng-init="contact.pcd=pcd||'广东 广州 越秀区'" readonly>
                     </div>
                 </div>
                 <div class="weui_cell settlement-font">
@@ -104,6 +104,6 @@
             <br>
             <input type="submit" class="weui_btn weui_btn_primary" value="确认">
         </form>
-        <!--{{contact}}-->
+        {{contact}}
     </div>
 </div>

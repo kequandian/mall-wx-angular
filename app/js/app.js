@@ -27,22 +27,29 @@ myapp.config(['$stateProvider', "$urlRouterProvider",
         $urlRouterProvider.otherwise("/home/homePage");
 }]);
 
-myapp.directive( 'whenActive', function ( $location ) {
+myapp.directive( 'whenActive', function () {
     return {
         scope: {},
         link: function ( scope, element, attrs ) {
-            scope.$on( '$routeChangeSuccess', function () {
-                    console.log($location.absUrl());
-                if ( $location.absUrl() == element.attr( 'href' ) ) {
+            scope.$on( '$stateChangeSuccess', function () {
                     element.addClass( 'weui_bar_item_on' );
-                }
-                else {
-                    element.removeClass( 'weui_bar_item_on' );
-                }
             });
         }
     };
 })
+
+    .directive('cityPicker', function() {
+        return function(scope, element, attrs) {
+            //console.log('work');
+            element.cityPicker({
+                onSelect: function(dateText) {
+                    var modelPath = $(this).attr('ng-model');
+                    putObject(modelPath, scope, dateText);
+                    scope.$apply();
+                }
+            });
+        }
+    })
 
 
 //截取文字长度过滤器

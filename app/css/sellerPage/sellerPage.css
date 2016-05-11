@@ -1,5 +1,5 @@
 #sellerPage{
-    background-color: #F8F8F8;
+    background-color: #fff;
     width: 100%;
     min-height: 100%;
 }
@@ -9,74 +9,106 @@
     overflow-y: scroll;
 }
 
-#sellerPage .account-info{
-    width: 100%;
-    height: 65px;
-    background-color: white;
-    position: relative;
-}
+/*#sellerPage .account-info{*/
+    /*width: 100%;*/
+    /*height: 65px;*/
+    /*background-color: white;*/
+    /*position: relative;*/
+/*}*/
 
-#sellerPage .account-avatar{
-    padding: 10px 7px 0 10px;
-    float: left;
-}
+/*#sellerPage .account-avatar{*/
+    /*padding: 10px 7px 0 10px;*/
+    /*float: left;*/
+/*}*/
 
-#sellerPage .account-avatar img{
-    width: 45px;
-    height: 45px;
-    background-color: #007aff;
-}
+/*#sellerPage .account-avatar img{*/
+    /*width: 45px;*/
+    /*height: 45px;*/
+    /*background-color: #007aff;*/
+/*}*/
 
-#sellerPage .account-name{
-    height: 65px;
-    line-height: 65px;
-    float: left;
-}
+/*#sellerPage .account-name{*/
+    /*height: 65px;*/
+    /*line-height: 65px;*/
+    /*float: left;*/
+/*}*/
 
-#sellerPage .acount-arrow{
-    width: 50px;
-    height: 65px;
-    line-height: 65px;
-    position: absolute;
-    right: 5px;
-    background-color: #007aff;
-}
+/*#sellerPage .acount-arrow{*/
+    /*width: 50px;*/
+    /*height: 65px;*/
+    /*line-height: 65px;*/
+    /*position: absolute;*/
+    /*right: 5px;*/
+    /*background-color: #007aff;*/
+/*}*/
 
 
 
 #sellerPage .seller-profit{
+    margin-left: 25px;
     width: 100%;
-    height: 130px;
-    background-color: #FF6600;
-    margin-top: 2px;
+    /*height: 130px;*/
+    height: 100px;
+    /*background-color: #FF6600;*/
+    background-color: #fff;
+    /*margin-top: 2px;*/
+}
+#sellerPage .seller-commissions{
+    width: 100%;
+    height: 70px;
+    background-color: #e9eaec;
+}
+#sellerPage .seller-commissions .seller-commission{
+    width: 33.33333%;
+    height: 50px;
+    float: left;
+    list-style-type: none;
+    color: #868888;
+    padding: 10px 0 10px;
+}
+#sellerPage .seller-commissions .seller-commission .seller-commission-value{
+    /*padding:7px 15px;*/
+    text-align: center;
+}
+
+.li-border {
+    border-right: 1px solid #9fa0a2;
+}
+.seller-commission-value .commission-text{
+    font-size: 15px;
+}
+.seller-commission-value .commission-number{
+    font-size: 18px;
 }
 
 #sellerPage .s-p-top{
-    padding-top: 10px;
+    padding-top: 15px;
     width: 100%;
     height: 35px;
     line-height: 35px;
-    text-align: center;
-    color: white;
-    font-weight: bold;
+    color: #6e6e6e;
+    /*text-align: center;*/
+    /*color: white;*/
+    /*font-weight: bold;*/
 }
 
-#sellerPage .s-p-center{
-    font-size: 60px;
-    width: 100%;
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
-    color: white;
-    font-weight: bold;
-}
+/*#sellerPage .s-p-center{*/
+    /*font-size: 60px;*/
+    /*width: 100%;*/
+    /*height: 50px;*/
+    /*line-height: 50px;*/
+    /*text-align: center;*/
+    /*color: white;*/
+    /*font-weight: bold;*/
+/*}*/
 
 #sellerPage .s-p-bottom{
     width: 100%;
-    height: 35px;
-    line-height: 35px;
-    text-align: center;
-    color: white;
+    color: #6e6e6e;
+    /*height: 35px;*/
+    /*line-height: 35px;*/
+    /*text-align: center;*/
+    /*color: white;*/
 }
 
 
