@@ -55,6 +55,7 @@
     width:90px;
     overflow:hidden;
     background-color:#f3f4f6;
+    margin-bottom: 60px;
 }
 #category #nav ul{
     display:block;
@@ -91,6 +92,7 @@
     bottom:0;
     overflow-x: hidden;
     overflow-y: scroll;
+    margin-bottom: 60px;
 }
 #category .pro-scroll{
     width:200%;
@@ -140,8 +142,8 @@
     width: 31%;
     height: 100px;
     text-align: center;
-    margin-left: 3px;
-    border: 1px solid #cccccc;
+    margin-left: 2px;
+    border: 1px solid #e0e0e0;
     float: left;
 }
 

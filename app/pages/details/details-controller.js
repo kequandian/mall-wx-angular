@@ -93,7 +93,11 @@ angular.module('details.controller', ['details.service'])
                     }, function(error){
                         console.log("添加失败")
                     })
-            }
+            };
 
+            //返回主页
+            $scope.goHome = function(){
+                $state.go("home.homePage")
+            }
 
         }]);
