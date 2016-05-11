@@ -7,7 +7,7 @@ angular.module('shopSettings.service', [])
                 var url = GlobalVariable.SERVER_PATH + "/seller";
                 $http.get(url,{
                     headers: {
-                        'Authorization': 'eyJ0b2tlbiI6ImZjOWYzZjFmOWQ3MWFjYmU5YmJkMjUxNzIxMzY1MTU5Nzc0NzYyOTMiLCJsb2dpbl9uYW1lIjoiamluZ2ZlaSJ9'
+                        'Authorization': ACCESS_TOKEN
                     }
                 })
                     .success(function (data) {
