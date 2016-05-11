@@ -100,15 +100,15 @@
     <div class="footer">
         <div class="footer-home" ng-click="goHome()">
             <div class="f-h-top">
-                <img src="">
+                <img src="img/indexTab/Home.png">
             </div>
             <div class="f-h-bottom">
                 进店
             </div>
         </div>
-        <div class="footer-cart">
+        <div class="footer-cart" ui-sref="home.cart">
             <div class="f-c-top">
-                <img src="">
+                <img src="img/details/cart-img.png">
             </div>
         </div>
 
@@ -118,7 +118,7 @@
                 加入购物车
             </a>
             <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default"
-               style="width: 100px; height: 35px;text-align: center; padding-top: 4px;margin-top: 0;">
+               style="width: 100px; height: 35px;text-align: center; padding-top: 4px;margin-top: 0;" ng-click="testToast()">
                 立即购买
             </a>
         </div>
