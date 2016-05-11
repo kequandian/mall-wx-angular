@@ -1,23 +1,52 @@
 <div id="addressManager">
 
-    <div class="content">
+    <!--<div class="content">-->
 
-        <div class="address-item">
-            <div class="address-info">
-                <div class="mail-name">收件人：张三</div>
-                <div class="mail-phone">13610256398</div>
-                <div class="mail-address">广州市萝岗科学城ABCDEFG</div>
+        <!--<div class="address-item">-->
+            <!--<div class="address-info">-->
+                <!--<div class="mail-name">收件人：张三</div>-->
+                <!--<div class="mail-phone">13610256398</div>-->
+                <!--<div class="mail-address">广州市萝岗科学城ABCDEFG</div>-->
+            <!--</div>-->
+            <!--<div class="item-button">-->
+                <!--<a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_primary">删除</a>-->
+                <!--<a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default" style="margin-top: 0;">修改</a>-->
+            <!--</div>-->
+        <!--</div>-->
+
+    <!--</div>-->
+
+    <!--<div class="footer">-->
+        <!--<a href="javascript:;" class="weui_btn weui_btn_default">添加收货地址</a>-->
+    <!--</div>-->
+
+    <div class="weui_actionsheet_menu">
+
+        <div class="weui_panel">
+            <div class="weui_panel_hd">地址列表</div>
+
+            <div class="weui_panel_bd" ng-repeat="contact in contacts">
+                <div class="weui_media_box weui_media_text">
+                    <div class="selectContact">
+                        <h4 class="weui_media_desc">{{contact.contact_user}} {{contact.phone}}</h4>
+                        <p class="weui_media_desc">
+                            {{contact.province}}{{contact.city}}{{contact.district}}
+                            {{contact.street}}{{contact.street_number}} {{contact.detail}}
+                            邮编：{{contact.zip}}
+                        </p>
+                    </div>
+                    <ul class="weui_media_info">
+                        <li class="weui_media_info_meta">收货时间</li>
+                        <li class="weui_media_info_meta"><a href="" ng-click="editAddress(contact)">修改</a></li>
+                        <li class="weui_media_info_meta weui_media_info_meta_extra"><a href="" ng-click="deleteContact(contact.id)">删除</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="item-button">
-                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_primary">删除</a>
-                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default" style="margin-top: 0;">修改</a>
+            <div class="footer">
+                <a href="javascript:;" class="weui_btn weui_btn_default" ng-click="addAddress()">添加收货地址</a>
             </div>
         </div>
 
-    </div>
-
-    <div class="footer">
-        <a href="javascript:;" class="weui_btn weui_btn_default">添加收货地址</a>
     </div>
 
 </div>

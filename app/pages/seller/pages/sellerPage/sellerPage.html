@@ -2,71 +2,182 @@
 
     <div class="seller-page-content">
 
-        <div class="account-info">
-            <div class="account-avatar">
-                <img src="">
-            </div>
-            <div class="account-name">
-                <span>张三的小店</span>
-            </div>
-            <div class="acount-arrow">
-                <img src="">
+        <!--<div class="account-info">-->
+            <!--<div class="account-avatar">-->
+                <!--<img src="">-->
+            <!--</div>-->
+            <!--<div class="account-name">-->
+                <!--<span>张三的小店</span>-->
+            <!--</div>-->
+            <!--<div class="acount-arrow">-->
+                <!--<img src="">-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="user-info">
+            <img class="user-photo" src="img/indexTab/icon_nav_panel.png" alt="头像">
+            <div class="user-info-right">
+                <div class="user-detail">
+                    <div>
+                        昵称
+                    </div>
+                    <div>
+                        账号
+                    </div>
+                </div>
             </div>
         </div>
+        <!--<div class="seller-profit">-->
+            <!--<div class="s-p-top">累计收益</div>-->
+            <!--<div class="s-p-center">0.00</div>-->
+            <!--<div class="s-p-bottom">不含未结算部分</div>-->
+        <!--</div>-->
         <div class="seller-profit">
-            <div class="s-p-top">累计收益</div>
-            <div class="s-p-center">0.00</div>
-            <div class="s-p-bottom">不含未结算部分</div>
-        </div>
-        <div class="seller-not-settled">
-            <div class="s-n-name">未结算收益</div>
-            <div class="s-n-arrow-price">0.00</div>
-            <div class="s-n-arrow">
-            </div>
+            <div class="s-p-top">会员级别：</div>
+            <div class="s-p-bottom">可提佣金：</div>
         </div>
 
-            <div class="weui-row weui-no-gutter">
-
-                <div class="weui-col-33 seller-box" style="border-right: 1px solid #cccccc" ui-sref="promotionOrder">
-                    <img src="">
-                    <div class="box-text">
-                        推广订单
-                    </div>
-                    <div class="box-footer-text">
-                        0个
-                    </div>
+        <ul class="seller-commissions">
+            <li class="seller-commission">
+                <div class="seller-commission-value li-border">
+                    <p class="commission-number">
+                        88888.00
+                    </p>
+                    <p class="commission-text">
+                        累计佣金
+                    </p>
                 </div>
-
-                <div class="weui-col-33 seller-box" style="border-right: 1px solid #cccccc" ui-sref="myTeam">
-                    <img src="">
-                    <div class="box-text">
-                        我的团队
-                    </div>
-                    <div class="box-footer-text">
-                        0个
-                    </div>
+            </li>
+            <li class="seller-commission">
+                <div class="seller-commission-value li-border">
+                    <p class="commission-number">
+                        658
+                    </p>
+                    <p class="commission-text">
+                        5月订单
+                    </p>
                 </div>
-
-                <div class="weui-col-33 seller-box" ui-sref="marketing">
-                    <img src="">
-                    <div class="box-text">
-                        开始推广
-                    </div>
-                    <div class="box-footer-text">
-                        推广方式和说明
-                    </div>
+            </li>
+            <li class="seller-commission">
+                <div class="seller-commission-value">
+                    <p class="commission-number">
+                        5888.00
+                    </p>
+                    <p class="commission-text">
+                        5月佣金
+                    </p>
                 </div>
+            </li>
+        </ul>
 
-                <div class="weui-col-33 seller-box" style="border-right: 1px solid #cccccc" ui-sref="shopSettings">
-                    <img src="">
-                    <div class="box-text">
-                        店铺设置
-                    </div>
-                    <div class="box-footer-text">
-                        修改店铺信息
-                    </div>
+        <!--<div class="seller-not-settled">-->
+            <!--<div class="s-n-name">未结算收益</div>-->
+            <!--<div class="s-n-arrow-price">0.00</div>-->
+            <!--<div class="s-n-arrow">-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <div class="weui_grids">
+            <a ui-sref="myTeam" class="weui_grid kqd_grid_4" data-id="button">
+                <div class="weui_grid_icon kqd_grid_img_large">
+                    <img src="img/my/pay.png">
                 </div>
+                <p class="weui_grid_label">
+                    我的团队
+                </p>
+            </a>
+            <a href="" class="weui_grid kqd_grid_4" data-id="cell">
+                <div class="weui_grid_icon kqd_grid_img_large">
+                    <img src="img/sellerPage/money.png">
+                </div>
+                <p class="weui_grid_label">
+                    分销佣金
+                </p>
+            </a>
+            <a ui-sref="promotionOrder" class="weui_grid kqd_grid_4" data-id="toast">
+                <div class="weui_grid_icon kqd_grid_img_large">
+                    <img src="img/sellerPage/sellerOrder.png">
+                </div>
+                <p class="weui_grid_label">
+                    分销订单
+                </p>
+            </a>
+            <a href="" class="weui_grid kqd_grid_4" data-id="cell">
+                <div class="weui_grid_icon kqd_grid_img_large">
+                    <img src="img/sellerPage/sellerinfo.png">
+                </div>
+                <p class="weui_grid_label">
+                    分销信息
+                </p>
+            </a>
+            <a href="" class="weui_grid kqd_grid_4" data-id="button">
+                <div class="weui_grid_icon kqd_grid_img_large">
+                    <img src="img/sellerPage/takeMoney.png">
+                </div>
+                <p class="weui_grid_label">
+                    提佣方案
+                </p>
+            </a>
+            <a href="" class="weui_grid kqd_grid_4" data-id="cell">
+                <div class="weui_grid_icon kqd_grid_img_large">
+                    <img src="img/sellerPage/QRcode.png">
+                </div>
+                <p class="weui_grid_label">
+                    推广二维码
+                </p>
+            </a>
+            <a ui-sref="marketing" class="weui_grid kqd_grid_4" data-id="toast">
+                <div class="weui_grid_icon kqd_grid_img_large">
+                    <img src="img/sellerPage/paper.png">
+                </div>
+                <p class="weui_grid_label">
+                    推广海报
+                </p>
+            </a>
+        </div>
 
-            </div>
+
+            <!--<div class="weui-row weui-no-gutter">-->
+
+                <!--<div class="weui-col-33 seller-box" style="border-right: 1px solid #cccccc" ui-sref="promotionOrder">-->
+                    <!--<img src="">-->
+                    <!--<div class="box-text">-->
+                        <!--推广订单-->
+                    <!--</div>-->
+                    <!--<div class="box-footer-text">-->
+                        <!--0个-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--<div class="weui-col-33 seller-box" style="border-right: 1px solid #cccccc" ui-sref="myTeam">-->
+                    <!--<img src="">-->
+                    <!--<div class="box-text">-->
+                        <!--我的团队-->
+                    <!--</div>-->
+                    <!--<div class="box-footer-text">-->
+                        <!--0个-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--<div class="weui-col-33 seller-box" ui-sref="marketing">-->
+                    <!--<img src="">-->
+                    <!--<div class="box-text">-->
+                        <!--开始推广-->
+                    <!--</div>-->
+                    <!--<div class="box-footer-text">-->
+                        <!--推广方式和说明-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--<div class="weui-col-33 seller-box" style="border-right: 1px solid #cccccc" ui-sref="shopSettings">-->
+                    <!--<img src="">-->
+                    <!--<div class="box-text">-->
+                        <!--店铺设置-->
+                    <!--</div>-->
+                    <!--<div class="box-footer-text">-->
+                        <!--修改店铺信息-->
+                    <!--</div>-->
+                <!--</div>-->
+
+            <!--</div>-->
     </div>
 </div>
