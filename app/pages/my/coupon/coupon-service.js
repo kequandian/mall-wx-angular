@@ -7,7 +7,7 @@ angular.module('coupon.service', [])
                 var url = GlobalVariable.SERVER_PATH + "/order";
                 $http.get(url,{
                     headers: {
-                        'Authorization': ACCESS_TOKEN
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
                     }
                 })
                     .success(function (data) {

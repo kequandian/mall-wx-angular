@@ -7,7 +7,7 @@ angular.module('category.service', [])
                 var url = GlobalVariable.SERVER_PATH + "/product_category";
                 $http.get(url,{
                     headers: {
-                        'Authorization': ACCESS_TOKEN
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
                     }
                 })
                     .success(function (data) {

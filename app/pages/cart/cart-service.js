@@ -28,7 +28,7 @@ angular.module('cart.service', [])
                     url: url,
                     data: [{product_id: id, quantity: 0}],
                     headers: {
-                        'Authorization': ACCESS_TOKEN
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
                     }
                 })
                     .success(function (data) {
@@ -48,7 +48,7 @@ angular.module('cart.service', [])
                     url: url,
                     data: data,
                     headers: {
-                        'Authorization': ACCESS_TOKEN
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
                     }
                 })
                     .success(function (data) {
@@ -67,7 +67,7 @@ angular.module('cart.service', [])
                     method: 'GET',
                     url: url,
                     headers: {
-                        'Authorization': ACCESS_TOKEN
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
                     }
                 })
                     .success(function (data) {

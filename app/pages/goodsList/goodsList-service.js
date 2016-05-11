@@ -21,7 +21,7 @@ angular.module('goodsList.service', [])
                     method: 'GET',
                     url: url,
                     headers: {
-                        'Authorization': ACCESS_TOKEN
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
                     }
                 })
                     .success(function (data) {

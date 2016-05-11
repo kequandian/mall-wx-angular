@@ -8,7 +8,7 @@ angular.module('addressManager.service', [])
                     method: 'GET',
                     url: url,
                     headers: {
-                        'Authorization': ACCESS_TOKEN
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
                     }
                 })
                     .success(function (data) {
@@ -27,7 +27,7 @@ angular.module('addressManager.service', [])
                     method: 'DELETE',
                     url: url,
                     headers: {
-                        'Authorization': ACCESS_TOKEN
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
                     }
                 })
                     .success(function (data) {
@@ -47,7 +47,7 @@ angular.module('addressManager.service', [])
                     url: url,
                     data: data,
                     headers: {
-                        'Authorization': ACCESS_TOKEN
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
                     }
                 })
                     .success(function (data) {
@@ -67,7 +67,7 @@ angular.module('addressManager.service', [])
                     url: url,
                     data: data,
                     headers: {
-                        'Authorization': ACCESS_TOKEN
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
                     }
                 })
                     .success(function (data) {
@@ -86,7 +86,7 @@ angular.module('addressManager.service', [])
                     method: 'GET',
                     url: url,
                     headers: {
-                        'Authorization': ACCESS_TOKEN
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
                     }
                 })
                     .success(function (data) {

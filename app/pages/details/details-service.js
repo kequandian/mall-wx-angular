@@ -7,7 +7,7 @@ angular.module('details.service', [])
                 var url = GlobalVariable.SERVER_PATH + "/product/" + productId;
                 $http.get(url,{
                     headers: {
-                        'Authorization': ACCESS_TOKEN
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
                     }
                 })
                     .success(function (data) {
@@ -27,7 +27,7 @@ angular.module('details.service', [])
                     "quantity": 1
                 }],{
                     headers: {
-                        'Authorization': ACCESS_TOKEN
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
                     }
                 })
                     .success(function (data) {
