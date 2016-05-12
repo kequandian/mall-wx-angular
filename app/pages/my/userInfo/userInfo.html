@@ -15,7 +15,6 @@
                         <label class="weui_label">昵称：</label>
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <input type="hidden" ng-model="contact.id" ng-init="contact.id=editC.id">
                         <input class="weui_input" type="text" placeholder="请输入昵称" ng-model="contact.contact_user" ng-init="contact.contact_user=editC.contact_user">
                     </div>
                 </div>
@@ -33,7 +32,7 @@
                         性别：
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <select class="weui_select" name="select3" >
+                        <select class="weui_select" name="select3" style="margin-left: 3px;">
                             <option value="">请选择</option>
                             <option value="1">男</option>
                             <option value="0">女</option>
@@ -43,10 +42,10 @@
 
                 <div class="weui_cell">
                     <div class="weui_cell_hd">
-                        <label class="weui_label">生日：</label>
+                        <label for="data_time"  class="weui_label">生日：</label>
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <input class="weui_input" type="text" id="my-input"  data-toggle='date'  placeholder="选择日期" ng-model="contact.phone">
+                        <input class="weui_input" type="text" id="data_time"  data-toggle='date'  placeholder="选择日期" ng-model="contact.phone">
                     </div>
                 </div>
 

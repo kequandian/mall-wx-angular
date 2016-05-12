@@ -4,6 +4,6 @@ angular.module('userInfo.controller', ['userInfo.service'])
 
         myInput();
         function myInput(){
-            $("#my-input").calendar();
+            $("#data_time").calendar();
         }
     }]);

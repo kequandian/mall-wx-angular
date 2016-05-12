@@ -85,6 +85,7 @@ angular.module('details.controller', ['details.service'])
                 var count = 1;
                 DetailsFty.addProToCatService(proId)
                     .then(function(json){
+                        alert(angular.toJson(json));
                         if(json.status_code == 0){
                             $.toast.prototype.defaults.duration = 2000;
                             $.toast("成功添加商品");
@@ -92,6 +93,7 @@ angular.module('details.controller', ['details.service'])
                             $.toast("添加失败", "cancel");
                         }
                     }, function(error){
+                        alert(angular.toJson(error));
                         $.toast("添加失败", "cancel");
                     })
             };
