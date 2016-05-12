@@ -1,0 +1,73 @@
+<div id="userInfo">
+
+    <div class="user-avatar">
+        <img class="user-photo" src="img/indexTab/icon_nav_panel.png" alt="头像">
+        <span>编辑头像</span>
+        <i class="ion-ios-arrow-right"></i>
+    </div>
+
+    <div class="user-info-body">
+        <form ng-submit="">
+            <!-- 基本信息 -->
+            <div class="weui_cells weui_cells_form settlement-font">
+                <div class="weui_cell">
+                    <div class="weui_cell_hd">
+                        <label class="weui_label">昵称：</label>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <input class="weui_input" type="text" placeholder="请输入昵称" ng-model="contact.contact_user" ng-init="contact.contact_user=editC.contact_user">
+                    </div>
+                </div>
+                <div class="weui_cell">
+                    <div class="weui_cell_hd">
+                        <label class="weui_label">ID：</label>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <input class="weui_input" type="tel" placeholder="请输入ID" ng-model="contact.phone" ng-init="contact.phone=editC.phone">
+                    </div>
+                </div>
+
+                <div class="weui_cell weui_cell_select weui_select_after">
+                    <div class="weui_cell_hd">
+                        性别：
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <select class="weui_select" name="select3" style="margin-left: 3px;">
+                            <option value="">请选择</option>
+                            <option value="1">男</option>
+                            <option value="0">女</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="weui_cell">
+                    <div class="weui_cell_hd">
+                        <label for="data_time"  class="weui_label">生日：</label>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <input class="weui_input" type="text" id="data_time"  data-toggle='date'  placeholder="选择日期" ng-model="contact.phone">
+                    </div>
+                </div>
+
+
+
+                <div class="weui_cell">
+                    <div class="weui_cell_hd">
+                        <label class="weui_label" style="margin-top: -26px;">介绍：</label>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <textarea class="weui_textarea settlement-font" placeholder="请输入详细地址信息" rows="3"
+                                  ng-model="contact.detail"></textarea>
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="margin-top: 15px; margin-left: 20px;margin-right: 20px;">
+                <input type="submit" class="weui_btn weui_btn_primary" value="确认">
+            </div>
+
+        </form>
+    </div>
+
+</div>

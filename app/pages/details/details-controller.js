@@ -86,13 +86,24 @@ angular.module('details.controller', ['details.service'])
                 DetailsFty.addProToCatService(proId)
                     .then(function(json){
                         if(json.status_code == 0){
-                            console.log("添加成功")
+                            $.toast.prototype.defaults.duration = 2000;
+                            $.toast("成功添加商品");
                         }else{
-                            console.log("添加失败")
+                            $.toast("添加失败", "cancel");
                         }
                     }, function(error){
-                        console.log("添加失败")
+                        $.toast("添加失败", "cancel");
                     })
+            };
+
+            //返回主页
+            $scope.goHome = function(){
+                $state.go("home.homePage")
+            };
+
+            $scope.testToast = function(){
+                //$.toast.prototype.defaults.duration = 2000;
+                //$.toast("toast测试");
             }
 
 

@@ -21,9 +21,12 @@
             <div class="product-title">
                 {{details.name}}
             </div>
-            <div class="product-price">￥{{details.price}}</div>
+            <div class="product-price">
+                <span>￥{{details.price}}</span>
+                <div>市场价：<i>￥99.00</i></div>
+            </div>
 
-            <div class="product-freight">
+            <div class="product-freight" style="border-top: 1px solid #ECECEC;">
                 <div class="product-f-left">
                     <span>运费：{{details.freight}}</span>
                 </div>
@@ -31,12 +34,26 @@
                     <span>销量：{{details.sales}}件</span>
                 </div>
             </div>
+
+            <div class="product-freight">
+                <div class="product-f-left">
+                    <span>默认配送：天天快递</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="details-promise">
+            <div class="details-promise-div">
+                <div class="d-p-d-right">正品保证</div>
+                <div class="d-p-d-center">支持7天退货</div>
+                <div class="d-p-d-left">极速退款</div>
+            </div>
         </div>
 
         <!-- 其他信息 -->
         <div class="product-info">
 
-            <div class="p-info-tab">
+            <!--<div class="p-info-tab">
                 <nav id="nav">
                     <div class="nav-warp">
                         <ul>
@@ -49,14 +66,22 @@
                 </nav>
             </div>
 
-            <!-- 详情 -->
+            &lt;!&ndash; 详情 &ndash;&gt;
             <div class="p-details" ng-hide="productDetails">
                 AAAAAAA
             </div>
 
-            <!-- 参数 -->
+            &lt;!&ndash; 参数 &ndash;&gt;
             <div class="p-parameter" ng-hide="productParameter">
                 BBBBBBB
+            </div>-->
+
+            <div class="picture-info">
+                <span>图文详解</span>
+                <div class="product-img-list">
+                    <img src="img/home/area-img-1.png">
+                    <img src="img/home/area-img-1.png">
+                </div>
             </div>
 
         </div>
@@ -66,28 +91,34 @@
     <!-- 底部 -->
     <div id="content-footer">
         <div class="content-footer-div">
-            <div class="c-f-d-right">店铺主页</div>
+            <div class="c-f-d-right" ng-click="goHome()">店铺主页</div>
             <div class="c-f-d-center">会员中心</div>
             <div class="c-f-d-left">推客申请</div>
         </div>
     </div>
 
     <div class="footer">
-        <div class="footer-home">
+        <div class="footer-home" ng-click="goHome()">
             <div class="f-h-top">
-                <img src="">
+                <img src="img/indexTab/Home.png">
             </div>
             <div class="f-h-bottom">
                 进店
             </div>
         </div>
+        <div class="footer-cart" ui-sref="home.cart">
+            <div class="f-c-top">
+                <img src="img/details/cart-img.png">
+            </div>
+        </div>
+
         <div class="item-button">
             <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_primary"
                style="width: 100px; height: 35px; text-align: center; padding-top: 4px;" ng-click="addProductToCart(details.id)">
                 加入购物车
             </a>
             <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default"
-               style="width: 100px; height: 35px;text-align: center; padding-top: 4px;margin-top: 0;">
+               style="width: 100px; height: 35px;text-align: center; padding-top: 4px;margin-top: 0;" ng-click="testToast()">
                 立即购买
             </a>
         </div>
