@@ -37,6 +37,16 @@
     border-left:1px solid #dcdcdc;
 }
 
+#orders .orders-hide-span{
+    width: 100%;
+    line-height: 42px;
+    text-align: center;
+}
+
+#orders .orders-hide-span span{
+    color: #c8c8cd;
+    font-size: 18px;
+}
 
 /*
 * all
@@ -52,6 +62,7 @@
 }
 
 #orders .item-order-number{
+    min-width: 120px;
     height: 36px;
     line-height: 36px;
     margin-left: 7px;

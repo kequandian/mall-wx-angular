@@ -5,7 +5,7 @@ angular.module('coupon.controller', ['coupon.service'])
         function AllOrders() {
             CouponFty.couponsService()
                 .then(function (json) {
-                    $scope.orders = json.data;
+                    $scope.coupons = json.data;
                 },function (error){
                     console.log(error);
                 })

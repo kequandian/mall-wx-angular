@@ -1,3 +1,45 @@
-<h1>finish</h1>
-<hr/>
-<p ng-repeat="item in items">{{item}}</p>
+<div id="orders">
+
+    <div class="orders-min-height orders-info-span">
+
+        <div class="orders-hide-span" ng-hide="finishIsNull">
+            <span >没有订单信息</span>
+        </div>
+        <div class="order-item" ng-repeat="items in finishList" ng-hide="finishShow">
+            <div class="item-order-number">订单号：{{items.order_number}}</div>
+            <div class="item-order-info">
+                <div class="o-i-left">
+                    <img ng-src="{{items.cover}}">
+                </div>
+                <div class="o-i-center">
+                    <span>
+                     {{items.description |  cutText:true:35:'...'}}
+                    </span>
+                </div>
+                <div class="o-i-right">
+                    <!--<span class="o-i-right-span">￥{{items.total_price}}</span>-->
+                    <!--<i class="o-i-right-i">x1</i>-->
+                </div>
+            </div>
+            <div class="item-detail-btn">
+                <div class="order-item-price">总价：￥{{items.total_price}}</div>
+                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right" style="margin-top: 3px;"
+                   ui-sref="orderDetails">
+                    详情
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- 底部 -->
+    <div id="content-footer">
+        <div class="content-footer-div">
+            <div class="c-f-d-right">店铺主页</div>
+            <div class="c-f-d-center">会员中心</div>
+            <div class="c-f-d-left">推客申请</div>
+        </div>
+    </div>
+
+</div>

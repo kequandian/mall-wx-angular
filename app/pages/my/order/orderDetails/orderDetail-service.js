@@ -1,10 +1,10 @@
 angular.module('orderDetails.service', [])
     .factory('OrderDetailsFty', ['$http', '$q','GlobalVariable', function($http, $q,GlobalVariable) {
         return {
-            // 获取商品类别数据
-            orderDetailsService: function () {
+            // 鑾峰彇鍟嗗搧绫诲埆鏁版嵁
+            orderDetailsService: function (orderNumber) {
                 var deferred = $q.defer();
-                var url = GlobalVariable.SERVER_PATH + "/order";
+                var url = GlobalVariable.SERVER_PATH + "/order/" + orderNumber;
                 $http.get(url,{
                     headers: {
                         'Authorization': GlobalVariable.ACCESS_TOKEN

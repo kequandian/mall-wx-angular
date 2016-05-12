@@ -7,9 +7,9 @@
                 <img src="">
             </div>
             <div class="o-status-info">
-                <div class="o-status">订单状态：订单已关闭</div>
-                <div class="o-number">订单号：E2016042510572770716</div>
-                <div class="o-total">订单金额：￥100.00</div>
+                <div class="o-status">订单状态：{{detailsInfo.status}}</div>
+                <div class="o-number">订单号：{{detailsInfo.order_number}}</div>
+                <div class="o-total">订单金额：￥{{detailsInfo.total_price}}</div>
             </div>
         </div>
 
@@ -19,41 +19,39 @@
                 <img src="">
             </div>
             <div class="o-address-info">
-                <div class="mail-name">收件人：张三</div>
-                <div class="mail-phone">13610256398</div>
+                <div class="mail-name">收件人：{{detailsInfo.contact_user}}</div>
+                <div class="mail-phone">{{detailsInfo.phone}}</div>
                 <div class="mail-address">
-                    <!--{{textTextText | cutText:true:20:'...'}}-->
-                    广州市萝岗科学城ABCDEFG
+                    {{detailsInfo.detail | cutText:true:20:'...'}}
                 </div>
             </div>
         </div>
 
         <!--订单详情-->
         <div class="order-detail">
-            <div class="item-order-info">
+            <div class="item-order-info" ng-repeat="proItem in detailsInfo.order_items">
                 <div class="o-i-left">
-                    <img src="">
+                    <img ng-src="{{proItem.cover}}">
                 </div>
                 <div class="o-i-center">
                     <span>
-                     <!--{{textTest |  cutText:true:35:'...'}}-->
-                        产品标题
+                     {{proItem.product_name |  cutText:true:35:'...'}}
                     </span>
                 </div>
                 <div class="o-i-right">
-                    <span class="o-i-right-span">￥100.00</span>
-                    <i class="o-i-right-i">x1</i>
+                    <span class="o-i-right-span">￥{{proItem.final_price}}</span>
+                    <i class="o-i-right-i">x{{proItem.quantity}}</i>
                 </div>
             </div>
             <div class="o-d-freight">
                 <span>运费：</span>
-                <i class="o-d-freight-i">￥0.00</i>
+                <i class="o-d-freight-i">￥{{detailsInfo.freight}}</i>
             </div>
             <div class="buyer-message">
                 <span>买家留言：</span>
             </div>
             <div class="total-price">
-                <i class="total-price-i">共1件商品  实际付款：￥69.00</i>
+                <i class="total-price-i">共{{productCount}}件商品  实际付款：￥69.00</i>
             </div>
             <div class="closing-time">
                 <span>成交时间：2016-04-25</span>

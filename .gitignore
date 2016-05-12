@@ -1,6 +1,7 @@
 logs/*
 !.gitkeep
 node_modules/
+app/js/global.js
 tmp
 .DS_Store
 .idea
