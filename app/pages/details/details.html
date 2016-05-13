@@ -98,12 +98,12 @@
     </div>
 
     <div class="footer">
-        <div class="footer-home" ng-click="goHome()">
+        <div class="footer-home">
             <div class="f-h-top">
-                <img src="img/indexTab/Home.png">
+                <img src="img/details/aliwawa-img.png">
             </div>
             <div class="f-h-bottom">
-                进店
+                客户
             </div>
         </div>
         <div class="footer-cart" ui-sref="home.cart">
@@ -112,21 +112,22 @@
             </div>
         </div>
 
+        <div class="footer-collection">
+            <div class="f-h-top">
+                <img src="img/details/star-collection.png">
+            </div>
+            <div class="f-h-bottom">
+                收藏
+            </div>
+        </div>
+
         <div class="item-button">
-            <!--<div class="details_cart_css">-->
-                <!--加入购物车-->
-            <!--</div>-->
-            <!--<div class="details_buy_css">-->
-                <!--立即购买-->
-            <!--</div>-->
-            <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_primary"
-               style="width: 100px; height: 35px; text-align: center; padding-top: 4px;" ng-click="addProductToCart(details.id)">
-                加入购物车
-            </a>
-            <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default"
-               style="width: 100px; height: 35px;text-align: center; padding-top: 4px;margin-top: 0;" ng-click="testToast()">
+            <div class="details_buy_css" ng-click="testToast()">
                 立即购买
-            </a>
+            </div>
+            <div class="details_cart_css" ng-click="addProductToCart(details.id)">
+                加入购物车
+            </div>
         </div>
     </div>
 

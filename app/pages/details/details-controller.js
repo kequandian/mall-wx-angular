@@ -95,12 +95,6 @@ angular.module('details.controller', ['details.service'])
                         $.toast("添加失败", "cancel");
                     })
             };
-
-            //返回主页
-            $scope.goHome = function(){
-                $state.go("home.homePage")
-            };
-
             $scope.testToast = function(){
                 //$.toast.prototype.defaults.duration = 2000;
                 //$.toast("toast测试");

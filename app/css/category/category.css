@@ -139,7 +139,7 @@
 
 
 #category .cate-righr-item{
-    width: 31%;
+    width: 33%;
     height: 100px;
     text-align: center;
     margin-left: 2px;
@@ -150,7 +150,6 @@
 #category .cate-righr-item span{
     height: 28px;
     line-height: 28px;
-    font-size: 14px;
     color:#9B9B9B;
 }
 

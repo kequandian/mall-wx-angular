@@ -1,0 +1,57 @@
+#integral{
+    background-color: #F8F8F8;
+    height: 100%;
+}
+
+#integral .integral-content{
+}
+
+#integral .integral-title-img img{
+    width: 100%;
+    height: 160px;
+    background-color: #10AEFF;
+}
+
+
+#integral .panic-buying{
+    height: 108px;
+}
+
+#integral .p-buying-left{
+    float: left;
+    width: 49%;
+    height: 105px;
+    border-top: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+}
+
+#integral .p-b-left{
+    width: 40%;
+    padding-top: 25px;
+    float: left;
+}
+
+#integral .p-b-left img{
+    width: 55px;
+    height: 55px;
+    background-color: #007aff;
+    float: right;
+}
+
+#integral .p-b-right{
+    height: 55px;
+    padding-top: 24px;
+    margin-left: 5px;
+    float: left;
+}
+
+#integral .p-buying-right{
+    float: right;
+    width: 49%;
+    height: 105px;
+    border-top: 1px solid #cccccc;
+    border-left: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+}
+

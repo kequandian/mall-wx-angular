@@ -6,6 +6,7 @@
 #details .content{
     z-index: 100;
     min-height: 85%;
+    margin-bottom: 48px;
 }
 
 #details .product-img{
@@ -289,38 +290,9 @@
     font-size: 14px;
 }
 
-#details .item-button{
-    margin-top: 6px;
-    margin-right: 7px;
-    /*width: 50%;*/
-    /*height: 50px;*/
-    /*font-size: 16px;*/
-    /*color: white;*/
-    float: right;
-}
-
-#details .details_cart_css{
-    width: 25%;
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
-    background-color: #FE9401;
-    float: left;
-}
-
-#details .details_buy_css{
-    width: 25%;
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
-    background-color: #FF4B00;
-    float: left;
-}
-
-
 
 #details .footer-cart{
-    width: 50px;
+    width:50px;
     height: 50px;
     text-align: center;
     margin-left: 50px;
@@ -332,5 +304,40 @@
     width: 30px;
     height: 30px;
 }
+
+#details .footer-collection{
+    width: 50px;
+    height: 50px;
+    margin-left: 100px;
+    text-align: center;
+    position:absolute;
+}
+
+
+#details .item-button{
+    /*margin-top: 6px;*/
+    /*margin-right: 7px;*/
+    height: 50px;
+    font-size: 16px;
+    color: white;
+    float: right;
+}
+#details .details_cart_css{
+    width: 100px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #FE9401;
+    float: right;
+}
+
+#details .details_buy_css{
+    width: 100px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #FF4B00;
+    float: right;
+}
+
 
 

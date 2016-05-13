@@ -1,8 +1,8 @@
-angular.module('seller.service', [])
-    .factory('SellerFty', ['$http', function($http) {
+angular.module('integral.service', [])
+    .factory('IntegralFty', ['$http', function($http) {
         return{
-            // 获取更新数据数据
-            sellerService: function () {
+            // 鑾峰彇鏇存柊鏁版嵁鏁版嵁
+            integralService: function () {
                 var deferred = $q.defer();
                 var url = "/refresh";
                 $http.get(url)

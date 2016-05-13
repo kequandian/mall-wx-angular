@@ -20,7 +20,8 @@ var myapp = angular.module('myapp', [
     'marketing.route',
     'shopSettings.route',
     'category.route',
-    'userInfo.route'
+    'userInfo.route',
+    'integral.route'
 ]);
 myapp.config(['$stateProvider', "$urlRouterProvider",
     function($stateProvider, $urlRouterProvider) {
