@@ -262,7 +262,7 @@
     clear:both;
     position: fixed;
     bottom: 0;
-    z-index: 101;
+    /*z-index: 101;*/
     border-top: 1px solid #cccccc;
     background:white;
 }
@@ -292,17 +292,29 @@
 #details .item-button{
     margin-top: 6px;
     margin-right: 7px;
-    text-align: center;
+    /*width: 50%;*/
+    /*height: 50px;*/
+    /*font-size: 16px;*/
+    /*color: white;*/
     float: right;
 }
 
 #details .details_cart_css{
-    width: 100px;
-    height: ;
+    width: 25%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #FE9401;
+    float: left;
 }
 
 #details .details_buy_css{
-
+    width: 25%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #FF4B00;
+    float: left;
 }
 
 
