@@ -34,4 +34,5 @@ angular.module('homePage.controller', ['homePage.service'])
                 });
             }
 
+
     }]);
