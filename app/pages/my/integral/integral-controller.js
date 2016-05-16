@@ -1,5 +1,12 @@
 angular.module('integral.controller', ['integral.service'])
 
-    .controller('IntegralController', ['$scope', 'IntegralFty', function($scope, IntegralFty){
+    //积分controller
+    .controller('IntegralController', ['$scope', '$state', 'IntegralFty', function($scope, IntegralFty){
+
+    }])
+
+
+    //积分规则controller
+    .controller('IntegralRuleController', ['$scope', '$state', 'IntegralFty', function($scope, IntegralFty){
 
     }]);

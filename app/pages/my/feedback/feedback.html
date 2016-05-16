@@ -1,0 +1,113 @@
+<div id="feedback">
+
+    <!-- 其他信息 -->
+    <div class="feedback-info">
+
+        <div class="p-info-tab">
+            <nav id="nav">
+                <div class="nav-warp">
+                    <ul>
+                        <li ng-class="{active : currentId == title.id}" ng-repeat="title in feedback_nav"
+                            ng-click="clickme(title.id);">
+                            {{title.name}}
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <!-- 详情 -->
+        <div class="p-details" ng-hide="aboutProducts">
+
+            <span class="a-p-text">
+                请选择反馈问题的类型
+            </span>
+            <div class="weui_cells weui_cells_radio">
+                <label class="weui_cell weui_check_label" for="x11">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p style="font-size: 14px;">功能异常<span class="a-p-span">不能正常使用现有功能</span></p>
+                    </div>
+                    <div class="weui_cell_ft">
+                        <input type="radio" class="weui_check" name="radio1" id="x11" checked="checked">
+                        <span class="weui_icon_checked"></span>
+                    </div>
+                </label>
+                <label class="weui_cell weui_check_label" for="x12">
+
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p style="font-size: 14px;">其他问题<span class="a-p-span">用的不算、功能建议都提过来</span></p>
+                    </div>
+                    <div class="weui_cell_ft">
+                        <input type="radio" name="radio1" class="weui_check" id="x12">
+                        <span class="weui_icon_checked"></span>
+                    </div>
+                </label>
+            </div>
+
+            <div>
+                <span class="a-p-text">
+                    问题和意见
+                </span>
+
+                <div class="weui_cells weui_cells_form">
+                    <div class="weui_cell">
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <textarea class="weui_textarea" placeholder="请输入评论" rows="3"></textarea>
+
+                            <div class="weui_textarea_counter"><span>0</span>/200</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <span class="a-p-text">
+                    添加图片（选填，提供问题截图）
+                </span>
+                <div class="weui_cell_bd weui_cell_primary" style="background-color: white; padding-top: 10px; padding-bottom: 6px;margin-left: 10px;">
+                    <div class="weui_uploader">
+
+                        <div class="weui_uploader_bd">
+                          <!--  <ul class="weui_uploader_files">
+                                <li class="weui_uploader_file" style="background-image:url(http://shp.qpic.cn/weixinsrc_pic/pScBR7sbqjOBJomcuvVJ6iacVrbMJaoJZkFUIq4nzQZUIqzTKziam7ibg/)"></li>
+                                <li class="weui_uploader_file" style="background-image:url(http://shp.qpic.cn/weixinsrc_pic/pScBR7sbqjOBJomcuvVJ6iacVrbMJaoJZkFUIq4nzQZUIqzTKziam7ibg/)"></li>
+                                <li class="weui_uploader_file" style="background-image:url(http://shp.qpic.cn/weixinsrc_pic/pScBR7sbqjOBJomcuvVJ6iacVrbMJaoJZkFUIq4nzQZUIqzTKziam7ibg/)"></li>
+                                <li class="weui_uploader_file weui_uploader_status" style="background-image:url(http://shp.qpic.cn/weixinsrc_pic/pScBR7sbqjOBJomcuvVJ6iacVrbMJaoJZkFUIq4nzQZUIqzTKziam7ibg/)">
+                                    <div class="weui_uploader_status_content">
+                                        <i class="weui_icon_warn"></i>
+                                    </div>
+                                </li>
+                                <li class="weui_uploader_file weui_uploader_status" style="background-image:url(http://shp.qpic.cn/weixinsrc_pic/pScBR7sbqjOBJomcuvVJ6iacVrbMJaoJZkFUIq4nzQZUIqzTKziam7ibg/)">
+                                    <div class="weui_uploader_status_content">50%</div>
+                                </li>
+                            </ul>-->
+                            <div class="weui_uploader_input_wrp">
+                                <input class="weui_uploader_input" accept="image/jpg,image/jpeg,image/png,image/gif" multiple="" type="file">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 参数 -->
+        <div class="p-parameter" ng-hide="aboutShop">
+            BBBBBBB
+        </div>
+
+    </div>
+
+
+    <div class="footer">
+
+        <div class="footer-img">
+            <img src="img/my/freedback/feedback-footer-img.png">
+        </div>
+        <div class="details_buy_css" ng-click="testToast()">
+            提交
+        </div>
+    </div>
+
+</div>

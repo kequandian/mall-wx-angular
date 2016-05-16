@@ -2,13 +2,22 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
 
     .controller('CartController', ['$scope', '$state', 'CartFty', function($scope, $state, CartFty){
 
-        AllCarts();
+        $scope.empty_cart_hide = true;
+        $scope.cart_info_hide = true;
 
+        AllCarts();
         function AllCarts() {
             CartFty.getCarts().then(
                 function (result) {
                     console.log(result.data);
                     $scope.carts = result.data;
+                    if($scope.carts != null){
+                        $scope.empty_cart_hide = true;
+                        $scope.cart_info_hide = false;
+                    }else{
+                        $scope.empty_cart_hide = false;
+                        $scope.cart_info_hide = true;
+                    }
                 },function (error){
                     console.log(error);
             })

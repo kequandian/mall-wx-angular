@@ -1,9 +1,9 @@
 #integral{
     background-color: #F8F8F8;
-    height: 100%;
 }
 
 #integral .integral-content{
+     padding-bottom: 5px;
 }
 
 #integral .integral-title-img img{
@@ -14,44 +14,131 @@
 
 
 #integral .panic-buying{
-    height: 108px;
+    height: 60px;
 }
 
 #integral .p-buying-left{
     float: left;
-    width: 49%;
-    height: 105px;
-    border-top: 1px solid #cccccc;
-    border-right: 1px solid #cccccc;
+    width: 50%;
+    height: 60px;
+    background-color: #FFF6E5;
     border-bottom: 1px solid #cccccc;
 }
 
 #integral .p-b-left{
     width: 40%;
-    padding-top: 25px;
+    padding-top: 12px;
     float: left;
 }
 
 #integral .p-b-left img{
-    width: 55px;
-    height: 55px;
+    width: 35px;
+    height: 35px;
+    border-radius: 4px;
     background-color: #007aff;
     float: right;
 }
 
-#integral .p-b-right{
-    height: 55px;
-    padding-top: 24px;
+#integral .p-b-right-jifen{
+    height: 60px;
+    line-height: 60px;
     margin-left: 5px;
+    background-color: #FFF6E5;
+    float: left;
+}
+
+#integral .p-b-right{
+    height: 60px;
+    line-height: 60px;
+    margin-left: 5px;
+    background-color: #EDF7FF;
     float: left;
 }
 
 #integral .p-buying-right{
     float: right;
-    width: 49%;
-    height: 105px;
-    border-top: 1px solid #cccccc;
-    border-left: 1px solid #cccccc;
+    width: 50%;
+    height: 60px;
     border-bottom: 1px solid #cccccc;
 }
 
+#integral .integral-product{
+    margin: 5px;
+}
+
+#integral .product-item{
+    margin: 3px;
+    background-color: white;
+}
+
+#integral .goods-box-img{
+    width: 100%;
+    height: 135px;
+    /*background: #de7c23;*/
+}
+
+#integral .goods-box-text{
+    font-size: 14px;
+    width: 100%;
+    height: 45px;
+    /*border-top: 1px solid #cccccc;*/
+}
+
+#integral .goods-box-text div{
+    padding: 5px 5px 0 5px;
+}
+
+
+#integral .goods-box-footer-text{
+    font-size: 14px;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    /*background: #DE8BD4;*/
+    /*padding:0 5px 0 5px;*/
+    /*border-top: 1px solid #cccccc;*/
+}
+
+#integral .goods-c-left{
+    min-width: 30px;
+    padding: 0 5px 0 5px;
+    color:#F15353;
+}
+
+
+#integral .goods-c-right{
+    padding: 0 5px 0 5px;
+}
+
+#integral .goods-c-right a{
+    font-size: 14px;
+    margin-top: 7px;
+}
+
+
+/*
+* =============================积分规则CSS==============================
+*/
+
+#integralRule{
+    background-color: #F8F8F8;
+}
+
+#integralRule .rule-content{
+    height: 100%;
+}
+
+#integralRule .rule-title-img img{
+    width: 100%;
+    height: 160px;
+    background-color: #10AEFF;
+}
+
+#integralRule .rule-details{
+    margin: 15px;
+}
+
+
+/*
+* =============================积分规则CSS==============================
+*/

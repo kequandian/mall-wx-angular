@@ -237,3 +237,46 @@ input::-webkit-inner-spin-button {
     text-align: center;
     font-size: large;
 }
+
+
+/*cart is */
+#empty-cart-content{
+    background-color: white;
+    height: 100%;
+    text-align: center;
+}
+
+#empty-cart-content .empty-cart-img{
+    margin-top: 120px;
+}
+
+#empty-cart-content .empty-cart-img img{
+    width: 120px;
+    height: 120px;
+}
+
+#empty-cart-content .empty-cart-text{
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+#empty-cart-content .empty-cart-text span{
+    font-size: 18px;
+}
+
+#empty-cart-content .empty-cart-text div{
+    font-size: 16px;
+    color: #9D9D9D;
+    margin-top: 5px;
+}
+
+#empty-cart-content .empty-cart-button span{
+    width: 120px;
+    font-size: 18px;
+    color: #F63035;
+    border: 2px solid #F63035;
+    border-radius: 5px;
+    padding: 8px 20px 8px 20px;
+    background-color: #FFF1F0;
+}
+

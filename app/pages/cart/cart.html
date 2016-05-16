@@ -3,7 +3,24 @@
         <header class="bar top-bar clearfix cart-header">
             <span class="cart-title">购物车</span>
         </header>
-        <form>
+
+        <div id="empty-cart-content" ng-hide="empty_cart_hide">
+            
+            <div class="empty-cart-img">
+                <img src="img/cart/cart-null.png">
+            </div>
+
+            <div class="empty-cart-text">
+                <span>购物车快饿瘪了T.T</span>
+                <div>主人快给我挑点宝贝吧</div>
+            </div>
+
+            <div class="empty-cart-button" ui-sref="home.homePage">
+                <span>去逛逛</span>
+            </div>
+        </div>
+
+        <form ng-hide="cart_info_hide">
             <div class="cart-container">
                 <div class="">
                     <ul class="cart-list" ng-repeat="cart in carts">
@@ -13,11 +30,11 @@
                                 <label class="ion-ios-checkmark active cart-item-label" for="check{{cart.id}}"></label>
                             </div>
                             <div class="item-info">
-                                <a href="" class="item-image">
+                                <a href="" class="item-image" ui-sref="details({productId:cart.product_id})">
                                     <img ng-src="{{cart.cover}}">
                                 </a>
                                 <div class="">
-                                    <a href=""><h4 class="item-title">{{cart.product_name}}</h4></a>
+                                    <a  ui-sref="details({productId:cart.product_id})"><h4 class="item-title">{{cart.product_name}}</h4></a>
                                     <div class="item-info-bottom">
                                         <span class="item-price">{{cart.price|currency:'￥'}}</span>
                                         <div class="cart-quantity-form">
