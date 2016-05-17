@@ -3,6 +3,7 @@
 // Declare app level module which depends on views, and components
 var myapp = angular.module('myapp', [
     'global',
+    'commonJs',
     'ui.router',
     'home.route',
     'my.route',
@@ -22,7 +23,9 @@ var myapp = angular.module('myapp', [
     'category.route',
     'userInfo.route',
     'integral.route',
-    'feedback.route'
+    'feedback.route',
+    'commission.route',
+    'myAgent.route'
 ]);
 myapp.config(['$stateProvider', "$urlRouterProvider",
     function($stateProvider, $urlRouterProvider) {

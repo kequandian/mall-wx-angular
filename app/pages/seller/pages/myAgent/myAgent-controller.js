@@ -1,7 +1,7 @@
-angular.module('promotionOrder.controller', ['promotionOrder.service'])
-    .controller('PromotionOrderController', ['$scope', 'PromotionOrderFty', function($scope, PromotionOrderFty){
+angular.module('myAgent.controller', ['myAgent.service'])
+    .controller('MyAgentController', ['$scope', 'MyAgentFty', function($scope, MyAgentFty){
 
-        $scope.pro_order_groups = [
+        $scope.my_agent_groups = [
             {
                 name: "最近更新",
                 items: [{
@@ -39,6 +39,5 @@ angular.module('promotionOrder.controller', ['promotionOrder.service'])
         $scope.isGroupShown = function(group) {
             return group.show;
         };
-
 
     }]);

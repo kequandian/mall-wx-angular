@@ -1,7 +1,9 @@
-angular.module('promotionOrder.controller', ['promotionOrder.service'])
-    .controller('PromotionOrderController', ['$scope', 'PromotionOrderFty', function($scope, PromotionOrderFty){
+angular.module('commission.controller', ['commission.service'])
 
-        $scope.pro_order_groups = [
+    .controller('CommissionController', ['$scope', 'CommissionFty', function($scope, CommissionFty){
+
+
+        $scope.groups = [
             {
                 name: "最近更新",
                 items: [{
@@ -39,6 +41,5 @@ angular.module('promotionOrder.controller', ['promotionOrder.service'])
         $scope.isGroupShown = function(group) {
             return group.show;
         };
-
 
     }]);

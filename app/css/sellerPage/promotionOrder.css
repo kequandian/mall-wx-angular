@@ -6,68 +6,83 @@
 #promotionOrder .promotionOrder-content{
 }
 
-#promotionOrder #nav{
-    width:100%;
-    height:42px;
-    overflow:hidden;
-    position:relative;
-    background-color: #fff;
+#promotionOrder .item-stable{
+    height: 38px;
+    line-height: 38px;
+    color:white;
+    background-color: #C50303;
+    text-align: center;
+    padding-left: 10px;
+    margin-bottom: 6px;
 }
 
-#promotionOrder .active {
-    color: #FF5336;
-    font-weight: bold;
-    border-bottom: 2px solid #FF5336;
+#promotionOrder .active{
+    background-color: #C50303;
 }
 
-#promotionOrder .nav-warp{
-    height:40px;
-    /*overflow-x:scroll;*/
-    position:absolute;
-    left:0;
-    right:0;
+#promotionOrder .item-arrow-right{
+    width: 20px;
+    height: 20px;
+    font-size: 35px;
+    float: right;
+    margin-top: 9px;
+    margin-right: 10px;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-image: url(../../img/sellerPage/orders/order-item-arrow.png);
 }
 
-#promotionOrder .nav-warp ul{
-    width:100%;
-    height:40px;
-    border-bottom:1px solid #dfdfdf;
-}
-#promotionOrder .nav-warp li{
-    float:left;
-    width:33%;
-    height:40px;
-    text-align:center;
-    line-height:40px;
-    border-left:1px solid #dcdcdc;
-}
-
-
-#promotionOrder .pro-order-body{
-
-}
-
-#promotionOrder .pro-order-not-data{
-    width: 100%;
-    height: 150px;
+#promotionOrder .item-accordion{
     background-color: white;
-    border-bottom: 1px solid #cccccc;
+    padding: 5px;
 }
 
-#promotionOrder .not-data-top{
-    width: 100%;
-    height: 90px;
-    text-align: center;
+#promotionOrder .order-item-text{
+    font-size: 14px;
+    line-height: 24px;
+    color:#343e40;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
-#promotionOrder .not-data-top img{
-    width: 60px;
-    height: 60px;
-    margin-top: 20px;
-    background-color: #3E24BD;
+#promotionOrder .order-item-explain{
+    font-size: 14px;;
+    line-height: 24px;
+    color:#DB7575;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 5px;
 }
 
-#promotionOrder .not-data-bottom{
-    margin-top: 6px;
-    text-align: center;
+#promotionOrder .order-list{
+    margin-top: 8px;
+}
+
+#promotionOrder .order-list-item{
+    height: 120px;
+    border: 1px solid #cccccc;
+    margin-top: 5px;
+}
+
+#promotionOrder .order-item-img{
+    width: 100px;
+    height: 120px;
+    position: absolute;
+}
+
+#promotionOrder .order-item-img img{
+    width: 100px;
+    height: 120px;
+}
+
+#promotionOrder .order-item-info{
+    height: 120px;
+    margin-left: 110px;
+}
+
+
+#promotionOrder .order-item-info div{
+    font-size: 14px;
+    line-height: 20px;
+    margin-left: 3px;
 }

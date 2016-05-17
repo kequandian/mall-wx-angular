@@ -2,31 +2,75 @@
 
     <div class="promotionOrder-content">
 
-        <nav id="nav">
-            <div class="nav-warp">
-                <ul>
-                    <li ng-class="{active : currentId == title.id}" ng-repeat="title in pro_order_titles"
-                        ng-click="clickme(title.id);">
-                        {{title.name}}
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-        <div class="pro-order-body">
-
-            <div class="pro-order-not-data">
-                <div class="not-data-top">
-                    <img src="">
+            <div ng-repeat="group in pro_order_groups">
+                <div class="item-stable"
+                     ng-click="toggleGroup(group)"
+                     ng-class="{active: isGroupShown(group)}"
+                        >
+                    2016-05-17<span style="font-size: 12px;">代理佣金明细表</span>
+                    <i class="item-arrow-right"></i>
                 </div>
-                <div class="not-data-bottom">
-                    亲，你暂无分销订单信息
+                <div class="item-accordion"
+                     ng-repeat="item in group.items"
+                     ng-show="isGroupShown(group)"
+                        >
+
+                    <div class="order-item-text">
+                        本月总佣金：588.00元（其中3500.00元确认，2300.00元待确认），总订单数：3308
+                    </div>
+
+                    <div class="order-item-explain">
+                        说明：订单状态为"交易成功"时分销佣金自动进入佣金钱包，您可以在分销中心进行提现操作。
+                    </div>
+
+                    <div class="order-list">
+
+                        <div class="order-list-item">
+                            <div class="order-item-img">
+                                <img src="img/sellerPage/orders/order-item-img1.png">
+                            </div>
+                            <div class="order-item-info">
+                                <div>(一级分销商)</div>
+                                <div>订单号：20598793653651898721</div>
+                                <div>订单金额：￥158.00</div>
+                                <div>订单状态：待确认</div>
+                                <div>我的佣金：￥15.60</div>
+                            </div>
+                        </div>
+
+                        <div class="order-list-item">
+                            <div class="order-item-img">
+                                <img src="img/sellerPage/orders/order-item-img1.png">
+                            </div>
+                            <div class="order-item-info">
+                                <div>(一级分销商)</div>
+                                <div>订单号：20598793653651898721</div>
+                                <div>订单金额：￥158.00</div>
+                                <div>订单状态：待确认</div>
+                                <div>我的佣金：￥15.60</div>
+                            </div>
+                        </div>
+
+
+                        <div class="order-list-item">
+                            <div class="order-item-img">
+                                <img src="img/sellerPage/orders/order-item-img1.png">
+                            </div>
+                            <div class="order-item-info">
+                                <div>(一级分销商)</div>
+                                <div>订单号：20598793653651898721</div>
+                                <div>订单金额：￥158.00</div>
+                                <div>订单状态：待确认</div>
+                                <div>我的佣金：￥15.60</div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
                 </div>
-
             </div>
-
-
-        </div>
 
     </div>
 

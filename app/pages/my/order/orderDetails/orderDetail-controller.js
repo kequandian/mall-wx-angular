@@ -1,7 +1,7 @@
 angular.module('orderDetails.controller', ['orderDetails.service'])
 
-    .controller('OrderDetailsController', ['$scope','$state', '$stateParams', 'OrderDetailsFty',
-        function($scope,$state,$stateParams, OrderDetailsFty){
+    .controller('OrderDetailsController', ['$scope','$state', '$stateParams', 'OrderDetailsFty','CommonJs',
+        function($scope,$state,$stateParams, OrderDetailsFty,CommonJs){
 
             orderDetails();
             function orderDetails(){
@@ -29,6 +29,12 @@ angular.module('orderDetails.controller', ['orderDetails.service'])
                     })
 
             }
+
+
+            //订单状态
+            $scope.order_jy_status = function(orderStatus){
+                return CommonJs.OrderStatus(orderStatus);
+            };
 
 
     }]);

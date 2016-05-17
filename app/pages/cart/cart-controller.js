@@ -137,6 +137,7 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
         console.log($scope.settlementData);
         $scope.pay=$stateParams.totalToPay;
         $scope.freight=$stateParams.totalFreight;
+        $scope.total_price = $stateParams.totalToPay + $stateParams.totalFreight;
 
         //提交订单
         $scope.order={};
