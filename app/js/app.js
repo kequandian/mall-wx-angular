@@ -25,7 +25,9 @@ var myapp = angular.module('myapp', [
     'integral.route',
     'feedback.route',
     'commission.route',
-    'myAgent.route'
+    'myAgent.route',
+    'commonProblem.route',
+    'collection.route'
 ]);
 myapp.config(['$stateProvider', "$urlRouterProvider",
     function($stateProvider, $urlRouterProvider) {

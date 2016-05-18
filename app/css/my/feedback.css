@@ -1,15 +1,17 @@
 #feedback{
     background-color: #F8F8F8;
-    min-height: 100%;
+    height: 100%;
+    overflow-x:hidden;
+    overflow-y: scroll;
 }
 
 #feedback .feedback-info{
     background-color: white;
+    margin-bottom: 150px;
 }
 
 #feedback .p-info-tab{
     height:40px;
-    /*overflow-x:scroll;*/
     left:0;
     right:0;
 }
@@ -85,20 +87,17 @@
     margin-top: 0;
 }
 
+
 #feedback .p-parameter{
     width:100%;
+    background-color: #F8F8F8;
+}
+
+#feedback .p-parameter .weui_cells{
+    margin-top: 0;
 }
 
 
-
-#feedback .footer-img {
-    width: 100%;
-    height: 80px;
-    margin-top: 20px;
-}
-#feedback .footer-img img {
-    height: 80px;
-}
 
 
 #feedback .footer {
@@ -111,10 +110,20 @@
     bottom: 0;
 }
 
+#feedback .footer-img {
+    width: 100%;
+    height: 80px;
+    margin-top: 20px;
+}
+#feedback .footer-img img {
+    height: 80px;
+}
+
 #feedback .item-button{
     /*margin-top: 6px;*/
     /*margin-right: 7px;*/
     height: 45px;
+    line-height: 45px;
     font-size: 16px;
 }
 

@@ -38,7 +38,6 @@ angular.module('myTeam.controller', ['myTeam.service'])
                     .then(function(json){
                         if(json.status_code == 0){
                             $scope.myTeamList = json.data.children;
-
                         }
                     },function(error){
 

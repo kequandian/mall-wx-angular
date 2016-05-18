@@ -1,0 +1,83 @@
+#commonProblem{
+    background-color: #F8F8F8;
+    height: 100%;
+}
+
+#commonProblem .comm-title-img img{
+    width: 100%;
+    height: 160px;
+}
+
+#commonProblem #comm-pro-content{
+    margin-top: 15px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+#comm-pro-content .comm-pro-item{
+    height: 42px;
+    background-color: white;
+    border-bottom: 1px solid #cccccc;
+    position: relative;
+}
+
+#comm-pro-content .comm-pro-item img{
+    width: 17px;
+    height: 17px;
+    margin-top: 12px;
+    margin-left: 10px;
+}
+
+#comm-pro-content .comm-pro-item span{
+    font-size: 16px;
+    color: #676D6E;
+    line-height: 42px;
+    margin-left: 5px;
+    position: absolute;
+}
+
+#comm-pro-content .comm-pro-item-arrow{
+    width: 8px;
+    height: 15px;
+    margin-top: 12px;
+    margin-right: 10px;
+    background-size: 8px 15px;
+    background-repeat: no-repeat;
+    background-image: url(../../img/my/commonProblem/item-arrow.png);
+    float: right;
+}
+
+
+
+/*售后政策*/
+#disProblemPage{
+    background-color: #FFFFFF;
+}
+
+#disProblemPage .problem-title{
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    text-align: center;
+    color:white;
+    border-radius: 10px;
+    background-color: #FF4B00;
+    margin-top: 15px;
+    margin-left: 7px;
+}
+
+#disProblemPage .problem-content{
+    margin: 7px;
+}
+
+/*
+/!*常见问题*!/
+#commProblemPage{
+    background-color: #FFFFFF;
+}
+
+/!*商品配送*!/
+#disProblemPage{
+    background-color: #FFFFFF;
+}*/

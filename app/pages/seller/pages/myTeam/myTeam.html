@@ -2,7 +2,7 @@
 
 
     <div class="t-m-top">
-        <img src="img/sellerPage/commission/comm-title.png">
+        <img src="img/sellerPage/commission/my-team-title.png">
     </div>
 
     <nav id="nav">
@@ -11,123 +11,28 @@
                 <li ng-class="{active : currentId == title.id}" ng-repeat="title in my_team_titles"
                     ui-sref="{{title.srefName}}"
                     ng-click="clickme(title.id);">
-                    {{title.name}}
+                    {{title.name}}(-)
                 </li>
             </ul>
         </div>
     </nav>
 
     <div class="myTeam-content">
+        <div style="margin-top: 205px;">
 
-        <div class="t-m-item" ng-repeat="item in myTeamList">
-            <div class="item-left">
-                <div class="i-l-top">{{item.user_name}}</div>
-                <div class="i-l-bottom">{{isSeller(item.seller_ship)}}</div>
+            <div class="t-m-item" ng-repeat="item in myTeamList">
+                <div class="item-left">
+                    <img src="img/sellerPage/commission/default-avatar.jpg">
+                </div>
+                <div class="item-right">
+                    <div>昵称：Andy</div>
+                    <div>加入时间：2016-5-10 13:58</div>
+                    <div>人气指数：-</div>
+                    <!--<div>更新用户信息</div>-->
+                </div>
             </div>
-            <div class="item-right">
-                <img src="">
-            </div>
-        </div>
-        <div class="t-m-item" ng-repeat="item in myTeamList">
-            <div class="item-left">
-                <div class="i-l-top">{{item.user_name}}</div>
-                <div class="i-l-bottom">{{isSeller(item.seller_ship)}}</div>
-            </div>
-            <div class="item-right">
-                <img src="">
-            </div>
-        </div>
 
-        <div class="t-m-item" ng-repeat="item in myTeamList">
-            <div class="item-left">
-                <div class="i-l-top">{{item.user_name}}</div>
-                <div class="i-l-bottom">{{isSeller(item.seller_ship)}}</div>
-            </div>
-            <div class="item-right">
-                <img src="">
-            </div>
         </div>
-
-        <div class="t-m-item" ng-repeat="item in myTeamList">
-            <div class="item-left">
-                <div class="i-l-top">{{item.user_name}}</div>
-                <div class="i-l-bottom">{{isSeller(item.seller_ship)}}</div>
-            </div>
-            <div class="item-right">
-                <img src="">
-            </div>
-        </div>
-
-        <div class="t-m-item" ng-repeat="item in myTeamList">
-            <div class="item-left">
-                <div class="i-l-top">{{item.user_name}}</div>
-                <div class="i-l-bottom">{{isSeller(item.seller_ship)}}</div>
-            </div>
-            <div class="item-right">
-                <img src="">
-            </div>
-        </div>
-
-        <div class="t-m-item" ng-repeat="item in myTeamList">
-            <div class="item-left">
-                <div class="i-l-top">{{item.user_name}}</div>
-                <div class="i-l-bottom">{{isSeller(item.seller_ship)}}</div>
-            </div>
-            <div class="item-right">
-                <img src="">
-            </div>
-        </div>
-
-        <div class="t-m-item" ng-repeat="item in myTeamList">
-            <div class="item-left">
-                <div class="i-l-top">{{item.user_name}}</div>
-                <div class="i-l-bottom">{{isSeller(item.seller_ship)}}</div>
-            </div>
-            <div class="item-right">
-                <img src="">
-            </div>
-        </div>
-
-        <div class="t-m-item" ng-repeat="item in myTeamList">
-            <div class="item-left">
-                <div class="i-l-top">{{item.user_name}}</div>
-                <div class="i-l-bottom">{{isSeller(item.seller_ship)}}</div>
-            </div>
-            <div class="item-right">
-                <img src="">
-            </div>
-        </div>
-
-        <div class="t-m-item" ng-repeat="item in myTeamList">
-            <div class="item-left">
-                <div class="i-l-top">{{item.user_name}}</div>
-                <div class="i-l-bottom">{{isSeller(item.seller_ship)}}</div>
-            </div>
-            <div class="item-right">
-                <img src="">
-            </div>
-        </div>
-
-        <div class="t-m-item" ng-repeat="item in myTeamList">
-            <div class="item-left">
-                <div class="i-l-top">{{item.user_name}}</div>
-                <div class="i-l-bottom">{{isSeller(item.seller_ship)}}</div>
-            </div>
-            <div class="item-right">
-                <img src="">
-            </div>
-        </div>
-
-        <div class="t-m-item" ng-repeat="item in myTeamList">
-            <div class="item-left">
-                <div class="i-l-top">{{item.user_name}}</div>
-                <div class="i-l-bottom">{{isSeller(item.seller_ship)}}</div>
-            </div>
-            <div class="item-right">
-                <img src="">
-            </div>
-        </div>
-
     </div>
 
 </div>
