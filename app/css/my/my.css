@@ -29,16 +29,33 @@
     float: left;
 }
 
+.list-border {
+    border-bottom: 1px solid #d9d9d9;
+    border-top: 1px solid #d9d9d9;
+}
+
 .kqd_grid_4{
     width: 25%;
 }
 
+#myOrder .weui_cells:after {
+    border-bottom: 0;
+}
 
-.weui_grids:before {
+.kqd_grids_top {
+    margin-top: 15px;
+}
+#kqdGrids .kqd_grid_label_top {
+    margin-top: 0;
+}
+#kqdGrids .weui_grids:before {
     border-top: 0;
 }
-.weui_grid:before {
+#kqdGrids .weui_grid:before {
     border-right: 0;
+}
+#kqdGrids .weui_grid:after {
+    border-bottom: 0;
 }
 
 .kqd_grid_img_large {
