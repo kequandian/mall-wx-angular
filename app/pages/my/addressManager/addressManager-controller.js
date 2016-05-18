@@ -51,7 +51,7 @@ angular.module('addressManager.controller', ['addressManager.service'])
             AddressManagerFty.addContact($scope.contact).then(
                 function (result) {
                     //console.log(result);
-                    $state.go('cart-settlement');
+                    $state.go('addressManager');
                 },function (error){
                     console.log(error);
                 });
@@ -62,7 +62,7 @@ angular.module('addressManager.controller', ['addressManager.service'])
             AddressManagerFty.editContact($scope.contact.id, $scope.contact).then(
                 function (result) {
                     console.log(result);
-                    $state.go('cart-settlement');
+                    $state.go('addressManager');
                 },function (error){
                     console.log(error);
                 });
