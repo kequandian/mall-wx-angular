@@ -1,3 +1,6 @@
+/*
+* 分销佣金
+* */
 angular.module('commission.controller', ['commission.service'])
 
     .controller('CommissionController', ['$scope', 'CommissionFty', function($scope, CommissionFty){

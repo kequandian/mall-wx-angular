@@ -1,6 +1,6 @@
 <div id="orderDetails">
 
-    <div class="order-details-min-height">
+    <div>
         <!--订单状态-->
         <div class="order-status">
             <div class="o-status-img">
@@ -9,7 +9,7 @@
             <div class="o-status-info">
                 <div class="o-status">订单状态：{{order_jy_status(detailsInfo.status)}}</div>
                 <div class="o-number">订单号：{{detailsInfo.order_number}}</div>
-                <div class="o-total">订单金额：￥{{detailsInfo.total_price}}</div>
+                <div class="o-total">订单金额：{{total_price|currency:'￥'}}</div>
             </div>
         </div>
 
@@ -51,7 +51,7 @@
                 <span>买家留言：</span>
             </div>
             <div class="total-price">
-                <i class="total-price-i">共{{productCount}}件商品  实际付款：￥69.00</i>
+                <span class="total-price-i">共{{productCount}}件商品  实际付款：{{total_price|currency:'￥'}}</span>
             </div>
             <div class="closing-time">
                 <span>成交时间：2016-04-25</span>
@@ -60,7 +60,7 @@
     </div>
 
     <!-- 底部 -->
-    <div id="content-footer">
+    <div id="content-footer" style="display: none;">
         <div class="content-footer-div">
             <div class="c-f-d-right">店铺主页</div>
             <div class="c-f-d-center">会员中心</div>

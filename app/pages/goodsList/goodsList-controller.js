@@ -23,5 +23,23 @@ angular.module('goodsList.controller', ['goodsList.service'])
             }
 
 
+            //添加购物车
+            $scope.addProductToCart = function(productId){
+                var proId = productId;
+                var count = 1;
+                GoodsListFty.addProToCatService(proId)
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            $.toast.prototype.defaults.duration = 2000;
+                            $.toast("成功添加商品");
+                        }else{
+                            $.toast("添加失败", "cancel");
+                        }
+                    }, function(error){
+                        $.toast("添加失败", "cancel");
+                    })
+            };
+
+
 
     }]);

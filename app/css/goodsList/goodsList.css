@@ -65,6 +65,12 @@
   padding: 0 5px 0 5px;
 }
 
+#goodsList .goods-c-right img{
+  width: 20px;
+  height: 18px;
+  margin-top: 7px;
+}
+
 #goodsList #footer{
   width: 100%;
   position: fixed;
