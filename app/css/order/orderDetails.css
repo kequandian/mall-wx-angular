@@ -50,11 +50,12 @@
     padding-left: 7px;
     padding-right: 7px;
     background-color: white;
+    position: relative;
 }
 
 #orderDetails .o-address-img{
     height: 55px;
-    float: left;
+    position: absolute;
 }
 
 #orderDetails .o-address-img img{
@@ -64,7 +65,7 @@
 }
 
 #orderDetails .o-address-info{
-    margin-left: 10px;
+    margin-left: 35px;
     float: left;
 }
 

@@ -68,8 +68,12 @@ body, html {
 
 #content #ad{
     margin-top: 45px;
-    height: 180px;
+    height: 160px;
     /*background: #cccccc;*/
+}
+
+#content .swiper-slide img{
+    height: 160px;
 }
 
 /*¹¦ÄÜµ¼º½*/
@@ -111,13 +115,22 @@ body, html {
     color: #9B9B9B;
 }
 
+#content .weui_grid:before{
+    border: 0;
+}
+
+#content .weui_grid:after{
+    border: 0;
+}
+
 #content .home_grid{
     width: 25%;
+    padding: 7px 10px;
 }
 
 
 #content .panic-buying-ad {
-    margin: 8px 10px 10px 8px;
+    margin:0 10px 10px 8px;
 }
 #content .panic-buying-ad .ad-1{
     width: 100%;
@@ -155,7 +168,7 @@ body, html {
 #content .p-buying-left{
     float: left;
     width: 49%;
-    height: 105px;
+    height: 90px;
     border-top: 1px solid #cccccc;
     border-right: 1px solid #cccccc;
     border-bottom: 1px solid #cccccc;
@@ -163,20 +176,21 @@ body, html {
 
 #content .p-b-left{
     width: 40%;
-    padding-top: 25px;
+    padding-top: 15px;
     float: left;
 }
 
 #content .p-b-left img{
-    width: 55px;
-    height: 55px;
-    background-color: #007aff;
+    width: 40px;
+    height:40px;
     float: right;
+    margin-top: 7px;
+    margin-right: 5px;
 }
 
 #content .p-b-right{
-    height: 55px;
-    padding-top: 24px;
+    height: 40px;
+    padding-top: 15px;
     margin-left: 5px;
     float: left;
 }
@@ -184,7 +198,7 @@ body, html {
 #content .p-buying-right{
     float: right;
     width: 49%;
-    height: 105px;
+    height: 90px;
     border-top: 1px solid #cccccc;
     border-left: 1px solid #cccccc;
     border-bottom: 1px solid #cccccc;
@@ -245,12 +259,12 @@ body, html {
 }
 
 #content .a-p-right-item .span-1{
-    height: 20px;
-    line-height: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    line-height: 18px;
     font-size: 14px;
     color:#EA9ED6;
 }
-
 
 #content .a-p-right-item .span-2{
     height: 16px;

@@ -28,9 +28,6 @@ angular.module('myTeam.controller', ['myTeam.service'])
 
 
 
-
-
-
             myTeams();
             function myTeams(){
 

@@ -1,0 +1,14 @@
+#pianPage{
+    /*background-color: #F8F8F8;*/
+    background-color: white;
+    height: 100%;
+}
+
+#pianPage .pian-content{
+    padding: 5px;
+}
+
+#pianPage .pian-content img{
+    width: 100%;
+    margin-top: 20px;
+}

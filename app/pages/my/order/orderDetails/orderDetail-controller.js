@@ -12,12 +12,14 @@ angular.module('orderDetails.controller', ['orderDetails.service'])
                     .then(function(json){
                         if(json.status_code == 0){
                             $scope.detailsInfo = json.data;
-
                             var count = 0;
+                            var t_price = 0;
                             angular.forEach($scope.detailsInfo.order_items, function(v, k){
                                 count+= v.quantity;
+                                t_price += (v.final_price * v.quantity);
                             });
                             $scope.productCount = count;
+                            $scope.total_price = t_price + $scope.detailsInfo.freight;
 
 
 

@@ -1,3 +1,6 @@
+/*
+* 我的代理
+* */
 angular.module('myAgent.controller', ['myAgent.service'])
     .controller('MyAgentController', ['$scope', 'MyAgentFty', function($scope, MyAgentFty){
 

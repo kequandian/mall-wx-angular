@@ -14,14 +14,15 @@
             <!--</div>-->
         <!--</div>-->
         <div class="my-page-head">
-            <div class="user-photo"><img src="img/my/userPhoto.png"></div>
+            <div class="user-photo"><img ng-src="{{userInfo.avatar != null ? userInfo.avatar : 'img/my/userPhoto.png'}}"></div>
             <div class="user-info">
                 <div class="user-detail">
                     <p>
-                        下午好，Andy
+                        下午好，{{userInfo.name}}
                     </p>
                     <p>
-                        会员号：888888888
+                        <!--会员号：{{userInfo.weixin}}-->
+                        会员号：-
                     </p>
                 </div>
             </div>
@@ -79,7 +80,7 @@
             <!--</div>-->
         <!--</div>-->
         <div id="kqdGrids">
-            <div class="weui_grids kqd_grids_top">
+            <div class="weui_grids">
                 <a ui-sref="myTeam" class="weui_grid kqd_grid_4" data-id="button">
                 <!--<a class="weui_grid kqd_grid_4" data-id="button">-->
                     <div class="weui_grid_icon kqd_grid_img_large">
@@ -105,7 +106,7 @@
                         分销订单
                     </p>
                 </a>
-                <a href="" class="weui_grid kqd_grid_4" data-id="cell">
+                <a ui-sref="distributionInfo" class="weui_grid kqd_grid_4" data-id="cell">
                     <div class="weui_grid_icon kqd_grid_img_large">
                         <img src="img/sellerPage/sellerinfo.png">
                     </div>
@@ -121,7 +122,7 @@
                         我的代理
                     </p>
                 </a>
-                <a href="" class="weui_grid kqd_grid_4" data-id="button">
+                <a ui-sref="pianPage" class="weui_grid kqd_grid_4" data-id="button">
                     <div class="weui_grid_icon kqd_grid_img_large">
                         <img src="img/sellerPage/takeMoney.png">
                     </div>
@@ -129,7 +130,7 @@
                         提佣方案
                     </p>
                 </a>
-                <a href="" class="weui_grid kqd_grid_4" data-id="cell">
+                <a class="weui_grid kqd_grid_4" data-id="cell"ng-click="initQrcode()">
                     <div class="weui_grid_icon kqd_grid_img_large">
                         <img src="img/sellerPage/QRcode.png">
                     </div>
@@ -194,4 +195,19 @@
 
             <!--</div>-->
     </div>
+</div>
+
+
+<div id="light" class="white_content">
+    <span style="color:black;z-index:9999;">
+        推广二维码
+    </span>
+    <div id="dituContent" style="margin-bottom: 10px; margin-top: 10px;">
+    </div>
+
+    <div>长按识别二维码</div>
+
+    <span ng-click="close_qrcode()" style="color:black;z-index:9999;">
+        Close
+    </span>
 </div>

@@ -37,9 +37,12 @@
         <!-- 广告图片 -->
         <div id="homeHeaderSlider" class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1n3rZHFXXXXX9XFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
-                <div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i4/TB10rkPGVXXXXXGapXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
-                <div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1kQI3HpXXXXbSXFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
+                <div class="swiper-slide" ng-repeat="adItem in ad_list">
+                    <img ng-src="{{adItem.image}}">
+                </div>
+                <!--<div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1n3rZHFXXXXX9XFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>-->
+                <!--<div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i4/TB10rkPGVXXXXXGapXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>-->
+                <!--<div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1kQI3HpXXXXbSXFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>-->
             </div>
         </div>
     </div>
@@ -69,7 +72,7 @@
     </nav>
 
 
-    <div class="weui_grids" style="height: 120px; border-bottom: 1px solid #cccccc;">
+    <div class="weui_grids" style="">
         <a ui-sref="#" class="weui_grid home_grid">
             <div class="weui_grid_icon kqd_grid_img_large">
                 <img src="img/home/new-product.png" alt="">
@@ -121,20 +124,20 @@
     <div class="panic-buying">
         <div class="p-buying-left">
             <div class="p-b-left">
-                <img src="">
+                <img src="img/home/panic-buying-01.png">
             </div>
             <div class="p-b-right">
-                <div style="font-size: 22px;">今日<span style="color: orange; font-weight: 600;">抢购</span></div>
+                <div style="font-size: 20px;">今日<span style="color: orange; font-weight: 600;">抢购</span></div>
                 <div style="font-size: 14px; color: #9B9B9B;">立即抢购>></div>
             </div>
         </div>
         <div class="p-buying-right">
 
             <div class="p-b-left">
-                <img src="">
+                <img src="img/home/panic-buying-02.png">
             </div>
             <div class="p-b-right">
-                <div style="font-size: 22px;">每日<span style="color: #F945A3; font-weight: 600;">新品</span></div>
+                <div style="font-size: 20px;">每日<span style="color: #F945A3; font-weight: 600;">新品</span></div>
                 <div style="font-size: 14px; color: #9B9B9B;">立即抢购>></div>
             </div>
 
@@ -168,13 +171,13 @@
                 </div>
             </div>
             <div class="a-p-right">
-                <div class="a-p-right-item" style="margin-left: 2px;">
-                    <span class="span-1">面部护理</span>
-                    <div class="span-2">美好皮肤从面部护理开始</div>
-                    <img src="img/home/area-makeup-2.png">
+                <div class="a-p-right-item" style="margin-left: 2px;" ui-sref="details({productId:rec_product_01.id})">
+                    <span class="span-1">{{rec_product_01.name | cutText:true:13:" "}}</span>
+                    <!--<div class="span-2">美好皮肤从面部护理开始</div>-->
+                    <img ng-src="{{rec_product_01.cover}}">
                 </div>
 
-                <div class="a-p-right-item" style="margin-left: 2px;">
+               <!-- <div class="a-p-right-item" style="margin-left: 2px;">
                     <span class="span-1">眼部护理</span>
                     <div class="span-2">“睛”彩蜕变</div>
                     <img src="img/home/area-makeup-2.png">
@@ -190,14 +193,14 @@
                     <span class="span-1">嘴唇护理</span>
                     <div class="span-2">无法抵挡的水润双唇</div>
                     <img src="img/home/area-makeup-2.png">
-                </div>
+                </div>-->
             </div>
         </div>
     </div>
 
 
     <!-- 婴儿专区 -->
-    <div class="s-size-area">
+    <!--<div class="s-size-area">
         <div class="s-area-img">
             <img src="img/home/area-img-2.png">
         </div>
@@ -237,10 +240,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 
     <!-- 数码专区 -->
-    <div class="s-size-area">
+    <!--<div class="s-size-area">
         <div class="s-area-img">
             <img src="img/home/area-img-3.png">
         </div>
@@ -280,7 +283,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 
 
     <!-- 底部 -->

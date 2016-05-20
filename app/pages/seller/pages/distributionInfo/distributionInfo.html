@@ -1,0 +1,53 @@
+<div id="distributionInfo">
+
+    <form ng-submit="">
+        <!-- 基本信息 -->
+        <div class="weui_cells weui_cells_form settlement-font">
+            <div class="weui_cell">
+                <div class="weui_cell_hd">
+                    <label class="weui_label">姓名：</label>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="text" placeholder="姓名" ng-model="contact.contact_user" ng-init="contact.contact_user=editC.contact_user">
+                </div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd">
+                    <label class="weui_label">手机号码：</label>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="tel" placeholder="手机号码" ng-model="contact.phone" ng-init="contact.phone=editC.phone">
+                </div>
+            </div>
+
+
+            <div class="weui_cell">
+                <div class="weui_cell_hd">
+                    <label class="weui_label">店铺名：</label>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="tel" placeholder="店铺名" ng-model="contact.phone" ng-init="contact.phone=editC.phone">
+                </div>
+            </div>
+
+
+            <div class="weui_cell">
+                <div class="weui_cell_hd">
+                    <label class="weui_label">微信昵称：</label>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="tel" placeholder="微信昵称" ng-model="contact.phone" ng-init="contact.phone=editC.phone">
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div style="margin-top: 15px; margin-left: 20px;margin-right: 20px;">
+            <input type="submit" class="weui_btn weui_btn_primary" value="确认">
+        </div>
+
+    </form>
+
+</div>

@@ -33,7 +33,9 @@
                 </div>
                 <div class="goods-box-footer-text">
                   <div class="goods-c-left c-left">${{productItem.price}}</div>
-                  <div class="goods-c-right c-right">加入购物车</div>
+                  <div class="goods-c-right c-right" ng-click="addProductToCart(productItem.id)">
+                    <img src="img/goodList/good-list-cart-icon.png">
+                  </div>
                 </div>
               </div>
 

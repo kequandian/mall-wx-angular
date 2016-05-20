@@ -12,6 +12,7 @@
     margin-left: .80rem;
     border-radius: 50%;
     border: 2px solid #fff;
+    position: absolute;
 }
 .my-page-head img{
     width: 80px;
@@ -20,6 +21,7 @@
 
 .my-page-head .user-info {
     padding-top: 18px;
+    margin-left: 115px;
 }
 .user-detail {
     min-width: 200px;
@@ -32,6 +34,10 @@
 .list-border {
     border-bottom: 1px solid #d9d9d9;
     border-top: 1px solid #d9d9d9;
+}
+
+#kqdGrids .weui_grid{
+    padding: 10px 10px;
 }
 
 .kqd_grid_4{
@@ -59,14 +65,14 @@
 }
 
 .kqd_grid_img_large {
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
 }
 .weui_cells_access.kqd_cells_top {
     margin-top: 0;
 }
 .weui_cell.kqd_cell_padding {
-    padding: 20px 15px;
+    padding: 10px 10px;
 }
 .weui_cell_ft.kqd_cell_ft_font {
     font-size: 14px;
