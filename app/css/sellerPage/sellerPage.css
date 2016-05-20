@@ -7,6 +7,7 @@
 #sellerPage .seller-page-content{
     overflow-x: hidden;
     overflow-y: scroll;
+    z-index: 1;
 }
 
 /*#sellerPage .account-info{*/
@@ -48,7 +49,7 @@
     margin-left: 25px;
     width: 100%;
     /*height: 130px;*/
-    height: 100px;
+    height: 95px;
     /*background-color: #FF6600;*/
     background-color: #fff;
     /*margin-top: 2px;*/
@@ -82,7 +83,7 @@
 }
 
 #sellerPage .s-p-top{
-    padding-top: 15px;
+    padding-top: 10px;
     height: 35px;
     line-height: 35px;
     color: #6e6e6e;
@@ -179,4 +180,41 @@
     line-height: 30px;
 }
 
+.black_overlay{
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index:1001;
+    -moz-opacity: 0.8;
+    opacity:.80;
+    filter: alpha(opacity=80);
+}
+.white_content{
+    display: none;
+    position: absolute;
+    top: 25%;
+    left: 15%;
+    right: 15%;
+    text-align: center;
+    /*width: 50%;*/
+    height: 250px;
+    padding: 16px;
+    border: 16px solid RED;
+    background-color: white;
+    z-index:1002;
+    overflow:auto
+}
 
+.qrcpde-position{
+    width: 100%;
+    height: 50px;
+    background-color: #007aff;
+    align-content: center;
+}
+
+#dituContent{
+    text-align: center;
+    align-content: center;
+}

@@ -30,7 +30,7 @@ angular.module('homePage.controller', ['homePage.service'])
                 HomePageFty.getAdService()
                     .then(function(json){
                         if(json.status_code == 0){
-                            $scope.ad_list = json.data[0];
+                            $scope.ad_list = json.data[0].ads;
                             //alert(angular.toJson($scope.ad_list));
                         }
                     }, function(error){
@@ -39,7 +39,7 @@ angular.module('homePage.controller', ['homePage.service'])
             }
 
             function detailSwiper(){
-                var headerSwiper = new Swiper('#homeHeaderSlider', {
+                var homeHeaderSlider = new Swiper('#homeHeaderSlider', {
                     slidesPerView: 1,
                     paginationClickable: true,
                     centeredSlides: true,

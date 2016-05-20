@@ -12,6 +12,7 @@
     "angular-mocks": "~1.4.0",
     "html5-boilerplate": "~5.2.0",
     "angular-ui-router": "1.0.0-alpha.4",
-    "jquery-weui": "~0.6.1"
+    "jquery-weui": "~0.6.1",
+    "qrcode.js": "qrcode#~1.0.2"
   }
 }
