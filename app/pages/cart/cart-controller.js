@@ -106,7 +106,7 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
 
     }])
 
-    .controller('SettlementController', ['$scope', '$state', '$stateParams', 'AddressManagerFty', 'CartFty', function($scope, $state, $stateParams, AddressManagerFty, CartFty){
+    .controller('SettlementController', ['$scope', '$state', '$stateParams', '$location', 'AddressManagerFty', 'CartFty', function($scope, $state, $stateParams, $location, AddressManagerFty, CartFty){
 
         AllContacts();
 
@@ -126,6 +126,7 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
         }
 
         //获取结算数据
+        $scope.settlementCarts= $stateParams.carts;
         $scope.settlementData=[];
         console.log("carts:"+$stateParams.carts);
         angular.forEach($stateParams.carts, function(data,index){
@@ -146,7 +147,8 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
             CartFty.addOrder($scope.order).then(
                 function (result) {
                     console.log(result.data);
-                    $state.go('order-confirm',{data:result.data});
+                    window.location.href='/app/payment/wpay/'+ result.data.order_number;
+                    //$state.go('order-confirm',{data:result.data});
                 },function (error){
                     console.log(error);
                 });

@@ -1,6 +1,6 @@
 <div class="">
     <div class="view-cart">
-        <header class="bar top-bar clearfix cart-header">
+        <header class="header cart-header">
             <span class="cart-title">购物车</span>
         </header>
 
@@ -21,7 +21,7 @@
         </div>
 
         <form ng-hide="cart_info_hide">
-            <div class="cart-container">
+            <div class="view-container">
                 <div class="">
                     <ul class="cart-list" ng-repeat="cart in carts">
                         <li class="">
@@ -55,7 +55,7 @@
                 </div>
             </div>
 
-            <footer id="foot">
+            <footer id="foot" class="cart-foot">
                 <div class="footLeft">
                     <input class="cart-checkbox" type="checkbox" value="全不选" id="selectAll" ng-model="$allChecked" ng-change="checkAll()">
                     <label id="checkAll" class="ion-android-checkbox-outline-blank active cart-item-label" for="selectAll"></label>
@@ -65,8 +65,8 @@
                         <span style="font-size: 12px;">运费:<span ng-bind="totalFreight()|currency:'￥'"></span></span>
                     </div>
                 </div>
-                <button ng-click="goSettlement(totalToPay(),totalFreight())" ng-disabled="!someChecked()" style="border: 0">
-                    <div class="footRight">
+                <button class="footRight" ng-click="goSettlement(totalToPay(),totalFreight())" ng-disabled="!someChecked()">
+                    <div>
                         去结算
                     </div>
                 </button>
