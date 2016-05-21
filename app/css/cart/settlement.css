@@ -44,6 +44,12 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
 }
+.address-img {
+    height: 23px;
+    float: left;
+    margin-top: -5px;
+    margin-right: 10px;
+}
 .settlement-list li {
     display: -webkit-box;
     -webkit-box-align: center;
