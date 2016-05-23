@@ -27,22 +27,23 @@ angular.module('sellerPage.controller', ['sellerPage.service'])
 
             var invitationUrl = "推广二维码";
             if(invitationUrl != null) {
-                $scope.qrcode = new QRCode(document.getElementById("dituContent"), {
-                    width: 200,
-                    height: 180
-                });
-                $scope.qrcode.makeCode(invitationUrl);
+                if(qrcode == null) {
+                    var qrcode = new QRCode(document.getElementById("dituContent"), {
+                        width: 180,
+                        height: 180
+                    });
+                    qrcode.makeCode(invitationUrl);
+                }
             }else{
                 $.toast('生成二维码失败', 'cancel');
             }
+
+            //关闭二维码
+            $scope.close_qrcode = function(){
+                document.getElementById('light').style.display='none';
+            }
         };
 
-        //关闭二维码
-        $scope.close_qrcode = function(){
-            document.getElementById('light').style.display='none';
-            document.getElementById('fade').style.display='none';
-            $scope.qrcode.close();
-        }
     }])
 
 

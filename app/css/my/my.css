@@ -17,6 +17,7 @@
 .my-page-head img{
     width: 80px;
     height: 80px;
+    border-radius: 50%;
 }
 
 .my-page-head .user-info {

@@ -195,8 +195,8 @@
     display: none;
     position: absolute;
     top: 25%;
-    left: 15%;
-    right: 15%;
+    left: 6%;
+    right: 6%;
     text-align: center;
     /*width: 50%;*/
     height: 280px;
@@ -214,7 +214,8 @@
     align-content: center;
 }
 
-#dituContent{
-    text-align: center;
-    align-content: center;
+.qrcode-img div{
+    margin: 0 auto;
+    width: 180px;
+    height: 180px;
 }
