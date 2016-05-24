@@ -1,11 +1,15 @@
 angular.module('collection.service', [])
-    .factory('CollectionFty', ['$http','$q', function($http,$q) {
+    .factory('CollectionFty', ['$http','$q','GlobalVariable', function($http,$q,GlobalVariable) {
         return{
-            // 获取常见问题数据
+            // 获取收藏商品数据
             collectionService: function () {
                 var deferred = $q.defer();
-                var url = "/refresh";
-                $http.get(url)
+                var url = GlobalVariable.SERVER_PATH + "/product_favorite";
+                $http.get(url,{
+                    headers:{
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
+                })
                     .success(function (data) {
                         return deferred.resolve(data);
                     }).error(function (data) {

@@ -1,10 +1,10 @@
 angular.module('homePage.controller', ['homePage.service'])
 
-    .controller('HomePageController', ['$scope','$state', 'HomePageFty','$rootScope',
-        function($scope,$state, HomePageFty,$rootScope){
+    .controller('HomePageController', ['$scope','$state','TabIndex', 'HomePageFty',
+        function($scope,$state,TabIndex, HomePageFty){
 
             document.title = "首页";
-
+            $scope.currentId = 1;
             //获取推荐商品
             getAd();
             //获取推荐商品

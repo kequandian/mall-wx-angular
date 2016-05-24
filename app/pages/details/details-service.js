@@ -36,6 +36,23 @@ angular.module('details.service', [])
                         return deferred.reject(data);
                     });
                 return deferred.promise;
+            },
+
+            // ÃÌº” ’≤ÿ
+            addCollectionService: function () {
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + "/product_favorite";
+                $http.get(url,{
+                    headers:{
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
+                })
+                    .success(function (data) {
+                        return deferred.resolve(data);
+                    }).error(function (data) {
+                        return deferred.reject(data);
+                    });
+                return deferred.promise;
             }
         }
     }]);

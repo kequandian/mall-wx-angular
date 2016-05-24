@@ -33,9 +33,9 @@
             <!--<div class="s-p-bottom">不含未结算部分</div>-->
         <!--</div>-->
         <div class="seller-profit">
-            <div class="s-p-top">会员级别：商城合伙人</div>
+            <div class="s-p-top">会员级别：-</div>
             <div class="s-p-bottom">
-                <span>可提佣金：￥68888.00</span>
+                <span>可提佣金：{{owner_balance.balance |currency:"￥"}}</span>
                 <img style="width: 78px;height: 30px;display: inline" src="img/sellerPage/takeCash.png">
             </div>
         </div>
@@ -44,7 +44,7 @@
             <li class="seller-commission">
                 <div class="seller-commission-value li-border">
                     <p class="commission-number">
-                        ￥88888.00
+                        {{owner_balance.balance |currency:"￥"}}
                     </p>
                     <p class="commission-text">
                         累计佣金
@@ -54,7 +54,7 @@
             <li class="seller-commission">
                 <div class="seller-commission-value li-border">
                     <p class="commission-number">
-                        658
+                        -
                     </p>
                     <p class="commission-text">
                         5月订单
@@ -64,7 +64,7 @@
             <li class="seller-commission">
                 <div class="seller-commission-value">
                     <p class="commission-number">
-                        ￥5888.00
+                        -
                     </p>
                     <p class="commission-text">
                         5月佣金
@@ -135,7 +135,7 @@
                         <img src="img/sellerPage/QRcode.png">
                     </div>
                     <p class="weui_grid_label">
-                        推广二维码
+                        推广码
                     </p>
                 </a>
                 <a ui-sref="marketing" class="weui_grid kqd_grid_4" data-id="toast">

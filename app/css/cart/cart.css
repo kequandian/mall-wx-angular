@@ -26,7 +26,7 @@ input::-webkit-inner-spin-button {
     line-height:51px;
 }
 .view-container {
-    padding-top:51px;
+    /*padding-top:51px;*/
     padding-bottom: 57px;
 }
 

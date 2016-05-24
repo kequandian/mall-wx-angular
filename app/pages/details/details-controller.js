@@ -3,6 +3,7 @@ angular.module('details.controller', ['details.service'])
     .controller('DetailsController', ['$scope', '$state','$stateParams', 'DetailsFty',
         function($scope,$state,$stateParams, DetailsFty){
 
+            //商品详情
             detailsInfo();
             function detailsInfo() {
 
@@ -62,7 +63,7 @@ angular.module('details.controller', ['details.service'])
                 });
             }
 
-            TitleReSet("商品详情");
+            /*TitleReSet("商品详情");
             function TitleReSet(title) {
                 // body...
                 document.title = title;
@@ -77,7 +78,7 @@ angular.module('details.controller', ['details.service'])
                         $iframe.off('load').remove();
                     }, 0);
                 }).appendTo($body);
-            }
+            }*/
 
             //添加购物车
             $scope.addProductToCart = function(productId){
@@ -98,6 +99,18 @@ angular.module('details.controller', ['details.service'])
             $scope.testToast = function(){
                 //$.toast.prototype.defaults.duration = 2000;
                 //$.toast("toast测试");
+            };
+
+            //添加收藏
+            $scope.addProductToCollection = function(productId){
+                DetailsFty.addCollectionService(productId)
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            //alert(angular.toJson(json));
+                        }
+                    }, function(error){
+                        $.toast('收藏失败', 'cancel');
+                    })
             }
 
 

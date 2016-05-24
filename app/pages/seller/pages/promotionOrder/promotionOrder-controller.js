@@ -43,5 +43,19 @@ angular.module('promotionOrder.controller', ['promotionOrder.service'])
             return group.show;
         };
 
+        //获取分销订单
+        getPromotionOrders();
+        function getPromotionOrders(){
+            PromotionOrderFty.promotionOrdersService()
+                .then(function(json){
+                    if(json.status_code == 0){
+                        $scope.promotion_order_list = json.data;
+                        //alert(angular.toJson($scope.promotion_order_list));
+                    }
+                }, function(error){
+                    $.toast('获取分销订单失败', 'cancel');
+                })
+        }
+
 
     }]);

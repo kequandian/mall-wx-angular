@@ -43,4 +43,18 @@ angular.module('myAgent.controller', ['myAgent.service'])
             return group.show;
         };
 
+        //获取代理信息
+        getAgents();
+        function getAgents(){
+            MyAgentFty.myAgentService()
+                .then(function(json){
+                    if(json.status_code == 0){
+                        $scope.agent_list = json.data;
+                        //alert(angular.toJson($scope.agent_list));
+                    }
+                }, function(error){
+                    $.toast('获取代理信息失败', 'cancel');
+                })
+        }
+
     }]);

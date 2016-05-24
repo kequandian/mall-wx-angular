@@ -1,12 +1,11 @@
 <div class="weui_tab">
-    <div class="weui_tab_bd">
+    <div class="weui_tab_bd" style="width: 100%;">
         <div ui-view></div>
     </div>
     <div class="weui_tabbar">
         <a ui-sref="home.homePage" class="weui_tabbar_item weui_bar_item_on">
             <div class="weui_tabbar_icon">
                 <img src="img/indexTab/Home.png">
-                <!--<img src="img/indexTab/Thumbnails.png">-->
             </div>
             <p class="weui_tabbar_label">首页</p>
         </a>
@@ -35,5 +34,16 @@
             </div>
             <p class="weui_tabbar_label">个人中心</p>
         </a>
+
+        <!--<a class="weui_tabbar_item"
+           ng-repeat="tab_item in home_tabs"
+           ng-class="{weui_bar_item_on : currentId == tab_item.id}"
+           ui-sref="{{tab_item.srefName}}"
+                >
+            <div class="weui_tabbar_icon">
+                <img ng-src="{{tab_item.tabs_img}}">
+            </div>
+            <p class="weui_tabbar_label">{{tab_item.name}}</p>
+        </a>-->
     </div>
 </div>
