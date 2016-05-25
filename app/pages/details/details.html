@@ -98,28 +98,7 @@
     </div>
 
     <div class="footer">
-        <div class="footer-home">
-            <div class="f-h-top">
-                <img src="img/details/aliwawa-img.png">
-            </div>
-            <div class="f-h-bottom">
-                客户
-            </div>
-        </div>
-        <div class="footer-cart" ui-sref="home.cart">
-            <div class="f-c-top">
-                <img src="img/details/cart-img.png">
-            </div>
-        </div>
-
-        <div class="footer-collection" ng-click="addProductToCollection(details.id)">
-            <div class="f-h-top">
-                <img src="img/details/star-collection.png">
-            </div>
-            <div class="f-h-bottom">
-                收藏
-            </div>
-        </div>
+       <!--
 
         <div class="item-button">
             <div class="details_buy_css" ng-click="testToast()">
@@ -128,7 +107,48 @@
             <div class="details_cart_css" ng-click="addProductToCart(details.id)">
                 加入购物车
             </div>
+        </div>-->
+
+        <div class="detail-footer-left">
+
+            <div class="footer-home">
+                <div class="f-h-top">
+                    <img src="img/details/aliwawa-img.png">
+                </div>
+                <div class="f-h-bottom">
+                    客户
+                </div>
+            </div>
+
+            <div class="footer-cart" ui-sref="home.cart">
+                <div class="f-c-top">
+                    <img src="img/details/cart-img.png">
+                </div>
+            </div>
+
+            <div class="footer-collection" ng-click="addProductToCollection(details.id)">
+                <div class="f-h-top">
+                    <img src="img/details/star-collection.png">
+                </div>
+                <div class="f-h-bottom">
+                    收藏
+                </div>
+            </div>
         </div>
+
+
+
+        <div class="detail-footer-right">
+            <div class="item-button">
+                <div class="details_buy_css" ng-click="testToast()">
+                    立即购买
+                </div>
+                <div class="details_cart_css" ng-click="addProductToCart(details.id)">
+                    加入购物车
+                </div>
+            </div>
+        </div>
+
     </div>
 
 </div>

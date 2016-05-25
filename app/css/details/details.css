@@ -1,6 +1,5 @@
 #details{
     background-color: #F8F8F8;
-    min-height: 100%;
 }
 
 #details .content{
@@ -247,6 +246,8 @@
     float: left;
 }
 
+
+
 #details .footer {
     width: 100%;
     height: 50px;
@@ -258,8 +259,15 @@
     background:white;
 }
 
+
+#details .detail-footer-left{
+    width: 50%;
+    height: 50px;
+    float: left;
+}
+
 #details .footer-home{
-    width: 50px;
+    width: 16%;
     height: 50px;
     text-align: center;
     position:absolute;
@@ -280,12 +288,11 @@
     font-size: 14px;
 }
 
-
 #details .footer-cart{
-    width:50px;
+    width:16%;
     height: 50px;
     text-align: center;
-    margin-left: 50px;
+    margin-left: 16%;
     position:absolute;
 }
 
@@ -296,24 +303,33 @@
 }
 
 #details .footer-collection{
-    width: 50px;
+    width: 16%;
     height: 50px;
-    margin-left: 100px;
+    margin-left: 32%;
     text-align: center;
     position:absolute;
 }
 
 
+#details .detail-footer-right{
+    width: 50%;
+    height: 50px;
+    float: left;
+    background-color: #FF4B00;
+}
+
 #details .item-button{
     /*margin-top: 6px;*/
     /*margin-right: 7px;*/
+    width: 100%;
     height: 50px;
-    font-size: 16px;
+    font-size: 15px;
     color: white;
     float: right;
 }
+
 #details .details_cart_css{
-    width: 100px;
+    width: 54%;
     height: 50px;
     line-height: 50px;
     text-align: center;
@@ -322,7 +338,7 @@
 }
 
 #details .details_buy_css{
-    width: 100px;
+    width: 46%;
     line-height: 50px;
     text-align: center;
     background-color: #FF4B00;

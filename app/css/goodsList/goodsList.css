@@ -11,6 +11,35 @@
   overflow-y: scroll;
 }
 
+.arrow-status{
+  width: 20px;
+  height: 20px;
+  background-size: 120px 20px;
+  background-position:-5px 0;
+  background-image: url(../../img/goodList/goodList-img-arrow.png);
+  background-repeat: no-repeat;
+  position: absolute;
+}
+
+.arrow-status-up{
+  width: 20px;
+  height: 20px;
+  background-size: 120px 20px;
+  background-position:-5px 0;
+  background-image: url(../../img/goodList/goodList-img-arrow.png);
+  background-repeat: no-repeat;
+  position: absolute;
+}
+
+.arrow-status-down{
+  width: 38px;
+  height: 20px;
+  background-size:120px 20px;
+  background-position:-47px 2px;
+  background-image: url(../../img/goodList/goodList-img-arrow.png);
+  background-repeat: no-repeat;
+  position: absolute;
+}
 
 #goodsList .goods-box-header{
   margin-top: 5px;

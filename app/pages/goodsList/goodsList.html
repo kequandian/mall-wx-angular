@@ -6,18 +6,23 @@
       <div class="bd">
         <div class="weui_tab">
           <div class="weui_navbar">
-            <div class="weui_navbar_item weui_bar_item_on">
+            <div class="weui_navbar_item weui_bar_item_on" ng-click="retArrowStatus()">
               默认
             </div>
-            <div class="weui_navbar_item">
+            <div class="weui_navbar_item" ng-click="retArrowStatus()">
               销量
             </div>
-            <div class="weui_navbar_item">
+            <div class="weui_navbar_item" ng-click="retArrowStatus()">
               新品
             </div>
 
-            <div class="weui_navbar_item">
-              价格
+            <div class="weui_navbar_item" style="position: relative;" ng-click="priceStatus()">
+              <!--<div>{{priceIndex}}</div>-->
+              <div style="position: absolute; width: 100%; text-align: center;">
+                价格
+              </div>
+              <div class="{{price_arrow}}" style="right: 10px;" ng-hide="price_arrow_hide">
+              </div>
             </div>
           </div>
           <div class="weui_tab_bd">

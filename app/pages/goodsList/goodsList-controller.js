@@ -5,6 +5,35 @@ angular.module('goodsList.controller', ['goodsList.service'])
 
             document.title = "商品列表";
 
+            /*$scope.priceIndex = "价格";
+            $scope.priceStatus = function(){
+                if($scope.priceIndex == "价格"){
+                    $scope.priceIndex = "低到高";
+                }else if($scope.priceIndex == "低到高"){
+                    $scope.priceIndex = "高到低";
+                }else if($scope.priceIndex == "高到低"){
+                    $scope.priceIndex = "低到高";
+                }
+            };*/
+
+            $scope.price_arrow = "arrow-status";
+            $scope.price_arrow_hide = true;
+            $scope.priceStatus = function(){
+                $scope.price_arrow_hide = false;
+                if($scope.price_arrow == "arrow-status"){
+                    $scope.price_arrow = "arrow-status-up";
+                }else if($scope.price_arrow == "arrow-status-up"){
+                    $scope.price_arrow = "arrow-status-down";
+                }else if($scope.price_arrow == "arrow-status-down"){
+                    $scope.price_arrow = "arrow-status-up";
+                }
+            };
+
+            $scope.retArrowStatus = function(){
+                $scope.price_arrow = "arrow-status";
+                $scope.price_arrow_hide = true;
+            };
+
             addressList();
             function addressList(){
 

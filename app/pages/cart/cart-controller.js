@@ -9,7 +9,7 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
         function AllCarts() {
             CartFty.getCarts().then(
                 function (result) {
-                    console.log(result.data);
+                    //console.log(result.data);
                     $scope.carts = result.data;
                     if($scope.carts != null){
                         $scope.empty_cart_hide = true;

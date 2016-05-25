@@ -88,9 +88,11 @@ input::-webkit-inner-spin-button {
     padding: 15px 0 15px 5px;
 }
 .cart-checkbox + label:before {
+    color: black;
     content:"\f3fe";
 }
 .cart-checkbox:checked + label:before {
+    color: red;
     content:"\f3ff";
 }
 .cart-item-label {
@@ -108,7 +110,7 @@ input::-webkit-inner-spin-button {
     float: left;
 }
 .cart-item-label.active {
-    color: red;
+    /*color: red;*/
 }
 
 /*item-----------------*/
