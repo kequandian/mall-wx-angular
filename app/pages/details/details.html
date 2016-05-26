@@ -4,16 +4,17 @@
 
         <!-- 商品图片 -->
         <div class="product-img">
-            <div id="headerSlider" class="swiper-container">
+            <!--<div id="headerSlider" class="swiper-container">
                 <div class="swiper-wrapper">
-                    <!--<div class="swiper-slide" ng-repeat="iii in detail_cate">-->
-                        <!--<img ng-src="{{iii.name}}">-->
-                    <!--</div>-->
+                    &lt;!&ndash;<div class="swiper-slide" ng-repeat="iii in detail_cate">&ndash;&gt;
+                        &lt;!&ndash;<img ng-src="{{iii.name}}">&ndash;&gt;
+                    &lt;!&ndash;</div>&ndash;&gt;
                     <div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1n3rZHFXXXXX9XFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
                     <div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i4/TB10rkPGVXXXXXGapXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
                     <div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1kQI3HpXXXXbSXFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
                 </div>
-            </div>
+            </div>-->
+            <img ng-src="{{details.cover}}">
         </div>
 
         <!-- 商品内容 -->
@@ -23,7 +24,7 @@
             </div>
             <div class="product-price">
                 <span>￥{{details.price}}</span>
-                <div>市场价：<i>￥99.00</i></div>
+                <div>市场价：<i>-</i></div>
             </div>
 
             <div class="product-freight" style="border-top: 1px solid #ECECEC;">
@@ -79,8 +80,7 @@
             <div class="picture-info">
                 <span>图文详解</span>
                 <div class="product-img-list">
-                    <img src="img/home/area-img-1.png">
-                    <img src="img/home/area-img-1.png">
+                    <img ng-src="{{imgs.url}}" ng-repeat="imgs in details.images">
                 </div>
             </div>
 
@@ -111,18 +111,17 @@
 
         <div class="detail-footer-left">
 
-            <div class="footer-home">
-                <div class="f-h-top">
-                    <img src="img/details/aliwawa-img.png">
-                </div>
-                <div class="f-h-bottom">
-                    客户
-                </div>
-            </div>
+            <!--<div class="footer-home">-->
+                <!--<div class="f-h-top">-->
+                    <!--<img src="img/details/aliwawa-img.png">-->
+                <!--</div>-->
+                <!--<div class="f-h-bottom">-->
+                    <!--客服-->
+                <!--</div>-->
+            <!--</div>-->
 
             <div class="footer-cart" ui-sref="home.cart">
-                <div class="f-c-top">
-                    <img src="img/details/cart-img.png">
+                <div class="f-c-top ion-app-biliya-tabs-cart">
                 </div>
             </div>
 

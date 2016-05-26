@@ -88,7 +88,7 @@ input::-webkit-inner-spin-button {
     padding: 15px 0 15px 5px;
 }
 .cart-checkbox + label:before {
-    color: black;
+    color: #9D9D9D;
     content:"\f3fe";
 }
 .cart-checkbox:checked + label:before {

@@ -1,7 +1,7 @@
 <div id="userInfo">
 
     <div class="user-avatar">
-        <img class="user-photo" src="img/indexTab/icon_nav_panel.png" alt="头像">
+        <img ng-src="{{userInfo.avatar != null ? userInfo.avatar : 'img/my/userPhoto.png'}}">
         <span>编辑头像</span>
         <i class="ion-ios-arrow-right"></i>
     </div>
@@ -15,15 +15,14 @@
                         <label class="weui_label">昵称：</label>
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <input class="weui_input" type="text" placeholder="请输入昵称" ng-model="contact.contact_user" ng-init="contact.contact_user=editC.contact_user">
-                    </div>
-                </div>
+                        <input class="weui_input" type="text" placeholder="请输入昵称" ng-model="userInfo.name">
+                    </div>               </div>
                 <div class="weui_cell">
                     <div class="weui_cell_hd">
                         <label class="weui_label">ID：</label>
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <input class="weui_input" type="tel" placeholder="请输入ID" ng-model="contact.phone" ng-init="contact.phone=editC.phone">
+                        <input class="weui_input" type="tel" placeholder="请输入ID" ng-model="userInfo.weixin">
                     </div>
                 </div>
 
@@ -46,7 +45,7 @@
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
                         <input class="weui_input" type="text" id="data_time"  data-toggle='date'
-                               placeholder="选择日期" ng-model="contact.phone">
+                               placeholder="选择日期" ng-model="userInfo.last_login_date">
                     </div>
                 </div>
 
@@ -54,7 +53,7 @@
 
                 <div class="weui_cell">
                     <div class="weui_cell_hd">
-                        <label class="weui_label" style="margin-top: -26px;">介绍：</label>
+                        <label class="weui_label" style="margin-top: -36px;">介绍：</label>
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
                         <textarea class="weui_textarea settlement-font" placeholder="请输入详细地址信息" rows="3"

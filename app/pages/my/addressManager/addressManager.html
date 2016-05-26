@@ -28,17 +28,34 @@
             <div class="weui_panel_bd" ng-repeat="contact in contacts">
                 <div class="weui_media_box weui_media_text">
                     <div class="selectContact">
-                        <h4 class="weui_media_desc">{{contact.contact_user}} {{contact.phone}}</h4>
+                        <h4 class="weui_media_desc">
+                            {{contact.contact_user}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{contact.phone}}
+                        </h4>
                         <p class="weui_media_desc">
                             {{contact.province}}{{contact.city}}{{contact.district}}
                             {{contact.street}}{{contact.street_number}} {{contact.detail}}
-                            邮编：{{contact.zip}}
+                            <!--邮编：{{contact.zip}}-->
                         </p>
                     </div>
                     <ul class="weui_media_info">
-                        <li class="weui_media_info_meta">收货时间</li>
-                        <li class="weui_media_info_meta"><a href="" ng-click="editAddress(contact)">修改</a></li>
-                        <li class="weui_media_info_meta weui_media_info_meta_extra"><a href="" ng-click="deleteContact(contact.id)">删除</a></li>
+                        <li class="weui_media_info_meta" style="width: 30%;">
+                            <input class="address-checkbox" id="add{{contact.id}}" type="checkbox" value="默认地址" ng-model="contact.id_default">
+                            <label id="address-manager-check" for="add{{contact.id}}"  class="ion-android-checkbox-outline-blank active address-check-label"></label>
+                            <div class="address-check-text">默认地址</div>
+                        </li>
+
+                        <li class="weui_media_info_meta weui_media_info_meta_extra"
+                            style="padding-top: 4px; float: right; border-left: 0;"
+                            ng-click="deleteContact(contact.id)">
+                            <img src="img/my/address/delete-img.png" style="width: 15px; height: 15px; position: absolute;">
+                            <a href="" style="margin-left: 20px;">删除</a>
+                        </li>
+                        <li class="weui_media_info_meta"
+                            style="padding-top: 4px; float: right;"
+                            ng-click="editAddress(contact)">
+                            <img src="img/my/address/edit-img.png" style="width: 15px; height: 15px; position: absolute;">
+                            <a href="" style="margin-left: 20px;">修改</a>
+                        </li>
                     </ul>
                 </div>
             </div>

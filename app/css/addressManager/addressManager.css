@@ -46,8 +46,79 @@
 
 
 
+/*=============================================================*/
+#addressManager .weui_panel_bd{
+    background-color: white;
+    margin-top: 6px;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    position: relative;
+}
 
+#addressManager .weui_media_box{
+    padding: 10px;
+}
 
+#addressManager .weui_panel{
+    background-color: #F8F8F8;
+}
+
+#addressManager .weui_panel_hd{
+    height:10px;
+}
+
+#addressManager .selectContact .weui_media_desc{
+    font-size: 16px;
+    margin: 0 0 3px 0;
+}
+
+.address-checkbox {
+    display: none;
+}
+#address-manager-check {
+    padding: 0;
+}
+
+#addressManager .address-check-label {
+    position: absolute;
+    z-index: 0;
+    display: inline-block;
+    text-align: center;
+    font-weight: normal;
+    font-size: 20px;
+    /*cursor: pointer;*/
+    float: left;
+    padding-top: 2px;
+    padding-right: 60px;
+}
+.cart-item-label.active {
+    /*color: red;*/
+}
+
+.address-checkbox + label:before {
+    color: #9D9D9D;
+    content:"\f3fe";
+}
+.address-checkbox:checked + label:before {
+    color: red;
+    content:"\f3ff";
+}
+
+#addressManager .weui_media_info {
+    margin-top: 10px;
+}
+
+#addressManager .weui_media_info li{
+    height: 18px;
+    line-height: 18px;
+}
+
+.address-check-text{
+    padding-top: 4px;
+    padding-left: 20px;
+    float:left;
+    color: red;
+}
 
 
 

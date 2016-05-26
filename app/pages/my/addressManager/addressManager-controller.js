@@ -8,10 +8,11 @@ angular.module('addressManager.controller', ['addressManager.service'])
             AddressManagerFty.getContacts().then(
                 function (result) {
                     $scope.contacts = result.data;
+                    //alert(angular.toJson($scope.contacts));
                     angular.forEach($scope.contacts, function(data,index){
                         if(data.is_default == 1){
                             $scope.currentContact = data;
-                            console.log($scope.currentContact);
+                            //console.log($scope.currentContact);
                         }
                     });
                 },function (error){
@@ -25,7 +26,7 @@ angular.module('addressManager.controller', ['addressManager.service'])
             $scope.editC= editingContact;
             if(editingContact.province == null){
                 $scope.pcd = '广东 广州 越秀区';
-                console.log($scope.pcd);
+                //console.log($scope.pcd);
             }else{
                 $scope.pcd= editingContact.province +' '+ editingContact.city +' '+ editingContact.district;
             }

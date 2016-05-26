@@ -13,6 +13,7 @@ angular.module('details.controller', ['details.service'])
                     .then(function (json) {
                         if(json.status_code == 0) {
                             $scope.details = json.data;
+                            //alert(angular.toJson($scope.details));
                         }else{
                             console.log("获取商品详情失败");
                         }

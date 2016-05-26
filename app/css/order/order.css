@@ -1,6 +1,8 @@
 #orders{
     font-size: 14px;
     background-color: #F8F8F8;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 #orders #nav{

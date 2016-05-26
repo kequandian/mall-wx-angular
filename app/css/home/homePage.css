@@ -20,7 +20,8 @@ body, html {
     width: 80px;
     height: 45px;
     padding-left: 5px;
-    background-color: #EFEFF4;
+    /*background-color: #EFEFF4;*/
+    background-color: white;
     position: absolute;
 }
 
@@ -35,6 +36,12 @@ body, html {
     right: 70px;
     height: 45px;
     position: absolute;
+    background-color: white;
+}
+
+.home-title-center .weui_search_outer{
+    border: 1px solid #D6D6D6;
+    border-radius: 5px;
 }
 
 .home-title-right{
@@ -42,7 +49,7 @@ body, html {
     height: 45px;
     right: 0;
     text-align: center;
-    background-color: #EFEFF4;
+    background-color: white;
     position: absolute;
 }
 
@@ -79,10 +86,10 @@ body, html {
 /*¹¦ÄÜµ¼º½*/
 #content #nav{
     /*height:160px;*/
-    height:100px;
+    height:77px;
     background-color:#fff;
     overflow:hidden;
-    box-shadow:0 1px 1px #ebebeb;
+    /*box-shadow:0 1px 1px #ebebeb;*/
     margin-bottom: 8px;
 }
 /*#home #nav span{
@@ -97,21 +104,21 @@ body, html {
     display:block;
     float:left;
     width:25%;
-    height:60px;
-    margin-top:16px;
+    height:40px;
+    margin-top:7px;
 }
 
 #content #nav span img{
     display:block;
-    width:40px;
-    height:40px;
+    width:47px;
+    height:47px;
     margin:0 auto;
 }
 #content #nav span h2{
     font-size:14px;
     font-weight: 300;
     text-align:center;
-    margin-top: 10px;
+    margin-top: 4px;
     color: #9B9B9B;
 }
 
@@ -130,7 +137,7 @@ body, html {
 
 
 #content .panic-buying-ad {
-    margin:0 10px 10px 8px;
+    margin:0 3px 5px 3px;
 }
 #content .panic-buying-ad .ad-1{
     width: 100%;
@@ -211,8 +218,8 @@ body, html {
 }
 
 #content .s-area-img{
-    width:100%;
     height:120px;
+    margin:0 3px 0 3px;
 }
 
 #content .s-area-img img{
@@ -221,8 +228,7 @@ body, html {
 }
 
 #content .area-product{
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin:5px 3px 5px 3px;
     height: 240px;
 }
 

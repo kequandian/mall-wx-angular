@@ -4,6 +4,41 @@ angular.module('homePage.controller', ['homePage.service'])
         function($scope,$state,TabIndex, HomePageFty){
 
             document.title = "首页";
+
+           /* setTimeout(function(){
+                document.title = "首页";
+                var iframe = document.createElement('iframe');
+                iframe.style.visibility = 'hidden';
+                iframe.style.width = '1px';
+                iframe.style.height = '1px';
+                iframe.onload = function(){
+                    setTimeout(function(){
+                        document.body.removeChild(iframe);
+                    },0)
+                }
+            },0);*/
+
+
+            /*TitleReSet("首页");
+             function TitleReSet(title) {
+                 // body...
+                 document.title = title;
+                 //如果是IOS端微信,无法直接修改title.需要下面这一段神代码...
+                 //没看懂为什么添加一个iframe,然后remove掉就能动态修改title
+                 var $body = $('body');
+                 var $iframe = $('<iframe src="img/home/home-title-img.png" style="display:none;"></iframe>');
+                 $iframe.on('load', function (argument) {
+                    //console.log("loading....");
+                    setTimeout(function () {
+                    //console.log("remove....");
+                    $iframe.off('load').remove();
+                 }, 0);
+                 }).appendTo($body);
+             }*/
+
+
+
+
             $scope.currentId = 1;
             //获取推荐商品
             getAd();
@@ -11,7 +46,6 @@ angular.module('homePage.controller', ['homePage.service'])
             getRecommendProduct();
             //滚动图片设置
             detailSwiper();
-
 
 
             function getRecommendProduct(){

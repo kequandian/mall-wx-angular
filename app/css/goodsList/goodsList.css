@@ -56,7 +56,7 @@
   padding: 0;
   /*margin: 5px 5px 5px 10px;*/
   border:1px solid #cccccc;
-  background-color: white;
+  background-color: white;margin-bottom: 6px;
 }
 
 #goodsList .goods-box-img{

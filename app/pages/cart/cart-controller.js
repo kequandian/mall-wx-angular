@@ -10,16 +10,21 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
             CartFty.getCarts().then(
                 function (result) {
                     //console.log(result.data);
-                    $scope.carts = result.data;
-                    if($scope.carts != null){
-                        $scope.empty_cart_hide = true;
-                        $scope.cart_info_hide = false;
+                    if(result.status_code == 0) {
+                        $scope.carts = result.data;
+                        if ($scope.carts.length > 0) {
+                            $scope.empty_cart_hide = true;
+                            $scope.cart_info_hide = false;
+                        } else {
+                            $scope.empty_cart_hide = false;
+                            $scope.cart_info_hide = true;
+                        }
                     }else{
-                        $scope.empty_cart_hide = false;
-                        $scope.cart_info_hide = true;
+                        $.toast('获取购物车信息失败', 'cancel');
                     }
                 },function (error){
                     console.log(error);
+                    $.toast('获取购物车信息失败', 'cancel');
             })
         }
 
