@@ -1,6 +1,9 @@
 angular.module('my.order.controller', ['my.order.service'])
     .controller('OrderController', ['$scope', 'OrderFty', function($scope, OrderFty){
 
+        //title
+        document.title = "我的订单";
+
         $.showLoading("正在加载...");
 
         $scope.allIsNull = true;

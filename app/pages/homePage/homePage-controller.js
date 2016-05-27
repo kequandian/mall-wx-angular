@@ -38,7 +38,6 @@ angular.module('homePage.controller', ['homePage.service'])
 
 
 
-
             $scope.currentId = 1;
             //获取推荐商品
             getAd();
@@ -46,14 +45,16 @@ angular.module('homePage.controller', ['homePage.service'])
             getRecommendProduct();
             //滚动图片设置
             detailSwiper();
+            //适应屏幕大小
+            ReImgSize();
 
 
             function getRecommendProduct(){
                 HomePageFty.recommendProductService()
                     .then(function(json){
                         if(json.status_code == 0){
-                            $scope.rec_product_01 = json.data[0];
-                            //alert(angular.toJson(json.data[0]));
+                            $scope.rec_product = json.data;
+                            //alert(angular.toJson(json.data));
                         }
                     }, function(error){
                         $.toast('获取推荐商品失败','cancel');
@@ -65,7 +66,7 @@ angular.module('homePage.controller', ['homePage.service'])
                     .then(function(json){
                         if(json.status_code == 0){
                             $scope.ad_list = json.data[0].ads;
-                            //alert(angular.toJson($scope.ad_list));
+                            //alert(angular.toJson($scope.ad_list));/
                         }
                     }, function(error){
                         $.toast('获取广告信息失败','cancel');
@@ -86,6 +87,14 @@ angular.module('homePage.controller', ['homePage.service'])
                     observer:true,
                     observeParents:true
                 });
+            }
+
+            //适应屏幕大小
+            function ReImgSize(){
+                for (j=0;j<document.images.length;j++)
+                {
+                    document.images[j].width=(document.images[j].width>420)?"420":document.images[j].width;
+                }
             }
 
 

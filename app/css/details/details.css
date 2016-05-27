@@ -10,13 +10,14 @@
 
 #details .product-img{
     width: 100%;
-    height: 220px;
+    height: auto;
     /*background-color: #007aff;*/
+    text-align: center;
 }
 
 #details .product-img img{
-    width: 100%;
-    height: 220px;
+    width: 200px;
+    height: 200px;
     /*background-color: #007aff;*/
 }
 
@@ -96,7 +97,7 @@
 #details .d-p-d-right{
     width:33%;
     line-height: 50px;
-    text-align: right;
+    text-align: center;
     float: left;
 }
 
@@ -110,7 +111,7 @@
 #details .d-p-d-left{
     width:33%;
     line-height: 50px;
-    text-align: left;
+    text-align: center;
     float: left;
 }
 
@@ -198,7 +199,7 @@
 
 #details .product-img-list img{
     width: 100%;
-    height: 120px;
+    height: auto;
     margin-bottom: 6px;
 }
 

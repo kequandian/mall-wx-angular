@@ -4,6 +4,9 @@
 angular.module('myAgent.controller', ['myAgent.service'])
     .controller('MyAgentController', ['$scope', 'MyAgentFty', function($scope, MyAgentFty){
 
+        //title
+        document.title = "我的代理";
+
         $scope.my_agent_groups = [
             {
                 name: "最近更新",

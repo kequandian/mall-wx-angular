@@ -3,8 +3,21 @@ angular.module('details.controller', ['details.service'])
     .controller('DetailsController', ['$scope', '$state','$stateParams', 'DetailsFty',
         function($scope,$state,$stateParams, DetailsFty){
 
+            //title
+            document.title = "商品详情";
+            //适应屏幕大小
+            ReImgSize();
             //商品详情
             detailsInfo();
+
+            function ReImgSize(){
+                for (j=0;j<document.images.length;j++)
+                {
+                    document.images[j].width=(document.images[j].width>420)?"420":document.images[j].width;
+                }
+            }
+
+
             function detailsInfo() {
 
                 var product_id= $stateParams.productId;

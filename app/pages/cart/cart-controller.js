@@ -2,6 +2,9 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
 
     .controller('CartController', ['$scope', '$state', 'CartFty', function($scope, $state, CartFty){
 
+        //title
+        document.title = "购物车";
+
         $scope.empty_cart_hide = true;
         $scope.cart_info_hide = true;
 
@@ -113,6 +116,9 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
 
     .controller('SettlementController', ['$scope', '$state', '$stateParams', '$location', 'AddressManagerFty', 'CartFty', function($scope, $state, $stateParams, $location, AddressManagerFty, CartFty){
 
+        //title
+        document.title = "结算";
+
         AllContacts();
 
         function AllContacts() {
@@ -201,7 +207,13 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
         $scope.receivingTime=[{key:'anytime',value:'收货时间不限'},{key:'weekendOrHoliday',value:'周六日/节假日收货'},{key:'workDay',value:'周一至周五收货'}];
 
     }])
+
+
     .controller('OrderConfirmController', ['$scope', '$state', '$stateParams', 'CartFty', function($scope, $state, $stateParams, CartFty){
+
+        //title
+        document.title = "付款";
+
         $scope.orderData=$stateParams.data;
         $scope.confirm=function(order_number){
             console.log(order_number);

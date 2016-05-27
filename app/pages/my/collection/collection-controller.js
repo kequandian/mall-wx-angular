@@ -2,6 +2,9 @@ angular.module('collection.controller', ['collection.service'])
 
     .controller('CollectionController', ['$scope', '$state', 'CollectionFty', function($scope,$state, CollectionFty){
 
+        //title
+        document.title = "我的收藏";
+
         //我的收藏
         getCollectionList();
 

@@ -9,7 +9,7 @@
     <div class="weui_search_bar home-title-center" id="search_bar">
         <form class="weui_search_outer">
             <div class="weui_search_inner">
-                <i class="weui_icon_search" style="top: 7px;"></i>
+                <i class="weui_icon_search" style="top: 8px;"></i>
                 <input type="search" class="weui_search_input" id="search_input" placeholder="搜索" required/>
                 <!--<a href="javascript:" class="weui_icon_clear" id="search_clear"></a>-->
             </div>
@@ -64,7 +64,7 @@
           <h2>品牌推荐</h2>
         </span>
 
-        <span class="group-span-top">
+        <span class="group-span-top" ui-sref="home.category">
           <img ng-src="img/home/more-cate.png" alt="">
           <h2>更多分类</h2>
         </span>
@@ -159,128 +159,23 @@
         </div>
 
         <div class="area-product">
-            <div class="a-p-left">
-                <div class="a-p-left-top-img">
-                    <img src="img/home/area-makeup-title.png">
+            <div id="homeProductGrids">
+                <div class="weui_grids">
+                    <a ui-sref="details({productId:item.id})" class="weui_grid home_grid_2" ng-repeat="item in rec_product">
+                        <p class="weui_grid_label">
+                            {{item.name | cutText:true:5:" "}}
+                        </p>
+                        <div class="weui_grid_icon home_grid_img_large">
+                            <img ng-src="{{item.cover}}">
+                        </div>
+                    </a>
                 </div>
-                <div class="a-p-left-bottom-img">
-                    <img src="img/home/area-makeup-1.png">
-                </div>
-            </div>
-            <div class="a-p-right">
-                <div class="a-p-right-item" style="margin-left: 2px;" ui-sref="details({productId:rec_product_01.id})">
-                    <span class="span-1">{{rec_product_01.name | cutText:true:13:" "}}</span>
-                    <!--<div class="span-2">美好皮肤从面部护理开始</div>-->
-                    <img ng-src="{{rec_product_01.cover}}">
-                </div>
-
-               <!-- <div class="a-p-right-item" style="margin-left: 2px;">
-                    <span class="span-1">眼部护理</span>
-                    <div class="span-2">“睛”彩蜕变</div>
-                    <img src="img/home/area-makeup-2.png">
-                </div>
-
-                <div class="a-p-right-item" style="margin-left: 2px; margin-top: 2px;">
-                    <span class="span-1">身体护理</span>
-                    <div class="span-2">肌肤纵享白润滑</div>
-                    <img src="img/home/area-makeup-2.png">
-                </div>
-
-                <div class="a-p-right-item" style="margin-left: 2px; margin-top: 2px;">
-                    <span class="span-1">嘴唇护理</span>
-                    <div class="span-2">无法抵挡的水润双唇</div>
-                    <img src="img/home/area-makeup-2.png">
-                </div>-->
             </div>
         </div>
     </div>
 
 
-    <!-- 婴儿专区 -->
-    <!--<div class="s-size-area">
-        <div class="s-area-img">
-            <img src="img/home/area-img-2.png">
-        </div>
 
-        <div class="area-product">
-            <div class="a-p-left">
-                <div class="a-p-left-top-img">
-                    <img src="img/home/area-makeup-6.png">
-                </div>
-                <div class="a-p-left-bottom-img">
-                    <img src="img/home/area-makeup-7.png">
-                </div>
-            </div>
-            <div class="a-p-right">
-                <div class="a-p-right-item" style="margin-left: 2px;">
-                    <span class="span-1">宝宝营养</span>
-                    <div class="span-2">优质营养 妈妈放心</div>
-                    <img src="img/home/area-makeup-8.png">
-                </div>
-
-                <div class="a-p-right-item" style="margin-left: 2px;">
-                    <span class="span-1">玩具用品</span>
-                    <div class="span-2">孩子的专属游乐场</div>
-                    <img src="img/home/area-makeup-9.png">
-                </div>
-
-                <div class="a-p-right-item" style="margin-left: 2px; margin-top: 2px;">
-                    <span class="span-1">童装服饰</span>
-                    <div class="span-2">给孩子最好的范</div>
-                    <img src="img/home/area-makeup-10.png">
-                </div>
-
-                <div class="a-p-right-item" style="margin-left: 2px; margin-top: 2px;">
-                    <span class="span-1">学习用品</span>
-                    <div class="span-2">学霸都用这些</div>
-                    <img src="img/home/area-makeup-11.png">
-                </div>
-            </div>
-        </div>
-    </div>-->
-
-    <!-- 数码专区 -->
-    <!--<div class="s-size-area">
-        <div class="s-area-img">
-            <img src="img/home/area-img-3.png">
-        </div>
-
-        <div class="area-product">
-            <div class="a-p-left">
-                <div class="a-p-left-top-img">
-                    <img src="img/home/area-makeup-title-3.png">
-                </div>
-                <div class="a-p-left-bottom-img">
-                    <img src="img/home/area-makeup-12.png">
-                </div>
-            </div>
-            <div class="a-p-right">
-                <div class="a-p-right-item" style="margin-left: 2px;">
-                    <span class="span-1">智能设备</span>
-                    <div class="span-2">享受智能带来的乐趣</div>
-                    <img src="img/home/area-makeup-13.png">
-                </div>
-
-                <div class="a-p-right-item" style="margin-left: 2px;">
-                    <span class="span-1">厨具家电</span>
-                    <div class="span-2">厨卫精选 自有一套</div>
-                    <img src="img/home/area-makeup-14.png">
-                </div>
-
-                <div class="a-p-right-item" style="margin-left: 2px; margin-top: 2px;">
-                    <span class="span-1">美容仪器</span>
-                    <div class="span-2">肌肤如初之美就此开启</div>
-                    <img src="img/home/area-makeup-15.png">
-                </div>
-
-                <div class="a-p-right-item" style="margin-left: 2px; margin-top: 2px;">
-                    <span class="span-1">手机配件</span>
-                    <div class="span-2">完美配搭 手机必备</div>
-                    <img src="img/home/area-makeup-16.png">
-                </div>
-            </div>
-        </div>
-    </div>-->
 
 
     <!-- 底部 -->

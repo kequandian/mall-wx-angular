@@ -1,6 +1,10 @@
 angular.module('userInfo.controller', ['userInfo.service'])
 
     .controller('UserInfoController', ['$scope','$state', 'UserInfoFty', function($scope,$state, UserInfoFty){
+
+        //title
+        document.title = "个人信息";
+
         //获取个人信息
         getUserInfo();
         //时间日期插件

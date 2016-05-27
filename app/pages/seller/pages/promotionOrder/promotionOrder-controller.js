@@ -4,6 +4,9 @@
 angular.module('promotionOrder.controller', ['promotionOrder.service'])
     .controller('PromotionOrderController', ['$scope', 'PromotionOrderFty', function($scope, PromotionOrderFty){
 
+        //title
+        document.title = "分销订单";
+
         $scope.pro_order_groups = [
             {
                 name: "最近更新",

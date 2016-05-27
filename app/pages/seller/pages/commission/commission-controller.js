@@ -5,6 +5,8 @@ angular.module('commission.controller', ['commission.service'])
 
     .controller('CommissionController', ['$scope', 'CommissionFty', function($scope, CommissionFty){
 
+        //title
+        document.title = "分销佣金";
 
         $scope.groups = [
             {

@@ -1,7 +1,7 @@
 body, html {
     height: 100%;
     -webkit-tap-highlight-color: transparent;
-    font-family: PingFang-SC-Regular,Helvetica Neue,Helvetica,microsoft yahei,sans-serif
+    /*font-family: PingFang-SC-Regular,Helvetica Neue,Helvetica,microsoft yahei,sans-serif*/
 }
 
 .page, body {
@@ -39,23 +39,30 @@ body, html {
     background-color: white;
 }
 
+.weui_search_text .weui_icon_search{
+    margin-left: 9px;
+    margin-right: 2px;
+}
+
 .home-title-center .weui_search_outer{
     border: 1px solid #D6D6D6;
     border-radius: 5px;
+    font-weight: 100;
 }
 
 .home-title-right{
     width: 70px;
-    height: 45px;
-    right: 0;
+    height: 43px;
+    right: 5px;
+    top: 2px;
     text-align: center;
     background-color: white;
     position: absolute;
 }
 
 .home-title-right img{
-    width: 21px;
-    height: 17px;
+    width: 18px;
+    height: 14px;
     margin-top: 5px;
     right: 0;
 }
@@ -75,18 +82,22 @@ body, html {
 
 #content #ad{
     margin-top: 45px;
-    height: 160px;
     /*background: #cccccc;*/
 }
 
+#content #homeHeaderSlider .swiper-slide, .swiper-wrapper {
+    height: auto;
+}
+
+
 #content .swiper-slide img{
-    height: 160px;
+    height: auto;
 }
 
 /*¹¦ÄÜµ¼º½*/
 #content #nav{
     /*height:160px;*/
-    height:77px;
+    height:73px;
     background-color:#fff;
     overflow:hidden;
     /*box-shadow:0 1px 1px #ebebeb;*/
@@ -105,7 +116,7 @@ body, html {
     float:left;
     width:25%;
     height:40px;
-    margin-top:7px;
+    margin-top:4px;
 }
 
 #content #nav span img{
@@ -137,39 +148,39 @@ body, html {
 
 
 #content .panic-buying-ad {
-    margin:0 3px 5px 3px;
+    margin:0 3px 3px 3px;
 }
 #content .panic-buying-ad .ad-1{
     width: 100%;
-    height: 140px;
+    height: auto;
     /*background: #cccccc;*/
 }
 #content .panic-buying-ad .ad-1 img{
     width: 100%;
-    height: 140px;
+    height: auto;
     /*background: #cccccc;*/
 }
 
 #content .panic-buying-ad .ad-2{
-    height: 140px;
+    height: auto;
     margin-top: 5px;
 }
 #content .panic-buying-ad .ad-2 img{
     width: 100%;
-    height: 140px;
+    height: auto;
     /*background: #cccccc;*/
 }
 
 
 #content .panic-buying-ad .ad-3{
-    height: 140px;
+    height: auto;
     background: #cccccc;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
 #content .panic-buying{
-    height: 108px;
+    height: 95px;
 }
 
 #content .p-buying-left{
@@ -218,71 +229,47 @@ body, html {
 }
 
 #content .s-area-img{
-    height:120px;
+    height:auto;
     margin:0 3px 0 3px;
 }
 
 #content .s-area-img img{
     width:100%;
-    height:120px;
+    height:auto;
 }
 
 #content .area-product{
-    margin:5px 3px 5px 3px;
-    height: 240px;
+    margin:3px 3px 5px 3px;
+    height: auto;
 }
 
-#content .a-p-left{
-    width: 35%;
-    height: 240px;
-    float: left;
-}
-#content .a-p-left-top-img img{
-    width: 100%;
-    height: 50px;
-}
-
-#content .a-p-left-bottom-img{
-}
-
-#content .a-p-left-bottom-img img{
-    width: 100%;
-    height: 188px;
-}
-
-#content .a-p-right{
-    width: 65%;
-    height: 240px;
-    float: left;
-}
-
-#content .a-p-right-item{
-    width: 48%;
-    height: 116px;
-    text-align: center;
+#content .home_grid_2{
+    width: 49%;
     border: 1px solid #cccccc;
-    float: left;
+    margin-left: 2px;
+    margin-top: 3px;
 }
 
-#content .a-p-right-item .span-1{
-    padding-left: 5px;
-    padding-right: 5px;
-    line-height: 18px;
-    font-size: 14px;
-    color:#EA9ED6;
+#content .home_grid_3{
+    width: 32.5%;
+    border: 1px solid #cccccc;
+    margin-left: 2px;
+    margin-top: 3px;
 }
 
-#content .a-p-right-item .span-2{
-    height: 16px;
-    line-height: 16px;
-    font-size: 10px;
-    color: #9B9B9B;
+#content .home_grid_img_large {
+    width: 90px;
+    height: 100px;
 }
 
-#content .a-p-right-item img{
-    width: 80%;
-    height: 79px;
+#content #homeProductGrids .weui_grid {
+    padding: 2px 2px;
 }
+
+#content #homeProductGrids a:active{
+    background-color: white;
+}
+
 
 
 

@@ -1,7 +1,7 @@
 angular.module('my.order.route', ['my.order.controller'])
     .config(function($stateProvider, $urlRouterProvider){
 
-    //$urlRouterProvider.when("/order", "/order/all");
+    $urlRouterProvider.when("/order", "/order/all");
     $stateProvider
         .state('order', {
             url: "/order",

@@ -35,10 +35,10 @@
             <!--<div class="s-p-bottom">不含未结算部分</div>-->
         <!--</div>-->
         <div class="seller-profit">
-            <div class="s-p-top">会员级别：-</div>
+            <div class="s-p-top">会员级别：{{user_lv_name != null ? user_lv_name : "-"}}</div>
             <div class="s-p-bottom">
                 <span>可提佣金：{{owner_balance.balance |currency:"￥"}}</span>
-                <img style="width: 78px;height: 30px;display: inline" src="img/sellerPage/takeCash.png">
+                <div style="position: absolute; right: 8px;"><img style="width: 78px;height: 30px;display: inline" src="img/sellerPage/takeCash.png"></div>
             </div>
         </div>
 
@@ -121,7 +121,7 @@
                         <img src="img/sellerPage/myseller.png">
                     </div>
                     <p class="weui_grid_label">
-                        我的代理
+                        代理佣金
                     </p>
                 </a>
                 <a ui-sref="pianPage" class="weui_grid kqd_grid_4" data-id="button">
@@ -140,7 +140,7 @@
                         推广码
                     </p>
                 </a>
-                <a ui-sref="marketing" class="weui_grid kqd_grid_4" data-id="toast">
+                <a ui-sref="marketing" class="weui_grid kqd_grid_4" data-id="toast" style="display: none;">
                     <div class="weui_grid_icon kqd_grid_img_large">
                         <img src="img/sellerPage/paper.png">
                     </div>

@@ -66,6 +66,7 @@ input::-webkit-inner-spin-button {
 }
 .check-text{
     padding-top: 15px;
+    margin-left: 35px;
     float:left;
     color: #474747;
 }
@@ -85,7 +86,10 @@ input::-webkit-inner-spin-button {
     display: none;
 }
 #checkAll {
-    padding: 15px 0 15px 5px;
+    padding-right: 33px;
+    padding-bottom: 15px;
+    padding-left: 5px;
+    position: absolute;
 }
 .cart-checkbox + label:before {
     color: #9D9D9D;
@@ -131,7 +135,7 @@ input::-webkit-inner-spin-button {
     -ms-flex:1;
     flex:1;
     position:relative;
-    padding-left: 95px;
+    padding-left: 92px;
     min-height:85px
 }
 .cart-list li .item-info .item-info-bottom{

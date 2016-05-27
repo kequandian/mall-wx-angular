@@ -2,9 +2,14 @@ angular.module('addressManager.controller', ['addressManager.service'])
 
     .controller('AddressManagerController', ['$scope', '$state', '$stateParams', 'AddressManagerFty', function($scope, $state, $stateParams, AddressManagerFty){
 
+
         AllContacts();
 
         function AllContacts() {
+
+            //title
+            document.title = "地址管理";
+
             AddressManagerFty.getContacts().then(
                 function (result) {
                     $scope.contacts = result.data;
@@ -71,11 +76,19 @@ angular.module('addressManager.controller', ['addressManager.service'])
 
         //添加地址
         $scope.addAddress= function (){
+
+            //title
+            document.title = "新增地址";
+
             $state.go('add-address');
         };
         //修改地址
         $scope.editAddress= function (item){
-            console.log(item);
+
+            //title
+            document.title = "修改地址";
+
+            //console.log(item);
             $state.go('edit-address', {data:item});
         };
         //删除地址

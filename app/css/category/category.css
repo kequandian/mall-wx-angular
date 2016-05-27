@@ -7,6 +7,7 @@
     height: 45px;
     /*background: #4b8bf4;*/
     position: relative;
+    border-bottom: 1px solid #cccccc;
 }
 
 #category .home-logo{
@@ -32,7 +33,7 @@
 
 #category .home-title-right{
     width: 70px;
-    height: 45px;
+    height: 43px;
     right: 0;
     text-align: center;
     background-color: #EFEFF4;

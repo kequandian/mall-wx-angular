@@ -1,3 +1,13 @@
 .weui_tabbar_item.weui_bar_item_on .weui_tabbar_label {
     color: #c20000;
 }
+
+.weui_tabbar_icon+.weui_tabbar_label  {
+    margin-top: 5px;
+    margin-bottom: 3px;
+}
+
+.weui_tabbar_item .weui_tabbar_icon{
+    color: black;
+    font-size: 32px;
+}

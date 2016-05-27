@@ -2,6 +2,9 @@ angular.module('sellerPage.controller', ['sellerPage.service'])
 
     .controller('SellerPageController', ['$scope','$state', 'SellerPageFty', function($scope,$state, SellerPageFty){
 
+        //title
+        document.title = "分销中心";
+
         //用户信息
         getUserInfo();
         //分销余额
@@ -25,6 +28,22 @@ angular.module('sellerPage.controller', ['sellerPage.service'])
                     if(json.status_code == 0){
                         $scope.owner_balance = json.data;
                         //alert(angular.toJson($scope.owner_balance))
+
+                        var isAgent = $scope.owner_balance.isAgent;
+                        var isPartner = $scope.owner_balance.isPartner;
+                        var isSeller = $scope.owner_balance.isSeller;
+
+                        var stringName = "";
+                        if(isAgent){
+                            stringName += "代理商 ";
+                        }
+                        if(isPartner){
+                            stringName += "合伙人 ";
+                        }
+                        if(isSeller){
+                            stringName += "分销商";
+                        }
+                        $scope.user_lv_name = stringName;
                     }
                 }, function(error){
                     $.toast('获取信息失败', 'cancel');
@@ -67,6 +86,8 @@ angular.module('sellerPage.controller', ['sellerPage.service'])
     * */
     .controller('PianController', ['$scope','$state', 'SellerPageFty', function($scope,$state, SellerPageFty){
 
+        //title
+        document.title = "提佣方案";
     }])
 
 ;

@@ -1,6 +1,10 @@
 angular.module('coupon.controller', ['coupon.service'])
     .controller('CouponController', ['$scope', 'CouponFty', function($scope, CouponFty){
 
+
+        //title
+        document.title = "优惠卷";
+
         AllOrders();
         function AllOrders() {
             CouponFty.couponsService()
