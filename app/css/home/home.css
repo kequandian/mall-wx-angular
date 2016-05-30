@@ -8,6 +8,13 @@
 }
 
 .weui_tabbar_item .weui_tabbar_icon{
+    width: 29px;
     color: black;
     font-size: 32px;
+    text-align: center;
 }
+
+.weui_tabbar_item .home_tab_icon_color{
+    color: #c20000;
+}
+

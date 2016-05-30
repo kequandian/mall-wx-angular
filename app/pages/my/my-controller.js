@@ -1,9 +1,10 @@
 angular.module('my.controller', ['my.service'])
 
-    .controller('MyController', ['$scope','$state', 'MyFty', function($scope,$state, MyFty){
+    .controller('MyController', ['$scope','$state', 'MyFty','TabIndex', function($scope,$state, MyFty,TabIndex){
 
         //title
         document.title = "个人中心";
+        TabIndex.number = 5;
 
         //用户信息
         getUserInfo();

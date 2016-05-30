@@ -53,6 +53,7 @@
     margin-top: 15px;
 }
 #kqdGrids .kqd_grid_label_top {
+    color:#3E403F;
     margin-top: 0;
 }
 #kqdGrids .weui_grids:before {
@@ -63,6 +64,11 @@
 }
 #kqdGrids .weui_grid:after {
     border-bottom: 0;
+}
+
+.order_grid_img{
+    width: 35px;
+    height: 35px;
 }
 
 .kqd_grid_img_large {
@@ -78,3 +84,4 @@
 .weui_cell_ft.kqd_cell_ft_font {
     font-size: 14px;
 }
+

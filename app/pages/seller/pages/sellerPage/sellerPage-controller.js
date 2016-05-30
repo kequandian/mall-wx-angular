@@ -1,10 +1,10 @@
 angular.module('sellerPage.controller', ['sellerPage.service'])
 
-    .controller('SellerPageController', ['$scope','$state', 'SellerPageFty', function($scope,$state, SellerPageFty){
+    .controller('SellerPageController', ['$scope','$state', 'SellerPageFty','TabIndex', function($scope,$state, SellerPageFty,TabIndex){
 
         //title
         document.title = "分销中心";
-
+        TabIndex.number = 3;
         //用户信息
         getUserInfo();
         //分销余额

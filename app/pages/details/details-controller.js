@@ -19,9 +19,7 @@ angular.module('details.controller', ['details.service'])
 
 
             function detailsInfo() {
-
                 var product_id= $stateParams.productId;
-
                 DetailsFty.detailsService(product_id)
                     .then(function (json) {
                         if(json.status_code == 0) {
@@ -34,30 +32,6 @@ angular.module('details.controller', ['details.service'])
                         console.log("获取商品详情失败");
                     })
             }
-
-            //title li
-            $scope.detail_cate = [{
-                'id':'1',
-                'name':'商品详情'
-            },{
-                'id':'2',
-                'name':'商品参数'
-            }];
-
-            //nav 样式
-            $scope.currentId = 1;
-            $scope.productDetails = false;
-            $scope.productParameter = true;
-            $scope.clickme = function(id) {
-                $scope.currentId = id;
-                if(id == 1){
-                    $scope.productDetails = false;
-                    $scope.productParameter = true;
-                }else if(id == 2){
-                    $scope.productDetails = true;
-                    $scope.productParameter = false;
-                }
-            };
 
             //滚动图片设置
             detailSwiper();

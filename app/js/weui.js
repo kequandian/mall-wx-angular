@@ -102,10 +102,12 @@ $(function(){
 
     //bar 点击事件
     .on('click', '.weui_navbar_item', function () {
-        $(this).addClass('weui_bar_item_on').siblings('.weui_bar_item_on').removeClass('weui_bar_item_on');
+            $(this).addClass('weui_bar_item_on').siblings('.weui_bar_item_on').removeClass('weui_bar_item_on');
     })
     .on('click', '.weui_tabbar_item', function () {
-        $(this).addClass('weui_bar_item_on').siblings('.weui_bar_item_on').removeClass('weui_bar_item_on');
+            $(this).addClass('weui_bar_item_on').siblings('.weui_bar_item_on').removeClass('weui_bar_item_on');
+            $(this).siblings("a").children('.home_tab_icon').removeClass('home_tab_icon_color');
+            $(this).children('.home_tab_icon').addClass('home_tab_icon_color');
     })
 
     .on('click', '#contactMan', function(){

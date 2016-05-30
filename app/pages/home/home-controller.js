@@ -2,7 +2,11 @@ angular.module('home.controller', [])
     .controller('HomeController', ['$scope', '$state','$timeout','TabIndex', function($scope,$state,$timeout,TabIndex){
 
         //nav 样式
-        $scope.currentId = TabIndex.number;
+        auto_css();
+        function auto_css(){
+            $scope.currentId = TabIndex.number;
+        }
+
         $scope.clickme = function(id) {
             $scope.currentId = id;
         };
@@ -11,27 +15,31 @@ angular.module('home.controller', [])
             'id':'1',
             'name':'首页',
             'srefName':'.homePage',
-            'tabs_img':'img/indexTab/Home.png'
+            'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-home'
         },{
             'id':'2',
             'name':'搜索',
             'srefName':'.category',
-            'tabs_img':'img/indexTab/Thumbnails.png'
+            'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-search'
         },{
             'id':'3',
             'name':'分销中心',
             'srefName':'.sellerPage',
-            'tabs_img':'img/indexTab/seller.png'
+            'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-team'
         },{
             'id':'4',
             'name':'购物车',
             'srefName':'.cart',
-            'tabs_img':'img/indexTab/cart.png'
+            'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-cart'
         },{
             'id':'5',
             'name':'个人中心',
             'srefName':'.my',
-            'tabs_img':'img/indexTab/my.png'
+            'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-user'
         }];
+        dddd();
+        function dddd(){
+        }
+
 
     }]);
