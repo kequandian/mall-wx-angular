@@ -54,6 +54,7 @@
     background-color: #fff;
     /*margin-top: 2px;*/
     position: relative;
+    border-bottom: 1px solid #cccccc;
 }
 #sellerPage .seller-commissions{
     width: 100%;
@@ -85,10 +86,11 @@
 
 #sellerPage .s-p-top{
     padding-top: 10px;
-    padding-left: 25px;
+    padding-left: 15px;
     height: 35px;
     line-height: 35px;
     color: #6e6e6e;
+    font-size: 16px;
     /*text-align: center;*/
     /*color: white;*/
     /*font-weight: bold;*/
@@ -110,14 +112,35 @@
     /*line-height: 35px;*/
     /*text-align: center;*/
     /*color: white;*/
+    margin-top: 5px;
 }
 #sellerPage .s-p-bottom span{
     /*width: 200px;*/
     display: block;
     float: left;
-    margin-right: 5px;
+    /*margin-right: 5px;*/
     margin-top: 5px;
-    padding-left: 25px;
+    padding-left: 15px;
+}
+
+#sellerPage .s-p-bottom .commission-price{
+    font-size: 26px;
+    color: red;
+    position: absolute;
+    margin-left: 112px;
+    bottom: 9px;
+}
+
+#sellerPage .s-p-bottom .cash-botton{
+    position: absolute;
+    right: 8px;
+}
+
+#sellerPage .s-p-bottom .cash-botton img{
+    width: 70px;
+    height: 25px;
+    display: inline;
+    margin-top: 2px;
 }
 
 
@@ -182,6 +205,13 @@
     line-height: 30px;
 }
 
+
+
+
+
+
+
+/*ЖўЮЌТы*/
 .black_overlay{
     display: none;
     position: absolute;

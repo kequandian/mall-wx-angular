@@ -3,51 +3,79 @@
     min-height: 100%;
 }
 
-#myTeam .t-m-top img{
+#myTeam .t-m-top{
     width: 100%;
-    height: 160px;
+    height: 45px;
     position: fixed;
+    background-color: red;
     z-index: 101;
 }
 
-
+#myTeam .t-m-top .home-title-center{
+    left: 40px;
+    right: 40px;
+    height: 45px;
+    background-color: red;
+}
 
 #myTeam #nav{
     width:100%;
-    height:42px;
+    height:100px;
     position:fixed;
     background-color: #E8EAEB;
     color: #676D6E;
-    top: 160px;
+    top: 45px;
     z-index: 101;
 }
 
-#myTeam .active {
-    background-color: #D90302;
+#myTeam #nav img{
+    width: 60px;
+    height: 60px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 7px;
+    border-radius: 50%;
+    float: left;
+}
+
+#myTeam #nav .nav-right{
+    min-width: 50%;
+    height: 100px;
+}
+
+#myTeam #nav .nav-right .my-team-info{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    margin-top: 12px;
+}
+
+#myTeam #nav .nav-right .my-team-info span{
+    float: left;
+    margin-right: 12px;
+    font-size: 18px;
+}
+
+#myTeam #nav .nav-right .my-team-info div{
+    min-width: 30px;
+    float: left;
+    height: 18px;
+    line-height: 18px;
+    font-size: 18px;
+    background-color: red;
     color:white;
+    padding: 3px 7px 3px 7px;
+    margin-top: 6px;
+    border-radius: 6px;
 }
 
-#myTeam .nav-warp{
-    height:42px;
-    /*overflow-x:scroll;*/
-    position:absolute;
-    left:0;
-    right:0;
+#myTeam #nav .nav-right .concerned-count{
+    width: 100%;
+    height: 34px;
+    line-height: 34px;
+    font-size: 14px;
 }
 
-#myTeam .nav-warp ul{
-    width:100%;
-    height:41px;
-    border-bottom:1px solid #dfdfdf;
-}
-#myTeam .nav-warp li{
-    float:left;
-    width:33%;
-    height:41px;
-    text-align:center;
-    line-height:41px;
-    border-right:1px solid #dcdcdc;
-}
 
 
 
@@ -61,30 +89,46 @@
 
 #myTeam .t-m-item{
     font-size: 14px;
-    height: 100px;
+    height: 81px;
     background-color: white;
     margin-top: 7px;
     border: 1px solid #cccccc;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 7px;
+    padding-right: 7px;
     position: relative;
 }
 
 #myTeam .item-left{
-    margin-top: 5px;
+    margin-top: 8px;
     position: absolute;
 }
 
 #myTeam .item-left img{
-    width: 80px;
-    height: 90px;
+    width: 65px;
+    height: 65px;
 }
 
 #myTeam .item-right{
     height: 90px;
     margin-top: 5px;
-    margin-left: 88px;
+    margin-left: 75px;
 }
+
+#myTeam .item-right .item-comcerned{
+    min-width: 15px;
+    height: 14px;
+    line-height: 14px;
+    font-size: 11px;
+    background-color: red;
+    color:white;
+    padding: 1px 3px 1px 3px;
+    border-radius: 6px;
+    margin-left: 10px;
+    margin-top: 3px;
+    float: left;
+}
+
+
 
 #myTeam .item-right div{
     height: 23px;

@@ -3,14 +3,7 @@
     height: 100%;
 }
 
-#commission .comm-title-img img{
-    width: 100%;
-    height: 160px;
-    position: fixed;
-}
-
 #commission #comm-content{
-    margin: 0 5px 5px 5px;
     overflow-x: hidden;
     overflow-y: scroll;
 }
@@ -18,16 +11,14 @@
 #comm-content .item-stable{
     height: 38px;
     line-height: 38px;
-    background-color: #F1F1F1;
-    border-top: 1px solid #710909;
-    border-left: 1px solid #710909;
-    border-right: 1px solid #710909;
-    /*border-bottom: 1px solid #710909;*/
+    background-color: #C50303;
     padding-left: 10px;
+    color: white;
+    margin-bottom: 6px;
 }
 
 #comm-content .active{
-    background-color: #DDDDDD;
+    background-color: #C50303;
 }
 
 #comm-content .item-arrow-right{
@@ -39,14 +30,28 @@
     margin-right: 10px;
     background-size: 20px 20px;
     background-repeat: no-repeat;
-    background-image: url(../../img/sellerPage/commission/item-arrow.png);
+    background-image: url(../../img/sellerPage/orders/order-item-arrow.png);
 }
 
 #comm-content .item-accordion{
     background-color: white;
-    padding: 5px;
     /*border-top: 1px solid #710909;*/
-    border-left: 1px solid #710909;
-    border-right: 1px solid #710909;
+    /*border-left: 1px solid #710909;*/
+    /*border-right: 1px solid #710909;*/
     /*border-bottom: 1px solid #710909;*/
+}
+
+#comm-content .item-accordion .item-accordion-head{
+    height: 50px;
+    padding: 7px;
+}
+
+#comm-content .item-accordion .commission-item-table{
+    width: 100%;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    background-color: #E9EDEE;
+    margin-bottom: 5px;
+    text-align: center;
+    font-size: 16px;
 }

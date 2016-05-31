@@ -3,31 +3,6 @@ angular.module('myTeam.controller', ['myTeam.service'])
     .controller('MyTeamController', ['$scope','$state', 'MyTeamFty',
         function($scope,$state, MyTeamFty){
 
-            //title
-            document.title = "我的团队";
-
-            //nav 样式
-            $scope.currentId = 1;
-            $scope.clickme = function(id) {
-                $scope.currentId = id;
-            };
-            //title li
-            $scope.my_team_titles = [{
-                'id':'1',
-                'name':'一级推荐',
-                'srefName':'.all'
-            },{
-                'id':'2',
-                'name':'二级推荐',
-                'srefName':'.pay'
-            },{
-                'id':'3',
-                'name':'三级推荐',
-                'srefName':'.payed'
-            }];
-
-
-
 
 
             myTeams();
@@ -43,7 +18,6 @@ angular.module('myTeam.controller', ['myTeam.service'])
                     });
 
             }
-
 
 
             //团队分类

@@ -22,9 +22,12 @@
                     <p>
                         下午好，{{userInfo.name}}
                     </p>
-                    <p>
-                        <!--会员号：{{userInfo.weixin}}-->
-                        会员号：-
+                    <p class="user-lv-text">
+                        ID：SM554612 <span style="margin-left: 10px;font-size: 12px;">级别：代理商</span>
+                    </p>
+
+                    <p class="user-create-time">
+                        加入时间：2016-06-25
                     </p>
                 </div>
             </div>
@@ -35,14 +38,18 @@
             <!--<div class="s-p-bottom">不含未结算部分</div>-->
         <!--</div>-->
         <div class="seller-profit">
-            <div class="s-p-top">会员级别：{{user_lv_name != null ? user_lv_name : "-"}}</div>
+            <div class="s-p-top">累计金额：￥58888.00</div>
             <div class="s-p-bottom">
-                <span>可提佣金：{{owner_balance.balance |currency:"￥"}}</span>
-                <div style="position: absolute; right: 8px;"><img style="width: 78px;height: 30px;display: inline" src="img/sellerPage/takeCash.png"></div>
+                <span style="font-size: 16px;">可提佣金：</span>
+                <span style="color: red; padding-left: 0;font-size: 16px;">￥</span>
+                <div class="commission-price">288888.00</div>
+                <div class="cash-botton">
+                    <img  src="img/sellerPage/takeCash.png">
+                </div>
             </div>
         </div>
 
-        <ul class="seller-commissions">
+        <!--<ul class="seller-commissions">
             <li class="seller-commission">
                 <div class="seller-commission-value li-border">
                     <p class="commission-number">
@@ -73,7 +80,7 @@
                     </p>
                 </div>
             </li>
-        </ul>
+        </ul>-->
 
         <!--<div class="seller-not-settled">-->
             <!--<div class="s-n-name">未结算收益</div>-->
@@ -81,7 +88,7 @@
             <!--<div class="s-n-arrow">-->
             <!--</div>-->
         <!--</div>-->
-        <div id="kqdGrids">
+        <div id="kqdGrids"style="margin-top: 10px;">
             <div class="weui_grids">
                 <a ui-sref="myTeam" class="weui_grid kqd_grid_4" data-id="button">
                 <!--<a class="weui_grid kqd_grid_4" data-id="button">-->
@@ -89,7 +96,7 @@
                         <img src="img/sellerPage/team.png">
                     </div>
                     <p class="weui_grid_label">
-                        我的团队
+                        我的朋友
                     </p>
                 </a>
                 <a ui-sref="commission" class="weui_grid kqd_grid_4" data-id="cell">
@@ -97,7 +104,7 @@
                         <img src="img/sellerPage/money.png">
                     </div>
                     <p class="weui_grid_label">
-                        分销佣金
+                        我的收入
                     </p>
                 </a>
                 <a ui-sref="promotionOrder" class="weui_grid kqd_grid_4" data-id="toast">
@@ -105,7 +112,7 @@
                         <img src="img/sellerPage/sellerOrder.png">
                     </div>
                     <p class="weui_grid_label">
-                        分销订单
+                        销售订单
                     </p>
                 </a>
                 <a ui-sref="distributionInfo" class="weui_grid kqd_grid_4" data-id="cell">
@@ -113,10 +120,10 @@
                         <img src="img/sellerPage/sellerinfo.png">
                     </div>
                     <p class="weui_grid_label">
-                        分销信息
+                        销售信息
                     </p>
                 </a>
-                <a ui-sref="myAgent" class="weui_grid kqd_grid_4" data-id="cell">
+                <!--<a ui-sref="myAgent" class="weui_grid kqd_grid_4" data-id="cell">
                     <div class="weui_grid_icon kqd_grid_img_large">
                         <img src="img/sellerPage/myseller.png">
                     </div>
@@ -131,7 +138,7 @@
                     <p class="weui_grid_label">
                         提佣方案
                     </p>
-                </a>
+                </a>-->
                 <a class="weui_grid kqd_grid_4" data-id="cell"ng-click="initQrcode()">
                     <div class="weui_grid_icon kqd_grid_img_large">
                         <img src="img/sellerPage/QRcode.png">
@@ -140,14 +147,14 @@
                         推广码
                     </p>
                 </a>
-                <a ui-sref="marketing" class="weui_grid kqd_grid_4" data-id="toast" style="display: none;">
+                <!--<a ui-sref="marketing" class="weui_grid kqd_grid_4" data-id="toast">
                     <div class="weui_grid_icon kqd_grid_img_large">
                         <img src="img/sellerPage/paper.png">
                     </div>
                     <p class="weui_grid_label">
                         推广海报
                     </p>
-                </a>
+                </a>-->
 
             </div>
         </div>

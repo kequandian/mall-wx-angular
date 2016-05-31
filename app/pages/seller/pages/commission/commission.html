@@ -1,12 +1,8 @@
 <div id="commission">
 
-    <div class="comm-title-img">
-        <img src="img/sellerPage/commission/comm-title.png">
-    </div>
-
     <div id="comm-content">
 
-        <div style="border-bottom: 1px solid #710909; margin-top: 165px;">
+        <div>
             <div ng-repeat="group in groups">
                 <div class="item-stable"
                      ng-click="toggleGroup(group)"
@@ -20,39 +16,37 @@
                      ng-show="isGroupShown(group)"
                         >
 
-                    <table style="width: 100%; border: 1px solid #cccccc;">
-                        <thead style="background-color: #AB0E45; text-align: center; color:white;">
-                            <tr style="height: 32px;">
-                                <td>级别</td>
-                                <td>订单</td>
-                                <td>佣金</td>
-                            </tr>
-                        </thead>
-                        <tbody style="text-align: center; font-size: 16px; color:#9D9D9D;">
-                            <tr style="height: 32px;">
-                                <td>一级分销商</td>
-                                <td>185</td>
-                                <td>￥1276.00</td>
-                            </tr>
-                            <tr style="height: 32px;">
-                                <td>二级分销商</td>
-                                <td>568</td>
-                                <td>￥1368.00</td>
-                            </tr>
-                            <tr style="height: 32px;">
-                                <td>三级分销商</td>
-                                <td>1238</td>
-                                <td>￥1806.00</td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="3" style="border-top: 1px solid #cccccc; font-size: 14px; color:#9D9D9D;">
-                                    <span style="color: red">合计:</span>
-                                    本月总佣金：588.00元（其中3500.00元确认，2300.00元待确认），总订单数：3308
-                                </td>
-                            </tr>
-                        </tfoot>
+                    <div class="item-accordion-head">
+                        <div>
+                            本月总收入：5658.00元
+                        </div>
+                        <div>
+                            已结算收入：3720.00元 未结算收入：2107.00元
+                        </div>
+                    </div>
+
+                    <table class="commission-item-table">
+
+                        <tr style="height: 42px; color:#9D9D9D;">
+                            <td>
+                                一级分销商
+                            </td>
+                            <td>185</td>
+                            <td>￥1276.00</td>
+                        </tr>
+
+                        <tr style="height: 32px;  color:#9D9D9D;">
+                            <td>二级分销商</td>
+                            <td>568</td>
+                            <td>￥1368.00</td>
+                        </tr>
+
+                        <tr style="height: 32px;  color:#9D9D9D;">
+                            <td>三级分销商</td>
+                            <td>1238</td>
+                            <td>￥1806.00</td>
+                        </tr>
+
                     </table>
 
                 </div>

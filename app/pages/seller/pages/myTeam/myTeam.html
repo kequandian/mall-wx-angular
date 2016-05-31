@@ -2,32 +2,52 @@
 
 
     <div class="t-m-top">
-        <img src="img/sellerPage/commission/my-team-title.png">
+        <div class="weui_search_bar home-title-center" id="search_bar">
+            <form class="weui_search_outer">
+                <div class="weui_search_inner">
+                    <i class="weui_icon_search" style="top: 7px;"></i>
+                    <input type="search" class="weui_search_input" id="search_input" placeholder="搜索" required/>
+                    <!--<a href="javascript:" class="weui_icon_clear" id="search_clear"></a>-->
+                </div>
+                <!--<label for="search_input" class="weui_search_text" id="search_text">-->
+                <!--<i class="weui_icon_search"></i>-->
+                <!--<span>搜索</span>-->
+                <!--</label>-->
+            </form>
+            <!--<a href="javascript:" class="weui_search_cancel" id="search_cancel">取消</a>-->
+        </div>
     </div>
 
     <nav id="nav">
-        <div class="nav-warp">
-            <ul>
-                <li ng-class="{active : currentId == title.id}" ng-repeat="title in my_team_titles"
-                    ui-sref="{{title.srefName}}"
-                    ng-click="clickme(title.id);">
-                    {{title.name}}(-)
-                </li>
-            </ul>
+        <img src="img/sellerPage/myTeam/people-info-img.png">
+        <div class="nav-right">
+            <div class="my-team-info">
+                <span>我的朋友</span>
+                <div>
+                    3656人
+                </div>
+            </div>
+            <div class="concerned-count">
+                已关注：2640人<span style="margin-left: 10px">未关注：1016人</span>
+            </div>
+
         </div>
     </nav>
 
     <div class="myTeam-content">
-        <div style="margin-top: 205px;">
+        <div style="margin-top: 150px;">
 
             <div class="t-m-item" ng-repeat="item in myTeamList">
                 <div class="item-left">
                     <img src="img/sellerPage/commission/default-avatar.jpg">
                 </div>
                 <div class="item-right">
-                    <div>昵称：{{item.user_name}}</div>
-                    <div>加入时间：{{item.partner_ship_time !=null ? item.partner_ship_time : "-"}}</div>
-                    <div>人气指数：-</div>
+                    <div>
+                        <span style="float: left; font-size: 18px;">{{item.user_name}}</span>
+                        <div class="item-comcerned">已关注</div>
+                    </div>
+                    <div>ID:SM554615</div>
+                    <div style="font-size: 14px;">关注时间：2016-05-10 13:10</div>
                     <!--<div>更新用户信息</div>-->
                 </div>
             </div>
