@@ -206,20 +206,32 @@
     </div>
 </div>
 
-
-<div id="light" class="white_content">
-    <span style="color:black;z-index:9999;">
-        推广二维码
-    </span>
-
-    <div class="qrcode-img" style="margin-top: 10px;">
-        <div id="dituContent">
+<div id="qrcode-backgroud">
+    <div id="light" class="white_content">
+        <div class="qrcode-title">
+            <div class="qrcode-title-content">
+                <img src="img/my/userPhoto.png">
+                <div class="qrcode-title-right">
+                    <p>Andy</p>
+                    <div>ID:SM554612</div>
+                </div>
+            </div>
         </div>
+
+        <div class="qrcode-tip">
+            <p>邀你来十美优品商城，创业就那么简单！</p>
+            <p>大众创业，万众创新</p>
+        </div>
+
+        <div class="qrcode-img">
+            <div id="dituContent">
+            </div>
+        </div>
+
+        <div class="qrcode-tip-footer">长按识别二维码</div>
+
+        <span ng-click="close_qrcode()" style="color:black;z-index:9999;padding-bottom: 6px;">
+            关闭
+        </span>
     </div>
-
-    <div style="margin-top: 10px;">长按识别二维码</div>
-
-    <span ng-click="close_qrcode()" style="color:black;z-index:9999;">
-        Close
-    </span>
 </div>

@@ -23,7 +23,7 @@ angular.module('home.controller', [])
             'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-search'
         },{
             'id':'3',
-            'name':'分销中心',
+            'name':'销售中心',
             'srefName':'.sellerPage',
             'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-team'
         },{
@@ -37,9 +37,5 @@ angular.module('home.controller', [])
             'srefName':'.my',
             'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-user'
         }];
-        dddd();
-        function dddd(){
-        }
-
 
     }]);

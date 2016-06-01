@@ -15,9 +15,9 @@
     text-align: center;
 }
 
-#details .product-img img{
-    width: 200px;
-    height: 200px;
+#details .product-img .swiper-slide, .swiper-wrapper img{
+    /*width: 200px;*/
+    height: auto;
     /*background-color: #007aff;*/
 }
 
@@ -248,7 +248,6 @@
 /*====================图片详情（方案二）====================*/
 
 #details .pictures-title{
-    position: absolute;
 }
 
 #details .pictures-title img{
@@ -265,6 +264,12 @@
     margin-left: 30px;
     color:#9D9D9D;
     border-bottom:1px solid #ECECEC;
+}
+
+#details .product-img-list{
+    width: 100%;
+    height: auto;
+    margin-bottom: 6px;
 }
 
 #details .product-img-list img{

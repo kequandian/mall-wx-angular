@@ -8,7 +8,7 @@
                      ng-click="toggleGroup(group)"
                      ng-class="{active: isGroupShown(group)}"
                         >
-                    2016-05-17
+                    2016年05月账单明细
                     <i class="item-arrow-right"></i>
                 </div>
                 <div class="item-accordion"
@@ -18,33 +18,56 @@
 
                     <div class="item-accordion-head">
                         <div>
-                            本月总收入：5658.00元
+                            本月总收入：<span style="color: #C50303;">5658.00元</span>
                         </div>
-                        <div>
-                            已结算收入：3720.00元 未结算收入：2107.00元
+                        <div style="font-size: 14px;">
+                            已结算收入：<span style="color: #413D3E; margin-right: 6px;">3720.00元</span>未结算收入：<span style="color: #413D3E;">2107.00元</span>
                         </div>
                     </div>
 
-                    <table class="commission-item-table">
+                    <table class="commission-item-table" cellpadding="0" cellspacing="0">
 
-                        <tr style="height: 42px; color:#9D9D9D;">
-                            <td>
-                                一级分销商
+                        <tr class="item-color-td">
+                            <td class="item-td-row">
+                                <span>周三</span>
+                                <p>05-25 15:18:06</p>
                             </td>
-                            <td>185</td>
-                            <td>￥1276.00</td>
+                            <td class="item-td-row">
+                                <span>销售商</span>
+                                <p>收入类型</p>
+                            </td>
+                            <td class="item-td-row">
+                                <span>￥18.00</span>
+                                <p>未结算收入</p>
+                            </td>
                         </tr>
-
-                        <tr style="height: 32px;  color:#9D9D9D;">
-                            <td>二级分销商</td>
-                            <td>568</td>
-                            <td>￥1368.00</td>
+                        <tr class="item-color-td">
+                            <td class="item-td-row">
+                                <span>周二</span>
+                                <p>05-25 15:18:06</p>
+                            </td>
+                            <td class="item-td-row">
+                                <span>代理商</span>
+                                <p>收入类型</p>
+                            </td>
+                            <td class="item-td-row">
+                                <span>￥18.00</span>
+                                <p>未结算收入</p>
+                            </td>
                         </tr>
-
-                        <tr style="height: 32px;  color:#9D9D9D;">
-                            <td>三级分销商</td>
-                            <td>1238</td>
-                            <td>￥1806.00</td>
+                        <tr class="item-color-td">
+                            <td class="item-td-row">
+                                <span>周一</span>
+                                <p>05-25 15:18:06</p>
+                            </td>
+                            <td class="item-td-row">
+                                <span>经销商</span>
+                                <p>收入类型</p>
+                            </td>
+                            <td class="item-td-row">
+                                <span>￥18.00</span>
+                                <p>未结算收入</p>
+                            </td>
                         </tr>
 
                     </table>

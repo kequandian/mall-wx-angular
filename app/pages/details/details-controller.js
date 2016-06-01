@@ -102,4 +102,6 @@ angular.module('details.controller', ['details.service'])
             }
 
 
-        }]);
+        }])
+
+;

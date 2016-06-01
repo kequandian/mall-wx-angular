@@ -83,6 +83,13 @@ myapp.directive( 'whenActive', function () {
         };
     })
 
+    //解析含html的字符串
+    .filter('to_trusted', ['$sce', function($sce){
+        return function(text) {
+            return $sce.trustAsHtml(text);
+        };
+    }])
+
 
 
 .directive('updateTitle', ['$rootScope', '$timeout',

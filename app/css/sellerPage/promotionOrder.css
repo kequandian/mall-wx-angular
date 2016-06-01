@@ -34,55 +34,81 @@
 
 #promotionOrder .item-accordion{
     background-color: white;
-    padding: 5px;
+    /*padding: 5px;*/
 }
 
 #promotionOrder .order-item-text{
-    font-size: 14px;
+    font-size: 15px;
     line-height: 24px;
-    color:#343e40;
-    padding-left: 5px;
-    padding-right: 5px;
+    color:#5D696B;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#promotionOrder .order-item-text span{
+    font-size: 15px;
+    color:#1A2123;
+    margin-right: 5px;
 }
 
 #promotionOrder .order-item-explain{
-    font-size: 14px;;
-    line-height: 24px;
-    color:#DB7575;
-    padding-left: 5px;
-    padding-right: 5px;
+    font-size: 12px;;
+    line-height: 20px;
+    color:#C50303;
+    padding-left: 10px;
+    padding-right: 10px;
     margin-top: 5px;
 }
 
 #promotionOrder .order-list{
     margin-top: 8px;
+    background-color: white;
 }
 
 #promotionOrder .order-list-item{
-    height: 120px;
-    border: 1px solid #cccccc;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    padding:7px;
     margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: #E9EDEE;
+    color: #5D696B;
 }
 
-#promotionOrder .order-item-img{
-    width: 100px;
-    height: 120px;
-    position: absolute;
+#promotionOrder .order-list-item .p-order-number{
+    font-size: 15px;
+    height: 22px;
 }
 
-#promotionOrder .order-item-img img{
-    width: 100px;
-    height: 120px;
+#promotionOrder .order-list-item .p-order-type{
+    font-size: 15px;
 }
 
-#promotionOrder .order-item-info{
-    height: 120px;
-    margin-left: 110px;
+#promotionOrder .order-list-item .p-order-type .p-order-type-left{
+    width: 50%;
+    float: left;
 }
 
-
-#promotionOrder .order-item-info div{
-    font-size: 14px;
-    line-height: 20px;
-    margin-left: 3px;
+#promotionOrder .order-list-item .p-order-type .p-order-type-right{
+    width: 50%;
+    float: left;
 }
+
+#promotionOrder .order-list-item .p-order-price{
+    font-size: 15px;
+}
+
+#promotionOrder .order-list-item .p-order-price .p-order-price-left{
+    width: 50%;
+    float: left;
+}
+
+#promotionOrder .order-list-item .p-order-price .p-order-price-right{
+    width: 50%;
+    float: left;
+}
+
+#promotionOrder .order-list-item .p-order-time{
+    font-size: 15px;
+}
+

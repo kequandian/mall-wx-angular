@@ -9,12 +9,14 @@
 }
 
 #comm-content .item-stable{
-    height: 38px;
-    line-height: 38px;
+    height: 42px;
+    line-height: 42px;
     background-color: #C50303;
     padding-left: 10px;
     color: white;
     margin-bottom: 6px;
+    text-align: center;
+    font-weight: 700;
 }
 
 #comm-content .active{
@@ -44,6 +46,13 @@
 #comm-content .item-accordion .item-accordion-head{
     height: 50px;
     padding: 7px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #848484;
+}
+
+#comm-content .item-accordion .item-accordion-head div{
+    line-height: 25px;
 }
 
 #comm-content .item-accordion .commission-item-table{
@@ -54,4 +63,33 @@
     margin-bottom: 5px;
     text-align: center;
     font-size: 16px;
+}
+
+#comm-content .item-accordion .commission-item-table tr{
+    height: 45px;
+}
+
+#comm-content .item-accordion .commission-item-table tr td{
+    width: 33%;
+}
+
+#comm-content .item-accordion .commission-item-table .item-color-td:nth-child(odd){
+
+}
+
+#comm-content .item-accordion .commission-item-table .item-color-td:nth-child(even){
+    background-color: white;
+}
+
+#comm-content .item-accordion .commission-item-table .item-td-row span{
+    font-size: 16px;
+    color: #5F5F5F;
+    font-weight: 600;
+}
+
+#comm-content .item-accordion .commission-item-table .item-td-row p{
+    height: 18px;
+    line-height: 18px;
+    font-size: 14px;
+    color: #ABAFB0;
 }

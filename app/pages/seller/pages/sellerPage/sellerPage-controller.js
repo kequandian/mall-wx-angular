@@ -54,7 +54,8 @@ angular.module('sellerPage.controller', ['sellerPage.service'])
         //推广二维码
         $scope.initQrcode = function () {
 
-            document.getElementById('light').style.display='block';
+            document.getElementById('qrcode-backgroud').style.display='block';
+            //document.getElementById('light').style.display='block';
             //document.getElementById('fade').style.display='block';
 
             var divhtml = document.getElementById("dituContent");
@@ -65,8 +66,8 @@ angular.module('sellerPage.controller', ['sellerPage.service'])
             var invitationUrl = "推广二维码";
             if(invitationUrl != null) {
                 var qrcode = new QRCode(divhtml, {
-                    width: 180,
-                    height: 180
+                    width: 190,
+                    height: 190
                 });
                 qrcode.makeCode(invitationUrl);
             }else{
@@ -75,7 +76,8 @@ angular.module('sellerPage.controller', ['sellerPage.service'])
 
             //关闭二维码
             $scope.close_qrcode = function(){
-                document.getElementById('light').style.display='none';
+                document.getElementById('qrcode-backgroud').style.display='none';
+                //document.getElementById('light').style.display='none';
             }
         };
 

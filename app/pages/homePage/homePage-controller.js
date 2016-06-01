@@ -82,11 +82,12 @@ angular.module('homePage.controller', ['homePage.service'])
                     autoplayDisableOnInteraction: false,
                     loop: true,
                     // 如果需要分页器
-                    pagination: '.swiper-pagination',
+                    //pagination: '.swiper-pagination',
                     // 改变自动更新
                     observer:true,
                     observeParents:true
                 });
+
             }
 
             //适应屏幕大小

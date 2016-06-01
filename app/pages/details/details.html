@@ -4,17 +4,17 @@
 
         <!-- 商品图片 -->
         <div class="product-img">
-            <!--<div id="headerSlider" class="swiper-container">
+            <div id="headerSlider" class="swiper-container">
                 <div class="swiper-wrapper">
-                    &lt;!&ndash;<div class="swiper-slide" ng-repeat="iii in detail_cate">&ndash;&gt;
-                        &lt;!&ndash;<img ng-src="{{iii.name}}">&ndash;&gt;
-                    &lt;!&ndash;</div>&ndash;&gt;
-                    <div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1n3rZHFXXXXX9XFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i4/TB10rkPGVXXXXXGapXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1kQI3HpXXXXbSXFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
+                    <div class="swiper-slide" ng-repeat="itemImg in details.covers">
+                        <img ng-src="{{itemImg.url}}">
+                    </div>
+                    <!--<div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1n3rZHFXXXXX9XFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>-->
+                    <!--<div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i4/TB10rkPGVXXXXXGapXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>-->
+                    <!--<div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1kQI3HpXXXXbSXFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>-->
                 </div>
-            </div>-->
-            <img ng-src="{{details.cover}}">
+            </div>
+            <!--<img ng-src="{{details.cover}}">-->
         </div>
 
         <!-- 商品内容 -->
@@ -63,10 +63,11 @@
 
                 <div class="pictures-title">
                     <img src="img/details/product-imgs-icon.png">
-                    <span>图文详解</span>
+                    <span>商品信息</span>
                 </div>
-                <div class="product-img-list">
-                    <img ng-src="{{imgs.url}}" ng-repeat="imgs in details.images">
+                <div class="product-img-list" ng-bind-html="details.description | to_trusted">
+                    <!--<img ng-src="{{imgs.url}}" ng-repeat="imgs in details.images">-->
+                    <!--{{details.description}}-->
                 </div>
 
         </div>
