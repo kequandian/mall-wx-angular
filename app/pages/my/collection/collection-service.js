@@ -16,6 +16,23 @@ angular.module('collection.service', [])
                         return deferred.reject(data);
                     });
                 return deferred.promise;
+            },
+
+            //移除收藏商品
+            deleteCollectionSerivce:function(coll_id){
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + "/product_favorite/"+ coll_id;
+                $http.delete(url,{
+                    headers:{
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
+                })
+                    .success(function (data) {
+                        return deferred.resolve(data);
+                    }).error(function (data) {
+                        return deferred.reject(data);
+                    });
+                return deferred.promise;
             }
         }
     }]);

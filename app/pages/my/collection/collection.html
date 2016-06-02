@@ -2,20 +2,21 @@
 
     <div class="coll-text">
         <span class="coll-text-left">最近一个月的收藏</span>
-        <span class="coll-text-right">编辑</span>
-        <i class="edit-img"></i>
+        <span class="coll-text-right" ng-click="edit_action()">{{edit_action_text}}</span>
+        <i class="edit-img" ng-click="edit_action()" ng-hide="edit_action_img"></i>
     </div>
 
     <div class="collection-content">
 
-            <div class="coll-list-item">
-                <img src="img/my/collection/product1.png">
-                <div class="coll-item-info">
-                    <div style="font-size: 13px;">韩国GUERISSON九朵云奇迹马油霜70g 淡化疤痕痘印！</div>
-                    <div style="color: #959595;">市场价：￥159.00</div>
-                    <div style="color: #EA0303;">价格：￥79.00</div>
-                </div>
+        <div class="coll-list-item" ng-repeat="conItem in collection_list">
+            <img ng-src="{{conItem.cover}}">
+            <div class="coll-item-info">
+                <div style="font-size: 13px; word-wrap: break-word; word-break: normal;">{{conItem.name | cutText:true:35:"..."}}</div>
+                <div style="color: #959595;">市场价：{{conItem.suggested_price|currency:"￥"}}</div>
+                <div style="color: #EA0303;">价格：{{conItem.cost_price|currency:"￥"}}</div>
+                <img class="coll-item-close" ng-hide="coll_item_close" src="img/cart/close.png" ng-click="delete_coll_item(conItem.id)"/>
             </div>
+        </div>
 
     </div>
 

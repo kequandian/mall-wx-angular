@@ -17,6 +17,7 @@
 
 #collection .coll-text-left{
     margin-left: 5px;
+    font-size: 13px;
 }
 
 #collection .coll-text-right{
@@ -44,27 +45,39 @@
 #collection .coll-list-item{
     height: 100px;
     background-color: white;
+    border-top: 1px solid #cccccc;
     border-bottom: 1px solid #cccccc;
     padding-right: 5px;
     position: relative;
+    margin-bottom: 4px;
 }
 
 #collection .coll-list-item img{
-    width: 60px;
-    height: 60px;
-    background-color: #007aff;
-    margin-top: 20px;
+    width: 70px;
+    height: 70px;
+    /*background-color: #007aff;*/
+    margin-top: 15px;
     margin-left: 10px;
     position: absolute;
 }
 
 #collection .coll-item-info{
+    width: auto;
     padding-top: 10px;
     height: 100px;
-    margin-left: 80px;
+    margin-left: 88px;
 }
 
 #collection .coll-item-info div{
     line-height: 20px;
-    font-size: 14px;
+    font-size: 13px;
+}
+
+#collection .coll-item-info .coll-item-close{
+    /*display: none;*/
+    width: 34px;
+    height: 24px;
+    right: 10px;
+    bottom: 10px;
+    position: absolute;
 }
