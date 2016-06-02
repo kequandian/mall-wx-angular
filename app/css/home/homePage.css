@@ -11,7 +11,7 @@ body, html {
 .hd {
     width: 100%;
     height: 45px;
-    /*background: #4b8bf4;*/
+    background: white;
     position: fixed;
     z-index: 2;
 }

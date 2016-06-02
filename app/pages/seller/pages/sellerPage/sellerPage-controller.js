@@ -66,8 +66,8 @@ angular.module('sellerPage.controller', ['sellerPage.service'])
             var invitationUrl = "推广二维码";
             if(invitationUrl != null) {
                 var qrcode = new QRCode(divhtml, {
-                    width: 190,
-                    height: 190
+                    width: 220,
+                    height: 220
                 });
                 qrcode.makeCode(invitationUrl);
             }else{

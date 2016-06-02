@@ -367,7 +367,9 @@
 
 #details .f-h-bottom{
     height: 25px;
-    font-size: 14px;
+    line-height: 23px;
+    font-size: 13px;
+    color:#5F5D5E;
 }
 
 #details .footer-cart{
@@ -389,7 +391,8 @@
 #details .f-c-bottom{
     height: 25px;
     line-height: 25px;
-    font-size: 14px;
+    font-size: 13px;
+    color:#5F5D5E;
 }
 
 #details .footer-collection{

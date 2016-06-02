@@ -93,8 +93,11 @@ angular.module('details.controller', ['details.service'])
             $scope.addProductToCollection = function(productId){
                 DetailsFty.addCollectionService(productId)
                     .then(function(json){
+                        //alert(angular.toJson(json));
                         if(json.status_code == 0){
-                            //alert(angular.toJson(json));
+                            $.toast('收藏成功');
+                        }else{
+                            $.toast('收藏失败', 'cancel');
                         }
                     }, function(error){
                         $.toast('收藏失败', 'cancel');

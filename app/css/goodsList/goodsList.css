@@ -9,10 +9,36 @@
 #goodsList .weui_tab_bd{
   overflow-x: hidden;
   overflow-y: scroll;
+  padding-top: 42px;
+}
+
+#goodsList .weui_navbar{
+  background-color: #dcdcdc;
+}
+
+#goodsList .weui_navbar:after{
+}
+
+#goodsList .weui_navbar .weui_navbar_item{
+  padding: 9px 0;
+}
+
+#goodsList .weui_navbar .weui_navbar_item:after{
+  border-right: 0;
+}
+
+#goodsList .weui_navbar .weui_navbar_item:active{
+  background-color: #dcdcdc;
+}
+
+#goodsList #content .goods_bar_item_on{
+  height: 20px;
+  color:red;
+  border-bottom: 3px solid red;
 }
 
 .arrow-status{
-  width: 20px;
+  width: 17px;
   height: 20px;
   background-size: 120px 20px;
   background-position:-5px 0;
@@ -22,7 +48,7 @@
 }
 
 .arrow-status-up{
-  width: 20px;
+  width: 17px;
   height: 20px;
   background-size: 120px 20px;
   background-position:-5px 0;
@@ -32,7 +58,7 @@
 }
 
 .arrow-status-down{
-  width: 38px;
+  width: 35px;
   height: 20px;
   background-size:120px 20px;
   background-position:-47px 2px;
@@ -45,9 +71,11 @@
   margin-top: 5px;
   /*margin-bottom: 5px;*/
   margin-left: 5px;
+  margin-right: 5px;
 }
 
 #goodsList .goods-box{
+  width: 49%;
   /*height: 205px;*/
   /*line-height: 175px;*/
   text-align: center;
@@ -71,10 +99,13 @@
   width: 100%;
   height: 45px;
   border-top: 1px solid #cccccc;
+  text-align: left;
+  color: #4c4c4c;
 }
 
 #goodsList .goods-box-text div{
   padding: 5px 5px 0 5px;
+  font-size: 12px;
 }
 
 #goodsList .goods-box-footer-text{
@@ -83,7 +114,8 @@
   line-height: 30px;
   /*background: #DE8BD4;*/
   /*padding:0 5px 0 5px;*/
-  border-top: 1px solid #cccccc;
+  /*border-top: 1px solid #cccccc;*/
+  font-size: 12px;
 }
 
 #goodsList .goods-c-left{
@@ -100,6 +132,10 @@
   width: 20px;
   height: 18px;
   margin-top: 7px;
+}
+
+#goodsList .goods-c-right span{
+  color:#9F9F9F;
 }
 
 #goodsList #footer{

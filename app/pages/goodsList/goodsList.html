@@ -6,14 +6,20 @@
       <div class="bd">
         <div class="weui_tab">
           <div class="weui_navbar">
-            <div class="weui_navbar_item weui_bar_item_on" ng-click="retArrowStatus()">
-              综合
+            <div class="weui_navbar_item goods_bar_item_on" style="position: relative;" ng-click="retArrowStatus()">
+              <div style="position: absolute; width: 100%; text-align: center;">
+                综合
+              </div>
             </div>
-            <div class="weui_navbar_item" ng-click="retArrowStatus()">
-              人气
+            <div class="weui_navbar_item" style="position: relative;" ng-click="retArrowStatus()">
+              <div style="position: absolute; width: 100%; text-align: center;">
+                人气
+              </div>
             </div>
-            <div class="weui_navbar_item" ng-click="retArrowStatus()">
-              销量
+            <div class="weui_navbar_item" style="position: relative;" ng-click="retArrowStatus()">
+              <div style="position: absolute; width: 100%; text-align: center;">
+                销量
+              </div>
             </div>
 
             <div class="weui_navbar_item" style="position: relative;" ng-click="priceStatus()">
@@ -29,17 +35,21 @@
 
             <div class="weui-row goods-box-header">
 
-              <div class="weui-col-50 goods-box" ng-repeat="productItem in productList">
+              <div class="goods-box" ng-repeat="productItem in productList">
                 <img ng-src="{{productItem.cover}}" class="goods-box-img" ui-sref="details({productId:productItem.id})">
                 <div class="goods-box-text">
                   <div style=" word-wrap: break-word; word-break: normal;" ui-sref="details({productId:productItem.id})">
-                    {{productItem.name | cutText:true:18:'...'}}
+                    {{productItem.name | cutText:true:20:'...'}}
                   </div>
                 </div>
                 <div class="goods-box-footer-text">
-                  <div class="goods-c-left c-left">${{productItem.price}}</div>
-                  <div class="goods-c-right c-right" ng-click="addProductToCart(productItem.id)">
+                  <div class="goods-c-left c-left">{{productItem.price | currency:"￥"}}</div>
+                  <!--<div class="goods-c-right c-right" ng-click="addProductToCart(productItem.id)">
                     <img src="img/goodList/good-list-cart-icon.png">
+                  </div>-->
+
+                  <div class="goods-c-right c-right">
+                    <span>省￥46.2</span>
                   </div>
                 </div>
               </div>

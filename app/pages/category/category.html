@@ -3,7 +3,7 @@
     <!-- 头部logo -->
     <div class="hd">
 
-        <div class="home-logo" style="background: white;">
+        <div class="home-logo">
             <!--<img src="img/home/shop-logo.png">-->
         </div>
 
@@ -23,7 +23,7 @@
             <!--<a href="javascript:" class="weui_search_cancel" id="search_cancel">取消</a>-->
         </div>
 
-        <div class="home-title-right" style="background: white;border-bottom: 1px solid #cccccc;">
+        <div class="home-title-right" style="border-bottom: 1px solid #cccccc;">
             <!--<img src="img/home/follow-img.png">-->
             <!--<div>关注我们</div>-->
         </div>
@@ -55,6 +55,16 @@
                             </a>-->
 
                             <a class="content-body-list">
+                                <div class="cate-righr-item" ng-click="goToGoodsList(itemCateList.id)">
+                                    <!--<span>衣物清洁</span>-->
+                                    <span style="font-size: 14px;">{{itemCateList.name}}</span>
+                                    <img ng-src="{{itemCateList.cover}}">
+                                </div>
+                                <div class="cate-righr-item" ng-click="goToGoodsList(itemCateList.id)">
+                                    <!--<span>衣物清洁</span>-->
+                                    <span style="font-size: 14px;">{{itemCateList.name}}</span>
+                                    <img ng-src="{{itemCateList.cover}}">
+                                </div>
                                 <div class="cate-righr-item" ng-click="goToGoodsList(itemCateList.id)">
                                     <!--<span>衣物清洁</span>-->
                                     <span style="font-size: 14px;">{{itemCateList.name}}</span>
