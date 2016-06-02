@@ -37,9 +37,8 @@ angular.module('homePage.controller', ['homePage.service'])
              }*/
 
 
-
             $scope.currentId = 1;
-            //获取推荐商品
+            //获取广告
             getAd();
             //获取推荐商品
             getRecommendProduct();

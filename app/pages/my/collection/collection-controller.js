@@ -13,7 +13,7 @@ angular.module('collection.controller', ['collection.service'])
                 .then(function(json){
                     if(json.status_code == 0){
                         $scope.collection_list = json.data;
-                        //alert(angular.toJson($scope.collection_list));
+                        alert(angular.toJson($scope.collection_list));
                     }
                 }, function(error){
                     $.toast('获取收藏列表失败', 'cancel');

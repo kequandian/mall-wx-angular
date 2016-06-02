@@ -7,4 +7,8 @@ angular.module('modelValues', [])
         number: 1
     })
 
+    .value('OrderTabIndex', {
+        tab_index: 1
+    })
+
 ;

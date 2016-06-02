@@ -39,10 +39,12 @@ angular.module('details.service', [])
             },
 
             // ÃÌº” ’≤ÿ
-            addCollectionService: function () {
+            addCollectionService: function (productId) {
                 var deferred = $q.defer();
                 var url = GlobalVariable.SERVER_PATH + "/product_favorite";
-                $http.get(url,{
+                $http.post(url,{
+                    "product_id": productId
+                },{
                     headers:{
                         'Authorization': GlobalVariable.ACCESS_TOKEN
                     }

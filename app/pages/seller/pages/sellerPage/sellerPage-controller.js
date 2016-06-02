@@ -52,7 +52,7 @@ angular.module('sellerPage.controller', ['sellerPage.service'])
 
 
         //推广二维码
-        $scope.initQrcode = function () {
+        $scope.initQrcode = function (q_r_code) {
 
             document.getElementById('qrcode-backgroud').style.display='block';
             //document.getElementById('light').style.display='block';
@@ -63,7 +63,7 @@ angular.module('sellerPage.controller', ['sellerPage.service'])
                 divhtml.removeChild(divhtml.childNodes[0]);
                 divhtml.removeChild(divhtml.childNodes[1]);
             }
-            var invitationUrl = "推广二维码";
+            var invitationUrl = q_r_code;
             if(invitationUrl != null) {
                 var qrcode = new QRCode(divhtml, {
                     width: 220,
