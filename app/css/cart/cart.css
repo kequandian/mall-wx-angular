@@ -251,8 +251,8 @@ input::-webkit-inner-spin-button {
 }
 
 #empty-cart-content .empty-cart-img img{
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
 }
 
 #empty-cart-content .empty-cart-text{
@@ -261,11 +261,11 @@ input::-webkit-inner-spin-button {
 }
 
 #empty-cart-content .empty-cart-text span{
-    font-size: 18px;
+    font-size: 16px;
 }
 
 #empty-cart-content .empty-cart-text div{
-    font-size: 16px;
+    font-size: 14px;
     color: #9D9D9D;
     margin-top: 5px;
 }
