@@ -12,7 +12,7 @@
     margin-top: 5px;
     overflow-x: hidden;
     overflow-y: scroll;
-    border-top: 1px solid #cccccc;
+    /*border-top: 1px solid #cccccc;*/
 }
 
 #comm-pro-content .comm-pro-item{

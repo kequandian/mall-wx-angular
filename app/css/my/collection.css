@@ -3,7 +3,7 @@
     height: 100%;
 }
 
-#collection .coll-text{
+.coll-text{
     width: 100%;
     height: 35px;
     line-height: 35px;
@@ -12,22 +12,23 @@
     border-bottom: 1px solid #cccccc;
     background-color: white;
     position: fixed;
+    padding-right: 10px;
     z-index: 2;
 }
 
-#collection .coll-text-left{
+.coll-text-left{
     margin-left: 5px;
     font-size: 13px;
 }
 
-#collection .coll-text-right{
+.coll-text-right{
     float: right;
     margin-right: 10px;
     padding-left: 3px;
 }
 
 
-#collection .edit-img{
+.edit-img{
     width: 20px;
     height: 16px;
     margin-top: 9px;

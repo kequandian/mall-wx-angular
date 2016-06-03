@@ -2,29 +2,29 @@
 
     <div class="user-avatar">
         <img ng-src="{{userInfo.avatar != null ? userInfo.avatar : 'img/my/userPhoto.png'}}">
-        <span>编辑头像</span>
-        <i class="ion-ios-arrow-right"></i>
+        <span style="margin-left: 5px;">昵称:Andy</span>
     </div>
 
     <div class="user-info-body">
         <form ng-submit="">
             <!-- 基本信息 -->
             <div class="weui_cells weui_cells_form settlement-font">
-                <div class="weui_cell">
-                    <div class="weui_cell_hd">
-                        <label class="weui_label">昵称：</label>
-                    </div>
-                    <div class="weui_cell_bd weui_cell_primary">
-                        <input class="weui_input" type="text" placeholder="请输入昵称" ng-model="userInfo.name">
-                    </div>               </div>
-                <div class="weui_cell">
-                    <div class="weui_cell_hd">
-                        <label class="weui_label">ID：</label>
-                    </div>
-                    <div class="weui_cell_bd weui_cell_primary">
-                        <input class="weui_input" type="tel" placeholder="请输入ID" ng-model="userInfo.weixin">
-                    </div>
-                </div>
+                <!--<div class="weui_cell">-->
+                    <!--<div class="weui_cell_hd">-->
+                        <!--<label class="weui_label">昵称：</label>-->
+                    <!--</div>-->
+                    <!--<div class="weui_cell_bd weui_cell_primary">-->
+                        <!--<input class="weui_input" type="text" placeholder="请输入昵称" ng-model="userInfo.name">-->
+                    <!--</div>              -->
+                <!--</div>-->
+                <!--<div class="weui_cell">-->
+                    <!--<div class="weui_cell_hd">-->
+                        <!--<label class="weui_label">ID：</label>-->
+                    <!--</div>-->
+                    <!--<div class="weui_cell_bd weui_cell_primary">-->
+                        <!--<input class="weui_input" type="tel" placeholder="请输入ID" ng-model="userInfo.weixin">-->
+                    <!--</div>-->
+                <!--</div>-->
 
                 <div class="weui_cell weui_cell_select weui_select_after">
                     <div class="weui_cell_hd">

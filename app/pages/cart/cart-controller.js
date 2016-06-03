@@ -113,6 +113,25 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
             $state.go('cart-settlement', {carts:$scope.checkedCarts,totalToPay:pay,totalFreight:freight});
         };
 
+
+        //编辑
+        $scope.edit_action_text = "编辑";
+        $scope.cart_item_price = false;
+        $scope.cart_item_quantity = true;
+        $scope.edit_action = function(){
+            if($scope.edit_action_text == "编辑") {
+                $scope.edit_action_text = "取消";
+                $scope.cart_item_price = true;
+                $scope.cart_item_quantity = false;
+                $scope.edit_action_img = true;
+            }else if($scope.edit_action_text == "取消") {
+                $scope.edit_action_text = "编辑";
+                $scope.cart_item_price = false;
+                $scope.cart_item_quantity = true;
+                $scope.edit_action_img = false;
+            }
+        };
+
     }])
 
     .controller('SettlementController', ['$scope', '$state', '$stateParams', '$location', 'AddressManagerFty', 'CartFty', function($scope, $state, $stateParams, $location, AddressManagerFty, CartFty){

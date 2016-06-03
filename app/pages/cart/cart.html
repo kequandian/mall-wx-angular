@@ -1,4 +1,12 @@
 <div class="">
+
+
+    <div class="coll-text">
+        <span class="coll-text-left" style="font-size: 16px;">购物车</span>
+        <span class="coll-text-right" ng-click="edit_action()">{{edit_action_text}}</span>
+        <i class="edit-img" ng-click="edit_action()" ng-hide="edit_action_img"></i>
+    </div>
+
     <div class="view-cart">
         <!--<header class="header cart-header">-->
             <!--<span class="cart-title">购物车</span>-->
@@ -19,10 +27,10 @@
                 <span>去逛逛</span>
             </div>
         </div>
-
         <form ng-hide="cart_info_hide">
             <div class="view-container">
                 <div class="">
+
                     <ul class="cart-list" ng-repeat="cart in carts">
                         <li class="">
                             <div class="">
@@ -36,22 +44,32 @@
                                 <div class="">
                                     <a  ui-sref="details({productId:cart.product_id})"><h4 class="item-title">{{cart.product_name}}</h4></a>
                                     <div class="item-info-bottom">
-                                        <span class="item-price">{{cart.price|currency:'￥'}}</span>
-                                        <div class="cart-quantity-form">
-                                            <a href="javascript:void(0);" class="cart-quantity-decrement" ng-click="downQuantity(cart.product_id)">
-                                                <span>-</span>
-                                            </a>
-                                            <input autocomplete="off" class="cart-quantity" value="{{ cart.quantity }}" type="text" readonly>
-                                            <a href="javascript:void(0);" class="cart-quantity-increment"  ng-click="upQuantity(cart.product_id)">
-                                                <span>+</span>
-                                            </a>
+
+                                        <div class="item-price-position" ng-hide="cart_item_price">
+                                            <span class="item-price">{{cart.price|currency:'￥'}}</span>
+                                            <span class="ion-close">x {{ cart.quantity }}</span>
                                         </div>
-                                        <img class="ion-close" src="img/cart/close.png" ng-click="showDeleteConfirm(cart.product_id)"/>
+
+                                        <div class="cart-quantity-form-position" ng-hide="cart_item_quantity">
+                                            <div class="cart-quantity-form">
+                                                <a href="javascript:void(0);" class="cart-quantity-decrement" ng-click="downQuantity(cart.product_id)">
+                                                    <span>-</span>
+                                                </a>
+                                                <input autocomplete="off" class="cart-quantity" value="{{ cart.quantity }}" type="text" readonly>
+                                                <a href="javascript:void(0);" class="cart-quantity-increment"  ng-click="upQuantity(cart.product_id)">
+                                                    <span>+</span>
+                                                </a>
+                                            </div>
+                                            <img class="ion-close" src="img/cart/close.png" ng-click="showDeleteConfirm(cart.product_id)"/>
+                                        </div>
+
                                     </div>
+
                                 </div>
                             </div>
                         </li>
                     </ul>
+
                 </div>
             </div>
 
