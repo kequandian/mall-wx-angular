@@ -3,7 +3,7 @@ angular.module('sellerPage.controller', ['sellerPage.service'])
     .controller('SellerPageController', ['$scope','$state', 'SellerPageFty','TabIndex', function($scope,$state, SellerPageFty,TabIndex){
 
         //title
-        document.title = "分销中心";
+        document.title = "销售中心";
         TabIndex.number = 3;
         //用户信息
         getUserInfo();

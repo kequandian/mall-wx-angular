@@ -105,7 +105,7 @@
     clear:both;
     position: fixed;
     /*z-index: 101;*/
-    border-top: 1px solid #cccccc;
+    /*border-top: 1px solid #cccccc;*/
     background:white;
     bottom: 0;
 }

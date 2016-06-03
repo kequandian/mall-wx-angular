@@ -3,7 +3,8 @@ angular.module('myTeam.controller', ['myTeam.service'])
     .controller('MyTeamController', ['$scope','$state', 'MyTeamFty',
         function($scope,$state, MyTeamFty){
 
-
+            //title
+            document.title = "我的朋友";
 
             myTeams();
             function myTeams(){

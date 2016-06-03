@@ -76,9 +76,9 @@
 
 #collection .coll-item-info .coll-item-close{
     /*display: none;*/
-    width: 34px;
+    width: auto;
     height: 24px;
-    right: 10px;
+    right: 12px;
     bottom: 10px;
     position: absolute;
 }

@@ -5,7 +5,7 @@ angular.module('promotionOrder.controller', ['promotionOrder.service'])
     .controller('PromotionOrderController', ['$scope', 'PromotionOrderFty', function($scope, PromotionOrderFty){
 
         //title
-        document.title = "分销订单";
+        document.title = "销售订单";
 
         $scope.pro_order_groups = [
             {
