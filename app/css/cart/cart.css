@@ -160,7 +160,7 @@ input::-webkit-inner-spin-button {
 .cart-list li .item-info .item-info-bottom .ion-close{
     position: relative;
     margin-top: 3px;
-    width: 34px;
+    width: auto;
     height: 24px;
     float: right;
     margin-right: 10px;
