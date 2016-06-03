@@ -6,7 +6,11 @@
         <i class="edit-img" ng-click="edit_action()" ng-hide="edit_action_img"></i>
     </div>
 
-    <div class="collection-content">
+    <div class="coll-null" ng-hide="coll_null">
+        <span>没有收藏商品</span>
+    </div>
+
+    <div class="collection-content" ng-hide="coll_content_null">
 
         <div class="coll-list-item" ng-repeat="conItem in collection_list">
             <img ng-src="{{conItem.cover}}">

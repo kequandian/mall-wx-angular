@@ -120,25 +120,28 @@
                     </div>
                     <div class="settlement-option">
                         <div class="settlement-buyer-message">
-                            <span>买家留言</span>
-                            <input type="text" placeholder="选填，可填写您和卖家达成一致的要求" class="settlement-input">
+                            <div>买家留言：</div>
+                            <input type="text" placeholder="选填" class="settlement-input">
                         </div>
                     </div>
                     <div class="settlement-final">
-                        <span class="settlement-total">共{{settlementCarts.length}}件商品 &nbsp;&nbsp;&nbsp;合计(不含邮费):{{pay|currency:'￥'}}</span>
+                        <span class="settlement-total">
+                            共{{settlementCarts.length}}件商品 &nbsp;&nbsp;&nbsp;合计(不含邮费):
+                            <span style="color: red;">{{pay|currency:'￥'}}</span>
+                        </span>
                     </div>
                 </div>
-                <div class="settlement-option-bottom"></div>
+                <!--<div class="settlement-option-bottom"></div>-->
 
                 <!-- 积分、优惠券 -->
-                <div class="settlement-options">
-                    <div class="settlement-option">
-                        <div class="deliver-way">可用积分抵￥0.82</div>
-                    </div>
-                    <div class="settlement-final">
-                        <div class="deliver-way">可用优惠券￥10.00</div>
-                    </div>
-                </div>
+                <!--<div class="settlement-options">-->
+                    <!--<div class="settlement-option">-->
+                        <!--<div class="deliver-way">可用积分抵￥0.82</div>-->
+                    <!--</div>-->
+                    <!--<div class="settlement-final">-->
+                        <!--<div class="deliver-way">可用优惠券￥10.00</div>-->
+                    <!--</div>-->
+                <!--</div>-->
 
 
                 <!-- 结算价格 -->
@@ -194,7 +197,7 @@
             <footer id="foot" class="settlement-foot">
                 <div class="footLeft">
                     <div class="settlement-price">
-                        <div>合计:<span ng-bind="total_price|currency:'￥'"></span></div>
+                        <div>合计:<span style="color: red;" ng-bind="total_price|currency:'￥'"></span></div>
                     </div>
                 </div>
                 <button class="footRight" type="submit" ng-disabled="settlementCarts.length==null">确认付款</button>

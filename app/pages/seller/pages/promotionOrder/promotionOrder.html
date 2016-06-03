@@ -6,7 +6,7 @@
                 <div class="item-stable"
                      ng-click="toggleGroup(group)"
                      ng-class="{active: isGroupShown(group)}"
-                        >
+                     >
                     2016年05月订单明细
                     <i class="item-arrow-right"></i>
                 </div>
@@ -16,7 +16,26 @@
                         >
 
                     <div class="order-item-text">
-                        本月总佣金：<span>600</span> 交易成功：<span>500</span> 待确认：150
+                        <div>
+                            本月总收入：
+                            <span class="pro-red">5685.00元</span>
+                        </div>
+                        <div>
+                            已结算收入：
+                            <span class="pro-black">5260.00元</span>
+                        </div>
+                        <div>
+                            未结算收入：
+                            <span class="pro-black">2107.00元</span>
+                        </div>
+                        <div>
+                            本月总订单：
+                            <span class="pro-black">650</span>
+                        </div>
+                        <div class="orders-count">
+                            <p>交易成功：<span class="pro-black">500</span></p>
+                            <p>待确认：<span class="pro-black">650</span></p>
+                        </div>
                     </div>
 
                     <div class="order-item-explain">
@@ -24,20 +43,19 @@
                     </div>
 
                     <div class="order-list">
-
                         <div class="order-list-item">
                             <div class="p-order-number">订单编号：205987936536518987</div>
                             <div class="p-order-type">
-                                <div class="p-order-type-left">订单类型：销售商</div>
-                                <div class="p-order-type-right">订单状态：待确认</div>
+                                订单状态：待确认
+                            </div>
+                            <div class="p-order-type">
+                                订单金额：￥158.00
                             </div>
                             <div class="p-order-price">
-                                <div class="p-order-price-left">订单金额：￥158.00</div>
-                                <div class="p-order-price-right">我的收入:￥150.00</div>
+                                我的收入：代理商￥5.00,经销商￥8.00,销售商￥15.00
                             </div>
                             <div class="p-order-time">订单时间：2016-05-15 15:25:02</div>
                         </div>
-
                     </div>
 
                 </div>

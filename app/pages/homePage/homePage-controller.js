@@ -3,7 +3,7 @@ angular.module('homePage.controller', ['homePage.service'])
     .controller('HomePageController', ['$scope','$state','TabIndex', 'HomePageFty',
         function($scope,$state,TabIndex, HomePageFty){
 
-            document.title = "首页";
+            document.title = "十美优品商城";
 
            /* setTimeout(function(){
                 document.title = "首页";

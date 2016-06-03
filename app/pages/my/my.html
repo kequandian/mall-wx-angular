@@ -1,17 +1,20 @@
-<div class="my-page-head" ui-sref="userInfo">
+<div class="my-page-head">
     <!--<div class="user-photo"><img src="img/sellerPage/commission/default-avatar.jpg"></div>-->
     <div class="user-photo"><img ng-src="{{userInfo.avatar != null ? userInfo.avatar : 'img/my/userPhoto.png'}}"></div>
     <div class="user-info">
         <div class="user-detail">
-            <p>
+            <p style="line-height: 60px;">
                 {{userInfo.name}}
             </p>
-            <p>
-                <!--会员号：{{userInfo.weixin}}-->
-                ID：-
-            </p>
+            <!--<p style="font-size: 15px;">-->
+                <!--&lt;!&ndash;会员号：{{userInfo.weixin}}&ndash;&gt;-->
+                <!--ID：- -->
+            <!--</p>-->
         </div>
-        <i class="ion-ios-arrow-right" style="font-size: 35px;color:white;float: right;margin-right: 10px"></i>
+        <div class="user-settings" ui-sref="userInfo">
+            <img src="img/my/user-setting-img.png">
+            <div>设置</div>
+        </div>
     </div>
 </div>
 

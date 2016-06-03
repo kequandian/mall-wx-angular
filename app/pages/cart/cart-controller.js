@@ -101,7 +101,7 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
         //去结算
         $scope.checkedCarts=[];
         $scope.goSettlement= function (pay,freight){
-            console.log(pay);
+            //console.log(pay);
             $scope.carts.some(function(it) {
                 if(it.$checked){
                     $scope.checkedCarts.push(it);
@@ -134,97 +134,97 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
 
     }])
 
-    .controller('SettlementController', ['$scope', '$state', '$stateParams', '$location', 'AddressManagerFty', 'CartFty', function($scope, $state, $stateParams, $location, AddressManagerFty, CartFty){
+    .controller('SettlementController', ['$scope', '$state', '$stateParams', '$location', 'AddressManagerFty', 'CartFty',
+        function($scope, $state, $stateParams, $location, AddressManagerFty, CartFty){
 
-        //title
-        document.title = "结算";
+            //title
+            document.title = "结算";
 
-        AllContacts();
-
-        function AllContacts() {
-            AddressManagerFty.getContacts().then(
-                function (result) {
-                    $scope.contacts = result.data;
-                    angular.forEach($scope.contacts, function(data,index){
-                        if(data.is_default == 1){
-                            $scope.currentContact = data;
-                            console.log($scope.currentContact);
-                        }
-                    });
-                },function (error){
-                    console.log(error);
-            })
-        }
-
-        //获取结算数据
-        $scope.settlementCarts= $stateParams.carts;
-        $scope.settlementData=[];
-        console.log("carts:"+$stateParams.carts);
-        angular.forEach($stateParams.carts, function(data,index){
-            $scope.settlementData[index]=({
-                "product_id": data.product_id,
-                "quantity": data.quantity
-            });
-        });
-        console.log($scope.settlementData);
-        $scope.pay=$stateParams.totalToPay;
-        $scope.freight=$stateParams.totalFreight;
-        $scope.total_price = $stateParams.totalToPay + $stateParams.totalFreight;
-
-        //提交订单
-        $scope.order={};
-        $scope.addOrderSubmit=function() {
-            console.log($scope.order);
-            CartFty.addOrder($scope.order).then(
-                function (result) {
-                    console.log(result.data);
-                    window.location.href='/app/payment/wpay/'+ result.data.order_number;
-                    //$state.go('order-confirm',{data:result.data});
-                },function (error){
-                    console.log(error);
-                });
-        };
-
-        //新增地址
-        $scope.addAddress= function (){
-            $state.go('add-address');
-        };
-        //修改地址
-        $scope.editAddress= function (item){
-            console.log(item);
-            $state.go('edit-address', {data:item});
-        };
-        //删除地址
-        $scope.deleteContact= function(id) {
-            $.confirm("", "确认删除?", function() {
-                AddressManagerFty.deleteContact(id).then(
+            AllContacts();
+            function AllContacts() {
+                AddressManagerFty.getContacts().then(
                     function (result) {
-                        console.log(result);
-                        $state.go('cart-settlement',{}, {reload: true});
+                        $scope.contacts = result.data;
+                        angular.forEach($scope.contacts, function(data,index){
+                            if(data.is_default == 1){
+                                $scope.currentContact = data;
+                                //console.log($scope.currentContact);
+                            }
+                        });
+                    },function (error){
+                        console.log(error);
+                })
+            }
+
+            //获取结算数据
+            $scope.settlementCarts= $stateParams.carts;
+            $scope.settlementData=[];
+            //console.log("carts:"+$stateParams.carts);
+            angular.forEach($stateParams.carts, function(data,index){
+                $scope.settlementData[index]=({
+                    "product_id": data.product_id,
+                    "quantity": data.quantity
+                });
+            });
+            console.log($scope.settlementData);
+            $scope.pay=$stateParams.totalToPay;
+            $scope.freight=$stateParams.totalFreight;
+            $scope.total_price = $stateParams.totalToPay + $stateParams.totalFreight;
+
+            //提交订单
+            $scope.order={};
+            $scope.addOrderSubmit=function() {
+                console.log($scope.order);
+                CartFty.addOrder($scope.order).then(
+                    function (result) {
+                        //console.log(result.data);
+                        window.location.href='/app/payment/wpay/'+ result.data.order_number;
+                        //$state.go('order-confirm',{data:result.data});
                     },function (error){
                         console.log(error);
                     });
-                $.toast("已经删除!");
-            }, function() {
-                //取消操作
-            });
-        };
+            };
 
-        //选择地址
-        $scope.changeContact= function(item) {
-            $scope.currentContact = item;
-            console.log($scope.currentContact);
-        };
+            //新增地址
+            $scope.addAddress= function (){
+                $state.go('add-address');
+            };
+            //修改地址
+            $scope.editAddress= function (item){
+                console.log(item);
+                $state.go('edit-address', {data:item});
+            };
+            //删除地址
+            $scope.deleteContact= function(id) {
+                $.confirm("", "确认删除?", function() {
+                    AddressManagerFty.deleteContact(id).then(
+                        function (result) {
+                            console.log(result);
+                            $state.go('cart-settlement',{}, {reload: true});
+                        },function (error){
+                            console.log(error);
+                        });
+                    $.toast("已经删除!");
+                }, function() {
+                    //取消操作
+                });
+            };
 
-        //显示发票抬头
-        $scope.invoiceTitle= false;
+            //选择地址
+            $scope.changeContact= function(item) {
+                $scope.currentContact = item;
+                console.log($scope.currentContact);
+            };
 
-        $scope.showInvoiceTitle= function() {
-            $scope.invoiceTitle=!$scope.invoiceTitle;
-        };
+            //显示发票抬头
+            $scope.invoiceTitle= false;
 
-        //收货时间选项
-        $scope.receivingTime=[{key:'anytime',value:'收货时间不限'},{key:'weekendOrHoliday',value:'周六日/节假日收货'},{key:'workDay',value:'周一至周五收货'}];
+            $scope.showInvoiceTitle= function() {
+                $scope.invoiceTitle=!$scope.invoiceTitle;
+            };
+
+            //收货时间选项
+            $scope.receivingTime=[{key:'anytime',value:'收货时间不限'},{key:'weekendOrHoliday',value:'周六日/节假日收货'},{key:'workDay',value:'周一至周五收货'}];
 
     }])
 

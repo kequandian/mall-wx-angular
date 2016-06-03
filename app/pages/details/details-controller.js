@@ -84,9 +84,12 @@ angular.module('details.controller', ['details.service'])
                         $.toast("添加失败", "cancel");
                     })
             };
-            $scope.testToast = function(){
-                //$.toast.prototype.defaults.duration = 2000;
-                //$.toast("toast测试");
+
+            //立即购买
+            $scope.checkedCarts=[];
+            $scope.buy_immediately = function(item){
+                $scope.checkedCarts.push(item);
+                $state.go('cart-settlement', {carts:$scope.checkedCarts,totalToPay:item.price,totalFreight:item.freight});
             };
 
             //添加收藏

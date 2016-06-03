@@ -130,6 +130,7 @@
     width:16px;
     height: 16px;
     position: absolute;
+    border-radius: 50%;
     top: 18px;
 }
 
@@ -148,6 +149,7 @@
     width:16px;
     height: 16px;
     position: absolute;
+    border-radius: 50%;
     top: 18px;
 }
 
@@ -167,6 +169,7 @@
     width:16px;
     height: 16px;
     position: absolute;
+    border-radius: 50%;
     top: 18px;
 }
 

@@ -5,14 +5,23 @@ angular.module('collection.controller', ['collection.service'])
         //title
         document.title = "我的收藏";
 
+        $scope.coll_null = true;
+        $scope.coll_content_null = true;
+
         //我的收藏
         getCollectionList();
-
         function getCollectionList(){
             CollectionFty.collectionService()
                 .then(function(json){
                     if(json.status_code == 0){
                         $scope.collection_list = json.data;
+                        if($scope.collection_list.length > 0){
+                            $scope.coll_null = true;
+                            $scope.coll_content_null = false;
+                        }else{
+                            $scope.coll_null = false;
+                            $scope.coll_content_null = true;
+                        }
                         //alert(angular.toJson($scope.collection_list));
                     }
                 }, function(error){
@@ -37,15 +46,21 @@ angular.module('collection.controller', ['collection.service'])
 
         //移除收藏商品
         $scope.delete_coll_item = function(coll_id){
-            CollectionFty.deleteCollectionSerivce(coll_id)
-                .then(function(json){
-                    if(json.status_code == 0){
-                        $.toast('移除成功');
-                        //alert(angular.toJson($scope.collection_list));
-                    }
-                }, function(error){
-                    $.toast('移除失败', 'cancel');
-                })
+            $.confirm("", "确认删除?", function() {
+                CollectionFty.deleteCollectionSerivce(coll_id)
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            $.toast('删除成功');
+                            $state.go('collection',{},{reload:true});
+                            //alert(angular.toJson($scope.collection_list));
+                        }
+                    }, function(error){
+                        $.toast('删除失败', 'cancel');
+                    })
+            }, function() {
+                //取消操作
+            });
+
         }
     }])
 ;

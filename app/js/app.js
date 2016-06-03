@@ -25,8 +25,8 @@ var myapp = angular.module('myapp', [
     'userInfo.route',
     'integral.route',
     'feedback.route',
-    'commission.route',
-    'myAgent.route',
+    //'commission.route',
+    //'myAgent.route',
     'commonProblem.route',
     'collection.route',
     'distributionInfo.route'

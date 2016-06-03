@@ -112,7 +112,7 @@
     /*line-height: 35px;*/
     /*text-align: center;*/
     /*color: white;*/
-    margin-top: 5px;
+    margin-top: 6px;
 }
 #sellerPage .s-p-bottom span{
     /*width: 200px;*/
@@ -127,7 +127,7 @@
     font-size: 26px;
     color: red;
     position: absolute;
-    margin-left: 105px;
+    margin-left: 93px;
     bottom: 9px;
 }
 
@@ -137,8 +137,8 @@
 }
 
 #sellerPage .s-p-bottom .cash-botton img{
-    width: 70px;
-    height: 25px;
+    width: 65px;
+    height: 22px;
     display: inline;
     margin-top: 2px;
 }
@@ -257,7 +257,7 @@
 }
 
 .white_content .qrcode-title .qrcode-title-content{
-    margin: 0 auto;
+    /*margin: 0 auto;*/
     width: 200px;
     height: 75px;
 }
@@ -268,7 +268,7 @@
     border-radius: 50%;
     float: left;
     margin-top: 7px;
-    margin-left: 10px;
+    margin-left: 15px;
     margin-right: 5px;
 }
 .white_content .qrcode-title .qrcode-title-right{

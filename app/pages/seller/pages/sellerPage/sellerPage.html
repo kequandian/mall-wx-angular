@@ -21,6 +21,8 @@
                 <div class="user-detail">
                     <p>
                         {{userInfo.name}}
+                        <span style="font-size: 10px; background-color: white; color: red; padding: 1px; border-radius: 2px;">已关注</span>
+                        <span style="font-size: 12px;">推荐人：张三三三</span>
                     </p>
                     <p class="user-lv-text">
                         ID：SM554612 <span style="margin-left: 10px;font-size: 12px;">级别：代理商</span>
@@ -39,12 +41,12 @@
         <!--</div>-->
         <div class="seller-profit">
             <div class="s-p-top">
-                <span style="font-size: 14px;">累计金额：</span>
+                <span style="font-size: 12px;">累计金额：</span>
                 ￥58888.00
             </div>
             <div class="s-p-bottom">
-                <span style="font-size: 14px;">可提佣金：</span>
-                <span style="color: red; padding-left: 4px;font-size: 16px;">￥</span>
+                <span style="font-size: 12px;">可提金额：</span>
+                <span style="color: red; padding-left: 4px;font-size: 14px;">￥</span>
                 <div class="commission-price">288888.00</div>
                 <div class="cash-botton">
                     <img  src="img/sellerPage/takeCash.png">
@@ -102,14 +104,14 @@
                         我的朋友
                     </p>
                 </a>
-                <a ui-sref="commission" class="weui_grid kqd_grid_4" data-id="cell">
+                <!--<a ui-sref="commission" class="weui_grid kqd_grid_4" data-id="cell">
                     <div class="weui_grid_icon kqd_grid_img_large">
                         <img src="img/sellerPage/money.png">
                     </div>
                     <p class="weui_grid_label">
                         我的收入
                     </p>
-                </a>
+                </a>-->
                 <a ui-sref="promotionOrder" class="weui_grid kqd_grid_4" data-id="toast">
                     <div class="weui_grid_icon kqd_grid_img_large">
                         <img src="img/sellerPage/sellerOrder.png">
@@ -211,9 +213,10 @@
 
 <div id="qrcode-backgroud">
     <div id="light" class="white_content">
+
         <div class="qrcode-title">
             <div class="qrcode-title-content">
-                <img src="img/my/userPhoto.png">
+                <img ng-src="{{userInfo.avatar != null ? userInfo.avatar : 'img/my/userPhoto.png'}}">
                 <div class="qrcode-title-right">
                     <p>Andy</p>
                     <div>ID:SM554612</div>

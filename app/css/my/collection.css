@@ -82,3 +82,10 @@
     bottom: 10px;
     position: absolute;
 }
+
+#collection .coll-null{
+    width: 100%;
+    color:#959595;
+    text-align: center;
+    padding-top: 50px;
+}
