@@ -211,7 +211,7 @@
 
 
 
-/*¶þÎ¬Âë*/
+/*ï¿½ï¿½Î¬ï¿½ï¿½*/
 
 #qrcode-backgroud{
     width: 100%;
@@ -288,7 +288,8 @@
     color:black;
     z-index:9999;
     margin-top: 6px;
-    margin-bottom: 2px
+    margin-bottom: 2px;
+    text-align: left;
 }
 
 .white_content .qrcode-tip p{
