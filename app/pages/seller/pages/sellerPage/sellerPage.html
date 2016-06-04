@@ -50,7 +50,7 @@
             </div>
             <div class="s-p-bottom">
                 <span style="font-size: 12px;">可提金额：</span>
-                <span style="color: red; padding-left: 4px;font-size: 14px;">￥</span>
+                <span style="color: red; padding-left: 4px; font-size: 14px;">￥</span>
                 <div class="commission-price">288888.00</div>
                 <div class="cash-botton">
                     <img  src="img/sellerPage/takeCash.png">
@@ -222,15 +222,17 @@
             <div class="qrcode-title-content">
                 <img ng-src="{{userInfo.avatar != null ? userInfo.avatar : 'img/my/userPhoto.png'}}">
                 <div class="qrcode-title-right">
-                    <p>Andy</p>
+                    <p>{{userInfo.name}}</p>
                     <div>ID:SM554612</div>
                 </div>
             </div>
         </div>
 
         <div class="qrcode-tip">
-            <p>邀你来十美优品商城，创业就那么简单！</p>
-            <p>大众创业，万众创新</p>
+            <div class="qrcode-tip-div">
+                <p>邀你来十美优品商城，创业就那么简单！</p>
+                <p>大众创业，万众创新</p>
+            </div>
         </div>
 
         <div class="qrcode-img">

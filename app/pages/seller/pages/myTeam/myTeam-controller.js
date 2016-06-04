@@ -11,11 +11,14 @@ angular.module('myTeam.controller', ['myTeam.service'])
 
                 MyTeamFty.myTeamsService()
                     .then(function(json){
+                        //alert(angular.toJson(json));
                         if(json.status_code == 0){
-                            $scope.myTeamList = json.data.children;
+                            $scope.myTeams = json.data;
+                        }else{
+                            $.toast('获取朋友信息失败','cencal');
                         }
                     },function(error){
-
+                        $.toast('获取朋友信息失败','cencal');
                     });
 
             }

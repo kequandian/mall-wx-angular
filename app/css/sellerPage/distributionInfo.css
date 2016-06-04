@@ -3,12 +3,16 @@
     height: 100%;
 }
 
-#distributionInfo .weui_label{
+#distributionInfo .weui_cells{
+    margin-top: 0;
+}
+
+#distributionInfo .weui_cells .weui_label{
     width: 80px;
     font-size: 14px;
     text-align: right;
 }
 
-#distributionInfo .weui_input{
+#distributionInfo .weui_cells .weui_input{
     font-size: 14px;
 }

@@ -116,6 +116,7 @@
 }
 #sellerPage .s-p-bottom span{
     /*width: 200px;*/
+    line-height: 24px;
     display: block;
     float: left;
     /*margin-right: 5px;*/
@@ -285,18 +286,23 @@
 }
 
 .white_content .qrcode-tip{
-    color:black;
     z-index:9999;
     margin-top: 6px;
     margin-bottom: 2px;
-    text-align: left;
+    text-align: center;
 }
 
-.white_content .qrcode-tip p{
+.white_content .qrcode-tip .qrcode-tip-div{
+    margin: 0 auto;
+    width: 220px;
+}
+
+.white_content .qrcode-tip .qrcode-tip-div p{
     font-size: 12px;
     height: 18px;
     line-height: 18px;
     color: red;
+    text-align: left;
 }
 
 .qrcpde-position{

@@ -24,7 +24,7 @@
             <div class="my-team-info">
                 <span>我的朋友</span>
                 <div>
-                    3656人
+                    3人
                 </div>
             </div>
             <div class="concerned-count">
@@ -37,9 +37,9 @@
     <div class="myTeam-content">
         <div style="margin-top: 150px;">
 
-            <div class="t-m-item" ng-repeat="item in myTeamList">
+            <div class="t-m-item" ng-repeat="item in myTeams.children">
                 <div class="item-left">
-                    <img src="img/sellerPage/commission/default-avatar.jpg">
+                    <img ng-src="{{item.avatar != null ? item.avatar : 'img/sellerPage/commission/default-avatar.jpg'}}">
                 </div>
                 <div class="item-right">
                     <div>
