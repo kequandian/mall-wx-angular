@@ -8,11 +8,16 @@ angular.module('feedback.controller', ['feedback.service'])
 
             var content = $scope.q_content;
 
+            if(!angular.isString(content)){
+                $.toast('请输入意见', 'cancel');
+                return;
+            }
+
             FeedbackFty.feedbackService(content)
                 .then(function(json){
-                    alert(angular.toJson(json));
+                    //alert(angular.toJson(json));
                     if(json.status_code == 0){
-
+                        $scope.q_content = "";
                         $.toast('提交成功');
                     }else{
                         $.toast('提交失败', 'cancel');
