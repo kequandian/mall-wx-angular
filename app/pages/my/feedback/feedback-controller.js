@@ -8,7 +8,7 @@ angular.module('feedback.controller', ['feedback.service'])
 
             var content = $scope.q_content;
 
-            if(!angular.isString(content)){
+            if(!angular.isString(content) || angular.$isEmpty(content)){
                 $.toast('请输入意见', 'cancel');
                 return;
             }
