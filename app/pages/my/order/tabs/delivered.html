@@ -6,25 +6,30 @@
             <span >没有订单信息</span>
         </div>
         <div class="order-item" ng-repeat="items in deliveredList" ng-hide="deliveredShow">
-            <div class="item-order-number">订单号：{{items.order_number}}</div>
+            <div class="item-order-number">
+                订单号：{{items.order_number}}
+                <span>待收货</span>
+            </div>
             <div class="item-order-info">
                 <div class="o-i-left">
                     <img ng-src="{{items.cover}}">
                 </div>
                 <div class="o-i-center">
-                    <span>
-                     {{items.description |  cutText:true:35:'...'}}
-                    </span>
+                <span>
+                 {{items.description |  cutText:true:35:'...'}}
+                </span>
                 </div>
                 <div class="o-i-right">
-                    <!--<span class="o-i-right-span">￥{{items.total_price}}</span>-->
-                    <!--<i class="o-i-right-i">x1</i>-->
+                    <span class="o-i-right-span">￥{{items.total_price}}</span>
+                    <p class="o-i-right-i">x1</p>
                 </div>
             </div>
-            <div class="item-detail-btn">
+            <div class="item-detail-btn" style="border-bottom: 1px solid #cccccc">
                 <div class="order-item-price">总价：￥{{items.total_price}}</div>
-                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right" style="margin-top: 3px;"
-                   ui-sref="orderDetails">
+            </div>
+            <div class="item-detail-btn">
+                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right"
+                   ui-sref="orderDetails({orderNumber:items.order_number})">
                     详情
                 </a>
             </div>
