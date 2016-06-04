@@ -15,7 +15,7 @@ var myapp = angular.module('myapp', [
     'details.route',
     'addressManager.route',
     'orderDetails.route',
-    'coupon.route',
+    //'coupon.route',
     'sellerPage.route',
     'myTeam.route',
     'promotionOrder.route',

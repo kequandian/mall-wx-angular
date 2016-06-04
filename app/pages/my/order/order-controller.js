@@ -27,7 +27,7 @@ angular.module('my.order.controller', ['my.order.service'])
                 OrderFty.ordersService()
                     .then(function (json) {
                         $scope.orders = json.data;
-                        //alert($scope.orders);
+                        //alert(angular.toJson($scope.orders));
                         $scope.payList = []; //待付款
                         $scope.payedList = [];//待发货
                         $scope.deliveredList = [];//待收货

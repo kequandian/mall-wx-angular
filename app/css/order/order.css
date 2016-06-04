@@ -55,12 +55,12 @@
 */
 #orders .order-item{
     width: 100%;
-    height: 143px;
+    height: 188px;
     background: white;
+    border-top: 1px solid #dcdcdc;
+    border-bottom: 1px solid #dcdcdc;
+    margin-bottom: 4px;
     position: relative;
-    border-top:1px solid #dcdcdc;
-    border-bottom:1px solid #dcdcdc;
-    margin-bottom: 7px;
 }
 
 #orders .item-order-number{
@@ -69,14 +69,23 @@
     line-height: 36px;
     margin-left: 7px;
     margin-right: 7px;
-    border-bottom:1px solid #dcdcdc;
+    font-size: 13px;
+    color: #757575;
+    /*border-bottom:1px solid #dcdcdc;*/
+    position: relative;
+}
+#orders .item-order-number span{
+    right: 10px;
+    color: red;
+    position: absolute;
 }
 
 #orders .item-order-info{
     height: 71px;
-    margin-left: 7px;
-    margin-right: 7px;
-    border-bottom:1px solid #dcdcdc;
+    /*margin-left: 7px;*/
+    /*margin-right: 7px;*/
+    background-color: #F5F5F5;
+    /*border-bottom:1px solid #dcdcdc;*/
 }
 
 #orders .o-i-left{
@@ -104,45 +113,44 @@
 #orders .o-i-center span{
     font-size: 12px;
     word-wrap: break-word;;
-    line-height: 23px;
+    line-height: 20px;
 }
 
 #orders .o-i-right{
     width: 80px;
-    right: 7px;
+    right: 10px;
+    font-size: 14px;
+    text-align: right;
     position: absolute;
+    padding-top: 5px;
 }
 
 #orders .o-i-right-span{
-    height:35px;
-    line-height: 35px;
-    right: 7px;
-    position: absolute;
+    height:18px;
+    line-height: 18px;
 }
 
 #orders .o-i-right-i{
-    top:35px;
     height: 35px;
     line-height: 35px;
-    right: 7px;
-    position: absolute;
 }
 
 
 
 #orders .item-detail-btn{
     width: 100%;
-    height: 36px;
-    line-height: 36px;
-    padding-left: 5px;
+    height: 32px;
+    line-height: 32px;
+    padding-top: 5px;
+    background-color: white;
 }
 
 #orders .order-item-price{
     height: 36px;
     line-height: 36px;
     padding-left: 5px;
+    right: 10px;
     position: absolute;
-    float: right;
 }
 
 #orders .item-btn-right{
