@@ -78,7 +78,7 @@
 }
 
 #details .product-f-left img{
-    width: 25px;
+    width: auto;
     height: 25px;
     position: absolute;
     top: 5px;
@@ -93,7 +93,7 @@
 }
 
 #details .product-f-right img{
-    width: 35px;
+    width: auto;
     height: 25px;
     position: absolute;
     top: 5px;
@@ -376,7 +376,7 @@
 }
 
 #details .footer-cart{
-    width:25%;
+    width:22%;
     height: 50px;
     text-align: center;
     /*margin-left: 16%;*/
@@ -399,7 +399,7 @@
 }
 
 #details .footer-collection{
-    width: 25%;
+    width: 22%;
     height: 50px;
     margin-left: 25%;
     text-align: center;

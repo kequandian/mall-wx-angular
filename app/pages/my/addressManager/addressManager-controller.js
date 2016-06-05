@@ -2,7 +2,6 @@ angular.module('addressManager.controller', ['addressManager.service'])
 
     .controller('AddressManagerController', ['$scope', '$state', '$stateParams', 'AddressManagerFty', function($scope, $state, $stateParams, AddressManagerFty){
 
-
         AllContacts();
 
         function AllContacts() {
@@ -54,6 +53,23 @@ angular.module('addressManager.controller', ['addressManager.service'])
         //提交添加地址
         $scope.addContactSubmit=function() {
             console.log($scope.contact.is_default);
+            if(angular.isString($scope.contact.contact_user)){
+                $.toast('收货人不能为空', 'cancel');
+                return
+            }
+            if(angular.isString($scope.contact.phone)){
+                $.toast('手机号不能为空', 'cancel');
+                return
+            }
+            if(angular.isString($scope.contact.pcd)){
+                $.toast('所在地区不能为空', 'cancel');
+                return
+            }
+            if(angular.isString($scope.contact.detail)){
+                $.toast('详细地址不能为空', 'cancel');
+                return
+            }
+
             AddressManagerFty.addContact($scope.contact).then(
                 function (result) {
                     //console.log(result);
@@ -65,6 +81,23 @@ angular.module('addressManager.controller', ['addressManager.service'])
 
         //提交修改地址
         $scope.editContactSubmit= function(){
+            if(angular.isString($scope.contact.contact_user)){
+                $.toast('收货人不能为空', 'cancel');
+                return
+            }
+            if(angular.isString($scope.contact.phone)){
+                $.toast('手机号不能为空', 'cancel');
+                return
+            }
+            if(angular.isString($scope.contact.pcd)){
+                $.toast('所在地区不能为空', 'cancel');
+                return
+            }
+            if(angular.isString($scope.contact.detail)){
+                $.toast('详细地址不能为空', 'cancel');
+                return
+            }
+
             AddressManagerFty.editContact($scope.contact.id, $scope.contact).then(
                 function (result) {
                     console.log(result);
