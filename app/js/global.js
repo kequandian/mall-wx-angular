@@ -10,6 +10,4 @@ angular.module('global', [])
 
   .value('LoginSession', {
       token: 'token'
-  })
-
-;
+  });
