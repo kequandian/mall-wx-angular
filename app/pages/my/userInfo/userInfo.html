@@ -31,7 +31,7 @@
                         性别：
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <select class="weui_select" name="select3" style="margin-left: 3px; padding: 0;">
+                        <select class="weui_select" ng-model="userInfo.sex" name="select3" style="margin-left: 3px; padding: 0;">
                             <option value="">请选择</option>
                             <option value="1">男</option>
                             <option value="0">女</option>
@@ -45,10 +45,9 @@
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
                         <input class="weui_input" type="text" id="data_time"  data-toggle='date'
-                               placeholder="选择日期" ng-model="userInfo.last_login_date">
+                               placeholder="选择日期" ng-model="userInfo.birthday">
                     </div>
                 </div>
-
 
 
                 <div class="weui_cell">
@@ -57,14 +56,15 @@
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
                         <textarea class="weui_textarea settlement-font" placeholder="请输入详细地址信息" rows="3"
-                                  ng-model="contact.detail"></textarea>
+                                  ng-model="userInfo.detail"></textarea>
                     </div>
                 </div>
 
             </div>
 
             <div style="margin-top: 15px; margin-left: 20px;margin-right: 20px;">
-                <input type="submit" class="weui_btn weui_btn_primary" value="确认">
+                <input type="submit" class="weui_btn custom_weui_btn_primary" value="确认"
+                        ng-click="postUserInfo()">
             </div>
 
         </form>
