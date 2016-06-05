@@ -28,7 +28,7 @@ angular.module('home.controller', [])
             'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-team'
         },{
             'id':'4',
-            'name':'购物车',
+            'name':' 购物车',
             'srefName':'.cart',
             'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-cart'
         },{
