@@ -123,17 +123,17 @@
 
 #addressManager .footer {
     width: 100%;
-    height: 40px;
+    height: 42px;
     clear:both;
     position: fixed;
     bottom: 0px;
     /*right: 20px;*/
     /*left: 20px;*/
     z-index: 101;
-    background-color: red;
+    background-color: #DE0402;
 }
 
 #addressManager .footer .weui_btn_default{
-    background-color: red;
+    background-color: #DE0402;
     color: white;
 }
