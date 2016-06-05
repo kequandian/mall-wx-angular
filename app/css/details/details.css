@@ -346,7 +346,7 @@
 
 
 #details .detail-footer-left{
-    width: 50%;
+    width: 44%;
     height: 50px;
     float: left;
 }
@@ -408,7 +408,7 @@
 
 
 #details .detail-footer-right{
-    width: 50%;
+    width: 56%;
     height: 50px;
     float: left;
     background-color: #FF4B00;
@@ -425,7 +425,7 @@
 }
 
 #details .details_cart_css{
-    width: 54%;
+    width: 50%;
     height: 50px;
     line-height: 50px;
     text-align: center;
@@ -434,7 +434,7 @@
 }
 
 #details .details_buy_css{
-    width: 46%;
+    width: 50%;
     line-height: 50px;
     text-align: center;
     background-color: red;
