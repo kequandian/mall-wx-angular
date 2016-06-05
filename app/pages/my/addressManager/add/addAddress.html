@@ -2,7 +2,7 @@
     <div class="view-cart sett-padding">
         <!-- 头部 -->
         <!--<header class="bar top-bar clearfix cart-header settlement-header">-->
-            <!--<span class="cart-title">添加地址</span>-->
+        <!--<span class="cart-title">添加地址</span>-->
         <!--</header>-->
 
         <form ng-submit="addContactSubmit()" id="contactMan">
@@ -45,7 +45,7 @@
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
                         <select class="weui_select" name="select3" ng-options="i.key as i.value for i in isDefault"
-                                ng-init="contact.is_default=0" ng-model="contact.is_default" >
+                                ng-init="contact.is_default=0" ng-model="contact.is_default">
                             <!--<option value="1">是</option>-->
                             <!--<option value="0">否</option>-->
                         </select>
@@ -62,7 +62,7 @@
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
                         <!--<input id="city-picker" type="text" class="weui_input settlement-font" readonly-->
-                               <!--ng-model="contact.pcd" ng-init="contact.pcd='广东 广州 越秀区'">-->
+                        <!--ng-model="contact.pcd" ng-init="contact.pcd='广东 广州 越秀区'">-->
                         <input>
                     </div>
                 </div>
@@ -78,15 +78,15 @@
 
             <!-- 地址选择栏 -->
             <!--<div id="addressPcd_wrap">-->
-                <!--<div class="weui_mask_transition" id="mask_pcd"></div>-->
-                <!--<div class="weui_actionsheet" id="weui_actionsheet_pcd">-->
-                    <!--<div class="weui_actionsheet_menu">-->
-                        <!--<div class="weui_actionsheet_cell"  ng-repeat="province in provinces">{{province.name}}</div>-->
-                    <!--</div>-->
-                    <!--<div class="weui_actionsheet_action">-->
-                        <!--<div class="weui_actionsheet_cell" id="actionsheet_cancel_pcd">取消</div>-->
-                    <!--</div>-->
-                <!--</div>-->
+            <!--<div class="weui_mask_transition" id="mask_pcd"></div>-->
+            <!--<div class="weui_actionsheet" id="weui_actionsheet_pcd">-->
+            <!--<div class="weui_actionsheet_menu">-->
+            <!--<div class="weui_actionsheet_cell"  ng-repeat="province in provinces">{{province.name}}</div>-->
+            <!--</div>-->
+            <!--<div class="weui_actionsheet_action">-->
+            <!--<div class="weui_actionsheet_cell" id="actionsheet_cancel_pcd">取消</div>-->
+            <!--</div>-->
+            <!--</div>-->
             <!--</div>-->
 
             <!-- 填写详细地址 -->
@@ -94,13 +94,17 @@
             <div class="weui_cells weui_cells_form">
                 <div class="weui_cell">
                     <div class="weui_cell_bd weui_cell_primary">
-                        <textarea class="weui_textarea settlement-font" placeholder="请输入详细地址信息" rows="2" ng-model="contact.detail"></textarea>
+                        <textarea class="weui_textarea settlement-font" placeholder="请输入详细地址信息" rows="2"
+                                  ng-model="contact.detail"></textarea>
                     </div>
                 </div>
             </div>
 
             <br>
-            <input type="submit" class="weui_btn weui_btn_primary" value="确认">
+
+            <div class="custom_weui_btn_border">
+                <input type="submit" class="weui_btn custom_weui_btn_primary" value="确认">
+            </div>
         </form>
         <!--{{contact}}-->
     </div>

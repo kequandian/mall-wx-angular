@@ -8,3 +8,9 @@
     color: rgba(255, 255, 255, 0.4);
     background-color: #A70302;
 }
+
+.custom_weui_btn_border{
+    margin-top: 15px;
+    margin-left: 20px;
+    margin-right: 20px;
+}

@@ -126,10 +126,10 @@
     height: 40px;
     clear:both;
     position: fixed;
-    /*bottom: 2px;*/
+    bottom: 0px;
     /*right: 20px;*/
     /*left: 20px;*/
-    /*z-index: 101;*/
+    z-index: 101;
     background-color: red;
 }
 

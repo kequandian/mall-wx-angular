@@ -2,7 +2,7 @@
     <div class="view-cart sett-padding">
         <!-- 头部 -->
         <!--<header class="bar top-bar clearfix cart-header settlement-header">-->
-            <!--<span class="cart-title">修改地址</span>-->
+        <!--<span class="cart-title">修改地址</span>-->
         <!--</header>-->
 
         <form ng-submit="editContactSubmit()" id="contactMan">
@@ -15,7 +15,8 @@
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
                         <input type="hidden" ng-model="contact.id" ng-init="contact.id=editC.id">
-                        <input class="weui_input" type="text" placeholder="请输入姓名" ng-model="contact.contact_user" ng-init="contact.contact_user=editC.contact_user">
+                        <input class="weui_input" type="text" placeholder="请输入姓名" ng-model="contact.contact_user"
+                               ng-init="contact.contact_user=editC.contact_user">
                     </div>
                 </div>
                 <div class="weui_cell">
@@ -23,7 +24,8 @@
                         <label class="weui_label">手机号</label>
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <input class="weui_input" type="tel" placeholder="手机号码" ng-model="contact.phone" ng-init="contact.phone=editC.phone">
+                        <input class="weui_input" type="tel" placeholder="手机号码" ng-model="contact.phone"
+                               ng-init="contact.phone=editC.phone">
                     </div>
                 </div>
                 <div class="weui_cell weui_cell_select weui_select_after">
@@ -46,7 +48,7 @@
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
                         <select class="weui_select" name="select3" ng-init="contact.is_default=editC.is_default==1?1:0"
-                                ng-options="i.key as i.value for i in isDefault" ng-model="contact.is_default" >
+                                ng-options="i.key as i.value for i in isDefault" ng-model="contact.is_default">
                             <!--<option value="1">是</option>-->
                             <!--<option value="0">否</option>-->
                         </select>
@@ -58,13 +60,13 @@
             <!--<div class="weui_cells_title">地址</div>-->
             <div class="weui_cells weui_cells_form" id="addressPcd">
                 <!--<div class="weui_cell">-->
-                    <!--<div class="weui_cell_hd">-->
-                        <!--<label class="weui_label invoice-title">所在地区</label>-->
-                    <!--</div>-->
-                    <!--<div class="weui_cell_bd weui_cell_primary">-->
-                        <!--<input id="city-picker" type="text" class="weui_input settlement-font" cityPicker-->
-                               <!--ng-model="contact.pcd" ng-init="contact.pcd=pcd||'广东 广州 越秀区'" readonly>-->
-                    <!--</div>-->
+                <!--<div class="weui_cell_hd">-->
+                <!--<label class="weui_label invoice-title">所在地区</label>-->
+                <!--</div>-->
+                <!--<div class="weui_cell_bd weui_cell_primary">-->
+                <!--<input id="city-picker" type="text" class="weui_input settlement-font" cityPicker-->
+                <!--ng-model="contact.pcd" ng-init="contact.pcd=pcd||'广东 广州 越秀区'" readonly>-->
+                <!--</div>-->
                 <!--</div>-->
 
                 <div class="weui_cell settlement-font">
@@ -72,7 +74,8 @@
                         <label class="weui_label">所在地区</label>
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <input class="weui_input" type="tel" placeholder="输入省市区" ng-model="contact.pcd" ng-init="contact.zip=editC.zip">
+                        <input class="weui_input" type="tel" placeholder="输入省市区" ng-model="contact.pcd"
+                               ng-init="contact.zip=editC.zip">
                     </div>
                 </div>
 
@@ -81,22 +84,23 @@
                         <label class="weui_label">邮编</label>
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <input class="weui_input" type="tel" placeholder="邮编" ng-model="contact.zip" ng-init="contact.zip=editC.zip">
+                        <input class="weui_input" type="tel" placeholder="邮编" ng-model="contact.zip"
+                               ng-init="contact.zip=editC.zip">
                     </div>
                 </div>
             </div>
 
             <!-- 地址选择栏 -->
             <!--<div id="addressPcd_wrap">-->
-                <!--<div class="weui_mask_transition" id="mask_pcd"></div>-->
-                <!--<div class="weui_actionsheet" id="weui_actionsheet_pcd">-->
-                    <!--<div class="weui_actionsheet_menu">-->
-                        <!--<div class="weui_actionsheet_cell"  ng-repeat="province in provinces">{{province.name}}</div>-->
-                    <!--</div>-->
-                    <!--<div class="weui_actionsheet_action">-->
-                        <!--<div class="weui_actionsheet_cell" id="actionsheet_cancel_pcd">取消</div>-->
-                    <!--</div>-->
-                <!--</div>-->
+            <!--<div class="weui_mask_transition" id="mask_pcd"></div>-->
+            <!--<div class="weui_actionsheet" id="weui_actionsheet_pcd">-->
+            <!--<div class="weui_actionsheet_menu">-->
+            <!--<div class="weui_actionsheet_cell"  ng-repeat="province in provinces">{{province.name}}</div>-->
+            <!--</div>-->
+            <!--<div class="weui_actionsheet_action">-->
+            <!--<div class="weui_actionsheet_cell" id="actionsheet_cancel_pcd">取消</div>-->
+            <!--</div>-->
+            <!--</div>-->
             <!--</div>-->
 
             <!-- 填写详细地址 -->
@@ -112,7 +116,10 @@
             </div>
 
             <br>
-            <input type="submit" class="weui_btn weui_btn_primary" value="确认">
+
+            <div class="custom_weui_btn_border">
+                <input type="submit" class="weui_btn custom_weui_btn_primary" value="确认">
+            </div>
         </form>
         <!--{{contact}}-->
     </div>
