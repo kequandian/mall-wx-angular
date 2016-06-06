@@ -52,7 +52,10 @@ angular.module('addressManager.controller', ['addressManager.service'])
 
         //提交添加地址
         $scope.addContactSubmit=function() {
-            console.log($scope.contact.is_default);
+
+            var pcd = document.getElementById('city-picker');
+            //console.log($scope.contact.is_default);
+
             if(!angular.isString($scope.contact.contact_user)){
                 $.toast('收货人不能为空', 'cancel');
                 return
@@ -61,7 +64,7 @@ angular.module('addressManager.controller', ['addressManager.service'])
                 $.toast('手机号不能为空', 'cancel');
                 return
             }
-            if(!angular.isString($scope.contact.pcd)){
+            if(!angular.isString(pcd.value)){
                 $.toast('所在地区不能为空', 'cancel');
                 return
             }

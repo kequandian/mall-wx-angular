@@ -28,22 +28,6 @@ angular.module('sellerPage.controller', ['sellerPage.service'])
                     if(json.status_code == 0){
                         $scope.owner_balance = json.data;
                         //alert(angular.toJson($scope.owner_balance))
-
-                        var isAgent = $scope.owner_balance.isAgent;
-                        var isPartner = $scope.owner_balance.isPartner;
-                        var isSeller = $scope.owner_balance.isSeller;
-
-                        var stringName = "";
-                        if(isAgent){
-                            stringName += "代理商 ";
-                        }
-                        if(isPartner){
-                            stringName += "合伙人 ";
-                        }
-                        if(isSeller){
-                            stringName += "分销商";
-                        }
-                        $scope.user_lv_name = stringName;
                     }
                 }, function(error){
                     $.toast('获取信息失败', 'cancel');
@@ -53,7 +37,6 @@ angular.module('sellerPage.controller', ['sellerPage.service'])
 
         //推广二维码
         $scope.initQrcode = function (q_r_code) {
-
             document.getElementById('qrcode-backgroud').style.display='block';
             //document.getElementById('light').style.display='block';
             //document.getElementById('fade').style.display='block';
@@ -63,7 +46,7 @@ angular.module('sellerPage.controller', ['sellerPage.service'])
                 divhtml.removeChild(divhtml.childNodes[0]);
                 divhtml.removeChild(divhtml.childNodes[1]);
             }
-            var invitationUrl = q_r_code;
+            var invitationUrl = "www.kequandian.net/app/app?invite_code=" + q_r_code;
             if(invitationUrl != null) {
                 var qrcode = new QRCode(divhtml, {
                     width: 220,

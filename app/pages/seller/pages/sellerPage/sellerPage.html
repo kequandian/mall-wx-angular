@@ -33,7 +33,7 @@
                     </p>
 
                     <p class="user-lv-text">
-                        推荐人：张三
+                        推荐人：{{userInfo.inviter_name != null ? userInfo.inviter_name : "-"}}
                     </p>
                 </div>
             </div>
@@ -46,12 +46,12 @@
         <div class="seller-profit">
             <div class="s-p-top">
                 <span style="font-size: 12px;">累计金额：</span>
-                ￥58888.00
+                {{owner_balance.totalReward != null ? owner_balance.totalReward : '0' | currency:"￥"}}
             </div>
             <div class="s-p-bottom">
                 <span style="font-size: 12px;">可提金额：</span>
                 <span style="color: red; padding-left: 4px; font-size: 14px;">￥</span>
-                <div class="commission-price">288888.00</div>
+                <div class="commission-price">{{owner_balance.balance != null ? owner_balance.balance : '0' | currency:""}}</div>
                 <div class="cash-botton">
                     <img  src="img/sellerPage/takeCash.png">
                 </div>
