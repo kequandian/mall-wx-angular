@@ -1,15 +1,32 @@
 <div id="orderDetails">
 
-    <div>
+    <div style="margin-bottom: 42px;">
 
         <div class="order_detail_title">
+            <div class="o-d-title-content">
+                <img src="img/my/orderDetails/order-title-img.png">
+                <div>已发货</div>
+                <p>还剩7天0时自动确认</p>
+            </div>
+        </div>
 
+        <div class="logistics-info">
+            <div class="l-i-left">
+                <img src="img/my/orderDetails/logistics-info-cart.png">
+            </div>
+            <div class="l-i-center">
+                <div>【广州】 【已签收，签收人是已签收】，感谢使用百世快递，期待再次为您服务</div>
+                <p>2016-06-03 23:49:01</p>
+            </div>
+            <div class="l-i-right">
+                <img src="img/my/orderDetails/logistics-info-arrow.png">
+            </div>
         </div>
 
         <!--收货地址-->
         <div class="order-address">
             <div class="o-address-img">
-                <img src="">
+                <img src="img/cart/address.png">
             </div>
             <div class="o-address-info">
                 <div class="mail-name">收件人：{{detailsInfo.contact_user}}</div>
@@ -22,7 +39,6 @@
 
         <!--订单详情-->
         <div class="order-detail">
-
 
             <!--订单状态-->
             <div class="order-status">
@@ -38,27 +54,24 @@
                     <img ng-src="{{proItem.cover}}">
                 </div>
                 <div class="o-i-center">
-                    <span>
+                    <p>
                      {{proItem.product_name |  cutText:true:35:'...'}}
-                    </span>
+                    </p>
                 </div>
                 <div class="o-i-right">
-                    <span class="o-i-right-span">￥{{proItem.final_price}}</span>
+                    <div class="o-i-right-span">{{proItem.final_price|currency:'￥'}}</div>
+                    <s class="o-i-right-span">{{proItem.final_price}}</s>
                     <i class="o-i-right-i">x{{proItem.quantity}}</i>
                 </div>
             </div>
-            <div class="o-d-freight">
-                <span>运费：</span>
-                <i class="o-d-freight-i">￥{{detailsInfo.freight}}</i>
-            </div>
-            <div class="buyer-message">
-                <span>买家留言：</span>
-            </div>
+            <!--<div class="o-d-freight">-->
+                <!--<span></span>-->
+            <!--</div>-->
+            <!--<div class="buyer-message">-->
+                <!--<span>买家留言：</span>-->
+            <!--</div>-->
             <div class="total-price">
-                <span class="total-price-i">共{{productCount}}件商品  实际付款：{{total_price|currency:'￥'}}</span>
-            </div>
-            <div class="closing-time">
-                <span>成交时间：2016-04-25</span>
+                <span class="total-price-i">共{{productCount}}件商品  合计：{{total_price|currency:'￥'}} (含运费){{detailsInfo.freight|currency:'￥'}}</span>
             </div>
         </div>
     </div>

@@ -1,0 +1,111 @@
+#refund{
+    background-color: #F8F8F8;
+}
+
+#refund .refund-hide-span{
+    width: 100%;
+    line-height: 42px;
+    text-align: center;
+}
+
+#refund .orders-hide-span span{
+    color: #c8c8cd;
+    font-size: 18px;
+}
+
+#refund .refund-item{
+    width: 100%;
+    height: 144px;
+    background: white;
+    border-top: 1px solid #dcdcdc;
+    margin-bottom: 4px;
+    position: relative;
+}
+
+#refund .item-refund-order-number{
+    min-width: 120px;
+    height: 36px;
+    line-height: 36px;
+    margin-left: 7px;
+    margin-right: 7px;
+    font-size: 13px;
+    color: #757575;
+    /*border-bottom:1px solid #dcdcdc;*/
+    position: relative;
+}
+#refund .item-refund-order-number span{
+    right: 10px;
+    color: red;
+    position: absolute;
+}
+
+#refund .item-refund-order-info{
+    height: 71px;
+    /*margin-left: 7px;*/
+    /*margin-right: 7px;*/
+    background-color: #F5F5F5;
+    /*border-bottom:1px solid #dcdcdc;*/
+}
+
+#refund .o-r-i-left{
+    width: 70px;
+    padding-top: 10px;
+    padding-left: 7px;
+    float: left;
+}
+
+#refund .o-r-i-left img{
+    width: 50px;
+    height: 50px;
+}
+
+#refund .o-r-i-center{
+    height: 71px;
+    text-align: left;
+    line-height: 23px;
+    margin-top: 5px;
+    left: 75px;
+    right: 85px;
+    position: absolute;
+}
+
+#refund .o-r-i-center span{
+    font-size: 12px;
+    word-wrap: break-word;;
+    line-height: 20px;
+}
+
+#refund .o-r-i-right{
+    width: 80px;
+    right: 10px;
+    font-size: 14px;
+    text-align: right;
+    position: absolute;
+    padding-top: 5px;
+}
+
+#refund .o-r-i-right-span{
+    height:18px;
+    line-height: 18px;
+}
+
+#refund .o-r-i-right-i{
+    height: 35px;
+    line-height: 35px;
+}
+
+#refund .item-refund-detail-btn{
+    width: 100%;
+    height: 32px;
+    line-height: 32px;
+    padding-top: 5px;
+    background-color: white;
+}
+
+#refund .refund-order-item-price{
+    height: 36px;
+    line-height: 36px;
+    padding-left: 5px;
+    right: 10px;
+    position: absolute;
+}
