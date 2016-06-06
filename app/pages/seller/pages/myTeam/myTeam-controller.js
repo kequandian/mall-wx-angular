@@ -14,6 +14,7 @@ angular.module('myTeam.controller', ['myTeam.service'])
                         //alert(angular.toJson(json));
                         if(json.status_code == 0){
                             $scope.myTeams = json.data;
+                            $scope.myFriends = $scope.myTeams.children.length;
                         }else{
                             $.toast('获取朋友信息失败','cencal');
                         }

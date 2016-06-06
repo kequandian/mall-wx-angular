@@ -3,13 +3,99 @@
     background-color: #F8F8F8;
 }
 
+/*#orderDetails .order_detail_title{*/
+    /*width: 100%;*/
+    /*height: auto;*/
+    /*background-size: 100% auto;*/
+    /*background-repeat: no-repeat;*/
+    /*background-image: url(../../img/my/orderDetails/order-title-img.png);*/
+    /*color:white;*/
+/*}*/
 #orderDetails .order_detail_title{
-    width: auto;
-    height: 100px;
-    background-size: auto 100px;
-    background-repeat: no-repeat;
-    background-image: url(../../img/my/orderDetails/order-title-img.png);
+    width: 100%;
 }
+
+#orderDetails .order_detail_title .o-d-title-content{
+    width: 100%;
+    height: auto;
+    position: relative;
+    color: white;
+}
+#orderDetails .order_detail_title .o-d-title-content img{
+    width: 100%;
+    height: auto;
+    z-index: 100;
+}
+
+#orderDetails .order_detail_title .o-d-title-content div{
+    font-size: 18px;
+    top: 20px;
+    left: 20px;
+    position: absolute;
+    z-index: 102;
+}
+
+#orderDetails .order_detail_title .o-d-title-content p{
+    font-size: 13px;
+    top: 45px;
+    left: 20px;
+    position: absolute;
+    z-index: 102;
+}
+
+
+#orderDetails .logistics-info{
+    height: 80px;
+    background-color: white;
+}
+#orderDetails .logistics-info .l-i-left{
+    width: 40px;
+    height: 80px;
+    float: left;
+}
+
+#orderDetails .logistics-info .l-i-left img{
+    width: 25px;
+    height: 20px;
+    margin-left: 7px;
+    margin-top: 30px;
+}
+
+#orderDetails .logistics-info .l-i-center{
+    max-width: 78%;
+    height: 80px;
+    padding-top: 10px;
+    float: left;
+}
+
+#orderDetails .logistics-info .l-i-center div{
+    width: 100%;
+    font-size: 12px;
+    line-height: 22px;
+    color:#C22C25;
+}
+
+#orderDetails .logistics-info .l-i-center p{
+    font-size: 12px;
+    line-height: 20px;
+    color:#A4A4A4;
+}
+
+#orderDetails .logistics-info .l-i-right{
+    width: 25px;
+    height: 80px;
+    float: right;
+}
+
+#orderDetails .logistics-info .l-i-right img{
+    width: 15px;
+    height: 20px;
+    margin-top: 30px;
+}
+
+
+
+
 
 
 #orderDetails .order-status{
@@ -19,52 +105,56 @@
     padding-left: 7px;
     padding-right: 7px;
     font-size: 12px;
-    color: black;
+    color: #474747;
 }
-
 
 #orderDetails .o-status-info{
     margin-left: 10px;
     float: left;
 }
 
-#orderDetails .o-status{
-}
+/*#orderDetails .o-status{*/
+/*}*/
 
-#orderDetails .o-number{
-}
+/*#orderDetails .o-number{*/
+/*}*/
 
-#orderDetails .o-total{
-}
+/*#orderDetails .o-total{*/
+/*}*/
 
 #orderDetails .order-address{
-    height: 55px;
-    border-bottom: 1px solid #cccccc;
-    padding-top: 10px;
+    height: 48px;
+    padding-top: 8px;
     padding-left: 7px;
     padding-right: 7px;
     background-color: white;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
     position: relative;
 }
 
 #orderDetails .o-address-img{
+    width: 40px;
     height: 55px;
     position: absolute;
 }
 
 #orderDetails .o-address-img img{
-    width: 30px;
-    height: 30px;
-    background-color: #04BE02;
+    width: 16px;
+    height: 20px;
+    margin-top: 20px;
+    margin-left: 7px;
 }
 
 #orderDetails .o-address-info{
     margin-left: 35px;
+    color: #474747;
+    font-size: 13px;
     float: left;
 }
 
 #orderDetails .mail-name{
-    width: 150px;
+    min-width: 80px;
     float: left;
 }
 
@@ -74,21 +164,22 @@
 }
 
 #orderDetails .mail-address{
+    min-width:75%;
 }
 
 #orderDetails .order-detail{
     margin-top: 5px;
     background-color: white;
     border-top: 1px solid #cccccc;
-    border-bottom: 1px solid #cccccc;
+    /*border-bottom: 1px solid #cccccc;*/
 }
 
 #orderDetails .item-order-info{
     height: 71px;
-    margin-left: 7px;
-    margin-right: 7px;
+    margin:3px 0 0 7px;
     background-color: #F5F5F5;
-    border-bottom:1px solid #dcdcdc;
+    position: relative;
+    /*border-bottom:1px solid #dcdcdc;*/
 }
 
 #orderDetails .o-i-left{
@@ -106,53 +197,50 @@
     height: 71px;
     text-align: left;
     line-height: 23px;
-    margin-top: 10px;
     left:68px;
     right: 85px;
     position: absolute;
 }
 
-#orderDetails .o-i-center span{
+#orderDetails .o-i-center p{
     font-size: 12px;
     word-wrap: break-word;;
-    line-height: 23px;
+    line-height: 20px;
+    margin-top: 8px;
 }
 
 #orderDetails .o-i-right{
-    width: 80px;
+    min-width: 40px;
     right: 7px;
+    text-align: right;
     position: absolute;
 }
 
 #orderDetails .o-i-right-span{
-    height:35px;
-    line-height: 35px;
+    height: 19px;
+    line-height: 20px;
+    margin-top: 3px;
     right: 7px;
-    position: absolute;
 }
 
 #orderDetails .o-i-right-i{
     top:35px;
-    height: 35px;
-    line-height: 35px;
+    height: 30px;
+    line-height: 30px;
     right: 7px;
-    position: absolute;
 }
 
 
 #orderDetails .o-d-freight{
-    height: 40px;
-    line-height: 40px;
-    margin-left: 7px;
-    margin-right: 7px;
+    height: 26px;
+    line-height: 26px;
+    padding-left: 7px;
+    padding-right: 7px;
+    text-align: right;
+    font-size: 12px;
     border-bottom:1px solid #dcdcdc;
 }
 
-#orderDetails .o-d-freight-i{
-    right: 7px;
-    margin-right: 7px;
-    position: absolute;
-}
 
 #orderDetails .buyer-message{
     height: 40px;
@@ -163,24 +251,19 @@
 }
 
 #orderDetails .total-price{
-    height: 40px;
-    line-height: 40px;
-    margin-left: 7px;
-    margin-right: 7px;
-    border-bottom:1px solid #dcdcdc;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 7px;
+    padding-right: 7px;
+    font-size: 13px;
+    border-top:1px solid #dcdcdc;
 }
 
 #orderDetails .total-price-i{
     right: 7px;
     margin-right: 7px;
+    color: #474747;
     position: absolute;
-}
-
-#orderDetails .closing-time{
-    height: 40px;
-    line-height: 40px;
-    margin-left: 7px;
-    margin-right: 7px;
 }
 
 
@@ -236,6 +319,7 @@
     bottom: 2px;
     right: 1px;
     z-index: 101;
+    border-top: 1px solid #cccccc;
 }
 
 #orderDetails .item-button{

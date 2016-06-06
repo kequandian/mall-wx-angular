@@ -10,6 +10,7 @@ angular.module('orderDetails.controller', ['orderDetails.service'])
 
                 OrderDetailsFty.orderDetailsService(orderNumber)
                     .then(function(json){
+                        //alert(angular.toJson(json));
                         if(json.status_code == 0){
                             $scope.detailsInfo = json.data;
                             var count = 0;

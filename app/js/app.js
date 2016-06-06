@@ -29,7 +29,8 @@ var myapp = angular.module('myapp', [
     //'myAgent.route',
     'commonProblem.route',
     'collection.route',
-    'distributionInfo.route'
+    'distributionInfo.route',
+    'refund.route'
 ]);
 myapp.config(['$stateProvider', "$urlRouterProvider",
     function($stateProvider, $urlRouterProvider) {
