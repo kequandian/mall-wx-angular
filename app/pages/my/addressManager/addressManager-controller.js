@@ -28,11 +28,13 @@ angular.module('addressManager.controller', ['addressManager.service'])
         var editingContact = $stateParams.data;
         if(editingContact != null){
             $scope.editC= editingContact;
+
             if(editingContact.province == null){
-                $scope.pcd = '广东 广州 越秀区';
+                $scope.pcd = '';
                 //console.log($scope.pcd);
             }else{
                 $scope.pcd= editingContact.province +' '+ editingContact.city +' '+ editingContact.district;
+                console.log('edit pcd:' + $scope.pcd);
             }
         }
 
@@ -53,22 +55,26 @@ angular.module('addressManager.controller', ['addressManager.service'])
         //提交添加地址
         $scope.addContactSubmit=function() {
 
-            var pcd = document.getElementById('city-picker');
+            //var pcd = document.getElementById('city-picker');
             //console.log($scope.contact.is_default);
 
-            if(!angular.isString($scope.contact.contact_user)){
+            if(!angular.isString($scope.contact.contact_user)
+                || $scope.contact.contact_user.length==0){
                 $.toast('收货人不能为空', 'cancel');
                 return
             }
-            if(!angular.isString($scope.contact.phone)){
+            if(!angular.isString($scope.contact.phone)
+                || $scope.contact.phone.length==0){
                 $.toast('手机号不能为空', 'cancel');
                 return
             }
-            if(!angular.isString(pcd.value)){
+            if(!angular.isString($scope.contact.pcd)
+                || $scope.pcd.length==0){
                 $.toast('所在地区不能为空', 'cancel');
                 return
             }
-            if(!angular.isString($scope.contact.detail)){
+            if(!angular.isString($scope.contact.detail)
+                || $scope.confirm.detail.length==0){
                 $.toast('详细地址不能为空', 'cancel');
                 return
             }
@@ -84,28 +90,33 @@ angular.module('addressManager.controller', ['addressManager.service'])
 
         //提交修改地址
         $scope.editContactSubmit= function(){
-            if(!angular.isString($scope.contact.contact_user)){
+            if(!angular.isString($scope.contact.contact_user)
+            || $scope.contact.contact_user.length==0){
                 $.toast('收货人不能为空', 'cancel');
                 return
             }
-            if(!angular.isString($scope.contact.phone)){
+            if(!angular.isString($scope.contact.phone)
+            || $scope.contact.phone.length==0){
                 $.toast('手机号不能为空', 'cancel');
                 return
             }
-            if(!angular.isString($scope.contact.pcd)){
+            if(!angular.isString($scope.pcd)
+            || $scope.pcd.length==0){
                 $.toast('所在地区不能为空', 'cancel');
                 return
             }
-            if(!angular.isString($scope.contact.detail)){
+            if(!angular.isString($scope.contact.detail)
+            || $scope.contact.detail.length==0){
                 $.toast('详细地址不能为空', 'cancel');
                 return
             }
 
             AddressManagerFty.editContact($scope.contact.id, $scope.contact).then(
                 function (result) {
-                    console.log(result);
+                    //console.log(result);
                     $state.go('addressManager');
                 },function (error){
+                    $.toast('更新地址失败', 'cancel');
                     console.log(error);
                 });
         };
@@ -132,7 +143,7 @@ angular.module('addressManager.controller', ['addressManager.service'])
             $.confirm("", "确认删除?", function() {
                 AddressManagerFty.deleteContact(id).then(
                     function (result) {
-                        console.log(result);
+                        //console.log(result);
                         $state.go('addressManager',{}, {reload: true});
                     },function (error){
                         console.log(error);
@@ -169,7 +180,7 @@ angular.module('addressManager.controller', ['addressManager.service'])
             +function($){
 
                 $.rawCitiesData = pcd;
-                console.log(pcd);
+                //console.log(pcd);
 
             }($);
             // jshint ignore: end

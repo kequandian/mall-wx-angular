@@ -53,7 +53,7 @@ angular.module('promotionOrder.controller', ['promotionOrder.service'])
                 .then(function(json){
                     if(json.status_code == 0){
                         $scope.promotion_order_list = json.data;
-                        alert(angular.toJson($scope.promotion_order_list));
+                        //alert(angular.toJson($scope.promotion_order_list));
                     }else{
                         $.toast('获取分销订单失败', 'cancel');
                     }

@@ -71,10 +71,12 @@ angular.module('addressManager.service', [])
                     }
                 })
                     .success(function (data) {
+                        //console.log('edit contact done.');
                         deferred.resolve(data);
                     })
                     .error(function (data) {
                         deferred.reject(data);
+                        console.log(data);
                     });
                 return deferred.promise;
             },
