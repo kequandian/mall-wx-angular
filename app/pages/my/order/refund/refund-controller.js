@@ -1,7 +1,7 @@
 angular.module('refund.controller', ['refund.service'])
 
-    .controller('RefundController', ['$scope','$state', '$stateParams', 'RefundFty',
-        function($scope,$state,$stateParams, RefundFty){
+    .controller('RefundController', ['$scope','$state', 'RefundFty',
+        function($scope,$state, RefundFty){
 
             refundList();
             $scope.refund_all_null = true;
@@ -9,14 +9,11 @@ angular.module('refund.controller', ['refund.service'])
 
             $scope.refunds = [];
             function refundList(){
-
                 RefundFty.refundService()
                     .then(function(json){
                         //alert(angular.toJson(json));
                         if(json.status_code == 0){
                             $scope.refund_orders = json.data;
-                            var count = 0;
-                            var t_price = 0;
                             angular.forEach($scope.refund_orders, function(v, k){
                                 if(v.status == "CANCELED_RETURN_PENDING" || v.status == "CANCELED_REFUND_PENDING" || v.status == "CLOSED_REFUNDED"){
                                     $scope.refunds.push(v);

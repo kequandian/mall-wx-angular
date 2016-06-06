@@ -1,10 +1,10 @@
 angular.module('refund.service', [])
-    .factory('refund', ['$http', '$q','GlobalVariable', function($http, $q,GlobalVariable) {
+    .factory('RefundFty', ['$http', '$q','GlobalVariable', function($http, $q,GlobalVariable) {
         return {
             // 获取商品类别数据
-            refundService: function (orderNumber) {
+            refundService: function () {
                 var deferred = $q.defer();
-                var url = GlobalVariable.SERVER_PATH + "/order/" + orderNumber;
+                var url = GlobalVariable.SERVER_PATH + "/order";
                 $http.get(url,{
                     headers: {
                         'Authorization': GlobalVariable.ACCESS_TOKEN
