@@ -60,10 +60,10 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
             $.confirm("您确定要删除该商品吗?", "确认删除?", function() {
                 CartFty.deleteCart(id).then(
                     function (result) {
-                        console.log(result);
+                        //console.log(result);
                         $state.go('home.cart',{}, {reload: true});
                     },function (error){
-                        console.log(error);
+                        //console.log(error);
                     });
                 $.toast("已经删除!");
             }, function() {
@@ -179,13 +179,12 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
                     function (result) {
                         //console.log(result.data);
                         deleteProducts($scope.settlementData);
-                        window.location.href='/app/payment/wpay/'+ result.data.order_number;
+                        //window.location.href='/app/payment/wpay/'+ result.data.order_number;
                         //$state.go('order-confirm',{data:result.data});
                     },function (error){
                         console.log(error);
                     });
             };
-
 
             //删除购物车商品
             function deleteProducts(items){
@@ -194,6 +193,11 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
                     data.quantity = 0;
                     $scope.product_items.push(data);
                 });
+                CartFty.deleteProduct($scope.product_items)
+                    .then(function(json){
+                    }, function(error){
+                        console.log(error);
+                    })
 
             }
 

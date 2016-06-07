@@ -2,63 +2,56 @@
 
     <div class="promotionOrder-content">
 
-            <div ng-repeat="group in pro_order_groups">
-                <div class="item-stable"
-                     ng-click="toggleGroup(group)"
-                     ng-class="{active: isGroupShown(group)}"
-                     >
-                    2016年05月订单明细
-                    <i class="item-arrow-right"></i>
+        <div class="item-stable">
+            2016年05月订单明细
+            <!--<i class="item-arrow-right"></i>-->
+        </div>
+        <div class="item-accordion"
+                >
+
+            <div class="order-item-text">
+                <div>
+                    本月总收入：
+                    <span class="pro-red">5685.00元</span>
                 </div>
-                <div class="item-accordion"
-                     ng-repeat="item in group.items"
-                     ng-show="isGroupShown(group)"
-                        >
-
-                    <div class="order-item-text">
-                        <div>
-                            本月总收入：
-                            <span class="pro-red">5685.00元</span>
-                        </div>
-                        <div>
-                            已结算收入：
-                            <span class="pro-black">5260.00元</span>
-                        </div>
-                        <div>
-                            未结算收入：
-                            <span class="pro-black">2107.00元</span>
-                        </div>
-                        <div>
-                            本月总订单：
-                            <span class="pro-black">650</span>
-                        </div>
-                        <div class="orders-count">
-                            <p>交易成功：<span class="pro-black">500</span></p>
-                            <p>待确认：<span class="pro-black">650</span></p>
-                        </div>
-                    </div>
-
-                    <div class="order-item-explain">
-                        说明：订单状态为 "交易成功" 时金额自动进入钱包，您可以在销售中心进行提现操作。
-                    </div>
-
-                    <div class="order-list">
-                        <div class="order-list-item">
-                            <div class="p-order-number">订单编号：205987936536518987</div>
-                            <div class="p-order-type">
-                                订单状态：待确认
-                            </div>
-                            <div class="p-order-type">
-                                订单金额：￥158.00
-                            </div>
-                            <div class="p-order-price">
-                                我的收入：代理商￥5.00,经销商￥8.00,销售商￥15.00
-                            </div>
-                            <div class="p-order-time">订单时间：2016-05-15 15:25:02</div>
-                        </div>
-                    </div>
-
+                <div>
+                    已结算收入：
+                    <span class="pro-black">5260.00元</span>
+                </div>
+                <div>
+                    未结算收入：
+                    <span class="pro-black">2107.00元</span>
+                </div>
+                <div>
+                    本月总订单：
+                    <span class="pro-black">650</span>
+                </div>
+                <div class="orders-count">
+                    <p>交易成功：<span class="pro-black">500</span></p>
+                    <p>待确认：<span class="pro-black">650</span></p>
                 </div>
             </div>
+
+            <div class="order-item-explain">
+                说明：订单状态为 "交易成功" 时金额自动进入钱包，您可以在销售中心进行提现操作。
+            </div>
+
+            <div class="order-list">
+                <div class="order-list-item">
+                    <div class="p-order-number">订单编号：205987936536518987</div>
+                    <div class="p-order-type">
+                        订单状态：待确认
+                    </div>
+                    <div class="p-order-type">
+                        订单金额：￥158.00
+                    </div>
+                    <div class="p-order-price">
+                        我的收入：代理商￥5.00,经销商￥8.00,销售商￥15.00
+                    </div>
+                    <div class="p-order-time">订单时间：2016-05-15 15:25:02</div>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>

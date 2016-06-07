@@ -143,6 +143,11 @@
     line-height: 32px;
     padding-top: 5px;
     background-color: white;
+    text-align: right;
+}
+
+#orders .weui_btn+.weui_btn {
+    margin-top: 0;
 }
 
 #orders .order-item-price{
@@ -156,8 +161,8 @@
 #orders .item-btn-right{
     width: 60px;
     align-content: center;
-    position: absolute;
-    right: 7px;
+    /*position: absolute;*/
+    /*right: 7px;*/
 }
 
 #orders #content-footer{

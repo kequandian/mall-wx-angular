@@ -32,6 +32,7 @@
 .contact-info-space {
     padding: 5px 0;
     margin-left: 26px;
+    font-size: 15px;
 }
 .address-info {
     padding: 5px 0;
@@ -94,12 +95,13 @@
 }
 .settlement-cart-quantity {
     position: absolute;
-    bottom: -5px;
+    bottom: 0;
     right: 0;
 }
+
 .settlement-cart-price {
     position: absolute;
-    bottom: -5px;
+    bottom: 0;
 }
 
 .settlement-options {

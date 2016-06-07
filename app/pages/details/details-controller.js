@@ -88,6 +88,8 @@ angular.module('details.controller', ['details.service'])
             //立即购买
             $scope.checkedCarts=[];
             $scope.buy_immediately = function(item){
+                item.quantity = 1;
+                item.product_name = item.name;
                 $scope.checkedCarts.push(item);
                 $state.go('cart-settlement', {carts:$scope.checkedCarts,totalToPay:item.price,totalFreight:item.freight});
             };

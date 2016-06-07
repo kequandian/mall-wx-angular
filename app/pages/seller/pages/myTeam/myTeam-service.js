@@ -4,7 +4,7 @@ angular.module('myTeam.service', [])
             // 获取我的团队
             myTeamsService: function () {
                 var deferred = $q.defer();
-                var url = GlobalVariable.SERVER_PATH + "/seller";
+                var url = GlobalVariable.SERVER_PATH + "/seller?type=all";
                 $http.get(url,{
                     headers: {
                         'Authorization': GlobalVariable.ACCESS_TOKEN

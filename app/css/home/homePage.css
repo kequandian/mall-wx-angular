@@ -96,7 +96,7 @@ body, html {
     height: auto;
 }
 
-/*���ܵ���*/
+/**/
 #content #nav{
     /*height:160px;*/
     height:73px;
@@ -252,6 +252,10 @@ body, html {
     margin-top: 3px;
 }
 
+#homeProductGrids .weui_grid .weui_grid_label{
+    text-align: left;
+}
+
 #content .home_grid_3{
     width: 32.5%;
     border: 1px solid #cccccc;
@@ -259,10 +263,45 @@ body, html {
     margin-top: 3px;
 }
 
-#content .home_grid_img_large {
-    width: 90px;
-    height: 100px;
+#content .home_grid_img {
+    width: 120px;
+    height: 130px;
 }
+
+#content .home_grid_text {
+    width: 100%;
+    height: 45px;
+    border-top: 1px solid #cccccc;
+    text-align: left;
+    padding: 3px 3px;
+    color: #4c4c4c;
+    font-size: 14px;
+}
+
+#content .home_grid_footer_text{
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    /*background: #DE8BD4;*/
+    /*padding:0 5px 0 5px;*/
+    /*border-top: 1px solid #cccccc;*/
+    font-size: 12px;
+}
+
+#content .home_g_left{
+    min-width: 30px;
+    padding: 0 5px 0 5px;
+    color:#F15353;
+}
+
+#content .home_g_right{
+    padding: 0 5px 0 5px;
+}
+
+#content .home_g_right span{
+    color:#9F9F9F;
+}
+
 
 #content #homeProductGrids .weui_grid {
     padding: 2px 2px;
@@ -361,7 +400,6 @@ body, html {
     text-align: left;
     float: left;
 }
-
 
 
 /* common style*/

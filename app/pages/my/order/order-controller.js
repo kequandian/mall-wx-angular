@@ -1,6 +1,6 @@
 angular.module('my.order.controller', ['my.order.service'])
-    .controller('OrderController', ['$scope','$state', 'OrderFty','OrderTabIndex',
-        function($scope,$state, OrderFty,OrderTabIndex){
+    .controller('OrderController', ['$scope','$state', 'OrderFty','OrderTabIndex','CommonJs',
+        function($scope,$state, OrderFty,OrderTabIndex,CommonJs){
 
             //title
             document.title = "我的订单";
@@ -101,6 +101,12 @@ angular.module('my.order.controller', ['my.order.service'])
                         $.hideLoading();
                     })
             }
+
+
+            //订单状态
+            $scope.order_list_status = function(orderStatus){
+                return CommonJs.OrderStatus(orderStatus);
+            };
 
             //nav 样式
             $scope.currentId = OrderTabIndex.tab_index;

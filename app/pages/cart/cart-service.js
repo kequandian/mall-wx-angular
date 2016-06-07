@@ -62,7 +62,7 @@ angular.module('cart.service', [])
 
             deleteProduct: function (data) {
                 var deferred = $q.defer();
-                var url = GlobalVariable.SERVER_PATH + '/order';
+                var url = GlobalVariable.SERVER_PATH + '/shopping_cart';
                 $http({
                     method: 'POST',
                     url: url,

@@ -31,10 +31,10 @@
                         性别：
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <select class="weui_select" ng-model="userInfo.sex" name="select3" style="margin-left: 3px; padding: 0;">
-                            <option value="">请选择</option>
+                        <select class="weui_select" ng-options="i.key as i.value for i in sexDefault" ng-model="userInfo.sex" ng-init="userInfo.sex=0" style="{margin-left: 3px; padding: 0;}">
+                          <!--  <option value="3" selected="selected">请选择</option>
                             <option value="1">男</option>
-                            <option value="0">女</option>
+                            <option value="0">女</option>-->
                         </select>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
                         <textarea class="weui_textarea settlement-font" placeholder="请输入详细地址信息" rows="3"
-                                  ng-model="userInfo.detail"></textarea>
+                                  ng-model="userInfo.details"></textarea>
                     </div>
                 </div>
 
