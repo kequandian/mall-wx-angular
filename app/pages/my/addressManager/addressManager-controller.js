@@ -48,15 +48,17 @@ angular.module('addressManager.controller', ['addressManager.service'])
             {key:'周一至周五收货',value:'周一至周五收货'}
         ];
 
+        // never hit
         $scope.changePcd=function($event){
-            $scope.contact.pcd=$event.target.value;
+            //$scope.contact.pcd=$event.target.value;
+            $scope.pcd=$event.target.value;
         };
 
         //提交添加地址
         $scope.addContactSubmit=function() {
 
-            //var pcd = document.getElementById('city-picker');
-            //console.log($scope.contact.is_default);
+            var pcd = document.getElementById('city-picker');
+            $scope.pcd = pcd.value;
 
             if(!angular.isString($scope.contact.contact_user)
                 || $scope.contact.contact_user.length==0){
@@ -67,16 +69,31 @@ angular.module('addressManager.controller', ['addressManager.service'])
                 || $scope.contact.phone.length==0){
                 $.toast('手机号不能为空', 'cancel');
                 return
+            }else if(!checkPhone($scope.contact.phone)){
+                $.toast('手机号码无效', 'cancel');
+                return
             }
-            if(!angular.isString($scope.contact.pcd)
+            if(!angular.isString($scope.pcd)
                 || $scope.pcd.length==0){
                 $.toast('所在地区不能为空', 'cancel');
                 return
             }
             if(!angular.isString($scope.contact.detail)
-                || $scope.confirm.detail.length==0){
+                || $scope.contact.detail.length==0){
                 $.toast('详细地址不能为空', 'cancel');
                 return
+            }
+
+            var pcd = $scope.pcd;
+            var pcds = pcd.split(/\s/);
+            if(pcds.length>0) {
+                $scope.contact.province = pcds[0];
+            }
+            if(pcds.length>1){
+                $scope.contact.city = pcds[1];
+            }
+            if(pcds.length>2){
+                $scope.contact.district = pcds[2];
             }
 
             AddressManagerFty.addContact($scope.contact).then(
@@ -90,6 +107,10 @@ angular.module('addressManager.controller', ['addressManager.service'])
 
         //提交修改地址
         $scope.editContactSubmit= function(){
+
+            var pcd = document.getElementById('city-picker');
+            $scope.pcd = pcd.value;
+
             if(!angular.isString($scope.contact.contact_user)
             || $scope.contact.contact_user.length==0){
                 $.toast('收货人不能为空', 'cancel');
@@ -99,7 +120,11 @@ angular.module('addressManager.controller', ['addressManager.service'])
             || $scope.contact.phone.length==0){
                 $.toast('手机号不能为空', 'cancel');
                 return
+            }else if(!checkPhone($scope.contact.phone)){
+                $.toast('手机号码无效', 'cancel');
+                return
             }
+
             if(!angular.isString($scope.pcd)
             || $scope.pcd.length==0){
                 $.toast('所在地区不能为空', 'cancel');
@@ -109,6 +134,18 @@ angular.module('addressManager.controller', ['addressManager.service'])
             || $scope.contact.detail.length==0){
                 $.toast('详细地址不能为空', 'cancel');
                 return
+            }
+
+            var pcd = $scope.pcd;
+            var pcds = pcd.split(/\s/);
+            if(pcds.length>0) {
+                $scope.contact.province = pcds[0];
+            }
+            if(pcds.length>1){
+                $scope.contact.city = pcds[1];
+            }
+            if(pcds.length>2){
+                $scope.contact.district = pcds[2];
             }
 
             AddressManagerFty.editContact($scope.contact.id, $scope.contact).then(
@@ -162,6 +199,11 @@ angular.module('addressManager.controller', ['addressManager.service'])
 
         var pcd ;
         AllPCD();
+
+        function checkPhone(str){
+            var isphone = /^((\+|0)86)?\d{11}$/.test(str);
+            return isphone;
+        }
 
         function AllPCD() {
             AddressManagerFty.getPCD().then(
