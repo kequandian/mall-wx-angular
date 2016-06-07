@@ -73,9 +73,11 @@
                     <div class="weui_cell_hd">
                         <label class="weui_label">所在地区</label>
                     </div>
+
                     <div class="weui_cell_bd weui_cell_primary">
-                        <input class="weui_input" type="text" placeholder="输入省市区" ng-model="contact.pcd"
-                               ng-init="contact.zip=editC.zip">
+                        <input class="weui_input settlement-font" id="city-picker" type="text" placeholder="输入省市区" ng-model="pcd"
+                               >
+                        <!--ng-init="contact.pcd=pcd"-->
                     </div>
                 </div>
 
@@ -118,7 +120,7 @@
             <br>
 
             <div class="custom_weui_btn_border">
-                <input type="submit" class="weui_btn custom_weui_btn_primary" value="确认">
+                <input type="submit" class="weui_btn custom_weui_btn_primary" value="保存">
             </div>
         </form>
         <!--{{contact}}-->

@@ -28,11 +28,13 @@ angular.module('addressManager.controller', ['addressManager.service'])
         var editingContact = $stateParams.data;
         if(editingContact != null){
             $scope.editC= editingContact;
+
             if(editingContact.province == null){
-                $scope.pcd = '广东 广州 越秀区';
+                $scope.pcd = '';
                 //console.log($scope.pcd);
             }else{
                 $scope.pcd= editingContact.province +' '+ editingContact.city +' '+ editingContact.district;
+                console.log('edit pcd:' + $scope.pcd);
             }
         }
 
@@ -46,31 +48,57 @@ angular.module('addressManager.controller', ['addressManager.service'])
             {key:'周一至周五收货',value:'周一至周五收货'}
         ];
 
+        // never hit
         $scope.changePcd=function($event){
-            $scope.contact.pcd=$event.target.value;
+            //$scope.contact.pcd=$event.target.value;
+            $scope.pcd=$event.target.value;
         };
 
         //提交添加地址
         $scope.addContactSubmit=function() {
 
             var pcd = document.getElementById('city-picker');
-            //console.log($scope.contact.is_default);
+            $scope.pcd = pcd.value;
 
-            if(!angular.isString($scope.contact.contact_user)){
+            if(!angular.isString($scope.contact.contact_user)
+                || $scope.contact.contact_user.length==0){
                 $.toast('收货人不能为空', 'cancel');
                 return
             }
-            if(!angular.isString($scope.contact.phone)){
+            if(!angular.isString($scope.contact.phone)
+                || $scope.contact.phone.length==0){
                 $.toast('手机号不能为空', 'cancel');
                 return
+            }else if(!checkPhone($scope.contact.phone)){
+                $.toast('手机号码无效', 'cancel');
+                return
             }
-            if(!angular.isString(pcd.value)){
+            if(!angular.isString($scope.pcd)
+                || $scope.pcd.length==0){
                 $.toast('所在地区不能为空', 'cancel');
                 return
             }
-            if(!angular.isString($scope.contact.detail)){
+            if(!angular.isString($scope.contact.detail)
+                || $scope.contact.detail.length==0){
                 $.toast('详细地址不能为空', 'cancel');
                 return
+            }
+
+            var pcd = $scope.pcd;
+            var pcds = pcd.split(/\s/);
+            if(pcds.length>0) {
+                $scope.contact.province = pcds[0];
+            }
+            if(pcds.length>1){
+                $scope.contact.city = pcds[1];
+            }
+            if(pcds.length>2){
+                $scope.contact.district = pcds[2];
+            }
+
+            // 判断是否只有一个地址，唯一地址，自动设为默认
+            if($scope.contacts.length==0){
+                $scope.contact.is_default = 1;
             }
 
             AddressManagerFty.addContact($scope.contact).then(
@@ -84,28 +112,53 @@ angular.module('addressManager.controller', ['addressManager.service'])
 
         //提交修改地址
         $scope.editContactSubmit= function(){
-            if(!angular.isString($scope.contact.contact_user)){
+
+            var pcd = document.getElementById('city-picker');
+            $scope.pcd = pcd.value;
+
+            if(!angular.isString($scope.contact.contact_user)
+            || $scope.contact.contact_user.length==0){
                 $.toast('收货人不能为空', 'cancel');
                 return
             }
-            if(!angular.isString($scope.contact.phone)){
+            if(!angular.isString($scope.contact.phone)
+            || $scope.contact.phone.length==0){
                 $.toast('手机号不能为空', 'cancel');
                 return
+            }else if(!checkPhone($scope.contact.phone)){
+                $.toast('手机号码无效', 'cancel');
+                return
             }
-            if(!angular.isString($scope.contact.pcd)){
+
+            if(!angular.isString($scope.pcd)
+            || $scope.pcd.length==0){
                 $.toast('所在地区不能为空', 'cancel');
                 return
             }
-            if(!angular.isString($scope.contact.detail)){
+            if(!angular.isString($scope.contact.detail)
+            || $scope.contact.detail.length==0){
                 $.toast('详细地址不能为空', 'cancel');
                 return
             }
 
+            var pcd = $scope.pcd;
+            var pcds = pcd.split(/\s/);
+            if(pcds.length>0) {
+                $scope.contact.province = pcds[0];
+            }
+            if(pcds.length>1){
+                $scope.contact.city = pcds[1];
+            }
+            if(pcds.length>2){
+                $scope.contact.district = pcds[2];
+            }
+
             AddressManagerFty.editContact($scope.contact.id, $scope.contact).then(
                 function (result) {
-                    console.log(result);
+                    //console.log(result);
                     $state.go('addressManager');
                 },function (error){
+                    $.toast('更新地址失败', 'cancel');
                     console.log(error);
                 });
         };
@@ -132,7 +185,7 @@ angular.module('addressManager.controller', ['addressManager.service'])
             $.confirm("", "确认删除?", function() {
                 AddressManagerFty.deleteContact(id).then(
                     function (result) {
-                        console.log(result);
+                        //console.log(result);
                         $state.go('addressManager',{}, {reload: true});
                     },function (error){
                         console.log(error);
@@ -143,6 +196,28 @@ angular.module('addressManager.controller', ['addressManager.service'])
             });
         };
 
+        $scope.defaultContact = function(id) {
+            $.confirm("", "是否设为默认地址?", function() {
+                AddressManagerFty.defaultContact(id).then(
+                    function (result) {
+                        $scope.contact.is_default=1;
+
+                        angular.forEach($scope.contacts, function(data,index){
+                            data.is_default = 0;
+                            if(data.id == id){
+                                data.is_default = 1;
+                                $scope.currentContact = data;
+                            }
+                        });
+
+                    },function (error){
+                        console.log(error);
+                    });
+            }, function() {
+                //取消操作
+            });
+        }
+
         //选择地址
         //$scope.changeContact= function(item) {
         //    $scope.currentContact = item;
@@ -151,6 +226,11 @@ angular.module('addressManager.controller', ['addressManager.service'])
 
         var pcd ;
         AllPCD();
+
+        function checkPhone(str){
+            var isphone = /^((\+|0)86)?\d{11}$/.test(str);
+            return isphone;
+        }
 
         function AllPCD() {
             AddressManagerFty.getPCD().then(
@@ -169,7 +249,7 @@ angular.module('addressManager.controller', ['addressManager.service'])
             +function($){
 
                 $.rawCitiesData = pcd;
-                console.log(pcd);
+                //console.log(pcd);
 
             }($);
             // jshint ignore: end

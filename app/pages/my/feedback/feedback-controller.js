@@ -17,7 +17,7 @@ angular.module('feedback.controller', ['feedback.service'])
                 .then(function(json){
                     //alert(angular.toJson(json));
                     if(json.status_code == 0){
-                        $scope.q_content = "";
+                        $scope.q_content = null;
                         $.toast('提交成功');
                     }else{
                         $.toast('提交失败', 'cancel');
