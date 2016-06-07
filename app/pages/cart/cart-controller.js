@@ -174,16 +174,29 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
             //提交订单
             $scope.order={};
             $scope.addOrderSubmit=function() {
-                console.log($scope.order);
+                //console.log($scope.order);
                 CartFty.addOrder($scope.order).then(
                     function (result) {
                         //console.log(result.data);
+                        deleteProducts($scope.settlementData);
                         window.location.href='/app/payment/wpay/'+ result.data.order_number;
                         //$state.go('order-confirm',{data:result.data});
                     },function (error){
                         console.log(error);
                     });
             };
+
+
+            //删除购物车商品
+            function deleteProducts(items){
+                $scope.product_items = [];
+                angular.forEach(items, function(data,index){
+                    data.quantity = 0;
+                    $scope.product_items.push(data);
+                });
+
+            }
+
 
             //新增地址
             $scope.addAddress= function (){

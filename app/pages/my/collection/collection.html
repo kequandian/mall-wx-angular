@@ -12,11 +12,11 @@
 
     <div class="collection-content" ng-hide="coll_content_null">
 
-        <div class="coll-list-item" ng-repeat="conItem in collection_list">
+        <div class="coll-list-item" ng-repeat="conItem in collection_list" ui-sref="details({productId:conItem.id})">
             <img ng-src="{{conItem.cover}}">
             <div class="coll-item-info">
                 <div style="font-size: 13px; word-wrap: break-word; word-break: normal;">{{conItem.name | cutText:true:35:"..."}}</div>
-                <div style="color: #EA0303;">价格：{{conItem.cost_price|currency:"￥"}}</div>
+                <div style="color: #EA0303;">价格：{{conItem.price|currency:"￥"}}</div>
                 <div style="color: #959595;">市场价：{{conItem.suggested_price|currency:"￥"}}</div>
                 <img class="coll-item-close" ng-hide="coll_item_close" src="img/cart/close.png" ng-click="delete_coll_item(conItem.id)"/>
             </div>

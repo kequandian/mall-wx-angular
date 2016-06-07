@@ -82,7 +82,7 @@
 #myTeam .myTeam-content{
     overflow-x: hidden;
     overflow-y: scroll;
-    margin: 0 7px 7px 7px;
+    /*margin: 0 7px 7px 7px;*/
     z-index: 100;
 }
 
@@ -92,7 +92,7 @@
     height: 81px;
     background-color: white;
     margin-top: 7px;
-    border: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
     padding-left: 7px;
     padding-right: 7px;
     position: relative;

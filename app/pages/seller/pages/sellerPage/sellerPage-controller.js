@@ -46,7 +46,7 @@ angular.module('sellerPage.controller', ['sellerPage.service'])
                 divhtml.removeChild(divhtml.childNodes[0]);
                 divhtml.removeChild(divhtml.childNodes[1]);
             }
-            var invitationUrl = "www.kequandian.net/app/app?invite_code=" + q_r_code;
+            var invitationUrl = "http://www.kequandian.net/app/app?invite_code=" + q_r_code;
             if(invitationUrl != null) {
                 var qrcode = new QRCode(divhtml, {
                     width: 220,

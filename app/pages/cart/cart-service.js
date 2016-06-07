@@ -60,6 +60,26 @@ angular.module('cart.service', [])
                 return deferred.promise;
             },
 
+            deleteProduct: function (data) {
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + '/order';
+                $http({
+                    method: 'POST',
+                    url: url,
+                    data: data,
+                    headers: {
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
+                })
+                    .success(function (data) {
+                        deferred.resolve(data);
+                    })
+                    .error(function (data) {
+                        deferred.reject(data);
+                    });
+                return deferred.promise;
+            },
+
             wpay: function (order_number) {
                 var deferred = $q.defer();
                 var url = GlobalVariable.WPAY_URL + '/'+ order_number;

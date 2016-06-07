@@ -13,6 +13,7 @@ angular.module('collection.controller', ['collection.service'])
         function getCollectionList(){
             CollectionFty.collectionService()
                 .then(function(json){
+                    //alert(angular.toJson(json))
                     if(json.status_code == 0){
                         $scope.collection_list = json.data;
                         if($scope.collection_list.length > 0){
