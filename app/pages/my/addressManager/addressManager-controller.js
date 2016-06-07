@@ -197,11 +197,15 @@ angular.module('addressManager.controller', ['addressManager.service'])
         };
 
         $scope.defaultContact = function(id) {
+            if(checkDefault(id)){
+                AllContacts();
+                return;
+            }
+
             $.confirm("", "是否设为默认地址?", function() {
                 AddressManagerFty.defaultContact(id).then(
                     function (result) {
-                        $scope.contact.is_default=1;
-
+                        //$scope.contact.is_default=1;
                         angular.forEach($scope.contacts, function(data,index){
                             data.is_default = 0;
                             if(data.id == id){
@@ -211,11 +215,24 @@ angular.module('addressManager.controller', ['addressManager.service'])
                         });
 
                     },function (error){
+                        AllContacts();
                         console.log(error);
                     });
             }, function() {
                 //取消操作
+                AllContacts();
             });
+        }
+
+        function checkDefault(id){
+
+            var isDefault = false;
+            angular.forEach($scope.contacts, function(data,index){
+                if(data.id == id){
+                    isDefault = data.is_default;
+                }
+            });
+            return isDefault;
         }
 
         //选择地址
