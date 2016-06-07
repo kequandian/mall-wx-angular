@@ -81,6 +81,27 @@ angular.module('addressManager.service', [])
                 return deferred.promise;
             },
 
+            defaultContact: function(id){
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + '/default_contact/' + id;
+                $http({
+                    method: 'PUT',
+                    url: url,
+                    headers: {
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
+                })
+                    .success(function (data) {
+                        //console.log('edit contact done.');
+                        deferred.resolve(data);
+                    })
+                    .error(function (data) {
+                        deferred.reject(data);
+                        console.log(data);
+                    });
+                return deferred.promise;
+            },
+
             getPCD: function () {
                 var deferred = $q.defer();
                 var url = GlobalVariable.SERVER_PATH + '/pcd?all=true';

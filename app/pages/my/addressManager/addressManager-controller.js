@@ -96,6 +96,11 @@ angular.module('addressManager.controller', ['addressManager.service'])
                 $scope.contact.district = pcds[2];
             }
 
+            // 判断是否只有一个地址，唯一地址，自动设为默认
+            if($scope.contacts.length==0){
+                $scope.contact.is_default = 1;
+            }
+
             AddressManagerFty.addContact($scope.contact).then(
                 function (result) {
                     //console.log(result);
@@ -190,6 +195,28 @@ angular.module('addressManager.controller', ['addressManager.service'])
                 //取消操作
             });
         };
+
+        $scope.defaultContact = function(id) {
+            $.confirm("", "是否设为默认地址?", function() {
+                AddressManagerFty.defaultContact(id).then(
+                    function (result) {
+                        $scope.contact.is_default=1;
+
+                        angular.forEach($scope.contacts, function(data,index){
+                            data.is_default = 0;
+                            if(data.id == id){
+                                data.is_default = 1;
+                                $scope.currentContact = data;
+                            }
+                        });
+
+                    },function (error){
+                        console.log(error);
+                    });
+            }, function() {
+                //取消操作
+            });
+        }
 
         //选择地址
         //$scope.changeContact= function(item) {

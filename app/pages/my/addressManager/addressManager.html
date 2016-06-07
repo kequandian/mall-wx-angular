@@ -40,7 +40,8 @@
                     <ul class="weui_media_info">
                         <li class="weui_media_info_meta" style="width: 30%;">
                             <input class="address-checkbox" id="add{{contact.id}}" type="checkbox" readonly value="默认地址"
-                                   ng-model="contact.id_default" ng-checked="contact.is_default == 1 ? 'checked':''">
+                                   ng-model="contact.id_default" ng-checked="contact.is_default == 1 ? 'checked':''"
+                                    ng-click="defaultContact(contact.id)">
                             <label id="address-manager-check" for="add{{contact.id}}"  class="ion-android-checkbox-outline-blank active address-check-label"></label>
                             <div class="address-check-text">默认地址</div>
                         </li>
