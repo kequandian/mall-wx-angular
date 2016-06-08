@@ -83,6 +83,9 @@
 .ui-switch-slider {
     min-height: 120px;
 }
+.ui-switch-slider img {
+    height: auto;
+}
 
 .ui-switch-slider .ui-switch-content,
 .ui-switch-slider .ui-switch-panel {
