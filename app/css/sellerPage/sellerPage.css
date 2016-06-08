@@ -206,7 +206,13 @@
     line-height: 30px;
 }
 
-
+#sellerPage .owner_tag {
+    font-size: 10px;
+    background-color: white;
+    color: red;
+    padding: 1px;
+    border-radius: 2px;
+}
 
 
 

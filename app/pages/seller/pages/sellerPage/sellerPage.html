@@ -21,11 +21,14 @@
                 <div class="user-detail">
                     <p>
                         {{userInfo.name}}
-                        <span style="font-size: 10px; background-color: white; color: red; padding: 1px; border-radius: 2px;">已关注</span>
-                        <!--<span style="font-size: 12px;">推荐人：张三</span>-->
+                        <!--<span ng-if="owner_balance.is_seller" class="owner_tag">已关注</span>-->
+                        <span ng-if="owner_balance.is_agent" class="owner_tag">代理商</span>
+                        <span ng-if="owner_balance.is_parner" class="owner_tag">合伙人</span>
+                        <span ng-if="owner_balance.is_seller" class="owner_tag">分销商</span>
                     </p>
                     <p class="user-lv-text">
-                        ID：{{userInfo.uid}} <span style="margin-left: 10px;font-size: 12px;">级别：代理商</span>
+                        ID：{{userInfo.uid}}
+                        <!--<span style="margin-left: 10px;font-size: 12px;">级别：代理商</span>-->
                     </p>
 
                     <p class="user-lv-text">
@@ -33,7 +36,7 @@
                     </p>
 
                     <p class="user-lv-text">
-                        推荐人：{{userInfo.inviter_name != null ? userInfo.inviter_name : "-"}}
+                        推荐人：{{userInfo.inviter_name != null ? userInfo.inviter_name : "无"}}
                     </p>
                 </div>
             </div>

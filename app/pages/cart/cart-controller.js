@@ -196,8 +196,8 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
                     function (result) {
                         //console.log(result.data);
                         deleteProducts($scope.settlementData);
-                        //window.location.href='/app/payment/wpay/'+ result.data.order_number;
-                        //$state.go('order-confirm',{data:result.data});
+                        window.location.href='/app/payment/wpay/'+ result.data.order_number;
+                        $state.go('order-confirm',{data:result.data});
                     },function (error){
                         console.log(error);
                     });
