@@ -38,10 +38,10 @@ angular.module('addressManager.controller', ['addressManager.service'])
             }
         }
 
-        $scope.isDefault=[
+        /*$scope.isDefault=[
             {key:1,value:'是'},
             {key:0,value:'否'}
-        ];
+        ];*/
         $scope.receivingTime=[
             {key:'收货时间不限',value:'收货时间不限'},
             {key:'周六日/节假日收货',value:'周六日/节假日收货'},
@@ -96,6 +96,9 @@ angular.module('addressManager.controller', ['addressManager.service'])
                 $scope.contact.district = pcds[2];
             }
 
+            // convert is_default from boolean to int
+            $scope.contact.is_default = $scope.contact.is_default ? 1 : 0;
+
             // 判断是否只有一个地址，唯一地址，自动设为默认
             if($scope.contacts.length==0){
                 $scope.contact.is_default = 1;
@@ -140,6 +143,8 @@ angular.module('addressManager.controller', ['addressManager.service'])
                 $.toast('详细地址不能为空', 'cancel');
                 return
             }
+
+            $scope.contact.is_default = $scope.contact.is_default ? 1 : 0;
 
             var pcd = $scope.pcd;
             var pcds = pcd.split(/\s/);
