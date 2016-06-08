@@ -1,7 +1,7 @@
 angular.module('promotionOrder.service', [])
     .factory('PromotionOrderFty', ['$http','$q','GlobalVariable', function($http,$q,GlobalVariable) {
         return{
-            // 获取分销订单数据
+            // 获取销售订单数据
             promotionOrdersService: function () {
                 var deferred = $q.defer();
                 var url = GlobalVariable.SERVER_PATH + "/order_item_reward";

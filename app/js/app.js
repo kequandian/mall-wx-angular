@@ -3,6 +3,7 @@
 // Declare app level module which depends on views, and components
 var myapp = angular.module('myapp', [
     'global',
+    'bsSwitch',
     'modelValues',
     'commonJs',
     'ui.router',

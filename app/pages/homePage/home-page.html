@@ -35,16 +35,22 @@
     <!-- 滑动广告 -->
     <div id="ad">
         <!-- 广告图片 -->
-        <div id="homeHeaderSlider" class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide" ng-repeat="adItem in ad_list">
-                    <img ng-src="{{adItem.image}}">
-                </div>
-                <!--<div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1n3rZHFXXXXX9XFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>-->
-                <!--<div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i4/TB10rkPGVXXXXXGapXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>-->
-                <!--<div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1kQI3HpXXXXbSXFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>-->
-            </div>
-        </div>
+        <!--<div id="homeHeaderSlider" class="swiper-container">-->
+            <!--<div class="swiper-wrapper">-->
+                <!--<div class="swiper-slide" ng-repeat="adItem in ad_list">-->
+                    <!--<img ng-src="{{adItem.image}}">-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <bs-switch data-type="slider" auto-play="2500">
+            <bs-switch-content>
+                <bs-switch-panel ng-repeat="img in ad_list">
+                    <img alt="" ng-src="{{img.image}}"style="width: 100%; height: auto;"/>
+                </bs-switch-panel>
+            </bs-switch-content>
+            <bs-switch-nav class="ui-switch-nav"></bs-switch-nav>
+        </bs-switch>
 
     </div>
 

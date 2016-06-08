@@ -9,6 +9,8 @@ angular.module('details.controller', ['details.service'])
             ReImgSize();
             //商品详情
             detailsInfo();
+            //checkbox
+            c_checkbox();
 
             function ReImgSize(){
                 for (j=0;j<document.images.length;j++)
@@ -25,6 +27,7 @@ angular.module('details.controller', ['details.service'])
                         if(json.status_code == 0) {
                             $scope.details = json.data;
                             //alert(angular.toJson($scope.details));
+                            $scope.details_content_sheet_img = $scope.details.covers[0].url;
                         }else{
                             console.log("获取商品详情失败");
                         }
@@ -32,6 +35,8 @@ angular.module('details.controller', ['details.service'])
                         console.log("获取商品详情失败");
                     })
             }
+
+
 
             //滚动图片设置
             detailSwiper();
@@ -68,11 +73,58 @@ angular.module('details.controller', ['details.service'])
                 }).appendTo($body);
             }*/
 
+
+            //custom checkbox
+            function c_checkbox(){
+                $('.c_checkbox').labelauty();
+            }
+
+            $scope.alertIndex = function(index){
+                alert(index);
+            };
+
+            $scope.q_count = 1;
+            $scope.downQ = function(){
+                if($scope.q_count > 1){
+                    $scope.q_count--;
+                }else{
+                    $scope.q_count = 1;
+                }
+            };
+            $scope.upQ = function(){
+                if($scope.q_count < 99){
+                    $scope.q_count++;
+                }else{
+                    $scope.q_count = 99;
+                }
+            };
+
+            //购买状态
+            $scope.buy_status = function(number){
+                if(number == 1){
+                    $scope.b_status = "cart";
+                }else if(number == 2){
+                    $scope.b_status = "buy";
+                }
+            };
+
+            //确认购买option
+            $scope.buy_product_option = function(productInfo, productId, quantity){
+
+                var b_status = $scope.b_status;
+                if(b_status == "cart"){
+                    $scope.addProductToCart(productId, quantity);
+                }else if(b_status == "buy"){
+                    $scope.buy_immediately(productInfo, quantity);
+                }
+            };
+
+
             //添加购物车
-            $scope.addProductToCart = function(productId){
+            $scope.addProductToCart = function(productId,quantity){
                 var proId = productId;
-                var count = 1;
-                DetailsFty.addProToCatService(proId)
+                var count = quantity;
+                DetailsFty.addProToCatService(proId,count)
                     .then(function(json){
                         if(json.status_code == 0){
                             $.toast.prototype.defaults.duration = 2000;
@@ -87,9 +139,10 @@ angular.module('details.controller', ['details.service'])
 
             //立即购买
             $scope.checkedCarts=[];
-            $scope.buy_immediately = function(item){
-                item.quantity = 1;
+            $scope.buy_immediately = function(item,quantity){
+                item.quantity = $scope.q_count;
                 item.product_name = item.name;
+                item.price = item.price * item.quantity;
                 $scope.checkedCarts.push(item);
                 $state.go('cart-settlement', {carts:$scope.checkedCarts,totalToPay:item.price,totalFreight:item.freight});
             };

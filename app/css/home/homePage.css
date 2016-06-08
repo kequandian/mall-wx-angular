@@ -84,6 +84,7 @@ body, html {
 
 #content #ad{
     margin-top: 45px;
+    height: auto;
     /*background: #cccccc;*/
 }
 
@@ -264,7 +265,7 @@ body, html {
 }
 
 #content .home_grid_img {
-    width: 120px;
+    width: 135px;
     height: 130px;
 }
 
@@ -285,7 +286,7 @@ body, html {
     /*background: #DE8BD4;*/
     /*padding:0 5px 0 5px;*/
     /*border-top: 1px solid #cccccc;*/
-    font-size: 12px;
+    font-size: 13px;
 }
 
 #content .home_g_left{
@@ -299,6 +300,7 @@ body, html {
 }
 
 #content .home_g_right span{
+
     color:#9F9F9F;
 }
 
