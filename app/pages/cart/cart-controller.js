@@ -73,26 +73,41 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
 
         //选购结算
         $scope.checkAll = function() {
+            if(typeof $scope.carts === "undefined"){
+                return;
+            }
             $scope.carts.forEach(function (it) {
                 it.$checked = $scope.$allChecked;
             });
         };
         $scope.checkItem = function(item) {
+            if(typeof $scope.carts === "undefined"){
+                return;
+            }
             $scope.$allChecked = $scope.carts.every(function(it) {
                 return it.$checked;
             });
         };
         $scope.totalToPay = function () {
+            if(typeof $scope.carts === "undefined"){
+                return;
+            }
             return $scope.carts.reduce(function(prev, next) {
                 return next.$checked ? prev + next.quantity * next.price : prev;
             }, 0);
         };
         $scope.totalFreight = function () {
+            if(typeof $scope.carts === "undefined"){
+                return;
+            }
             return $scope.carts.reduce(function(prev, next) {
                 return next.$checked ? prev + next.quantity * next.freight : prev;
             }, 0);
         };
         $scope.someChecked = function() {
+            if(typeof $scope.carts === "undefined"){
+                return;
+            }
             return $scope.carts.some(function(it) {
                 return it.$checked;
             });
@@ -101,7 +116,9 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
         //去结算
         $scope.checkedCarts=[];
         $scope.goSettlement= function (pay,freight){
-            //console.log(pay);
+            if(typeof $scope.carts === "undefined"){
+                return;
+            }
             $scope.carts.some(function(it) {
                 if(it.$checked){
                     $scope.checkedCarts.push(it);
