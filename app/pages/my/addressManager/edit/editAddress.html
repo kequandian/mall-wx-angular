@@ -42,16 +42,22 @@
                         </select>
                     </div>
                 </div>
-                <div class="weui_cell weui_cell_select weui_select_after">
+                <!--<div class="weui_cell weui_cell_select weui_select_after">
                     <div class="weui_cell_hd">
                         设为默认地址
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
                         <select class="weui_select" name="select3" ng-init="contact.is_default=editC.is_default==1?1:0"
                                 ng-options="i.key as i.value for i in isDefault" ng-model="contact.is_default">
-                            <!--<option value="1">是</option>-->
-                            <!--<option value="0">否</option>-->
+                            &lt;!&ndash;<option value="1">是</option>&ndash;&gt;
+                            &lt;!&ndash;<option value="0">否</option>&ndash;&gt;
                         </select>
+                    </div>
+                </div>-->
+                <div class="weui_cell weui_cell_switch">
+                    <div class="weui_cell_hd weui_cell_primary">设为默认地址</div>
+                    <div class="weui_cell_ft">
+                        <input class="weui_switch" type="checkbox" ng-init="contact.is_default=editC.is_default==1?true:false" ng-model="contact.is_default">
                     </div>
                 </div>
             </div>
