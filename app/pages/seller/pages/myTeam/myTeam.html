@@ -20,15 +20,18 @@
 
     <nav id="nav">
         <img src="img/sellerPage/myTeam/people-info-img.png">
+
         <div class="nav-right">
             <div class="my-team-info">
                 <span>我的朋友</span>
+
                 <div>
-                    {{myFriends != null ? myFriends : '0'}}人
+                    {{myTeams.followed_children_count + myTeams.unfollowed_children_count}}人
                 </div>
             </div>
             <div class="concerned-count">
-                已关注：-<span style="margin-left: 10px">未关注：-</span>
+                已关注：{{myTeams.followed_children_count}}
+                <span style="margin-left: 10px">未关注：{{myTeams.unfollowed_children_count}}</span>
             </div>
 
         </div>
@@ -44,10 +47,11 @@
                 <div class="item-right">
                     <div>
                         <span style="float: left; font-size: 18px;">{{item.user_name}}</span>
-                        <div class="item-comcerned">已关注</div>
+
+                        <div ng-if="item.followed==0" class="item-comcerned">已关注</div>
                     </div>
                     <div>ID:{{item.user_id}}</div>
-                    <div style="font-size: 14px;">关注时间：2016-05-10 13:10</div>
+                    <div style="font-size: 14px;">关注时间：{{item.follow_time}}</div>
                     <!--<div>更新用户信息</div>-->
                 </div>
             </div>

@@ -1,6 +1,18 @@
-angular.module('sellerPage.controller', ['sellerPage.service'])
+angular.module('sellerPage.controller', ['sellerPage.service', 'global'])
 
-    .controller('SellerPageController', ['$scope','$state', 'SellerPageFty','TabIndex', function($scope,$state, SellerPageFty,TabIndex){
+    .filter("OrderState", function(){
+        return function(input){
+            if(input == 'PENDING_SETTLEMENT'){
+                return '待结算';
+            }else if(input == 'SETTLED'){
+                return '已结算';
+            }
+
+            return "未知状态";
+        }
+    })
+
+    .controller('SellerPageController', ['$scope','$state', 'SellerPageFty','TabIndex','ProfileSession', function($scope,$state, SellerPageFty,TabIndex, ProfileSession){
 
         //title
         document.title = "销售中心";
@@ -28,6 +40,19 @@ angular.module('sellerPage.controller', ['sellerPage.service'])
                     if(json.status_code == 0){
                         $scope.owner_balance = json.data;
                         //alert(angular.toJson($scope.owner_balance))
+
+                        /// save session
+                        ///
+                        if($scope.owner_balance.is_seller){
+                            ProfileSession.is_seller = 1;
+                        }
+                        if($scope.owner_balance.is_partner){
+                            ProfileSession.is_partner = 1;
+                        }
+                        if($scope.owner_balance.is_agent){
+                            ProfileSession.is_agent = 1;
+                        }
+
                     }
                 }, function(error){
                     $.toast('获取信息失败', 'cancel');

@@ -21,18 +21,18 @@
                 <div class="user-detail">
                     <p>
                         {{userInfo.name}}
-                        <!--<span ng-if="owner_balance.is_seller" class="owner_tag">已关注</span>-->
-                        <span ng-if="owner_balance.is_agent" class="owner_tag">代理商</span>
-                        <span ng-if="owner_balance.is_parner" class="owner_tag">合伙人</span>
-                        <span ng-if="owner_balance.is_seller" class="owner_tag">分销商</span>
+                        <span ng-if="userInfo.followed==0" class="owner_tag">已关注</span>
                     </p>
                     <p class="user-lv-text">
                         ID：{{userInfo.uid}}
-                        <!--<span style="margin-left: 10px;font-size: 12px;">级别：代理商</span>-->
+                        <span style="margin-left: 10px;">级别: </span>
+                        <span ng-if="owner_balance.is_agent">代理商</span>
+                        <span ng-if="owner_balance.is_parner">合伙人</span>
+                        <span ng-if="owner_balance.is_seller">分销商</span>
                     </p>
 
                     <p class="user-lv-text">
-                        关注时间：2016-06-25
+                        关注时间：{{userInfo.follow_time}}
                     </p>
 
                     <p class="user-lv-text">
