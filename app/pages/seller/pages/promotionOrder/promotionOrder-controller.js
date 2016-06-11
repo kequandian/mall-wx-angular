@@ -79,8 +79,8 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'global']
 
                     var newItem = {"order_number": item.order_number};
                     newItem.state = item.state;
-                    newItem.settled_time = item.settled_time;
-                    newItem.settled_price = undefined;
+                    newItem.settled_time = item.order_paid_time;
+                    newItem.settled_price = item.order_total_price;
 
                     if(item.type == 'SELLER') {
                         newItem.seller_reward = item.reward ;
@@ -107,7 +107,7 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'global']
                     }else if(item.type == 'PARTNER'){
                         child.partner_reward += item.reward;
                     }else if(item.type == 'SELF'){
-                        child.self_reward += item.reward;
+                        child.seller_reward += item.reward;
                     }else if(item.type == 'PLATFORM'){
                         child.platform_reward += item.reward;
                     }
