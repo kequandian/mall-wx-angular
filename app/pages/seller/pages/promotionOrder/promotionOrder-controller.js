@@ -89,7 +89,7 @@ angular.module('promotionOrder.controller', ['promotionOrder.service'])
                     }else if(item.type == 'PARTNER'){
                         newItem.partner_reward = item.reward;
                     }else if(item.type == 'SELF'){
-                        newItem.self_reward = item.reward;
+                        newItem.seller_reward = item.reward;
                     }else if(item.type == 'PLATFORM'){
                         newItem.platform_reward = item.reward;
                     }
