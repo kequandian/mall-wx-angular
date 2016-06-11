@@ -1,7 +1,7 @@
 /*
 * 分销订单
 * */
-angular.module('promotionOrder.controller', ['promotionOrder.service', 'global'])
+angular.module('promotionOrder.controller', ['promotionOrder.service'])
     .controller('PromotionOrderController', ['$scope', 'PromotionOrderFty', function($scope, PromotionOrderFty){
 
         //title

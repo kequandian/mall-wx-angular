@@ -1,4 +1,4 @@
-angular.module('sellerPage.controller', ['sellerPage.service', 'global'])
+angular.module('sellerPage.controller', ['sellerPage.service'])
 
     .filter("OrderState", function(){
         return function(input){
@@ -12,7 +12,7 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'global'])
         }
     })
 
-    .controller('SellerPageController', ['$scope','$state', 'SellerPageFty','TabIndex','ProfileSession', function($scope,$state, SellerPageFty,TabIndex, ProfileSession){
+    .controller('SellerPageController', ['$scope','$state', 'SellerPageFty','TabIndex', function($scope,$state, SellerPageFty,TabIndex){
 
         //title
         document.title = "销售中心";
@@ -43,16 +43,15 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'global'])
 
                         /// save session
                         ///
-                        if($scope.owner_balance.is_seller){
-                            ProfileSession.is_seller = 1;
-                        }
-                        if($scope.owner_balance.is_partner){
-                            ProfileSession.is_partner = 1;
-                        }
-                        if($scope.owner_balance.is_agent){
-                            ProfileSession.is_agent = 1;
-                        }
-
+                        //if($scope.owner_balance.is_seller){
+                        //    ProfileSession.is_seller = 1;
+                        //}
+                        //if($scope.owner_balance.is_partner){
+                        //    ProfileSession.is_partner = 1;
+                        //}
+                        //if($scope.owner_balance.is_agent){
+                        //    ProfileSession.is_agent = 1;
+                        //}
                     }
                 }, function(error){
                     $.toast('获取信息失败', 'cancel');

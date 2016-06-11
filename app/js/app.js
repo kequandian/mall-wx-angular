@@ -33,6 +33,28 @@ var myapp = angular.module('myapp', [
     'distributionInfo.route',
     'refund.route'
 ]);
+
+myapp.value('ProfileSession', {
+    is_seller:0,
+    is_agent:0,
+    is_partner:0
+})
+
+.filter('NotNull', function(){
+        return function(input){
+            if(!angular.isDefined(input)){
+                return 0;
+            }
+
+            if(input==null){
+                return 0;
+            }
+
+            return input;
+        }
+    });
+
+
 myapp.config(['$stateProvider', "$urlRouterProvider",
     function($stateProvider, $urlRouterProvider) {
 

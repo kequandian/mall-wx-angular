@@ -10,25 +10,4 @@ angular.module('global', [])
     .value('LoginSession', {
         token: 'token'
     })
-
-    .value('ProfileSession', {
-        is_seller:0,
-        is_agent:0,
-        is_partner:0
-    })
-
-    .filter('NotNull', function(){
-        return function(input){
-            if(!angular.isDefined(input)){
-                return 0;
-            }
-
-            if(input==null){
-                return 0;
-            }
-
-            return input;
-        }
-    })
-
 ;

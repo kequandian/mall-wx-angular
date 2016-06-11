@@ -27,7 +27,10 @@ angular.module('details.controller', ['details.service'])
                         if(json.status_code == 0) {
                             $scope.details = json.data;
                             //alert(angular.toJson($scope.details));
-                            $scope.details_content_sheet_img = $scope.details.covers[0].url;
+
+                            if($scope.details.covers.length>0) {
+                                $scope.details_content_sheet_img = $scope.details.covers[0].url;
+                            }
                         }else{
                             console.log("获取商品详情失败");
                         }
