@@ -168,6 +168,13 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
                                 //console.log($scope.currentContact);
                             }
                         });
+
+                        if($scope.contacts.length > 0){
+
+                        }else{
+                            $scope.show_address_status = 'add';
+                        }
+
                     },function (error){
                         console.log(error);
                 })
@@ -192,15 +199,23 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
             $scope.order={};
             $scope.addOrderSubmit=function() {
                 //console.log($scope.order);
-                CartFty.addOrder($scope.order).then(
-                    function (result) {
-                        //console.log(result.data);
-                        deleteProducts($scope.settlementData);
-                        window.location.href='/app/payment/wpay/'+ result.data.order_number;
-                        $state.go('order-confirm',{data:result.data});
-                    },function (error){
-                        console.log(error);
-                    });
+
+                //alert(angular.toJson($scope.order.contact));
+                if($scope.order.contact == null){
+                    var click_index = document.getElementById('showAddress');
+                    click_index.click();
+                }
+
+
+                //CartFty.addOrder($scope.order).then(
+                //    function (result) {
+                //        //console.log(result.data);
+                //        deleteProducts($scope.settlementData);
+                //        window.location.href='/app/payment/wpay/'+ result.data.order_number;
+                //        $state.go('order-confirm',{data:result.data});
+                //    },function (error){
+                //        console.log(error);
+                //    });
             };
 
             //删除购物车商品

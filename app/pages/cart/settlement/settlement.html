@@ -27,6 +27,7 @@
                             <div class="weui_media_box weui_media_small_appmsg">
                                 <div class="weui_cells weui_cells_access">
                                     <a class="weui_cell" href="javascript:;" id="showAddress">
+                                        <input type="hidden" id="show_address_status" value="{{show_address_status}}">
                                         <div class="weui_cell_bd weui_cell_primary">
                                             <p class="contact-info-space">收货人：{{currentContact.contact_user}} <span style="margin-left: 10px;">{{currentContact.phone}}</span></p>
                                             <p class="address-info">
@@ -83,6 +84,37 @@
                             </div>
                             <div class="weui_actionsheet_action">
                                 <div class="weui_actionsheet_cell" id="actionsheet_cancel">取消</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- 新增收货地址 -->
+                <div id="show_add_wrap">
+                    <div class="weui_mask_transition" id="add_mask"></div>
+                    <div class="weui_actionsheet" id="weui_action_add_sheet">
+                        <div class="weui_actionsheet_menu">
+                            <div class="weui_panel">
+                                <div class="weui_panel_hd">新增收货</div>
+                                <div class="weui_panel_bd" ng-repeat="contact in contacts">
+                                    <div class="weui_media_box weui_media_text">
+                                        <div class="selectContact" ng-click="changeContact(contact)">
+                                            <h4 class="weui_media_desc">{{contact.contact_user}} {{contact.phone}}</h4>
+                                            <p class="weui_media_desc">
+                                                {{contact.province}}{{contact.city}}{{contact.district}}
+                                                {{contact.street}}{{contact.street_number}} {{contact.detail}}
+                                                邮编：{{contact.zip}}
+                                            </p>
+                                        </div>
+                                        <ul class="weui_media_info">
+                                            <li class="weui_media_info_meta">收货时间</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="weui_actionsheet_action">
+                                <div class="weui_actionsheet_cell" id="action_add_sheet_cancel">添加</div>
                             </div>
                         </div>
                     </div>

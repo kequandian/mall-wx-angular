@@ -29,29 +29,61 @@ $(function(){
 
     //cart settlement action sheet
     .on('click', '#showAddress', function () {
-        var mask = $('#mask');
-        var weuiActionsheet = $('#weui_actionsheet');
-        weuiActionsheet.addClass('weui_actionsheet_toggle');
-        mask.show().addClass('weui_fade_toggle').one('click', function () {
-            hideActionSheet(weuiActionsheet, mask);
-        });
-        $('#actionsheet_cancel').one('click', function () {
-            hideActionSheet(weuiActionsheet, mask);
-        });
-        $('.selectContact').one('click', function () {
-            hideActionSheet(weuiActionsheet, mask);
-        });
-        weuiActionsheet.unbind('transitionend').unbind('webkitTransitionEnd');
 
-        function hideActionSheet(weuiActionsheet, mask) {
-            weuiActionsheet.removeClass('weui_actionsheet_toggle');
-            mask.removeClass('weui_fade_toggle');
-            weuiActionsheet.on('transitionend', function () {
-                mask.hide();
-            }).on('webkitTransitionEnd', function () {
-                mask.hide();
-            })
-        }
+            var show_status =  $("#show_address_status").val();
+            if(show_status == "add"){
+
+                var add_mask = $('#add_mask');
+                var weui_action_add_sheet = $('#weui_action_add_sheet');
+                weui_action_add_sheet.addClass('weui_actionsheet_toggle');
+                add_mask.show().addClass('weui_fade_toggle').one('click', function () {
+                    hideActionSheet_add(weui_action_add_sheet, add_mask);
+                });
+                $('#action_add_sheet_cancel').one('click', function () {
+                    hideActionSheet_add(weui_action_add_sheet, add_mask);
+                });
+                $('.selectContact').one('click', function () {
+                    hideActionSheet_add(weui_action_add_sheet, add_mask);
+                });
+                weui_action_add_sheet.unbind('transitionend').unbind('webkitTransitionEnd');
+
+                function hideActionSheet_add(weui_action_add_sheet, add_mask) {
+                    weui_action_add_sheet.removeClass('weui_actionsheet_toggle');
+                    add_mask.removeClass('weui_fade_toggle');
+                    weui_action_add_sheet.on('transitionend', function () {
+                        add_mask.hide();
+                    }).on('webkitTransitionEnd', function () {
+                        add_mask.hide();
+                    })
+                }
+
+            }else{
+
+                var mask = $('#mask');
+                var weuiActionsheet = $('#weui_actionsheet');
+                weuiActionsheet.addClass('weui_actionsheet_toggle');
+                mask.show().addClass('weui_fade_toggle').one('click', function () {
+                    hideActionSheet(weuiActionsheet, mask);
+                });
+                $('#actionsheet_cancel').one('click', function () {
+                    hideActionSheet(weuiActionsheet, mask);
+                });
+                $('.selectContact').one('click', function () {
+                    hideActionSheet(weuiActionsheet, mask);
+                });
+                weuiActionsheet.unbind('transitionend').unbind('webkitTransitionEnd');
+
+                function hideActionSheet(weuiActionsheet, mask) {
+                    weuiActionsheet.removeClass('weui_actionsheet_toggle');
+                    mask.removeClass('weui_fade_toggle');
+                    weuiActionsheet.on('transitionend', function () {
+                        mask.hide();
+                    }).on('webkitTransitionEnd', function () {
+                        mask.hide();
+                    })
+                }
+            }
+
     })
 
 
@@ -152,6 +184,14 @@ $(function(){
             title: "请选择收货地址"
         });
     })
+
+        .on('click', '.click_radio label', function(){
+            var radioId = $(this).attr('name');
+            $('.click_radio label').removeAttr('class').addClass('detail_label_radio');
+            $(this).attr('class', 'detail_label_radio_checked');
+            $('.detail_input_radio').removeAttr('checked') && $('#' + radioId).attr('checked', 'checked');
+        })
+
     ;
 
 });

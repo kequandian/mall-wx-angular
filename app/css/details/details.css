@@ -479,6 +479,29 @@
     line-height: 25px;
     float: left;
 }
+
+#details .detail_input_radio{
+    margin: 3px 3px 0 5px;
+    display: none;
+}
+
+#details .detail_label_radio{
+    /*cursor: pointer;*/
+    padding: 3px;
+    border-radius: 3px;
+    color: #A7A7A7;
+    background-color: #EAEAEA;
+}
+
+#details .detail_label_radio_checked{
+    padding: 4px;
+    border-radius: 3px;
+    color: white;
+    background-color: #3489DB;
+}
+
+
+
 #details .details-quantity-position{
     height: 60px;
 }

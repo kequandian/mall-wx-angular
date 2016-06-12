@@ -79,11 +79,11 @@ angular.module('details.controller', ['details.service'])
 
             //custom checkbox
             function c_checkbox(){
-                $('.c_checkbox').labelauty();
+
             }
 
-            $scope.alertIndex = function(index){
-                alert(index);
+            $scope.get_input_value = function(value){
+                $scope.product_property = value;
             };
 
             $scope.q_count = 1;
@@ -114,20 +114,23 @@ angular.module('details.controller', ['details.service'])
             //确认购买option
             $scope.buy_product_option = function(productInfo, productId, quantity){
 
+                var product_property = $scope.product_property;
+                //if(product_property == null){
+                //    $.toast('请选择商品规格');
+                //}
                 var b_status = $scope.b_status;
                 if(b_status == "cart"){
                     $scope.addProductToCart(productId, quantity);
                 }else if(b_status == "buy"){
                     $scope.buy_immediately(productInfo, quantity);
                 }
+
             };
 
 
             //添加购物车
             $scope.addProductToCart = function(productId,quantity){
-                var proId = productId;
-                var count = quantity;
-                DetailsFty.addProToCatService(proId,count)
+                DetailsFty.addProToCatService(productId,quantity)
                     .then(function(json){
                         if(json.status_code == 0){
                             $.toast.prototype.defaults.duration = 2000;
