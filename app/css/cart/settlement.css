@@ -205,3 +205,22 @@
     /*width: 60px;*/
     /*font-size: 13px;*/
 /*}*/
+
+/* settlement 结算页 */
+#settlement{
+
+}
+
+#settlement #weui_action_add_sheet .weui_cell{
+    padding:7px 10px;
+    font-size: 13px;
+}
+
+#settlement #weui_action_add_sheet .weui_cell:before{
+    left: 7px;
+}
+
+#settlement #weui_action_add_sheet .weui_label{
+    width: 4em;
+}
+

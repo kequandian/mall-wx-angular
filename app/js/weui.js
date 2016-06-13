@@ -179,11 +179,18 @@ $(function(){
             $(this).children('.home_tab_icon').addClass('home_tab_icon_color');
     })
 
+        //地址管理页---新增收件地址
     .on('click', '#contactMan', function(){
         $("#city-picker").cityPicker({
             title: "请选择收货地址"
         });
     })
+        //结算页---新增收件地址
+        .on('click', '#settl_add_pcd', function(){
+            $("#city-picker").cityPicker({
+                title: "请选择收货地址"
+            });
+        })
 
         .on('click', '.click_radio label', function(){
             var radioId = $(this).attr('name');
