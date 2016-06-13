@@ -2,7 +2,7 @@ angular.module('category.controller', ['category.service'])
 
     .controller('CategoryController', ['$scope', '$state','TabIndex','$stateParams', 'CategoryFty',
         function($scope,$state,TabIndex,$stateParams, CategoryFty){
-
+ 
             //title
             document.title = "商品分类";
             TabIndex.number = 2;

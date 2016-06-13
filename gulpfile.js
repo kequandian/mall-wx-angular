@@ -88,7 +88,7 @@ gulp.task('dist', function () {
     var img = gulp.src('app/img/**/*')
         .pipe(gulp.dest('dist/img'));
 
-    var bower = gulp.src('app/bower_components/**/*')
+    var bower = gulp.src('app/bower_components/**/*.js')
         .pipe(gulp.dest('dist/bower_components'));
 
     return merge(minify, minifycss, home, js, lib, img, bower, rep);
