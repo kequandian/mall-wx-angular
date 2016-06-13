@@ -2,8 +2,8 @@
  * Created by jimmie on 2016/6/7.
  */
 
-angular.module('withDraw.service', [])
-    .factory('withDrawMon', ['$http', '$q','GlobalVariable', function($http,$q,GlobalVariable) {
+angular.module('withdraw.service', [])
+    .factory('withdrawFty', ['$http', '$q','GlobalVariable', function($http,$q,GlobalVariable) {
         return{
 
             // 获取账户信息

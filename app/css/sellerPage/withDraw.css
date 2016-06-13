@@ -1,26 +1,26 @@
 body {
     background-color: #f0f0f0;
 }
-    #withDraw .user-info-body{
+    #withdraw .user-info-body{
         background-color:#f0f0f0;
     }
     
-    #withDraw .draw{
+    #withdraw .draw{
         margin-top:15px;
         margin-bottom: 15px;
         background-color: #fff;
     }
     
-    #withDraw .allowNum{
+    #withdraw .allowNum{
         margin-bottom: 30px;
         padding-left: 15px;
     }
     
-    #withDraw .limit{
+    #withdraw .limit{
         color: #cc0000;
     }
 
-    #withDraw .sub{
+    #withdraw .sub{
         margin-top: 15px;
         margin-left: 20px;
         margin-right: 20px;

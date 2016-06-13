@@ -1,4 +1,4 @@
-angular.module('sellerPage.controller', ['sellerPage.service'])
+angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session'])
 
     .filter("OrderState", function(){
         return function(input){
@@ -12,7 +12,8 @@ angular.module('sellerPage.controller', ['sellerPage.service'])
         }
     })
 
-    .controller('SellerPageController', ['$scope','$state', 'SellerPageFty','TabIndex', function($scope,$state, SellerPageFty,TabIndex){
+    .controller('SellerPageController', ['$scope','$state', 'SellerPageFty','TabIndex','BalanceSession',
+        function($scope,$state, SellerPageFty,TabIndex,BalanceSession){
 
         //title
         document.title = "销售中心";
@@ -21,6 +22,8 @@ angular.module('sellerPage.controller', ['sellerPage.service'])
         getUserInfo();
         //分销余额
         getOwnerBalance();
+
+        BalanceSession.balance;
 
         function getUserInfo(){
             SellerPageFty.sellerUserInfoService()

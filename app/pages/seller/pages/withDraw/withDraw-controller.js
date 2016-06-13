@@ -2,23 +2,24 @@
  * Created by jimmie on 2016/6/7.
  */
 
-angular.module('withDraw.controller', ['withDraw.service'])
+angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
 
-    .controller('WithDrawController',['$scope','$state','withDrawMon','allowNum',  function ($scope, $state, withDrawMon, allowNum) {
+    .controller('WithdrawController',['$scope','$state','withdrawFty','BalanceSession',  function ($scope, $state, withdrawFty, BalanceSession) {
 
         document.title = "提现佣金";
 
-        getWithDrawAccount();
+        getWithdrawAccount();
         
-        $scope.allowNum = allowNum.allowNum;
+        $scope.balance = BalanceSession.balance;
+        console.log('Balance?'+$scope.balance);
 
         //获取个人信息
-        function getWithDrawAccount() {
+        function getWithdrawAccount() {
 
-            withDrawMon.myAccountService()
+            withdrawFty.myAccountService()
                 .then(function (json) {
                     if (json.status_code == 0) {
-                        $scope.withDraw = json.data;
+                        $scope.withdraw = json.data;
                         //alert(angular.toJson($scope.withDraw))
                     }
                 }, function (error) {
@@ -28,32 +29,24 @@ angular.module('withDraw.controller', ['withDraw.service'])
 
         //提交提现信息
         $scope.postDrawNum = function () {
-            var withdraw_account_id  = $scope.withDraw.withdraw_account_id;
-            var withdraw_cash        = $scope.withDraw.withdraw_cash;
+            var withdraw_account_id  = $scope.withdraw.withdraw_account_id;
+            var withdraw_cash        = $scope.withdraw.withdraw_cash;
             console.log(withdraw_account_id, withdraw_cash);
 
-            check();
-
-            function check() {
-                if(withdraw_cash>0 && withdraw_cash<100){
-                    // alert("提现金额少于100");
-                    $.toast('提现金额少于100');
-
-                }
-                else if(withdraw_cash>allowNum.allowNum){
-                    // alert("提现金额超限");
-                    $.toast('提现金额超限');
-
-                }
-                else if(withdraw_cash = "undefined") {
-                    // alert("请输入提现金额");
-                    $.toast('请输入提现金额');
-
-
-                }
+            if(withdraw_cash>0 && withdraw_cash<100){
+                $.toast('提现金额少于100');
+                return;
+            }
+            else if(withdraw_cash>$scope.balance){
+                $.toast('提现金额超限');
+                return;
+            }
+            else if(withdraw_cash = "undefined") {
+                $.toast('请输入提现金额');
+                return;
             }
 
-            withDrawMon.postDrawService(withdraw_account_id,withdraw_cash)
+            withdrawFty.postDrawService(withdraw_account_id,withdraw_cash)
                 .then(function (json) { 
                     if (json.status_code == 0) {
                         $scope.withDraw= json.data;

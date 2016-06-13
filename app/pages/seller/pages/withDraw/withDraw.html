@@ -1,16 +1,15 @@
-<div id="withDraw">
+<div id="withdraw">
 
     <div class="user-info-body">
         <form ng-submit="">
 
             <div class="weui_cell draw" >
                 <div class="weui_cell_bd weui_cell_primary">
-                    <input class="weui_input" type="number" id="drawNum" placeholder="请输入提现佣金" ng-model="withDraw.withdraw_cash">
+                    <input class="weui_input" type="number" id="drawNum" placeholder="请输入提现佣金" ng-model="withdraw.withdraw_cash">
                 </div>
             </div>
 
-            <p class="allowNum">可提金额: {{allowNum}} <span class="limit" >( 至少100.00才可以提现 )</span></span></p>
-
+            <p class="allowNum">可提金额: {{balance}} <span class="limit" >( 至少100.00才可以提现 )</span></span></p>
 
             <div class="sub">
                 <input type="submit" class="weui_btn custom_weui_btn_primary" value="提现" ng-click="postDrawNum()">

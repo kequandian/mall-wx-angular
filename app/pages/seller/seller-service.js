@@ -1,7 +1,6 @@
 angular.module('seller.service', [])
     .factory('SellerFty', ['$http', function($http) {
         return{
-            // 获取更新数据数据
             sellerService: function () {
                 var deferred = $q.defer();
                 var url = "/refresh";

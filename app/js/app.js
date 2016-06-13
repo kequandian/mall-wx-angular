@@ -32,7 +32,7 @@ var myapp = angular.module('myapp', [
     'collection.route',
     'distributionInfo.route',
     'refund.route',
-    'withDraw.route'
+    'withdraw.route'
 ]);
 
 myapp.value('ProfileSession', {
