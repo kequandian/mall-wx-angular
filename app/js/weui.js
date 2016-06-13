@@ -1,4 +1,4 @@
-$(function(){
+(function(){
 
     // searchbar
     $('#container').on('focus', '#search_input', function () {

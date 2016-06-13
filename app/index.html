@@ -1,69 +1,70 @@
 <html ng-app="myapp">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
-  <title>十美优品商城</title>
-  <!--<title>{{title}}</title>-->
-  <!-- WEUI CSS -->
-  <link rel="stylesheet" href="lib/css/weui/weui.min.css">
-  <link rel="stylesheet" href="lib/css/weui/weui.custom.css">
-  <link rel="stylesheet" href="lib/css/ionicons/ionicons.min.css">
-  <link rel="stylesheet" href="bower_components/jquery-weui/dist/css/jquery-weui.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+    <title>十美优品商城</title>
+    <!--<title>{{title}}</title>-->
+    <!-- WEUI CSS -->
+    <link rel="stylesheet" href="lib/css/weui/weui.min.css">
+    <link rel="stylesheet" href="lib/css/weui/weui.custom.css">
+    <link rel="stylesheet" href="lib/css/ionicons/ionicons.min.css">
+    <link rel="stylesheet" href="bower_components/jquery-weui/dist/css/jquery-weui.min.css">
 
-  <!-- yourself CSS -->
-  <link href="css/common.css" rel="stylesheet">
-  <link href="css/home/homePage.css" rel="stylesheet">
-  <link href="css/goodsList/goodsList.css" rel="stylesheet">
-  <link href="css/details/details.css" rel="stylesheet">
-  <link href="css/addressManager/addressManager.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/cart/cart.css">
-  <link rel="stylesheet" href="css/cart/settlement.css">
-  <link rel="stylesheet" href="css/order/order.css">
-  <link rel="stylesheet" href="css/order/orderDetails.css">
-  <!--<link rel="stylesheet" href="css/coupon/coupon.css">-->
-  <link rel="stylesheet" href="css/sellerPage/sellerPage.css">
-  <link rel="stylesheet" href="css/sellerPage/myTeam.css">
-  <link rel="stylesheet" href="css/sellerPage/promotionOrder.css">
-  <!--<link rel="stylesheet" href="css/sellerPage/marketing.css">-->
-  <link rel="stylesheet" href="css/sellerPage/shopSettings.css">
-  <link rel="stylesheet" href="css/home/home.css">
-  <link rel="stylesheet" href="css/my/my.css">
-  <link rel="stylesheet" href="css/category/category.css">
-  <link rel="stylesheet" href="css/my/userInfo.css">
-  <link rel="stylesheet" href="css/my/integral.css">
-  <link rel="stylesheet" href="css/my/feedback.css">
-  <!--<link rel="stylesheet" href="css/sellerPage/commission.css">-->
-  <link rel="stylesheet" href="css/sellerPage/myAgent.css">
-  <link rel="stylesheet" href="css/my/commonProblem.css">
-  <link rel="stylesheet" href="css/my/collection.css">
-  <link rel="stylesheet" href="css/sellerPage/distributionInfo.css">
-  <link rel="stylesheet" href="css/sellerPage/pian.css">
-  <link rel="stylesheet" href="css/my/refund.css">
-  <link rel="stylesheet" href="css/addressManager/editAddress.css">
-  <link rel="stylesheet" href="css/sellerPage/withdraw.css">
+    <!-- yourself CSS -->
+    <link href="css/common.css" rel="stylesheet">
+    <link href="css/home/homePage.css" rel="stylesheet">
+    <link href="css/goodsList/goodsList.css" rel="stylesheet">
+    <link href="css/details/details.css" rel="stylesheet">
+    <link href="css/addressManager/addressManager.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/cart/cart.css">
+    <link rel="stylesheet" href="css/cart/settlement.css">
+    <link rel="stylesheet" href="css/order/order.css">
+    <link rel="stylesheet" href="css/order/orderDetails.css">
+    <!--<link rel="stylesheet" href="css/coupon/coupon.css">-->
+    <link rel="stylesheet" href="css/sellerPage/sellerPage.css">
+    <link rel="stylesheet" href="css/sellerPage/myTeam.css">
+    <link rel="stylesheet" href="css/sellerPage/promotionOrder.css">
+    <!--<link rel="stylesheet" href="css/sellerPage/marketing.css">-->
+    <link rel="stylesheet" href="css/sellerPage/shopSettings.css">
+    <link rel="stylesheet" href="css/home/home.css">
+    <link rel="stylesheet" href="css/my/my.css">
+    <link rel="stylesheet" href="css/category/category.css">
+    <link rel="stylesheet" href="css/my/userInfo.css">
+    <link rel="stylesheet" href="css/my/integral.css">
+    <link rel="stylesheet" href="css/my/feedback.css">
+    <!--<link rel="stylesheet" href="css/sellerPage/commission.css">-->
+    <link rel="stylesheet" href="css/sellerPage/myAgent.css">
+    <link rel="stylesheet" href="css/my/commonProblem.css">
+    <link rel="stylesheet" href="css/my/collection.css">
+    <link rel="stylesheet" href="css/sellerPage/distributionInfo.css">
+    <link rel="stylesheet" href="css/sellerPage/pian.css">
+    <link rel="stylesheet" href="css/my/refund.css">
+    <link rel="stylesheet" href="css/addressManager/editAddress.css">
+    <link rel="stylesheet" href="css/sellerPage/withdraw.css">
 
-  <!-- custom checkbox css -->
-  <link rel="stylesheet" href="lib/angular-ad-switch/css/ui-switch.css">
+    <!-- custom checkbox css -->
+    <link rel="stylesheet" href="lib/angular-ad-switch/css/ui-switch.css">
 
-  <style>
+    <style>
 
-    .swiper-container {
-      width: 100%;
-    }
+        .swiper-container {
+            width: 100%;
+        }
 
-    .swiper-container img {
-      display: block;
-      width: 100%;
-    }
+        .swiper-container img {
+            display: block;
+            width: 100%;
+        }
 
-  </style>
+    </style>
 
 
 </head>
 <body ontouchstart="">
 <div id="container">
-  <div ui-view></div>
+    <div ui-view></div>
 </div>
 
 <!-- Angular -->
@@ -74,12 +75,12 @@
 <script src="js/app.js"></script>
 <script src="js/global.js"></script>
 <script src="js/modelValues.js"></script>
+<script src="js/weui.js"></script>
 
 <!-- jquery weui -->
 <script src="lib/zepto.min.js"></script>
-<script src="js/weui.js"></script>
-<script src="bower_components/qrcode.js/lib/qrcode.min.js"></script>
-
+<script src="lib/qrcodejs/qrcode.min.js"></script>
+<!-- bower_components -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/jquery-weui/dist/js/jquery-weui.min.js"></script>
 <script src="bower_components/jquery-weui/dist/js/swiper.min.js"></script>
