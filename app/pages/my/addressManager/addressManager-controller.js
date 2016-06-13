@@ -57,8 +57,8 @@ angular.module('addressManager.controller', ['addressManager.service'])
         //提交添加地址
         $scope.addContactSubmit=function() {
 
-            var pcd = document.getElementById('city-picker');
-            $scope.pcd = pcd.value;
+            var pcd_1 = document.getElementById('city-picker');
+            $scope.pcd = pcd_1.value;
 
             if(!angular.isString($scope.contact.contact_user)
                 || $scope.contact.contact_user.length==0){

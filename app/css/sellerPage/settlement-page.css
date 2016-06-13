@@ -6,3 +6,8 @@
     padding-top: 35px;
 }
 
+.weui_cell:before{
+    left: 10px;
+}
+
+
