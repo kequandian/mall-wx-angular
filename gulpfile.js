@@ -6,7 +6,7 @@ var rename = require('gulp-rename');
 var del = require('del');
 var path = require('path');
 
-var SRC = 'js/app.js';
+var SRC = 'app/js/app.js';
 var DEST = 'dist/';
 
 gulp.task('dist', function () {
