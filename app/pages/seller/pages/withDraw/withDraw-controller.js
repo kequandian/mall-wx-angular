@@ -33,7 +33,7 @@ angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
             var withdraw_cash        = $scope.withdraw.withdraw_cash;
             console.log(withdraw_account_id, withdraw_cash);
 
-            if(withdraw_cash>0 && withdraw_cash<100){
+            if(withdraw_cash<100){
                 $.toast('提现金额少于100');
                 return;
             }

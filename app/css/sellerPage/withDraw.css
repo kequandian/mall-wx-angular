@@ -1,27 +1,24 @@
-body {
+#withdraw .user-info-body {
     background-color: #f0f0f0;
 }
-    #withdraw .user-info-body{
-        background-color:#f0f0f0;
-    }
-    
-    #withdraw .draw{
-        margin-top:15px;
-        margin-bottom: 15px;
-        background-color: #fff;
-    }
-    
-    #withdraw .allowNum{
-        margin-bottom: 30px;
-        padding-left: 15px;
-    }
-    
-    #withdraw .limit{
-        color: #cc0000;
-    }
 
-    #withdraw .sub{
-        margin-top: 15px;
-        margin-left: 20px;
-        margin-right: 20px;
-    }
+#withdraw .draw {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: #fff;
+}
+
+#withdraw .allowWithdraw {
+    margin-bottom: 30px;
+    padding-left: 15px;
+}
+
+#withdraw .limit {
+    color: #cc0000;
+}
+
+#withdraw .sub {
+    margin-top: 15px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
