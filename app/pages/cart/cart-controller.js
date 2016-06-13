@@ -191,7 +191,7 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
                     "quantity": data.quantity
                 });
             });
-            console.log($scope.settlementData);
+            //console.log($scope.settlementData);
             $scope.pay=$stateParams.totalToPay;
             $scope.freight=$stateParams.totalFreight;
             $scope.total_price = $stateParams.totalToPay + $stateParams.totalFreight;
@@ -201,12 +201,12 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
             $scope.addOrderSubmit=function() {
                 //console.log($scope.order);
 
-
                 if($scope.show_address_status == 'add'){
                     var click_index = document.getElementById('showAddress');
                     click_index.click();
                     return;
                 }
+                alert(angular.toJson($scope.order));
 
                 CartFty.addOrder($scope.order).then(
                     function (result) {

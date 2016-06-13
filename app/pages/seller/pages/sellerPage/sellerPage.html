@@ -55,7 +55,7 @@
                 <span style="font-size: 12px;">可提金额：</span>
                 <span style="color: red; padding-left: 4px; font-size: 14px;">￥</span>
                 <div class="commission-price">{{owner_balance.balance != null ? owner_balance.balance : '0' | currency:""}}</div>
-                <div class="cash-botton">
+                <div class="cash-botton" ui-sref="withDraw">
                     <img  src="img/sellerPage/takeCash.png">
                 </div>
             </div>

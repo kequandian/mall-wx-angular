@@ -83,7 +83,7 @@ angular.module('details.controller', ['details.service'])
             }
 
             $scope.get_input_value = function(value){
-                $scope.product_property = value;
+                $scope.product_property_value = value;
             };
 
             $scope.q_count = 1;
@@ -114,23 +114,25 @@ angular.module('details.controller', ['details.service'])
             //确认购买option
             $scope.buy_product_option = function(productInfo, productId, quantity){
 
-                var product_property = $scope.product_property;
-                //if(product_property == null){
-                //    $.toast('请选择商品规格');
-                //}
+                var product_property = $scope.product_property_value;
+                if(product_property == null){
+                    $.toast('请选择商品规格');
+                    return;
+                }
                 var b_status = $scope.b_status;
                 if(b_status == "cart"){
-                    $scope.addProductToCart(productId, quantity);
+                    $scope.addProductToCart(productId, quantity,product_property);
                 }else if(b_status == "buy"){
-                    $scope.buy_immediately(productInfo, quantity);
+                    $scope.buy_immediately(productInfo, quantity,product_property);
                 }
 
             };
 
 
             //添加购物车
-            $scope.addProductToCart = function(productId,quantity){
-                DetailsFty.addProToCatService(productId,quantity)
+            $scope.addProductToCart = function(productId,quantity,product_property){
+
+                DetailsFty.addProToCatService(productId,quantity,product_property)
                     .then(function(json){
                         if(json.status_code == 0){
                             $.toast.prototype.defaults.duration = 2000;
@@ -145,10 +147,11 @@ angular.module('details.controller', ['details.service'])
 
             //立即购买
             $scope.checkedCarts=[];
-            $scope.buy_immediately = function(item,quantity){
+            $scope.buy_immediately = function(item,quantity,product_property){
                 item.quantity = $scope.q_count;
                 item.product_name = item.name;
-                item.price = item.price * item.quantity;
+                item.price = item.price * quantity;
+                item.product_property = product_property;
                 $scope.checkedCarts.push(item);
                 $state.go('cart-settlement', {carts:$scope.checkedCarts,totalToPay:item.price,totalFreight:item.freight});
             };

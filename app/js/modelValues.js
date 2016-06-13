@@ -11,4 +11,8 @@ angular.module('modelValues', [])
         tab_index: 1
     })
 
+    .value('allowNum', {
+        allowNum: '800',
+    })
+
 ;

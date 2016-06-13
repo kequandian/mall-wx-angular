@@ -168,30 +168,11 @@
                             <ul class="weui_media_info detail_content_checkbox">
                                 <li class="weui_media_info_meta click_radio" ng-repeat="proItem in details.properties">
                                     <!--<input class="c_checkbox" type="radio" value="" name="radio" data-labelauty="proItem.display_name">-->
-                                    <input class="detail_input_radio" id="pro_id_{{proItem.id}}" type="radio" value="" name="radio" ng-click="get_input_value(proItem.property_value)">
+                                    <input class="detail_input_radio" id="pro_id_{{proItem.id}}"
+                                           type="radio" value="" name="radio" ng-click="get_input_value(proItem.property_value)">
                                     <label class="detail_label_radio" for="pro_id_{{proItem.id}}" name="pro_id_{{proItem.id}}">{{proItem.display_name}}</label>
                                 </li>
-
-
-
-
-                                <!--<li class="weui_media_info_meta">-->
-                                    <!--<input class="c_checkbox" type="radio" value="" name="radio" data-labelauty="1*2 中号">-->
-                                <!--</li>-->
-                                <!--<li class="weui_media_info_meta">-->
-                                    <!--<input class="c_checkbox" type="radio" value="" name="radio" data-labelauty="1*3">-->
-                                <!--</li>-->
-
-                                <!--<li class="weui_media_info_meta">-->
-                                    <!--<input class="c_checkbox" type="radio" value="" name="radio" data-labelauty="1*4 大号">-->
-                                <!--</li>-->
-                                <!--<li class="weui_media_info_meta">-->
-                                    <!--<input class="c_checkbox" type="radio" value="" name="radio" data-labelauty="1*5 特大号">-->
-                                <!--</li>-->
-                                <!--<li class="weui_media_info_meta">-->
-                                    <!--<input class="c_checkbox" type="radio" value="" name="radio" data-labelauty="1*6">-->
-                                <!--</li>-->
-
+                                <input id="property_hidden" type="hidden" value="{{product_property_value}}">
                             </ul>
 
                             <div class="details-quantity-position">

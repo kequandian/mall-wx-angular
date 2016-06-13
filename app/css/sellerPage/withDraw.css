@@ -1,0 +1,27 @@
+body {
+    background-color: #f0f0f0;
+}
+    #withDraw .user-info-body{
+        background-color:#f0f0f0;
+    }
+    
+    #withDraw .draw{
+        margin-top:15px;
+        margin-bottom: 15px;
+        background-color: #fff;
+    }
+    
+    #withDraw .allowNum{
+        margin-bottom: 30px;
+        padding-left: 15px;
+    }
+    
+    #withDraw .limit{
+        color: #cc0000;
+    }
+
+    #withDraw .sub{
+        margin-top: 15px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }

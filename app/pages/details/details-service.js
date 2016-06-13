@@ -19,12 +19,13 @@ angular.module('details.service', [])
             },
 
             //加入购物车
-            addProToCatService: function (productId,quantity) {
+            addProToCatService: function (productId,quantity,properties) {
                 var deferred = $q.defer();
                 var url = GlobalVariable.SERVER_PATH + "/shopping_cart";
                 $http.post(url,[{
                     "product_id": productId,
-                    "quantity": quantity
+                    "quantity": quantity,
+                    "product_properties": properties
                 }],{
                     headers: {
                         'Authorization': GlobalVariable.ACCESS_TOKEN

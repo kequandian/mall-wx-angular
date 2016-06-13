@@ -91,15 +91,22 @@ $(function(){
 
         //details action sheet
         .on('click', '.product_info', function () {
+
+            var p_value = $('#property_hidden');
+
             var mask = $('#details_mask');
             var weuiActionsheet = $('#weui_actionsheet');
             weuiActionsheet.addClass('weui_actionsheet_toggle');
-            mask.show().addClass('weui_fade_toggle').one('click', function () {
+            mask.show().addClass('weui_fade_toggle').on('click', function () {
                 hideActionSheet(weuiActionsheet, mask);
             });
-            $('#action_sheet_cancel').one('click', function () {
-                hideActionSheet(weuiActionsheet, mask);
+
+            $('#action_sheet_cancel').on('click', function () {
+                if(p_value.val().length > 0) {
+                    hideActionSheet(weuiActionsheet, mask);
+                }
             });
+
             //$('.select_contact').one('click', function () {
             //    hideActionSheet(weuiActionsheet, mask);
             //});

@@ -31,7 +31,8 @@ var myapp = angular.module('myapp', [
     'commonProblem.route',
     'collection.route',
     'distributionInfo.route',
-    'refund.route'
+    'refund.route',
+    'withDraw.route'
 ]);
 
 myapp.value('ProfileSession', {
