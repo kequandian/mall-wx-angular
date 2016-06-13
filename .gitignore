@@ -5,4 +5,5 @@ app/js/global.js
 app/bower_components/
 tmp
 .DS_Store
-.idea
+.idea/
+/dist/
