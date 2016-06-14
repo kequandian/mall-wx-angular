@@ -12,15 +12,15 @@
             <div class="order-item-text">
                 <div>
                     本月总收入：
-                    <span class="pro-red">{{rewards.pending_reward + rewards.settled_reward}}元</span>
+                    <span class="pro-red">{{(rewards.pending_reward + rewards.settled_reward)|currency:""}}元</span>
                 </div>
                 <div>
                     已结算收入：
-                    <span class="pro-black">{{rewards.settled_reward}}元</span>
+                    <span class="pro-black">{{rewards.settled_reward|currency:""}}元</span>
                 </div>
                 <div>
                     未结算收入：
-                    <span class="pro-black">{{rewards.pending_reward}}元</span>
+                    <span class="pro-black">{{rewards.pending_reward|currency:""}}元</span>
                 </div>
                 <div>
                     本月总订单：
