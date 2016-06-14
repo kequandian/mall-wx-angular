@@ -266,14 +266,14 @@ body, html {
 
 #content .home_grid_img {
     width: 135px;
-    height: 130px;
+    height: 135px;
 }
 
 #content .home_grid_text {
     height: 45px;
     border-top: 1px solid #cccccc;
     text-align: left;
-    padding: 3px 5px;
+    padding: 3px 3px;
     color: #4c4c4c;
     font-size: 14px;
 }
@@ -305,7 +305,7 @@ body, html {
 
 
 #content #homeProductGrids .weui_grid {
-    padding: 2px 0;
+    padding: 2px 2px;
 }
 
 #content #homeProductGrids a:active{
