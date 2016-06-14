@@ -139,7 +139,7 @@
 
 #sellerPage .s-p-bottom .cash-botton img{
     width: 65px;
-    height: 22px;
+    height: auto;
     display: inline;
     margin-top: 2px;
 }

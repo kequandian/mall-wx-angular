@@ -33,13 +33,13 @@
             </div>
             <div class="product-price">
                 <span>￥{{details.price}}</span>
-                <div>市场价：<s>{{details.suggested_price | currency:'￥'}}</s></div>
+                <div  class="product-price-market"><span>市场价：</span><s>{{details.suggested_price | currency:'￥'}}</s></div>
             </div>
 
             <div class="product-freight" style="border-top: 1px solid #ECECEC;">
                 <div class="product-f-left">
                     <img src="img/details/price-icon.png"/>
-                    <span>运费：{{details.freight}}</span>
+                    <span>运费：{{details.freight|currency:"￥"}}</span>
                 </div>
                 <div class="product-f-right">
                     <!--<span>销量：{{details.sales}}件</span>-->

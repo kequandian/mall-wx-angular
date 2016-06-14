@@ -37,7 +37,7 @@
 
 #details .product-price{
     font-size: 20px;
-    height: 70px;
+    height: 80px;
     margin-left: 5px;
     margin-right: 5px;
 }
@@ -45,14 +45,21 @@
 #details .product-price span{
     font-size: 20px;
     height: 35px;
-    line-height: 40px;
+    line-height: 35px;
     color:#F15353;
 }
 
-#details .product-price div{
+#details .product-price-market span{
+    font-size: 12px;
+    height: 35px;
+    line-height: 40px;
+    color:#7D7D7D;
+}
+
+#details .product-price s{
     font-size: 14px;
     height: 20px;
-    color:#9D9D9D;
+    color:#7D7D7D;
 }
 
 /*#details .product-price div i{*/
@@ -72,20 +79,21 @@
 }
 
 #details .product-f-left{
-    width: 40%;
+    width: 44%;
     height: 35px;
     float: left;
 }
 
 #details .product-f-left img{
     width: auto;
-    height: 25px;
+    height: 20px;
+    margin-left: 10px;
     position: absolute;
     top: 5px;
 }
 
 #details .product-f-left span{
-    margin-left: 27px;
+    margin-left: 36px;
 }
 
 #details .product-f-right{
@@ -94,13 +102,13 @@
 
 #details .product-f-right img{
     width: auto;
-    height: 25px;
+    height: 20px;
     position: absolute;
     top: 5px;
 }
 
 #details .product-f-right span{
-    margin-left: 38px;
+    margin-left: 36px;
 }
 
 
