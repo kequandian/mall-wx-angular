@@ -19,7 +19,7 @@ angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
             withdrawFty.myAccountService()
                 .then(function (json) {
                     if (json.status_code == 0) {
-                        $scope.withdraw = json.data;
+                        $scope.withdraw = json.data[0];
                         //alert(angular.toJson($scope.withDraw))
                     }
                 }, function (error) {
@@ -29,11 +29,15 @@ angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
 
         //提交提现信息
         $scope.postDrawNum = function () {
-            var withdraw_account_id  = $scope.withdraw.withdraw_account_id;
+            var withdraw_account_id  = $scope.withdraw.id;
             var withdraw_cash        = $scope.withdraw.withdraw_cash;
             console.log(withdraw_account_id, withdraw_cash);
 
-            if(withdraw_cash<100){
+            if(withdraw_cash == undefined) {
+                $.toast('请输入提现金额');
+                return;
+            }
+            else if (withdraw_cash<100){
                 $.toast('提现金额少于100');
                 return;
             }
@@ -41,10 +45,7 @@ angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
                 $.toast('提现金额超限');
                 return;
             }
-            else if(withdraw_cash = "undefined") {
-                $.toast('请输入提现金额');
-                return;
-            }
+
 
             withdrawFty.postDrawService(withdraw_account_id,withdraw_cash)
                 .then(function (json) { 
