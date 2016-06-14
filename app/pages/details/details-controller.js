@@ -9,8 +9,6 @@ angular.module('details.controller', ['details.service'])
             ReImgSize();
             //商品详情
             detailsInfo();
-            //checkbox
-            c_checkbox();
 
             function ReImgSize(){
                 for (j=0;j<document.images.length;j++)
@@ -76,12 +74,6 @@ angular.module('details.controller', ['details.service'])
                 }).appendTo($body);
             }*/
 
-
-            //custom checkbox
-            function c_checkbox(){
-
-            }
-
             $scope.get_input_value = function(value){
                 $scope.product_property_value = value;
             };
@@ -131,7 +123,6 @@ angular.module('details.controller', ['details.service'])
 
             //添加购物车
             $scope.addProductToCart = function(productId,quantity,product_property){
-
                 DetailsFty.addProToCatService(productId,quantity,product_property)
                     .then(function(json){
                         if(json.status_code == 0){

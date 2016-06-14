@@ -35,14 +35,14 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
         //商品数量增减
         $scope.downQuantity = function(id){
             angular.forEach($scope.carts, function(value, key){
-                console.log(id);
+                //console.log(id);
                 if(value.product_id == id){
                     if(value.quantity > 1){
                         value.quantity = value.quantity -1;
                     }
                 }
             },$scope.carts);
-            console.log($scope.carts);
+            //console.log($scope.carts);
         };
         $scope.upQuantity = function(id){
             angular.forEach($scope.carts, function(value, key){
@@ -50,7 +50,7 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
                     value.quantity = value.quantity +1;
                 }
             },$scope.carts);
-            console.log($scope.carts);
+            //console.log($scope.carts);
         };
 
         //alert(angular.toJson($scope.carts));
@@ -126,7 +126,7 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
             });
             //$scope.checkedCarts.push(pay);
             //$scope.checkedCarts.push(freight);
-            console.log($scope.checkedCarts);
+            //console.log($scope.checkedCarts);
             $state.go('cart-settlement', {carts:$scope.checkedCarts,totalToPay:pay,totalFreight:freight});
         };
 
@@ -517,7 +517,7 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
 
         $scope.orderData=$stateParams.data;
         $scope.confirm=function(order_number){
-            console.log(order_number);
+            //console.log(order_number);
             CartFty.wpay(order_number).then(
                 function (result) {
                     console.log(result);

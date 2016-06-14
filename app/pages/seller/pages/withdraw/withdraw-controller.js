@@ -11,7 +11,7 @@ angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
         getWithdrawAccount();
         
         $scope.balance = BalanceSession.balance;
-        console.log('Balance?'+$scope.balance);
+        //console.log('Balance?'+$scope.balance);
 
         //获取个人信息
         function getWithdrawAccount() {
