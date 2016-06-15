@@ -43,6 +43,13 @@
                 $el.addClass($scope.classPrefix + '-' + $scope.type);
                 this.width = el.clientWidth;
 
+                if($scope.height>0) {
+                    el.style.height = $scope.height;
+                }
+                //console.log("init-width?" + el.clientWidth);
+                //console.log("init-height?" + el.clientHeight);
+                //console.log("init-height?" + $scope.height);
+
                 this.bindTouchEvent();
 
                 $scope.$broadcast('switch.init');
@@ -192,6 +199,8 @@
 
             addPanel: function(panel) {
                 this.panels.push(panel);
+
+                //console.log("typeof?"+(typeof el));
 
                 var index = this.panels.length - 1;
                 this.switch.$scope.$broadcast('bsSwitch.panel.add', index);
@@ -481,6 +490,8 @@
                 this.panels.push(panel);
                 this.width += panel.outerWidth;
                 el.style.width = this.width + 'px';
+                //el.style.height = 'auto';
+                //console.log("addPanel?"+this.width);
 
                 this.switch.$scope.$broadcast('bsSwitch.panel.add', this.panels.length - 1);
             },
@@ -774,7 +785,8 @@
                 step: '=?',
                 classPrefix: '@?',
                 autoPlay: '=?',
-                type: '@?'
+                type: '@?',
+                height: '=?'
             },
             link: link
         };
@@ -796,6 +808,10 @@
 
             if (!$scope.classPrefix) {
                 $scope.classPrefix = 'ui-switch';
+            }
+
+            if(!$scope.height){
+                $scope.height = -1;
             }
 
             switchCtrl.init();
