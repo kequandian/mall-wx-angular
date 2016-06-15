@@ -1,27 +1,49 @@
 (function() {
 
-    angular.module('bsSwitch', [])
+    angular.module('cmSwitch', [])
 
-        .controller('bsSwitchCtrl', bsSwitchCtrl)
-        .controller('bsSwitchContentGalleryCtrl', bsSwitchContentGalleryCtrl)
-        .controller('bsSwitchContentSliderCtrl', bsSwitchContentSliderCtrl)
-        .controller('bsSwitchPanelCtrl', bsSwitchPanelCtrl)
-        .controller('bsSwitchNavCtrl', bsSwitchNavCtrl)
+        .controller('cmSwitchCtrl', cmSwitchCtrl)
+        .controller('cmSwitchContentGalleryCtrl', cmSwitchContentGalleryCtrl)
+        .controller('cmSwitchContentSliderCtrl', cmSwitchContentSliderCtrl)
+        .controller('cmSwitchPanelCtrl', cmSwitchPanelCtrl)
+        .controller('cmSwitchNavCtrl', cmSwitchNavCtrl)
 
-        .directive('bsSwitch', bsSwitch)
-        .directive('bsSwitchContent', bsSwitchContent)
-        .directive('bsSwitchPanel', bsSwitchPanel)
-        .directive('bsSwitchNav', bsSwitchNav);
+        .directive('cmSwitch', cmSwitch)
+        .directive('cmSwitchContent', cmSwitchContent)
+        .directive('cmSwitchPanel', cmSwitchPanel)
+        .directive('cmSwitchNav', cmSwitchNav)
 
+        .factory('cmSwitchDelegate', cmSwitchDelegate);
     var DIRECTIONS = {
         LEFT: -1,
         RIGHT: 1
     };
 
-    bsSwitchCtrl.$inject = '$scope, $element, $attrs'.split(', ');
-    function bsSwitchCtrl($scope, $el, $attrs) {
+    function cmSwitchDelegate() {
+        var _instances = {};
+        return {
+            add: function (id, instance) {
+                _instances[id] = instance;
+            },
+            remove: function (id) {
+                delete _instances[id];
+            },
+            get: function (id) {
+                return _instances[id];
+            }
+        };
+    }
+    cmSwitchCtrl.$inject = '$scope, $element, $attrs, cmSwitchDelegate'.split(', ');
+    function cmSwitchCtrl($scope, $el, $attrs, cmSwitchDelegate) {
         var el = $el[0],
             switchCtrl = this;
+        if ($scope.delegateHandle) {
+            var id = $scope.delegateHandle;
+            cmSwitchDelegate.add(id, switchCtrl);
+            $scope.$on('$destroy', function () {
+                cmSwitchDelegate.remove(id);
+            });
+        }
 
         angular.extend(switchCtrl, {
             $scope: $scope,
@@ -42,6 +64,7 @@
                 $el.addClass($scope.classPrefix);
                 $el.addClass($scope.classPrefix + '-' + $scope.type);
                 this.width = el.clientWidth;
+                this.height = el.clientHeight;
 
                 this.bindTouchEvent();
 
@@ -53,6 +76,7 @@
 
             refresh: function() {
                 this.width = el.clientWidth;
+                this.height = el.clientHeight;
                 $scope.$broadcast('switch.refresh');
             },
 
@@ -130,12 +154,15 @@
                 el.removeEventListener('touchend', switchCtrl.slipEndHandler);
                 el.removeEventListener('touchcancel', switchCtrl.slipEndHandler);
                 switchCtrl.switchContent.standstill();
+            },
+            toggle: function(index, direction) {
+                switchCtrl.switchContent.toggle(index, direction);
             }
         });
     }
 
-    bsSwitchContentSliderCtrl.$inject = '$scope, $element, $attrs, $q'.split(', ');
-    function bsSwitchContentSliderCtrl($scope, $el, $attrs, $q) {
+    cmSwitchContentSliderCtrl.$inject = '$scope, $element, $attrs, $q'.split(', ');
+    function cmSwitchContentSliderCtrl($scope, $el, $attrs, $q) {
         var el = $el[0],
             switchContentCtrl = this;
 
@@ -170,12 +197,19 @@
             // 当面面板的左面板
             leftPanel: undefined,
 
+            // 自动播放的时间间隔（每次播放结束后到下一次播放开始的时间）
+            autoPlayTiming: undefined,
+
+            // 是否可循环切换
+            doesContinue: false,
+
             init: function(switchCtrl) {
                 var self = this;
 
                 this.switch = switchCtrl;
                 $el.addClass(switchCtrl.config.classPrefix + '-content');
                 this.width = el.clientWidth;
+                this.height = el.clientHeight;
 
                 switchCtrl.$scope.$on('switch.refresh', function() {
                     self.refresh();
@@ -183,18 +217,20 @@
 
                 this.autoPlayTiming = switchCtrl.$scope.autoPlay;
                 this.autoPlay();
+
+                this.doesContinue = switchCtrl.$scope.doesContinue;
             },
 
             refresh: function() {
                 this.width = el.clientWidth;
+                this.height = el.clientHeight;
             },
-
 
             addPanel: function(panel) {
                 this.panels.push(panel);
 
                 var index = this.panels.length - 1;
-                this.switch.$scope.$broadcast('bsSwitch.panel.add', index);
+                this.switch.$scope.$broadcast('cmSwitch.panel.add', index);
 
                 if (!this.currentPanel) {
                     this.currentPanel = panel;
@@ -202,10 +238,10 @@
 
                     this.currentPanel.$el.addClass('active');
 
-                    this.switch.$scope.$broadcast('bsSwitch.panel.switch', this.currentPanelIndex);
+                    this.switch.$scope.$broadcast('cmSwitch.panel.switch', this.currentPanelIndex);
                 }
                 else {
-                    panel.$el.addClass('hide');
+                    // panel.$el.addClass('hide');
                 }
             },
 
@@ -243,32 +279,46 @@
                     this.currentPanelIndex -= 1;
                 }
 
-                this.switch.$scope.$broadcast('bsSwitch.panel.remove', index, panel);
+                this.switch.$scope.$broadcast('cmSwitch.panel.remove', index, panel);
             },
 
             /** 移动内容区域，移动距离为正值时，向右移动，反之向左移动。 */
             move: function(length) {
-                this.animate && this.animate.over();
-                this.autoPlayTimer && this.stopAutoPlay();
-                this._move(this.panelOffset + length);
+                var offset = this.panelOffset + length;
+
+                if (this.animate) this.animate.over();
+                if (this.autoPlayTimer) this.stopAutoPlay();
+
+                if (!this.doesContinue && ((offset > 0 && this.currentPanelIndex === 0)
+                    || (offset < 0 && this.currentPanelIndex === this.panels.length - 1))) {
+                    return;
+                }
+                else {
+                    this._move(this.panelOffset + length);
+                }
             },
 
             standstill: function() {
-                var index = this.currentPanelIndex;
+                var index = this.currentPanelIndex,
+                    direction = this.moveDirection,
+                    toggleIndex;
 
-                if (this.moveDirection === DIRECTIONS.LEFT) {
-                    index += 1;
-                    index %= this.panels.length;
+                if (!this.doesContinue && ((direction === DIRECTIONS.RIGHT && index === 0)
+                    || (direction === DIRECTIONS.LEFT && index === this.panels.length - 1))) {
+                    this.autoPlay();
                 }
                 else {
-                    index -= 1;
-
-                    if (index === -1) {
-                        index = this.panels.length - 1;
+                    if (Math.abs(this.panelOffset) < this.currentPanel.outerWidth / 8) {
+                        toggleIndex = this.currentPanelIndex;
                     }
-                }
+                    else {
+                        toggleIndex = this.moveDirection === DIRECTIONS.LEFT ?
+                            this._getNextPanelIndexByIndex(index) :
+                            this._getPrevPanelIndexByIndex(index);
+                    }
 
-                this.toggle(index, this.moveDirection);
+                    this.toggle(toggleIndex, this.moveDirection);
+                }
             },
 
             /** 切换面板 */
@@ -288,7 +338,10 @@
                     return promise;
                 }
 
-                if (direction === DIRECTIONS.LEFT) {
+                if (index === this.currentPanelIndex) {
+                    endOffset = 0;
+                }
+                else if (direction === DIRECTIONS.LEFT) {
                     endOffset = -(this.currentPanel.outerWidth);
                 }
                 else if(direction === DIRECTIONS.RIGHT) {
@@ -299,7 +352,7 @@
                     return promise;
                 }
 
-                this.switch.$scope.$broadcast('bsSwitch.panel.switch', index);
+                this.switch.$scope.$broadcast('cmSwitch.panel.switch', index);
 
                 if (this.animate) {
                     this.animate.over();
@@ -313,21 +366,24 @@
                         self._move(startOffset - (startOffset - endOffset) * e);
                     },
                     over: function() {
-                        self.currentPanel.$el.removeClass('active');
-                        self.currentPanel.$el.addClass('hide');
+                        if (index !== self.currentPanelIndex) {
+                            self.currentPanel.$el.removeClass('active');
+                            // self.currentPanel.$el.addClass('hide');
 
-                        if (direction === DIRECTIONS.LEFT) {
-                            self.rightPanel = undefined;
-                            self._clearLeftPanel();
-                        }
-                        else {
-                            self.leftPanel = undefined;
-                            self._clearRightPanel();
-                        }
+                            if (direction === DIRECTIONS.LEFT) {
+                                self.rightPanel = undefined;
+                                self._clearLeftPanel();
+                            }
+                            else {
+                                self.leftPanel = undefined;
+                                self._clearRightPanel();
+                            }
 
-                        self.currentPanel = self.panels[index];
-                        self.currentPanel.$el.addClass('active');
-                        self.currentPanelIndex = index;
+                            self.currentPanel = self.panels[index];
+                            self.currentPanel.$el.addClass('active');
+                            self.currentPanelIndex = index;
+                            self.switch.$scope.onPanelToggle(index);
+                        }
 
                         self.panelOffset = 0;
 
@@ -355,7 +411,6 @@
                 this.autoPlayTimer = setTimeout(function() {
                     var nextIndex = (self.currentPanelIndex + 1) % self.panels.length;
                     self.toggle(nextIndex, DIRECTIONS.LEFT);
-                    self.autoPlay();
                 }, self.autoPlayTiming);
 
                 return true;
@@ -367,32 +422,33 @@
                     this.autoPlayTimer = undefined;
                 }
             },
+
             _move: function(offset) {
                 var rightPanel = this.rightPanel,
                     leftPanel = this.leftPanel;
 
-                this.moveDirection = offset >= this.panelOffset ? DIRECTIONS.RIGHT : DIRECTIONS.LEFT;
+                this.moveDirection = offset > 0 ? DIRECTIONS.RIGHT : DIRECTIONS.LEFT;
                 this.panelOffset = offset;
                 this._transform(this.currentPanel.el, offset);
 
                 // 当偏移值小于 0 时，为向左移动，并露出右面板
                 if (offset < 0) {
-                    leftPanel && this._clearLeftPanel();
+                    if (leftPanel) this._clearLeftPanel();
 
                     if (!rightPanel) {
                         rightPanel = this.rightPanel = this._getNextPanelByIndex(this.currentPanelIndex);
-                        rightPanel.$el.removeClass('hide');
+                        rightPanel.$el.removeClass('hide').addClass('active');
                     }
 
                     this._transform(rightPanel.el, this.panelOffset + this.width);
                 }
                 // 当偏移值大于 0 时，为向右移动，并露出左面板
                 else if (offset > 0) {
-                    rightPanel && this._clearRightPanel();
+                    if (rightPanel) this._clearRightPanel();
 
                     if (!leftPanel) {
                         leftPanel = this.leftPanel = this._getPrevPanelByIndex(this.currentPanelIndex);
-                        leftPanel.$el.removeClass('hide');
+                        leftPanel.$el.removeClass('hide').addClass('active');
                     }
 
                     this._transform(leftPanel.el, this.panelOffset - this.width);
@@ -404,26 +460,41 @@
             },
 
             _getNextPanelByIndex: function(index) {
-                var ps = this.panels;
-                return ps[(index + 1) % ps.length];
+                return this.panels[this._getNextPanelIndexByIndex(index)];
             },
 
             _getPrevPanelByIndex: function(index) {
-                var ps = this.panels;
-                if (index === 0) index = ps.length;
-                return ps[index - 1];
+                return this.panels[this._getPrevPanelIndexByIndex(index)];
+            },
+
+            _getNextPanelIndexByIndex: function(index) {
+                var ps = this.panels,
+                    ni = index + 1;
+
+                if (ni === ps.length) { ni = 0; }
+                return ni;
+            },
+
+            _getPrevPanelIndexByIndex: function(index) {
+                var ps = this.panels,
+                    ni = index - 1;
+
+                if (ni === -1) { ni = ps.length - 1; }
+                return ni;
             },
 
             _clearLeftPanel: function() {
                 if (this.leftPanel) {
-                    this.leftPanel.$el.addClass('hide');
+                    // this.leftPanel.$el.addClass('hide');
+                    this.leftPanel.$el.removeClass('active');
                     this.leftPanel = undefined;
                 }
             },
 
             _clearRightPanel: function() {
                 if (this.rightPanel) {
-                    this.rightPanel.$el.addClass('hide');
+                    // this.rightPanel.$el.addClass('hide');
+                    this.rightPanel.$el.removeClass('active');
                     this.rightPanel = undefined;
                 }
             },
@@ -437,8 +508,8 @@
         });
     };
 
-    bsSwitchContentGalleryCtrl.$inject = '$scope, $element, $attrs, $q'.split(', ');
-    function bsSwitchContentGalleryCtrl($scope, $el, $attrs, $q) {
+    cmSwitchContentGalleryCtrl.$inject = '$scope, $element, $attrs, $q'.split(', ');
+    function cmSwitchContentGalleryCtrl($scope, $el, $attrs, $q) {
         var el = $el[0],
             switchContentCtrl = this;
 
@@ -482,7 +553,7 @@
                 this.width += panel.outerWidth;
                 el.style.width = this.width + 'px';
 
-                this.switch.$scope.$broadcast('bsSwitch.panel.add', this.panels.length - 1);
+                this.switch.$scope.$broadcast('cmSwitch.panel.add', this.panels.length - 1);
             },
 
             removePanel: function(panel) {
@@ -490,7 +561,7 @@
 
                 if (index !== -1) {
                     this.panels.splice(index, 1);
-                    this.switch.$scope.$broadcast('bsSwitch.panel.remove', index, panel);
+                    this.switch.$scope.$broadcast('cmSwitch.panel.remove', index, panel);
                     this.width -= panel.outerWidth;
                     el.style.width = this.width + 'px';
                 }
@@ -580,7 +651,7 @@
                     return promise;
                 }
 
-                this.switch.$scope.$broadcast('bsSwitch.panel.switch', index);
+                this.switch.$scope.$broadcast('cmSwitch.panel.switch', index);
 
                 if (this.animate) {
                     this.animate.over();
@@ -623,8 +694,8 @@
         });
     }
 
-    bsSwitchPanelCtrl.$inject = '$scope, $element, $attrs'.split(', ');
-    function bsSwitchPanelCtrl($scope, $el, $attrs) {
+    cmSwitchPanelCtrl.$inject = '$scope, $element, $attrs'.split(', ');
+    function cmSwitchPanelCtrl($scope, $el, $attrs) {
         var el = $el[0],
             switchPanelCtrl = this;
 
@@ -670,9 +741,9 @@
                     el.style.display = 'block';
                 }
 
-                marginRight = parseInt(elStyles.marginRight, 10),
-                marginLeft = parseInt(elStyles.marginLeft, 10),
-                offsetWidth = el.offsetWidth,
+                marginRight = parseInt(elStyles.marginRight, 10);
+                marginLeft = parseInt(elStyles.marginLeft, 10);
+                offsetWidth = el.offsetWidth;
 
                 outerWidth = marginRight + marginLeft + offsetWidth;
 
@@ -690,8 +761,8 @@
         });
     }
 
-    bsSwitchNavCtrl.$inject = '$scope, $element, $attrs'.split(', ');
-    function bsSwitchNavCtrl($scope, $el, $attrs) {
+    cmSwitchNavCtrl.$inject = '$scope, $element, $attrs'.split(', ');
+    function cmSwitchNavCtrl($scope, $el, $attrs) {
         var el = $el[0],
             switchNavCtrl = this;
 
@@ -708,15 +779,15 @@
                 this.switch = switchCtrl;
                 $el.addClass(switchCtrl.config.classPrefix + '-nav');
 
-                switchCtrl.$scope.$on('bsSwitch.panel.add', function($event, index) {
+                switchCtrl.$scope.$on('cmSwitch.panel.add', function($event, index) {
                     self.addNode(index);
                 });
 
-                switchCtrl.$scope.$on('bsSwitch.panel.remove', function($event, index) {
+                switchCtrl.$scope.$on('cmSwitch.panel.remove', function($event, index) {
                     self.removeNode(index);
                 });
 
-                switchCtrl.$scope.$on('bsSwitch.panel.switch', function($event, index) {
+                switchCtrl.$scope.$on('cmSwitch.panel.switch', function($event, index) {
                     self.change(index);
                 });
             },
@@ -765,16 +836,18 @@
         });
     }
 
-
-    function bsSwitch() {
+    cmSwitch.$inject = '$rootScope'.split(', ');
+    function cmSwitch($rootScope) {
         return {
             restrict: 'E',
-            controller: 'bsSwitchCtrl',
+            controller: 'cmSwitchCtrl',
             scope: {
-                step: '=?',
                 classPrefix: '@?',
                 autoPlay: '=?',
-                type: '@?'
+                type: '@?',
+                doesContinue: '@?',
+                onPanelToggle: '=?',
+                delegateHandle: '@?'
             },
             link: link
         };
@@ -790,46 +863,49 @@
                 $scope.type = 'slider';
             }
 
-            if (!$scope.step) {
-                $scope.step = 1;
-            }
-
             if (!$scope.classPrefix) {
                 $scope.classPrefix = 'ui-switch';
+            }
+
+            $scope.doesContinue = $scope.doesContinue === 'false' ? false :
+                              $scope.doesContinue === 'true' ? true :
+                              ($scope.doesContinue || true);
+            if (!$scope.onPanelToggle) {
+                $scope.onPanelToggle = function(){};
             }
 
             switchCtrl.init();
 
             window.addEventListener('resize', refresh);
+            var h = $rootScope.$on('$ionicView.enter', refresh);
 
             $scope.$on('$destroy', function() {
                 window.removeEventListener('resize', refresh);
+                h();
             });
 
             function refresh(e) {
-                try {
-                    if (!(e instanceof CustomEvent)) {
-                        switchCtrl.refresh();
-                    }
+                if ($el.is(':hidden')) {
+                    return;
                 }
-                catch (e) {
+                else {
                     switchCtrl.refresh();
                 }
             }
         }
     }
 
-    bsSwitchContent.$inject = '$controller'.split(', ');
-    function bsSwitchContent($controller) {
+    cmSwitchContent.$inject = '$controller'.split(', ');
+    function cmSwitchContent($controller) {
         return {
             restrict: 'E',
-            require: ['^^bsSwitch'],
+            require: ['^^cmSwitch'],
             link: link
         };
 
         function link($scope, $el, $attrs, ctrls) {
             var switchCtrl = ctrls[0],
-                contentCtrlName = 'bsSwitchContent' + capitalize(switchCtrl.config.type) + 'Ctrl';
+                contentCtrlName = 'cmSwitchContent' + capitalize(switchCtrl.config.type) + 'Ctrl';
 
             var switchContentCtrl = $controller(contentCtrlName, {
                 $scope: $scope,
@@ -853,11 +929,11 @@
         }
     }
 
-    function bsSwitchPanel() {
+    function cmSwitchPanel() {
         return {
             restrict: 'E',
-            controller: 'bsSwitchPanelCtrl',
-            require: ['^^bsSwitch', 'bsSwitchPanel'],
+            controller: 'cmSwitchPanelCtrl',
+            require: ['^^cmSwitch', 'cmSwitchPanel'],
             scope: true,
             link: link
         };
@@ -890,11 +966,11 @@
         }
     }
 
-    function bsSwitchNav() {
+    function cmSwitchNav() {
         return {
             restrict: 'E',
-            controller: 'bsSwitchNavCtrl',
-            require: ['^^bsSwitch', 'bsSwitchNav'],
+            controller: 'cmSwitchNavCtrl',
+            require: ['^^cmSwitch', 'cmSwitchNav'],
             link: link
         };
 
