@@ -28,14 +28,14 @@
 #category .home-title-center{
     left: 10px;
     right: 10px;
-    height: 45px;
+    height: 44px;
     position: absolute;
     background-color: #C20403;
 }
 
 #category .home-title-right{
     width: 70px;
-    height: 43px;
+    height: 44px;
     right: 0;
     text-align: center;
     background-color: #C20403;

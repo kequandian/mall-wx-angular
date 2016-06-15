@@ -11,7 +11,15 @@
     z-index: 101;
 }
 
-#myTeam .t-m-top .home-title-center{
+#myTeam .home-title-center{
+    left: 10px;
+    right: 10px;
+    height: 44px;
+    position: absolute;
+    background-color: #C20403;
+}
+
+#myTeam .t-m-top .search-center{
     left: 40px;
     right: 40px;
     height: 45px;
@@ -59,9 +67,9 @@
 #myTeam #nav .nav-right .my-team-info div{
     min-width: 20px;
     float: left;
-    height: 18px;
+    height: 16px;
     line-height: 18px;
-    font-size: 18px;
+    font-size: 16px;
     background-color: red;
     color:white;
     padding: 3px 7px 3px 7px;
