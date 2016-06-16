@@ -225,9 +225,9 @@
 }
 
 #details .active {
-    color: #FF5336;
-    font-weight: bold;
-    border-bottom: 2px solid #FF5336;
+    /*color: #FF5336;*/
+    /*font-weight: bold;*/
+    /*border-bottom: 2px solid #FF5336;*/
 }
 
 #details .nav-warp{
