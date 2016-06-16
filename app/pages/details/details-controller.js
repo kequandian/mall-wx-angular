@@ -28,11 +28,11 @@ angular.module('details.controller', ['details.service'])
                             if($scope.details.covers.length>0) {
                                 $scope.details_content_sheet_img = $scope.details.covers[0].url;
                             }
-                            angular.forEach($scope.details.properties, function(v, k){
-                                if(v.properties != null){
-                                    $scope.properties_list.push(v);
-                                }
-                            })
+                            //angular.forEach($scope.details.properties, function(v, k){
+                            //    if(v.properties != null){
+                            //        $scope.properties_list.push(v);
+                            //    }
+                            //})
                         }else{
                             console.log("获取商品详情失败");
                         }
