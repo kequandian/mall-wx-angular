@@ -36,21 +36,25 @@ angular.module('my.order.controller', ['my.order.service'])
                             //待收货
                             if(v.status == "DELIVERING" || v.status == "DELIVERED_CONFIRM_PENDING"){
                                 $scope.deliveredList.push(v);
+                                $scope.is_delivered = "display:inline-block;";
                                 return;
                             }
                             //待付款
                             if(v.status == "CREATED_PAY_PENDING"){
                                 $scope.payList.push(v);
+                                $scope.is_pay = "display:inline-block;";
                                 return;
                             }
                             //待发货
                             if(v.status == "CONFIRMED_DELIVER_PENDING" || v.status == "PAID_CONFIRM_PENDING"){
                                 $scope.payedList.push(v);
+                                $scope.is_payed = "display:inline-block;";
                                 return;
                             }
                             //已完成
                             if(v.status == "CLOSED_CONFIRMED" || v.status == "CLOSED_REFUNDED"){
                                 $scope.finishList.push(v);
+                                $scope.is_finish = "display:inline-block;";
                             }
                         });
 
@@ -135,8 +139,16 @@ angular.module('my.order.controller', ['my.order.service'])
                 'name':'已完成',
                 'srefName':'.finish'
             }];
-    }])
 
+
+            $scope.wuliu_xiangqing_1 = function(){
+                alert("物流1");
+            }
+            $scope.wuliu_xiangqing_2 = function(){
+                alert("物流2");
+            }
+
+    }])
 
 ;
 

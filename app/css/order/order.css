@@ -147,7 +147,10 @@
 }
 
 #orders .weui_btn+.weui_btn {
+    font-size: 14px;
     margin-top: 0;
+    margin-right: 5px;
+
 }
 
 #orders .order-item-price{
@@ -159,8 +162,17 @@
 }
 
 #orders .item-btn-right{
+    width: 80px;
+    align-content: center;
+    /*position: absolute;*/
+    /*right: 7px;*/
+}
+
+#orders .item-btn-left{
     width: 60px;
     align-content: center;
+    float: left;
+    margin-left: 5px;
     /*position: absolute;*/
     /*right: 7px;*/
 }
@@ -202,6 +214,5 @@
 #orders .weui_navbar+.weui_tab_bd{
     padding-top: 41px;
 }
-
 
 

@@ -28,9 +28,14 @@
                 <div class="order-item-price">总价：￥{{items.total_price}}</div>
             </div>
             <div class="item-detail-btn">
-                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right"
+                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-left"
                    ui-sref="orderDetails({orderNumber:items.order_number})">
                     详情
+                </a>
+                <a ng-if="items.status == 'CLOSED_CONFIRMED' || items.status == 'CLOSED_REFUNDED'"
+                   href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right"
+                   ng-click="wuliu_xiangqing_2()">
+                    物流详情
                 </a>
             </div>
         </div>

@@ -28,17 +28,46 @@
                 <div class="order-item-price">总价：￥{{items.total_price}}</div>
             </div>
             <div class="item-detail-btn">
-                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right"
+                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-left"
                    ui-sref="orderDetails({orderNumber:items.order_number})">
                     详情
                 </a>
-                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_warn item-btn-right"
-                   ui-sref="orderDetails({orderNumber:items.order_number})">
-                    详情
-                </a>
-                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right"
-                   ui-sref="orderDetails({orderNumber:items.order_number})">
-                    详情
+
+                <!-- 待付款 -->
+                <div ng-if="items.status == 'CREATED_PAY_PENDING'">
+                    <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_warn item-btn-right"
+                       ui-sref="orderDetails({orderNumber:items.order_number})">
+                        付款
+                    </a>
+                </div>
+
+                <!-- 待发货 -->
+                <div ng-if="items.status == 'CONFIRMED_DELIVER_PENDING' || items.status == 'PAID_CONFIRM_PENDING'">
+                    <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_warn item-btn-right"
+                       ui-sref="orderDetails({orderNumber:items.order_number})">
+                        提醒发货
+                    </a>
+                </div>
+
+
+                <!-- 待收货 -->
+                <div ng-if="items.status == 'DELIVERING' || items.status == 'DELIVERED_CONFIRM_PENDING'">
+                    <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right"
+                       ng-click="wuliu_xiangqing_1()">
+                        物流详情
+                    </a>
+                    <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_warn item-btn-right"
+                       ui-sref="orderDetails({orderNumber:items.order_number})">
+                        确认
+                    </a>
+                </div>
+
+
+                <!-- 已完成 -->
+                <a ng-if="items.status == 'CLOSED_CONFIRMED' || items.status == 'CLOSED_REFUNDED'"
+                   href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right"
+                   ng-click="wuliu_xiangqing_2()">
+                    物流详情
                 </a>
 
             </div>
