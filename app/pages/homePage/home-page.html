@@ -14,8 +14,8 @@
                 <!--<a href="javascript:" class="weui_icon_clear" id="search_clear"></a>-->
             </div>
             <!--<label for="search_input" class="weui_search_text" id="search_text">-->
-                <!--<i class="weui_icon_search"></i>-->
-                <!--<span>搜索</span>-->
+            <!--<i class="weui_icon_search"></i>-->
+            <!--<span>搜索</span>-->
             <!--</label>-->
         </form>
         <!--<a href="javascript:" class="weui_search_cancel" id="search_cancel">取消</a>-->
@@ -24,6 +24,7 @@
     <div class="home-title-right">
         <a href="http://mp.weixin.qq.com/s?__biz=MzI0NzIyMTU5Nw==&mid=100000001&idx=1&sn=149b7fd6b3f6c45380be354792392c5d#rd">
             <img src="img/home/follow-img.png">
+
             <div style="{font-size: 10px;}">关注我们</div>
         </a>
     </div>
@@ -38,22 +39,23 @@
     <div id="ad">
         <!-- 广告图片 -->
         <!--<div id="homeHeaderSlider" class="swiper-container">-->
-            <!--<div class="swiper-wrapper">-->
-                <!--<div class="swiper-slide" ng-repeat="adItem in ad_list">-->
-                    <!--<img ng-src="{{adItem.image}}">-->
-                <!--</div>-->
-            <!--</div>-->
+        <!--<div class="swiper-wrapper">-->
+        <!--<div class="swiper-slide" ng-repeat="adItem in ad_list">-->
+        <!--<img ng-src="{{adItem.image}}">-->
+        <!--</div>-->
+        <!--</div>-->
         <!--</div>-->
 
-        <bs-switch data-type="slider" auto-play="2500">
-            <bs-switch-content>
-                <bs-switch-panel ng-repeat="img in ad_list">
-                    <img alt="" ng-src="{{img.image}}" style="width: 100%; height: auto;"/>
-                </bs-switch-panel>
-            </bs-switch-content>
-            <bs-switch-nav class="ui-switch-nav"></bs-switch-nav>
-        </bs-switch>
-
+        <div ng-if="ad_list.length>0">
+            <bs-switch data-type="slider" auto-play="2500">
+                <bs-switch-content>
+                    <bs-switch-panel ng-repeat="img in ad_list">
+                        <img alt="" ng-src="{{img.image}}" style="width: 100%; height: auto;"/>
+                    </bs-switch-panel>
+                </bs-switch-content>
+                <bs-switch-nav class="ui-switch-nav"></bs-switch-nav>
+            </bs-switch>
+        </div>
     </div>
 
     <!-- 功能导航 -->
@@ -81,40 +83,40 @@
     </nav>
 
 
- <!--   <div class="weui_grids" style="display: none">
-        <a ui-sref="#" class="weui_grid home_grid">
-            <div class="weui_grid_icon kqd_grid_img_large">
-                <img src="img/home/new-product.png" alt="">
-            </div>
-            <p class="weui_grid_label">
-                新品优惠
-            </p>
-        </a>
-        <a ui-sref="#" class="weui_grid home_grid">
-            <div class="weui_grid_icon kqd_grid_img_large">
-                <img src="img/home/selected-img.png" alt="">
-            </div>
-            <p class="weui_grid_label">
-                每日精选
-            </p>
-        </a>
-        <a ui-sref="#" class="weui_grid home_grid">
-            <div class="weui_grid_icon kqd_grid_img_large">
-                <img src="img/home/brand-img.png" alt="">
-            </div>
-            <p class="weui_grid_label">
-                品牌推荐
-            </p>
-        </a>
-        <a ui-sref="home.category" class="weui_grid home_grid">
-            <div class="weui_grid_icon kqd_grid_img_large">
-                <img src="img/home/more-cate.png" alt="">
-            </div>
-            <p class="weui_grid_label">
-                更多分类
-            </p>
-        </a>
-    </div>-->
+    <!--   <div class="weui_grids" style="display: none">
+           <a ui-sref="#" class="weui_grid home_grid">
+               <div class="weui_grid_icon kqd_grid_img_large">
+                   <img src="img/home/new-product.png" alt="">
+               </div>
+               <p class="weui_grid_label">
+                   新品优惠
+               </p>
+           </a>
+           <a ui-sref="#" class="weui_grid home_grid">
+               <div class="weui_grid_icon kqd_grid_img_large">
+                   <img src="img/home/selected-img.png" alt="">
+               </div>
+               <p class="weui_grid_label">
+                   每日精选
+               </p>
+           </a>
+           <a ui-sref="#" class="weui_grid home_grid">
+               <div class="weui_grid_icon kqd_grid_img_large">
+                   <img src="img/home/brand-img.png" alt="">
+               </div>
+               <p class="weui_grid_label">
+                   品牌推荐
+               </p>
+           </a>
+           <a ui-sref="home.category" class="weui_grid home_grid">
+               <div class="weui_grid_icon kqd_grid_img_large">
+                   <img src="img/home/more-cate.png" alt="">
+               </div>
+               <p class="weui_grid_label">
+                   更多分类
+               </p>
+           </a>
+       </div>-->
 
     <!-- 活动 -->
     <div class="panic-buying-ad">
@@ -170,7 +172,8 @@
         <div class="area-product">
             <div id="homeProductGrids">
                 <div class="weui_grids">
-                    <a ui-sref="details({productId:item.id})" class="weui_grid home_grid_2" ng-repeat="item in rec_product">
+                    <a ui-sref="details({productId:item.id})" class="weui_grid home_grid_2"
+                       ng-repeat="item in rec_product">
 
                         <div class="weui_grid_icon home_grid_img">
                             <img ng-src="{{item.cover}}">
@@ -189,9 +192,6 @@
             </div>
         </div>
     </div>
-
-
-
 
 
     <!-- 底部 -->

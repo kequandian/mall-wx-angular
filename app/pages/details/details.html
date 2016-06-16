@@ -5,24 +5,26 @@
         <!-- 商品图片 -->
         <div class="product-img">
             <!--<div id="headerSlider" class="swiper-container">-->
-                <!--<div class="swiper-wrapper">-->
-                    <!--<div class="swiper-slide" ng-repeat="itemImg in details.covers">-->
-                        <!--<img ng-src="{{itemImg.url}}">-->
-                    <!--</div>-->
-                    <!--&lt;!&ndash;<div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1n3rZHFXXXXX9XFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i4/TB10rkPGVXXXXXGapXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1kQI3HpXXXXbSXFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>&ndash;&gt;-->
-                <!--</div>-->
+            <!--<div class="swiper-wrapper">-->
+            <!--<div class="swiper-slide" ng-repeat="itemImg in details.covers">-->
+            <!--<img ng-src="{{itemImg.url}}">-->
+            <!--</div>-->
+            <!--&lt;!&ndash;<div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1n3rZHFXXXXX9XFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i4/TB10rkPGVXXXXXGapXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1kQI3HpXXXXbSXFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>&ndash;&gt;-->
+            <!--</div>-->
             <!--</div>-->
 
-            <bs-switch data-type="slider" auto-play="2500" data-height="380">
-                <bs-switch-content>
-                    <bs-switch-panel ng-repeat="itemImg in details.covers">
-                        <img alt="" ng-src="{{itemImg.url}}" style="width: 100%; height: auto;"/>
-                    </bs-switch-panel>
-                </bs-switch-content>
-                <bs-switch-nav class="ui-switch-nav"></bs-switch-nav>
-            </bs-switch>
+            <div ng-if="details.covers.length>0">
+                <bs-switch  data-type="slider" auto-play="2500" data-height="0.6">
+                    <bs-switch-content>
+                        <bs-switch-panel ng-repeat="itemImg in details.covers">
+                            <img alt="" ng-src="{{itemImg.url}}" style="width: 60%; height: auto;"/>
+                        </bs-switch-panel>
+                    </bs-switch-content>
+                    <bs-switch-nav class="ui-switch-nav"></bs-switch-nav>
+                </bs-switch>
+            </div>
             <!--<img ng-src="{{details.cover}}">-->
         </div>
 
@@ -33,7 +35,9 @@
             </div>
             <div class="product-price">
                 <span>￥{{details.price}}</span>
-                <div  class="product-price-market"><span>市场价：</span><s>{{details.suggested_price | currency:'￥'}}</s></div>
+
+                <div class="product-price-market"><span>市场价：</span><s>{{details.suggested_price | currency:'￥'}}</s>
+                </div>
             </div>
 
             <div class="product-freight" style="border-top: 1px solid #ECECEC;">
@@ -70,14 +74,14 @@
         <!-- 其他信息 -->
         <div class="product-info">
 
-                <div class="pictures-title">
-                    <img src="img/details/product-imgs-icon.png">
-                    <span>商品信息</span>
-                </div>
-                <div class="product-img-list" ng-bind-html="details.description | to_trusted">
-                    <!--<img ng-src="{{imgs.url}}" ng-repeat="imgs in details.images">-->
-                    <!--{{details.description}}-->
-                </div>
+            <div class="pictures-title">
+                <img src="img/details/product-imgs-icon.png">
+                <span>商品信息</span>
+            </div>
+            <div class="product-img-list" ng-bind-html="details.description | to_trusted">
+                <!--<img ng-src="{{imgs.url}}" ng-repeat="imgs in details.images">-->
+                <!--{{details.description}}-->
+            </div>
 
         </div>
 
@@ -97,25 +101,25 @@
         <div class="detail-footer-left">
 
             <!--<div class="footer-home">-->
-                <!--<div class="f-h-top">-->
-                    <!--<img src="img/details/aliwawa-img.png">-->
-                <!--</div>-->
-                <!--<div class="f-h-bottom">-->
-                    <!--客服-->
-                <!--</div>-->
+            <!--<div class="f-h-top">-->
+            <!--<img src="img/details/aliwawa-img.png">-->
+            <!--</div>-->
+            <!--<div class="f-h-bottom">-->
+            <!--客服-->
+            <!--</div>-->
             <!--</div>-->
 
-           <!-- <div class="footer-cart" ui-sref="home.cart">
-                <div class="f-c-top ion-app-biliya-tabs-cart">
-                </div>
-                <div class="f-c-bottom">
-                    购物车
-                </div>
-            </div>-->
+            <!-- <div class="footer-cart" ui-sref="home.cart">
+                 <div class="f-c-top ion-app-biliya-tabs-cart">
+                 </div>
+                 <div class="f-c-bottom">
+                     购物车
+                 </div>
+             </div>-->
 
             <div class="footer-cart" ui-sref="home.cart">
                 <div class="f-h-top">
-                     <img src="img/details/cart-img.png">
+                    <img src="img/details/cart-img.png">
                 </div>
                 <div class="f-h-bottom">
                     购物车
@@ -133,15 +137,14 @@
         </div>
 
 
-
         <div class="detail-footer-right">
             <div class="item-button">
                 <div class="details_buy_css product_info" ng-click="buy_status(2)">
-                <!--<div class="details_buy_css product_info" ng-click="buy_immediately(details)">-->
+                    <!--<div class="details_buy_css product_info" ng-click="buy_immediately(details)">-->
                     立即购买
                 </div>
                 <div class="details_cart_css product_info" ng-click="buy_status(1)">
-                <!--<div class="details_cart_css product_info" ng-click="addProductToCart(details.id)">-->
+                    <!--<div class="details_cart_css product_info" ng-click="addProductToCart(details.id)">-->
                     加入购物车
                 </div>
             </div>
@@ -161,6 +164,7 @@
 
                             <div class="select_contact detail_content_title">
                                 <img ng-src="{{details_content_sheet_img}}">
+
                                 <div class="weui_media_desc">
                                     {{details.name}}
                                 </div>
@@ -169,8 +173,10 @@
                                 <li class="weui_media_info_meta click_radio" ng-repeat="proItem in details.properties">
                                     <!--<input class="c_checkbox" type="radio" value="" name="radio" data-labelauty="proItem.display_name">-->
                                     <input class="detail_input_radio" id="pro_id_{{proItem.id}}"
-                                           type="radio" value="" name="radio" ng-click="get_input_value(proItem.property_value)">
-                                    <label class="detail_label_radio" for="pro_id_{{proItem.id}}" name="pro_id_{{proItem.id}}">{{proItem.display_name}}</label>
+                                           type="radio" value="" name="radio"
+                                           ng-click="get_input_value(proItem.property_value)">
+                                    <label class="detail_label_radio" for="pro_id_{{proItem.id}}"
+                                           name="pro_id_{{proItem.id}}">{{proItem.display_name}}</label>
                                 </li>
                                 <input id="property_hidden" type="hidden" value="{{product_property_value}}">
                             </ul>
@@ -180,8 +186,9 @@
                                     <a href="javascript:void(0);" class="cart-quantity-decrement" ng-click="downQ()">
                                         <span>-</span>
                                     </a>
-                                    <input autocomplete="off" class="cart-quantity" value="{{ q_count }}" type="text" readonly>
-                                    <a href="javascript:void(0);" class="cart-quantity-increment"  ng-click="upQ()">
+                                    <input autocomplete="off" class="cart-quantity" value="{{ q_count }}" type="text"
+                                           readonly>
+                                    <a href="javascript:void(0);" class="cart-quantity-increment" ng-click="upQ()">
                                         <span>+</span>
                                     </a>
                                 </div>
@@ -191,7 +198,9 @@
                     </div>
                 </div>
                 <div class="weui_actionsheet_action">
-                    <div class="weui_actionsheet_cell" id="action_sheet_cancel" ng-click="buy_product_option(details, details.id, q_count)">确定</div>
+                    <div class="weui_actionsheet_cell" id="action_sheet_cancel"
+                         ng-click="buy_product_option(details, details.id, q_count)">确定
+                    </div>
                 </div>
             </div>
         </div>

@@ -43,8 +43,10 @@
                 $el.addClass($scope.classPrefix + '-' + $scope.type);
                 this.width = el.clientWidth;
 
-                if($scope.height>0) {
+                if($scope.height>2) {
                     el.style.height = $scope.height;
+                }else if($scope.height>0){
+                    el.style.height = this.width * $scope.height;
                 }
                 //console.log("init-width?" + el.clientWidth);
                 //console.log("init-height?" + el.clientHeight);
@@ -359,12 +361,24 @@
                     return false;
                 }
 
+                //FIX:  only one item, skip play
+                if(self.panels.length==1){
+                    return false;
+                }
+
                 this.stopAutoPlay();
 
                 this.autoPlayTimer = setTimeout(function() {
+
+                    //FIX:  only one item, skip play
+                    if(self.panels.length==1){
+                        return;
+                    }
+
                     var nextIndex = (self.currentPanelIndex + 1) % self.panels.length;
                     self.toggle(nextIndex, DIRECTIONS.LEFT);
                     self.autoPlay();
+
                 }, self.autoPlayTiming);
 
                 return true;
@@ -810,6 +824,7 @@
                 $scope.classPrefix = 'ui-switch';
             }
 
+            // init height
             if(!$scope.height){
                 $scope.height = -1;
             }
