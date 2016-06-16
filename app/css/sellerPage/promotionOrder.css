@@ -108,3 +108,24 @@
     color: #C50303;
 }
 
+#promotionOrder .weui_select{
+    width: 30%;
+    color:#fff;
+}
+
+#promotionOrder .year{
+    position: absolute;
+    left:0;
+    width: 25%;
+}
+
+#promotionOrder .mon{
+    position: absolute;
+    right:0;
+    width: 25%;
+}
+
+#promotionOrder  option{
+    color: #000;
+}
+

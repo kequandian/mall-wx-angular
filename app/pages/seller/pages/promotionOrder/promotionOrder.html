@@ -3,12 +3,18 @@
     <div class="promotionOrder-content">
 
         <div class="item-stable">
-            本月订单明细
-            <!--<i class="item-arrow-right"></i>-->
+
+            <select class="weui_select year" ng-options="i.key as i.value for i in yearDefault" ng-model="year"
+                    ng-init="year=thisYear" ng-change="onSelectedYear()" style="{margin-left: 3px; padding: 0;}">
+            </select>
+            订单明细
+            <select class="weui_select mon" ng-options="i.key as i.value for i in monDefault" ng-model="mon"
+                    ng-init="mon=thisMon" ng-change="postOrder()" style="{margin-left: 3px; padding: 0;}">
+            </select>
+
         </div>
         <div class="item-accordion"
                 >
-
             <div class="order-item-text">
                 <div>
                     本月总收入：
@@ -28,6 +34,7 @@
                 </div>
                 <div class="orders-count">
                     <p>交易成功：<span class="pro-black">{{rewards.settled_order_count}}</span></p>
+
                     <p>待确认：<span class="pro-black">{{rewards.pending_order_count}}</span></p>
                 </div>
             </div>

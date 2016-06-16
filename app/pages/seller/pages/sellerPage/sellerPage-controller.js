@@ -12,8 +12,8 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
         }
     })
 
-    .controller('SellerPageController', ['$scope', '$state', 'SellerPageFty', 'TabIndex', 'BalanceSession',
-        function ($scope, $state, SellerPageFty, TabIndex, BalanceSession) {
+    .controller('SellerPageController', ['$scope', '$state', 'SellerPageFty', 'TabIndex', 'BalanceSession','UserInfo',
+        function ($scope, $state, SellerPageFty, TabIndex, BalanceSession, UserInfo) {
 
             //title
             document.title = "销售中心";
@@ -28,7 +28,9 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $scope.userInfo = json.data;
-                            //alert(angular.toJson($scope.userInfo))
+                            //alert(angular.toJson($scope.userInfo.))
+
+                            UserInfo.register_date = $scope.userInfo.register_date;
                         }
                     }, function (error) {
                         $.toast('获取信息失败', 'cancel');

@@ -107,17 +107,17 @@ angular.module('details.controller', ['details.service'])
             $scope.buy_product_option = function(productInfo, productId, quantity){
 
                 var product_property = $scope.product_property_value;
-                if(product_property == null){
+                if($scope.details.length > 0 && product_property == null){
                     $.toast('请选择商品规格');
                     return;
                 }
+
                 var b_status = $scope.b_status;
                 if(b_status == "cart"){
-                    $scope.addProductToCart(productId, quantity,product_property);
+                    $scope.addProductToCart(productId, quantity, product_property);
                 }else if(b_status == "buy"){
-                    $scope.buy_immediately(productInfo, quantity,product_property);
+                    $scope.buy_immediately(productInfo, quantity, product_property);
                 }
-
             };
 
 
