@@ -2,9 +2,14 @@ angular.module('promotionOrder.service', [])
     .factory('PromotionOrderFty', ['$http','$q','GlobalVariable', function($http,$q,GlobalVariable) {
         return{
             // 获取销售订单数据
-            promotionOrdersService: function () {
+            promotionOrdersService: function (start_date, end_date) {
                 var deferred = $q.defer();
-                var url = GlobalVariable.SERVER_PATH + "/order_item_reward";
+
+                var options_string = (start_date===undefined || start_date==null) ? "" : ("?start_date=" + start_date + "&end_date=" + end_date);
+
+                var url = GlobalVariable.SERVER_PATH + "/order_item_reward" + options_string;
+                //console.log("url?"+url);
+
                 $http.get(url,{
                     headers:{
                         'Authorization': GlobalVariable.ACCESS_TOKEN
@@ -17,6 +22,5 @@ angular.module('promotionOrder.service', [])
                     });
                 return deferred.promise;
             }
-
         }
     }]);
