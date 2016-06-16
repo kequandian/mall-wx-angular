@@ -24,8 +24,6 @@ angular.module('details.controller', ['details.service'])
                     .then(function (json) {
                         if(json.status_code == 0) {
                             $scope.details = json.data;
-                            //alert(angular.toJson($scope.details));
-
                             if($scope.details.covers.length>0) {
                                 $scope.details_content_sheet_img = $scope.details.covers[0].url;
                             }
@@ -36,8 +34,6 @@ angular.module('details.controller', ['details.service'])
                         console.log("获取商品详情失败");
                     })
             }
-
-
 
             //滚动图片设置
             detailSwiper();
@@ -107,7 +103,7 @@ angular.module('details.controller', ['details.service'])
             $scope.buy_product_option = function(productInfo, productId, quantity){
 
                 var product_property = $scope.product_property_value;
-                if($scope.details.length > 0 && product_property == null){
+                if($scope.details.properties.length > 0 && product_property == null){
                     $.toast('请选择商品规格');
                     return;
                 }

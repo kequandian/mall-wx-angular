@@ -90,7 +90,7 @@ $(function () {
         //details action sheet
         .on('click', '.product_info', function () {
             var p_value = $('#property_hidden');
-
+            var p_list_null = $('#propertis_null');
             var mask = $('#details_mask');
             var weuiActionsheet = $('#weui_actionsheet');
             weuiActionsheet.addClass('weui_actionsheet_toggle');
@@ -99,9 +99,14 @@ $(function () {
             });
 
             $('#action_sheet_cancel').on('click', function () {
-                if (p_value.val().length > 0) {
+                if(p_list_null.val() == 0) {
                     hideActionSheet(weuiActionsheet, mask);
+                }else if(p_list_null.val() > 0){
+                    if (p_value.val().length > 0) {
+                        hideActionSheet(weuiActionsheet, mask);
+                    }
                 }
+
             });
 
             //$('.select_contact').one('click', function () {
