@@ -1,8 +1,8 @@
 /*
 * 分销订单
 * */
-angular.module('promotionOrder.controller', ['promotionOrder.service'])
-    .controller('PromotionOrderController', ['$scope', '$filter', 'PromotionOrderFty', function($scope, $filter, PromotionOrderFty){
+angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.session'])
+    .controller('PromotionOrderController', ['$scope', '$filter', 'PromotionOrderFty', 'UserInfo', function($scope, $filter, PromotionOrderFty, UserInfo){
 
         //title
         document.title = "销售订单";
@@ -47,10 +47,7 @@ angular.module('promotionOrder.controller', ['promotionOrder.service'])
         };*/
 
         // 年月
-        $scope.yearDefault = [
-            {key: 2015, value: "2015年"},
-            {key: 2016, value: "2016年"}
-        ];
+        $scope.yearDefault = getDefaultYears();
 
         $scope.monDefault = getDefaultMons();
 
@@ -174,6 +171,29 @@ angular.module('promotionOrder.controller', ['promotionOrder.service'])
             $scope.monDefault = getDefaultMons();
         }
 
+        function getDefaultYears(){
+            //var years = [
+            //    {key: 2015, value: "2015年"},
+            //    {key: 2016, value: "2016年"}
+            //];
+            var years = [];
+
+            var registered = !(UserInfo.register_date===undefined || UserInfo.register_date==null || UserInfo.register_date.length==0);
+
+            var curYear = new Date().getYear() + 1900;
+            var regDate = registered ? new Date(UserInfo.register_date) : new Date();
+            var regYear = regDate.getYear() + 1900;
+            var regMont = regDate.getMonth();
+
+            console.log("regiterYear?"+regYear+",registerMon?"+regMont);
+
+            for(var y=regYear; y<= curYear; y++){
+                years.push({key:y, value: y+'年'})
+            }
+
+            return years;
+        }
+
         function getDefaultMons(){
             var mons = [];
 
@@ -187,7 +207,11 @@ angular.module('promotionOrder.controller', ['promotionOrder.service'])
                 return defaultMons;
             }
 
-            for(var m=0; m<=curMon; m++){
+            var registered = !(UserInfo.register_date===undefined || UserInfo.register_date==null || UserInfo.register_date.length==0);
+            var regDate = registered ? new Date(UserInfo.register_date) : new Date();
+            var regMonth = regDate.getMonth();
+
+            for(var m=regMonth; m<=curMon; m++){
                 var mm = m+1;
                 if(mm < 10 ){
                     mm = '0' + mm;

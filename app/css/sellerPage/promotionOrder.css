@@ -116,13 +116,13 @@
 #promotionOrder .year{
     position: absolute;
     left:0;
-    width: 20%;
+    width: 25%;
 }
 
 #promotionOrder .mon{
     position: absolute;
     right:0;
-    width: 15%;
+    width: 25%;
 }
 
 #promotionOrder  option{
