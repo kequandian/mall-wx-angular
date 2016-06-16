@@ -28,11 +28,17 @@ angular.module('details.controller', ['details.service'])
                             if($scope.details.covers.length>0) {
                                 $scope.details_content_sheet_img = $scope.details.covers[0].url;
                             }
-                            //angular.forEach($scope.details.properties, function(v, k){
-                            //    if(v.properties != null){
-                            //        $scope.properties_list.push(v);
-                            //    }
-                            //})
+                            if($scope.details.properties.length>0) {
+                                var properties = [];
+
+                                angular.forEach($scope.details.properties, function (v, k) {
+                                    if(v.property_value!=null){
+                                        properties.push(v);
+                                    }
+                                })
+
+                                $scope.details.properties = properties;
+                            }
                         }else{
                             console.log("获取商品详情失败");
                         }
