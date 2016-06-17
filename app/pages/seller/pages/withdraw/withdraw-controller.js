@@ -9,6 +9,7 @@ angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
         document.title = "提现佣金";
 
         getWithdrawAccount();
+        getWithdrawHistory();
         
         $scope.balance = BalanceSession.balance;
         //console.log('Balance?'+$scope.balance);
@@ -24,6 +25,17 @@ angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
                     }
                 }, function (error) {
                     $.toast('获取信息失败', 'cancel');
+                })
+        }
+
+        function getWithdrawHistory() {
+            withdrawFty.getHistoryService()
+                .then(function(json) {
+                    if (json.status_code == 0) {
+                        $scope.withdraw_history = json.data;
+                    }
+                }, function(error) {
+                    $.toast('获取提现历史数据失败', 'cancel');
                 })
         }
 
