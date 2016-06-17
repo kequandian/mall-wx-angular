@@ -1,0 +1,48 @@
+<!--
+/**
+* 物流详情
+*
+* @author Jimmie Hwang
+* @create 2016/6/15
+*
+*/
+-->
+
+<div id="express">
+
+    <div class="express_status">
+        <div class="head">
+            <a href="">
+                <img src="img/my/express/phone.png" alt="">
+                <p class="goodsNum">1件商品</p>
+            </a>
+        </div>
+        <div class="info">
+            <h4>物流状态 <span>{{expressInfo.message|expressStatus}}</span></h4>
+            <p>承运公司:中通快递</p>
+            <p>运单编号:768423420003</p>
+            <p>官方电话: <span class="tel">95311</span> </p>
+        </div>
+
+    </div>
+
+    <div class="express_tracking">
+        <h4>物流跟踪</h4>
+        <div class="track_list">
+            <ul id="list">
+                <li ng-repeat="item in expressInfo.data" class="{{okclass}}">
+                    <i class="icon"></i>
+                    <p>
+                        {{item.context}}<br>
+                        <span class="time">{{item.time}}</span>
+                    </p>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="evaluate">
+        <a href="">派件评价</a>
+    </div>
+</div>

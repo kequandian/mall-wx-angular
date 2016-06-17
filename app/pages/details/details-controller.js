@@ -147,11 +147,13 @@ angular.module('details.controller', ['details.service'])
             //立即购买
             $scope.checkedCarts=[];
             $scope.buy_immediately = function(item,quantity,product_property){
+                item.product_id = item.properties[0].product_id;
                 item.quantity = $scope.q_count;
                 item.product_name = item.name;
                 item.price = item.price * quantity;
                 item.product_property = product_property;
                 $scope.checkedCarts.push(item);
+
                 $state.go('cart-settlement', {carts:$scope.checkedCarts,totalToPay:item.price,totalFreight:item.freight});
             };
 
