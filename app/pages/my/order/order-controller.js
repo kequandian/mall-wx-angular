@@ -28,6 +28,14 @@ angular.module('my.order.controller', ['my.order.service'])
                     .then(function (json) {//9660608213990176000002
                         $scope.orders = json.data;
                         //alert(angular.toJson($scope.orders));
+
+                        $scope.order_list=[];
+                        angular.forEach($scope.orders, function(v,k){
+                            if(v.status != "CANCELED_RETURN_PENDING" && v.status != "CANCELED_REFUND_PENDING" && v.status != "CLOSED_REFUNDED"){
+                                $scope.order_list.push(v);
+                            }
+                        });
+
                         $scope.payList = []; //待付款
                         $scope.payedList = [];//待发货
                         $scope.deliveredList = [];//待收货
@@ -36,25 +44,21 @@ angular.module('my.order.controller', ['my.order.service'])
                             //待收货
                             if(v.status == "DELIVERING" || v.status == "DELIVERED_CONFIRM_PENDING"){
                                 $scope.deliveredList.push(v);
-                                $scope.is_delivered = "display:inline-block;";
                                 return;
                             }
                             //待付款
                             if(v.status == "CREATED_PAY_PENDING"){
                                 $scope.payList.push(v);
-                                $scope.is_pay = "display:inline-block;";
                                 return;
                             }
                             //待发货
                             if(v.status == "CONFIRMED_DELIVER_PENDING" || v.status == "PAID_CONFIRM_PENDING"){
                                 $scope.payedList.push(v);
-                                $scope.is_payed = "display:inline-block;";
                                 return;
                             }
                             //已完成
                             if(v.status == "CLOSED_CONFIRMED" || v.status == "CLOSED_REFUNDED"){
                                 $scope.finishList.push(v);
-                                $scope.is_finish = "display:inline-block;";
                             }
                         });
 

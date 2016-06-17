@@ -9,9 +9,9 @@
 angular.module("express.service", [])
     .factory("ExpressInfo", ["$http", "$q", "GlobalVariable", function($http, $q, GlobalVariable) {
         return {
-            ExpressService: function() {
+            ExpressService: function(orderNumber) {
                 var deferred = $q.defer();
-                var url      = GlobalVariable.SERVER_PATH + "/express_info?order_number=9512852092104000000002";
+                var url      = GlobalVariable.SERVER_PATH + "/express_info?order_number=" + orderNumber;
                 $http.get(url,{
                     headers:{
                         "Authorization": GlobalVariable.ACCESS_TOKEN

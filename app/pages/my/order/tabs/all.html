@@ -5,7 +5,7 @@
         <div class="orders-hide-span" ng-hide="allIsNull">
             <span >没有订单信息</span>
         </div>
-        <div class="order-item" ng-repeat="items in orders" ng-hide="allShow">
+        <div class="order-item" ng-repeat="items in order_list" ng-hide="allShow">
             <div class="item-order-number">
                 订单号：{{items.order_number}}
                 <span>{{order_list_status(items.status)}}</span>
@@ -36,31 +36,32 @@
                 <!-- 待付款 -->
                 <div ng-if="items.status == 'CREATED_PAY_PENDING'">
                     <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_warn item-btn-right" style="margin-right: 5px;">
-                        付款
+                        立即付款
                     </a>
                 </div>
 
                 <!-- 待发货 -->
                 <div ng-if="items.status == 'CONFIRMED_DELIVER_PENDING' || items.status == 'PAID_CONFIRM_PENDING'">
-                    <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_warn item-btn-right">
+                    <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_warn item-btn-right" style="margin-right: 5px;">
                         提醒发货
                     </a>
                 </div>
 
                 <!-- 待收货 -->
                 <div ng-if="items.status == 'DELIVERING' || items.status == 'DELIVERED_CONFIRM_PENDING'">
-                    <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right">
+                    <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right"
+                            ui-sref="express({orderNumber:items.order_number})">
                         物流详情
                     </a>
-                    <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_warn item-btn-right"
-                       ui-sref="orderDetails({orderNumber:items.order_number})">
+                    <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_warn item-btn-right">
                         确认
                     </a>
                 </div>
 
                 <!-- 已完成 -->
                 <a ng-if="items.status == 'CLOSED_CONFIRMED' || items.status == 'CLOSED_REFUNDED'"
-                   href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right">
+                   href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right"
+                   ui-sref="express({orderNumber:items.order_number})">
                     物流详情
                 </a>
 

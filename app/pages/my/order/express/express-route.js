@@ -9,7 +9,7 @@
 angular.module("express.route", ["express.controller"])
     .config(["$stateProvider", function($stateProvider) {
         $stateProvider.state("express", {
-            url: "/express",
+            url: "/express/:orderNumber",
             templateUrl: "pages/my/order/express/express.html",
             controller: "ExpressController"
         })

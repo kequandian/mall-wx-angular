@@ -1,6 +1,6 @@
 angular.module('category.controller', ['category.service'])
-    .controller('CategoryController', ['$scope', '$state', 'TabIndex', '$stateParams', 'CategoryFty',
-        function ($scope, $state, TabIndex, $stateParams, CategoryFty) {
+    .controller('CategoryController', ['$scope', '$state', 'TabIndex', 'CategoryFty',
+        function ($scope, $state, TabIndex, CategoryFty) {
 
             //title
             document.title = "商品分类";

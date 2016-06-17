@@ -5,8 +5,8 @@
         <div class="order_detail_title">
             <div class="o-d-title-content">
                 <img src="img/my/orderDetails/order-title-img.png">
-                <div>已发货</div>
-                <p>还剩7天0时自动确认</p>
+                <div>{{order_status(detailsInfo.status)}}</div>
+                <p ng-if="detailsInfo.status != 'CREATED_PAY_PENDING'">还剩 {{c_d_day}} 天 {{c_d_hour}} 时自动确认</p>
             </div>
         </div>
 
@@ -32,7 +32,7 @@
                 <div class="mail-name">收件人：{{detailsInfo.contact_user}}</div>
                 <div class="mail-phone">{{detailsInfo.phone}}</div>
                 <div class="mail-address">
-                    {{detailsInfo.detail | cutText:true:20:'...'}}
+                    {{order_address | cutText:true:20:'...'}}
                 </div>
             </div>
         </div>
@@ -43,7 +43,7 @@
             <!--订单状态-->
             <div class="order-status">
                 <div class="o-status-info">
-                    <div class="o-status">订单状态：{{order_jy_status(detailsInfo.status)}}</div>
+                    <div class="o-status">订单状态：{{order_status(detailsInfo.status)}}</div>
                     <div class="o-number">订单号：{{detailsInfo.order_number}}</div>
                     <div class="o-total">订单金额：{{total_price|currency:'￥'}}</div>
                 </div>
