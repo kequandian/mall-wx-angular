@@ -23,7 +23,6 @@ angular.module("express.controller", ["express.service"])
                     .then(function (json) {
                         if(json.status_code == 0) {
                             $scope.expressInfo = json.data;
-                            alert(angular.toJson(json.data));
                         }
                         var expressStatus = $scope.expressInfo.message;
 
