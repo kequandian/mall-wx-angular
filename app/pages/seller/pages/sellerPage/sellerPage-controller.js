@@ -7,6 +7,9 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
             } else if (input == 'SETTLED') {
                 return '已结算';
             }
+            else if (input == 'REFUNDED') {
+                return '已退款';
+            }
 
             return "未知状态";
         }
