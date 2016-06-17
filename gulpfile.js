@@ -6,6 +6,8 @@ var stripDebug = require('gulp-strip-debug');
 var cleanCSS = require('gulp-clean-css');
 var imagemin = require('gulp-imagemin');
 var concat = require('gulp-concat');
+var concatCss = require('gulp-concat-css');
+var removeHtmlComments = require('gulp-remove-html-comments');
 var rename = require('gulp-rename');
 var replace = require('gulp-replace');
 var merge = require('merge-stream');
@@ -36,6 +38,13 @@ gulp.task('minify-css', function () {
         .pipe(gulp.dest('dist/css'));
 });
 
+gulp.task('bundle-css', function(){
+    return gulp.src('app/css/**/*.css')
+        .pipe(concat('bundle.css'))
+        .pipe(cleanCSS())
+        .pipe(gulp.dest('dist/css'));
+});
+
 gulp.task('imagemin', function () {
     return gulp.src('app/img/**/*.png')
         //.pipe(cleanCSS({compatibility: 'ie8'}))
@@ -57,23 +66,28 @@ gulp.task('dist', function () {
         //.pipe(gulp.dest('app/dist/pages'))
 
         .pipe(stripDebug())
-
+        .pipe(concat('bundle.js'))
         // .min.js + .min.js.map
-        .pipe(rename({extname: '.min.js'}))
+        //.pipe(rename({extname: '.min.js'}))
         //.pipe(sourcemaps.init())
         .pipe(uglify())
         //.pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest('dist/pages'));
+        .pipe(gulp.dest('dist/js'));
 
     var minifycss = gulp.src('app/css/**/*.css')
-        //.pipe(cleanCSS({compatibility: 'ie8'}))
-        .pipe(rename({suffix: '.min'}))
+        .pipe(concatCss('bundle.css'))
         .pipe(cleanCSS())
         .pipe(gulp.dest('dist/css'));
 
     var rep = gulp.src(['app/index.html'])
-        .pipe(replace(/(\"pages\/.+)\.js/g, '$1\.min\.js'))
-        .pipe(replace(/(\"css\/.+)\.css/g, '$1\.min\.css'))
+        //.pipe(replace(/(\"pages\/.+)\.js/g, '$1\.min\.js'))
+        //.pipe(replace(/(\"css\/.+)\.css/g, '$1\.min\.css'))
+        .pipe(removeHtmlComments())
+        .pipe(replace(/(\<link rel=\"stylesheet\" href=\"css\/common.css\"\>)/g, '<!--$1-->'))
+        .pipe(replace(/(\<link rel=\"stylesheet\" href=\"css\/\w+\/.+\.css\"\>)/g, '<!--$1-->'))
+        .pipe(replace(/\<\!--(\<link rel=\"stylesheet\" href=\"css\/bundle.css"\>)--\>/, '$1'))
+        .pipe(replace(/(\<script src=\"pages\/\w+\/.+\.js"\>\<\/script\>)/g, '<!--$1-->'))
+        .pipe(replace(/\<\!--(\<script src=\"js\/bundle.js\"\/\>)--\>/, '$1'))
         .pipe(gulp.dest('dist'));
 
     var home = gulp.src('app/pages/**/*.html')

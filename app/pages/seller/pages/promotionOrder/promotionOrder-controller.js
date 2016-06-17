@@ -185,7 +185,7 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
             var regYear = regDate.getYear() + 1900;
             var regMont = regDate.getMonth();
 
-            console.log("regiterYear?"+regYear+",registerMon?"+regMont);
+            //console.log("regiterYear?"+regYear+",registerMon?"+regMont);
 
             for(var y=regYear; y<= curYear; y++){
                 years.push({key:y, value: y+'年'})
@@ -216,8 +216,6 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
                 if(mm < 10 ){
                     mm = '0' + mm;
                 }
-                //console.log("mm?"+mm);
-
                 mons.push({key: m, value:mm+"月"})
             }
 
