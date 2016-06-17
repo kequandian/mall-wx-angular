@@ -32,7 +32,8 @@ var myapp = angular.module('myapp', [
     'collection.route',
     'distributionInfo.route',
     'refund.route',
-    'withdraw.route'
+    'withdraw.route',
+    "express.route"
 ]);
 
 myapp.value('ProfileSession', {
@@ -115,7 +116,17 @@ myapp.directive( 'whenActive', function () {
         };
     }])
 
-
+    //订单物流状态
+    .filter("expressStatus", function(){
+        return function(input){
+            if(input == "ok"){
+                return "已签收";
+            }
+            else {
+                return "派件中";
+            }
+        }
+    })
 
 .directive('updateTitle', ['$rootScope', '$timeout',
     function($rootScope, $timeout) {

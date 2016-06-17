@@ -206,7 +206,6 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
                     click_index.click();
                     return;
                 }
-                alert(angular.toJson($scope.order));
 
                 CartFty.addOrder($scope.order).then(
                     function (result) {

@@ -25,7 +25,7 @@ angular.module('my.order.controller', ['my.order.service'])
             AllOrders();
             function AllOrders() {
                 OrderFty.ordersService()
-                    .then(function (json) {
+                    .then(function (json) {//9660608213990176000002
                         $scope.orders = json.data;
                         //alert(angular.toJson($scope.orders));
                         $scope.payList = []; //待付款
