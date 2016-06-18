@@ -25,18 +25,20 @@
         <ul>
             <li ng-class="$index==indexPos?'nav-current':'nav-blur'"
                 ng-repeat="item in categoryItem"
-                ng-click="categoryLeftClick($event);getCategoryDetailData(item.id);getIndex($index,item.id);">{{item.name}}</li>
+                ng-click="categoryLeftClick($event);getCategoryDetailData(item.id);getIndex($index,item.id);">
+                {{item.name}}
+            </li>
         </ul>
     </nav>
 
     <div id="pro">
         <div class="pro-scroll">
             <div class="pro-warp">
-                <div  ng-repeat="itemParent in categoryItem | filter:{id : cateId}">
+                <div ng-repeat="itemParent in categoryItem | filter:{id : cateId}">
 
                     <div class="content" ng-repeat="itemCateList in itemParent.sub_categories">
 
-                        <div class="content-title" >
+                        <div class="content-title">
                             <span>{{itemCateList.name}}</span>
                         </div>
                         <div class="content-body">
@@ -45,12 +47,10 @@
                             </a>-->
                             <a class="content-body-list">
 
-                                <div class="cate-righr-item" ng-click="goToGoodsList(itemCateList.id)">
-                                    <!--<span>衣物清洁</span>-->
+                                <div class="cate-right-item" ng-click="goToGoodsList(itemCateList.id)">
                                     <span style="font-size: 14px;">{{itemCateList.name}}</span>
                                     <img ng-src="{{itemCateList.cover}}">
                                 </div>
-
                             </a>
                         </div>
 
