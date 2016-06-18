@@ -147,7 +147,7 @@ angular.module('details.controller', ['details.service'])
             $scope.checkedCarts = [];
             $scope.buy_immediately = function (item, quantity, product_property) {
                 //console.log("product.item?" + angular.toJson(item));
-                
+
                 item.product_id = (item.properties != null && item.properties.length > 0) ?
                     item.properties[0].product_id : item.id;
                 item.quantity = $scope.q_count;

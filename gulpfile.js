@@ -14,6 +14,13 @@ var merge = require('merge-stream');
 var del = require('del');
 var path = require('path');
 
+gulp.task('default', function(){
+    return gulp.src('app/lib/angular-ad-switch/css/*.css')
+        .pipe(rename({suffix: '.min'}))
+        .pipe(cleanCSS())
+        .pipe(gulp.dest('app/lib/angular-ad-switch/css'));
+});
+
 gulp.task('minify', function () {
     return gulp.src('app/pages/**/*.js')
         .pipe(ngAnnotate())
