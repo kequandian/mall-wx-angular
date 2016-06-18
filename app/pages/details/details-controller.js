@@ -11,7 +11,7 @@ angular.module('details.controller', ['details.service'])
             detailsInfo();
 
             function ReImgSize() {
-                for (j = 0; j < document.images.length; j++) {
+                for (var j = 0; j < document.images.length; j++) {
                     document.images[j].width = (document.images[j].width > 420) ? "420" : document.images[j].width;
                 }
             }
