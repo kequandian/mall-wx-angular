@@ -1,11 +1,12 @@
 angular.module('home.controller', [])
-    .controller('HomeController', ['$scope', '$state','$timeout','TabIndex', function($scope,$state,$timeout,TabIndex){
+    .controller('HomeController', ['$scope', '$state','$rootScope','$timeout', function($scope,$state,$rootScope,$timeout){
 
         //nav 样式
-        auto_css();
-        function auto_css(){
-            $scope.currentId = TabIndex.number;
-        }
+        var scope = $rootScope;
+        scope.$watch('tabsNumber',function(nValue, oValue){
+            $scope.currentId = nValue;
+            //console.log("new："+ nValue + "  " + "old: " + oValue);
+        });
 
         $scope.clickme = function(id) {
             $scope.currentId = id;

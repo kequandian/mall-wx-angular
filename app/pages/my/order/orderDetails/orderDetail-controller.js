@@ -1,7 +1,7 @@
-angular.module('orderDetails.controller', ['orderDetails.service'])
+angular.module('orderDetails.controller', ['orderDetails.service',"express.service"])
 
-    .controller('OrderDetailsController', ['$scope','$state', '$stateParams', 'OrderDetailsFty','CommonJs',
-        function($scope,$state,$stateParams, OrderDetailsFty,CommonJs){
+    .controller('OrderDetailsController', ['$scope','$state', '$stateParams', 'OrderDetailsFty','ExpressInfo','CommonJs',
+        function($scope,$state,$stateParams, OrderDetailsFty,ExpressInfo,CommonJs){
 
             orderDetails();
             function orderDetails(){
@@ -41,8 +41,10 @@ angular.module('orderDetails.controller', ['orderDetails.service'])
                             if($scope.detailsInfo.detail != null){
                                 $scope.order_address += $scope.detailsInfo.detail;
                             }
-
+                            //倒计时
                             countDown($scope.detailsInfo.created_date);
+                            //物流信息
+                            express_info($scope.detailsInfo.order_number);
 
                         }else{
                             $.toast("获取订单详情失败","cancel")
@@ -80,6 +82,25 @@ angular.module('orderDetails.controller', ['orderDetails.service'])
             $scope.order_status = function(orderStatus){
                 return CommonJs.OrderStatus(orderStatus);
             };
+
+            //物流信息
+            function express_info(order_number){
+
+                ExpressInfo.ExpressService(order_number)
+                    .then(function(json){
+                        alert(angular.toJson(json));
+                        if(json.status_code == 0){
+                            $scope.ex_info = json.data.data;
+                            if($scope.ex_info.length > 0){
+                                $scope.ex_context =  $scope.ex_info[0].context;
+                                $scope.ex_time =  $scope.ex_info[0].time;
+                            }
+                        }
+                    }, function(error){
+                        console.log("error" + error);
+                    })
+
+            }
 
 
     }]);

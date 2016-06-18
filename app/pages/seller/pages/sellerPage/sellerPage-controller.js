@@ -15,12 +15,14 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
         }
     })
 
-    .controller('SellerPageController', ['$scope', '$state', 'SellerPageFty', 'TabIndex', 'BalanceSession','UserInfo',
-        function ($scope, $state, SellerPageFty, TabIndex, BalanceSession, UserInfo) {
+    .controller('SellerPageController', ['$scope', '$state','$rootScope', 'SellerPageFty', 'BalanceSession','UserInfo',
+        function ($scope, $state,$rootScope, SellerPageFty, BalanceSession, UserInfo) {
 
             //title
             document.title = "销售中心";
-            TabIndex.number = 3;
+
+            $rootScope.tabsNumber = 3;
+
             //用户信息
             getUserInfo();
             //分销余额

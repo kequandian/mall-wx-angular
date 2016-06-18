@@ -1,11 +1,12 @@
 angular.module('my.controller', ['my.service'])
 
-    .controller('MyController', ['$scope','$state', 'MyFty','TabIndex', 'OrderTabIndex',
-        function($scope,$state, MyFty,TabIndex,OrderTabIndex){
+    .controller('MyController', ['$scope','$state','$rootScope', 'MyFty',
+        function($scope,$state,$rootScope, MyFty){
 
             //title
             document.title = "个人中心";
-            TabIndex.number = 5;
+
+            $rootScope.tabsNumber = 5;
 
             //用户信息
             getUserInfo();
@@ -21,9 +22,5 @@ angular.module('my.controller', ['my.service'])
                     })
             }
 
-            //order tabbar index
-            $scope.order_tab_index = function(t_index){
-                OrderTabIndex.tab_index = t_index;
-            };
 
     }]);

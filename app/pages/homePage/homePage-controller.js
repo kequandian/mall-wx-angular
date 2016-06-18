@@ -1,9 +1,11 @@
 angular.module('homePage.controller', ['homePage.service'])
 
-    .controller('HomePageController', ['$scope', '$state', 'TabIndex', 'HomePageFty',
-        function ($scope, $state, TabIndex, HomePageFty) {
+    .controller('HomePageController', ['$scope', '$state', '$rootScope', 'HomePageFty',
+        function ($scope, $state,$rootScope, HomePageFty) {
 
             document.title = "十美优品商城";
+
+            $rootScope.tabsNumber = 1;
 
             /* setTimeout(function(){
              document.title = "首页";

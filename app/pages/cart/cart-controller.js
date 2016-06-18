@@ -1,10 +1,11 @@
 angular.module('cart.controller', ['cart.service','addressManager.service'])
 
-    .controller('CartController', ['$scope', '$state', 'CartFty','TabIndex', function($scope, $state, CartFty,TabIndex){
+    .controller('CartController', ['$scope', '$state', '$rootScope', 'CartFty', function($scope, $state,$rootScope, CartFty){
 
         //title
         document.title = "购物车";
-        TabIndex.number = 4;
+
+        $rootScope.tabsNumber = 4;
 
         $scope.empty_cart_hide = true;
         $scope.cart_info_hide = true;

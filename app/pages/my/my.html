@@ -18,8 +18,8 @@
 </div>
 
 <div id="myOrder">
-    <div class="weui_cells weui_cells_access kqd_cells_top" ng-click="order_tab_index(1)">
-        <a class="weui_cell kqd_cell_padding" ui-sref="order">
+    <div class="weui_cells weui_cells_access kqd_cells_top">
+        <a class="weui_cell kqd_cell_padding" ui-sref="order.all">
             <div class="weui_cell_bd weui_cell_primary">
                 <p>我的订单</p>
             </div>
@@ -30,7 +30,7 @@
 
 <div id="kqdGrids">
     <div class="weui_grids list-border">
-        <a href="#/order/pay" class="weui_grid kqd_grid_4" ng-click="order_tab_index(2)">
+        <a href="#/order/pay" class="weui_grid kqd_grid_4">
             <div class="weui_grid_icon order_grid_img">
                 <img src="img/my/pay.png">
             </div>
@@ -38,7 +38,7 @@
                 待付款
             </p>
         </a>
-        <a href="#/order/payed" class="weui_grid kqd_grid_4" ng-click="order_tab_index(3)">
+        <a href="#/order/payed" class="weui_grid kqd_grid_4">
             <div class="weui_grid_icon order_grid_img">
                 <img src="img/my/payed.png">
             </div>
@@ -46,7 +46,7 @@
                 待发货
             </p>
         </a>
-        <a href="#/order/delivered" class="weui_grid kqd_grid_4" ng-click="order_tab_index(4)">
+        <a href="#/order/delivered" class="weui_grid kqd_grid_4">
             <div class="weui_grid_icon order_grid_img">
                 <img src="img/my/reach.png">
             </div>

@@ -14,11 +14,18 @@
             <div class="l-i-left">
                 <img src="img/my/orderDetails/logistics-info-cart.png">
             </div>
-            <div class="l-i-center">
-                <div>【广州】 【已签收，签收人是已签收】，感谢使用百世快递，期待再次为您服务</div>
-                <p>2016-06-03 23:49:01</p>
+
+            <div class="l-i-center-null" ng-if="ex_info.length == 0">
+                暂无
             </div>
-            <div class="l-i-right">
+
+            <div class="l-i-center" ng-if="ex_info.length > 0"
+                 ui-sref="express({orderNumber:detailsInfo.order_number})">
+                <div>{{ex_context}}</div>
+                <p>{{ex_time}}</p>
+            </div>
+            <div class="l-i-right" ng-if="ex_info.length > 0"
+                 ui-sref="express({orderNumber:detailsInfo.order_number})">
                 <img src="img/my/orderDetails/logistics-info-arrow.png">
             </div>
         </div>

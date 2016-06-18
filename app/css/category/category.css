@@ -56,6 +56,7 @@
     width:90px;
     overflow:hidden;
     background-color:#f3f4f6;
+    /*background-color:#f3f4f6;*/
     margin-bottom: 60px;
 }
 #category #nav ul{
@@ -66,7 +67,7 @@
     overflow-y:scroll;
 }
 #category #nav ul li{
-    border-bottom:1px solid #e0e0e0;
+    /*border-bottom:1px solid #e0e0e0;*/
     text-align:center;
     line-height:50px;
     width:89px;
@@ -74,16 +75,18 @@
     font-size:14px;
     font-weight: 700;
     color: #404040;
+    background-color:white;
+    margin-top: 2px;
 }
 #category #nav .nav-blur{
     color:#252525;
-    border-right:1px solid #e0e0e0;
+    /*border-right:1px solid #e0e0e0;*/
     /*background-color:#f3f4f6;*/
 }
 #category #nav .nav-current{
     color:#C20403;
     border-right:1px solid #fff;
-    background-color:#fff;
+    background-color:#f3f4f6;
 }
 
 
@@ -102,11 +105,12 @@
     height:100%;
     overflow-x: hidden;
     overflow-y: scroll;
+    background-color: #f3f4f6;
 
 }
 #category .pro-warp{
     width:50%;
-    background-color: #fff;
+    /*background-color: #f3f4f6;*/
 }
 #category #pro .banner{
     margin:10px 12px;
@@ -119,13 +123,13 @@
 }
 #category #pro .content-title{
     margin-top:15px;
-    font-size:16px;
+    font-size:13px;
     font-weight:700;
     padding-left:10px;
-    font-family:'宋体';
+    color:#686868;
 }
 #category #pro .content-body{
-    margin:0 12px;
+    margin: 0 3px;
     overflow:hidden;
 }
 #category #pro .content-body-list{
@@ -136,7 +140,6 @@
 #category #pro .content-body-list span{
     font-size:14px;
     text-align:center;
-    font-family:'宋体';
 }
 
 
@@ -145,8 +148,10 @@
     width: 32%;
     height: 100px;
     text-align: center;
-    /*margin-left: 2px;*/
-    border: 1px solid #e0e0e0;
+    margin-left: 2px;
+    margin-bottom: 4px;
+    /*border: 1px solid #e0e0e0;*/
+    background-color: white;
     float: left;
 }
 

@@ -1,10 +1,11 @@
 angular.module('category.controller', ['category.service'])
-    .controller('CategoryController', ['$scope', '$state', 'TabIndex', 'CategoryFty',
-        function ($scope, $state, TabIndex, CategoryFty) {
+    .controller('CategoryController', ['$scope', '$state', '$rootScope', 'CategoryFty',
+        function ($scope, $state,$rootScope, CategoryFty) {
 
             //title
             document.title = "商品分类";
-            TabIndex.number = 2;
+            $rootScope.tabsNumber = 2;
+
             detailsInfo();
             function detailsInfo() {
                 CategoryFty.categoryService()
