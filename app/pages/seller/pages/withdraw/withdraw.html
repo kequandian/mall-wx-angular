@@ -12,14 +12,14 @@
             <p class="allowWithdraw">可提金额: {{balance|currency:"￥"}} <span class="limit" >( 至少100.00元才可以提现 )</span></span></p>
 
             <div class="sub">
-                <input type="submit" class="weui_btn custom_weui_btn_primary" value="提现" ng-click="postDrawNum()">
+                <input type="submit" class="weui_btn weui_btn_primary" value="提现" ng-click="postDrawNum()">
             </div>
 
         </form>
 
-        <div ng-repeat="item in withdraw_history">
+       <!-- <div ng-repeat="item in withdraw_history">
             <span>{{item.name}}</span>
-        </div>
+        </div>-->
     </div>
 
 </div>

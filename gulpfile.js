@@ -8,6 +8,7 @@ var imagemin = require('gulp-imagemin');
 var concat = require('gulp-concat');
 var concatCss = require('gulp-concat-css');
 var removeHtmlComments = require('gulp-remove-html-comments');
+var htmlmin = require('gulp-html-minifier');
 var rename = require('gulp-rename');
 var replace = require('gulp-replace');
 var merge = require('merge-stream');
@@ -15,10 +16,10 @@ var del = require('del');
 var path = require('path');
 
 gulp.task('default', function(){
-    return gulp.src('app/lib/angular-ad-switch/css/*.css')
+    return gulp.src('app/lib/angular-ad-switch/js/switch.js')
         .pipe(rename({suffix: '.min'}))
-        .pipe(cleanCSS())
-        .pipe(gulp.dest('app/lib/angular-ad-switch/css'));
+        .pipe(uglify())
+        .pipe(gulp.dest('app/lib/angular-ad-switch/js'));
 });
 
 gulp.task('minify', function () {
@@ -67,7 +68,7 @@ gulp.task('rep', function(){
 });
 
 gulp.task('dist', function () {
-    var minify = gulp.src('app/pages/**/*.js')
+    var minify = gulp.src(['app/js/app.js','app/js/modelValues.js','app/js/weui.js','app/pages/**/*.js'])
         .pipe(ngAnnotate())
 
         //.pipe(gulp.dest('app/dist/pages'))
@@ -93,14 +94,21 @@ gulp.task('dist', function () {
         .pipe(replace(/(\<link rel=\"stylesheet\" href=\"css\/common.css\"\>)/g, '<!--$1-->'))
         .pipe(replace(/(\<link rel=\"stylesheet\" href=\"css\/\w+\/.+\.css\"\>)/g, '<!--$1-->'))
         .pipe(replace(/\<\!--(\<link rel=\"stylesheet\" href=\"css\/bundle.css"\>)--\>/, '$1'))
+        /*below for js*/
+        .pipe(replace(/(\<script src=\"js\/app\.js"\>\<\/script\>)/g, '<!--$1-->'))
+        .pipe(replace(/(\<script src=\"js\/modelValues\.js"\>\<\/script\>)/g, '<!--$1-->'))
+        .pipe(replace(/(\<script src=\"js\/weui\.js"\>\<\/script\>)/g, '<!--$1-->'))
         .pipe(replace(/(\<script src=\"pages\/\w+\/.+\.js"\>\<\/script\>)/g, '<!--$1-->'))
         .pipe(replace(/\<\!--(\<script src=\"js\/bundle.js\"\/\>)--\>/, '$1'))
+
+        .pipe(removeHtmlComments())
+        .pipe(htmlmin({collapseWhitespace: true}))
         .pipe(gulp.dest('dist'));
 
     var home = gulp.src('app/pages/**/*.html')
         .pipe(gulp.dest('dist/pages'));
 
-    var js = gulp.src('app/js/**/*')
+    var js = gulp.src('app/js/global.js')
         .pipe(gulp.dest('dist/js'));
 
     var lib = gulp.src('app/lib/**/*')

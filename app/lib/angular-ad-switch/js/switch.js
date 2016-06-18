@@ -43,11 +43,12 @@
                 $el.addClass($scope.classPrefix + '-' + $scope.type);
                 this.width = el.clientWidth;
 
-                if($scope.height>2) {
+                if($scope.height>0) {
                     el.style.height = $scope.height;
-                }else if($scope.height>0){
-                    el.style.height = this.width * $scope.height;
+                }else if($scope.ratio>0){
+                    el.style.height = this.width * $scope.ratio;
                 }
+
                 //console.log("init-width?" + el.clientWidth);
                 //console.log("init-height?" + el.clientHeight);
                 //console.log("init-height?" + $scope.height);
@@ -800,7 +801,8 @@
                 classPrefix: '@?',
                 autoPlay: '=?',
                 type: '@?',
-                height: '=?'
+                height: '=?',
+                ratio: '=?'
             },
             link: link
         };
@@ -826,7 +828,10 @@
 
             // init height
             if(!$scope.height){
-                $scope.height = -1;
+                $scope.height = 0;
+            }
+            if(!$scope.ratio){
+                $scope.ratio = 0;
             }
 
             switchCtrl.init();
