@@ -13,139 +13,145 @@
     overflow-x: hidden;
     overflow-y: auto;
 }
-    #express .express_status {
-        float: left;
-        margin-bottom: 15px;
-        padding-top: 15px;
-        padding-left: 10px;
-        padding-bottom: 10px;
-        width: 100%;
-        background: #fff;
-    }
-        #express .express_status .head {
-            position: relative;
-            float: left;
-            margin-right: 10px;
-            width: 70px;
-            height:70px;
-            text-align: center;
-            border: 1px solid #c9c9c9;
-        }
-            #express .head img{
-                width: 50px;
-                height:50px;
-            }
 
-            #express .head .goodsNum {
-                position: absolute;
-                bottom: 0;
-                width: 100%;
-                color: #fff;
-                background: rgba(0, 0, 0, 0.50);
-            }
+#express .express_status {
+    float: left;
+    margin-bottom: 15px;
+    padding-top: 15px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    background: #fff;
+}
 
-        #express .express_status .info {
-            float: left;
-        }
-            .express_status .info p {
-                color: #979797;
-            }
+#express .express_status .head {
+    position: relative;
+    float: left;
+    margin-right: 10px;
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    border: 1px solid #c9c9c9;
+}
 
-            .express_status .info .tel {
-                color: #00A2E8;
-            }
+#express .head img {
+    width: 50px;
+    height: 50px;
+}
 
-            .express_status .info span {
-                color: #24A262;
-            }
+#express .head .goodsNum {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.50);
+}
 
-    #express .express_tracking {
-        float: left;
-        padding-top: 15px;
-        padding-left: 10px;
-        /*padding-right: 10px;*/
-        width: 100%;
-        background: #fff;
-    }
-        #express .track_list {
-            margin-top: 15px;
-            padding-top: 20px;
-            padding-left: 20px;
-            padding-right: 20px;
-            padding-bottom: 20px;
-            border-top: 1px solid #e9e9e9;
-        }
-            #express .track_list li {
-                position: relative;
-                padding-left: 30px;
-                padding-bottom: 20px;
-                list-style: none;
-                color: #656363;
-                border-left: 1px solid #e9e9e9;
-            }
-                #express li:last-child  {
-                    padding-bottom: 0;
-                }
+#express .express_status .info {
+    float: left;
+}
 
-                #express li:last-child p {
-                    padding-bottom: 0;
-                    border: none;
-                }
+.express_status .info p {
+    color: #979797;
+}
 
-                #express .track_list .icon {
-                    position: absolute;
-                    top: 3px;
-                    left: -5px;
-                    width: 10px;
-                    height: 10px;
-                    background: #d5d5d6;
-                    border-radius: 50%;
-                }
+.express_status .info .tel {
+    color: #00A2E8;
+}
 
-                #express .trackList:first-child {
-                    color: #24A262 !important;
-                }
+.express_status .info span {
+    color: #24A262;
+}
 
-                #express  .trackList:first-child .icon {
-                    top: 2px;
-                    left: -7px;
-                    width: 12px;
-                    height: 12px;
-                    color: #24A262 !important;
-                    background: #24A262;
-                    box-shadow: 0 0 0 3px #e9e9e9;
-                }
+#express .express_tracking {
+    float: left;
+    padding-top: 15px;
+    padding-left: 10px;
+    /*padding-right: 10px;*/
+    width: 100%;
+    background: #fff;
+}
 
-                #express .track_list p {
-                    padding-bottom: 15px;
-                    border-bottom: 1px solid #e9e9e9;
-                }
+#express .track_list {
+    margin-top: 15px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid #e9e9e9;
+}
 
-                #express .track_list .time {
-                    font-size: 14px;
-                }
+#express .track_list li {
+    position: relative;
+    padding-left: 30px;
+    padding-bottom: 20px;
+    list-style: none;
+    color: #656363;
+    border-left: 1px solid #e9e9e9;
+}
 
+#express li:last-child {
+    padding-bottom: 0;
+}
 
+#express li:last-child p {
+    padding-bottom: 0;
+    border: none;
+}
 
-    #express .evaluate {
-        float: right;
-        margin-top: 10px;
-        margin-right: 10px;
-        margin-bottom: 10px;
-        background: #fff;
-        border: 1px solid #f95b11;
+#express .track_list .icon {
+    position: absolute;
+    top: 3px;
+    left: -5px;
+    width: 10px;
+    height: 10px;
+    background: #d5d5d6;
+    border-radius: 50%;
+}
 
-    }
-        #express .evaluate a {
-            display: block;
-            padding-top: 5px;
-            padding-left: 10px;
-            padding-bottom: 5px;
-            padding-right: 10px;
-            font-weight: bold;
-            color: #f95b11;
-        }
+#express .trackList:first-child {
+    color: #24A262 !important;
+}
 
-    #express .last {
-        border: none !important;
-    }
+#express .trackList:first-child .icon {
+    top: 2px;
+    left: -7px;
+    width: 12px;
+    height: 12px;
+    color: #24A262 !important;
+    background: #24A262;
+    box-shadow: 0 0 0 3px #e9e9e9;
+}
+
+#express .track_list p {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e9e9e9;
+}
+
+#express .track_list .time {
+    font-size: 14px;
+}
+
+#express .evaluate {
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    background: #fff;
+    border: 1px solid #f95b11;
+
+}
+
+#express .evaluate a {
+    display: block;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    padding-right: 10px;
+    font-weight: bold;
+    color: #f95b11;
+}
+
+#express .last {
+    border: none !important;
+}

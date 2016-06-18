@@ -16,7 +16,7 @@
             <!--</div>-->
 
             <div ng-if="details.covers.length>0">
-                <bs-switch  data-type="slider" auto-play="2500" data-height="0.6">
+                <bs-switch  data-type="slider" auto-play="2500" data-ratio="0.6">
                     <bs-switch-content>
                         <bs-switch-panel ng-repeat="itemImg in details.covers">
                             <img alt="" ng-src="{{itemImg.url}}" style="width: 60%; height: auto;"/>

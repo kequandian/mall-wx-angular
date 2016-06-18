@@ -3,6 +3,15 @@
     min-height: 100%;
 }
 
+#addressManager .weui_btn_primary{
+    background-color: #C20403;
+}
+
+#addressManager .weui_btn_primary:not(.weui_btn_disabled):active {
+    color: rgba(255, 255, 255, 0.4);
+    background-color: #D20403;
+}
+
 #addressManager .content{
     z-index: 100;
     margin-bottom: 50px;
@@ -136,4 +145,42 @@
 #addressManager .footer .weui_btn_default{
     background-color: #DE0402;
     color: white;
+}
+
+
+/*below add address*/
+#addressManager .edit-address-font {
+    font-size: 13px;
+}
+#addressManager .weui_icon_safe::before {
+    font-size: 15px;
+}
+#addressManager .safe-tips-text {
+    padding: 5px;
+    text-align: center;
+    background-color: #FBF9FE;
+}
+
+#addressManager .address-selection {
+    margin-top: 0;
+}
+#addressManager .time-selection {
+    margin-top: 0;
+}
+
+#addressManager .order-money, .order-freight {
+    float: right;
+}
+#addressManager .payment-method-icon {
+    height: 18px;
+    width: 25px;
+    float: left;
+}
+#addressManager .payment-method-icon img {
+    height: 18px;
+}
+
+#addressManager .invoice-title {
+    width: 60px;
+    font-size: 13px;
 }

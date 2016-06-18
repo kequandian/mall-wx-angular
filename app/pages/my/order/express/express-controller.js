@@ -8,8 +8,8 @@
 
 angular.module("express.controller", ["express.service"])
 
-    .controller("ExpressController", ["$scope", "$state", '$stateParams',"ExpressInfo",
-        function($scope, $state,$stateParams, ExpressInfo) {
+    .controller("ExpressController", ["$scope", "$state", '$stateParams', "ExpressInfo",
+        function ($scope, $state, $stateParams, ExpressInfo) {
             document.title = "物流详情";
 
             getExpressInfo();
@@ -21,19 +21,16 @@ angular.module("express.controller", ["express.service"])
 
                 ExpressInfo.ExpressService(o_number)
                     .then(function (json) {
-                        if(json.status_code == 0) {
+                        if (json.status_code == 0) {
                             $scope.expressInfo = json.data;
-                        }
-                        var expressStatus = $scope.expressInfo.message;
 
-                        if(expressStatus == "ok"){
                             $scope.okclass = "trackList";
                         }
 
-                    },function (error) {
+                    }, function (error) {
                         $.toast("获取信息失败", "cancel");
                     })
 
             }
-     
+
         }]);

@@ -46,3 +46,12 @@
 #userInfo .weui_label{
     min-width: 60px;
 }
+
+#userInfo .weui_btn_primary{
+    background-color: #C20403;
+}
+
+#userInfo .weui_btn_primary:not(.weui_btn_disabled):active {
+    color: rgba(255, 255, 255, 0.4);
+    background-color: #D20403;
+}

@@ -30,13 +30,18 @@ angular.module('details.controller', ['details.service'])
                             if ($scope.details.properties.length > 0) {
                                 var properties = [];
 
+                                var rep = false;  // replace new properties is required
                                 angular.forEach($scope.details.properties, function (v, k) {
                                     if (v.property_value != null) {
                                         properties.push(v);
+                                    }else{
+                                        rep = true;
                                     }
                                 })
 
-                                $scope.details.properties = properties;
+                                if(rep) {
+                                    $scope.details.properties = properties;
+                                }
                             }
                         } else {
                             console.log("获取商品详情失败");
@@ -148,8 +153,7 @@ angular.module('details.controller', ['details.service'])
             $scope.buy_immediately = function (item, quantity, product_property) {
                 //console.log("product.item?" + angular.toJson(item));
 
-                item.product_id = (item.properties != null && item.properties.length > 0) ?
-                    item.properties[0].product_id : item.id;
+                item.product_id = item.id;
                 item.quantity = $scope.q_count;
                 item.product_name = item.name;
                 item.price = item.price * quantity;
