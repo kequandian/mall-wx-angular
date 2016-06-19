@@ -108,8 +108,8 @@ gulp.task('dist', function () {
     var home = gulp.src('app/pages/**/*.html')
         .pipe(gulp.dest('dist/pages'));
 
-    var js = gulp.src('app/js/global.js')
-        .pipe(gulp.dest('dist/js'));
+    //var js = gulp.src('app/js/global.js')
+    //    .pipe(gulp.dest('dist/js'));
 
     var lib = gulp.src('app/lib/**/*')
         .pipe(gulp.dest('dist/lib'));
@@ -120,7 +120,7 @@ gulp.task('dist', function () {
     var bower = gulp.src(['app/bower_components/**/*.js','app/bower_components/**/*.css'])
         .pipe(gulp.dest('dist/bower_components'));
 
-    return merge(minify, minifycss, home, js, lib, img, bower, rep);
+    return merge(minify, minifycss, home, lib, img, bower, rep);
 });
 
 gulp.task('clean', function () {
