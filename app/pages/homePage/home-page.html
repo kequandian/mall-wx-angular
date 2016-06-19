@@ -10,7 +10,8 @@
         <form class="weui_search_outer">
             <div class="weui_search_inner">
                 <i class="weui_icon_search" style="top: 8px;"></i>
-                <input type="search" style="font-family:'Microsoft YaHei';" class="weui_search_input" id="search_input" placeholder="搜索你想要的商品" required/>
+                <input type="search" style="font-family:'Microsoft YaHei';" class="weui_search_input" id="search_input"
+                       placeholder="搜索你想要的商品" required/>
                 <!--<a href="javascript:" class="weui_icon_clear" id="search_clear"></a>-->
             </div>
             <!--<label for="search_input" class="weui_search_text" id="search_text">-->
@@ -174,17 +175,22 @@
                 <div class="weui_grids">
                     <a ui-sref="details({productId:item.id})" class="weui_grid home_grid_2"
                        ng-repeat="item in rec_product">
-
-                        <div class="weui_grid_icon home_grid_img">
-                            <img ng-src="{{item.cover}}">
+                        <!--product cover-->
+                        <div class="pro-item-margin">
+                            <div class="weui_grid_icon home_grid_img">
+                                <img square-img ng-src="{{item.cover}}">
+                            </div>
                         </div>
-                        <div class="weui_grid_label home_grid_text">
-                            {{item.name | cutText:true:20:'...'}}
-                        </div>
-                        <div class="home_grid_footer_text">
-                            <div class="home_g_left c-left">{{item.price | currency:"￥"}}</div>
-                            <div class="home_g_right c-right">
-                                <span>省￥40</span>
+                        <!--product desc-->
+                        <div class="pro-item-desc">
+                            <div class="weui_grid_label home_grid_text">
+                                {{item.name | cutText:true:20:'...'}}
+                            </div>
+                            <div class="home_grid_footer_text">
+                                <div class="home_g_left c-left">{{item.price | currency:"￥"}}</div>
+                                <div class="home_g_right c-right">
+                                    <span>省￥40</span>
+                                </div>
                             </div>
                         </div>
                     </a>

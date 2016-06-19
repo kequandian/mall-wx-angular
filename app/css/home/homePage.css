@@ -152,7 +152,7 @@ body, html {
 
 
 #content .panic-buying-ad {
-    margin:0 3px 3px 3px;
+    /*margin:0 3px 3px 3px;*/
 }
 #content .panic-buying-ad .ad-1{
     width: 100%;
@@ -230,11 +230,12 @@ body, html {
 #content .s-size-area{
     width:100%;
     margin-bottom: 5px;
+    background-color: #e3e3e3;
 }
 
 #content .s-area-img{
     height:auto;
-    margin:0 3px 0 3px;
+    /*margin:0 3px 0 3px;*/
 }
 
 #content .s-area-img img{
@@ -243,15 +244,16 @@ body, html {
 }
 
 #content .area-product{
-    margin:3px 3px 5px 3px;
+    margin:3px 3px 3px 0px;
     height: auto;
 }
 
 #content .home_grid_2{
     width: 49%;
-    border: 1px solid #cccccc;
-    margin-left: 2px;
-    margin-top: 3px;
+    /*border: 1px solid #cccccc;*/
+    margin-left: 3px;
+    margin-bottom: 2px;
+    background-color: white;
 }
 
 #homeProductGrids .weui_grid .weui_grid_label{
@@ -266,27 +268,36 @@ body, html {
 }
 
 #content .home_grid_img {
-    width: 135px;
-    height: 135px;
+    width: 100%;
+    height: auto;
+}
+
+#content .area-product .pro-item-margin{
+    margin: 5px 5px 5px 5px;
+}
+
+#content .area-product .pro-item-desc{
+    height: 60px;
 }
 
 #content .home_grid_text {
-    height: 45px;
-    border-top: 1px solid #cccccc;
+    height: 40px;
+    /*border-top: 1px solid #cccccc;*/
     text-align: left;
     padding: 3px 3px;
     color: #4c4c4c;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 #content .home_grid_footer_text{
     width: 100%;
-    height: 30px;
-    line-height: 30px;
+    height: 20px;
+    line-height: 20px;
     /*background: #DE8BD4;*/
     /*padding:0 5px 0 5px;*/
     /*border-top: 1px solid #cccccc;*/
-    font-size: 13px;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 #content .home_g_left{
@@ -410,6 +421,8 @@ body, html {
 }
 .c-right{
     float: right;
+    font-weight: normal;
+    font-size: 13px;
 }
 .clear{
     float: none;
