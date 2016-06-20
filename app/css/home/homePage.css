@@ -153,9 +153,8 @@ body, html {
     padding: 7px 10px;
 }
 
-
 #content .panic-buying-ad {
-    margin:0px 3px 0px 3px;
+    /*margin:0px 3px 0px 3px;*/
 }
 #content .panic-buying-ad .ad-1{
     width: 100%;
