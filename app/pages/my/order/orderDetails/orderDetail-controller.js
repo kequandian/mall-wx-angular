@@ -52,7 +52,6 @@ angular.module('orderDetails.controller', ['orderDetails.service',"express.servi
                     }, function(error){
                         $.toast("获取订单详情失败","cancel")
                     })
-
             }
 
             function countDown(o_time){
@@ -73,11 +72,10 @@ angular.module('orderDetails.controller', ['orderDetails.service',"express.servi
                 //var seconds = Math.round(leave3/1000);
                 //alert(" 相差 "+days+"天 "+hours+"小时 "+minutes+" 分钟"+seconds+" 秒")
 
-                //$scope.over_time = overtime;
+                $scope.over_time = overtime;
                 $scope.c_d_day = days;
                 $scope.c_d_hour = hours;
             }
-
 
             //订单状态
             $scope.order_status = function(orderStatus){
@@ -101,8 +99,6 @@ angular.module('orderDetails.controller', ['orderDetails.service',"express.servi
                     }, function(error){
                         console.log("error" + error);
                     })
-
             }
-
 
     }]);
