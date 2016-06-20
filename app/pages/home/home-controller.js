@@ -19,7 +19,7 @@ angular.module('home.controller', [])
             'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-home'
         },{
             'id':'2',
-            'name':'搜索',
+            'name':'分类',
             'srefName':'.category',
             'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-search'
         },{
