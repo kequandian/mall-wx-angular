@@ -55,3 +55,10 @@
     color: rgba(255, 255, 255, 0.4);
     background-color: #D20403;
 }
+
+#userInfo .testClass > input {
+    border-bottom: 3px solid #1A4987;
+    border-left: transparent;
+    border-right: transparent;
+    border-top: transparent;
+}

@@ -14,19 +14,20 @@
             <div class="l-i-left">
                 <img src="img/my/orderDetails/logistics-info-cart.png">
             </div>
-
-            <div class="l-i-center-null" ng-if="ex_info.length == 0">
+            <div class="l-i-center-null" ng-if="j_status_code == 1">
                 暂无
             </div>
 
-            <div class="l-i-center" ng-if="ex_info.length > 0"
-                 ui-sref="express({orderNumber:detailsInfo.order_number})">
-                <div>{{ex_context}}</div>
-                <p>{{ex_time}}</p>
-            </div>
-            <div class="l-i-right" ng-if="ex_info.length > 0"
-                 ui-sref="express({orderNumber:detailsInfo.order_number})">
-                <img src="img/my/orderDetails/logistics-info-arrow.png">
+            <div ng-if="j_status_code == 0">
+                <div class="l-i-center" ng-if="ex_info.length > 0"
+                     ui-sref="express({orderNumber:detailsInfo.order_number})">
+                    <div>{{ex_context}}</div>
+                    <p>{{ex_time}}</p>
+                </div>
+                <div class="l-i-right" ng-if="ex_info.length > 0"
+                     ui-sref="express({orderNumber:detailsInfo.order_number})">
+                    <img src="img/my/orderDetails/logistics-info-arrow.png">
+                </div>
             </div>
         </div>
 

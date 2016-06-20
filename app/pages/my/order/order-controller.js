@@ -39,8 +39,8 @@ angular.module('my.order.controller', ['my.order.service'])
     }])
 
     /* 全部订单 */
-    .controller('allController', ['$scope','$state','$rootScope','$timeout','OrderFty',
-        function($scope,$state,$rootScope,$timeout,OrderFty){
+    .controller('allController', ['$scope','$state','$rootScope','$timeout','OrderFty','CommonJs',
+        function($scope,$state,$rootScope,$timeout,OrderFty,CommonJs){
 
             $rootScope.orderTabsIndex = 1;
 
@@ -77,11 +77,16 @@ angular.module('my.order.controller', ['my.order.service'])
                         },1000);
                     })
             }
+
+            //订单状态
+            $scope.order_list_status = function(orderStatus){
+                return CommonJs.OrderStatus(orderStatus);
+            };
         }])
 
     /* 待付款 */
-    .controller('payController', ['$scope','$state','$rootScope','$timeout','OrderFty',
-        function($scope,$state,$rootScope,$timeout,OrderFty){
+    .controller('payController', ['$scope','$state','$rootScope','$timeout','OrderFty','CommonJs',
+        function($scope,$state,$rootScope,$timeout,OrderFty,CommonJs){
 
             $rootScope.orderTabsIndex = 2;
             $.showLoading("正在加载...");
@@ -117,11 +122,22 @@ angular.module('my.order.controller', ['my.order.service'])
                         },1000);
                     })
             }
+
+            //订单状态
+            $scope.order_list_status = function(orderStatus){
+                return CommonJs.OrderStatus(orderStatus);
+            };
+
+            //立即付款
+            $scope.weixin_pay = function(order_number){
+                window.location.href='/app/payment/wpay/'+ order_number;
+            }
+
         }])
 
     /* 待发货 */
-    .controller('payedController', ['$scope','$state','$rootScope','$timeout','OrderFty',
-        function($scope,$state,$rootScope,$timeout,OrderFty){
+    .controller('payedController', ['$scope','$state','$rootScope','$timeout','OrderFty','.CommonJs',
+        function($scope,$state,$rootScope,$timeout,OrderFty,CommonJs){
 
             $rootScope.orderTabsIndex = 3;
 
@@ -159,11 +175,16 @@ angular.module('my.order.controller', ['my.order.service'])
                     })
             }
 
+            //订单状态
+            $scope.order_list_status = function(orderStatus){
+                return CommonJs.OrderStatus(orderStatus);
+            };
+
         }])
 
     /* 待收货 */
-    .controller('deliveredController', ['$scope','$state','$rootScope','$timeout','OrderFty',
-        function($scope,$state,$rootScope,$timeout,OrderFty){
+    .controller('deliveredController', ['$scope','$state','$rootScope','$timeout','OrderFty','CommonJs',
+        function($scope,$state,$rootScope,$timeout,OrderFty,CommonJs){
 
             $rootScope.orderTabsIndex = 4;
             $.showLoading("正在加载...");
@@ -200,11 +221,16 @@ angular.module('my.order.controller', ['my.order.service'])
                     })
             }
 
+            //订单状态
+            $scope.order_list_status = function(orderStatus){
+                return CommonJs.OrderStatus(orderStatus);
+            };
+
         }])
 
     /* 已完成 */
-    .controller('finishController', ['$scope','$state','$rootScope','$timeout','OrderFty',
-        function($scope,$state,$rootScope,$timeout,OrderFty){
+    .controller('finishController', ['$scope','$state','$rootScope','$timeout','OrderFty','CommonJs',
+        function($scope,$state,$rootScope,$timeout,OrderFty,CommonJs){
 
             $rootScope.orderTabsIndex = 5;
             $.showLoading("正在加载...");
@@ -241,6 +267,11 @@ angular.module('my.order.controller', ['my.order.service'])
                         },1000);
                     })
             }
+
+            //订单状态
+            $scope.order_list_status = function(orderStatus){
+                return CommonJs.OrderStatus(orderStatus);
+            };
 
         }])
 

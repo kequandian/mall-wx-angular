@@ -73,6 +73,7 @@ angular.module('orderDetails.controller', ['orderDetails.service',"express.servi
                 //var seconds = Math.round(leave3/1000);
                 //alert(" 相差 "+days+"天 "+hours+"小时 "+minutes+" 分钟"+seconds+" 秒")
 
+                //$scope.over_time = overtime;
                 $scope.c_d_day = days;
                 $scope.c_d_hour = hours;
             }
@@ -88,7 +89,8 @@ angular.module('orderDetails.controller', ['orderDetails.service',"express.servi
 
                 ExpressInfo.ExpressService(order_number)
                     .then(function(json){
-                        alert(angular.toJson(json));
+                        //alert(angular.toJson(json));
+                        $scope.j_status_code = json.status_code;
                         if(json.status_code == 0){
                             $scope.ex_info = json.data.data;
                             if($scope.ex_info.length > 0){
