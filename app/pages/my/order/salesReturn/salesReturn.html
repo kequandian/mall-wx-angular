@@ -1,0 +1,68 @@
+<!--
+/**
+* 申请退货
+*
+* @author Jimmie Hwang
+* @create 2016/6/16
+*
+*/-->
+
+<div id="salesReturn">
+
+    <form ng-submit="">
+
+        <div class="weui_cells weui_cells_form">
+
+            <!--申请服务-->
+            <div class="weui_cell weui_cell_select bg apply">
+                <div class="weui_cell_hd">申请服务 :</div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <select id="test" class="weui_select" ng-options="i.key as i.value for i in returnType" ng-model="salesReturn.service_type" ng-init="salesReturn.service_type='请选择服务'" >
+
+                    </select>
+                </div>
+            </div>
+
+            <!--退货原因-->
+            <div class="weui_cell weui_cell_select bg reason">
+                <div class="weui_cell_hd">退货原因 :</div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <select class="weui_select" ng-options="i.key as i.value for i in returnReason" ng-model="salesReturn.reason" ng-init="salesReturn.reason='请选择退货原因'">
+
+                    </select>
+                </div>
+            </div>
+
+            <!--退货金额-->
+            <div class="weui_cell bg mon">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>退货金额 : <span class="returnMon">¥ 29.90</span></p>
+                </div>
+            </div>
+            <p class="explain">（最多29.90元，含发货邮费0.00元）</p>
+
+            <!--退货说明-->
+            <div class="weui_cells_title bg pad">退货说明</div>
+            <div class="weui_cell">
+                <textarea class="weui_textarea" placeholder="请输入退货说明" rows="3" ng-model="salesReturn.content"></textarea>
+            </div>
+
+            <!--添加图片-->
+            <div class="weui_cells_title bg pad">添加图片</div>
+            <div class="weui_uploader_input_wrp add">
+                <input class="weui_uploader_input " type="file" accept="image/jpg,image/jpeg,image/png,image/gif" multiple="">
+            </div>
+
+        </div>
+
+        <!--提交申请-->
+        <div class="sub">
+            <input type="submit" class="weui_btn custom_weui_btn_primary" value="提交申请" ng-click="postSalesReturn()">
+        </div>
+
+    </form>
+
+</div>
+
+
+

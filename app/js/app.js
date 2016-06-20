@@ -34,7 +34,8 @@ var myapp = angular.module('myapp', [
     'distributionInfo.route',
     'refund.route',
     'withdraw.route',
-    "express.route"
+    "express.route",
+    "salesReturn.route"
 ]);
 
 myapp.value('ProfileSession', {

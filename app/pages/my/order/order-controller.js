@@ -53,16 +53,21 @@ angular.module('my.order.controller', ['my.order.service'])
             function AllOrders() {
                 OrderFty.ordersService()
                     .then(function (json) {
-                        $scope.orders = json.data;
-                        //alert(angular.toJson($scope.orders));
-                        $scope.order_list=[];
-                        angular.forEach($scope.orders, function(v,k){
-                            if(v.status != "CANCELED_RETURN_PENDING" && v.status != "CANCELED_REFUND_PENDING" && v.status != "CLOSED_REFUNDED"){
-                                $scope.order_list.push(v);
-                            }
-                        });
+                        if(json.status_code == 0) {
+                            $scope.orders = json.data;
+                            //alert(angular.toJson($scope.orders));
+                            $scope.order_list = [];
+                            angular.forEach($scope.orders, function (v, k) {
+                                if (v.status != "CANCELED_RETURN_PENDING" && v.status != "CANCELED_REFUND_PENDING" && v.status != "CLOSED_REFUNDED") {
+                                    $scope.order_list.push(v);
+                                }
+                            });
+                        }else{
+                            $.toast('读取订单信息失败');
+                        }
                     },function (error){
                         console.log(error);
+                        $.toast('读取订单信息失败');
                     })
                     .finally(function(){
                         if($scope.orders.length > 0){
@@ -94,18 +99,22 @@ angular.module('my.order.controller', ['my.order.service'])
             $scope.payIsNull = true;
             $scope.payShow = true;
 
-            AllOrders();
-            function AllOrders() {
+            payOrders();
+            function payOrders() {
                 OrderFty.ordersService()
                     .then(function (json) {
-                        $scope.orders = json.data;
-                        //alert(angular.toJson($scope.orders));
-                        $scope.payList = []; //待付款
-                        angular.forEach($scope.orders, function(v, k){
-                            if(v.status == "CREATED_PAY_PENDING"){
-                                $scope.payList.push(v);
-                            }
-                        });
+                        if(json.status_code == 0) {
+                            var orders = json.data;
+                            //alert(angular.toJson($scope.orders));
+                            $scope.payList = []; //待付款
+                            angular.forEach(orders, function(v, k){
+                                if(v.status == "CREATED_PAY_PENDING"){
+                                    $scope.payList.push(v);
+                                }
+                            });
+                        }else{
+                            $.toast('读取订单信息失败');
+                        }
                     },function (error){
                         console.log(error);
                     })
@@ -136,7 +145,7 @@ angular.module('my.order.controller', ['my.order.service'])
         }])
 
     /* 待发货 */
-    .controller('payedController', ['$scope','$state','$rootScope','$timeout','OrderFty','.CommonJs',
+    .controller('payedController', ['$scope','$state','$rootScope','$timeout','OrderFty','CommonJs',
         function($scope,$state,$rootScope,$timeout,OrderFty,CommonJs){
 
             $rootScope.orderTabsIndex = 3;
@@ -146,18 +155,22 @@ angular.module('my.order.controller', ['my.order.service'])
             $scope.payedIsNull = true;
             $scope.payedShow = true;
 
-            AllOrders();
-            function AllOrders() {
+            payedOrders();
+            function payedOrders() {
                 OrderFty.ordersService()
                     .then(function (json) {
-                        $scope.orders = json.data;
-                        //alert(angular.toJson($scope.orders));
-                        $scope.payedList = [];//待发货
-                        angular.forEach($scope.orders, function(v, k){
-                            if(v.status == "CONFIRMED_DELIVER_PENDING" || v.status == "PAID_CONFIRM_PENDING"){
-                                $scope.payedList.push(v);
-                            }
-                        });
+                        if(json.status_code == 0) {
+                            var orders = json.data;
+                            //alert(angular.toJson($scope.orders));
+                            $scope.payedList = [];//待发货
+                            angular.forEach(orders, function(v, k){
+                                if(v.status == "CONFIRMED_DELIVER_PENDING" || v.status == "PAID_CONFIRM_PENDING"){
+                                    $scope.payedList.push(v);
+                                }
+                            });
+                        }else{
+                            $.toast('读取订单信息失败');
+                        }
                     },function (error){
                         console.log(error);
                     })
@@ -192,18 +205,22 @@ angular.module('my.order.controller', ['my.order.service'])
             $scope.deliveredIsNull = true;
             $scope.deliveredShow = true;
 
-            AllOrders();
-            function AllOrders() {
+            deliveredOrders();
+            function deliveredOrders() {
                 OrderFty.ordersService()
                     .then(function (json) {
-                        $scope.orders = json.data;
-                        //alert(angular.toJson($scope.orders));
-                        $scope.deliveredList = [];//待收货
-                        angular.forEach($scope.orders, function(v, k){
-                            if(v.status == "DELIVERING" || v.status == "DELIVERED_CONFIRM_PENDING"){
-                                $scope.deliveredList.push(v);
-                            }
-                        });
+                        if(json.status_code == 0) {
+                            var orders = json.data;
+                            //alert(angular.toJson($scope.orders));
+                            $scope.deliveredList = [];//待收货
+                            angular.forEach(orders, function(v, k){
+                                if(v.status == "DELIVERING" || v.status == "DELIVERED_CONFIRM_PENDING"){
+                                    $scope.deliveredList.push(v);
+                                }
+                            });
+                        }else{
+                            $.toast('读取订单信息失败');
+                        }
                     },function (error){
                         console.log(error);
                     })
@@ -238,19 +255,23 @@ angular.module('my.order.controller', ['my.order.service'])
             $scope.finishIsNull = true;
             $scope.finishShow = true;
 
-            AllOrders();
-            function AllOrders() {
+            finishOrders();
+            function finishOrders() {
                 OrderFty.ordersService()
                     .then(function (json) {
-                        $scope.orders = json.data;
-                        //alert(angular.toJson($scope.orders));
-                        $scope.finishList = [];//已完成
-                        angular.forEach($scope.orders, function(v, k){
-                            //已完成
-                            if(v.status == "CLOSED_CONFIRMED" || v.status == "CLOSED_REFUNDED"){
-                                $scope.finishList.push(v);
-                            }
-                        });
+                        if(json.status_code == 0) {
+                            var orders = json.data;
+                            //alert(angular.toJson($scope.orders));
+                            $scope.finishList = [];//已完成
+                            angular.forEach(orders, function(v, k){
+                                //已完成
+                                if(v.status == "CLOSED_CONFIRMED" || v.status == "CLOSED_REFUNDED"){
+                                    $scope.finishList.push(v);
+                                }
+                            });
+                        }else{
+                            $.toast('读取订单信息失败');
+                        }
                     },function (error){
                         console.log(error);
                     })
