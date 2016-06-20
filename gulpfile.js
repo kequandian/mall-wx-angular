@@ -8,7 +8,7 @@ var imagemin = require('gulp-imagemin');
 var concat = require('gulp-concat');
 var concatCss = require('gulp-concat-css');
 var removeHtmlComments = require('gulp-remove-html-comments');
-var htmlmin = require('gulp-html-minifier');
+//var htmlmin = require('gulp-html-minifier');
 var rename = require('gulp-rename');
 var replace = require('gulp-replace');
 var merge = require('merge-stream');
@@ -98,11 +98,13 @@ gulp.task('dist', function () {
         .pipe(replace(/(\<script src=\"js\/app\.js"\>\<\/script\>)/g, '<!--$1-->'))
         .pipe(replace(/(\<script src=\"js\/modelValues\.js"\>\<\/script\>)/g, '<!--$1-->'))
         .pipe(replace(/(\<script src=\"js\/weui\.js"\>\<\/script\>)/g, '<!--$1-->'))
+        .pipe(replace(/(\<script src=\"js\/global\.js"\>\<\/script\>)/g, '<!--$1-->'))
+        /*all pages*/
         .pipe(replace(/(\<script src=\"pages\/\w+\/.+\.js"\>\<\/script\>)/g, '<!--$1-->'))
         .pipe(replace(/\<\!--(\<script src=\"js\/bundle.js\"\/\>)--\>/, '$1'))
 
         .pipe(removeHtmlComments())
-        .pipe(htmlmin({collapseWhitespace: true}))
+        //.pipe(htmlmin({collapseWhitespace: true}))
         .pipe(gulp.dest('dist'));
 
     var home = gulp.src('app/pages/**/*.html')
