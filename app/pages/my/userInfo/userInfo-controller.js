@@ -9,7 +9,7 @@ angular.module('userInfo.controller', ['userInfo.service'])
         //获取个人信息
         getUserInfo();
         //时间日期插件
-        //myInput();
+        myInput();
 
         $scope.sexDefault = [
             {key: 0, value: "保密"},
@@ -18,12 +18,12 @@ angular.module('userInfo.controller', ['userInfo.service'])
         ];
 
 
-        //function myInput() {
-        //    $("#data_time").calendar();
-        //}
+        function myInput() {
+            $("#data_time").calendar();
+        }
 
 
-        $scope.date = null;
+        /*$scope.date = null;
         $scope.arrows = {
             year: {
                 left: 'lib/angular-datapicker/images/white_arrow_left.svg',
@@ -51,7 +51,7 @@ angular.module('userInfo.controller', ['userInfo.service'])
             friday: '周五',
             saturday: '周六',
             sunday: '周天'
-        };
+        };*/
 
         //获取个人信息
         function getUserInfo() {

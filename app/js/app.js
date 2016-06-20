@@ -4,7 +4,7 @@
 var myapp = angular.module('myapp', [
     'global',
     'bsSwitch',
-    'materialDatePicker',
+    //'materialDatePicker',
     'modelValues',
     'commonJs',
     'ui.router',
