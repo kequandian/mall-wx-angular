@@ -8,7 +8,10 @@ angular.module('modelValues', [])
         pay_list:null,
         payed_list:null,
         finis_list:null
+    })
 
+    .value("queryData", {
+        queryInfo: "info"
     })
 
 ;
