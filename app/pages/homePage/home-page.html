@@ -153,14 +153,16 @@
         </div>
     </div>
 
-    <!-- ad-2 -->
-    <div class="panic-buying-ad">
-        <div class="ad-1">
-            <img src="img/home/snaps-img-2.jpg">
+    <!-- ad-2  ignore showing-->
+    <div style="display:none">
+        <div class="panic-buying-ad">
+            <div class="ad-1">
+                <img src="img/home/snaps-img-2.jpg">
+            </div>
+            <!--<div class="ad-2">
+            </div>-->
+            <!--<div class="ad-3"></div>-->
         </div>
-        <!--<div class="ad-2">
-        </div>-->
-        <!--<div class="ad-3"></div>-->
     </div>
 
 
@@ -170,10 +172,14 @@
             <img src="img/home/area-img-1.png">
         </div>
 
+        <div class="area-product-title">
+            <label>/ 推荐商品 /</label>
+        </div>
+
         <div class="area-product">
             <div id="homeProductGrids">
                 <div class="weui_grids">
-                    <a ui-sref="details({productId:item.id})" class="weui_grid home_grid_2"
+                    <a ui-sref="details({productId:item.id})" class="weui_grid product_item"
                        ng-repeat="item in rec_product">
                         <!--product cover-->
                         <div class="pro-item-margin">
