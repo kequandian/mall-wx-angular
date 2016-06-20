@@ -78,8 +78,6 @@ angular.module('userInfo.controller', ['userInfo.service'])
             var details = $scope.userInfo.details;
             console.log(name, sex, birthday, details);
 
-            // if(true){return}
-
             UserInfoFty.postInfoService(name, sex, birthday, details)
                 .then(function (json) {
                     if (json.status_code == 0) {

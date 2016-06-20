@@ -24,7 +24,7 @@ var myapp = angular.module('myapp', [
     'marketing.route',
     'shopSettings.route',
     'category.route',
-    'userInfo.route',
+    //'userInfo.route',
     'integral.route',
     'feedback.route',
     //'commission.route',

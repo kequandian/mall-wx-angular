@@ -19,12 +19,14 @@ angular.module('userInfo.service', [])
             },
 
             // 提交个人信息数据
-            postInfoService: function (name,phone) {
+            postInfoService: function (name,sex,birthday,details) {
                 var deferred = $q.defer();
                 var url = GlobalVariable.SERVER_PATH + "/profile";
                 $http.post(url,{
                     "name":name,
-                    "phone": phone
+                    "sex": sex,
+                    "birthday":birthday,
+                    "details":details
                 },{
                     headers:{
                         'Authorization': GlobalVariable.ACCESS_TOKEN
