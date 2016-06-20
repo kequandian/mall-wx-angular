@@ -107,6 +107,8 @@ body, html {
     /*box-shadow:0 1px 1px #ebebeb;*/
     margin-top:5px;
     margin-bottom: 8px;
+    margin-left:15px;
+    margin-right:15px;
 }
 /*#home #nav span{
   display:block;
@@ -153,7 +155,7 @@ body, html {
 
 
 #content .panic-buying-ad {
-    /*margin:0px 0px 0px 2px;*/
+    margin:0px 3px 0px 3px;
 }
 #content .panic-buying-ad .ad-1{
     width: 100%;
@@ -245,8 +247,8 @@ body, html {
 
 #content .area-product-title{
     width: 100%;
-    height: 30px;
-    margin-top: 8px;
+    height: 26px;
+    margin-top: 5px;
     text-align: center;
     font-size: 14px;
     color: #999999;
