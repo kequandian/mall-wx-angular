@@ -20,8 +20,8 @@ body, html {
 
 .home-logo{
     /*width: 80px;*/
-    width: auto;
-    height: 36px;
+    width: 30%;
+    height: 30px;
     padding-left: 5px;
     /*background-color: #EFEFF4;*/
     background-color: white;
@@ -29,13 +29,13 @@ body, html {
 }
 
 .home-logo img{
-    width: 80px;
-    height: 30px;
-    margin-top:7px;
+    width: auto;
+    height: 26px;
+    margin-top:8px;
 }
 
 .home-title-center{
-    left: 88px;
+    left: 90px;
     right: 52px;
     height: 44px;
     position: absolute;
@@ -152,7 +152,7 @@ body, html {
 
 
 #content .panic-buying-ad {
-    /*margin:0 3px 3px 3px;*/
+    /*margin:0px 0px 0px 2px;*/
 }
 #content .panic-buying-ad .ad-1{
     width: 100%;
@@ -229,6 +229,7 @@ body, html {
 
 #content .s-size-area{
     width:100%;
+    margin-top: 2px;
     margin-bottom: 5px;
     background-color: #e3e3e3;
 }
@@ -244,14 +245,14 @@ body, html {
 }
 
 #content .area-product{
-    margin:3px 3px 3px 0px;
+    margin:1px 1px 1px 1px;
     height: auto;
 }
 
 #content .home_grid_2{
     width: 49%;
     /*border: 1px solid #cccccc;*/
-    margin-left: 3px;
+    margin-left: 2px;
     margin-bottom: 2px;
     background-color: white;
 }
@@ -420,8 +421,8 @@ body, html {
     float: left;
 }
 .c-right{
-    float: right;
-    font-weight: normal;
+    float: left;
+    font-weight: lighter;
     font-size: 13px;
 }
 .clear{
