@@ -45,16 +45,24 @@
                     <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_warn item-btn-right" style="margin-right: 5px;">
                         提醒发货
                     </a>
+                    <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right" style="width: 60px;"
+                       ng-click="goToSalesReturn(items.order_number,items.total_price,1)">
+                        退款
+                    </a>
                 </div>
 
                 <!-- 待收货 -->
-                <div ng-if="items.status == 'DELIVERING' || items.status == 'DELIVERED_CONFIRM_PENDING'">
-                    <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right"
-                            ui-sref="express({orderNumber:items.order_number})">
-                        物流详情
-                    </a>
+                <div ng-if="items.status == 'DELIVERING' || items.status == 'DELIVERED_CONFIRM_PENDING'" style="margin-right: 5px;">
                     <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_warn item-btn-right">
                         确认
+                    </a>
+                    <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right"
+                       ui-sref="express({orderNumber:items.order_number})">
+                        物流详情
+                    </a>
+                    <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right" style="width: 60px;"
+                       ng-click="goToSalesReturn(items.order_number,items.total_price,2)">
+                        退货
                     </a>
                 </div>
 

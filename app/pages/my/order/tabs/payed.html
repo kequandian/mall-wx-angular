@@ -32,12 +32,12 @@
                    ui-sref="orderDetails({orderNumber:items.order_number})">
                     详情
                 </a>
-                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right"
-                   ui-sref="express({orderNumber:items.order_number})">
-                    物流详情
-                </a>
                 <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_warn item-btn-right">
                     提醒发货
+                </a>
+                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right" style="width: 60px;"
+                   ng-click="goToSalesReturn(items.order_number,items.total_price,1)">
+                    退款
                 </a>
             </div>
         </div>

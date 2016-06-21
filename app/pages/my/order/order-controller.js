@@ -97,6 +97,24 @@ angular.module('my.order.controller', ['my.order.service'])
             $scope.order_list_status = function(orderStatus){
                 return CommonJs.OrderStatus(orderStatus);
             };
+
+            //进入退款退货
+            $scope.goToSalesReturn = function(o_number, total_price, s_r_status){
+                if(s_r_status == 1) {
+                    $.confirm('', '确认要退款吗？', function (){
+                        $state.go('salesReturn', {orderNumber: o_number, totalPrice: total_price, SalesReturnStatus:s_r_status});
+                    }, function() {
+                        //取消操作
+                    });
+                }else if(s_r_status == 2){
+                    $.confirm('', '确认要退货？', function (){
+                        $state.go('salesReturn', {orderNumber: o_number, totalPrice: total_price, SalesReturnStatus:s_r_status});
+                    }, function() {
+                        //取消操作
+                    });
+                }
+            }
+
         }])
 
     /* 待付款 */
@@ -203,6 +221,17 @@ angular.module('my.order.controller', ['my.order.service'])
                 return CommonJs.OrderStatus(orderStatus);
             };
 
+            //进入退款退货
+            $scope.goToSalesReturn = function(o_number, total_price, s_r_status){
+                if(s_r_status == 1) {
+                    $.confirm('', '确认要退款吗？', function (){
+                        $state.go('salesReturn', {orderNumber: o_number, totalPrice: total_price, SalesReturnStatus:s_r_status});
+                    }, function() {
+                        //取消操作
+                    });
+                }
+            }
+
         }])
 
     /* 待收货 */
@@ -252,6 +281,18 @@ angular.module('my.order.controller', ['my.order.service'])
             $scope.order_list_status = function(orderStatus){
                 return CommonJs.OrderStatus(orderStatus);
             };
+
+
+            //进入退款退货
+            $scope.goToSalesReturn = function(o_number, total_price, s_r_status){
+                if(s_r_status == 2){
+                    $.confirm('', '确认要退货吗？', function (){
+                        $state.go('salesReturn', {orderNumber: o_number, totalPrice: total_price, SalesReturnStatus:s_r_status});
+                    }, function() {
+                        //取消操作
+                    });
+                }
+            }
 
         }])
 

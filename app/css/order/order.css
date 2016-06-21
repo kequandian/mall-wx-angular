@@ -163,6 +163,7 @@
 #orders .item-btn-right{
     width: 80px;
     align-content: center;
+    float: right;
     /*position: absolute;*/
     /*right: 7px;*/
 }

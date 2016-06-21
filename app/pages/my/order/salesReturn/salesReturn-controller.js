@@ -8,7 +8,7 @@
 
 angular.module("salesReturn.controller", ["salesReturn.service"])
 
-    .controller("ReturnController", ["$scope", "$state", "SalesReturnInfo", function($scope, $state, SalesReturnInfo) {
+    .controller("ReturnController", ["$scope", "$state", '$stateParams', "SalesReturnInfo", function($scope, $state,$stateParams, SalesReturnInfo) {
         
         document.title = "申请退货";
 
@@ -30,15 +30,33 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
             {key:"质量问题",                value:"质量问题"}
         ];
 
+        //退货金额
+        $scope.total_price = $stateParams.totalPrice;
+        var s_r_status = $stateParams.SalesReturnStatus;
+        if(s_r_status == 1){
+            $scope.returnType.key = 'REFUND';
+        }else if(s_r_status == 2){
+            $scope.returnType.key = 'RETURN';
+        }
         //提交退货信息
         $scope.postSalesReturn = function () {
-            var order_number = "9659749838447727000002";
-            var service_type = $scope.salesReturn.service_type;
+
+            var order_number = $stateParams.orderNumber;
+            var service_type = $scope.returnType.key;
             var reason       = $scope.salesReturn.reason;
             var content       = $scope.salesReturn.content;
+
             // console.log(service_type);
             // console.log(reason);
 
+            if(order_number == null){
+                $.toast("订单号出错", "cancel");
+                return;
+            }
+            if($scope.total_price == null){
+                $.toast("退货金额不正确", "cancel");
+                return;
+            }
             if (service_type == "请选择服务") {
                 $.toast("请选择服务", "cancel");
                 return;
@@ -50,7 +68,8 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
             SalesReturnInfo.SalesReturnService(order_number, service_type, reason, content)
                 .then(function(json) {
                     if (json.status_code == 0) {
-                        $scope.salesReturn = json.data;
+                        //$scope.salesReturn = json.data;
+                        $state.go('order.all')
                     }
                 }, function(error) {
                     $.toast("提交信息失败", "cancel");

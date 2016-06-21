@@ -12,6 +12,11 @@ angular.module("salesReturn.route", ["salesReturn.controller"])
         $stateProvider.state("salesReturn", {
             url: "/salesReturn",
             templateUrl:"pages/my/order/salesReturn/salesReturn.html",
-            controller:"ReturnController"
+            controller:"ReturnController",
+            params:{
+                'orderNumber':null,
+                'totalPrice':null,
+                'SalesReturnStatus':0
+            }
         })    
     }]);

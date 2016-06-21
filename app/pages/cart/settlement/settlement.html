@@ -34,8 +34,6 @@
                                                 <img src="img/cart/address.png" class="address-img">
                                                 收货地址：{{currentContact.province}}{{currentContact.city}}{{currentContact.district}}
                                                 {{currentContact.street}}{{currentContact.street_number}} {{currentContact.detail}}
-                                                邮编：{{currentContact.zip}}
-
                                                 <input type="hidden" ng-model="order.contact=currentContact">
                                                 <!--<input type="hidden" ng-model="order.contact" ng-init="order.contact=currentContact">-->
                                                 <input type="hidden" ng-model="order.remark=null">
@@ -73,7 +71,6 @@
                                             <p class="weui_media_desc">
                                                 {{contact.province}}{{contact.city}}{{contact.district}}
                                                 {{contact.street}}{{contact.street_number}} {{contact.detail}}
-                                                邮编：{{contact.zip}}
                                             </p>
                                         </div>
                                         <ul class="weui_media_info">
@@ -138,16 +135,14 @@
                                             <input id="city-picker" type="text" placeholder="输入省市区" class="weui_input settlement-font" ng-model="pcd">
                                         </div>
                                     </div>
-
-                                    <div class="weui_cell settlement-font">
-                                        <div class="weui_cell_hd">
-                                            <label class="weui_label">邮编</label>
-                                        </div>
-                                        <div class="weui_cell_bd weui_cell_primary">
-                                            <input class="weui_input" type="tel" placeholder="邮编" ng-model="contact.zip">
-                                        </div>
-                                    </div>
-
+                                    <!--<div class="weui_cell settlement-font">-->
+                                        <!--<div class="weui_cell_hd">-->
+                                            <!--<label class="weui_label">邮编</label>-->
+                                        <!--</div>-->
+                                        <!--<div class="weui_cell_bd weui_cell_primary">-->
+                                            <!--<input class="weui_input" type="tel" placeholder="邮编" ng-model="contact.zip">-->
+                                        <!--</div>-->
+                                    <!--</div>-->
                                     <div class="weui_cell weui_cells_form">
                                         <div class="weui_cell">
                                             <div class="weui_cell_bd weui_cell_primary">
