@@ -1,4 +1,14 @@
 angular.module('my.order.controller', ['my.order.service'])
+    .directive( 'whenActive', function () {
+        return {
+            scope: {},
+            link: function ( scope, element, attrs ) {
+                scope.$on( '$stateChangeSuccess', function () {
+                    element.addClass( 'weui_bar_item_on' );
+                });
+            }
+        };
+    })
     .controller('OrderController', ['$scope','$state','$rootScope', 'OrderFty','CommonJs',
         function($scope,$state,$rootScope, OrderFty,CommonJs){
 
