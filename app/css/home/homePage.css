@@ -328,7 +328,7 @@ body, html {
 
 
 #content #homeProductGrids .weui_grid {
-    padding: 2px 2px;
+    padding: 0;
 }
 
 #content #homeProductGrids a:active{
