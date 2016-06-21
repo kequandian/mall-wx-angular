@@ -321,7 +321,6 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
                     $scope.contact.district = pcds[2];
                 }
 
-
                 $scope.contact.is_default = 1;
 
                 CartFty.addContact($scope.contact)
@@ -506,6 +505,12 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
                     };
 
                 }($);
+            }
+
+
+            //地址列表新增action
+            $scope.c_address_action = function(){
+                var c_a_action = document.getElementById('show_add_wrap');
             }
     }])
 
