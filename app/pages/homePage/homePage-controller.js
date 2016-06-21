@@ -38,17 +38,12 @@ angular.module('homePage.controller', ['homePage.service'])
              }).appendTo($body);
              }*/
 
-
             $scope.currentId = 1;
+
             //获取广告
             getAd();
             //获取推荐商品
             getRecommendProduct();
-            //滚动图片设置
-            detailSwiper();
-            //适应屏幕大小
-            ReImgSize();
-
 
             function getRecommendProduct() {
                 HomePageFty.recommendProductService()
@@ -74,29 +69,10 @@ angular.module('homePage.controller', ['homePage.service'])
                     })
             }
 
-            function detailSwiper() {
-                var homeHeaderSlider = new Swiper('#homeHeaderSlider', {
-                    slidesPerView: 1,
-                    paginationClickable: true,
-                    centeredSlides: true,
-                    autoplay: 2000,
-                    autoplayDisableOnInteraction: false,
-                    loop: true,
-                    // 如果需要分页器
-                    //pagination: '.swiper-pagination',
-                    // 改变自动更新
-                    observer: true,
-                    observeParents: true
-                });
-
-            }
-
-            //适应屏幕大小
+            /*//适应屏幕大小
             function ReImgSize() {
                 for (var j = 0; j < document.images.length; j++) {
                     document.images[j].width = (document.images[j].width > 420) ? "420" : document.images[j].width;
                 }
-            }
-
-
+            }*/
         }]);
