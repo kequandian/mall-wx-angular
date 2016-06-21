@@ -13,15 +13,15 @@
     <div class="express_status">
         <div class="head">
             <a href="">
-                <img src="img/my/express/phone.png" alt="">
-                <p class="goodsNum">1件商品</p>
+                <img ng-src="{{product_img}}" alt="">
+                <p class="goodsNum">{{product_count}}件商品</p>
             </a>
         </div>
         <div class="info">
             <h4>物流状态 <span>{{expressInfo.message|expressStatus}}</span></h4>
-            <p>承运公司:中通快递</p>
-            <p>运单编号:768423420003</p>
-            <p>官方电话: <span class="tel">95311</span> </p>
+            <p>承运公司: {{expressInfo.company}}</p>
+            <p>运单编号: {{expressInfo.nu}}</p>
+            <p>官方电话: <span class="tel">{{expressInfo.comcontact}}</span> </p>
         </div>
 
     </div>

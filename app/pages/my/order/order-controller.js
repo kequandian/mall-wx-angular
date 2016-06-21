@@ -113,6 +113,11 @@ angular.module('my.order.controller', ['my.order.service'])
                         //取消操作
                     });
                 }
+            };
+
+            //进入物流详情
+            $scope.goToExpress_all = function(number){
+                $state.go('express',{orderNumber:number,productImg: null, productCount:null});
             }
 
         }])
@@ -292,6 +297,15 @@ angular.module('my.order.controller', ['my.order.service'])
                         //取消操作
                     });
                 }
+            };
+
+            //进入物流详情
+            $scope.goToExpress_delivered = function(item){
+                var o_number = item.order_number;
+                var p_img = item.order_items[0].cover;
+                var p_count = item.order_items.length;
+
+                $state.go('express',{orderNumber:o_number,productImg: p_img, productCount:p_count});
             }
 
         }])

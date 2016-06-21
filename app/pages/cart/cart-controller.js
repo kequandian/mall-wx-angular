@@ -510,7 +510,7 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
 
             //地址列表新增action
             $scope.c_address_action = function(){
-                var c_a_action = document.getElementById('show_add_wrap');
+                $scope.show_address_status = 'add';
             }
     }])
 
