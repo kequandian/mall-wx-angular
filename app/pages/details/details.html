@@ -34,7 +34,7 @@
                 {{details.name}}
             </div>
             <div class="product-price">
-                <span>￥{{details.price}}</span>
+                <span>{{details.price|currency:"￥"}}</span>
 
                 <div class="product-price-market"><span>市场价：</span><s>{{details.suggested_price | currency:'￥'}}</s>
                 </div>
