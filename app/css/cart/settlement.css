@@ -224,3 +224,8 @@
     width: 4em;
 }
 
+#settlement #c_address_action{
+    margin-left: 30px;
+    color: green;
+}
+
