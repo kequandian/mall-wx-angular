@@ -3,7 +3,7 @@
 * */
 angular.module('distributionInfo.controller', ['userInfo.service'])
 
-    .controller('DistributionInfoController', ['$scope', 'UserInfoFty', function($scope, UserInfoFty){
+    .controller('DistributionInfoController', ['$scope','$state','$timeout','UserInfoFty', function($scope,$state,$timeout,UserInfoFty){
 
         //title
         document.title = "我的信息";
@@ -49,8 +49,12 @@ angular.module('distributionInfo.controller', ['userInfo.service'])
             UserInfoFty.postInfoService(name, phone)
                 .then(function (json) {
                     if (json.status_code == 0) {
-                        $state.go('home.sellerPage',{}, {reload: true});
-                        $.toast('修改成功')
+                        $.toast.prototype.defaults.duration = 1500;
+                        $.toast('修改成功');
+
+                        $timeout(function(){
+                            $state.go('home.sellerPage');
+                        }, 2000);
                     }
                 }, function (error) {
                     $.toast('提交信息失败', 'cancel');
