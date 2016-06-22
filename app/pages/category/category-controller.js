@@ -12,7 +12,10 @@ angular.module('category.controller', ['category.service'])
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $scope.categoryItem = json.data;
+                            //console.log('scope.categoryItem?'+angular.toJson($scope.categoryItem));
+
                             $scope.getCategoryDetailData(json.data[0].id);
+
                         } else {
                             console.log('获取商品分类失败');
                         }
@@ -28,6 +31,7 @@ angular.module('category.controller', ['category.service'])
                 //    CategoryPage.goods_list_go_back_number = 0;
                 //}else {
                 $scope.cateId = typeNumber;
+                //console.log("cateid?"+$scope.cateId);
                 //}
             };
 

@@ -41,7 +41,8 @@ angular.module('homePage.controller', ['homePage.service'])
             $scope.currentId = 1;
 
             //获取广告
-            getAd();
+            getAdHome();
+            getAdBanner();
             //获取推荐商品
             getRecommendProduct();
 
@@ -57,15 +58,29 @@ angular.module('homePage.controller', ['homePage.service'])
                     })
             }
 
-            function getAd() {
+            function getAdHome() {
                 HomePageFty.getAdService()
                     .then(function (json) {
                         if (json.status_code == 0) {
-                            $scope.ad_list = json.data[0].ads;
+                            $scope.ad_list = json.data;
                             //alert(angular.toJson($scope.ad_list));/
                         }
                     }, function (error) {
                         $.toast('获取广告信息失败', 'cancel');
+                    })
+            }
+
+            function getAdBanner() {
+                HomePageFty.getAdBanner()
+                    .then(function (json) {
+                        if (json.status_code == 0) {
+                            $scope.ad_banner = json.data;
+                            //console.log("ad?"+angular.toJson($scope.ad_banner ));
+                            $scope.ad_banner_1 = $scope.ad_banner[0].image;
+                            $scope.ad_banner_2 = $scope.ad_banner[1].image;
+                        }
+                    }, function (error) {
+                        $.toast('获取广告列表失败', 'cancel');
                     })
             }
 

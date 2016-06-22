@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "cover": null,
+    "sub_categories": [
+      {
+        "id": 2,
+        "cover": "http://112.74.26.228:8000/p/fb61f7180cb48a0d1bcff2a4edab9780.png",
+        "sub_categories": [],
+        "description": null,
+        "name": "瓶装2.5L",
+        "parent_id": 1
+      },
+      {
+        "id": 5,
+        "cover": "http://112.74.26.228:8000/p/aa92d03568a42607011ca55815d48368.png",
+        "sub_categories": [],
+        "description": null,
+        "name": "旅行装(袋)",
+        "parent_id": 1
+      }
+    ],
+    "description": null,
+    "name": "超效洁净",
+    "parent_id": null
+  },
+  {
+    "id": 3,
+    "cover": null,
+    "sub_categories": [],
+    "description": null,
+    "name": "亮白增艳",
+    "parent_id": null
+  },
+  {
+    "id": 4,
+    "cover": null,
+    "sub_categories": [],
+    "description": null,
+    "name": "活氧清洁剂",
+    "parent_id": null
+  },
+  {
+    "id": 6,
+    "cover": "http://112.74.26.228:8000/p/5cbd5811450fa2222878bd79a404ebaa.jpg",
+    "sub_categories": [
+      {
+        "id": 8,
+        "cover": "http://112.74.26.228:8000/p/a9a3552072dbafd066b9dc1b0482dadc.jpg",
+        "sub_categories": [],
+        "description": null,
+        "name": "洁净补充装",
+        "parent_id": 6
+      },
+      {
+        "id": 9,
+        "cover": "http://112.74.26.228:8000/p/3a8fec3fc3c9f54d2d8d052e57378cfe.jpg",
+        "sub_categories": [],
+        "description": null,
+        "name": "皂液补充装",
+        "parent_id": 6
+      }
+    ],
+    "description": null,
+    "name": "补充装",
+    "parent_id": null
+  },
+  {
+    "id": 7,
+    "cover": "http://112.74.26.228:8000/p/5381c0c01f852a5bbac59c13cbc4c45d.jpg",
+    "sub_categories": [],
+    "description": null,
+    "name": "柔顺剂",
+    "parent_id": null
+  },
+  {
+    "id": 10,
+    "cover": null,
+    "sub_categories": [
+      {
+        "id": 11,
+        "cover": null,
+        "sub_categories": [
+          {
+            "id": 12,
+            "cover": null,
+            "sub_categories": [],
+            "description": null,
+            "name": "宝宝手洗",
+            "parent_id": 11
+          }
+        ],
+        "description": null,
+        "name": "皂液手洗",
+        "parent_id": 10
+      }
+    ],
+    "description": null,
+    "name": "手洗",
+    "parent_id": null
+  }
+]
