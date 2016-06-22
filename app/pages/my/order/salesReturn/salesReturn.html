@@ -24,7 +24,7 @@
             </div>
 
             <!--退货原因-->
-            <div class="weui_cell weui_cell_select bg reason">
+           <!-- <div class="weui_cell weui_cell_select bg reason">
                 <div class="weui_cell_hd">退货原因 :</div>
                 <div class="weui_cell_bd weui_cell_primary">
                     <select class="weui_select" ng-options="i.key as i.value for i in returnReason"
@@ -32,7 +32,7 @@
                             ng-init="salesReturn.reason='请选择退货原因'">
                     </select>
                 </div>
-            </div>
+            </div>-->
 
             <!--退货金额-->
             <div class="weui_cell bg mon">
@@ -44,7 +44,7 @@
 
             <!--退货说明-->
             <div class="weui_cells_title bg pad">退货说明</div>
-            <div class="weui_cell">
+            <div class="weui_cell ">
                 <textarea class="weui_textarea" placeholder="请输入退货说明" rows="3" ng-model="salesReturn.content"></textarea>
             </div>
 

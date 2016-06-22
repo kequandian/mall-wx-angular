@@ -31,7 +31,7 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
         ];*/
 
         /// get return reason
-        getReturnCauses();
+        //getReturnCauses();
 
         //退货金额
         $scope.total_price = $stateParams.totalPrice;
