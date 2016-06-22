@@ -28,13 +28,14 @@
     right:18%;
     background-color:#f15353;
     min-width: 20px;
+    min-height: 20px;
+    line-height:20px;
     /*padding: 1px 1px;*/
     text-align:center;
     color:#fff;
-    /*line-height:20px;*/
     border-radius:10px; /*Ô²½Ç*/
     font-weight:500;
-    font-size: small;
+    font-size: xx-small;
     font-family: 'Arial';
 }
 
