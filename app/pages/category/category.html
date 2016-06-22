@@ -51,7 +51,7 @@
 
                             <!--Product list-->
                             <a class="weui_grids" ng-repeat="itemList in itemCateList.sub_categories">
-                                <div class="item-box" ng-click="goToGoodsList(itemList.id)">
+                                <div class="weui_grid item-box" ng-click="goToGoodsList(itemList.id)">
                                     <div>
                                         <span>{{itemList.name}}</span>
                                         <img square-img ng-src="{{itemList.cover | defaultCover}}">
