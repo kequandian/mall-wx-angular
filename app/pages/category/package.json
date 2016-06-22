@@ -4,19 +4,44 @@
     "cover": null,
     "sub_categories": [
       {
-        "id": 2,
-        "cover": "http://112.74.26.228:8000/p/fb61f7180cb48a0d1bcff2a4edab9780.png",
-        "sub_categories": [],
-        "description": null,
-        "name": "瓶装2.5L",
-        "parent_id": 1
-      },
-      {
         "id": 5,
         "cover": "http://112.74.26.228:8000/p/aa92d03568a42607011ca55815d48368.png",
         "sub_categories": [],
         "description": null,
         "name": "旅行装(袋)",
+        "parent_id": 1
+      },
+      {
+        "id": 13,
+        "cover": null,
+        "sub_categories": [
+          {
+            "id": 2,
+            "cover": "http://112.74.26.228:8000/p/fb61f7180cb48a0d1bcff2a4edab9780.png",
+            "sub_categories": [],
+            "description": null,
+            "name": "瓶装2.5L",
+            "parent_id": 13
+          },
+          {
+            "id": 14,
+            "cover": null,
+            "sub_categories": [],
+            "description": null,
+            "name": "瓶装5L",
+            "parent_id": 13
+          }
+        ],
+        "description": null,
+        "name": "瓶装",
+        "parent_id": 1
+      },
+      {
+        "id": 16,
+        "cover": null,
+        "sub_categories": [],
+        "description": null,
+        "name": "旅行装袋",
         "parent_id": 1
       }
     ],
@@ -79,7 +104,7 @@
     "sub_categories": [
       {
         "id": 11,
-        "cover": null,
+        "cover": "http://112.74.26.228:8000/p/50db25bc755ac5692e0c38cf52fcd198.png",
         "sub_categories": [
           {
             "id": 12,

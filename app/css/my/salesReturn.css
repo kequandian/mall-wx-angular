@@ -31,8 +31,8 @@
 }
 
 #salesReturn .pad {
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 10px;
+    padding-bottom: 5px;
 }
 
 #salesReturn .add {
@@ -80,6 +80,11 @@
 
 #salesReturn .sub {
     position: absolute;
-    bottom: -40px;
-    width: 100%;
+    bottom: 40px;
+    left: 40px;
+    right: 40px;
+}
+
+#salesReturn .weui_btn_primary{
+    background-color: #C20403;
 }

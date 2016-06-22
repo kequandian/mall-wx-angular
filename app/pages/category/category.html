@@ -34,26 +34,31 @@
     <div id="pro">
         <div class="pro-scroll">
             <div class="pro-warp">
-                <div ng-repeat="itemParent in categoryItem | filter:{id : cateId}">
+                <div ng-repeat="itemParent in categoryItem | cate:cateId">
 
+                    <!--Level 2-->
                     <div class="content" ng-repeat="itemCateList in itemParent.sub_categories">
 
                         <div class="content-title">
                             <span>{{itemCateList.name}}</span>
                         </div>
+
+                        <!--Level 3-->
                         <div class="content-body">
                             <!--<a class="content-body-list" ng-repeat="gItems in itemCateList.sub_categories" ng-click="goToGoodsList();">
                                 <span>{{gItems.name}}<i style="float: right">|</i></span>
                             </a>-->
-                            <a class="content-body-list">
 
-                                <div class="cate-right-item" ng-click="goToGoodsList(itemCateList.id)">
-                                    <span style="font-size: 14px;">{{itemCateList.name}}</span>
-                                    <img square-img ng-src="{{itemCateList.cover}}">
+                            <!--Product list-->
+                            <a class="weui_grids" ng-repeat="itemList in itemCateList.sub_categories">
+                                <div class="item-box" ng-click="goToGoodsList(itemList.id)">
+                                    <div>
+                                        <span>{{itemList.name}}</span>
+                                        <img square-img ng-src="{{itemList.cover | defaultCover}}">
+                                    </div>
                                 </div>
                             </a>
                         </div>
-
                     </div>
 
                 </div>
