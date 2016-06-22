@@ -21,7 +21,7 @@ body, html {
 .home-logo{
     /*width: 80px;*/
     width: 30%;
-    height: 30px;
+    height: 44px;
     padding-left: 5px;
     /*background-color: #EFEFF4;*/
     background-color: white;
@@ -77,9 +77,16 @@ body, html {
 
 
 #content{
+    background-color: #e3e3e3;
     overflow-x: hidden;
     overflow-y: scroll;
     height: 100%;
+    z-index: 1;
+}
+
+#content .content-head-area{
+    background-color: white;
+    width: 100%;
     z-index: 1;
 }
 

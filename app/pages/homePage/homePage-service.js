@@ -2,7 +2,6 @@ angular.module('homePage.service', [])
     .factory('HomePageFty', ['$http', '$q','GlobalVariable',
         function($http,$q,GlobalVariable) {
             return{
-                // 获取推荐商品数据
                 recommendProductService: function () {
                     var deferred = $q.defer();
                     var url = GlobalVariable.SERVER_PATH + "/product?pageNumber=1&pageSize=10";
@@ -15,7 +14,6 @@ angular.module('homePage.service', [])
                     return deferred.promise;
                 },
 
-                // 获取广告
                 getAdService: function () {
                     var deferred = $q.defer();
                     var url = GlobalVariable.SERVER_PATH + "/ad";
