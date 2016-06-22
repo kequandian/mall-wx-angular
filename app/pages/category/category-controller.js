@@ -1,4 +1,23 @@
 angular.module('category.controller', ['category.service'])
+    .filter('cate', function(){
+        return function(input, cateId){
+            var rows = [];
+            angular.forEach(input, function(item){
+               if(item.id == cateId){
+                   rows.push(item);
+               }
+            });
+            return rows;
+        }
+    })
+    .filter('defaultCover', function(){
+        return function(input){
+            if(input==null){
+                return 'img/category/category_cover.png'
+            }
+            return input;
+        }
+    })
     .controller('CategoryController', ['$scope', '$state', '$rootScope', 'CategoryFty',
         function ($scope, $state,$rootScope, CategoryFty) {
 
@@ -31,7 +50,6 @@ angular.module('category.controller', ['category.service'])
                 //    CategoryPage.goods_list_go_back_number = 0;
                 //}else {
                 $scope.cateId = typeNumber;
-                //console.log("cateid?"+$scope.cateId);
                 //}
             };
 
@@ -40,6 +58,15 @@ angular.module('category.controller', ['category.service'])
             $scope.categoryLeftClick = function (e) {
                 e.target.className = 'nav-current';
                 $(e.target).siblings().removeClass().addClass('nav-blur');
+
+                /// set previous item class
+                if($(e.target).prev()) {
+                    var pre = $(e.target).prev()[0];
+                    if(pre) {
+                        pre.className = 'nav-prev';
+                    }
+                    //console.log("target: " + angular.toJson(pre) + 'class-name?' + pre.className);
+                }
             };
 
             $scope.indexPos = 0;

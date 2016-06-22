@@ -30,7 +30,6 @@
                     <select class="weui_select" ng-options="i.key as i.value for i in returnReason"
                             ng-model="salesReturn.reason"
                             ng-init="salesReturn.reason='请选择退货原因'">
-
                     </select>
                 </div>
             </div>
@@ -41,7 +40,7 @@
                     <p>退货金额 : <span class="returnMon">{{total_price | currency:'￥'}}</span></p>
                 </div>
             </div>
-            <p class="explain">（最多29.90元，含发货邮费0.00元）</p>
+            <!--<p class="explain">（最多29.90元，含发货邮费0.00元）</p>-->
 
             <!--退货说明-->
             <div class="weui_cells_title bg pad">退货说明</div>
@@ -59,7 +58,7 @@
 
         <!--提交申请-->
         <div class="sub">
-            <input type="submit" class="weui_btn custom_weui_btn_primary" value="提交申请" ng-click="postSalesReturn()">
+            <input type="submit" class="weui_btn weui_btn_primary" value="提交申请" ng-click="postSalesReturn()">
         </div>
 
     </form>
