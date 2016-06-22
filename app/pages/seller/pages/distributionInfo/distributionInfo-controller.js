@@ -53,7 +53,7 @@ angular.module('distributionInfo.controller', ['userInfo.service'])
                             //alert(angular.toJson(json));
                             $.toast.prototype.defaults.duration = 1000;
                             $.toast('修改成功');
- 
+
                             if(DWStatus.d_w_status == 1){
                                 $timeout(function(){
                                     $state.go('home.sellerPage');

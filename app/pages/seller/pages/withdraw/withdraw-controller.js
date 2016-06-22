@@ -4,8 +4,8 @@
 
 angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
 
-    .controller('WithdrawController',['$scope','$state','$stateParams','withdrawFty','BalanceSession','DWStatus',
-        function ($scope, $state,$stateParams, withdrawFty, BalanceSession,DWStatus) {
+    .controller('WithdrawController',['$scope','$state','$timeout','$stateParams','withdrawFty','BalanceSession','DWStatus',
+        function ($scope, $state, $timeout, $stateParams, withdrawFty, BalanceSession,DWStatus) {
 
             document.title = "提现佣金";
 
@@ -51,8 +51,9 @@ angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
                     $.toast('需要设置手机号码');
                     $timeout(function(){
                         DWStatus.d_w_status = 2;
-                        $state.go('distributionInfo')
+                        $state.go('distributionInfo');
                     }, 1000);
+                    return;
                 }
 
                 var withdraw_account_id  = $scope.withdraw.id;
