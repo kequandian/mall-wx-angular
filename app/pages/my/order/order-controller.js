@@ -113,6 +113,16 @@ angular.module('my.order.controller', ['my.order.service'])
                         //取消操作
                     });
                 }
+            };
+
+            //进入物流详情
+            $scope.goToExpress_all = function(number){
+                $state.go('express',{orderNumber:number,productImg: null, productCount:null});
+            };
+
+            //立即付款
+            $scope.weixin_pay = function(order_number){
+                window.location.href='/app/payment/wpay/'+ order_number;
             }
 
         }])
@@ -292,6 +302,11 @@ angular.module('my.order.controller', ['my.order.service'])
                         //取消操作
                     });
                 }
+            };
+
+            //进入物流详情
+            $scope.goToExpress_delivered = function(o_number){
+                $state.go('express',{orderNumber:o_number,productImg: null, productCount:null});
             }
 
         }])

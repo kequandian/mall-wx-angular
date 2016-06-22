@@ -11,6 +11,11 @@ angular.module("express.route", ["express.controller"])
         $stateProvider.state("express", {
             url: "/express/:orderNumber",
             templateUrl: "pages/my/order/express/express.html",
-            controller: "ExpressController"
+            controller: "ExpressController",
+            params:{
+                'orderNumber':null,
+                'productImg':null,
+                'productCount':null
+            }
         })
     }]);

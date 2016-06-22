@@ -6,7 +6,7 @@
     <div class="refund-item" ng-repeat="items in refunds" ng-hide="refund_all_show">
         <div class="item-refund-order-number">
             订单号：{{items.order_number}}
-            <span>待发货</span>
+            <span>{{items.status|refundStatus}}</span>
         </div>
         <div class="item-refund-order-info">
             <div class="o-r-i-left">
@@ -17,13 +17,14 @@
                  {{items.description |  cutText:true:35:'...'}}
                 </span>
             </div>
-            <div class="o-r-i-right">
-                <span class="o-r-i-right-span">￥{{items.total_price}}</span>
+           <!-- <div class="o-r-i-right">
+                <span class="o-r-i-right-span">交易金额:￥{{items.total_price}}</span>
                 <p class="o-r-i-right-i">x1</p>
-            </div>
+            </div>-->
         </div>
         <div class="item-refund-detail-btn" style="border-bottom: 1px solid #cccccc">
-            <div class="refund-order-item-price">总价：￥{{items.total_price}}</div>
+            <div class="total">退款金额:￥{{items.total_price}}</div>
+            <div class=" total">交易金额:￥{{items.total_price}}</div>
         </div>
 
     </div>

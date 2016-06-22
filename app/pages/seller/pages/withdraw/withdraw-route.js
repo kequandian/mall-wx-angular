@@ -7,6 +7,9 @@ angular.module('withdraw.route', ['withdraw.controller'])
         $stateProvider.state('withdraw', {
             url: '/withdraw',
             templateUrl: 'pages/seller/pages/withdraw/withdraw.html',
-            controller: 'WithdrawController'
+            controller: 'WithdrawController',
+            params:{
+                'accountPhone':null
+            }
         })
     }]);

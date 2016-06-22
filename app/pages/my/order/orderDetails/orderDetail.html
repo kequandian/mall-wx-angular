@@ -10,7 +10,7 @@
             </div>
         </div>
 
-        <div class="logistics-info" ng-if="detailsInfo.status == 'CLOSED_PAY_TIMEOUT' && detailsInfo.status == 'CREATED_PAY_PENDING'">
+        <div class="logistics-info" ng-if="detailsInfo.status != 'CLOSED_PAY_TIMEOUT' && detailsInfo.status != 'CREATED_PAY_PENDING'">
             <div class="l-i-left">
                 <img src="img/my/orderDetails/logistics-info-cart.png">
             </div>
@@ -18,14 +18,12 @@
                 暂无
             </div>
 
-            <div ng-if="j_status_code == 0">
-                <div class="l-i-center" ng-if="ex_info.length > 0"
-                     ui-sref="express({orderNumber:detailsInfo.order_number})">
+            <div ng-if="j_status_code == 0" ng-click="goToExpress(detailsInfo)">
+                <div class="l-i-center" ng-if="ex_info.length > 0">
                     <div>{{ex_context}}</div>
                     <p>{{ex_time}}</p>
                 </div>
-                <div class="l-i-right" ng-if="ex_info.length > 0"
-                     ui-sref="express({orderNumber:detailsInfo.order_number})">
+                <div class="l-i-right" ng-if="ex_info.length > 0">
                     <img src="img/my/orderDetails/logistics-info-arrow.png">
                 </div>
             </div>
