@@ -171,6 +171,10 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
                             }
                         });
 
+                        if($scope.currentContact == null){
+                            $scope.currentContact = null;
+                        }
+
                         if($scope.contacts.length > 0){
                             $scope.show_address_status = 'list'
                         }else{
@@ -207,6 +211,8 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
                     click_index.click();
                     return;
                 }
+
+                //alert(angular.toJson($scope.order));
 
                 CartFty.addOrder($scope.order).then(
                     function (result) {
@@ -506,7 +512,6 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
 
                 }($);
             }
-
 
             //地址列表新增action
             $scope.c_address_action = function(){

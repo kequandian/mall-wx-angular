@@ -1,4 +1,4 @@
-#refund{
+﻿#refund{
     background-color: #F8F8F8;
 }
 
@@ -63,7 +63,7 @@
     height: 71px;
     text-align: left;
     line-height: 23px;
-    margin-top: 5px;
+    margin-top: 10px;
     left: 75px;
     right: 85px;
     position: absolute;
@@ -102,10 +102,16 @@
     background-color: white;
 }
 
-#refund .refund-order-item-price{
+/*#refund .refund-order-item-price{
     height: 36px;
     line-height: 36px;
     padding-left: 5px;
     right: 10px;
     position: absolute;
+}*/
+
+#refund .total {
+    float: right;
+    padding-right:20px;
+    font-size: 14px;
 }
