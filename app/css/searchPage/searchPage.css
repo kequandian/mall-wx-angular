@@ -1,0 +1,11 @@
+#searchPage{
+
+}
+
+#searchPage .home-title-center{
+    left: 0px;
+    right: 0px;
+    height: 44px;
+    position: absolute;
+    background-color: #C20403;
+}

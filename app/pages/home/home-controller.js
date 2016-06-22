@@ -39,7 +39,7 @@ angular.module('home.controller', [])
             'srefName':'.cart',
             'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-cart',
             'c_count': 'cart_count',
-            'c_number': "12"
+            'c_number': ""
         },{
             'id':'5',
             'name':'个人中心',

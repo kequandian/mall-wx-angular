@@ -35,7 +35,8 @@ var myapp = angular.module('myapp', [
     'refund.route',
     'withdraw.route',
     "express.route",
-    "salesReturn.route"
+    "salesReturn.route",
+    'searchPage.route'
 ]);
 
 myapp.filter('NotNull', function(){
