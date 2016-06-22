@@ -22,8 +22,6 @@ angular.module("express.controller", ["express.service","orderDetails.service"])
         function ($scope, $state, $stateParams, ExpressInfo,OrderDetailsFty) {
             document.title = "物流详情";
 
-            getExpressInfo();
-
             var o_number = $stateParams.orderNumber;
             var p_img = $stateParams.productImg;
             var p_count = $stateParams.productCount;
@@ -31,12 +29,14 @@ angular.module("express.controller", ["express.service","orderDetails.service"])
             if(p_img != null && p_count != null){
                 $scope.product_img = p_img;
                 $scope.product_count = p_count;
+                getExpressInfo(o_number);
             }else{
                 getOrderInfo(o_number);
+                getExpressInfo(o_number);
             }
 
             //获取物流信息
-            function getExpressInfo() {
+            function getExpressInfo(o_number) {
                 ExpressInfo.ExpressService(o_number)
                     .then(function (json) {
                         if (json.status_code == 0) {
@@ -64,7 +64,7 @@ angular.module("express.controller", ["express.service","orderDetails.service"])
                                 t_price += (v.final_price * v.quantity);
                             });
                             $scope.product_count = count;
-                            $scope.product_count = $scope.detailsInfo.order_items[0].cover
+                            $scope.product_img = $scope.detailsInfo.order_items[0].cover
 
                         }else{
                         }

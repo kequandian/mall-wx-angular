@@ -14,4 +14,8 @@ angular.module('modelValues', [])
         queryInfo: "info"
     })
 
+    .value("DWStatus", {
+        d_w_status: null
+    })
+
 ;
