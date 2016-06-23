@@ -63,7 +63,7 @@ angular.module('homePage.controller', ['homePage.service'])
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $scope.ad_list = json.data;
-                            //alert(angular.toJson($scope.ad_list));/
+                            //console.log(angular.toJson($scope.ad_list));
                         }
                     }, function (error) {
                         $.toast('获取广告信息失败', 'cancel');
