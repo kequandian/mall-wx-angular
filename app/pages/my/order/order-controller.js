@@ -1,4 +1,14 @@
 angular.module('my.order.controller', ['my.order.service'])
+    .directive( 'whenActive', function () {
+        return {
+            scope: {},
+            link: function ( scope, element, attrs ) {
+                scope.$on( '$stateChangeSuccess', function () {
+                    element.addClass( 'weui_bar_item_on' );
+                });
+            }
+        };
+    })
     .controller('OrderController', ['$scope','$state','$rootScope', 'OrderFty','CommonJs',
         function($scope,$state,$rootScope, OrderFty,CommonJs){
 
@@ -39,8 +49,8 @@ angular.module('my.order.controller', ['my.order.service'])
     }])
 
     /* 全部订单 */
-    .controller('allController', ['$scope','$state','$rootScope','$timeout','OrderFty',
-        function($scope,$state,$rootScope,$timeout,OrderFty){
+    .controller('allController', ['$scope','$state','$rootScope','$timeout','OrderFty','CommonJs',
+        function($scope,$state,$rootScope,$timeout,OrderFty,CommonJs){
 
             $rootScope.orderTabsIndex = 1;
 
@@ -53,16 +63,21 @@ angular.module('my.order.controller', ['my.order.service'])
             function AllOrders() {
                 OrderFty.ordersService()
                     .then(function (json) {
-                        $scope.orders = json.data;
-                        //alert(angular.toJson($scope.orders));
-                        $scope.order_list=[];
-                        angular.forEach($scope.orders, function(v,k){
-                            if(v.status != "CANCELED_RETURN_PENDING" && v.status != "CANCELED_REFUND_PENDING" && v.status != "CLOSED_REFUNDED"){
-                                $scope.order_list.push(v);
-                            }
-                        });
+                        if(json.status_code == 0) {
+                            $scope.orders = json.data;
+                            //alert(angular.toJson($scope.orders));
+                            $scope.order_list = [];
+                            angular.forEach($scope.orders, function (v, k) {
+                                if (v.status != "CANCELED_RETURN_PENDING" && v.status != "CANCELED_REFUND_PENDING" && v.status != "CLOSED_REFUNDED") {
+                                    $scope.order_list.push(v);
+                                }
+                            });
+                        }else{
+                            $.toast('读取订单信息失败');
+                        }
                     },function (error){
                         console.log(error);
+                        $.toast('读取订单信息失败');
                     })
                     .finally(function(){
                         if($scope.orders.length > 0){
@@ -77,11 +92,44 @@ angular.module('my.order.controller', ['my.order.service'])
                         },1000);
                     })
             }
+
+            //订单状态
+            $scope.order_list_status = function(orderStatus){
+                return CommonJs.OrderStatus(orderStatus);
+            };
+
+            //进入退款退货
+            $scope.goToSalesReturn = function(o_number, total_price, s_r_status){
+                if(s_r_status == 1) {
+                    $.confirm('', '确认要退款吗？', function (){
+                        $state.go('salesReturn', {orderNumber: o_number, totalPrice: total_price, SalesReturnStatus:s_r_status});
+                    }, function() {
+                        //取消操作
+                    });
+                }else if(s_r_status == 2){
+                    $.confirm('', '确认要退货？', function (){
+                        $state.go('salesReturn', {orderNumber: o_number, totalPrice: total_price, SalesReturnStatus:s_r_status});
+                    }, function() {
+                        //取消操作
+                    });
+                }
+            };
+
+            //进入物流详情
+            $scope.goToExpress_all = function(number){
+                $state.go('express',{orderNumber:number,productImg: null, productCount:null});
+            };
+
+            //立即付款
+            $scope.weixin_pay = function(order_number){
+                window.location.href='/app/payment/wpay/'+ order_number;
+            }
+
         }])
 
     /* 待付款 */
-    .controller('payController', ['$scope','$state','$rootScope','$timeout','OrderFty',
-        function($scope,$state,$rootScope,$timeout,OrderFty){
+    .controller('payController', ['$scope','$state','$rootScope','$timeout','OrderFty','CommonJs',
+        function($scope,$state,$rootScope,$timeout,OrderFty,CommonJs){
 
             $rootScope.orderTabsIndex = 2;
             $.showLoading("正在加载...");
@@ -89,18 +137,22 @@ angular.module('my.order.controller', ['my.order.service'])
             $scope.payIsNull = true;
             $scope.payShow = true;
 
-            AllOrders();
-            function AllOrders() {
+            payOrders();
+            function payOrders() {
                 OrderFty.ordersService()
                     .then(function (json) {
-                        $scope.orders = json.data;
-                        //alert(angular.toJson($scope.orders));
-                        $scope.payList = []; //待付款
-                        angular.forEach($scope.orders, function(v, k){
-                            if(v.status == "CREATED_PAY_PENDING"){
-                                $scope.payList.push(v);
-                            }
-                        });
+                        if(json.status_code == 0) {
+                            var orders = json.data;
+                            //alert(angular.toJson($scope.orders));
+                            $scope.payList = []; //待付款
+                            angular.forEach(orders, function(v, k){
+                                if(v.status == "CREATED_PAY_PENDING"){
+                                    $scope.payList.push(v);
+                                }
+                            });
+                        }else{
+                            $.toast('读取订单信息失败');
+                        }
                     },function (error){
                         console.log(error);
                     })
@@ -117,11 +169,22 @@ angular.module('my.order.controller', ['my.order.service'])
                         },1000);
                     })
             }
+
+            //订单状态
+            $scope.order_list_status = function(orderStatus){
+                return CommonJs.OrderStatus(orderStatus);
+            };
+
+            //立即付款
+            $scope.weixin_pay = function(order_number){
+                window.location.href='/app/payment/wpay/'+ order_number;
+            }
+
         }])
 
     /* 待发货 */
-    .controller('payedController', ['$scope','$state','$rootScope','$timeout','OrderFty',
-        function($scope,$state,$rootScope,$timeout,OrderFty){
+    .controller('payedController', ['$scope','$state','$rootScope','$timeout','OrderFty','CommonJs',
+        function($scope,$state,$rootScope,$timeout,OrderFty,CommonJs){
 
             $rootScope.orderTabsIndex = 3;
 
@@ -130,18 +193,22 @@ angular.module('my.order.controller', ['my.order.service'])
             $scope.payedIsNull = true;
             $scope.payedShow = true;
 
-            AllOrders();
-            function AllOrders() {
+            payedOrders();
+            function payedOrders() {
                 OrderFty.ordersService()
                     .then(function (json) {
-                        $scope.orders = json.data;
-                        //alert(angular.toJson($scope.orders));
-                        $scope.payedList = [];//待发货
-                        angular.forEach($scope.orders, function(v, k){
-                            if(v.status == "CONFIRMED_DELIVER_PENDING" || v.status == "PAID_CONFIRM_PENDING"){
-                                $scope.payedList.push(v);
-                            }
-                        });
+                        if(json.status_code == 0) {
+                            var orders = json.data;
+                            //alert(angular.toJson($scope.orders));
+                            $scope.payedList = [];//待发货
+                            angular.forEach(orders, function(v, k){
+                                if(v.status == "CONFIRMED_DELIVER_PENDING" || v.status == "PAID_CONFIRM_PENDING"){
+                                    $scope.payedList.push(v);
+                                }
+                            });
+                        }else{
+                            $.toast('读取订单信息失败');
+                        }
                     },function (error){
                         console.log(error);
                     })
@@ -159,11 +226,27 @@ angular.module('my.order.controller', ['my.order.service'])
                     })
             }
 
+            //订单状态
+            $scope.order_list_status = function(orderStatus){
+                return CommonJs.OrderStatus(orderStatus);
+            };
+
+            //进入退款退货
+            $scope.goToSalesReturn = function(o_number, total_price, s_r_status){
+                if(s_r_status == 1) {
+                    $.confirm('', '确认要退款吗？', function (){
+                        $state.go('salesReturn', {orderNumber: o_number, totalPrice: total_price, SalesReturnStatus:s_r_status});
+                    }, function() {
+                        //取消操作
+                    });
+                }
+            }
+
         }])
 
     /* 待收货 */
-    .controller('deliveredController', ['$scope','$state','$rootScope','$timeout','OrderFty',
-        function($scope,$state,$rootScope,$timeout,OrderFty){
+    .controller('deliveredController', ['$scope','$state','$rootScope','$timeout','OrderFty','CommonJs',
+        function($scope,$state,$rootScope,$timeout,OrderFty,CommonJs){
 
             $rootScope.orderTabsIndex = 4;
             $.showLoading("正在加载...");
@@ -171,18 +254,22 @@ angular.module('my.order.controller', ['my.order.service'])
             $scope.deliveredIsNull = true;
             $scope.deliveredShow = true;
 
-            AllOrders();
-            function AllOrders() {
+            deliveredOrders();
+            function deliveredOrders() {
                 OrderFty.ordersService()
                     .then(function (json) {
-                        $scope.orders = json.data;
-                        //alert(angular.toJson($scope.orders));
-                        $scope.deliveredList = [];//待收货
-                        angular.forEach($scope.orders, function(v, k){
-                            if(v.status == "DELIVERING" || v.status == "DELIVERED_CONFIRM_PENDING"){
-                                $scope.deliveredList.push(v);
-                            }
-                        });
+                        if(json.status_code == 0) {
+                            var orders = json.data;
+                            //alert(angular.toJson($scope.orders));
+                            $scope.deliveredList = [];//待收货
+                            angular.forEach(orders, function(v, k){
+                                if(v.status == "DELIVERING" || v.status == "DELIVERED_CONFIRM_PENDING"){
+                                    $scope.deliveredList.push(v);
+                                }
+                            });
+                        }else{
+                            $.toast('读取订单信息失败');
+                        }
                     },function (error){
                         console.log(error);
                     })
@@ -200,11 +287,33 @@ angular.module('my.order.controller', ['my.order.service'])
                     })
             }
 
+            //订单状态
+            $scope.order_list_status = function(orderStatus){
+                return CommonJs.OrderStatus(orderStatus);
+            };
+
+
+            //进入退款退货
+            $scope.goToSalesReturn = function(o_number, total_price, s_r_status){
+                if(s_r_status == 2){
+                    $.confirm('', '确认要退货吗？', function (){
+                        $state.go('salesReturn', {orderNumber: o_number, totalPrice: total_price, SalesReturnStatus:s_r_status});
+                    }, function() {
+                        //取消操作
+                    });
+                }
+            };
+
+            //进入物流详情
+            $scope.goToExpress_delivered = function(o_number){
+                $state.go('express',{orderNumber:o_number,productImg: null, productCount:null});
+            }
+
         }])
 
     /* 已完成 */
-    .controller('finishController', ['$scope','$state','$rootScope','$timeout','OrderFty',
-        function($scope,$state,$rootScope,$timeout,OrderFty){
+    .controller('finishController', ['$scope','$state','$rootScope','$timeout','OrderFty','CommonJs',
+        function($scope,$state,$rootScope,$timeout,OrderFty,CommonJs){
 
             $rootScope.orderTabsIndex = 5;
             $.showLoading("正在加载...");
@@ -212,19 +321,23 @@ angular.module('my.order.controller', ['my.order.service'])
             $scope.finishIsNull = true;
             $scope.finishShow = true;
 
-            AllOrders();
-            function AllOrders() {
+            finishOrders();
+            function finishOrders() {
                 OrderFty.ordersService()
                     .then(function (json) {
-                        $scope.orders = json.data;
-                        //alert(angular.toJson($scope.orders));
-                        $scope.finishList = [];//已完成
-                        angular.forEach($scope.orders, function(v, k){
-                            //已完成
-                            if(v.status == "CLOSED_CONFIRMED" || v.status == "CLOSED_REFUNDED"){
-                                $scope.finishList.push(v);
-                            }
-                        });
+                        if(json.status_code == 0) {
+                            var orders = json.data;
+                            //alert(angular.toJson($scope.orders));
+                            $scope.finishList = [];//已完成
+                            angular.forEach(orders, function(v, k){
+                                //已完成
+                                if(v.status == "CLOSED_CONFIRMED" || v.status == "CLOSED_REFUNDED"){
+                                    $scope.finishList.push(v);
+                                }
+                            });
+                        }else{
+                            $.toast('读取订单信息失败');
+                        }
                     },function (error){
                         console.log(error);
                     })
@@ -241,6 +354,11 @@ angular.module('my.order.controller', ['my.order.service'])
                         },1000);
                     })
             }
+
+            //订单状态
+            $scope.order_list_status = function(orderStatus){
+                return CommonJs.OrderStatus(orderStatus);
+            };
 
         }])
 

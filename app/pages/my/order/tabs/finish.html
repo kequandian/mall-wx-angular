@@ -10,7 +10,7 @@
                 订单号：{{items.order_number}}
                 <span>{{order_list_status(items.status)}}</span>
             </div>
-            <div class="item-order-info">
+            <div class="item-order-info" ui-sref="orderDetails({orderNumber:items.order_number})">
                 <div class="o-i-left">
                     <img ng-src="{{items.cover}}">
                 </div>
@@ -28,12 +28,7 @@
                 <div class="order-item-price">总价：￥{{items.total_price}}</div>
             </div>
             <div class="item-detail-btn">
-                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-left"
-                   ui-sref="orderDetails({orderNumber:items.order_number})">
-                    详情
-                </a>
-                <a ng-if="items.status == 'CLOSED_CONFIRMED' || items.status == 'CLOSED_REFUNDED'"
-                   href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right">
+                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right" style="margin-right: 5px;" >
                     物流详情
                 </a>
             </div>

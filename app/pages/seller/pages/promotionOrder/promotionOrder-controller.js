@@ -64,7 +64,7 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
                     // alert(angular.toJson(json));
                     if(json.status_code == 0){
                         $scope.rewards = json.data;
-                        // alert(angular.toJson($scope.rewards));
+                        //console.log(angular.toJson($scope.rewards));
 
                         var order_rewards = $scope.rewards.order_item_rewards;
                         $scope.rewards.orders = mergedOrderList(order_rewards);
@@ -90,6 +90,9 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
                     newItem.state = item.state;
                     newItem.settled_time = item.order_paid_time;
                     newItem.settled_price = item.order_total_price;
+                    newItem.agent_reward = 0;
+                    newItem.partner_reward = 0;
+                    newItem.seller_reward = 0;
 
                     if(item.type == 'SELLER') {
                         newItem.seller_reward = item.reward ;

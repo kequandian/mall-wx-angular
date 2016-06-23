@@ -55,7 +55,7 @@
                 <span style="font-size: 12px;">可提金额：</span>
                 <span style="color: red; padding-left: 4px; font-size: 14px;">￥</span>
                 <div class="commission-price">{{owner_balance.balance != null ? owner_balance.balance : '0' | currency:""}}</div>
-                <div class="cash-botton" ui-sref="withdraw">
+                <div class="cash-botton" ng-click="goToWithdrow(userInfo.phone)">
                     <img src="img/sellerPage/takeCash.png">
                 </div>
             </div>
@@ -127,12 +127,12 @@
                         销售订单
                     </p>
                 </a>
-                <a ui-sref="distributionInfo" class="weui_grid kqd_grid_4" data-id="cell">
+                <a class="weui_grid kqd_grid_4" data-id="cell" ng-click="goToDistributionInfo()">
                     <div class="weui_grid_icon kqd_grid_img_large">
                         <img src="img/sellerPage/sellerinfo.png">
                     </div>
                     <p class="weui_grid_label">
-                        销售信息
+                        我的信息
                     </p>
                 </a>
                 <!--<a ui-sref="myAgent" class="weui_grid kqd_grid_4" data-id="cell">

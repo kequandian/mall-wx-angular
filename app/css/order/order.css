@@ -26,17 +26,16 @@
 }
 
 #orders .nav-warp ul{
-    width:100%;
     height:41px;
     border-bottom:1px solid #dfdfdf;
 }
 #orders .nav-warp li{
     float:left;
-    width:19.3%;
+    width:20%;
     height:41px;
     text-align:center;
     line-height:41px;
-    border-left:1px solid #dcdcdc;
+    /*border-left:1px solid #dcdcdc;*/
 }
 
 #orders .orders-hide-span{
@@ -55,7 +54,7 @@
 */
 #orders .order-item{
     width: 100%;
-    height: 188px;
+    height: auto;
     background: white;
     border-top: 1px solid #dcdcdc;
     border-bottom: 1px solid #dcdcdc;
@@ -164,6 +163,7 @@
 #orders .item-btn-right{
     width: 80px;
     align-content: center;
+    float: right;
     /*position: absolute;*/
     /*right: 7px;*/
 }

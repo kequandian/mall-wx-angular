@@ -1,11 +1,78 @@
 /*
 * 分销信息
 * */
-angular.module('distributionInfo.controller', ['distributionInfo.service'])
+angular.module('distributionInfo.controller', ['userInfo.service'])
 
-    .controller('DistributionInfoController', ['$scope', 'DistributionInfoFty', function($scope, DistributionInfoFty){
+    .controller('DistributionInfoController', ['$scope','$state','$timeout','UserInfoFty','DWStatus',
+        function($scope,$state,$timeout,UserInfoFty,DWStatus){
 
-        //title
-        document.title = "销售信息";
+            //title
+            document.title = "我的信息";
+
+            //获取个人信息
+            getUserInfo();
+
+
+            //获取个人信息
+            function getUserInfo() {
+
+                UserInfoFty.myInfoService()
+                    .then(function (json) {
+                        if (json.status_code == 0) {
+                            $scope.userInfo = json.data;
+                            //console.log(json.data);
+                        }
+                    }, function (error) {
+                        $.toast('获取信息失败', 'cancel');
+                    })
+            }
+
+            //提交个人信息
+            $scope.postUserInfo = function () {
+
+                var name = $scope.userInfo.name;
+                var phone = $scope.userInfo.phone;
+
+                if(!angular.isString($scope.userInfo.name)
+                    || $scope.userInfo.name.length==0){
+                    $.toast('姓名不能为空', 'cancel');
+                    return
+                }
+                if(!angular.isString($scope.userInfo.phone)
+                    || $scope.userInfo.phone.length==0){
+                    $.toast('手机号不能为空', 'cancel');
+                    return
+                }else if(!checkPhone($scope.userInfo.phone)){
+                    $.toast('手机号码无效', 'cancel');
+                    return
+                }
+
+                UserInfoFty.postInfoService(name, phone)
+                    .then(function (json) {
+                        if (json.status_code == 0) {
+                            //alert(angular.toJson(json));
+                            $.toast.prototype.defaults.duration = 1000;
+                            $.toast('修改成功');
+
+                            if(DWStatus.d_w_status == 1){
+                                $timeout(function(){
+                                    $state.go('home.sellerPage');
+                                }, 1100);
+                            }else if(DWStatus.d_w_status == 2){
+                                $timeout(function(){
+                                    $state.go('withdraw',{accountPhone:phone});
+                                }, 1100);
+                            }
+
+                        }
+                    }, function (error) {
+                        $.toast('提交信息失败', 'cancel');
+                    })
+            }
+
+            function checkPhone(str){
+                var isphone = /^((\+|0)86)?\d{11}$/.test(str);
+                return isphone;
+            }
 
     }]);

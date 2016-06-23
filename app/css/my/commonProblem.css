@@ -1,4 +1,4 @@
-#commonProblem{
+ï»¿#commonProblem{
     background-color: #F8F8F8;
     height: 100%;
 }
@@ -50,7 +50,7 @@
 
 
 
-/*ÊÛºóÕş²ß*/
+/*å”®åæ”¿ç­–*/
 #disProblemPage{
     background-color: #FFFFFF;
 }
@@ -72,13 +72,29 @@
     margin: 7px;
 }
 
+
+#commonProblem ul, #disProblemPage ul {
+    padding-left: 20px;
+}
+
+#commonProblem li, #disProblemPage li {
+    padding-top: 10px;
+}
+
+
+#commonProblem .title, #disProblemPage .title {
+    font-weight: normal;
+}
+
+
+
 /*
-/!*³£¼ûÎÊÌâ*!/
+/!*å¸¸è§é—®é¢˜*!/
 #commProblemPage{
     background-color: #FFFFFF;
 }
 
-/!*ÉÌÆ·ÅäËÍ*!/
+/!*å•†å“é…é€*!/
 #disProblemPage{
     background-color: #FFFFFF;
 }*/

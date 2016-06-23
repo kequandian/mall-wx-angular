@@ -30,9 +30,13 @@ $(function () {
         //cart settlement action sheet
         .on('click', '#showAddress', function () {
 
+            var s_contact_user = $('#s_contact_user');
+            var s_contact_phone = $('#s_contact_phone');
+            var city_picker = $('#city-picker');
+            var s_contact_detail = $('#s_contact_detail');
+
             var show_status = $("#show_address_status").val();
             if (show_status == "add") {
-
                 var add_mask = $('#add_mask');
                 var weui_action_add_sheet = $('#weui_action_add_sheet');
                 weui_action_add_sheet.addClass('weui_actionsheet_toggle');
@@ -40,7 +44,20 @@ $(function () {
                     hideActionSheet_add(weui_action_add_sheet, add_mask);
                 });
                 $('#action_add_sheet_cancel').one('click', function () {
+                    if(s_contact_user.val().length <= 0){
+                        return;
+                    }
+                    if(s_contact_phone.val().length <= 0){
+                        return;
+                    }
+                    if(city_picker.val().length <= 0){
+                        return;
+                    }
+                    if(s_contact_detail.val().length <= 0){
+                        return;
+                    }
                     hideActionSheet_add(weui_action_add_sheet, add_mask);
+                    $('#actionsheet_cancel').click();
                 });
                 $('.selectContact').one('click', function () {
                     hideActionSheet_add(weui_action_add_sheet, add_mask);
@@ -84,6 +101,11 @@ $(function () {
                 }
             }
 
+        })
+
+        //address list add action
+        .on('click', '#c_address_action',function(){
+            $('#showAddress').click();
         })
 
 

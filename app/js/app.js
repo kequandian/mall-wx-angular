@@ -4,6 +4,7 @@
 var myapp = angular.module('myapp', [
     'global',
     'bsSwitch',
+    //'materialDatePicker',
     'modelValues',
     'commonJs',
     'ui.router',
@@ -23,7 +24,7 @@ var myapp = angular.module('myapp', [
     'marketing.route',
     'shopSettings.route',
     'category.route',
-    'userInfo.route',
+    //'userInfo.route',
     'integral.route',
     'feedback.route',
     //'commission.route',
@@ -33,16 +34,12 @@ var myapp = angular.module('myapp', [
     'distributionInfo.route',
     'refund.route',
     'withdraw.route',
-    "express.route"
+    "express.route",
+    "salesReturn.route",
+    'searchPage.route'
 ]);
 
-myapp.value('ProfileSession', {
-    is_seller:0,
-    is_agent:0,
-    is_partner:0
-})
-
-.filter('NotNull', function(){
+myapp.filter('NotNull', function(){
         return function(input){
             if(!angular.isDefined(input)){
                 return 0;
@@ -63,18 +60,7 @@ myapp.config(['$stateProvider', "$urlRouterProvider",
         $urlRouterProvider.otherwise("/home/homePage");
 }]);
 
-myapp.directive( 'whenActive', function () {
-    return {
-        scope: {},
-        link: function ( scope, element, attrs ) {
-            scope.$on( '$stateChangeSuccess', function () {
-                    element.addClass( 'weui_bar_item_on' );
-            });
-        }
-    };
-})
-
-    .directive('cityPicker', function() {
+myapp.directive('cityPicker', function() {
         return function(scope, element, attrs) {
             //console.log('work');
             element.cityPicker({
@@ -88,7 +74,7 @@ myapp.directive( 'whenActive', function () {
     })
 
 
-//截取文字长度过滤器
+    //截取文字长度过滤器
     .filter('cutText', function () {
         return function (value, wordwise, max, tail) {
             if (!value) return '';
@@ -115,18 +101,6 @@ myapp.directive( 'whenActive', function () {
             return $sce.trustAsHtml(text);
         };
     }])
-
-    //订单物流状态
-    .filter("expressStatus", function(){
-        return function(input){
-            if(input == "ok"){
-                return "已签收";
-            }
-            else {
-                return "派件中";
-            }
-        }
-    })
 
 .directive('updateTitle', ['$rootScope', '$timeout',
     function($rootScope, $timeout) {

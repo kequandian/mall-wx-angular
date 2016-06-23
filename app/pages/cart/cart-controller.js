@@ -171,6 +171,10 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
                             }
                         });
 
+                        if($scope.currentContact == null){
+                            $scope.currentContact = null;
+                        }
+
                         if($scope.contacts.length > 0){
                             $scope.show_address_status = 'list'
                         }else{
@@ -208,12 +212,14 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
                     return;
                 }
 
+                //alert(angular.toJson($scope.order));
+
                 CartFty.addOrder($scope.order).then(
                     function (result) {
                         //console.log(result.data);
                         deleteProducts($scope.settlementData);
                         window.location.href='/app/payment/wpay/'+ result.data.order_number;
-                        $state.go('order-confirm',{data:result.data});
+                        //$state.go('order-confirm',{data:result.data});
                     },function (error){
                         console.log(error);
                     });
@@ -320,7 +326,6 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
                 if(pcds.length>2){
                     $scope.contact.district = pcds[2];
                 }
-
 
                 $scope.contact.is_default = 1;
 
@@ -506,6 +511,11 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
                     };
 
                 }($);
+            }
+
+            //地址列表新增action
+            $scope.c_address_action = function(){
+                $scope.show_address_status = 'add';
             }
     }])
 

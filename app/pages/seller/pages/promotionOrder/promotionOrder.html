@@ -50,7 +50,7 @@
                         订单状态：{{item.state|OrderState}}
                     </div>
                     <div class="p-order-type">
-                        订单金额：￥{{item.settled_price|NotNull}}
+                        订单金额：{{item.settled_price|NotNull|currency:"￥"}}
                     </div>
                     <div class="p-order-price">
                         我的收入：

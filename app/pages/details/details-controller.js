@@ -5,17 +5,8 @@ angular.module('details.controller', ['details.service'])
 
             //title
             document.title = "商品详情";
-            //适应屏幕大小
-            ReImgSize();
             //商品详情
             detailsInfo();
-
-            function ReImgSize() {
-                for (var j = 0; j < document.images.length; j++) {
-                    document.images[j].width = (document.images[j].width > 420) ? "420" : document.images[j].width;
-                }
-            }
-
 
             $scope.properties_list = [];
             function detailsInfo() {
@@ -49,24 +40,6 @@ angular.module('details.controller', ['details.service'])
                     }, function (error) {
                         console.log("获取商品详情失败");
                     })
-            }
-
-            //滚动图片设置
-            detailSwiper();
-            function detailSwiper() {
-                var headerSwiper = new Swiper('#headerSlider', {
-                    slidesPerView: 1,
-                    paginationClickable: true,
-                    centeredSlides: true,
-                    autoplay: 2000,
-                    autoplayDisableOnInteraction: false,
-                    loop: true,
-                    // 如果需要分页器
-                    pagination: '.swiper-pagination',
-                    // 改变自动更新
-                    observer: true,
-                    observeParents: true
-                });
             }
 
             /*TitleReSet("商品详情");

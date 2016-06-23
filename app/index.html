@@ -5,12 +5,17 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
     <title>十美优品商城</title>
+    <link rel="SHORTCUT ICON" href="img/about.png" />
+
     <!--<title>{{title}}</title>-->
     <!-- WEUI CSS -->
     <link rel="stylesheet" href="lib/css/weui/weui.min.css">
     <link rel="stylesheet" href="lib/css/ionicons/ionicons.min.css">
     <link rel="stylesheet" href="bower_components/jquery-weui/dist/css/jquery-weui.min.css">
-    <link rel="stylesheet" href="lib/angular-ad-switch/css/ui-switch.min.css">
+    <link rel="stylesheet" href="lib/angular-ad-switch/css/ui-switch.css">
+
+    <!-- datapicker CSS -->
+    <!--<link rel="stylesheet" type="text/css" href="bower_components/material-date-picker/build/styles/mbdatepicker.css"/>-->
 
     <!-- yourself CSS -->
     <link rel="stylesheet" href="css/common.css">
@@ -32,7 +37,7 @@
     <link rel="stylesheet" href="css/home/home.css">
     <link rel="stylesheet" href="css/my/my.css">
     <link rel="stylesheet" href="css/category/category.css">
-    <link rel="stylesheet" href="css/my/userInfo.css">
+    <!--<link rel="stylesheet" href="css/my/userInfo.css">-->
     <link rel="stylesheet" href="css/my/integral.css">
     <link rel="stylesheet" href="css/my/feedback.css">
     <!--<link rel="stylesheet" href="css/sellerPage/commission.css">-->
@@ -44,18 +49,16 @@
     <link rel="stylesheet" href="css/my/refund.css">
     <link rel="stylesheet" href="css/sellerPage/withdraw.css">
     <link rel="stylesheet" href="css/order/express.css">
+    <link rel="stylesheet" href="css/my/salesReturn.css">
+    <link rel="stylesheet" href="css/searchPage/searchPage.css">
+
+    <!-- stable includes-->
     <link rel="stylesheet" href="css/bundle.css">
-    <!--<style>
-        .swiper-container {
-            width: 100%;
-        }
-        .swiper-container img {
-            display: block;
-            width: 100%;
-        }
-    </style>-->
 </head>
 <body ontouchstart="">
+<div hidden>
+    <img src="img/logo.png">
+</div>
 <div id="container">
     <div ui-view></div>
 </div>
@@ -68,6 +71,11 @@
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/jquery-weui/dist/js/jquery-weui.min.js"></script>
 <script src="bower_components/jquery-weui/dist/js/swiper.min.js"></script>
+
+<!-- datapicker js -->
+<!--<script src="bower_components/material-date-picker/build/mbdatepicker.js"></script>-->
+<!--<script src="bower_components/moment/moment.js"></script>-->
+
 <!-- jquery weui -->
 <script src="lib/zepto.min.js"></script>
 <script src="lib/qrcodejs/qrcode.min.js"></script>
@@ -159,9 +167,9 @@
 <script src="pages/category/category-controller.js"></script>
 <script src="pages/category/category-service.js"></script>
 
-<script src="pages/my/userInfo/userInfo-route.js"></script>
-<script src="pages/my/userInfo/userInfo-controller.js"></script>
-<script src="pages/my/userInfo/userInfo-service.js"></script>
+<!--<script src="pages/my/userInfo/userInfo-route.js"></script>-->
+<!--<script src="pages/my/userInfo/userInfo-controller.js"></script>-->
+<!--<script src="pages/my/userInfo/userInfo-service.js"></script>-->
 
 <script src="pages/my/integral/integral-route.js"></script>
 <script src="pages/my/integral/integral-controller.js"></script>
@@ -181,19 +189,28 @@
 
 <script src="pages/seller/pages/distributionInfo/distributionInfo-route.js"></script>
 <script src="pages/seller/pages/distributionInfo/distributionInfo-controller.js"></script>
-<script src="pages/seller/pages/distributionInfo/distributionInfo-service.js"></script>
+<!--<script src="pages/seller/pages/distributionInfo/distributionInfo-service.js"></script>-->
+<script src="pages/seller/pages/distributionInfo/userInfo-service.js"></script>
 
-<script src="pages/my/order/refund/refund-route.js"></script>
-<script src="pages/my/order/refund/refund-controller.js"></script>
-<script src="pages/my/order/refund/refund-service.js"></script>
+<script src="pages/my/order/salesReturn/salesReturn-route.js"></script>
+<script src="pages/my/order/salesReturn/salesReturn-controller.js"></script>
+<script src="pages/my/order/salesReturn/salesReturn-service.js"></script>
 
 <script src="pages/seller/pages/withdraw/withdraw-route.js"></script>
 <script src="pages/seller/pages/withdraw/withdraw-controller.js"></script>
 <script src="pages/seller/pages/withdraw/withdraw-service.js"></script>
 
+<script src="pages/my/order/refund/refund-route.js"></script>
+<script src="pages/my/order/refund/refund-controller.js"></script>
+<script src="pages/my/order/refund/refund-service.js"></script>
+
 <script src="pages/my/order/express/express-route.js"></script>
 <script src="pages/my/order/express/express-controller.js"></script>
 <script src="pages/my/order/express/express-service.js"></script>
+
+<script src="pages/searchPage/searchPage-route.js"></script>
+<script src="pages/searchPage/searchPage-controller.js"></script>
+<script src="pages/searchPage/searchPage-service.js"></script>
 
 
 <!-- pages above blew line -->

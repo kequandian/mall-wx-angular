@@ -16,27 +16,37 @@ angular.module('home.controller', [])
             'id':'1',
             'name':'首页',
             'srefName':'.homePage',
-            'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-home'
+            'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-home',
+            'c_count': null,
+            'c_number': ""
         },{
             'id':'2',
-            'name':'搜索',
+            'name':'分类',
             'srefName':'.category',
-            'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-search'
+            'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-search',
+            'c_count': null,
+            'c_number': ""
         },{
             'id':'3',
             'name':'销售中心',
             'srefName':'.sellerPage',
-            'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-team'
+            'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-team',
+            'c_count': null,
+            'c_number': ""
         },{
             'id':'4',
             'name':' 购物车',
             'srefName':'.cart',
-            'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-cart'
+            'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-cart',
+            'c_count': 'cart_count',
+            'c_number': ""
         },{
             'id':'5',
             'name':'个人中心',
             'srefName':'.my',
-            'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-user'
+            'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-user',
+            'c_count': null,
+            'c_number': ""
         }];
 
     }]);

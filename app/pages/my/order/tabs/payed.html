@@ -10,7 +10,7 @@
                 订单号：{{items.order_number}}
                 <span>{{order_list_status(items.status)}}</span>
             </div>
-            <div class="item-order-info">
+            <div class="item-order-info" ui-sref="orderDetails({orderNumber:items.order_number})">
                 <div class="o-i-left">
                     <img ng-src="{{items.cover}}">
                 </div>
@@ -28,16 +28,12 @@
                 <div class="order-item-price">总价：￥{{items.total_price}}</div>
             </div>
             <div class="item-detail-btn">
-                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-left"
-                   ui-sref="orderDetails({orderNumber:items.order_number})">
-                    详情
-                </a>
-                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right"
-                   ui-sref="express({orderNumber:items.order_number})">
-                    物流详情
-                </a>
-                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_warn item-btn-right">
+                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_warn item-btn-right" style="margin-right: 5px;">
                     提醒发货
+                </a>
+                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right" style="margin-right: 5px;"
+                   ng-click="goToSalesReturn(items.order_number,items.total_price,1)">
+                    申请退款
                 </a>
             </div>
         </div>

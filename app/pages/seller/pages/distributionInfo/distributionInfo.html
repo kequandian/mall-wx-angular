@@ -8,7 +8,7 @@
                     <label class="weui_label">姓名：</label>
                 </div>
                 <div class="weui_cell_bd weui_cell_primary">
-                    <input class="weui_input" type="text" placeholder="姓名" ng-model="dis_Info.user_name">
+                    <input class="weui_input" type="text" placeholder="姓名" ng-disabled="userInfo.name" ng-model="userInfo.name">
                 </div>
             </div>
             <div class="weui_cell">
@@ -16,7 +16,7 @@
                     <label class="weui_label">手机号码：</label>
                 </div>
                 <div class="weui_cell_bd weui_cell_primary">
-                    <input class="weui_input" type="tel" placeholder="手机号码" ng-model="dis_Info.phone" ng-init="">
+                    <input class="weui_input" type="tel" placeholder="手机号码" ng-model="userInfo.phone" ng-init="">
                 </div>
             </div>
 
@@ -43,7 +43,8 @@
         </div>
 
         <div class="custom_weui_btn_border">
-            <input type="submit" class="weui_btn weui_btn_primary" value="确认">
+            <input type="submit" class="weui_btn weui_btn_primary" value="保存"
+                   ng-click="postUserInfo()">
         </div>
 
     </form>

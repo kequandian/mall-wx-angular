@@ -7,6 +7,10 @@
     margin-bottom: 3px;
 }
 
+.weui_tabbar_item{
+    position: relative;
+}
+
 .weui_tabbar_item .weui_tabbar_icon{
     width: 29px;
     color: black;
@@ -16,5 +20,22 @@
 
 .weui_tabbar_item .home_tab_icon_color{
     color: #c20000;
+}
+
+.cart_count{
+    position:absolute;
+    /*bottom:10px;*/
+    right:18%;
+    background-color:#f15353;
+    min-width: 20px;
+    min-height: 20px;
+    line-height:20px;
+    /*padding: 1px 1px;*/
+    text-align:center;
+    color:#fff;
+    border-radius:10px; /*Ô²½Ç*/
+    font-weight:500;
+    font-size: xx-small;
+    font-family: 'Arial';
 }
 

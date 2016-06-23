@@ -6,27 +6,26 @@
             <div class="o-d-title-content">
                 <img src="img/my/orderDetails/order-title-img.png">
                 <div>{{order_status(detailsInfo.status)}}</div>
-                <p ng-if="detailsInfo.status != 'CREATED_PAY_PENDING'">还剩 {{c_d_day}} 天 {{c_d_hour}} 时自动确认</p>
+                <p ng-if="detailsInfo.status != 'CREATED_PAY_PENDING' && over_time > 0">还剩 {{c_d_day}} 天 {{c_d_hour}} 时自动确认</p>
             </div>
         </div>
 
-        <div class="logistics-info">
+        <div class="logistics-info" ng-if="detailsInfo.status != 'CLOSED_PAY_TIMEOUT' && detailsInfo.status != 'CREATED_PAY_PENDING'">
             <div class="l-i-left">
                 <img src="img/my/orderDetails/logistics-info-cart.png">
             </div>
-
-            <div class="l-i-center-null" ng-if="ex_info.length == 0">
+            <div class="l-i-center-null" ng-if="j_status_code == 1">
                 暂无
             </div>
 
-            <div class="l-i-center" ng-if="ex_info.length > 0"
-                 ui-sref="express({orderNumber:detailsInfo.order_number})">
-                <div>{{ex_context}}</div>
-                <p>{{ex_time}}</p>
-            </div>
-            <div class="l-i-right" ng-if="ex_info.length > 0"
-                 ui-sref="express({orderNumber:detailsInfo.order_number})">
-                <img src="img/my/orderDetails/logistics-info-arrow.png">
+            <div ng-if="j_status_code == 0" ng-click="goToExpress(detailsInfo)">
+                <div class="l-i-center" ng-if="ex_info.length > 0">
+                    <div>{{ex_context}}</div>
+                    <p>{{ex_time}}</p>
+                </div>
+                <div class="l-i-right" ng-if="ex_info.length > 0">
+                    <img src="img/my/orderDetails/logistics-info-arrow.png">
+                </div>
             </div>
         </div>
 
@@ -56,7 +55,7 @@
                 </div>
             </div>
 
-            <div class="item-order-info" ng-repeat="proItem in detailsInfo.order_items">
+            <div class="item-order-info" ng-repeat="proItem in detailsInfo.order_items"  ui-sref="details({productId:proItem.product_id})" >
                 <div class="o-i-left">
                     <img ng-src="{{proItem.cover}}">
                 </div>
@@ -94,10 +93,43 @@
 
 
 
-    <div class="footer">
-        <div class="item-button">
-            <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default" style="margin-top: 0;">我要晒单</a>
+    <div class="footer" ng-if="detailsInfo.status != 'CLOSED_PAY_TIMEOUT' || detailsInfo.status == 'CLOSED_CONFIRMED' || detailsInfo.status == 'CLOSED_REFUNDED'">
+        <!-- 待付款 -->
+        <div ng-if="detailsInfo.status == 'CREATED_PAY_PENDING'">
+            <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_warn item-btn-right" style="margin:7px 5px 3px 0;">
+                立即付款
+            </a>
         </div>
+
+        <!-- 待发货 -->
+        <div ng-if="detailsInfo.status == 'CONFIRMED_DELIVER_PENDING' || detailsInfo.status == 'PAID_CONFIRM_PENDING'">
+
+            <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_warn item-btn-right" style="margin:7px 5px 0 0;">
+                提醒发货
+            </a>
+            <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right" style="margin:7px 5px 3px 0;"
+               ng-click="goToSalesReturn(detailsInfo.order_number,detailsInfo.total_price,1)">
+                申请退款
+            </a>
+        </div>
+
+        <!-- 待收货 -->
+        <div ng-if="detailsInfo.status == 'DELIVERING' || detailsInfo.status == 'DELIVERED_CONFIRM_PENDING'">
+            <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_warn item-btn-right" style="margin:7px 5px 3px 0;">
+                确认
+            </a>
+            <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right" style="margin:7px 5px 3px 0;"
+               ng-click="goToSalesReturn(detailsInfo.order_number,detailsInfo.total_price,2)">
+                申请退货
+            </a>
+        </div>
+
+        <!-- 已完成 -->
+        <a ng-if="detailsInfo.status == 'CLOSED_CONFIRMED' || detailsInfo.status == 'CLOSED_REFUNDED'"
+           href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right" style="margin:7px 5px 3px 0;"
+           ui-sref="express({orderNumber:items.order_number})">
+            物流详情
+        </a>
     </div>
 
 </div>

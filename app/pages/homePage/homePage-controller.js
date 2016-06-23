@@ -38,17 +38,13 @@ angular.module('homePage.controller', ['homePage.service'])
              }).appendTo($body);
              }*/
 
-
             $scope.currentId = 1;
+
             //获取广告
-            getAd();
+            getAdHome();
+            getAdBanner();
             //获取推荐商品
             getRecommendProduct();
-            //滚动图片设置
-            detailSwiper();
-            //适应屏幕大小
-            ReImgSize();
-
 
             function getRecommendProduct() {
                 HomePageFty.recommendProductService()
@@ -62,11 +58,11 @@ angular.module('homePage.controller', ['homePage.service'])
                     })
             }
 
-            function getAd() {
+            function getAdHome() {
                 HomePageFty.getAdService()
                     .then(function (json) {
                         if (json.status_code == 0) {
-                            $scope.ad_list = json.data[0].ads;
+                            $scope.ad_list = json.data;
                             //alert(angular.toJson($scope.ad_list));/
                         }
                     }, function (error) {
@@ -74,29 +70,31 @@ angular.module('homePage.controller', ['homePage.service'])
                     })
             }
 
-            function detailSwiper() {
-                var homeHeaderSlider = new Swiper('#homeHeaderSlider', {
-                    slidesPerView: 1,
-                    paginationClickable: true,
-                    centeredSlides: true,
-                    autoplay: 2000,
-                    autoplayDisableOnInteraction: false,
-                    loop: true,
-                    // 如果需要分页器
-                    //pagination: '.swiper-pagination',
-                    // 改变自动更新
-                    observer: true,
-                    observeParents: true
-                });
-
+            function getAdBanner() {
+                HomePageFty.getAdBanner()
+                    .then(function (json) {
+                        if (json.status_code == 0) {
+                            $scope.ad_banner = json.data;
+                            //console.log("ad?"+angular.toJson($scope.ad_banner ));
+                            $scope.ad_banner_1 = $scope.ad_banner[0];
+                            $scope.ad_banner_2 = $scope.ad_banner[1];
+                            //console.log("ad-banner-1?"+angular.toJson($scope.ad_banner_1));
+                        }
+                    }, function (error) {
+                        $.toast('获取广告列表失败', 'cancel');
+                    })
             }
 
-            //适应屏幕大小
+            /*//适应屏幕大小
             function ReImgSize() {
                 for (var j = 0; j < document.images.length; j++) {
                     document.images[j].width = (document.images[j].width > 420) ? "420" : document.images[j].width;
                 }
+            }*/
+
+
+            //搜索栏
+            $scope.goToSearchPage = function(){
+                $state.go('searchPage');
             }
-
-
         }]);

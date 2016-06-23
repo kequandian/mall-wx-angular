@@ -4,6 +4,10 @@
     </div>
 
     <div class="problem-content">
-
+        <ul>
+            <li ng-repeat="item in query">
+                <h4 class="title">{{item.title}}</h4>
+                <p>{{item.content}}</p>
+        </ul>
     </div>
 </div>

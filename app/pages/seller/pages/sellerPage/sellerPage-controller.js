@@ -15,8 +15,8 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
         }
     })
 
-    .controller('SellerPageController', ['$scope', '$state','$rootScope', 'SellerPageFty', 'BalanceSession','UserInfo',
-        function ($scope, $state,$rootScope, SellerPageFty, BalanceSession, UserInfo) {
+    .controller('SellerPageController', ['$scope', '$state','$rootScope', 'SellerPageFty', 'BalanceSession','UserInfo','DWStatus',
+        function ($scope, $state,$rootScope, SellerPageFty, BalanceSession, UserInfo,DWStatus) {
 
             //title
             document.title = "销售中心";
@@ -33,7 +33,7 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $scope.userInfo = json.data;
-                            //alert(angular.toJson($scope.userInfo.))
+                            //alert(angular.toJson($scope.userInfo));
 
                             UserInfo.register_date = $scope.userInfo.register_date;
                         }
@@ -91,6 +91,18 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                     //document.getElementById('light').style.display='none';
                 }
             };
+
+
+            //进入提现页
+            $scope.goToWithdrow = function(phone){
+                $state.go('withdraw',{accountPhone:phone})
+            };
+
+            //进入我的信息页
+            $scope.goToDistributionInfo = function(){
+                DWStatus.d_w_status = 1;
+                $state.go('distributionInfo');
+            }
 
         }])
 

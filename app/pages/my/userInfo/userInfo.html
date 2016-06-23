@@ -39,15 +39,23 @@
                     </div>
                 </div>
 
-                <div class="weui_cell">
+                <!--<div class="weui_cell">
                     <div class="weui_cell_hd">
-                        <label for="data_time"  class="weui_label">生日：</label>
+                        <label class="weui_label">生日：</label>
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
                         <input class="weui_input" type="text" id="data_time"  data-toggle='date'
                                placeholder="选择日期" ng-model="userInfo.birthday">
+                        &lt;!&ndash;<mb-datepicker element-id='date1'&ndash;&gt;
+                                       &lt;!&ndash;input-class="testClass"&ndash;&gt;
+                                       &lt;!&ndash;input-name="testName"&ndash;&gt;
+                                       &lt;!&ndash;arrows="arrows"&ndash;&gt;
+                                       &lt;!&ndash;calendar-header="header"&ndash;&gt;
+                                       &lt;!&ndash;date="date"&ndash;&gt;
+                                       &lt;!&ndash;date-format="YYYY-MM-DD"></mb-datepicker>&ndash;&gt;
                     </div>
-                </div>
+                </div>-->
+
 
 
                 <div class="weui_cell">
@@ -63,7 +71,7 @@
             </div>
 
             <div style="margin-top: 15px; margin-left: 20px;margin-right: 20px;">
-                <input type="submit" class="weui_btn custom_weui_btn_primary" value="确认"
+                <input type="submit" class="weui_btn weui_btn_primary" value="确认"
                         ng-click="postUserInfo()">
             </div>
 

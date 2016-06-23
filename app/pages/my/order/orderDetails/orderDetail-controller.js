@@ -52,7 +52,6 @@ angular.module('orderDetails.controller', ['orderDetails.service',"express.servi
                     }, function(error){
                         $.toast("获取订单详情失败","cancel")
                     })
-
             }
 
             function countDown(o_time){
@@ -73,10 +72,10 @@ angular.module('orderDetails.controller', ['orderDetails.service',"express.servi
                 //var seconds = Math.round(leave3/1000);
                 //alert(" 相差 "+days+"天 "+hours+"小时 "+minutes+" 分钟"+seconds+" 秒")
 
+                $scope.over_time = overtime;
                 $scope.c_d_day = days;
                 $scope.c_d_hour = hours;
             }
-
 
             //订单状态
             $scope.order_status = function(orderStatus){
@@ -88,7 +87,8 @@ angular.module('orderDetails.controller', ['orderDetails.service',"express.servi
 
                 ExpressInfo.ExpressService(order_number)
                     .then(function(json){
-                        alert(angular.toJson(json));
+                        //alert(angular.toJson(json));
+                        $scope.j_status_code = json.status_code;
                         if(json.status_code == 0){
                             $scope.ex_info = json.data.data;
                             if($scope.ex_info.length > 0){
@@ -99,8 +99,35 @@ angular.module('orderDetails.controller', ['orderDetails.service',"express.servi
                     }, function(error){
                         console.log("error" + error);
                     })
-
             }
 
+            //进入退款退货
+            $scope.goToSalesReturn = function(o_number, total_price, s_r_status){
+                if(s_r_status == 1) {
+                    $.confirm('', '确认要退款吗？', function (){
+                        $state.go('salesReturn', {orderNumber: o_number, totalPrice: total_price, SalesReturnStatus:s_r_status});
+                    }, function() {
+                        //取消操作
+                    });
+                }else if(s_r_status == 2){
+                    $.confirm('', '确认要退货？', function (){
+                        $state.go('salesReturn', {orderNumber: o_number, totalPrice: total_price, SalesReturnStatus:s_r_status});
+                    }, function() {
+                        //取消操作
+                    });
+                }
+            }
+
+            //进入物流详情
+            $scope.goToExpress = function(item){
+                var o_number = item.order_number;
+                var p_img = item.order_items[0].cover;
+                var count = 0;
+                angular.forEach(item.order_items, function(v, k){
+                    count+= v.quantity;
+                });
+
+                $state.go('express',{orderNumber:o_number,productImg: p_img, productCount:count});
+            }
 
     }]);
