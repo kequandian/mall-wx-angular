@@ -76,8 +76,9 @@ angular.module('homePage.controller', ['homePage.service'])
                         if (json.status_code == 0) {
                             $scope.ad_banner = json.data;
                             //console.log("ad?"+angular.toJson($scope.ad_banner ));
-                            $scope.ad_banner_1 = $scope.ad_banner[0].image;
-                            $scope.ad_banner_2 = $scope.ad_banner[1].image;
+                            $scope.ad_banner_1 = $scope.ad_banner[0];
+                            $scope.ad_banner_2 = $scope.ad_banner[1];
+                            //console.log("ad-banner-1?"+angular.toJson($scope.ad_banner_1));
                         }
                     }, function (error) {
                         $.toast('获取广告列表失败', 'cancel');

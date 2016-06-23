@@ -144,7 +144,7 @@
         <div class="panic-buying-ad">
             <div class="ad-1">
                 <!--<img src="img/home/snaps-img.jpg">-->
-                <img ng-src="{{ad_banner_1}}">
+                <a ng-href="{{ad_banner_1.target_url}}"><img ng-src="{{ad_banner_1.image}}"></a>
             </div>
         </div>
 
@@ -174,21 +174,20 @@
         </div>
 
         <!-- ad-2  ignore showing-->
-        <div style="display:none">
+        <!--<div>
             <div class="panic-buying-ad">
                 <div class="ad-1">
-                    <img ng-src="{{ad_banner_2}}">
-                    <!--<img src="img/home/snaps-img-2.jpg">-->
+                    <img src="img/home/snaps-img-2.jpg">
                 </div>
             </div>
-        </div>
+        </div>-->
     </div>
 
 
     <!-- 产品列表 -->
     <div class="s-size-area">
         <div class="s-area-img">
-            <img src="img/home/area-img-1.png">
+            <a ng-href="{{ad_banner_2.target_url}}"><img ng-src="{{ad_banner_2.image}}"></a>
         </div>
 
         <div class="area-product-title">
