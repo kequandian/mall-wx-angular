@@ -17,7 +17,8 @@ angular.module('orderDetails.controller', ['orderDetails.service',"express.servi
                             var t_price = 0;
                             angular.forEach($scope.detailsInfo.order_items, function(v, k){
                                 count+= v.quantity;
-                                t_price += (v.final_price * v.quantity);
+                                //t_price += (v.final_price * v.quantity);
+                                t_price += v.final_price;
                             });
                             $scope.productCount = count;
                             $scope.total_price = t_price + $scope.detailsInfo.freight;
