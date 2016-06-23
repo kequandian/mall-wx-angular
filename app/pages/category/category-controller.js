@@ -80,7 +80,7 @@ angular.module('category.controller', ['category.service'])
 
             $scope.goToGoodsList = function (gItemtId) {
                 //$state.go('goodsList',{typeNumber:gItemtId,productStatus:0})
-                $state.go('goodsList', {typeNumber: gItemtId})
+                $state.go('goodsList', {typeNumber: gItemtId ,searchStatus:1})
             }
 
 

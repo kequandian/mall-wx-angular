@@ -1,7 +1,7 @@
 angular.module('goodsList.controller', ['goodsList.service'])
 
-    .controller('GoodsListController', ['$scope', '$state','$stateParams', 'GoodsListFty',
-        function($scope,$state,$stateParams, GoodsListFty){
+    .controller('GoodsListController', ['$scope', '$state','$stateParams', 'GoodsListFty','searchInfo',
+        function($scope,$state,$stateParams, GoodsListFty,searchInfo){
 
             document.title = "商品列表";
 
@@ -34,7 +34,14 @@ angular.module('goodsList.controller', ['goodsList.service'])
                 $scope.price_arrow_hide = true;
             };
 
-            addressList();
+            var s_status = $stateParams.searchStatus;
+            if(s_status == 1){
+                addressList();
+            }else if(s_status == 2){
+                $scope.productList = searchInfo.search_info;
+                //alert($scope.productList);
+            }
+
             function addressList(){
 
                 var cateId = $stateParams.typeNumber;
@@ -44,10 +51,10 @@ angular.module('goodsList.controller', ['goodsList.service'])
                         if(json.status_code == 0){
                             $scope.productList = json.data.products;
                         }else{
-                            console.log("获取失败")
+                            console.log("获取失败");
                         }
                     }, function(error){
-                        console.log("获取失败")
+                        console.log("获取失败");
                     })
             }
 

@@ -34,4 +34,9 @@ angular.module('modelValues', [])
         }
     })
 
+    //搜索结果
+    .value("searchInfo", {
+        search_info: null
+    })
+
 ;

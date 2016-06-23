@@ -1,8 +1,12 @@
 angular.module('goodsList.route', ['goodsList.controller'])
     .config(['$stateProvider', function($stateProvider) {
         $stateProvider.state('goodsList', {
-            url: '/goodsList/:typeNumber',
+            url: '/goodsList',
             templateUrl: 'pages/goodsList/goodsList.html',
-            controller:'GoodsListController'
+            controller:'GoodsListController',
+            params:{
+                'typeNumber':null,
+                'searchStatus':null
+            }
         })
 }]);

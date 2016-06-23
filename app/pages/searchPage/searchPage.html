@@ -7,12 +7,44 @@
             <form class="weui_search_outer">
                 <div class="weui_search_inner">
                     <i class="weui_icon_search" style="top: 7px;"></i>
-                    <input type="search" class="weui_search_input" id="search_input" placeholder="搜索你想要的商品" required/>
-                    <!--<a href="javascript:" class="weui_icon_clear" id="search_clear"></a>-->
+                    <input type="search" class="weui_search_input" id="search_page_input" placeholder="搜索你想要的商品" ng-model="product_name"
+                           ng-keypress="search_procudt_name($event)"/>
                 </div>
             </form>
         </div>
 
+    </div>
+
+    <div class="bd">
+
+        <p>热门搜索</p>
+        <div class="hot-terms">
+            <ul>
+                <li>护肤</li>
+                <li>护肤aaa</li>
+                <li>护肤</li>
+                <li>护肤aaa</li>
+                <li>护肤</li>
+                <li>护肤</li>
+                <li>护肤dd</li>
+                <li>护肤</li>
+                <li>护肤dd</li>
+                <li>护肤</li>
+            </ul>
+        </div>
+
+        <p>历史</p>
+        <div class="history-terms">
+
+            <ul>
+                <li ng-repeat="item in product_name_list">{{item.product_name}}</li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="foot-button">
+        <div class="clear-history" ng-click="clear_history()">清空历史搜索</div>
     </div>
 
 </div>
