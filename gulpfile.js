@@ -4,7 +4,7 @@ var ngAnnotate = require('gulp-ng-annotate');
 //var sourcemaps = require('gulp-sourcemaps');
 var stripDebug = require('gulp-strip-debug');
 var cleanCSS = require('gulp-clean-css');
-var imagemin = require('gulp-imagemin');
+//var imagemin = require('gulp-imagemin');
 var concat = require('gulp-concat');
 var concatCss = require('gulp-concat-css');
 var removeHtmlComments = require('gulp-remove-html-comments');
@@ -53,12 +53,12 @@ gulp.task('bundle-css', function () {
         .pipe(gulp.dest('dist/css'));
 });
 
-gulp.task('imagemin', function () {
-    return gulp.src(['app/img/**/*.png', 'app/img/**/*.jpg'])
-        //.pipe(cleanCSS({compatibility: 'ie8'}))
-        .pipe(imagemin())
-        .pipe(gulp.dest('dist/img'));
-});
+//gulp.task('imagemin', function () {
+//    return gulp.src(['app/img/**/*.png', 'app/img/**/*.jpg'])
+//        //.pipe(cleanCSS({compatibility: 'ie8'}))
+//        .pipe(imagemin())
+//        .pipe(gulp.dest('dist/img'));
+//});
 
 gulp.task('rep', function () {
     return gulp.src(['app/index.html'])
@@ -68,9 +68,8 @@ gulp.task('rep', function () {
 });
 
 gulp.task('dist', function () {
-    var minify = gulp.src(['app/js/app.js', 'app/js/common.js', 'app/js/weui.js', 'app/pages/**/*.js'])
+   var minify = gulp.src('app/pages/**/*.js')
         .pipe(ngAnnotate())
-
         //.pipe(gulp.dest('app/dist/pages'))
 
         .pipe(stripDebug())
@@ -80,6 +79,11 @@ gulp.task('dist', function () {
         //.pipe(sourcemaps.init())
         .pipe(uglify())
         //.pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest('dist/js'));
+
+    var minifyMore = gulp.src(['app/js/app.js','app/js/common.js','app/js/weui.js'])
+        .pipe(ngAnnotate())
+        .pipe(uglify())
         .pipe(gulp.dest('dist/js'));
 
     var minifycss = gulp.src('app/css/**/*.css')
@@ -95,23 +99,20 @@ gulp.task('dist', function () {
         .pipe(replace(/(\<link rel=\"stylesheet\" href=\"css\/\w+\/.+\.css\"\>)/g, '<!--$1-->'))
         .pipe(replace(/\<\!--(\<link rel=\"stylesheet\" href=\"css\/bundle.css"\>)--\>/, '$1'))
         /*below for js*/
-        .pipe(replace(/(\<script src=\"js\/app\.js"\>\<\/script\>)/g, '<!--$1-->'))
-        .pipe(replace(/(\<script src=\"js\/weui\.js"\>\<\/script\>)/g, '<!--$1-->'))
-        .pipe(replace(/(\<script src=\"js\/global\.js"\>\<\/script\>)/g, '<!--$1-->'))
+        //.pipe(replace(/(\<script src=\"js\/app\.js"\>\<\/script\>)/g, '<!--$1-->'))
+        //.pipe(replace(/(\<script src=\"js\/common\.js"\>\<\/script\>)/g, '<!--$1-->'))
         /*all pages*/
         .pipe(replace(/(\<script src=\"pages\/\w+\/.+\.js"\>\<\/script\>)/g, '<!--$1-->'))
-        .pipe(replace(/\<\!--(\<script src=\"js\/bundle.js\"\/\>)--\>/, '$1'))
-
         .pipe(removeHtmlComments())
-        //.pipe(htmlmin({collapseWhitespace: true}))
+        .pipe(gulp.dest('dist'));
+
+    var cutGlobal = gulp.src(['dist/index.html'])
+        .pipe(replace(/(\<script src=\"js\/global\.js"\>\<\/script\>)/g, '<!--$1-->'))
         .pipe(gulp.dest('dist'));
 
     var home = gulp.src('app/pages/**/*.html')
         .pipe(htmlmin({collapseWhitespace: true}))
         .pipe(gulp.dest('dist/pages'));
-
-    //var js = gulp.src('app/js/global.js')
-    //    .pipe(gulp.dest('dist/js'));
 
     var lib = gulp.src('app/lib/**/*')
         .pipe(gulp.dest('dist/lib'));
@@ -122,7 +123,7 @@ gulp.task('dist', function () {
     var bower = gulp.src(['app/bower_components/**/*.js', 'app/bower_components/**/*.css'])
         .pipe(gulp.dest('dist/bower_components'));
 
-    return merge(minify, minifycss, home, lib, img, bower, rep);
+    return merge(minify, minifyMore, minifycss, rep, home, lib, img, bower, rep, cutGlobal);
 });
 
 gulp.task('clean', function () {

@@ -13,7 +13,6 @@
     "html5-boilerplate": "~5.2.0",
     "angular-ui-router": "1.0.0-alpha.4",
     "jquery-weui": "~0.6.1",
-    "jquery": "^2.2.4",
-    "material-date-picker": "~1.2.4"
+    "jquery": "^2.2.4"
   }
 }
