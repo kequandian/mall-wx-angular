@@ -1,7 +1,7 @@
-angular.module('orderDetails.controller', ['orderDetails.service',"express.service"])
+angular.module('orderDetails.controller', ['orderDetails.service',"express.service",'order.common'])
 
-    .controller('OrderDetailsController', ['$scope','$state', '$stateParams', 'OrderDetailsFty','ExpressInfo','CommonJs',
-        function($scope,$state,$stateParams, OrderDetailsFty,ExpressInfo,CommonJs){
+    .controller('OrderDetailsController', ['$scope','$state', '$stateParams', 'OrderDetailsFty','ExpressInfo','OrderCommon',
+        function($scope,$state,$stateParams, OrderDetailsFty,ExpressInfo,OrderCommon){
 
             orderDetails();
             function orderDetails(){
@@ -80,7 +80,7 @@ angular.module('orderDetails.controller', ['orderDetails.service',"express.servi
 
             //订单状态
             $scope.order_status = function(orderStatus){
-                return CommonJs.OrderStatus(orderStatus);
+                return OrderCommon.OrderStatus(orderStatus);
             };
 
             //显示自动确认时间

@@ -1,23 +1,9 @@
 /*
  功  能：通用功能
  */
-angular.module('commonJs', [])
-    .directive('squareImg', function(){
+angular.module('order.common', [])
+    .factory('OrderCommon', [function () {
         return {
-            restrict: 'A',
-            replace: false,
-            scope: {},
-            link: function(scope, $el, attrs){
-                var el = $el[0];
-                $el.css('height', el.width);
-                //console.log("squareImg: width?"+el.width+",height?"+el.height);
-            }
-        };
-    })
-
-    .factory('CommonJs', [function () {
-        return {
-
             //订单状态
             OrderStatus: function(value){
                 var result;
@@ -58,8 +44,5 @@ angular.module('commonJs', [])
                 }
                 return result;
             }
-
-
-
         }
     }]);
