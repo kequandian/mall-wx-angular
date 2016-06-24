@@ -6,11 +6,11 @@ angular.module('sellerPage.route', ['sellerPage.controller'])
             controller:'SellerPageController'
         })
     }])
-    .config(['$stateProvider', function($stateProvider) {
+    /*.config(['$stateProvider', function($stateProvider) {
         $stateProvider.state('pianPage', {
             url:'/pianPage',
             templateUrl: 'pages/seller/pages/sellerPage/pianPage/pianPage.html',
             controller:'PianController'
         })
-    }])
+    }])*/
 ;

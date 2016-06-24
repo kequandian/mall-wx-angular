@@ -1,4 +1,7 @@
 angular.module('commonProblem.controller', ['commonProblem.service'])
+    .value("queryData", {
+        queryInfo: "info"
+    })
 
     .controller('CommonProblemController', ['$scope', '$state', 'CommonProblemFty', "queryData", function($scope, $state, CommonProblemFty, queryData){
         //title

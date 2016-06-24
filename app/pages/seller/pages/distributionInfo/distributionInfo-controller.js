@@ -1,7 +1,7 @@
 /*
 * 分销信息
 * */
-angular.module('distributionInfo.controller', ['userInfo.service'])
+angular.module('distributionInfo.controller', ['userInfo.service', 'seller.session'])
 
     .controller('DistributionInfoController', ['$scope','$state','$timeout','UserInfoFty','DWStatus',
         function($scope,$state,$timeout,UserInfoFty,DWStatus){

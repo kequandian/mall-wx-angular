@@ -15,7 +15,7 @@ var merge = require('merge-stream');
 var del = require('del');
 var path = require('path');
 
-gulp.task('default', function(){
+gulp.task('default', function () {
     return gulp.src('app/lib/angular-ad-switch/js/switch.js')
         .pipe(rename({suffix: '.min'}))
         .pipe(uglify())
@@ -46,7 +46,7 @@ gulp.task('minify-css', function () {
         .pipe(gulp.dest('dist/css'));
 });
 
-gulp.task('bundle-css', function(){
+gulp.task('bundle-css', function () {
     return gulp.src('app/css/**/*.css')
         .pipe(concat('bundle.css'))
         .pipe(cleanCSS())
@@ -54,13 +54,13 @@ gulp.task('bundle-css', function(){
 });
 
 gulp.task('imagemin', function () {
-    return gulp.src(['app/img/**/*.png','app/img/**/*.jpg'])
+    return gulp.src(['app/img/**/*.png', 'app/img/**/*.jpg'])
         //.pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(imagemin())
         .pipe(gulp.dest('dist/img'));
 });
 
-gulp.task('rep', function(){
+gulp.task('rep', function () {
     return gulp.src(['app/index.html'])
         .pipe(replace(/(\"pages\/.+)\.js/g, '$1\.min\.js'))
         .pipe(replace(/(\"css\/.+)\.css/g, '$1\.min\.css'))
@@ -68,7 +68,7 @@ gulp.task('rep', function(){
 });
 
 gulp.task('dist', function () {
-    var minify = gulp.src(['app/js/app.js','app/js/modelValues.js','app/js/weui.js','app/pages/**/*.js'])
+    var minify = gulp.src(['app/js/app.js', 'app/js/common.js', 'app/js/weui.js', 'app/pages/**/*.js'])
         .pipe(ngAnnotate())
 
         //.pipe(gulp.dest('app/dist/pages'))
@@ -96,7 +96,6 @@ gulp.task('dist', function () {
         .pipe(replace(/\<\!--(\<link rel=\"stylesheet\" href=\"css\/bundle.css"\>)--\>/, '$1'))
         /*below for js*/
         .pipe(replace(/(\<script src=\"js\/app\.js"\>\<\/script\>)/g, '<!--$1-->'))
-        .pipe(replace(/(\<script src=\"js\/modelValues\.js"\>\<\/script\>)/g, '<!--$1-->'))
         .pipe(replace(/(\<script src=\"js\/weui\.js"\>\<\/script\>)/g, '<!--$1-->'))
         .pipe(replace(/(\<script src=\"js\/global\.js"\>\<\/script\>)/g, '<!--$1-->'))
         /*all pages*/
@@ -108,6 +107,7 @@ gulp.task('dist', function () {
         .pipe(gulp.dest('dist'));
 
     var home = gulp.src('app/pages/**/*.html')
+        .pipe(htmlmin({collapseWhitespace: true}))
         .pipe(gulp.dest('dist/pages'));
 
     //var js = gulp.src('app/js/global.js')
@@ -119,7 +119,7 @@ gulp.task('dist', function () {
     var img = gulp.src('app/img/**/*')
         .pipe(gulp.dest('dist/img'));
 
-    var bower = gulp.src(['app/bower_components/**/*.js','app/bower_components/**/*.css'])
+    var bower = gulp.src(['app/bower_components/**/*.js', 'app/bower_components/**/*.css'])
         .pipe(gulp.dest('dist/bower_components'));
 
     return merge(minify, minifycss, home, lib, img, bower, rep);
