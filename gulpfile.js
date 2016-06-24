@@ -16,10 +16,10 @@ var del = require('del');
 var path = require('path');
 
 gulp.task('default', function () {
-    return gulp.src('app/lib/angular-ad-switch/js/switch.js')
+    return gulp.src('app/lib/custom/js/*.js')
         .pipe(rename({suffix: '.min'}))
         .pipe(uglify())
-        .pipe(gulp.dest('app/lib/angular-ad-switch/js'));
+        .pipe(gulp.dest('app/lib/custom/js'));
 });
 
 gulp.task('minify', function () {
@@ -39,11 +39,11 @@ gulp.task('minify', function () {
 });
 
 gulp.task('minify-css', function () {
-    return gulp.src('app/css/**/*.css')
+    return gulp.src('app/lib/custom/*.css')
         //.pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(rename({suffix: '.min'}))
         .pipe(cleanCSS())
-        .pipe(gulp.dest('dist/css'));
+        .pipe(gulp.dest('app/lib/custom'));
 });
 
 gulp.task('bundle-css', function () {
@@ -81,7 +81,7 @@ gulp.task('dist', function () {
         //.pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('dist/js'));
 
-    var minifyMore = gulp.src(['app/js/app.js','app/js/common.js','app/js/weui.js'])
+    var minifyMore = gulp.src(['app/js/app.js','app/js/common.js', 'app/js/global.js', 'app/js/weui.js'])
         .pipe(ngAnnotate())
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'));
@@ -101,13 +101,10 @@ gulp.task('dist', function () {
         /*below for js*/
         //.pipe(replace(/(\<script src=\"js\/app\.js"\>\<\/script\>)/g, '<!--$1-->'))
         //.pipe(replace(/(\<script src=\"js\/common\.js"\>\<\/script\>)/g, '<!--$1-->'))
+        .pipe(replace(/(\<script src=\"js\/global\.js"\>\<\/script\>)/, '<!--$1-->'))
         /*all pages*/
         .pipe(replace(/(\<script src=\"pages\/\w+\/.+\.js"\>\<\/script\>)/g, '<!--$1-->'))
         .pipe(removeHtmlComments())
-        .pipe(gulp.dest('dist'));
-
-    var cutGlobal = gulp.src(['dist/index.html'])
-        .pipe(replace(/(\<script src=\"js\/global\.js"\>\<\/script\>)/g, '<!--$1-->'))
         .pipe(gulp.dest('dist'));
 
     var home = gulp.src('app/pages/**/*.html')
@@ -123,7 +120,7 @@ gulp.task('dist', function () {
     var bower = gulp.src(['app/bower_components/**/*.js', 'app/bower_components/**/*.css'])
         .pipe(gulp.dest('dist/bower_components'));
 
-    return merge(minify, minifyMore, minifycss, rep, home, lib, img, bower, rep, cutGlobal);
+    return merge(minify, minifyMore, minifycss, rep, home, lib, img, bower, rep);
 });
 
 gulp.task('clean', function () {
