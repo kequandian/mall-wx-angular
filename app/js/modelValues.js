@@ -39,4 +39,9 @@ angular.module('modelValues', [])
         search_info: null
     })
 
+    .value('goodListParams',{
+        typeNumber:null,
+        searchStatus:null
+    })
+
 ;

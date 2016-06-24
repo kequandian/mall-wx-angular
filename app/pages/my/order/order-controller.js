@@ -67,8 +67,42 @@ angular.module('my.order.controller', ['my.order.service'])
                             $scope.orders = json.data;
                             //alert(angular.toJson($scope.orders));
                             $scope.order_list = [];
+                            //angular.forEach($scope.orders, function (v, k) {
+                            //    if (v.status != "CANCELED_RETURN_PENDING" && v.status != "CANCELED_REFUND_PENDING" && v.status != "CLOSED_REFUNDED") {
+                            //        $scope.order_list.push(v);
+                            //    }
+                            //});
+                            //待确认
                             angular.forEach($scope.orders, function (v, k) {
-                                if (v.status != "CANCELED_RETURN_PENDING" && v.status != "CANCELED_REFUND_PENDING" && v.status != "CLOSED_REFUNDED") {
+                                if(v.status == "DELIVERING" || v.status == "DELIVERED_CONFIRM_PENDING"){
+                                    $scope.order_list.push(v);
+                                }
+                            });
+
+                            //待付款
+                            angular.forEach($scope.orders, function (v, k) {
+                                if(v.status == "CREATED_PAY_PENDING"){
+                                    $scope.order_list.push(v);
+                                }
+                            });
+
+                            //待发货
+                            angular.forEach($scope.orders, function (v, k) {
+                                if(v.status == "CONFIRMED_DELIVER_PENDING" || v.status == "PAID_CONFIRM_PENDING"){
+                                    $scope.order_list.push(v);
+                                }
+                            });
+
+                            //已完成
+                            angular.forEach($scope.orders, function (v, k) {
+                                if(v.status == "CLOSED_CONFIRMED"){
+                                    $scope.order_list.push(v);
+                                }
+                            });
+
+                            //支付超时
+                            angular.forEach($scope.orders, function (v, k) {
+                                if(v.status == "CLOSED_PAY_TIMEOUT"){
                                     $scope.order_list.push(v);
                                 }
                             });
@@ -123,8 +157,25 @@ angular.module('my.order.controller', ['my.order.service'])
             //立即付款
             $scope.weixin_pay = function(order_number){
                 window.location.href='/app/payment/wpay/'+ order_number;
-            }
+            };
 
+            //确认订单
+            $scope.a_close_order_action = function(order_number){
+                $.confirm('','确认收到货物吗？',function(){
+                    var order_status = "CLOSED_CONFIRMED";
+                    OrderFty.closeOrderService(order_number,order_status)
+                        .then(function(json){
+                            if(json.status_code == 0){
+                                $.toast('确认成功');
+                                $state.go('order.delivered', {},{reload:true});
+                            }else{
+                                $.toast('确认失败','cancel');
+                            }
+                        }, function(error){
+                            console.log(error);
+                        })
+                })
+            }
         }])
 
     /* 待付款 */
@@ -307,7 +358,29 @@ angular.module('my.order.controller', ['my.order.service'])
             //进入物流详情
             $scope.goToExpress_delivered = function(o_number){
                 $state.go('express',{orderNumber:o_number,productImg: null, productCount:null});
+            };
+
+            //确认订单
+            $scope.close_order_action = function(order_number){
+
+                $.confirm('','确认收到货物吗？',function(){
+                    var order_status = "CLOSED_CONFIRMED";
+                    OrderFty.closeOrderService(order_number,order_status)
+                        .then(function(json){
+                            //alert(angular.toJson(json));
+                            if(json.status_code == 0){
+                                $.toast('确认成功');
+                                $state.go('order.delivered', {},{reload:true});
+                            }else{
+                                $.toast('确认失败','cancel');
+                            }
+                        }, function(error){
+                            console.log(error);
+                        })
+                })
+
             }
+
 
         }])
 

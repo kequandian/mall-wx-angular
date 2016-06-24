@@ -3,10 +3,6 @@ angular.module('goodsList.route', ['goodsList.controller'])
         $stateProvider.state('goodsList', {
             url: '/goodsList',
             templateUrl: 'pages/goodsList/goodsList.html',
-            controller:'GoodsListController',
-            params:{
-                'typeNumber':null,
-                'searchStatus':null
-            }
+            controller:'GoodsListController'
         })
 }]);

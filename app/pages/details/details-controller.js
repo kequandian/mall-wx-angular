@@ -28,7 +28,7 @@ angular.module('details.controller', ['details.service'])
                                     }else{
                                         rep = true;
                                     }
-                                })
+                                });
 
                                 if(rep) {
                                     $scope.details.properties = properties;

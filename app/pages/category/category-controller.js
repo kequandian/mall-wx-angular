@@ -18,8 +18,8 @@ angular.module('category.controller', ['category.service'])
             return input;
         }
     })
-    .controller('CategoryController', ['$scope', '$state', '$rootScope', 'CategoryFty',
-        function ($scope, $state,$rootScope, CategoryFty) {
+    .controller('CategoryController', ['$scope', '$state', '$rootScope', 'CategoryFty','goodListParams',
+        function ($scope, $state,$rootScope, CategoryFty,goodListParams) {
 
             //title
             document.title = "商品分类";
@@ -79,8 +79,9 @@ angular.module('category.controller', ['category.service'])
             };
 
             $scope.goToGoodsList = function (gItemtId) {
-                //$state.go('goodsList',{typeNumber:gItemtId,productStatus:0})
-                $state.go('goodsList', {typeNumber: gItemtId ,searchStatus:1})
+                goodListParams.typeNumber = gItemtId;
+                goodListParams.searchStatus = 1;
+                $state.go('goodsList')
             }
 
 
