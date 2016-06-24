@@ -24,11 +24,15 @@
                         <span ng-if="userInfo.followed==0" class="owner_tag">已关注</span>
                     </p>
                     <p class="user-lv-text">
-                        ID：{{userInfo.uid}}
-                        <span ng-if="owner_balance.is_member" style="margin-left: 10px;">级别: </span>
-                        <span ng-if="owner_balance.is_agent">代理商</span>
-                        <span ng-if="owner_balance.is_agent==0 && owner_balance.is_partner">经销商</span>
-                        <span ng-if="owner_balance.is_agent==0 && owner_balance.is_partner==0 && owner_balance.is_seller">销售商</span>
+                            ID：{{userInfo.uid}}
+                            <span ng-if="owner_balance.is_member" style="margin-left: 10px;">级别: </span>
+                            <span ng-if="owner_balance.is_agent">代理商</span>
+                            <span ng-if="owner_balance.is_agent==0 && owner_balance.is_partner">经销商</span>
+                            <span ng-if="owner_balance.is_agent==0 && owner_balance.is_partner==0 && owner_balance.is_seller">销售商</span>
+                            <span class="lv_status" ng-if="owner_balance.is_agent==0 && owner_balance.is_partner">
+                                <level-progress value="50" bg-color=""></level-progress>
+                                <five-star star="3" ></five-star>
+                            </span>
                     </p>
 
                     <p class="user-lv-text">
