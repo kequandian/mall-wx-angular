@@ -1,7 +1,7 @@
 angular.module('searchPage.controller', ['searchPage.service'])
 
-    .controller('SearchPageController', ['$scope', '$state', '$stateParams', 'SearchPageFty', 'searchInfo',
-        function ($scope, $state, $stateParams, SearchPageFty,searchInfo) {
+    .controller('SearchPageController', ['$scope', '$state', '$stateParams', 'SearchPageFty', 'searchInfo','goodListParams',
+        function ($scope, $state, $stateParams, SearchPageFty, searchInfo,goodListParams) {
 
             //title
             document.title = "商品搜索";
@@ -11,15 +11,12 @@ angular.module('searchPage.controller', ['searchPage.service'])
                 var o_focus = document.getElementById('search_page_input');
                 o_focus.focus();
 
-                //$scope.dddd = localStorage['productNameList'];
-                //angular.forEach($scope.dddd, function(v, f){
-                //    alert(angular.toJson(v));
-                //})
-
-                //localStorage.removeItem('productNameList');
                 if(localStorage['productNameList'] != null){
                     $scope.product_name_list = JSON.parse(localStorage['productNameList']);
                 }
+
+                //热门关键字
+                hot_word();
 
             }
 
@@ -45,7 +42,9 @@ angular.module('searchPage.controller', ['searchPage.service'])
                                 localStorage['productNameList'] = JSON.stringify(p_list);
                                 $scope.product_name_list = JSON.parse(localStorage['productNameList']);
                                 searchInfo.search_info = json.data;
-                                $state.go('goodsList',{typeNumber: null ,searchStatus:2})
+                                goodListParams.typeNumber = null;
+                                goodListParams.searchStatus = 2;
+                                $state.go('goodsList');
                             }
                         }, function(error){
                             console.log(error)
@@ -57,6 +56,20 @@ angular.module('searchPage.controller', ['searchPage.service'])
             $scope.clear_history = function(){
                 localStorage.removeItem('productNameList');
                 $scope.product_name_list = null;
+            };
+
+
+            //热门关键字
+            function hot_word(){
+                SearchPageFty.productHitWordService()
+                    .then(function(json){
+                        alert(angular.toJson(json));
+                        if(json.status_code == 0){
+                            $scope.p_hot_word = json.data;
+                        }
+                    }, function(error){
+                        console.log("错误："+error);
+                    })
             }
         }])
 

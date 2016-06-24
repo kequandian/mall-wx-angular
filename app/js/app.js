@@ -47,6 +47,13 @@ myapp.config(['$stateProvider', "$urlRouterProvider",
     value("searchInfo", {
         search_info: null
     })
+    .value("queryData", {
+        queryInfo: "info"
+    })
+    .value('goodListParams',{
+        typeNumber:null,
+        searchStatus:null
+    })
 ;
 
 

@@ -49,8 +49,8 @@
 
                 <!-- 待收货 -->
                 <div ng-if="items.status == 'DELIVERING' || items.status == 'DELIVERED_CONFIRM_PENDING'" style="margin-right: 5px;">
-                    <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_warn item-btn-right">
-                        确认
+                    <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_warn item-btn-right" ng-click="a_close_order_action()">
+                        确认收货
                     </a>
                     <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right" ng-click="goToExpress_all(items.order_number)">
                         物流详情

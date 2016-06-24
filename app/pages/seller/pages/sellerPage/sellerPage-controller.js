@@ -64,7 +64,6 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                         if (json.status_code == 0) {
                             $scope.owner_balance = json.data;
                             //alert(angular.toJson($scope.owner_balance))
-
                             $scope.owner_balance.is_member = $scope.owner_balance.is_agent
                                 || $scope.owner_balance.is_partnet
                                 || $scope.owner_balance.is_seller;

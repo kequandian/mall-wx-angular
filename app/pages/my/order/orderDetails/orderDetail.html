@@ -6,7 +6,7 @@
             <div class="o-d-title-content">
                 <img src="img/my/orderDetails/order-title-img.png">
                 <div>{{order_status(detailsInfo.status)}}</div>
-                <p ng-if="detailsInfo.status != 'CREATED_PAY_PENDING' && over_time > 0">还剩 {{c_d_day}} 天 {{c_d_hour}} 时自动确认</p>
+                <p ng-if="auto_confirm_time(detailsInfo.status)">还剩 {{c_d_day}} 天 {{c_d_hour}} 时自动确认</p>
             </div>
         </div>
 
@@ -65,8 +65,8 @@
                     </p>
                 </div>
                 <div class="o-i-right">
-                    <div class="o-i-right-span">{{proItem.final_price|currency:'￥'}}</div>
-                    <!--<s class="o-i-right-span" style="color:#9D9D9D;">{{0|currency:'￥'}}</s>-->
+                    <div class="o-i-right-span">{{proItem.price|currency:'￥'}}</div>
+                    <!--<s class="o-i-right-span" style="color:#9D9D9D;">{{proItem.price|currency:'￥'}}</s>-->
                     <div class="o-i-right-i">x{{proItem.quantity}}</div>
                 </div>
             </div>

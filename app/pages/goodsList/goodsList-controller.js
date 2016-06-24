@@ -1,9 +1,10 @@
 angular.module('goodsList.controller', ['goodsList.service'])
 
-    .controller('GoodsListController', ['$scope', '$state','$stateParams', 'GoodsListFty','searchInfo',
-        function($scope,$state,$stateParams, GoodsListFty,searchInfo){
+    .controller('GoodsListController', ['$scope', '$state','$stateParams', 'GoodsListFty','searchInfo','goodListParams',
+        function($scope,$state,$stateParams, GoodsListFty,searchInfo,goodListParams){
 
             document.title = "商品列表";
+
 
             /*$scope.priceIndex = "价格";
             $scope.priceStatus = function(){
@@ -34,17 +35,17 @@ angular.module('goodsList.controller', ['goodsList.service'])
                 $scope.price_arrow_hide = true;
             };
 
-            var s_status = $stateParams.searchStatus;
+            var s_status = goodListParams.searchStatus;
             if(s_status == 1){
                 addressList();
             }else if(s_status == 2){
-                $scope.productList = searchInfo.search_info;
+                $scope.productList = goodListParams.search_info;
                 //alert($scope.productList);
             }
 
             function addressList(){
 
-                var cateId = $stateParams.typeNumber;
+                var cateId = goodListParams.typeNumber;
 
                 GoodsListFty.goodsListService(cateId)
                     .then(function(json){
