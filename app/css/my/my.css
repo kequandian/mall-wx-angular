@@ -54,13 +54,20 @@
     color: white;
 }
 
-
-
 .user-detail .user-lv-text{
+    min-width: 120px;
     font-size: 13px;
     line-height: 1.6;
     color: #fff;
+    position: relative;
 }
+.lv_status{
+    position: absolute;
+    bottom: 2px;
+    padding-left: 3px;
+}
+
+
 
 /*
 .user-detail .user-create-time{

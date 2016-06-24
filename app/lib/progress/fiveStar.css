@@ -1,0 +1,32 @@
+
+/*状态控件*/
+.five_star_content {
+    /*background: #ccc;*/
+    /*height: 41px;*/
+}
+
+
+.yellow_star {
+    /*width: 15px;*/
+    /*height: 15px;*/
+    margin: 0 2px;
+    float: left;
+}
+
+.yellow_star img{
+    width: 15px;
+    height: 15px;
+}
+
+.white_star{
+    /*width: 15px;*/
+    /*height: 15px;*/
+    margin: 0 2px;
+    float: left;
+}
+
+.white_star img{
+    width: 15px;
+    height: 15px;
+}
+

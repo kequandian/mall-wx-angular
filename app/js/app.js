@@ -34,7 +34,9 @@ var myapp = angular.module('myapp', [
     'withdraw.route',
     "express.route",
     "salesReturn.route",
-    'searchPage.route'
+    'searchPage.route',
+    'levelProgress',
+    'fiveStar'
 ]);
 
 myapp.config(['$stateProvider', "$urlRouterProvider",

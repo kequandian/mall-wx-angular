@@ -50,7 +50,6 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                         if (json.status_code == 0) {
                             $scope.userInfo = json.data;
                             //alert(angular.toJson($scope.userInfo));
-
                             UserInfo.register_date = $scope.userInfo.register_date;
                         }
                     }, function (error) {
@@ -63,7 +62,7 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $scope.owner_balance = json.data;
-                            //alert(angular.toJson($scope.owner_balance))
+                            //alert(angular.toJson($scope.owner_balance));
                             $scope.owner_balance.is_member = $scope.owner_balance.is_agent
                                 || $scope.owner_balance.is_partnet
                                 || $scope.owner_balance.is_seller;
@@ -1085,7 +1084,9 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
             $scope.goToDistributionInfo = function () {
                 DWStatus.d_w_status = 1;
                 $state.go('distributionInfo');
-            }
+            };
+
+
 
         }])
 

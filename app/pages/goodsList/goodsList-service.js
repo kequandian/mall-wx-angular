@@ -1,10 +1,10 @@
 angular.module('goodsList.service', [])
     .factory('GoodsListFty', ['$http', '$q','GlobalVariable', function($http,$q,GlobalVariable) {
         return{
-            // 获取商品类别数据
-            goodsListService: function (cateId) {
+            // 获取商品类别列表数据 &orderByDesc=view_count&orderBy=price&orderBy=sales
+            goodsListService: function (cateId,pageNumber,pageSize,orderBy) {
                 var deferred = $q.defer();
-                var url = GlobalVariable.SERVER_PATH + "/product_category/" + cateId;
+                var url = GlobalVariable.SERVER_PATH + "/product_category/" + cateId + "?pageNumber=" + pageNumber + "&pageSize=" + pageSize + orderBy;
                 $http.get(url)
                     .success(function (data) {
                         return deferred.resolve(data);

@@ -17,22 +17,36 @@ angular.module('goodsList.controller', ['goodsList.service'])
                 }
             };*/
 
+            var orderBy = "";
             $scope.price_arrow = "arrow-status";
             $scope.price_arrow_hide = true;
             $scope.priceStatus = function(){
                 $scope.price_arrow_hide = false;
                 if($scope.price_arrow == "arrow-status"){
                     $scope.price_arrow = "arrow-status-up";
+                    orderBy = "&orderBy=price";
                 }else if($scope.price_arrow == "arrow-status-up"){
                     $scope.price_arrow = "arrow-status-down";
+                    orderBy = "&orderByDesc=price";
                 }else if($scope.price_arrow == "arrow-status-down"){
                     $scope.price_arrow = "arrow-status-up";
+                    orderBy = "&orderBy=price";
                 }
+                addressList();
             };
 
-            $scope.retArrowStatus = function(){
+            $scope.retArrowStatus = function(number){
                 $scope.price_arrow = "arrow-status";
                 $scope.price_arrow_hide = true;
+
+                if(number == 1){
+                    orderBy = "";
+                }else if(number == 2){
+                    orderBy = "&orderBy=view_count"
+                }else if(number == 3){
+                    orderBy = "&orderBy=sales"
+                }
+                addressList();
             };
 
             var s_status = goodListParams.searchStatus;
@@ -44,10 +58,11 @@ angular.module('goodsList.controller', ['goodsList.service'])
             }
 
             function addressList(){
-
                 var cateId = goodListParams.typeNumber;
+                var pageNumber = 1;
+                var pageSize = 20;
 
-                GoodsListFty.goodsListService(cateId)
+                GoodsListFty.goodsListService(cateId,pageNumber,pageSize,orderBy)
                     .then(function(json){
                         if(json.status_code == 0){
                             $scope.productList = json.data.products;
@@ -62,9 +77,7 @@ angular.module('goodsList.controller', ['goodsList.service'])
 
             //添加购物车
             $scope.addProductToCart = function(productId){
-                var proId = productId;
-                var count = 1;
-                GoodsListFty.addProToCatService(proId)
+                GoodsListFty.addProToCatService(productId)
                     .then(function(json){
                         if(json.status_code == 0){
                             $.toast.prototype.defaults.duration = 2000;
