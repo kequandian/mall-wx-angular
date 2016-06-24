@@ -30,8 +30,8 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
             {key: "质量问题", value: "质量问题"}
         ];*/
 
-        /// get return reason
-        //getReturnCauses();
+        // get return reason
+        getReturnCauses();
 
         //退货金额
         $scope.total_price = $stateParams.totalPrice;
@@ -55,6 +55,7 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
                         });
 
                         $scope.returnReason = reasons;
+                        alert(angular.toJson($scope.returnReason))
 
                         console.log("causes: "+ angular.toJson($scope.returnReason));
                     }
@@ -88,15 +89,15 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
                 return;
             }
 
-            SalesReturnInfo.SalesReturnService(order_number, service_type, reason, content)
-                .then(function (json) {
-                    if (json.status_code == 0) {
-                        //$scope.salesReturn = json.data;
-                        $state.go('order.all')
-                    }
-                }, function (error) {
-                    $.toast("提交信息失败", "cancel");
-                })
+            //SalesReturnInfo.SalesReturnService(order_number, service_type, reason, content)
+            //    .then(function (json) {
+            //        if (json.status_code == 0) {
+            //            //$scope.salesReturn = json.data;
+            //            $state.go('order.all')
+            //        }
+            //    }, function (error) {
+            //        $.toast("提交信息失败", "cancel");
+            //    })
 
         }
 

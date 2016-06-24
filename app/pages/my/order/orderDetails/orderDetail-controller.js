@@ -82,6 +82,14 @@ angular.module('orderDetails.controller', ['orderDetails.service',"express.servi
                 return CommonJs.OrderStatus(orderStatus);
             };
 
+            //显示自动确认时间
+            $scope.auto_confirm_time = function(status){
+                if(status == 'PAID_CONFIRM_PENDING' || status == 'DELIVERED_CONFIRM_PENDING' || status == 'DELIVERING'){
+                    return true;
+                }
+                return false;
+            };
+
             //物流信息
             function express_info(order_number){
 
