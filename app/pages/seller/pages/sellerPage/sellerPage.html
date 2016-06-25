@@ -30,7 +30,7 @@
                             <span ng-if="owner_balance.is_agent">代理商</span>
                             <span ng-if="owner_balance.is_agent==0 && owner_balance.is_partner">经销商</span>
                             <span ng-if="owner_balance.is_agent==0 && owner_balance.is_partner==0 && owner_balance.is_seller">销售商</span>
-                            <span class="lv_status" ng-if="owner_balance.is_partner">
+                            <span class="five-star-parent" ng-if="owner_balance.is_partner">
                                 <level-progress style="margin-bottom:6px;margin-right:20px"
                                                 value="{{owner_balance.level_percent}}"></level-progress>
                                 <five-star rank-src="lib/custom/img/yellow_star.png" src="lib/custom/img/white_star.png"

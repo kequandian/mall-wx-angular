@@ -215,4 +215,6 @@
     padding-top: 41px;
 }
 
-
+#orders .orders-min-height{
+    min-height: 350px;
+}

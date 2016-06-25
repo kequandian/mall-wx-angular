@@ -13,10 +13,10 @@ angular.module('fiveStar', [])
             },
             template:   "<div class='five-star'>" +
                                 "<div ng-repeat='item in yellowList' class='five-star-rank'>" +
-                                  "<img src='{{item.url}}' alt=''>" +
+                                  "<img ng-src='{{item.url}}' alt=''>" +
                                 "</div>" +
                                 "<div ng-repeat='item in whiteList' class='five-star-rank'>" +
-                                "   <img src='{{item.url}}' alt=''>" +
+                                "   <img ng-src='{{item.url}}' alt=''>" +
                                 "</div>" +
                         "</div>",
             link:link

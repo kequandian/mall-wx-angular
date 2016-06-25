@@ -1,175 +1,179 @@
-<div class="my-page-head">
-    <div class="user-photo"><img ng-src="{{userInfo.avatar != null ? userInfo.avatar : 'img/my/userPhoto.png'}}"></div>
-    <div class="user-info">
-        <div class="user-detail">
-            <p style="line-height: 80px;">
-                {{userInfo.name}}
-            </p>
-            <!--<p style="font-size: 15px;">-->
+<div id="my">
+    <div class="my-page-head">
+        <div class="user-photo"><img ng-src="{{userInfo.avatar != null ? userInfo.avatar : 'img/my/userPhoto.png'}}">
+        </div>
+        <div class="user-info">
+            <div class="user-detail">
+                <p style="line-height: 80px;">
+                    {{userInfo.name}}
+                </p>
+                <!--<p style="font-size: 15px;">-->
                 <!--&lt;!&ndash;会员号：{{userInfo.weixin}}&ndash;&gt;-->
                 <!--ID：- -->
-            <!--</p>-->
+                <!--</p>-->
+            </div>
+            <!--<div class="user-settings" ui-sref="userInfo">
+                <img src="img/my/user-setting-img.png">
+                <div>设置</div>
+            </div>-->
         </div>
-        <!--<div class="user-settings" ui-sref="userInfo">
-            <img src="img/my/user-setting-img.png">
-            <div>设置</div>
-        </div>-->
-    </div>
-</div>
-
-<div id="myOrder">
-    <div class="weui_cells weui_cells_access kqd_cells_top">
-        <a class="weui_cell kqd_cell_padding" ui-sref="order.all">
-            <div class="weui_cell_bd weui_cell_primary">
-                <p>我的订单</p>
-            </div>
-            <div class="weui_cell_ft kqd_cell_ft_font">查看全部订单</div>
-        </a>
-    </div>
-</div>
-
-<div id="kqdGrids">
-    <div class="weui_grids list-border">
-        <a href="#/order/pay" class="weui_grid kqd_grid_4">
-            <div class="weui_grid_icon order_grid_img">
-                <img src="img/my/pay.png">
-            </div>
-            <p class="weui_grid_label kqd_grid_label_top">
-                待付款
-            </p>
-        </a>
-        <a href="#/order/payed" class="weui_grid kqd_grid_4">
-            <div class="weui_grid_icon order_grid_img">
-                <img src="img/my/payed.png">
-            </div>
-            <p class="weui_grid_label kqd_grid_label_top">
-                待发货
-            </p>
-        </a>
-        <a href="#/order/delivered" class="weui_grid kqd_grid_4">
-            <div class="weui_grid_icon order_grid_img">
-                <img src="img/my/reach.png">
-            </div>
-            <p class="weui_grid_label kqd_grid_label_top">
-                待收货
-            </p>
-        </a>
-        <a href="#/refund" class="weui_grid kqd_grid_4">
-            <div class="weui_grid_icon order_grid_img">
-                <img src="img/my/finish.png">
-            </div>
-            <p class="weui_grid_label kqd_grid_label_top">
-                退换/售后
-            </p>
-        </a>
     </div>
 
-
-<div class="weui_grids">
-    <a ui-sref="collection" class="weui_grid">
-        <div class="weui_grid_icon kqd_grid_img_large">
-            <img src="img/my/collectGoods.png">
+    <div id="myOrder">
+        <div class="weui_cells weui_cells_access kqd_cells_top">
+            <a class="weui_cell kqd_cell_padding" ui-sref="order.all">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>我的订单</p>
+                </div>
+                <div class="weui_cell_ft kqd_cell_ft_font">查看全部订单</div>
+            </a>
         </div>
-        <p class="weui_grid_label">
-            收藏宝贝
-        </p>
-    </a>
-    <!--<a ui-sref="integral" class="weui_grid">-->
-        <!--<div class="weui_grid_icon kqd_grid_img_large">-->
+    </div>
+
+    <div id="kqdGrids">
+        <div class="weui_grids list-border">
+            <a href="#/order/pay" class="weui_grid kqd_grid_4">
+                <div class="weui_grid_icon order_grid_img">
+                    <img src="img/my/pay.png">
+                </div>
+                <p class="weui_grid_label kqd_grid_label_top">
+                    待付款
+                </p>
+            </a>
+            <a href="#/order/payed" class="weui_grid kqd_grid_4">
+                <div class="weui_grid_icon order_grid_img">
+                    <img src="img/my/payed.png">
+                </div>
+                <p class="weui_grid_label kqd_grid_label_top">
+                    待发货
+                </p>
+            </a>
+            <a href="#/order/delivered" class="weui_grid kqd_grid_4">
+                <div class="weui_grid_icon order_grid_img">
+                    <img src="img/my/reach.png">
+                </div>
+                <p class="weui_grid_label kqd_grid_label_top">
+                    待收货
+                </p>
+            </a>
+            <a href="#/refund" class="weui_grid kqd_grid_4">
+                <div class="weui_grid_icon order_grid_img">
+                    <img src="img/my/finish.png">
+                </div>
+                <p class="weui_grid_label kqd_grid_label_top">
+                    退换/售后
+                </p>
+            </a>
+        </div>
+
+
+        <div class="weui_grids">
+            <a ui-sref="collection" class="weui_grid">
+                <div class="weui_grid_icon kqd_grid_img_large">
+                    <img src="img/my/collectGoods.png">
+                </div>
+                <p class="weui_grid_label">
+                    收藏宝贝
+                </p>
+            </a>
+            <!--<a ui-sref="integral" class="weui_grid">-->
+            <!--<div class="weui_grid_icon kqd_grid_img_large">-->
             <!--<img src="img/my/creditsExchange.png">-->
-        <!--</div>-->
-        <!--<p class="weui_grid_label">-->
+            <!--</div>-->
+            <!--<p class="weui_grid_label">-->
             <!--积分兑换-->
-        <!--</p>-->
-    <!--</a>-->
-    <a ui-sref="addressManager" class="weui_grid">
-        <div class="weui_grid_icon kqd_grid_img_large">
-            <img src="img/my/addressMan.png">
+            <!--</p>-->
+            <!--</a>-->
+            <a ui-sref="addressManager" class="weui_grid">
+                <div class="weui_grid_icon kqd_grid_img_large">
+                    <img src="img/my/addressMan.png">
+                </div>
+                <p class="weui_grid_label">
+                    地址管理
+                </p>
+            </a>
+            <a ui-sref="commonProblem" class="weui_grid">
+                <div class="weui_grid_icon kqd_grid_img_large">
+                    <img src="img/my/easyProblem.png">
+                </div>
+                <p class="weui_grid_label">
+                    常见问题
+                </p>
+            </a>
+            <a ui-sref="feedback" class="weui_grid">
+                <div class="weui_grid_icon kqd_grid_img_large">
+                    <img src="img/my/feedback.png">
+                </div>
+                <p class="weui_grid_label">
+                    意见反馈
+                </p>
+            </a>
+            <a ui-sref="about" class="weui_grid">
+                <div class="weui_grid_icon kqd_grid_img_large">
+                    <img src="img/my/about.png">
+                </div>
+                <p class="weui_grid_label">
+                    关于商城
+                </p>
+            </a>
         </div>
-        <p class="weui_grid_label">
-            地址管理
-        </p>
-    </a>
-    <a ui-sref="commonProblem" class="weui_grid">
-        <div class="weui_grid_icon kqd_grid_img_large">
-            <img src="img/my/easyProblem.png">
-        </div>
-        <p class="weui_grid_label">
-            常见问题
-        </p>
-    </a>
-    <a ui-sref="feedback" class="weui_grid">
-        <div class="weui_grid_icon kqd_grid_img_large">
-            <img src="img/my/feedback.png">
-        </div>
-        <p class="weui_grid_label">
-            意见反馈
-        </p>
-    </a>
-    <a ui-sref="about" class="weui_grid">
-        <div class="weui_grid_icon kqd_grid_img_large">
-            <img src="img/my/about.png">
-        </div>
-        <p class="weui_grid_label">
-            关于商城
-        </p>
-    </a>
+
     </div>
 
-</div>
-
-<!--<div class="weui_cells weui_cells_access">-->
+    <!--<div class="weui_cells weui_cells_access">-->
 
     <!--<a class="weui_cell" ui-sref="addressManager">-->
-        <!--<div class="weui_cell_hd">-->
-            <!--<img src="" alt="" style="width:20px;margin-right:5px;display:block">-->
-        <!--</div>-->
-        <!--<div class="weui_cell_bd weui_cell_primary">-->
-            <!--<p>地址管理</p>-->
-        <!--</div>-->
-        <!--<div class="weui_cell_ft"></div>-->
+    <!--<div class="weui_cell_hd">-->
+    <!--<img src="" alt="" style="width:20px;margin-right:5px;display:block">-->
+    <!--</div>-->
+    <!--<div class="weui_cell_bd weui_cell_primary">-->
+    <!--<p>地址管理</p>-->
+    <!--</div>-->
+    <!--<div class="weui_cell_ft"></div>-->
     <!--</a>-->
 
     <!--<a class="weui_cell" href="javascript:;" style="display: none;">-->
-        <!--<div class="weui_cell_hd">-->
-            <!--<img src="img/indexTab/icon_nav_actionSheet.png" alt="order" style="width:20px;margin-right:5px;display:block">-->
-        <!--</div>-->
-        <!--<div class="weui_cell_bd weui_cell_primary">-->
-            <!--<p>我的积分</p>-->
-        <!--</div>-->
-        <!--<div class="weui_cell_ft"></div>-->
+    <!--<div class="weui_cell_hd">-->
+    <!--<img src="img/indexTab/icon_nav_actionSheet.png" alt="order" style="width:20px;margin-right:5px;display:block">-->
+    <!--</div>-->
+    <!--<div class="weui_cell_bd weui_cell_primary">-->
+    <!--<p>我的积分</p>-->
+    <!--</div>-->
+    <!--<div class="weui_cell_ft"></div>-->
     <!--</a>-->
     <!--<a class="weui_cell" href="javascript:;">-->
-        <!--<div class="weui_cell_hd">-->
-            <!--<img src="" alt="" style="width:20px;margin-right:5px;display:block">-->
-        <!--</div>-->
-        <!--<div class="weui_cell_bd weui_cell_primary" ui-sref="coupon">-->
-            <!--<p>优惠券</p>-->
-        <!--</div>-->
-        <!--<div class="weui_cell_ft"></div>-->
+    <!--<div class="weui_cell_hd">-->
+    <!--<img src="" alt="" style="width:20px;margin-right:5px;display:block">-->
+    <!--</div>-->
+    <!--<div class="weui_cell_bd weui_cell_primary" ui-sref="coupon">-->
+    <!--<p>优惠券</p>-->
+    <!--</div>-->
+    <!--<div class="weui_cell_ft"></div>-->
     <!--</a>-->
     <!--<a class="weui_cell" href="javascript:;" style="display: none;">-->
-        <!--<div class="weui_cell_hd">-->
-            <!--<img src="" alt="" style="width:20px;margin-right:5px;display:block">-->
-        <!--</div>-->
-        <!--<div class="weui_cell_bd weui_cell_primary">-->
-            <!--<p>拼团</p>-->
-        <!--</div>-->
-        <!--<div class="weui_cell_ft"></div>-->
+    <!--<div class="weui_cell_hd">-->
+    <!--<img src="" alt="" style="width:20px;margin-right:5px;display:block">-->
+    <!--</div>-->
+    <!--<div class="weui_cell_bd weui_cell_primary">-->
+    <!--<p>拼团</p>-->
+    <!--</div>-->
+    <!--<div class="weui_cell_ft"></div>-->
     <!--</a>-->
 
-<!--</div>-->
+    <!--</div>-->
 
-<!--<div class="weui_cells weui_cells_access">-->
+    <!--<div class="weui_cells weui_cells_access">-->
 
     <!--<a class="weui_cell" href="javascript:;">-->
-        <!--<div class="weui_cell_hd">-->
-            <!--<img src="img/indexTab/icon_nav_msg.png" alt="order" style="width:20px;margin-right:5px;display:block">-->
-        <!--</div>-->
-        <!--<div class="weui_cell_bd weui_cell_primary">-->
-            <!--<p>加入分销</p>-->
-        <!--</div>-->
-        <!--<div class="weui_cell_ft"></div>-->
+    <!--<div class="weui_cell_hd">-->
+    <!--<img src="img/indexTab/icon_nav_msg.png" alt="order" style="width:20px;margin-right:5px;display:block">-->
+    <!--</div>-->
+    <!--<div class="weui_cell_bd weui_cell_primary">-->
+    <!--<p>加入分销</p>-->
+    <!--</div>-->
+    <!--<div class="weui_cell_ft"></div>-->
     <!--</a>-->
 
-<!--</div>-->
+    <!--</div>-->
+
+</div>

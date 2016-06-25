@@ -5,6 +5,12 @@
     /*height: 41px;*/
 }
 
+.five-star-parent {
+    position: absolute;
+    bottom: 2px;
+    padding-left: 3px;
+}
+
 .five-star-rank {
     margin-right: 1px;
     float: left;
