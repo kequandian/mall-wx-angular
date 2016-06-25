@@ -97,7 +97,6 @@ gulp.task('dist', function () {
         .pipe(removeHtmlComments())
         .pipe(replace(/(\<link rel=\"stylesheet\" href=\"css\/common.css\"\>)/g, '<!--$1-->'))
         .pipe(replace(/(\<link rel=\"stylesheet\" href=\"css\/\w+\/.+\.css\"\>)/g, '<!--$1-->'))
-        .pipe(replace(/\<\!--(\<link rel=\"stylesheet\" href=\"css\/bundle.css"\>)--\>/, '$1'))
         /*below for js*/
         //.pipe(replace(/(\<script src=\"js\/app\.js"\>\<\/script\>)/g, '<!--$1-->'))
         //.pipe(replace(/(\<script src=\"js\/common\.js"\>\<\/script\>)/g, '<!--$1-->'))

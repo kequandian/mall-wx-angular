@@ -62,10 +62,15 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $scope.owner_balance = json.data;
-                            //alert(angular.toJson($scope.owner_balance));
+                            console.log(angular.toJson($scope.owner_balance));
+
                             $scope.owner_balance.is_member = $scope.owner_balance.is_agent
-                                || $scope.owner_balance.is_partnet
+                                || $scope.owner_balance.is_partner
                                 || $scope.owner_balance.is_seller;
+
+                            if($scope.owner_balance.is_partner) {
+                                $scope.owner_balance.level_percent = getLevelPercent();
+                            }
 
                             /// save session
                             BalanceSession.balance = $scope.owner_balance.balance;
@@ -74,6 +79,17 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                     }, function (error) {
                         $.toast('获取信息失败', 'cancel');
                     })
+            }
+
+            function getLevelPercent(){
+                if($scope.owner_balance.partner_pool_count <= $scope.owner_balance.partner_level.headcount_quota){
+                    return 0;
+                }
+
+                var extra = $scope.owner_balance.partner_pool_count - $scope.owner_balance.partner_level.headcount_quota;
+                var levelSpan = $scope.owner_balance.next_partner_level.headcount_quota - $scope.owner_balance.partner_level.headcount_quota;
+
+                return (extra * 100 / levelSpan);
             }
 
 

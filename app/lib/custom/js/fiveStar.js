@@ -8,15 +8,14 @@ angular.module('fiveStar', [])
             restrict: 'E',
             replace: true,
             scope: {
-                star: "@",
-                bgColor: "@"
-
+                rank: "@",
+                rankTop: "@"
             },
-            template:   "<div class='five_star_content'>" +
-                                "<div ng-repeat='item in yellowList' class='yellow_star'>" +
+            template:   "<div class='five-star'>" +
+                                "<div ng-repeat='item in yellowList' class='five-star-rank'>" +
                                   "<img src='{{item.url}}' alt=''>" +
                                 "</div>" +
-                                "<div ng-repeat='item in whiteList' class='white_star'>" +
+                                "<div ng-repeat='item in whiteList' class='five-star-rank'>" +
                                 "   <img src='{{item.url}}' alt=''>" +
                                 "</div>" +
                         "</div>",
@@ -28,29 +27,32 @@ angular.module('fiveStar', [])
            var yellowList = [];
            var whiteList = [];
 
-           var star = $scope.star;
-
-           if($scope.star == undefined){
-               star = 0;
+           var rank = $scope.rank;
+           if($scope.rank === undefined){
+               rank = 0;
            }
 
-           for(var i=0; i<star; i++){
-               yellowList.push({url: "lib/progress/img/yellow_star.png"});
+           var rankTop = $scope.rankTop;
+           if($scope.rankTop === undefined){
+               rankTop = 5;
            }
-           for(var i=0; i<5-star; i++){
-               whiteList.push({url: "lib/progress/img/white_star.png"});
+
+           var src = $arrts.src;
+           var rankSrc = $arrts.rankSrc;
+
+           for(var i=0; i<rank; i++){
+               yellowList.push({url: rankSrc});
+           }
+           for(var i=0; i<rankTop-rank; i++){
+               whiteList.push({url: src});
            }
            $scope.yellowList = yellowList;
            $scope.whiteList = whiteList;
-
-           console.log(list);
 
           /* $scope.starUrl = {
                url:"assets/img/yellow_star.png"
            }
            console.log($scope.starUrl)*/
        }
-
-
 
     });
