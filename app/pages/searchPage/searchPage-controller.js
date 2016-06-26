@@ -5,6 +5,7 @@ angular.module('searchPage.controller', ['searchPage.service'])
 
             //title
             document.title = "商品搜索";
+
             //搜索页
             input_focus();
             function input_focus(){
@@ -38,9 +39,11 @@ angular.module('searchPage.controller', ['searchPage.service'])
                             //alert(angular.toJson(json));
                             if(json.status_code == 0){
                                 p_n_list.product_name = p_name;
-                                p_list.push(p_n_list);
-                                localStorage['productNameList'] = JSON.stringify(p_list);
-                                $scope.product_name_list = JSON.parse(localStorage['productNameList']);
+                                if(!(p_name === undefined || p_name === null || p_name.length==0)) {
+                                    p_list.push(p_n_list);
+                                    localStorage['productNameList'] = JSON.stringify(p_list);
+                                    $scope.product_name_list = JSON.parse(localStorage['productNameList']);
+                                }
                                 searchInfo.search_info = json.data;
                                 goodListParams.typeNumber = null;
                                 goodListParams.searchStatus = 2;
