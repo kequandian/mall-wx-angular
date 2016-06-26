@@ -36,7 +36,7 @@
             <div class="weui-row goods-box-header">
 
               <div class="goods-box" ng-repeat="productItem in productList">
-                <img ng-src="{{productItem.cover}}" class="goods-box-img" ui-sref="details({productId:productItem.id})">
+                <img square-img ng-src="{{productItem.cover}}" class="goods-box-img" ui-sref="details({productId:productItem.id})">
                 <div class="goods-box-text">
                   <div style=" word-wrap: break-word; word-break: normal;" ui-sref="details({productId:productItem.id})">
                     {{productItem.name | cutText:true:20:'...'}}
@@ -47,8 +47,8 @@
                   <!--<div class="goods-c-right c-right" ng-click="addProductToCart(productItem.id)">
                     <img src="img/goodList/good-list-cart-icon.png">
                   </div>-->
-                  <div class="goods-c-right c-right">
-                    <span>省￥46.2</span>
+                  <div class="goods-c-right c-left">
+                    <span><s>{{productItem.suggested_price | currency:"￥"}}</s></span>
                   </div>
                 </div>
               </div>

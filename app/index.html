@@ -11,12 +11,13 @@
     <!-- lib css -->
     <link rel="stylesheet" href="lib/css/weui/weui.min.css">
     <link rel="stylesheet" href="lib/css/ionicons/ionicons.min.css">
-    <link rel="stylesheet" href="bower_components/jquery-weui/dist/css/jquery-weui.min.css">
+    <link rel="stylesheet" href="bower_components/jquery-weui/dist/css/jquery-weui.min.css" lazyload>
     <link rel="stylesheet" href="lib/angular-ad-switch/css/ui-switch.min.css">
 
     <!-- app CSS -->
     <link rel="stylesheet" href="css/common/common.css">
     <link rel="stylesheet" href="css/home/homePage.css">
+    <link rel="stylesheet" href="css/home/home.css">
 
     <!--pages css-->
     <link rel="stylesheet" href="css/goodsList/goodsList.css">
@@ -33,7 +34,6 @@
     <link rel="stylesheet" href="css/sellerPage/promotionOrder.css">
     <!--<link rel="stylesheet" href="css/sellerPage/marketing.css">-->
     <link rel="stylesheet" href="css/sellerPage/shopSettings.css">
-    <link rel="stylesheet" href="css/home/home.css">
     <link rel="stylesheet" href="css/my/my.css">
     <link rel="stylesheet" href="css/category/category.css">
 
@@ -57,8 +57,9 @@
     <link rel="stylesheet" href="lib/custom/css/fiveStar.css">
 
     <!-- stable includes-->
+    <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/bundle.css" lazyload>
-    <link rel="stylesheet" href="css/custom.css" >
+    <link rel="stylesheet" href="css/custom.css" lazyload>
 </head>
 <body ontouchstart="">
 <div hidden>
@@ -218,6 +219,7 @@
 <script src="lib/custom/js/fiveStar.js"></script>
 
 <!-- pages above blew line -->
+<script src="js/home.js"></script>
 <script defer src="js/bundle.js"></script>
 <script defer src="js/custom.js"></script>
 </body>

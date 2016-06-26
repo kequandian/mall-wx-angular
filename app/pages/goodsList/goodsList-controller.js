@@ -5,7 +5,6 @@ angular.module('goodsList.controller', ['goodsList.service'])
 
             document.title = "商品列表";
 
-
             /*$scope.priceIndex = "价格";
             $scope.priceStatus = function(){
                 if($scope.priceIndex == "价格"){
@@ -54,7 +53,7 @@ angular.module('goodsList.controller', ['goodsList.service'])
                 addressList();
             }else if(s_status == 2){
                 $scope.productList = goodListParams.search_info;
-                //alert($scope.productList);
+                //console.log(angular.toJson($scope.productList));
             }
 
             function addressList(){
@@ -66,6 +65,7 @@ angular.module('goodsList.controller', ['goodsList.service'])
                     .then(function(json){
                         if(json.status_code == 0){
                             $scope.productList = json.data.products;
+                            //console.log("productList?"+angular.toJson($scope.productList));
                         }else{
                             console.log("获取失败");
                         }
