@@ -22,6 +22,13 @@ gulp.task('default', function () {
         .pipe(gulp.dest('app/lib/custom/js'));
 });
 
+gulp.task('ad', function () {
+    return gulp.src('app/lib/angular-ad-switch/js/switch.js')
+        .pipe(rename({suffix: '.min'}))
+        .pipe(uglify())
+        .pipe(gulp.dest('app/lib/angular-ad-switch/js'));
+});
+
 gulp.task('minify', function () {
     return gulp.src('app/pages/**/*.js')
         .pipe(ngAnnotate())

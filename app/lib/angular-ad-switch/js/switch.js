@@ -397,7 +397,9 @@
 
                 this.moveDirection = offset >= this.panelOffset ? DIRECTIONS.RIGHT : DIRECTIONS.LEFT;
                 this.panelOffset = offset;
-                this._transform(this.currentPanel.el, offset);
+                if(this.currentPanel.el) {
+                    this._transform(this.currentPanel.el, offset);
+                }
 
                 // 当偏移值小于 0 时，为向左移动，并露出右面板
                 if (offset < 0) {
