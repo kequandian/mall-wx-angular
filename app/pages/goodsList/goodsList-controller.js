@@ -1,20 +1,19 @@
 angular.module('goodsList.controller', ['goodsList.service'])
 
-    .controller('GoodsListController', ['$scope', '$state','$stateParams', 'GoodsListFty','searchInfo','goodListParams',
-        function($scope,$state,$stateParams, GoodsListFty,searchInfo,goodListParams){
+    .controller('GoodsListController', ['$scope', '$state','$stateParams', 'GoodsListFty','searchInfo','goodListParams','areasStatus',
+        function($scope,$state,$stateParams, GoodsListFty,searchInfo,goodListParams,areasStatus){
 
             document.title = "商品列表";
 
-            /*$scope.priceIndex = "价格";
-            $scope.priceStatus = function(){
-                if($scope.priceIndex == "价格"){
-                    $scope.priceIndex = "低到高";
-                }else if($scope.priceIndex == "低到高"){
-                    $scope.priceIndex = "高到低";
-                }else if($scope.priceIndex == "高到低"){
-                    $scope.priceIndex = "低到高";
-                }
-            };*/
+            var s_status = goodListParams.searchStatus;
+
+            if(s_status == 1){
+                cateProductList();
+            }else if(s_status == 2){
+                $scope.productList = searchInfo.search_info;
+            }else if(s_status == 3){
+
+            }
 
             var orderBy = "";
             $scope.price_arrow = "arrow-status";
@@ -31,7 +30,13 @@ angular.module('goodsList.controller', ['goodsList.service'])
                     $scope.price_arrow = "arrow-status-up";
                     orderBy = "&orderBy=price";
                 }
-                addressList();
+                if(s_status == 1) {
+                    cateProductList();
+                }else if(s_status == 2){
+                    searchProductList()
+                }else if(s_status == 3){
+
+                }
             };
 
             $scope.retArrowStatus = function(number){
@@ -45,18 +50,18 @@ angular.module('goodsList.controller', ['goodsList.service'])
                 }else if(number == 3){
                     orderBy = "&orderBy=sales"
                 }
-                addressList();
+
+                if(s_status == 1) {
+                    cateProductList();
+                }else if(s_status == 2){
+                    searchProductList()
+                }else if(s_status == 3){
+
+                }
             };
 
-            var s_status = goodListParams.searchStatus;
-            if(s_status == 1){
-                addressList();
-            }else if(s_status == 2){
-                $scope.productList = goodListParams.search_info;
-                //console.log(angular.toJson($scope.productList));
-            }
-
-            function addressList(){
+            //分类---商品列表
+            function cateProductList(){
                 var cateId = goodListParams.typeNumber;
                 var pageNumber = 1;
                 var pageSize = 20;
@@ -75,19 +80,42 @@ angular.module('goodsList.controller', ['goodsList.service'])
             }
 
 
-            //添加购物车
-            $scope.addProductToCart = function(productId){
-                GoodsListFty.addProToCatService(productId)
+            //搜索--商品列表
+            function searchProductList(){
+
+                var p_name = searchInfo.search_name;
+                var pageNumber = 1;
+                var pageSize = 20;
+
+                GoodsListFty.sGoodsProductService(p_name,pageNumber,pageSize,orderBy)
                     .then(function(json){
+                        //alert(angular.toJson(json));
                         if(json.status_code == 0){
-                            $.toast.prototype.defaults.duration = 2000;
-                            $.toast("成功添加商品");
-                        }else{
-                            $.toast("添加失败", "cancel");
+                            $scope.productList = json.data;
                         }
                     }, function(error){
-                        $.toast("添加失败", "cancel");
+                        console.log(error)
                     })
-            };
+            }
+
+
+            //添加购物车
+
+            //$scope.addProductToCart = function(productId){
+            //    GoodsListFty.addProToCatService(productId)
+            //        .then(function(json){
+            //            if(json.status_code == 0){
+            //                $.toast.prototype.defaults.duration = 2000;
+            //                $.toast("成功添加商品");
+            //            }else{
+            //                $.toast("添加失败", "cancel");
+            //            }
+            //        }, function(error){
+            //            $.toast("添加失败", "cancel");
+            //        })
+            //};
+
+
+
 
     }]);

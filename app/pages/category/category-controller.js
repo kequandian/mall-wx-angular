@@ -23,6 +23,9 @@ angular.module('category.controller', ['category.service'])
 
             //title
             document.title = "商品分类";
+
+            $(document).prop('title', '商品分类');
+
             $rootScope.tabsNumber = 2;
 
             detailsInfo();
@@ -82,7 +85,10 @@ angular.module('category.controller', ['category.service'])
                 goodListParams.typeNumber = gItemtId;
                 goodListParams.searchStatus = 1;
                 $state.go('goodsList')
+            };
+
+            //点击搜索栏
+            $scope.cateGoToSearchPage = function(){
+                $state.go('searchPage');
             }
-
-
         }]);

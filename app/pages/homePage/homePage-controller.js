@@ -1,9 +1,11 @@
 angular.module('homePage.controller', ['homePage.service'])
 
-    .controller('HomePageController', ['$scope', '$state', '$rootScope', 'HomePageFty',
-        function ($scope, $state,$rootScope, HomePageFty) {
+    .controller('HomePageController', ['$scope', '$state', '$rootScope', 'HomePageFty','areasStatus',
+        function ($scope, $state,$rootScope, HomePageFty,areasStatus) {
 
             document.title = "十美优品商城";
+
+            $(document).prop('title', '十美优品商城');
 
             $rootScope.tabsNumber = 1;
 
@@ -96,5 +98,16 @@ angular.module('homePage.controller', ['homePage.service'])
             //搜索栏
             $scope.goToSearchPage = function(){
                 $state.go('searchPage');
+            };
+
+            //分类区域
+            $scope.areasStatus = function(number){
+                if(number == 1){
+                    areasStatus.areas_status = 1;
+                    $state.go('goodsList');
+                }else if(number == 3){
+                    areasStatus.areas_status = 3;
+                    $state.go('goodsList');
+                }
             }
         }]);
