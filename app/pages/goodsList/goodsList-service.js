@@ -32,6 +32,20 @@ angular.module('goodsList.service', [])
                         return deferred.reject(data);
                     });
                 return deferred.promise;
+            },
+
+            //搜索----商品列表
+            //商品搜索&orderByDesc=view_count&orderBy=price&orderBy=sales
+            sGoodsProductService: function (productName,pageNumber,pageSize,orderBy) {
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + "/product_search?pageNumber=" + pageNumber + "&pageSize= " + pageSize + " &name=" + productName + orderBy;
+                $http.get(url)
+                    .success(function (data) {
+                        return deferred.resolve(data);
+                    }).error(function (data) {
+                        return deferred.reject(data);
+                    });
+                return deferred.promise;
             }
         }
     }]);

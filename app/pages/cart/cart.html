@@ -33,7 +33,7 @@
 
                     <ul class="cart-list" ng-repeat="cart in carts">
                         <li class="">
-                            <div class="">
+                            <div class="" ng-hide="cart_item_price">
                                 <input class="cart-checkbox" type="checkbox" id="check{{cart.id}}" ng-model="cart.$checked" ng-change="checkItem(cart)">
                                 <label class="ion-ios-checkmark cart-item-label" for="check{{cart.id}}"></label>
                             </div>
@@ -74,7 +74,7 @@
                 </div>
             </div>
 
-            <footer id="foot" class="cart-foot">
+            <footer id="foot" class="cart-foot" ng-hide="cart_item_price">
                 <div class="footLeft">
                     <input class="cart-checkbox" type="checkbox" value="全不选" id="selectAll" ng-model="$allChecked" ng-change="checkAll()">
                     <label id="checkAll" class="ion-android-checkbox-outline-blank active cart-item-label" for="selectAll"></label>

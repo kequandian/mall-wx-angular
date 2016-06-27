@@ -5,6 +5,7 @@ var myapp = angular.module('myapp', [
     'global',
     'bsSwitch',
     'commonJs',
+    'moduleValueJs',
     'ui.router',
     'home.route',
     'my.route',
@@ -43,22 +44,8 @@ myapp.config(['$stateProvider', "$urlRouterProvider",
     function ($stateProvider, $urlRouterProvider) {
 
         $urlRouterProvider.otherwise("/home/homePage");
-    }]).
-
-    //搜索结果
-    value("searchInfo", {
-        search_info: null
-    })
-    .value("queryData", {
-        queryInfo: "info"
-    })
-    .value('goodListParams',{
-        typeNumber:null,
-        searchStatus:null
-    })
+    }])
 ;
-
-
 
 
 /*myapp.directive('cityPicker', function () {

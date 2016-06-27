@@ -1,7 +1,7 @@
 angular.module('category.service', [])
     .factory('CategoryFty', ['$http', '$q', 'GlobalVariable', function($http,$q,GlobalVariable) {
         return{
-            // 获取更新数据数据
+            // 获取商品类别数据
             categoryService: function () {
                 var deferred = $q.defer();
                 var url = GlobalVariable.SERVER_PATH + "/product_category";

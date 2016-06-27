@@ -58,15 +58,19 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
 
         //删除购物车单项商品
         $scope.showDeleteConfirm= function(id) {
-            $.confirm("您确定要删除该商品吗?", "确认删除?", function() {
+            //$.confirm("您确定要删除该商品吗?", "确认删除?", function() {
+            $.confirm("", "确认要移除该商品吗？", function() {
                 CartFty.deleteCart(id).then(
                     function (result) {
                         //console.log(result);
-                        $state.go('home.cart',{}, {reload: true});
+                        //$state.go('home.cart',{}, {reload: true});
+
+                        AllCarts();//重新加载购物车
+
                     },function (error){
                         //console.log(error);
                     });
-                $.toast("已经删除!");
+                $.toast("移除成功!");
             }, function() {
                 //取消操作
             });
