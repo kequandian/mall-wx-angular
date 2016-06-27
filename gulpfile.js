@@ -8,7 +8,7 @@ var cleanCSS = require('gulp-clean-css');
 var concat = require('gulp-concat');
 var concatCss = require('gulp-concat-css');
 var removeHtmlComments = require('gulp-remove-html-comments');
-//var removeEmptyLines = require('gulp-remove-empty-lines');
+var removeEmptyLines = require('gulp-remove-empty-lines');
 var htmlmin = require('gulp-html-minifier');
 var rename = require('gulp-rename');
 var replace = require('gulp-replace');
@@ -76,14 +76,14 @@ gulp.task('rep', function () {
 });
 
 gulp.task('dist', function () {
-    var homejs = gulp.src(['app/pages/home/*.js', 'app/pages/homePage/*.js'])
+    var homejs = gulp.src(['app/pages/home/*.js', 'app/pages/homePage/*.js', 'app/lib/custom/js/spinner.js'])
         .pipe(ngAnnotate())
         .pipe(stripDebug())
         .pipe(concat('home.js'))
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'));
 
-    var homecss = gulp.src('app/css/home/*.css')
+    var homecss = gulp.src(['app/css/home/*.css', 'app/lib/custom/spinner.css'])
         .pipe(concatCss('home.css'))
         .pipe(cleanCSS())
         .pipe(gulp.dest('dist/css'));
@@ -105,19 +105,19 @@ gulp.task('dist', function () {
         .pipe(cleanCSS())
         .pipe(gulp.dest('dist/css'));
 
-    var customjs = gulp.src('app/lib/custom/js/*.js')
+    var customjs = gulp.src(['app/lib/custom/js/*.js','!app/lib/custom/js/spinner.js'])
         .pipe(ngAnnotate())
         .pipe(stripDebug())
         .pipe(concat('custom.js'))
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'));
 
-    var customcss = gulp.src('app/lib/custom/css/*.css')
+    var customcss = gulp.src(['app/lib/custom/css/*.css', '!app/lib/custom/spinner.css'])
         .pipe(concatCss('custom.css'))
         .pipe(cleanCSS())
         .pipe(gulp.dest('dist/css'));
 
-    var minifyapp = gulp.src(['app/js/app.js', 'app/js/common.js', 'app/js/weui.js'])
+    var minifyapp = gulp.src(['app/js/*.js', '!app/js/home.js', '!app/js/bundle.js', '!app/js/custom.js', '!app/js/global.js'])
         .pipe(ngAnnotate())
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'));
@@ -135,8 +135,8 @@ gulp.task('dist', function () {
         .pipe(replace(/(\<script src=\"js\/global\.js"\>\<\/script\>)/, '<!--$1-->'))
         .pipe(replace(/(\<script src=\"pages\/\w+\/.+\.js"\>\<\/script\>)/g, '<!--$1-->'))
         .pipe(replace(/(\<script src=\"lib\/custom\/js\/\w+\.js"\>\<\/script\>)/g, '<!--$1-->'))
-        //.pipe(removeHtmlComments())
-        //.pipe(removeEmptyLines({removeComments: true}))
+        .pipe(removeHtmlComments())
+        .pipe(removeEmptyLines({removeComments: true}))
         .pipe(gulp.dest('dist'));
 
     var html = gulp.src('app/pages/**/*.html')

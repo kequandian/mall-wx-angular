@@ -60,7 +60,8 @@
                                                     <span>+</span>
                                                 </a>
                                             </div>
-                                            <img class="ion-close" src="img/cart/close.png" ng-click="showDeleteConfirm(cart.product_id)"/>
+                                            <img class="ion-close" src="img/cart/close.png"
+                                                 ng-click="showDeleteConfirm(cart.product_id);$event.stopPropagation()"/>
                                         </div>
 
                                     </div>

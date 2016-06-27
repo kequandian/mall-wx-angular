@@ -4,6 +4,7 @@
 var myapp = angular.module('myapp', [
     'global',
     'bsSwitch',
+    'spinner',
     'commonJs',
     'moduleValueJs',
     'ui.router',

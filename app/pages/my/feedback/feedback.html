@@ -68,8 +68,14 @@
                                     <div class="weui_uploader_status_content">50%</div>
                                 </li>
                             </ul>-->
+
+                            <!--<ul class="weui_uploader_files">
+                                &lt;!&ndash; 预览图插入到这 &ndash;&gt;
+                                <li class="weui_uploader_file" style="background-image:url(http://shp.qpic.cn/weixinsrc_pic/pScBR7sbqjOBJomcuvVJ6iacVrbMJaoJZkFUIq4nzQZUIqzTKziam7ibg/)"></li>
+                            </ul>-->
+
                             <div class="weui_uploader_input_wrp">
-                                <input class="weui_uploader_input" accept="image/jpg,image/jpeg,image/png,image/gif" multiple="" type="file">
+                                <input id="inputFileToLoad" onchange="angular.element(this).scope().uploadImage()" class="weui_uploader_input" accept="image/jpg,image/jpeg,image/png,image/gif" multiple="" type="file">
                             </div>
 
                         </div>
