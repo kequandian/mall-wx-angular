@@ -135,7 +135,7 @@ gulp.task('dist', function () {
         .pipe(replace(/(\<script src=\"js\/global\.js"\>\<\/script\>)/, '<!--$1-->'))
         .pipe(replace(/(\<script src=\"pages\/\w+\/.+\.js"\>\<\/script\>)/g, '<!--$1-->'))
         .pipe(replace(/(\<script src=\"lib\/custom\/js\/\w+\.js"\>\<\/script\>)/g, '<!--$1-->'))
-        //.pipe(removeHtmlComments())
+        .pipe(removeHtmlComments())
         .pipe(removeEmptyLines({removeComments: true}))
         .pipe(gulp.dest('dist'));
 
