@@ -8,7 +8,7 @@ var cleanCSS = require('gulp-clean-css');
 var concat = require('gulp-concat');
 var concatCss = require('gulp-concat-css');
 var removeHtmlComments = require('gulp-remove-html-comments');
-//var removeEmptyLines = require('gulp-remove-empty-lines');
+var removeEmptyLines = require('gulp-remove-empty-lines');
 var htmlmin = require('gulp-html-minifier');
 var rename = require('gulp-rename');
 var replace = require('gulp-replace');
@@ -136,7 +136,7 @@ gulp.task('dist', function () {
         .pipe(replace(/(\<script src=\"pages\/\w+\/.+\.js"\>\<\/script\>)/g, '<!--$1-->'))
         .pipe(replace(/(\<script src=\"lib\/custom\/js\/\w+\.js"\>\<\/script\>)/g, '<!--$1-->'))
         //.pipe(removeHtmlComments())
-        //.pipe(removeEmptyLines({removeComments: true}))
+        .pipe(removeEmptyLines({removeComments: true}))
         .pipe(gulp.dest('dist'));
 
     var html = gulp.src('app/pages/**/*.html')
