@@ -397,7 +397,7 @@
 
                 this.moveDirection = offset >= this.panelOffset ? DIRECTIONS.RIGHT : DIRECTIONS.LEFT;
                 this.panelOffset = offset;
-                if(this.currentPanel.el) {
+                if(!(this.currentPanel===undefined || this.currentPanel.el === undefined)) {
                     this._transform(this.currentPanel.el, offset);
                 }
 

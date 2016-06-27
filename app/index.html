@@ -53,6 +53,7 @@
     <link rel="stylesheet" href="css/searchPage/searchPage.css">
 
     <!--custom-->
+    <link rel="stylesheet" href="lib/custom/css/spinner.css">
     <link rel="stylesheet" href="lib/custom/css/levelProgress.css">
     <link rel="stylesheet" href="lib/custom/css/fiveStar.css">
 
@@ -60,13 +61,20 @@
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/bundle.css" lazyload>
     <link rel="stylesheet" href="css/custom.css" lazyload>
+
 </head>
 <body ontouchstart="">
 <div hidden>
     <img src="img/logo.png" lazyload>
 </div>
-<div id="container">
-    <div ui-view></div>
+
+<div>
+    <div id="spinner-wrap" loader>
+        <img src="img/about.png" class="spinner-loader"/>
+    </div>
+    <div id="container">
+        <div ui-view></div>
+    </div>
 </div>
 
 <!-- Angular -->
@@ -85,6 +93,7 @@
 
 <!-- custom lib -->
 <script src="lib/angular-ad-switch/js/switch.min.js"></script>
+<script src="lib/custom/js/spinner.js"></script>
 
 <!-- App Script -->
 <script src="js/app.js"></script>
@@ -219,9 +228,18 @@
 <script src="lib/custom/js/levelProgress.js"></script>
 <script src="lib/custom/js/fiveStar.js"></script>
 
+
 <!-- pages above blew line -->
 <script src="js/home.js"></script>
 <script defer src="js/bundle.js"></script>
 <script defer src="js/custom.js"></script>
+
+<!--<div loading-widget>
+    <div class="loadingContent">
+        <p>
+            <img alt="Loading  Content" src="img/about.png"/>Loading
+        </p>
+    </div>
+</div>-->
 </body>
 </html>

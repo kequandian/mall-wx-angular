@@ -76,14 +76,14 @@ gulp.task('rep', function () {
 });
 
 gulp.task('dist', function () {
-    var homejs = gulp.src(['app/pages/home/*.js', 'app/pages/homePage/*.js'])
+    var homejs = gulp.src(['app/pages/home/*.js', 'app/pages/homePage/*.js', 'app/lib/custom/js/spinner.js'])
         .pipe(ngAnnotate())
         .pipe(stripDebug())
         .pipe(concat('home.js'))
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'));
 
-    var homecss = gulp.src('app/css/home/*.css')
+    var homecss = gulp.src(['app/css/home/*.css', 'app/lib/custom/spinner.css'])
         .pipe(concatCss('home.css'))
         .pipe(cleanCSS())
         .pipe(gulp.dest('dist/css'));
@@ -105,14 +105,14 @@ gulp.task('dist', function () {
         .pipe(cleanCSS())
         .pipe(gulp.dest('dist/css'));
 
-    var customjs = gulp.src('app/lib/custom/js/*.js')
+    var customjs = gulp.src(['app/lib/custom/js/*.js','!app/lib/custom/js/spinner.js'])
         .pipe(ngAnnotate())
         .pipe(stripDebug())
         .pipe(concat('custom.js'))
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'));
 
-    var customcss = gulp.src('app/lib/custom/css/*.css')
+    var customcss = gulp.src(['app/lib/custom/css/*.css', '!app/lib/custom/spinner.css'])
         .pipe(concatCss('custom.css'))
         .pipe(cleanCSS())
         .pipe(gulp.dest('dist/css'));
