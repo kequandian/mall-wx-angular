@@ -46,6 +46,21 @@ angular.module('goodsList.service', [])
                         return deferred.reject(data);
                     });
                 return deferred.promise;
+            },
+
+
+            //分区----商品列表
+            //商品搜索&orderByDesc=view_count&orderBy=price&orderBy=sales
+            areasProductService: function (zone,pageNumber,pageSize,orderBy) {
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + "/product?pageNumber=" + pageNumber + "&pageSize= " + pageSize + " &zone=" + zone + orderBy;
+                $http.get(url)
+                    .success(function (data) {
+                        return deferred.resolve(data);
+                    }).error(function (data) {
+                        return deferred.reject(data);
+                    });
+                return deferred.promise;
             }
         }
     }]);

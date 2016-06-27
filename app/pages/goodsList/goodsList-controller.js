@@ -1,102 +1,103 @@
 angular.module('goodsList.controller', ['goodsList.service'])
 
-    .controller('GoodsListController', ['$scope', '$state','$stateParams', 'GoodsListFty','searchInfo','goodListParams','areasStatus',
-        function($scope,$state,$stateParams, GoodsListFty,searchInfo,goodListParams,areasStatus){
+    .controller('GoodsListController', ['$scope', '$state', '$stateParams', 'GoodsListFty', 'searchInfo', 'goodListParams', 'areasStatus',
+        function ($scope, $state, $stateParams, GoodsListFty, searchInfo, goodListParams, areasStatus) {
 
             document.title = "商品列表";
 
+            var orderBy = "";
             var s_status = goodListParams.searchStatus;
 
-            if(s_status == 1){
+            if (s_status == 1) {
                 cateProductList();
-            }else if(s_status == 2){
+            } else if (s_status == 2) {
                 $scope.productList = searchInfo.search_info;
-            }else if(s_status == 3){
-
+            } else if (s_status == 3) {
+                areasProductList();
             }
 
-            var orderBy = "";
             $scope.price_arrow = "arrow-status";
             $scope.price_arrow_hide = true;
-            $scope.priceStatus = function(){
+            $scope.priceStatus = function () {
                 $scope.price_arrow_hide = false;
-                if($scope.price_arrow == "arrow-status"){
+                if ($scope.price_arrow == "arrow-status") {
                     $scope.price_arrow = "arrow-status-up";
                     orderBy = "&orderBy=price";
-                }else if($scope.price_arrow == "arrow-status-up"){
+                } else if ($scope.price_arrow == "arrow-status-up") {
                     $scope.price_arrow = "arrow-status-down";
                     orderBy = "&orderByDesc=price";
-                }else if($scope.price_arrow == "arrow-status-down"){
+                } else if ($scope.price_arrow == "arrow-status-down") {
                     $scope.price_arrow = "arrow-status-up";
                     orderBy = "&orderBy=price";
                 }
-                if(s_status == 1) {
+                if (s_status == 1) {
                     cateProductList();
-                }else if(s_status == 2){
-                    searchProductList()
-                }else if(s_status == 3){
-
+                } else if (s_status == 2) {
+                    $scope.searchProductList()
+                } else if (s_status == 3) {
+                    areasProductList()
                 }
             };
 
-            $scope.retArrowStatus = function(number){
+            $scope.retArrowStatus = function (number) {
                 $scope.price_arrow = "arrow-status";
                 $scope.price_arrow_hide = true;
 
-                if(number == 1){
+                if (number == 1) {
                     orderBy = "";
-                }else if(number == 2){
+                } else if (number == 2) {
                     orderBy = "&orderBy=view_count"
-                }else if(number == 3){
+                } else if (number == 3) {
                     orderBy = "&orderBy=sales"
                 }
 
-                if(s_status == 1) {
+                if (s_status == 1) {
                     cateProductList();
-                }else if(s_status == 2){
-                    searchProductList()
-                }else if(s_status == 3){
-
+                } else if (s_status == 2) {
+                    $scope.searchProductList();
+                } else if (s_status == 3) {
+                    areasProductList();
                 }
             };
 
             //分类---商品列表
-            function cateProductList(){
+            function cateProductList() {
                 var cateId = goodListParams.typeNumber;
                 var pageNumber = 1;
                 var pageSize = 20;
 
-                GoodsListFty.goodsListService(cateId,pageNumber,pageSize,orderBy)
-                    .then(function(json){
-                        if(json.status_code == 0){
+                GoodsListFty.goodsListService(cateId, pageNumber, pageSize, orderBy)
+                    .then(function (json) {
+                        alert(angular.toJson(json.data));
+                        if (json.status_code == 0) {
                             $scope.productList = json.data.products;
                             //console.log("productList?"+angular.toJson($scope.productList));
-                        }else{
+                        } else {
                             console.log("获取失败");
                         }
-                    }, function(error){
+                    }, function (error) {
+                        //alert(angular.toJson(error));
                         console.log("获取失败");
                     })
             }
 
 
             //搜索--商品列表
-            function searchProductList(){
-
+            $scope.searchProductList = function() {
                 var p_name = searchInfo.search_name;
                 var pageNumber = 1;
-                var pageSize = 20;
+                var pageSize = 6;
 
-                GoodsListFty.sGoodsProductService(p_name,pageNumber,pageSize,orderBy)
-                    .then(function(json){
+                GoodsListFty.sGoodsProductService(p_name, pageNumber, pageSize, orderBy)
+                    .then(function (json) {
                         //alert(angular.toJson(json));
-                        if(json.status_code == 0){
+                        if (json.status_code == 0) {
                             $scope.productList = json.data;
                         }
-                    }, function(error){
+                    }, function (error) {
                         console.log(error)
                     })
-            }
+            };
 
 
             //添加购物车
@@ -116,6 +117,36 @@ angular.module('goodsList.controller', ['goodsList.service'])
             //};
 
 
+            //分区商品列表
+            function areasProductList() {
+
+                var zone = areasStatus.areas_status;
+                var pageNumber = 1;
+                var pageSize = 20;
+
+                GoodsListFty.areasProductService(zone, pageNumber, pageSize, orderBy)
+                    .then(function (json) {
+                        //alert(angular.toJson(json));
+                        if (json.status_code == 0) {
+                            $scope.productList = json.data;
+                        }
+                    }, function (error) {
+                        console.log(error)
+                    })
+            }
+
+            var loading = false;  //状态标记
+            $("#goodsList").infinite(10).on("infinite", function() {
+                alert(1111);
+                if(loading) return;
+                loading = true;
+                setTimeout(function() {
+                    $("#goodsList").append("<p> 我是新加载的内容 </p>");
+                    loading = false;
+                }, 1500);   //模拟延迟
+            });
 
 
-    }]);
+
+
+        }]);

@@ -1,7 +1,7 @@
 angular.module('homePage.controller', ['homePage.service'])
 
-    .controller('HomePageController', ['$scope', '$state', '$rootScope', 'HomePageFty','areasStatus',
-        function ($scope, $state,$rootScope, HomePageFty,areasStatus) {
+    .controller('HomePageController', ['$scope', '$state', '$rootScope', 'HomePageFty','areasStatus','goodListParams',
+        function ($scope, $state,$rootScope, HomePageFty,areasStatus,goodListParams) {
 
             document.title = "十美优品商城";
 
@@ -104,9 +104,11 @@ angular.module('homePage.controller', ['homePage.service'])
             $scope.areasStatus = function(number){
                 if(number == 1){
                     areasStatus.areas_status = 1;
+                    goodListParams.searchStatus = 3;
                     $state.go('goodsList');
                 }else if(number == 3){
                     areasStatus.areas_status = 3;
+                    goodListParams.searchStatus = 3;
                     $state.go('goodsList');
                 }
             }

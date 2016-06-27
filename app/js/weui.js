@@ -223,8 +223,8 @@ $(function () {
             $('.click_radio label').removeAttr('class').addClass('detail_label_radio');
             $(this).attr('class', 'detail_label_radio_checked');
             $('.detail_input_radio').removeAttr('checked') && $('#' + radioId).attr('checked', 'checked');
-        })
+        });
 
-    ;
+
 
 });
