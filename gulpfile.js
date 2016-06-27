@@ -117,7 +117,7 @@ gulp.task('dist', function () {
         .pipe(cleanCSS())
         .pipe(gulp.dest('dist/css'));
 
-    var minifyapp = gulp.src(['app/js/app.js', 'app/js/common.js', 'app/js/weui.js'])
+    var minifyapp = gulp.src(['app/js/app.js', 'app/js/common.js', 'app/js/moduleValue.js', 'app/js/weui.js'])
         .pipe(ngAnnotate())
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'));
