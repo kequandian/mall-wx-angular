@@ -87,13 +87,11 @@
 <script defer src="bower_components/jquery-weui/dist/js/jquery-weui.min.js"></script>
 <script defer src="js/weui.js"></script>-->
 
-<!--<script src="bower_components/material-date-picker/build/mbdatepicker.js"></script>-->
-<!--<script src="bower_components/moment/moment.js"></script>-->
 <!--<script src="lib/zepto.min.js"></script>-->
 <!--<script src="lib/qrcodejs/qrcode.min.js"></script>-->
 
 <!-- custom lib -->
-<script src="lib/angular-ad-switch/js/switch.min.js"></script>
+<script src="lib/angular-ad-switch/js/switch.js"></script>
 <script src="lib/custom/js/spinner.js"></script>
 
 <!-- App Script -->
@@ -244,16 +242,6 @@
     </div>
 </div>-->
 <script language="javascript">
-    /*function doLoad() {
-        var worker = new Worker("js/loadjs.js");
-        worker.onmessage = function (event) {
-            self.close();
-        };
-        worker.onerror = function (error) {
-            self.close();
-        };
-        worker.postMessage("5");
-    }*/
     function downloadJSAtOnload(){
         loadScript("bower_components/jquery/dist/jquery.min.js", function(){
             loadScript("bower_components/jquery-weui/dist/js/jquery-weui.min.js", function(){

@@ -1,4 +1,14 @@
 (function(){
+    /*function doLoad() {
+     var worker = new Worker("js/loadjs.js");
+     worker.onmessage = function (event) {
+     self.close();
+     };
+     worker.onerror = function (error) {
+     self.close();
+     };
+     worker.postMessage("5");
+     }*/
 
     // Setup an event listener that will handle messages sent to the worker.
     self.addEventListener('message', function(e) {

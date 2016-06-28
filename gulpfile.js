@@ -76,7 +76,13 @@ gulp.task('rep', function () {
 });
 
 gulp.task('dist', function () {
-    var minifyapp = gulp.src(['app/lib/angular-ad-switch/js/switch.min.js', 'app/js/*.js', '!app/js/home.js', '!app/js/bundle.js', '!app/js/custom.js','!app/js/weui.js','!app/js/global.js'])
+    var minifyapp = gulp.src(['app/lib/angular-ad-switch/js/switch.js', 'app/js/*.js',
+                                '!app/js/home.js',
+                                '!app/js/bundle.js',
+                                '!app/js/custom.js',
+                                '!app/js/weui.js',
+                                '!app/js/loadjs.js',
+                                '!app/js/global.js'])
         .pipe(ngAnnotate())
         .pipe(concat('apps.js'))
         .pipe(uglify())
@@ -169,6 +175,13 @@ gulp.task('dist', function () {
         .pipe(gulp.dest('dist/js'));
 
     return merge(minifyapp, homejs, homecss, minify, minifycss, customjs, customcss, index, html, lib, img, bower, js, debug);
+});
+
+gulp.task('debug', function () {
+    return gulp.src(['dist/index.html'])
+        .pipe(replace(/(\"pages\/.+)\.js/g, '$1\.min\.js'))
+        .pipe(replace(/(\<\/body\>)/g, '\<script src=\"js\/global.js\"></script>$1'))
+        .pipe(gulp.dest('dist'));
 });
 
 gulp.task('clean', function () {
