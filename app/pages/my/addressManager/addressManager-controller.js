@@ -1,8 +1,30 @@
 angular.module('addressManager.controller', ['addressManager.service'])
 
     .controller('AddressManagerController', ['$scope', '$state', '$stateParams', 'AddressManagerFty', function($scope, $state, $stateParams, AddressManagerFty){
+        var pcd ;
 
-        AllContacts();
+        //loadScript("bower_components/jquery/dist/jquery.min.js", function(){
+        //    loadScript("bower_components/jquery-weui/dist/js/jquery-weui.min.js", function(){
+        //        loadScript('js/weui.js', function() {
+                    AllContacts();
+                    AllPCD();
+        //        })
+        //    })
+        //})
+
+        $scope.contact={};
+        var editingContact = $stateParams.data;
+        if(editingContact != null){
+            $scope.editC= editingContact;
+
+            if(editingContact.province == null){
+                $scope.pcd = '';
+                //console.log($scope.pcd);
+            }else{
+                $scope.pcd= editingContact.province +' '+ editingContact.city +' '+ editingContact.district;
+                //console.log('edit pcd:' + $scope.pcd);
+            }
+        }
 
         function AllContacts() {
 
@@ -22,20 +44,6 @@ angular.module('addressManager.controller', ['addressManager.service'])
                 },function (error){
                     console.log(error);
                 })
-        }
-
-        $scope.contact={};
-        var editingContact = $stateParams.data;
-        if(editingContact != null){
-            $scope.editC= editingContact;
-
-            if(editingContact.province == null){
-                $scope.pcd = '';
-                //console.log($scope.pcd);
-            }else{
-                $scope.pcd= editingContact.province +' '+ editingContact.city +' '+ editingContact.district;
-                console.log('edit pcd:' + $scope.pcd);
-            }
         }
 
         /*$scope.isDefault=[
@@ -246,8 +254,6 @@ angular.module('addressManager.controller', ['addressManager.service'])
         //    console.log($scope.currentContact);
         //};
 
-        var pcd ;
-        AllPCD();
 
         function checkPhone(str){
             var isphone = /^((\+|0)86)?\d{11}$/.test(str);

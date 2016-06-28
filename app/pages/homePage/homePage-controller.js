@@ -5,8 +5,6 @@ angular.module('homePage.controller', ['homePage.service'])
 
             document.title = "十美优品商城";
 
-            $(document).prop('title', '十美优品商城');
-
             $rootScope.tabsNumber = 1;
 
             /* setTimeout(function(){
@@ -56,7 +54,8 @@ angular.module('homePage.controller', ['homePage.service'])
                             //alert(angular.toJson(json.data));
                         }
                     }, function (error) {
-                        $.toast('获取推荐商品失败', 'cancel');
+                        console.log(error);
+                        //$.toast('获取推荐商品失败', 'cancel');
                     })
             }
 
@@ -68,7 +67,8 @@ angular.module('homePage.controller', ['homePage.service'])
                             //console.log(angular.toJson($scope.ad_list));
                         }
                     }, function (error) {
-                        $.toast('获取广告信息失败', 'cancel');
+                        console.log(error);
+                        //$.toast('获取广告信息失败', 'cancel');
                     })
             }
 
@@ -83,7 +83,8 @@ angular.module('homePage.controller', ['homePage.service'])
                             //console.log("ad-banner-1?"+angular.toJson($scope.ad_banner_1));
                         }
                     }, function (error) {
-                        $.toast('获取广告列表失败', 'cancel');
+                        console.log(error);
+                        //$.toast('获取广告列表失败', 'cancel');
                     })
             }
 

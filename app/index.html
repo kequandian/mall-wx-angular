@@ -82,18 +82,13 @@
 </div>
 
 
-
 <!-- Angular -->
 <script src="bower_components/angular/angular.min.js"></script>
 <script defer src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 
-<!-- bower_components -->
-<script defer src="bower_components/jquery/dist/jquery.min.js"></script>
+<!--<script defer src="bower_components/jquery/dist/jquery.min.js"></script>
 <script defer src="bower_components/jquery-weui/dist/js/jquery-weui.min.js"></script>
-<script defer src="js/weui.js"></script>
-
-<!-- iscroll -->
-
+<script defer src="js/weui.js"></script>-->
 
 <!--<script src="bower_components/material-date-picker/build/mbdatepicker.js"></script>-->
 <!--<script src="bower_components/moment/moment.js"></script>-->
@@ -250,5 +245,40 @@
         </p>
     </div>
 </div>-->
+<script language="javascript">
+    /*function doLoad() {
+        var worker = new Worker("js/loadjs.js");
+        worker.onmessage = function (event) {
+            self.close();
+        };
+        worker.onerror = function (error) {
+            self.close();
+        };
+        worker.postMessage("5");
+    }*/
+    function downloadJSAtOnload(){
+        loadScript("bower_components/jquery/dist/jquery.min.js", function(){
+            loadScript("bower_components/jquery-weui/dist/js/jquery-weui.min.js", function(){
+                loadScript('js/weui.js', function() {
+                })
+            })
+        })
+    }
+    function loadScript(src, callback) {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        if (callback)script.onload = callback;
+        var sc = document.getElementsByTagName("head")[0];
+        sc.appendChild(script);
+        script.src = src;
+    }
+    if (window.addEventListener) {
+        window.addEventListener("load", downloadJSAtOnload, false);
+    } else if (window.attachEvent) {
+        window.attachEvent("onload", downloadJSAtOnload);
+    } else {
+        window.onload = downloadJSAtOnload;
+    }
+</script>
 </body>
 </html>

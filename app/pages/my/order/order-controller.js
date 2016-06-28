@@ -54,7 +54,7 @@ angular.module('my.order.controller', ['my.order.service','order.common'])
 
             $rootScope.orderTabsIndex = 1;
 
-            $.showLoading("正在加载...");
+            //$.showLoading("正在加载...");
 
             $scope.allIsNull = true;
             $scope.allShow = true;
@@ -122,7 +122,7 @@ angular.module('my.order.controller', ['my.order.service','order.common'])
                             $scope.allShow = true;
                         }
                         $timeout(function(){
-                            $.hideLoading();
+                            //$.hideLoading();
                         },1000);
                     })
             }
@@ -183,7 +183,7 @@ angular.module('my.order.controller', ['my.order.service','order.common'])
         function($scope,$state,$rootScope,$timeout,OrderFty,OrderCommon){
 
             $rootScope.orderTabsIndex = 2;
-            $.showLoading("正在加载...");
+            //$.showLoading("正在加载...");
 
             $scope.payIsNull = true;
             $scope.payShow = true;
@@ -216,7 +216,7 @@ angular.module('my.order.controller', ['my.order.service','order.common'])
                             $scope.payShow = true;
                         }
                         $timeout(function(){
-                            $.hideLoading();
+                            //$.hideLoading();
                         },1000);
                     })
             }
@@ -239,7 +239,7 @@ angular.module('my.order.controller', ['my.order.service','order.common'])
 
             $rootScope.orderTabsIndex = 3;
 
-            $.showLoading("正在加载...");
+            //$.showLoading("正在加载...");
 
             $scope.payedIsNull = true;
             $scope.payedShow = true;
@@ -272,7 +272,7 @@ angular.module('my.order.controller', ['my.order.service','order.common'])
                             $scope.payedShow = true;
                         }
                         $timeout(function(){
-                            $.hideLoading();
+                            //$.hideLoading();
                         },1000);
                     })
             }
@@ -300,7 +300,7 @@ angular.module('my.order.controller', ['my.order.service','order.common'])
         function($scope,$state,$rootScope,$timeout,OrderFty,OrderCommon){
 
             $rootScope.orderTabsIndex = 4;
-            $.showLoading("正在加载...");
+            //$.showLoading("正在加载...");
 
             $scope.deliveredIsNull = true;
             $scope.deliveredShow = true;
@@ -333,7 +333,7 @@ angular.module('my.order.controller', ['my.order.service','order.common'])
                             $scope.deliveredShow = true;
                         }
                         $timeout(function(){
-                            $.hideLoading();
+                            //$.hideLoading();
                         },1000);
                     })
             }
@@ -389,7 +389,7 @@ angular.module('my.order.controller', ['my.order.service','order.common'])
         function($scope,$state,$rootScope,$timeout,OrderFty,OrderCommon){
 
             $rootScope.orderTabsIndex = 5;
-            $.showLoading("正在加载...");
+            //$.showLoading("正在加载...");
 
             $scope.finishIsNull = true;
             $scope.finishShow = true;
@@ -423,7 +423,7 @@ angular.module('my.order.controller', ['my.order.service','order.common'])
                             $scope.finishShow = true;
                         }
                         $timeout(function(){
-                            $.hideLoading();
+                            //$.hideLoading();
                         },1000);
                     })
             }

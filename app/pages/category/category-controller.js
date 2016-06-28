@@ -24,7 +24,7 @@ angular.module('category.controller', ['category.service'])
             //title
             document.title = "商品分类";
 
-            $(document).prop('title', '商品分类');
+            //$(document).prop('title', '商品分类');
 
             $rootScope.tabsNumber = 2;
 
