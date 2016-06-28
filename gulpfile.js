@@ -136,7 +136,7 @@ gulp.task('dist', function () {
         .pipe(replace(/(\<script src=\"pages\/\w+\/.+\.js"\>\<\/script\>)/g, '<!--$1-->'))
         .pipe(replace(/(\<script src=\"lib\/custom\/js\/\w+\.js"\>\<\/script\>)/g, '<!--$1-->'))
         .pipe(removeHtmlComments())
-        //.pipe(removeEmptyLines({removeComments: true}))
+        .pipe(removeEmptyLines({removeComments: true}))
         .pipe(gulp.dest('dist'));
 
     var html = gulp.src('app/pages/**/*.html')
