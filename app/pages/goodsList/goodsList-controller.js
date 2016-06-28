@@ -9,7 +9,7 @@ angular.module('goodsList.controller', ['goodsList.service'])
             var s_status = goodListParams.searchStatus;
 
             var pageNumber = 1;
-            var pageSize = 20;
+            var pageSize = 6;
 
             if (s_status == 1) {
                 cateProductList(pageNumber,pageSize);
@@ -25,7 +25,7 @@ angular.module('goodsList.controller', ['goodsList.service'])
             $scope.priceStatus = function () {
                 $scope.price_arrow_hide = false;
                 pageNumber = 1;
-                pageSize = 20;
+                pageSize = 6;
 
                 if ($scope.price_arrow == "arrow-status") {
                     $scope.price_arrow = "arrow-status-up";
@@ -37,10 +37,11 @@ angular.module('goodsList.controller', ['goodsList.service'])
                     $scope.price_arrow = "arrow-status-up";
                     orderBy = "&orderBy=price";
                 }
+
                 if (s_status == 1) {
                     cateProductList(pageNumber,pageSize);
                 } else if (s_status == 2) {
-                    $scope.searchProductList(pageNumber,pageSize)
+                    searchProductList(pageNumber,pageSize)
                 } else if (s_status == 3) {
                     areasProductList(pageNumber,pageSize)
                 }
@@ -52,7 +53,7 @@ angular.module('goodsList.controller', ['goodsList.service'])
                 $scope.price_arrow_hide = true;
 
                 pageNumber = 1;
-                pageSize = 20;
+                pageSize = 6;
 
                 if (number == 1) {
                     orderBy = "";
@@ -168,14 +169,15 @@ angular.module('goodsList.controller', ['goodsList.service'])
 
             $scope.load_more_products = function(){
 
-
+                pageNumber += 1;
+                pageSize = 6;
 
                 if (s_status == 1) {
-                    cateProductList();
+                    cateProductList(pageNumber,pageSize);
                 } else if (s_status == 2) {
-                    searchProductList();
+                    searchProductList(pageNumber,pageSize);
                 } else if (s_status == 3) {
-                    areasProductList();
+                    areasProductList(pageNumber,pageSize);
                 }
 
             }
