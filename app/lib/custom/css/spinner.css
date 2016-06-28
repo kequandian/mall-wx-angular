@@ -5,21 +5,41 @@
     bottom: 0;
     left: 0;
     z-index: 1100;
-    /*background-color: black;
-    opacity: .4;*/
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,0);
 }
 
 .spinner-loader {
     position: absolute;
-    width: 64px;
-    height: 64px;
+    width: 32px;
+    height: 32px;
     left: 50%;
     top: 50%;
-    margin-left: -32px; /* -1 * image width / 2 */
-    margin-top: -32px; /* -1 * image height / 2 */
+    margin-left: -16px; /* -1 * image width / 2 */
+    margin-top: -16px; /* -1 * image height / 2 */
     display: block;
     opacity: 0.8;
 }
 
 .spinner-hidden{display:none !important}
+
+/*
+#spinner {
+width: 32px;
+height: 32px;
+background: url('data:image/gif;base64,R0lGOD lhCwAOAMQfAP////7+/vj4+Hh4eHd3d/v7+/Dw8HV1dfLy8ubm5vX19e3t7fr 6+nl5edra2nZ2dnx8fMHBwYODg/b29np6eujo6JGRkeHh4eTk5LCwsN3d3dfX 13Jycp2dnevr6////yH5BAEAAB8ALAAAAAALAA4AAAVq4NFw1DNAX/o9imAsB tKpxKRd1+YEWUoIiUoiEWEAApIDMLGoRCyWiKThenkwDgeGMiggDLEXQkDoTh CKNLpQDgjeAsY7MHgECgx8YR8oHwNHfwADBACGh4EDA4iGAYAEBAcQIg0Dk gcEIQA7');
+}
+*/
+
+@-webkit-keyframes spinner-rotating {
+    from{
+        -webkit-transform: rotate(0deg);
+    }
+    to{
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+.spinner-rotating {
+    -webkit-animation: rotating 2s linear infinite;
+}
+
