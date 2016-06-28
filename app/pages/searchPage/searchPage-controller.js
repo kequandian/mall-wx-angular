@@ -34,27 +34,37 @@ angular.module('searchPage.controller', ['searchPage.service'])
             $scope.search_procudt_name = function($event){
                 if($event.keyCode == 13){
                     var p_name = $scope.product_name;
-                    SearchPageFty.searchProductService(p_name)
-                        .then(function(json){
-                            //alert(angular.toJson(json));
-                            if(json.status_code == 0){
-                                p_n_list.product_name = p_name;
-                                if(!(p_name === undefined || p_name === null || p_name.length==0)) {
-                                    p_list.push(p_n_list);
-                                    localStorage['productNameList'] = JSON.stringify(p_list);
-                                    $scope.product_name_list = JSON.parse(localStorage['productNameList']);
-                                }
-                                searchInfo.search_info = json.data;
-                                searchInfo.search_name = p_name;
-                                goodListParams.typeNumber = null;
-                                goodListParams.searchStatus = 2;
-                                $state.go('goodsList');
-                            }
-                        }, function(error){
-                            console.log(error)
-                        })
+                    search_product(p_name);
                 }
             };
+
+            //关键字搜索商品
+            $scope.hot_word_search = function(hot_word){
+                search_product(hot_word);
+            };
+
+            //搜索商品
+            function search_product(p_name){
+                SearchPageFty.searchProductService(p_name)
+                    .then(function(json){
+                        //alert(angular.toJson(json));
+                        if(json.status_code == 0){
+                            //p_n_list.product_name = p_name;
+                            //if(!(p_name === undefined || p_name === null || p_name.length==0)) {
+                            //    p_list.push(p_n_list);
+                            //    localStorage['productNameList'] = JSON.stringify(p_list);
+                            //    $scope.product_name_list = JSON.parse(localStorage['productNameList']);
+                            //}
+                            searchInfo.search_info = json.data;
+                            searchInfo.search_name = p_name;
+                            goodListParams.typeNumber = null;
+                            goodListParams.searchStatus = 2;
+                            $state.go('goodsList');
+                        }
+                    }, function(error){
+                        console.log(error)
+                    })
+            }
 
             //清楚历史搜索
             $scope.clear_history = function(){

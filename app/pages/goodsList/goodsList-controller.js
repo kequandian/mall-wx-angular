@@ -163,6 +163,4 @@ angular.module('goodsList.controller', ['goodsList.service'])
             //});
 
 
-
-
         }]);

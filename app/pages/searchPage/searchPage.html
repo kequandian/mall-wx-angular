@@ -20,7 +20,7 @@
         <p>热门搜索</p>
         <div class="hot-terms">
             <ul>
-                <li ng-repeat="wordItem in p_hot_word">{{wordItem.name}}</li>
+                <li ng-repeat="wordItem in p_hot_word" ng-click="hot_word_search(wordItem.name)">{{wordItem.name}}</li>
             </ul>
         </div>
 

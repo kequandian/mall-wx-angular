@@ -39,6 +39,19 @@
     float: left;
 }
 
+.user-detail p{
+    margin-top: 2px;
+}
+
+.owner_tag {
+    font-size: 10px;
+    background-color: white;
+    color: red;
+    padding: 1px;
+    border-radius: 2px;
+    margin-left: 5px;
+}
+
 .user-info .user-settings{
     width: 60px;
     height: 65px;
@@ -65,6 +78,11 @@
     line-height: 1.6;
     color: #fff;
     position: relative;
+    margin-top: 5px;
+}
+
+.user-detail .user-lv-text span{
+    float: left;
 }
 
 #kqdGrids .list-border {
