@@ -28,7 +28,7 @@
         <div class="history-terms">
 
             <ul>
-                <li ng-repeat="item in product_name_list">{{item.product_name}}</li>
+                <li ng-repeat="item in product_name_list" ng-click="hot_word_search(item.product_name)">{{item.product_name}}</li>
             </ul>
         </div>
     </div>

@@ -8,18 +8,25 @@ angular.module('goodsList.controller', ['goodsList.service'])
             var orderBy = "";
             var s_status = goodListParams.searchStatus;
 
+            var pageNumber = 1;
+            var pageSize = 20;
+
             if (s_status == 1) {
-                cateProductList();
+                cateProductList(pageNumber,pageSize);
             } else if (s_status == 2) {
                 $scope.productList = searchInfo.search_info;
             } else if (s_status == 3) {
-                areasProductList();
+                areasProductList(pageNumber,pageSize);
             }
+
 
             $scope.price_arrow = "arrow-status";
             $scope.price_arrow_hide = true;
             $scope.priceStatus = function () {
                 $scope.price_arrow_hide = false;
+                pageNumber = 1;
+                pageSize = 20;
+
                 if ($scope.price_arrow == "arrow-status") {
                     $scope.price_arrow = "arrow-status-up";
                     orderBy = "&orderBy=price";
@@ -31,17 +38,21 @@ angular.module('goodsList.controller', ['goodsList.service'])
                     orderBy = "&orderBy=price";
                 }
                 if (s_status == 1) {
-                    cateProductList();
+                    cateProductList(pageNumber,pageSize);
                 } else if (s_status == 2) {
-                    $scope.searchProductList()
+                    $scope.searchProductList(pageNumber,pageSize)
                 } else if (s_status == 3) {
-                    areasProductList()
+                    areasProductList(pageNumber,pageSize)
                 }
             };
 
             $scope.retArrowStatus = function (number) {
+
                 $scope.price_arrow = "arrow-status";
                 $scope.price_arrow_hide = true;
+
+                pageNumber = 1;
+                pageSize = 20;
 
                 if (number == 1) {
                     orderBy = "";
@@ -52,19 +63,17 @@ angular.module('goodsList.controller', ['goodsList.service'])
                 }
 
                 if (s_status == 1) {
-                    cateProductList();
+                    cateProductList(pageNumber,pageSize);
                 } else if (s_status == 2) {
-                    searchProductList();
+                    searchProductList(pageNumber,pageSize);
                 } else if (s_status == 3) {
-                    areasProductList();
+                    areasProductList(pageNumber,pageSize);
                 }
             };
 
             //分类---商品列表
-            function cateProductList() {
+            function cateProductList(pageNumber, pageSize) {
                 var cateId = goodListParams.typeNumber;
-                var pageNumber = 1;
-                var pageSize = 20;
 
                 GoodsListFty.goodsListService(cateId, pageNumber, pageSize, orderBy)
                     .then(function (json) {
@@ -83,10 +92,9 @@ angular.module('goodsList.controller', ['goodsList.service'])
 
 
             //搜索--商品列表
-            function searchProductList() {
+            function searchProductList(pageNumber, pageSize) {
+
                 var p_name = searchInfo.search_name;
-                var pageNumber = 1;
-                var pageSize = 6;
 
                 GoodsListFty.sGoodsProductService(p_name, pageNumber, pageSize, orderBy)
                     .then(function (json) {
@@ -98,7 +106,6 @@ angular.module('goodsList.controller', ['goodsList.service'])
                         console.log(error)
                     })
             }
-
 
             //添加购物车
 
@@ -116,13 +123,10 @@ angular.module('goodsList.controller', ['goodsList.service'])
             //        })
             //};
 
-
             //分区商品列表
-            function areasProductList() {
+            function areasProductList(pageNumber, pageSize) {
 
                 var zone = areasStatus.areas_status;
-                var pageNumber = 1;
-                var pageSize = 20;
 
                 GoodsListFty.areasProductService(zone, pageNumber, pageSize, orderBy)
                     .then(function (json) {
@@ -161,6 +165,20 @@ angular.module('goodsList.controller', ['goodsList.service'])
             //        loading = false;
             //    }, 1000);   //模拟延迟
             //});
+
+            $scope.load_more_products = function(){
+
+
+
+                if (s_status == 1) {
+                    cateProductList();
+                } else if (s_status == 2) {
+                    searchProductList();
+                } else if (s_status == 3) {
+                    areasProductList();
+                }
+
+            }
 
 
         }]);
