@@ -4,13 +4,16 @@
         </div>
         <div class="user-info">
             <div class="user-detail">
-                <p style="line-height: 80px;">
+                <p>
                     {{userInfo.name}}
+                    <span ng-if="userInfo.followed==0" class="owner_tag">已关注</span>
                 </p>
-                <!--<p style="font-size: 15px;">-->
-                <!--&lt;!&ndash;会员号：{{userInfo.weixin}}&ndash;&gt;-->
-                <!--ID：- -->
-                <!--</p>-->
+                <p style="font-size: 15px;">
+                    ID： {{userInfo.uid}}
+                </p>
+                <p class="user-lv-text">
+                    关注时间： {{userInfo.follow_time}}
+                </p>
             </div>
             <!--<div class="user-settings" ui-sref="userInfo">
                 <img src="img/my/user-setting-img.png">

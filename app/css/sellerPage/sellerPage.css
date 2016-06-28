@@ -206,12 +206,13 @@
     line-height: 30px;
 }
 
-#sellerPage .owner_tag {
+#sellerPage .owner_tag_left {
     font-size: 10px;
-    background-color: white;
-    color: red;
+    /*background-color: white;*/
+    color: white;
     padding: 1px;
     border-radius: 2px;
+    margin-left: 5px;
 }
 
 #sellerPage .lv_status{
@@ -340,4 +341,22 @@
     color: #6e6e6e;
     margin-top: 6px;
     margin-bottom: 5px;
+}
+
+#sellerPage .five-star-parent {
+    /*position: absolute;*/
+    bottom: 2px;
+    padding-left: 5px;
+}
+#sellerPage .crown-parent {
+    position: absolute;
+    bottom: 2px;
+    padding-left: 5px;
+    margin-bottom: 1px;
+}
+#sellerPage  .agent_crown_img{
+    width: 30px;
+    height: 21px;
+    position: absolute;
+    margin-bottom: 2px;
 }

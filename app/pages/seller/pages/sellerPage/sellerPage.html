@@ -21,30 +21,26 @@
                 <div class="user-detail">
                     <p>
                         {{userInfo.name}}
-                        <span ng-if="userInfo.followed==0" class="owner_tag">已关注</span>
+                        <span ng-if="userInfo.followed==0" class="owner_tag_left">推荐人：{{userInfo.inviter_name != null ? userInfo.inviter_name : "无"}}</span>
                     </p>
 
                     <p class="user-lv-text">
-                            ID：{{userInfo.uid}}
-                            <span ng-if="owner_balance.is_member" style="margin-left: 10px;">级别: </span>
-                            <span ng-if="owner_balance.is_agent">代理商</span>
-                            <span ng-if="owner_balance.is_agent==0 && owner_balance.is_partner">经销商</span>
-                            <span ng-if="owner_balance.is_agent==0 && owner_balance.is_partner==0 && owner_balance.is_seller">销售商</span>
-                            <span class="five-star-parent" ng-if="owner_balance.is_partner">
-                                <level-progress style="margin-bottom:6px;margin-right:20px"
-                                                value="{{owner_balance.level_percent}}"></level-progress>
-                                <five-star rank-src="lib/custom/img/yellow_star.png" src="lib/custom/img/white_star.png"
-                                           rank="{{owner_balance.partner_level.level}}" ></five-star>
-                            </span>
+                        <span ng-if="owner_balance.is_member">级别: &nbsp;</span>
+                        <span ng-if="owner_balance.is_agent">代理商</span>
+                        <span ng-if="owner_balance.is_agent==0 && owner_balance.is_partner">经销商</span>
+                        <span ng-if="owner_balance.is_agent==0 && owner_balance.is_partner==0 && owner_balance.is_seller">销售商</span>
+                        <span class="five-star-parent" ng-if="owner_balance.is_agent==0 && owner_balance.is_partner">
+                            <five-star rank-src="lib/custom/img/yellow_star.png" src="lib/custom/img/white_star.png" style="margin-top:1px;"
+                                       rank="{{owner_balance.partner_level.level}}" ></five-star>
+                            <level-progress style="margin-top:21px; margin-left: 2px;"
+                                            value="{{owner_balance.level_percent}}"></level-progress>
+                        </span>
+
+                        <span class="crown-parent" ng-if="owner_balance.is_agent">
+                              <img src="img/sellerPage/crown.png" class="agent_crown_img">
+                        </span>
                     </p>
 
-                    <p class="user-lv-text">
-                        关注时间：{{userInfo.follow_time}}
-                    </p>
-
-                    <p class="user-lv-text">
-                        推荐人：{{userInfo.inviter_name != null ? userInfo.inviter_name : "无"}}
-                    </p>
                 </div>
             </div>
         </div>

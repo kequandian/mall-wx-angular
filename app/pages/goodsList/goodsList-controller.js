@@ -68,7 +68,7 @@ angular.module('goodsList.controller', ['goodsList.service'])
 
                 GoodsListFty.goodsListService(cateId, pageNumber, pageSize, orderBy)
                     .then(function (json) {
-                        alert(angular.toJson(json.data));
+                        //alert(angular.toJson(json.data));
                         if (json.status_code == 0) {
                             $scope.productList = json.data.products;
                             //console.log("productList?"+angular.toJson($scope.productList));
@@ -161,8 +161,6 @@ angular.module('goodsList.controller', ['goodsList.service'])
             //        loading = false;
             //    }, 1000);   //模拟延迟
             //});
-
-
 
 
         }]);
