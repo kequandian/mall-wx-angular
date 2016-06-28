@@ -126,6 +126,16 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                 }
             };
 
+            function loadScript(src, callback) {
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                if (callback)script.onload = callback;
+
+                var sc = document.getElementsByTagName("head")[0];
+                sc.appendChild(script);
+                script.src = src;
+            }
+
 
             //进入提现页
             $scope.goToWithdrow = function (phone) {
