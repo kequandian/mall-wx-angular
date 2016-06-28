@@ -54,7 +54,7 @@ angular.module('goodsList.controller', ['goodsList.service'])
                 if (s_status == 1) {
                     cateProductList();
                 } else if (s_status == 2) {
-                    $scope.searchProductList();
+                    searchProductList();
                 } else if (s_status == 3) {
                     areasProductList();
                 }
@@ -83,7 +83,7 @@ angular.module('goodsList.controller', ['goodsList.service'])
 
 
             //搜索--商品列表
-            $scope.searchProductList = function() {
+            function searchProductList() {
                 var p_name = searchInfo.search_name;
                 var pageNumber = 1;
                 var pageSize = 6;
@@ -97,7 +97,7 @@ angular.module('goodsList.controller', ['goodsList.service'])
                     }, function (error) {
                         console.log(error)
                     })
-            };
+            }
 
 
             //添加购物车
@@ -135,16 +135,32 @@ angular.module('goodsList.controller', ['goodsList.service'])
                     })
             }
 
-            var loading = false;  //状态标记
-            $("#goodsList").infinite(10).on("infinite", function() {
-                alert(1111);
-                if(loading) return;
-                loading = true;
-                setTimeout(function() {
-                    $("#goodsList").append("<p> 我是新加载的内容 </p>");
-                    loading = false;
-                }, 1500);   //模拟延迟
-            });
+            ////滚动加载
+            //var loading = false;  //状态标记
+            //$("#goodsList_content").infinite().on("infinite", function() {
+            //    if(loading){
+            //        return;
+            //    }
+            //    loading = true;
+            //    setTimeout(function() {
+            //
+            //        if (s_status == 1) {
+            //            alert(1);
+            //            //cateProductList();
+            //        } else if (s_status == 2) {
+            //            alert(2);
+            //            loading = true;
+            //            return;
+            //            //$("#goodsList_content").destroyInfinite();
+            //            //searchProductList();
+            //        } else if (s_status == 3) {
+            //            alert(3);
+            //            //areasProductList();
+            //        }
+            //
+            //        loading = false;
+            //    }, 1000);   //模拟延迟
+            //});
 
 
 

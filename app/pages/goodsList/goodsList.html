@@ -31,9 +31,9 @@
               </div>
             </div>
           </div>
-          <div class="weui_tab_bd">
+          <div class="weui_tab_bd" id="goodsList_content">
 
-            <div class="weui-row goods-box-header" id="goodsList_content">
+            <div class="weui-row goods-box-header">
 
               <div class="goods-box" ng-repeat="productItem in productList">
                 <img square-img ng-src="{{productItem.cover}}" class="goods-box-img" ui-sref="details({productId:productItem.id})">
@@ -55,10 +55,10 @@
 
 
 
-              <div class="weui-infinite-scroll">
-                <div class="infinite-preloader"></div>
-                正在加载
-              </div>
+              <!--<div class="weui-infinite-scroll">-->
+                <!--<div class="infinite-preloader"></div>-->
+                <!--正在加载-->
+              <!--</div>-->
 
 
             </div>

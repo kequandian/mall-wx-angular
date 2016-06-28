@@ -68,6 +68,10 @@
   position: absolute;
 }
 
+#goodsList #goodsList_content{
+  height: 100%;
+}
+
 #goodsList .goods-box-header{
   margin-top: 5px;
   /*margin-bottom: 5px;*/
