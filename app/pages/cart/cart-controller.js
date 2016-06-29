@@ -17,6 +17,7 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
                     //console.log(result.data);
                     if(result.status_code == 0) {
                         $scope.carts = result.data;
+                        $rootScope.cartCount = $scope.carts.length;
                         if ($scope.carts.length > 0) {
                             $scope.empty_cart_hide = true;
                             $scope.cart_info_hide = false;

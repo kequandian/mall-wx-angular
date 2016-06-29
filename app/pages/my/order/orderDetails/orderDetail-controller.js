@@ -43,7 +43,7 @@ angular.module('orderDetails.controller', ['orderDetails.service',"express.servi
                                 $scope.order_address += $scope.detailsInfo.detail;
                             }
                             //倒计时
-                            countDown($scope.detailsInfo.created_date);
+                            //countDown($scope.detailsInfo.created_date);
                             //物流信息
                             express_info($scope.detailsInfo.order_number);
 
@@ -55,7 +55,8 @@ angular.module('orderDetails.controller', ['orderDetails.service',"express.servi
                     })
             }
 
-            function countDown(o_time){
+            //自动收货时间
+            /*function countDown(o_time){
                 var begintime_ms = Date.parse(new Date(o_time.replace(/-/g, "/")));
                 begintime_ms += 604800000;
                 var endtime_ms = Date.parse(new Date());
@@ -78,17 +79,17 @@ angular.module('orderDetails.controller', ['orderDetails.service',"express.servi
                 $scope.c_d_hour = hours;
             }
 
-            //订单状态
-            $scope.order_status = function(orderStatus){
-                return OrderCommon.OrderStatus(orderStatus);
-            };
-
             //显示自动确认时间
             $scope.auto_confirm_time = function(status){
                 if(status == 'PAID_CONFIRM_PENDING' || status == 'DELIVERED_CONFIRM_PENDING' || status == 'DELIVERING'){
                     return true;
                 }
                 return false;
+            };*/
+
+            //订单状态
+            $scope.order_status = function(orderStatus){
+                return OrderCommon.OrderStatus(orderStatus);
             };
 
             //物流信息

@@ -1,52 +1,75 @@
-angular.module('home.controller', [])
-    .controller('HomeController', ['$scope', '$state','$rootScope','$timeout', function($scope,$state,$rootScope,$timeout){
+angular.module('home.controller', ['cart.service'])
+    .controller('HomeController', ['$scope', '$state','$rootScope','$timeout', 'CartFty',
+        function($scope,$state,$rootScope,$timeout,CartFty){
 
-        //nav 样式
-        var scope = $rootScope;
-        scope.$watch('tabsNumber',function(nValue, oValue){
-            $scope.currentId = nValue;
-            //console.log("new："+ nValue + "  " + "old: " + oValue);
-        });
+            //获取购物车数量
+            getCartCount();
 
-        $scope.clickme = function(id) {
-            $scope.currentId = id;
-        };
-        //title li
-        $scope.home_tabs = [{
-            'id':'1',
-            'name':'首页',
-            'srefName':'.homePage',
-            'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-home',
-            'c_count': null,
-            'c_number': ""
-        },{
-            'id':'2',
-            'name':'分类',
-            'srefName':'.category',
-            'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-search',
-            'c_count': null,
-            'c_number': ""
-        },{
-            'id':'3',
-            'name':'销售中心',
-            'srefName':'.sellerPage',
-            'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-team',
-            'c_count': null,
-            'c_number': ""
-        },{
-            'id':'4',
-            'name':' 购物车',
-            'srefName':'.cart',
-            'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-cart',
-            'c_count': 'cart_count',
-            'c_number': ""
-        },{
-            'id':'5',
-            'name':'个人中心',
-            'srefName':'.my',
-            'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-user',
-            'c_count': null,
-            'c_number': ""
-        }];
+            //nav 样式
+            var scope = $rootScope;
+            scope.$watch('tabsNumber',function(nValue, oValue){
+                $scope.currentId = nValue;
+                //console.log("new："+ nValue + "  " + "old: " + oValue);
+            });
+            scope.$watch('cartCount',function(nValue, oValue){
+                $scope.home_tabs[3].c_number = nValue;
+                console.log("new："+ nValue + "  " + "old: " + oValue);
+            });
+
+            $scope.clickme = function(id) {
+                $scope.currentId = id;
+            };
+            //title li
+            $scope.home_tabs = [{
+                'id':'1',
+                'name':'首页',
+                'srefName':'.homePage',
+                'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-home',
+                'c_count': null,
+                'c_number': 0
+            },{
+                'id':'2',
+                'name':'分类',
+                'srefName':'.category',
+                'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-search',
+                'c_count': null,
+                'c_number': ""
+            },{
+                'id':'3',
+                'name':'销售中心',
+                'srefName':'.sellerPage',
+                'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-team',
+                'c_count': null,
+                'c_number': 0
+            },{
+                'id':'4',
+                'name':' 购物车',
+                'srefName':'.cart',
+                'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-cart',
+                'c_count': 'cart_count',
+                'c_number': 0
+            },{
+                'id':'5',
+                'name':'个人中心',
+                'srefName':'.my',
+                'home_tab_icon':'weui_tabbar_icon ion-app-biliya-tabs-user',
+                'c_count': null,
+                'c_number': 0
+            }];
+
+            //获取购物车数量
+            function getCartCount(){
+                CartFty.getCarts()
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            var c_count = json.data.length;
+                            if(c_count > 0){
+                                $scope.home_tabs[3].c_number = c_count;
+                            }
+                        }
+                    }, function(error){
+                        console.log(error)
+                    })
+            }
 
     }]);
