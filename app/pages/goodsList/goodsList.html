@@ -22,12 +22,14 @@
               </div>
             </div>
 
-            <div class="weui_navbar_item" style="position: relative;" ng-click="priceStatus()">
-              <!--<div>{{priceIndex}}</div>-->
-              <div style="position: absolute; width: 100%; text-align: center;">
-                价格
-              </div>
-              <div class="{{price_arrow}}" style="right: 10px;" ng-hide="price_arrow_hide">
+              <div oc-lazy-load="GoodsListSvgBtn" class="weui_navbar_item" style="position: relative;"  ng-click="priceStatus()">
+                <div style="position: absolute; width: 100%; text-align: center;">
+                  价格
+                </div>
+                <!--<div class="{{price_arrow}}" style="right: 10px;" ng-hide="price_arrow_hide">-->
+                <!--</div>-->
+                <sortable-switch is-default="{{price_arrow}}" arrow="both" svg-width="15" svg-height="15" offset="8" active-color="#B10000"  color="black">
+                </sortable-switch>
               </div>
             </div>
           </div>

@@ -47,6 +47,10 @@
                         name: 'FiveStar',
                         files: ['lib/custom/css/fiveStar.css', 'lib/custom/css/levelProgress.css', 'lib/custom/js/fiveStar.js', 'lib/custom/js/levelProgress.js'],
                         cache: true
+                    },{
+                        name:'GoodsListSvgBtn',
+                        files:['lib/goods-list-svg-btn/css/sortable-switch.css','lib/goods-list-svg-btn/js/sortableSwitch.js'],
+                        cache:true
                     }]
                 });
             }])

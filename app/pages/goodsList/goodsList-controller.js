@@ -1,7 +1,7 @@
 angular.module('goodsList.controller', ['goodsList.service'])
 
-    .controller('GoodsListController', ['$scope', '$state', '$stateParams', 'GoodsListFty', 'searchInfo', 'goodListParams', 'areasStatus',
-        function ($scope, $state, $stateParams, GoodsListFty, searchInfo, goodListParams, areasStatus) {
+    .controller('GoodsListController', ['$scope', '$state', '$stateParams','$rootScope', 'GoodsListFty', 'searchInfo', 'goodListParams', 'areasStatus',
+        function ($scope, $state, $stateParams,$rootScope, GoodsListFty, searchInfo, goodListParams, areasStatus) {
 
             document.title = "商品列表";
 
@@ -22,24 +22,25 @@ angular.module('goodsList.controller', ['goodsList.service'])
                 areasProductList(pageNumber,pageSize);
             }
 
-
-            $scope.price_arrow = "arrow-status";
+            //价格切换
+            $scope.price_arrow = "both";
             $scope.price_arrow_hide = true;
             $scope.priceStatus = function () {
                 $scope.price_arrow_hide = false;
                 pageNumber = 1;
                 pageSize = 20;
 
-                if ($scope.price_arrow == "arrow-status") {
-                    $scope.price_arrow = "arrow-status-up";
+                if ($scope.price_arrow == "both") {
+                    $scope.price_arrow = "asc";
                     orderBy = "&orderBy=price";
-                } else if ($scope.price_arrow == "arrow-status-up") {
-                    $scope.price_arrow = "arrow-status-down";
+                } else if ($scope.price_arrow == "asc") {
+                    $scope.price_arrow = "desc";
                     orderBy = "&orderByDesc=price";
-                } else if ($scope.price_arrow == "arrow-status-down") {
-                    $scope.price_arrow = "arrow-status-up";
+                } else if ($scope.price_arrow == "desc") {
+                    $scope.price_arrow = "asc";
                     orderBy = "&orderBy=price";
                 }
+                alert($scope.price_arrow);
 
                 if (s_status == 1) {
                     cateProductList(pageNumber,pageSize);
@@ -52,7 +53,7 @@ angular.module('goodsList.controller', ['goodsList.service'])
 
             $scope.retArrowStatus = function (number) {
 
-                $scope.price_arrow = "arrow-status";
+                $scope.price_arrow = "both";
                 $scope.price_arrow_hide = true;
 
                 pageNumber = 1;
@@ -74,6 +75,8 @@ angular.module('goodsList.controller', ['goodsList.service'])
                     areasProductList(pageNumber,pageSize);
                 }
             };
+
+
 
             //分类---商品列表
             function cateProductList(pageNumber, pageSize) {
@@ -100,6 +103,7 @@ angular.module('goodsList.controller', ['goodsList.service'])
                                     $.toast("暂无更多的分类商品信息");
                                 }
                             }
+
                         } else {
                             console.log("获取失败");
                         }

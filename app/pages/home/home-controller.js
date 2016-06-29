@@ -9,11 +9,9 @@ angular.module('home.controller', ['cart.service'])
             var scope = $rootScope;
             scope.$watch('tabsNumber',function(nValue, oValue){
                 $scope.currentId = nValue;
-                //console.log("new："+ nValue + "  " + "old: " + oValue);
             });
             scope.$watch('cartCount',function(nValue, oValue){
                 $scope.home_tabs[3].c_number = nValue;
-                //console.log("new："+ nValue + "  " + "old: " + oValue);
             });
 
             $scope.clickme = function(id) {
