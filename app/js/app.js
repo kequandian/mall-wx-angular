@@ -1,66 +1,66 @@
-'use strict';
+(function () {
+    'use strict';
 
-// Declare app level module which depends on views, and components
-var myapp = angular.module('myapp', [
-    'global',
-    'bsSwitch',
-    'spinner',
-    'commonJs',
-    'moduleValueJs',
-    'ui.router',
-    'home.route',
-    'my.route',
-    'cart.route',
-    'seller.route',
-    'homePage.route',
-    'goodsList.route',
-    'details.route',
-    'addressManager.route',
-    'orderDetails.route',
-    //'coupon.route',
-    'sellerPage.route',
-    'myTeam.route',
-    'promotionOrder.route',
-    'marketing.route',
-    'shopSettings.route',
-    'category.route',
-    //'userInfo.route',
-    'integral.route',
-    'feedback.route',
-    //'commission.route',
-    //'myAgent.route',
-    'commonProblem.route',
-    'collection.route',
-    'distributionInfo.route',
-    'refund.route',
-    'withdraw.route',
-    "express.route",
-    "salesReturn.route",
-    'searchPage.route',
-    'levelProgress',
-    'fiveStar'
-]);
+    var myapp = angular.module('myapp', [
+        'global',
+        'bsSwitch',
+        'spinner',
+        'commonJs',
+        'moduleValueJs',
+        'ui.router',
+        'home.route',
+        'my.route',
+        'cart.route',
+        'seller.route',
+        'homePage.route',
+        'goodsList.route',
+        'details.route',
+        'addressManager.route',
+        'orderDetails.route',
+        //'coupon.route',
+        'sellerPage.route',
+        'myTeam.route',
+        'promotionOrder.route',
+        'marketing.route',
+        'shopSettings.route',
+        'category.route',
+        //'userInfo.route',
+        'integral.route',
+        'feedback.route',
+        //'commission.route',
+        //'myAgent.route',
+        'commonProblem.route',
+        'collection.route',
+        'distributionInfo.route',
+        'refund.route',
+        'withdraw.route',
+        "express.route",
+        "salesReturn.route",
+        'searchPage.route',
+        'levelProgress',
+        'fiveStar'
+    ]);
 
-myapp.config(['$stateProvider', "$urlRouterProvider",
-    function ($stateProvider, $urlRouterProvider) {
+    myapp.config(['$stateProvider', "$urlRouterProvider",
+        function ($stateProvider, $urlRouterProvider) {
 
-        $urlRouterProvider.otherwise("/home/homePage");
-    }])
-;
+            $urlRouterProvider.otherwise("/home/homePage");
+        }])
+    ;
 
 
-/*myapp.directive('cityPicker', function () {
-    return function (scope, element, attrs) {
-        //console.log('work');
-        element.cityPicker({
-            onSelect: function (dateText) {
-                var modelPath = $(this).attr('ng-model');
-                putObject(modelPath, scope, dateText);
-                scope.$apply();
-            }
-        });
-    }
-})*/
+    /*myapp.directive('cityPicker', function () {
+     return function (scope, element, attrs) {
+     //console.log('work');
+     element.cityPicker({
+     onSelect: function (dateText) {
+     var modelPath = $(this).attr('ng-model');
+     putObject(modelPath, scope, dateText);
+     scope.$apply();
+     }
+     });
+     }
+     })*/
 
     /*.directive('updateTitle', ['$rootScope', '$timeout',
      function ($rootScope, $timeout) {
@@ -115,4 +115,4 @@ myapp.config(['$stateProvider', "$urlRouterProvider",
      }
      }
      })*/
-;
+})();
