@@ -13,7 +13,7 @@ angular.module('home.controller', ['cart.service'])
             });
             scope.$watch('cartCount',function(nValue, oValue){
                 $scope.home_tabs[3].c_number = nValue;
-                console.log("new："+ nValue + "  " + "old: " + oValue);
+                //console.log("new："+ nValue + "  " + "old: " + oValue);
             });
 
             $scope.clickme = function(id) {

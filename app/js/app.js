@@ -1,53 +1,57 @@
 (function () {
     'use strict';
 
-    var myapp = angular.module('myapp', [
-        'global',
-        'bsSwitch',
-        'spinner',
-        'commonJs',
-        'moduleValueJs',
-        'ui.router',
-        'home.route',
-        'my.route',
-        'cart.route',
-        'seller.route',
-        'homePage.route',
-        'goodsList.route',
-        'details.route',
-        'addressManager.route',
-        'orderDetails.route',
-        //'coupon.route',
-        'sellerPage.route',
-        'myTeam.route',
-        'promotionOrder.route',
-        'marketing.route',
-        'shopSettings.route',
-        'category.route',
-        //'userInfo.route',
-        'integral.route',
-        'feedback.route',
-        //'commission.route',
-        //'myAgent.route',
-        'commonProblem.route',
-        'collection.route',
-        'distributionInfo.route',
-        'refund.route',
-        'withdraw.route',
-        "express.route",
-        "salesReturn.route",
-        'searchPage.route',
-        'levelProgress',
-        'fiveStar'
-    ]);
+    var myapp = angular.module('app', [
+            'ui.router',
+            'oc.lazyLoad',
+            'global',
+            'bsSwitch',
+            'spinner',
+            'commonJs',
+            'moduleValueJs',
+            'home.route',
+            'homePage.route',
+            //pages
+            'my.route',
+            'cart.route',
+            'seller.route',
+            'goodsList.route',
+            'details.route',
+            'addressManager.route',
+            'orderDetails.route',
+            'sellerPage.route',
+            'myTeam.route',
+            'promotionOrder.route',
+            'marketing.route',
+            'shopSettings.route',
+            'category.route',
+            'integral.route',
+            'feedback.route',
+            'commonProblem.route',
+            'collection.route',
+            'distributionInfo.route',
+            'refund.route',
+            'withdraw.route',
+            "express.route",
+            "salesReturn.route",
+            'searchPage.route'
+            //ocLazyLoad
+            //'levelProgress',
+            //'fiveStar'
+        ]).config(["$urlRouterProvider", '$ocLazyLoadProvider',
+            function ($urlRouterProvider, $ocLazyLoadProvider) {
+                $urlRouterProvider.otherwise("/home/homePage");
 
-    myapp.config(['$stateProvider', "$urlRouterProvider",
-        function ($stateProvider, $urlRouterProvider) {
+                $ocLazyLoadProvider.config({
+                    modules: [{
+                        name: 'FiveStar',
+                        files: ['lib/custom/css/fiveStar.css', 'lib/custom/css/levelProgress.css', 'lib/custom/js/fiveStar.js', 'lib/custom/js/levelProgress.js'],
+                        cache: true
+                    }]
+                });
+            }])
 
-            $urlRouterProvider.otherwise("/home/homePage");
-        }])
-    ;
-
+        ;
 
     /*myapp.directive('cityPicker', function () {
      return function (scope, element, attrs) {

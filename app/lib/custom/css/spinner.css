@@ -1,3 +1,11 @@
+/*  References
+    - http://www.w3schools.com/css/css3_animations.asp
+    - http://www.w3schools.com/cssref/css3_pr_animation-keyframes.asp
+    --
+    Multi Animation
+    https://css-tricks.com/almanac/properties/a/animation/
+*/
+
 #spinner-wrap {
     position: fixed;
     top: 0;
@@ -41,8 +49,20 @@
     }
 }
 
+@-webkit-keyframes spinner-fadein {
+    0% {
+        opacity: 0;
+    }
+    30% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 .spinner-rotating {
-    -webkit-animation: spinner-rotating 0.6s linear infinite;
+    -webkit-animation: spinner-fadein 2s ease-in, spinner-rotating 0.8s ease-out infinite;
 }
 
 /*rotate Y*/

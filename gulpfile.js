@@ -79,7 +79,6 @@ gulp.task('dist', function () {
     var minifyapp = gulp.src(['app/lib/angular-ad-switch/js/switch.js', 'app/js/*.js',
                                 '!app/js/home.js',
                                 '!app/js/bundle.js',
-                                '!app/js/custom.js',
                                 '!app/js/weui.js',
                                 '!app/js/loadjs.js',
                                 '!app/js/global.js'])
@@ -124,24 +123,24 @@ gulp.task('dist', function () {
         .pipe(cleanCSS())
         .pipe(gulp.dest('dist/css'));
 
-    var customjs = gulp.src(['app/lib/custom/js/*.js','!app/lib/custom/js/spinner.js'])
-        .pipe(ngAnnotate())
-        .pipe(stripDebug())
-        .pipe(concat('custom.js'))
-        .pipe(uglify())
-        .pipe(gulp.dest('dist/js'));
+    //var customjs = gulp.src(['app/lib/custom/js/*.js','!app/lib/custom/js/spinner.js'])
+    //    .pipe(ngAnnotate())
+    //    .pipe(stripDebug())
+    //    .pipe(concat('custom.js'))
+    //    .pipe(uglify())
+    //    .pipe(gulp.dest('dist/js'));
 
-    var customcss = gulp.src(['app/lib/custom/css/*.css', '!app/lib/custom/spinner.css'])
-        .pipe(concatCss('custom.css'))
-        .pipe(cleanCSS())
-        .pipe(gulp.dest('dist/css'));
+    //var customcss = gulp.src(['app/lib/custom/css/*.css', '!app/lib/custom/spinner.css'])
+    //    .pipe(concatCss('custom.css'))
+    //    .pipe(cleanCSS())
+    //    .pipe(gulp.dest('dist/css'));
 
     var index = gulp.src(['app/index.html'])
         //.pipe(replace(/(\"pages\/.+)\.js/g, '$1\.min\.js'))
         //.pipe(replace(/(\"css\/.+)\.css/g, '$1\.min\.css'))
         .pipe(removeHtmlComments())
         .pipe(replace(/(\<link rel=\"stylesheet\" href=\"css\/\w+\/.+\.css\"\>)/g, '<!--$1-->'))
-        .pipe(replace(/(\<link rel=\"stylesheet\" href=\"lib\/custom\/css\/\w+.css\"\>)/g, '<!--$1-->'))
+        //.pipe(replace(/(\<link rel=\"stylesheet\" href=\"lib\/custom\/css\/\w+.css\"\>)/g, '<!--$1-->'))
         .pipe(replace(/(\<link rel=\"stylesheet\" href=\"lib\/angular-ad-switch\/css\/ui-switch\.min\.css\"\>)/g, '<!--$1-->'))
         /*below for js*/
         .pipe(replace(/(\<script src=\"js\/app\.js"\>\<\/script\>)/, '<!--$1-->'))
@@ -151,6 +150,7 @@ gulp.task('dist', function () {
         .pipe(replace(/(\<script src=\"pages\/\w+\/.+\.js"\>\<\/script\>)/g, '<!--$1-->'))
         .pipe(replace(/(\<script src=\"lib\/custom\/js\/\w+\.js"\>\<\/script\>)/g, '<!--$1-->'))
         .pipe(replace(/(\<script src=\"lib\/angular-ad-switch\/js\/switch\.min\.js"\>\<\/script\>)/g, '<!--$1-->'))
+        //.pipe(replace(/(\<script src=\"js\/bundle.js"\>\<\/script\>)/g, '<!--$1-->'))
         .pipe(removeHtmlComments())
         .pipe(removeEmptyLines({removeComments: true}))
         .pipe(gulp.dest('dist'));
@@ -174,7 +174,7 @@ gulp.task('dist', function () {
     var debug = gulp.src('app/js/global.js')
         .pipe(gulp.dest('dist/js'));
 
-    return merge(minifyapp, homejs, homecss, minify, minifycss, customjs, customcss, index, html, lib, img, bower, js, debug);
+    return merge(minifyapp, homejs, homecss, minify, minifycss, index, html, lib, img, bower, js, debug);
 });
 
 gulp.task('debug', function () {
