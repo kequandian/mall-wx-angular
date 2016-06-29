@@ -6,15 +6,18 @@ angular.module('goodsList.controller', ['goodsList.service'])
             document.title = "商品列表";
 
             var orderBy = "";
-            var s_status = goodListParams.searchStatus;
-
             var pageNumber = 1;
-            var pageSize = 6;
+            var pageSize = 20;
+            var s_status = goodListParams.searchStatus;
+            $scope.load_more_btn_show = true;
 
             if (s_status == 1) {
                 cateProductList(pageNumber,pageSize);
             } else if (s_status == 2) {
                 $scope.productList = searchInfo.search_info;
+                if($scope.productList.length == 20){
+                    $scope.load_more_btn_show = false;
+                }
             } else if (s_status == 3) {
                 areasProductList(pageNumber,pageSize);
             }
@@ -25,7 +28,7 @@ angular.module('goodsList.controller', ['goodsList.service'])
             $scope.priceStatus = function () {
                 $scope.price_arrow_hide = false;
                 pageNumber = 1;
-                pageSize = 6;
+                pageSize = 20;
 
                 if ($scope.price_arrow == "arrow-status") {
                     $scope.price_arrow = "arrow-status-up";
@@ -53,7 +56,7 @@ angular.module('goodsList.controller', ['goodsList.service'])
                 $scope.price_arrow_hide = true;
 
                 pageNumber = 1;
-                pageSize = 6;
+                pageSize = 20;
 
                 if (number == 1) {
                     orderBy = "";
@@ -80,8 +83,23 @@ angular.module('goodsList.controller', ['goodsList.service'])
                     .then(function (json) {
                         //alert(angular.toJson(json.data));
                         if (json.status_code == 0) {
-                            $scope.productList = json.data.products;
-                            //console.log("productList?"+angular.toJson($scope.productList));
+                            if(pageNumber == 1){
+                                $scope.productList = json.data.products;
+                                if($scope.productList.length == 20){
+                                    $scope.load_more_btn_show = false;
+                                }else{
+                                    $scope.load_more_btn_show = true;
+                                }
+                            }else if(pageNumber > 1){
+                                var new_code = json.data.products;
+                                if(new_code.length > 0){
+                                    angular.forEach(new_code, function(v, k){
+                                        $scope.productList.push(v);
+                                    });
+                                }else if(new_code.length == 0){
+                                    $.toast("暂无更多的分类商品信息");
+                                }
+                            }
                         } else {
                             console.log("获取失败");
                         }
@@ -101,7 +119,23 @@ angular.module('goodsList.controller', ['goodsList.service'])
                     .then(function (json) {
                         //alert(angular.toJson(json));
                         if (json.status_code == 0) {
-                            $scope.productList = json.data;
+                            if(pageNumber == 1){
+                                $scope.productList = json.data;
+                                if($scope.productList.length == 20){
+                                    $scope.load_more_btn_show = false;
+                                }else{
+                                    $scope.load_more_btn_show = true;
+                                }
+                            }else if(pageNumber > 1){
+                                var new_code = json.data;
+                                if(new_code.length > 0){
+                                    angular.forEach(new_code, function(v, k){
+                                        $scope.productList.push(v);
+                                    });
+                                }else if(new_code.length == 0){
+                                    $.toast("暂无更多的搜索商品信息");
+                                }
+                            }
                         }
                     }, function (error) {
                         console.log(error)
@@ -109,20 +143,19 @@ angular.module('goodsList.controller', ['goodsList.service'])
             }
 
             //添加购物车
-
-            //$scope.addProductToCart = function(productId){
-            //    GoodsListFty.addProToCatService(productId)
-            //        .then(function(json){
-            //            if(json.status_code == 0){
-            //                $.toast.prototype.defaults.duration = 2000;
-            //                $.toast("成功添加商品");
-            //            }else{
-            //                $.toast("添加失败", "cancel");
-            //            }
-            //        }, function(error){
-            //            $.toast("添加失败", "cancel");
-            //        })
-            //};
+            /*$scope.addProductToCart = function(productId){
+                GoodsListFty.addProToCatService(productId)
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            $.toast.prototype.defaults.duration = 2000;
+                            $.toast("成功添加商品");
+                        }else{
+                            $.toast("添加失败", "cancel");
+                        }
+                    }, function(error){
+                        $.toast("添加失败", "cancel");
+                    })
+            };*/
 
             //分区商品列表
             function areasProductList(pageNumber, pageSize) {
@@ -133,7 +166,23 @@ angular.module('goodsList.controller', ['goodsList.service'])
                     .then(function (json) {
                         //alert(angular.toJson(json));
                         if (json.status_code == 0) {
-                            $scope.productList = json.data;
+                            if(pageNumber == 1){
+                                $scope.productList = json.data;
+                                if($scope.productList.length == 20){
+                                    $scope.load_more_btn_show = false;
+                                }else{
+                                    $scope.load_more_btn_show = true;
+                                }
+                            }else if(pageNumber > 1){
+                                var new_code = json.data;
+                                if(new_code.length > 0){
+                                    angular.forEach(new_code, function(v, k){
+                                        $scope.productList.push(v);
+                                    });
+                                }else if(new_code.length == 0){
+                                    $.toast("暂无更多的分区商品信息");
+                                }
+                            }
                         }
                     }, function (error) {
                         console.log(error)
@@ -141,37 +190,35 @@ angular.module('goodsList.controller', ['goodsList.service'])
             }
 
             ////滚动加载
-            //var loading = false;  //状态标记
-            //$("#goodsList_content").infinite().on("infinite", function() {
-            //    if(loading){
-            //        return;
-            //    }
-            //    loading = true;
-            //    setTimeout(function() {
-            //
-            //        if (s_status == 1) {
-            //            alert(1);
-            //            //cateProductList();
-            //        } else if (s_status == 2) {
-            //            alert(2);
-            //            loading = true;
-            //            return;
-            //            //$("#goodsList_content").destroyInfinite();
-            //            //searchProductList();
-            //        } else if (s_status == 3) {
-            //            alert(3);
-            //            //areasProductList();
-            //        }
-            //
-            //        loading = false;
-            //    }, 1000);   //模拟延迟
-            //});
+           /* var loading = false;  //状态标记
+            $("#goodsList_content").infinite().on("infinite", function() {
+                if(loading){
+                    return;
+                }
+                loading = true;
+                setTimeout(function() {
+
+                    if (s_status == 1) {
+                        alert(1);
+                        //cateProductList();
+                    } else if (s_status == 2) {
+                        alert(2);
+                        loading = true;
+                        return;
+                        //$("#goodsList_content").destroyInfinite();
+                        //searchProductList();
+                    } else if (s_status == 3) {
+                        alert(3);
+                        //areasProductList();
+                    }
+
+                    loading = false;
+                }, 1000);   //模拟延迟
+            });*/
 
             $scope.load_more_products = function(){
-
                 pageNumber += 1;
-                pageSize = 6;
-
+                pageSize = 20;
                 if (s_status == 1) {
                     cateProductList(pageNumber,pageSize);
                 } else if (s_status == 2) {
@@ -181,6 +228,5 @@ angular.module('goodsList.controller', ['goodsList.service'])
                 }
 
             }
-
 
         }]);
