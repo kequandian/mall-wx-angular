@@ -1,9 +1,13 @@
 angular.module('cart.controller', ['cart.service','addressManager.service'])
 
-    .controller('CartController', ['$scope', '$state', '$rootScope', 'CartFty', function($scope, $state,$rootScope, CartFty){
+    .controller('CartController', ['$scope', '$state', '$rootScope', 'CartFty','$ocLazyLoad',
+        function($scope, $state,$rootScope, CartFty, $ocLazyLoad){
 
         //title
         document.title = "购物车";
+
+        $ocLazyLoad.load('JqueryWeUI');
+
 
         $rootScope.tabsNumber = 4;
 

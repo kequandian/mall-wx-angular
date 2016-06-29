@@ -11,6 +11,7 @@
             'moduleValueJs',
             'home.route',
             'homePage.route',
+            'homePage.load',
             //pages
             'my.route',
             'cart.route',
@@ -47,11 +48,24 @@
                         name: 'FiveStar',
                         files: ['lib/custom/css/fiveStar.css', 'lib/custom/css/levelProgress.css', 'lib/custom/js/fiveStar.js', 'lib/custom/js/levelProgress.js'],
                         cache: true
+<<<<<<< Updated upstream
                     },{
                         name:'GoodsListSvgBtn',
                         files:['lib/goods-list-svg-btn/css/sortable-switch.css','lib/goods-list-svg-btn/js/sortableSwitch.js'],
                         cache:true
                     }]
+=======
+                    },
+                        {
+                            name: 'JqueryWeUI',
+                            files: ['bower_components/jquery/dist/jquery.min.js',
+                                'bower_components/jquery-weui/dist/js/jquery-weui.min.js',
+                                'js/weui.js',
+                                'bower_components/jquery-weui/dist/css/jquery-weui.min.css'],
+                            cache: true
+                        }
+                    ]
+>>>>>>> Stashed changes
                 });
             }])
 

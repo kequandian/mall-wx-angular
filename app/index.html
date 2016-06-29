@@ -10,10 +10,9 @@
     <!--<title>{{title}}</title>-->
     <!-- lib css -->
     <link rel="stylesheet" href="lib/css/ionicons/ionicons.min.css">
-    <link rel="stylesheet" href="lib/angular-ad-switch/css/ui-switch.min.css">
     <!--<link rel="stylesheet" href="bower_components/jquery-weui/dist/css/jquery-weui.min.css" lazyload>-->
     <!--<link rel="stylesheet" href="lib/css/weui/weui.min.css">-->
-    <link rel="stylesheet" href="http://o9ixtumvv.bkt.clouddn.com/jquery-weui.min.css" lazyload>
+    <!--<link rel="stylesheet" href="http://o9ixtumvv.bkt.clouddn.com/jquery-weui.min.css" lazyload>-->
     <link rel="stylesheet" href="http://o9ixtumvv.bkt.clouddn.com/weui.min.css">
 
     <!-- app CSS -->
@@ -55,6 +54,7 @@
     <link rel="stylesheet" href="css/searchPage/searchPage.css">
 
     <!--custom-->
+    <link rel="stylesheet" href="lib/angular-ad-switch/css/ui-switch.min.css">
     <link rel="stylesheet" href="lib/custom/css/spinner.css">
     <link rel="stylesheet" href="">
     <!--oclazyload-->
@@ -125,8 +125,10 @@
 <script src="pages/homePage/homePage-route.js"></script>
 <script src="pages/homePage/homePage-controller.js"></script>
 <script src="pages/homePage/homePage-service.js"></script>
+<script src="pages/homePage/homePage-load.js"></script>
 <script src="pages/home/home-route.js"></script>
 <script src="pages/home/home-controller.js"></script>
+
 
 <!--page js-->
 <script src="pages/my/order/order-route.js"></script>
@@ -241,14 +243,12 @@
 
 <script language="javascript">
     function downloadJSAtOnload(){
-        loadScript("bower_components/jquery/dist/jquery.min.js", function(){
+        /*loadScript("bower_components/jquery/dist/jquery.min.js", function(){
             loadScript("bower_components/jquery-weui/dist/js/jquery-weui.min.js", function(){
                 loadScript('js/weui.js', function() {
-                    //loadScript('js/bundle.js', function() {
-                    //})
                 })
             })
-        })
+        })*/
     }
     function loadScript(src, callback) {
         var script = document.createElement("script");

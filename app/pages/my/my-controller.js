@@ -1,10 +1,12 @@
 angular.module('my.controller', ['my.service'])
 
-    .controller('MyController', ['$scope','$state','$rootScope', 'MyFty',
-        function($scope,$state,$rootScope, MyFty){
+    .controller('MyController', ['$scope','$state','$rootScope','MyFty','$ocLazyLoad',
+        function($scope,$state,$rootScope, MyFty, $ocLazyLoad){
 
             //title
             document.title = "个人中心";
+
+            $ocLazyLoad.load('JqueryWeUI');
 
             $rootScope.tabsNumber = 5;
 

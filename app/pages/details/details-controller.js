@@ -1,10 +1,13 @@
 angular.module('details.controller', ['details.service'])
 
-    .controller('DetailsController', ['$scope', '$state', '$stateParams', 'DetailsFty',
-        function ($scope, $state, $stateParams, DetailsFty) {
+    .controller('DetailsController', ['$scope', '$state', '$stateParams', 'DetailsFty', '$ocLazyLoad',
+        function ($scope, $state, $stateParams, DetailsFty, $ocLazyLoad) {
 
             //title
             document.title = "商品详情";
+
+            $ocLazyLoad.load('JqueryWeUI');
+
             //商品详情
             detailsInfo();
 

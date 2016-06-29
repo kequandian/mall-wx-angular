@@ -1,7 +1,7 @@
-angular.module('homePage.controller', ['homePage.service'])
+angular.module('homePage.controller', ['homePage.service', 'homePage.load'])
 
-    .controller('HomePageController', ['$scope', '$state', '$rootScope', 'HomePageFty','areasStatus','goodListParams',
-        function ($scope, $state,$rootScope, HomePageFty,areasStatus,goodListParams) {
+    .controller('HomePageController', ['$scope', '$state', '$rootScope', 'HomePageFty','areasStatus','goodListParams','LazyLoad',
+        function ($scope, $state,$rootScope, HomePageFty,areasStatus,goodListParams,LazyLoad) {
 
             document.title = "十美优品商城";
 
@@ -46,12 +46,21 @@ angular.module('homePage.controller', ['homePage.service'])
             //获取推荐商品
             getRecommendProduct();
 
+
             function getRecommendProduct() {
                 HomePageFty.recommendProductService()
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $scope.rec_product = json.data;
-                            //alert(angular.toJson(json.data));
+                            //console.log(angular.toJson(json.data));
+
+                            /*LazyLoad.get()
+                                .then(function (data) {
+                                    console.log('LazyLoad success?' +data);
+                                }, function (error) {
+                                    //console.log('LazyLoad error');
+                                    console.log(error);
+                                });*/
                         }
                     }, function (error) {
                         console.log(error);

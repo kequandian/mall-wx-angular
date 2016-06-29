@@ -12,16 +12,21 @@
 
     // Setup an event listener that will handle messages sent to the worker.
     self.addEventListener('message', function(e) {
-        loadScript("bower_components/jquery/dist/jquery.min.js", function(){
-            console.log('loaded jquery.min.js');
+        /*loadScript("bower_components/jquery/dist/jquery.min.js", function(){
             loadScript("bower_components/jquery-weui/dist/js/jquery-weui.min.js", function(){
-                console.log('loaded jquery-weui.min.js');
                 loadScript('js/weui.js', function() {
-                    console.log('loaded weui.js');
                 })
             })
-        })
+        })*/
+
+        console.log('worker message?'+ typeof e.data);
+
+        $ocLazyLoad = e.data;
+        $ocLazyLoad.load('JqueryWeUI');
+
         self.postMessage(e.data);
+
+
     }, false);
 
     function loadScript(src,callback){
