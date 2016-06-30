@@ -17,12 +17,10 @@ angular.module('my.order.service', [])
                 return deferred.promise;
             },
 
-            closeOrderService: function (order_number, order_status) {
+            deliverReminderService: function (order_number) {
                 var deferred = $q.defer();
-                var url = GlobalVariable.SERVER_PATH + "/order/" + order_number;
-                $http.put(url,{
-                    "status": order_status
-                },{
+                var url = GlobalVariable.SERVER_PATH + "/order_deliver_reminder/" + order_number;
+                $http.get(url,{
                     headers: {
                         'Authorization': GlobalVariable.ACCESS_TOKEN
                     }

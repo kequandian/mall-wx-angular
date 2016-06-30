@@ -31,6 +31,10 @@ angular.module('searchPage.controller', ['searchPage.service'])
             $scope.search_procudt_name = function($event){
                 if($event.keyCode == 13){
                     var p_name = $scope.product_name;
+
+                    if(p_name == undefined){
+                        p_name = "";
+                    }
                     search_product(p_name);
                 }
             };

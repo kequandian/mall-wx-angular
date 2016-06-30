@@ -167,7 +167,7 @@ angular.module('my.order.controller', ['my.order.service','order.common'])
                         .then(function(json){
                             if(json.status_code == 0){
                                 $.toast('确认成功');
-                                $state.go('order.delivered', {},{reload:true});
+                                $state.go('order.all', {},{reload:true});
                             }else{
                                 $.toast('确认失败','cancel');
                             }
@@ -175,6 +175,22 @@ angular.module('my.order.controller', ['my.order.service','order.common'])
                             console.log(error);
                         })
                 })
+            };
+
+            //提醒发货
+            $scope.deliverReminder = function(order_number){
+
+                OrderFty.deliverReminderService(order_number)
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            $.toast('发送成功');
+                            $state.go('order.all', {},{reload:true});
+                        }else{
+                            $.toast('发送失败','cancel');
+                        }
+                    }, function(error){
+                        console.log(error);
+                    })
             }
         }])
 
@@ -291,6 +307,22 @@ angular.module('my.order.controller', ['my.order.service','order.common'])
                         //取消操作
                     });
                 }
+            };
+
+            //提醒发货
+            $scope.deliverReminder = function(order_number){
+
+                OrderFty.deliverReminderService(order_number)
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            $.toast('发送成功');
+                            $state.go('order.pay', {},{reload:true});
+                        }else{
+                            $.toast('发送失败','cancel');
+                        }
+                    }, function(error){
+                        console.log(error);
+                    })
             }
 
         }])
@@ -379,8 +411,7 @@ angular.module('my.order.controller', ['my.order.service','order.common'])
                         })
                 })
 
-            }
-
+            };
 
         }])
 
