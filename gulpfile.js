@@ -76,7 +76,7 @@ gulp.task('rep', function () {
 });
 
 gulp.task('dist', function () {
-    var minifyapp = gulp.src(['app/lib/angular-ad-switch/js/switch.js', 'app/js/*.js',
+    var minifyapp = gulp.src([  'app/js/*.js',
                                 '!app/js/home.js',
                                 '!app/js/bundle.js',
                                 '!app/js/weui.js',
@@ -87,21 +87,20 @@ gulp.task('dist', function () {
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'));
 
-    var homejs = gulp.src([
+    var homejs = gulp.src(['app/lib/angular-ad-switch/js/switch.js',
+                            'app/lib/custom/js/spinner.js',
                             'app/pages/home/*.js',
-                            'app/pages/homePage/*.js',
-                            'app/lib/custom/js/spinner.js'
-                            ])
+                            'app/pages/homePage/*.js'])
         .pipe(ngAnnotate())
         .pipe(stripDebug())
         .pipe(concat('home.js'))
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'));
 
-    var homecss = gulp.src([
-                            'app/lib/angular-ad-switch/css/ui-switch.min.css',
-                            'app/lib/custom/spinner.css',
-                            'app/css/home/*.css'])
+    var homecss = gulp.src(['app/lib/angular-ad-switch/css/ui-switch.min.css',
+                            'app/lib/custom/css/spinner.css',
+                            'app/css/home/*.css'
+                            ])
         .pipe(concatCss('home.css'))
         .pipe(cleanCSS())
         .pipe(gulp.dest('dist/css'));
@@ -140,7 +139,7 @@ gulp.task('dist', function () {
         //.pipe(replace(/(\"css\/.+)\.css/g, '$1\.min\.css'))
         .pipe(removeHtmlComments())
         .pipe(replace(/(\<link rel=\"stylesheet\" href=\"css\/\w+\/.+\.css\"\>)/g, '<!--$1-->'))
-        //.pipe(replace(/(\<link rel=\"stylesheet\" href=\"lib\/custom\/css\/\w+.css\"\>)/g, '<!--$1-->'))
+        .pipe(replace(/(\<link rel=\"stylesheet\" href=\"lib\/custom\/css\/\w+.css\"\>)/g, '<!--$1-->'))
         .pipe(replace(/(\<link rel=\"stylesheet\" href=\"lib\/angular-ad-switch\/css\/ui-switch\.min\.css\"\>)/g, '<!--$1-->'))
         /*below for js*/
         .pipe(replace(/(\<script src=\"js\/app\.js"\>\<\/script\>)/, '<!--$1-->'))
@@ -149,8 +148,7 @@ gulp.task('dist', function () {
         .pipe(replace(/(\<script src=\"js\/global\.js"\>\<\/script\>)/, '<!--$1-->'))
         .pipe(replace(/(\<script src=\"pages\/\w+\/.+\.js"\>\<\/script\>)/g, '<!--$1-->'))
         .pipe(replace(/(\<script src=\"lib\/custom\/js\/\w+\.js"\>\<\/script\>)/g, '<!--$1-->'))
-        .pipe(replace(/(\<script src=\"lib\/angular-ad-switch\/js\/switch\.min\.js"\>\<\/script\>)/g, '<!--$1-->'))
-        //.pipe(replace(/(\<script src=\"js\/bundle.js"\>\<\/script\>)/g, '<!--$1-->'))
+        .pipe(replace(/(\<script src=\"lib\/angular-ad-switch\/js\/switch\.js"\>\<\/script\>)/g, '<!--$1-->'))
         .pipe(removeHtmlComments())
         .pipe(removeEmptyLines({removeComments: true}))
         .pipe(gulp.dest('dist'));

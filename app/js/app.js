@@ -2,74 +2,82 @@
     'use strict';
 
     var myapp = angular.module('app', [
-            'ui.router',
-            'oc.lazyLoad',
-            'global',
-            'bsSwitch',
-            'spinner',
-            'commonJs',
-            'moduleValueJs',
-            'home.route',
-            'homePage.route',
-            'homePage.load',
-            //pages
-            'my.route',
-            'cart.route',
-            'seller.route',
-            'goodsList.route',
-            'details.route',
-            'addressManager.route',
-            'orderDetails.route',
-            'sellerPage.route',
-            'myTeam.route',
-            'promotionOrder.route',
-            'marketing.route',
-            'shopSettings.route',
-            'category.route',
-            'integral.route',
-            'feedback.route',
-            'commonProblem.route',
-            'collection.route',
-            'distributionInfo.route',
-            'refund.route',
-            'withdraw.route',
-            "express.route",
-            "salesReturn.route",
-            'searchPage.route'
-            //ocLazyLoad
-            //'levelProgress',
-            //'fiveStar'
-        ]).config(["$urlRouterProvider", '$ocLazyLoadProvider',
-            function ($urlRouterProvider, $ocLazyLoadProvider) {
-                $urlRouterProvider.otherwise("/home/homePage");
+        'ui.router',
+        'oc.lazyLoad',
+        'global',
+        'bsSwitch',
+        'spinner',
+        'commonJs',
+        'moduleValueJs',
+        'home.route',
+        'homePage.route',
+        //pages
+        'my.route',
+        'cart.route',
+        'seller.route',
+        'goodsList.route',
+        'details.route',
+        'addressManager.route',
+        'orderDetails.route',
+        'sellerPage.route',
+        'myTeam.route',
+        'promotionOrder.route',
+        'marketing.route',
+        'shopSettings.route',
+        'category.route',
+        'integral.route',
+        'feedback.route',
+        'commonProblem.route',
+        'collection.route',
+        'distributionInfo.route',
+        'refund.route',
+        'withdraw.route',
+        "express.route",
+        "salesReturn.route",
+        'searchPage.route'
+        //ocLazyLoad
+        //'levelProgress',
+        //'fiveStar'
+    ]).config(["$urlRouterProvider", '$ocLazyLoadProvider',
+        function ($urlRouterProvider, $ocLazyLoadProvider) {
+            $urlRouterProvider.otherwise("/home/homePage");
 
-                $ocLazyLoadProvider.config({
-                    modules: [{
-                        name: 'FiveStar',
-                        files: ['lib/custom/css/fiveStar.css', 'lib/custom/css/levelProgress.css', 'lib/custom/js/fiveStar.js', 'lib/custom/js/levelProgress.js'],
-                        cache: true
-<<<<<<< Updated upstream
-                    },{
-                        name:'GoodsListSvgBtn',
-                        files:['lib/goods-list-svg-btn/css/sortable-switch.css','lib/goods-list-svg-btn/js/sortableSwitch.js'],
-                        cache:true
-                    }]
-=======
-                    },
-                        {
-                            name: 'JqueryWeUI',
-                            files: ['bower_components/jquery/dist/jquery.min.js',
-                                'bower_components/jquery-weui/dist/js/jquery-weui.min.js',
-                                'js/weui.js',
-                                'bower_components/jquery-weui/dist/css/jquery-weui.min.css'],
-                            cache: true
-                        }
-                    ]
->>>>>>> Stashed changes
+            $ocLazyLoadProvider.config({
+                modules: [{
+                    name: 'FiveStar',
+                    files: ['lib/custom/css/fiveStar.css', 'lib/custom/css/levelProgress.css', 'lib/custom/js/fiveStar.js', 'lib/custom/js/levelProgress.js'],
+                    cache: true
+                }, {
+                    name: 'GoodsListSvgBtn',
+                    files: ['lib/goods-list-svg-btn/css/sortable-switch.css', 'lib/goods-list-svg-btn/js/sortableSwitch.js'],
+                    cache: true
+                }, {
+                    name: 'JqueryWeUI',
+                    files: ['bower_components/jquery/dist/jquery.min.js',
+                        'bower_components/jquery-weui/dist/js/jquery-weui.min.js',
+                        'js/weui.js',
+                        'bower_components/jquery-weui/dist/css/jquery-weui.min.css'],
+                    cache: true
+                }
+                ]
+            });
+        }])
+
+    myapp.run(['$ocLazyLoad', function ($ocLazyLoad) {
+        angular.element(document).ready(function () {
+            //document.getElementById('msg').innerHTML = 'Hello';
+
+            //$ocLazyLoad.load('bower_components/angular-ui-router/release/angular-ui-router.min.js')
+
+            $ocLazyLoad.load('bower_components/jquery/dist/jquery.min.js')
+                .then(function () {
+                    $ocLazyLoad.load([{type: 'css', path: 'bower_components/jquery-weui/dist/css/jquery-weui.min.css'},
+                        'bower_components/jquery-weui/dist/js/jquery-weui.min.js',
+                        'js/weui.js'
+                    ]);
                 });
-            }])
-
-        ;
+        });
+    }]);
 
     /*myapp.directive('cityPicker', function () {
      return function (scope, element, attrs) {

@@ -6,7 +6,7 @@ angular.module('my.controller', ['my.service'])
             //title
             document.title = "个人中心";
 
-            $ocLazyLoad.load('JqueryWeUI');
+            //$ocLazyLoad.load('JqueryWeUI');
 
             $rootScope.tabsNumber = 5;
 

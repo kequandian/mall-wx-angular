@@ -6,7 +6,7 @@ angular.module('details.controller', ['details.service'])
             //title
             document.title = "商品详情";
 
-            $ocLazyLoad.load('JqueryWeUI');
+            //$ocLazyLoad.load('JqueryWeUI');
 
             //商品详情
             detailsInfo();

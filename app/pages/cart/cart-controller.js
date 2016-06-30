@@ -6,8 +6,7 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
         //title
         document.title = "购物车";
 
-        $ocLazyLoad.load('JqueryWeUI');
-
+        //$ocLazyLoad.load('JqueryWeUI');
 
         $rootScope.tabsNumber = 4;
 
