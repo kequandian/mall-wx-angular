@@ -113,15 +113,17 @@ angular.module("salesReturn.controller", ["salesReturn.service","imageUpLoad.ser
                     }, function (error) {
                         $.toast("提交信息失败", "cancel");
                     })
-            }
+            };
 
             $scope.uploadImage = function(){
                 console.log('uploadImage');
                 loadImageFileAsURL();
-            }
+            };
 
             function loadImageFileAsURL() {
+
                 var filesSelected = document.getElementById("inputFileToLoad").files;
+
                 if (filesSelected.length > 0) {
 
                     var success = 0;
@@ -132,7 +134,12 @@ angular.module("salesReturn.controller", ["salesReturn.service","imageUpLoad.ser
 
                         fileReader.onload = function (fileLoadedEvent) {
                             var encodedResult = fileLoadedEvent.target.result;
-                            //console.log(encodedResult);
+                            console.log(encodedResult.length);
+
+                            if(encodedResult.length > 212000){
+                                $.toast('该图片超出范围','cancel');
+                                return;
+                            }
 
                             ImageUpLoad.uploadImage(encodedResult).then(function (json) {
                                 console.log(json);
