@@ -4,7 +4,6 @@
 }
 
 #goodsList #content{
-
 }
 
 #goodsList .weui_tab_bd{
@@ -68,10 +67,6 @@
   position: absolute;
 }
 
-/*#goodsList #goodsList_content{*/
-  /*height: 100%;*/
-/*}*/
-
 #goodsList .goods-box-header{
   margin-top: 5px;
   /*margin-bottom: 5px;*/
@@ -93,8 +88,8 @@
 }
 
 #goodsList .goods-box-img{
-  width: 80%;
-  /*height: 130px;*/
+  width: 120px;
+  height: 130px;
   margin-top: 5px;
   margin-bottom: 5px;
   /*background: #de7c23;*/
@@ -184,15 +179,6 @@
   line-height: 50px;
   text-align: left;
   float: left;
-}
-
-
-#goodsList .load-more-product{
-  width: 100%;
-  height: 35px;
-  float: left;
-  text-align: center;
-  position: relative;
 }
 
 #goodsList .load-more-product .load-more-button{

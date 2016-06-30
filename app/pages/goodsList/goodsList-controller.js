@@ -23,24 +23,25 @@ angular.module('goodsList.controller', ['goodsList.service'])
             }
 
             //价格切换
-            $scope.price_arrow = "both";
+            $scope.arrow = "both";
             $scope.price_arrow_hide = true;
             $scope.priceStatus = function () {
                 $scope.price_arrow_hide = false;
                 pageNumber = 1;
                 pageSize = 20;
 
-                if ($scope.price_arrow == "both") {
-                    $scope.price_arrow = "asc";
+                if ($scope.arrow == "both") {
+                    $scope.arrow = "asc";
                     orderBy = "&orderBy=price";
-                } else if ($scope.price_arrow == "asc") {
-                    $scope.price_arrow = "desc";
+                } else if ($scope.arrow == "asc") {
+                    $scope.arrow = "desc";
                     orderBy = "&orderByDesc=price";
-                } else if ($scope.price_arrow == "desc") {
-                    $scope.price_arrow = "asc";
+                } else if ($scope.arrow == "desc") {
+                    $scope.arrow = "asc";
                     orderBy = "&orderBy=price";
                 }
-                alert($scope.price_arrow);
+
+                alert($scope.arrow)
 
                 if (s_status == 1) {
                     cateProductList(pageNumber,pageSize);
@@ -53,7 +54,7 @@ angular.module('goodsList.controller', ['goodsList.service'])
 
             $scope.retArrowStatus = function (number) {
 
-                $scope.price_arrow = "both";
+                $scope.arrow = "both";
                 $scope.price_arrow_hide = true;
 
                 pageNumber = 1;

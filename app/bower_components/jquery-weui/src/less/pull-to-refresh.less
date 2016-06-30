@@ -17,10 +17,10 @@
   line-height: @distance - 20px;
   padding: 10px;
   text-align: center;
-  .sortable-switch-down {
+  .down {
     display: inline-block;
   }
-  .sortable-switch-up, .refresh {
+  .up, .refresh {
     display: none;
   }
   .pull-to-refresh-arrow {
@@ -50,7 +50,7 @@
 }
 
 .pull-up, .refreshing  {
-  .weui-pull-to-refresh-layer .sortable-switch-down {
+  .weui-pull-to-refresh-layer .down {
     display: none;
   }
 }
@@ -59,7 +59,7 @@
     display: inline-block;
     transform: rotate(180deg) translate3d(0, 0, 0);
   }
-  .sortable-switch-up {
+  .up {
     display: inline-block;
   }
 }
@@ -68,7 +68,7 @@
   .pull-to-refresh-arrow {
     display: inline-block;
   }
-  .sortable-switch-down {
+  .down {
     display: inline-block;
   }
 }

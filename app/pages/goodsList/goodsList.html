@@ -22,24 +22,20 @@
               </div>
             </div>
 
-              <div oc-lazy-load="GoodsListSvgBtn" class="weui_navbar_item" style="position: relative;"  ng-click="priceStatus()">
-                <div style="position: absolute; width: 100%; text-align: center;">
-                  价格
-                </div>
-                <!--<div class="{{price_arrow}}" style="right: 10px;" ng-hide="price_arrow_hide">-->
-                <!--</div>-->
-                <sortable-switch is-default="{{price_arrow}}" arrow="both" svg-width="15" svg-height="15" offset="8" active-color="#B10000"  color="black">
-                </sortable-switch>
+            <div oc-lazy-load="GoodsListSvgBtn" class="weui_navbar_item" style="position: relative;">
+              <div style="position: absolute; width: 100%; text-align: center;">
+                价格
               </div>
+              <sortable-switch svg-width="9" svg-height="9" offset="14" active-color="#B10000"  color="black">
+              </sortable-switch>
             </div>
           </div>
-          <!--<div class="weui_tab_bd" id="goodsList_content">-->
-          <div class="weui_tab_bd" id="goodsList_content">
+          <div class="weui_tab_bd">
 
             <div class="weui-row goods-box-header">
 
               <div class="goods-box" ng-repeat="productItem in productList">
-                <img square-img ng-src="{{productItem.cover}}" class="goods-box-img" ui-sref="details({productId:productItem.id})">
+                <img ng-src="{{productItem.cover}}" class="goods-box-img" ui-sref="details({productId:productItem.id})">
                 <div class="goods-box-text">
                   <div style=" word-wrap: break-word; word-break: normal;" ui-sref="details({productId:productItem.id})">
                     {{productItem.name | cutText:true:20:'...'}}
@@ -50,8 +46,8 @@
                   <!--<div class="goods-c-right c-right" ng-click="addProductToCart(productItem.id)">
                     <img src="img/goodList/good-list-cart-icon.png">
                   </div>-->
-                  <div class="goods-c-right c-left">
-                    <span><s>{{productItem.suggested_price | currency:"￥"}}</s></span>
+                  <div class="goods-c-right c-right">
+                    <span>省￥46.2</span>
                   </div>
                 </div>
               </div>
@@ -59,7 +55,6 @@
               <div class="load-more-product" ng-hide="load_more_btn_show">
                 <div class="load-more-button" ng-click="load_more_products()">加载更多</div>
               </div>
-
 
             </div>
 
@@ -72,7 +67,7 @@
               </div>
             </div>-->
 
-            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -7,15 +7,16 @@ angular.module('sortableSwitch', [])
         return {
             restrict: 'E',
             replace: true,
+            require:'^ngModel',
             scope: {
                 svgWidth:"@",
                 svgHeight:"@",
                 activeColor: '@',
                 color: '@',
                 offset: '@',
-                isDefault:'@'
+                arrow:'='
             },
-            template:   '<div class="sortable-switch-panel"  ng-click="toggle()" style="padding-right: {{svgHeight}}px">' +
+            template:   '<div class="sortable-switch-panel"   ng-click="toggle()" style="padding-right: {{svgHeight}}px">' +
                 
                             '<div class="arrow_btn">'+
 
@@ -31,21 +32,28 @@ angular.module('sortableSwitch', [])
                 
                         '</div>',
             
-            link: link
+            link: link,
+
         };
 
-        function link($scope, $element, $attrs) {
 
-            $scope.$watch($attrs.is_default, function(value){
-                console.log(value);
+        function link($scope, $element, $attrs, ngModel) {
+
+            // Bring in changes from outside:
+            console.log("arrow:" + $scope.arrow);
+
+            $scope.$watch('modelArrow', function(n,o) {
+                console.log("arrow_1?"+n);
+                $scope.$eval($attrs.ngModel + ' = arrow');
             });
 
-            // console.log($scope.desc);
-            if (!angular.isDefined($scope.color)) {
-                $scope.color = 'black';
-            }
+            //// Send out changes from inside:
+            //$scope.$watch($attrs.ngModel, function(val) {
+            //    console.log("arrow_2?"+status);
+            //    $scope.arrow = val;
+            //});
 
-            var status = $attrs.arrow;
+            var status = $scope.arrow;
             console.log("arrow?"+status);
             if(status == undefined || status===null || status.length==0){
                 status = 'asc';
