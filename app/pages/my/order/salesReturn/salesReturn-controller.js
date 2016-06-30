@@ -6,10 +6,10 @@
  *
  */
 
-angular.module("salesReturn.controller", ["salesReturn.service"])
+angular.module("salesReturn.controller", ["salesReturn.service","imageUpLoad.service"])
 
-    .controller("ReturnController", ["$scope", "$state", '$stateParams', "$timeout", "SalesReturnInfo",
-        function ($scope, $state, $stateParams,$timeout, SalesReturnInfo) {
+    .controller("ReturnController", ["$scope", "$state", '$stateParams', "$timeout", "SalesReturnInfo","ImageUpLoad",
+        function ($scope, $state, $stateParams,$timeout, SalesReturnInfo,ImageUpLoad) {
 
             document.title = "申请退货";
 
@@ -134,7 +134,7 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
                             var encodedResult = fileLoadedEvent.target.result;
                             //console.log(encodedResult);
 
-                            SalesReturnInfo.uploadImage(encodedResult).then(function (json) {
+                            ImageUpLoad.uploadImage(encodedResult).then(function (json) {
                                 console.log(json);
                                 if (json.status_code == 0) {
 

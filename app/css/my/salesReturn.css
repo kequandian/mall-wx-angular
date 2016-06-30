@@ -36,24 +36,15 @@
 }
 
 #salesReturn .add {
-    margin-top: 10px;
-    margin-left: 20px;
+    /*margin-top: 10px;*/
+    /*margin-left: 20px;*/
     margin-bottom: 13px;
     background: url("../../img/my/salesReturn/img.png") 20px 20px no-repeat;
     background-size: 50%;
 }
 
-
-#salesReturn .weui_uploader_input_wrp:after, #salesReturn .weui_uploader_input_wrp:before, #salesReturn .weui_uploader_input_wrp {
-    position: static;
-}
-
 #salesReturn .weui_select {
     padding-left: 5px;
-}
-
-#salesReturn　.weui_uploader_input_wrp:after {
-    width: 0;
 }
 
 #salesReturn .weui_uploader_input {

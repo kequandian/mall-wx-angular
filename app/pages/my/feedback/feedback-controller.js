@@ -1,6 +1,6 @@
-angular.module('feedback.controller', ['feedback.service'])
+angular.module('feedback.controller', ['feedback.service',"imageUpLoad.service"])
 
-    .controller('FeedbackController', ['$scope', '$state', 'FeedbackFty', function ($scope, $state, FeedbackFty) {
+    .controller('FeedbackController', ['$scope', '$state', 'FeedbackFty','ImageUpLoad', function ($scope, $state, FeedbackFty,ImageUpLoad) {
 
         //title
         document.title = "意见反馈";
@@ -51,7 +51,7 @@ angular.module('feedback.controller', ['feedback.service'])
                         var encodedResult = fileLoadedEvent.target.result;
                         //console.log(encodedResult);
 
-                        FeedbackFty.uploadImage(encodedResult).then(function (json) {
+                        ImageUpLoad.uploadImage(encodedResult).then(function (json) {
                             console.log(json);
                             if (json.status_code == 0) {
 
