@@ -7,14 +7,13 @@ angular.module('sortableSwitch', [])
         return {
             restrict: 'E',
             replace: true,
-            require:'^ngModel',
             scope: {
                 svgWidth:"@",
                 svgHeight:"@",
                 activeColor: '@',
                 color: '@',
                 offset: '@',
-                arrow:'='
+                arrow:'@'
             },
             template:   '<div class="sortable-switch-panel"   ng-click="toggle()" style="padding-right: {{svgHeight}}px">' +
                 
@@ -32,26 +31,13 @@ angular.module('sortableSwitch', [])
                 
                         '</div>',
             
-            link: link,
+            link: link
 
         };
 
+        function link($scope, $element, $attrs) {
 
-        function link($scope, $element, $attrs, ngModel) {
-
-            // Bring in changes from outside:
             console.log("arrow:" + $scope.arrow);
-
-            $scope.$watch('modelArrow', function(n,o) {
-                console.log("arrow_1?"+n);
-                $scope.$eval($attrs.ngModel + ' = arrow');
-            });
-
-            //// Send out changes from inside:
-            //$scope.$watch($attrs.ngModel, function(val) {
-            //    console.log("arrow_2?"+status);
-            //    $scope.arrow = val;
-            //});
 
             var status = $scope.arrow;
             console.log("arrow?"+status);
