@@ -4,6 +4,7 @@ angular.module('feedback.controller', ['feedback.service'])
 
         //title
         document.title = "意见反馈";
+
         $scope.postQuestion = function () {
 
             var content = $scope.q_content;
@@ -13,15 +14,19 @@ angular.module('feedback.controller', ['feedback.service'])
                 return;
             }
 
-            FeedbackFty.feedbackService(content)
+            FeedbackFty.feedbackService(content, $scope.image_list)
                 .then(function (json) {
                     //alert(angular.toJson(json));
                     if (json.status_code == 0) {
-                        $scope.q_content = null;
+                        // reset
+                        $scope.q_content = undefined;
+                        $scope.image_list = undefined;
+
                         $.toast('提交成功');
                     } else {
                         $.toast('提交失败', 'cancel');
                     }
+
                 }, function (error) {
                     $.toast('提交失败', 'cancel');
                 })
@@ -35,17 +40,47 @@ angular.module('feedback.controller', ['feedback.service'])
         function loadImageFileAsURL() {
             var filesSelected = document.getElementById("inputFileToLoad").files;
             if (filesSelected.length > 0) {
-                var fileToLoad = filesSelected[0];
 
-                var fileReader = new FileReader();
+                var success = 0;
+                for (var i = 0; i < filesSelected.length; i++) {
+                    var fileToLoad = filesSelected[i];
 
-                fileReader.onload = function (fileLoadedEvent) {
-                    var encodedResult = fileLoadedEvent.target.result;
-                    //console.log(encodedResult);
-                };
+                    var fileReader = new FileReader();
 
-                fileReader.readAsDataURL(fileToLoad);
-            }
+                    fileReader.onload = function (fileLoadedEvent) {
+                        var encodedResult = fileLoadedEvent.target.result;
+                        //console.log(encodedResult);
+
+                        FeedbackFty.uploadImage(encodedResult).then(function (json) {
+                            console.log(json);
+                            if (json.status_code == 0) {
+
+                                if(!angular.isDefined($scope.image_list)) {
+                                    $scope.image_list = [];
+                                }
+
+                                //console.log(json.data);
+                                $scope.image_list.push(json.data);
+
+                                //$.toast('提交成功');
+                                success ++;
+
+                            } else {
+                                //$.toast('提交失败', 'cancel');
+                            }
+                        }, function (error) {
+                            //$.toast('提交失败', 'cancel');
+                        })
+                    };
+
+                    fileReader.readAsDataURL(fileToLoad);
+                }//for
+
+                if(success>0){
+                    $.toast('提交成功');
+                }
+
+            }//length
         }
 
     }]);

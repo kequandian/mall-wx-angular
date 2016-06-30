@@ -69,10 +69,9 @@
                                 </li>
                             </ul>-->
 
-                            <!--<ul class="weui_uploader_files">
-                                &lt;!&ndash; 预览图插入到这 &ndash;&gt;
-                                <li class="weui_uploader_file" style="background-image:url(http://shp.qpic.cn/weixinsrc_pic/pScBR7sbqjOBJomcuvVJ6iacVrbMJaoJZkFUIq4nzQZUIqzTKziam7ibg/)"></li>
-                            </ul>-->
+                            <ul ng-if="image_list.length>0" class="weui_uploader_files" ng-repeat="url in image_list">
+                                <li class="weui_uploader_file" style="background-image:url({{url}})"></li>
+                            </ul>
 
                             <div class="weui_uploader_input_wrp">
                                 <input id="inputFileToLoad" onchange="angular.element(this).scope().uploadImage()" class="weui_uploader_input" accept="image/jpg,image/jpeg,image/png,image/gif" multiple="" type="file">
