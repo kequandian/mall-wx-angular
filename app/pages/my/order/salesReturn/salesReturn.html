@@ -48,10 +48,15 @@
                 <textarea class="weui_textarea" placeholder="请输入退货说明" rows="3" ng-model="salesReturn.content"></textarea>
             </div>
 
+
+            <ul ng-if="image_list.length>0" class="weui_uploader_files" ng-repeat="url in image_list">
+                <li class="weui_uploader_file" style="background-image:url({{url}})"></li>
+            </ul>
+
             <!--添加图片-->
             <div class="weui_cells_title bg pad">添加图片</div>
             <div class="weui_uploader_input_wrp add">
-                <input class="weui_uploader_input " type="file" accept="image/jpg,image/jpeg,image/png,image/gif" multiple="">
+                <input id="inputFileToLoad" onchange="angular.element(this).scope().uploadImage()"  class="weui_uploader_input " type="file" accept="image/jpg,image/jpeg,image/png,image/gif" multiple="">
             </div>
 
         </div>

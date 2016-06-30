@@ -95,10 +95,15 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
                     return;
                 }
 
-                SalesReturnInfo.SalesReturnService(order_number, service_type, reason, content)
+                var image_list = $scope.image_list===undefined ? null : $scope.image_list;
+
+                SalesReturnInfo.SalesReturnService(order_number, service_type, reason, content, image_list)
                     .then(function (json) {
                         if (json.status_code == 0) {
                             //$scope.salesReturn = json.data;
+
+                            $scope.image_list = null;
+
                             $.toast.prototype.defaults = 500;
                             $.toast("提交成功");
                             $timeout(function(){
@@ -108,5 +113,56 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
                     }, function (error) {
                         $.toast("提交信息失败", "cancel");
                     })
+            }
+
+            $scope.uploadImage = function(){
+                console.log('uploadImage');
+                loadImageFileAsURL();
+            }
+
+            function loadImageFileAsURL() {
+                var filesSelected = document.getElementById("inputFileToLoad").files;
+                if (filesSelected.length > 0) {
+
+                    var success = 0;
+                    for (var i = 0; i < filesSelected.length; i++) {
+                        var fileToLoad = filesSelected[i];
+
+                        var fileReader = new FileReader();
+
+                        fileReader.onload = function (fileLoadedEvent) {
+                            var encodedResult = fileLoadedEvent.target.result;
+                            //console.log(encodedResult);
+
+                            SalesReturnInfo.uploadImage(encodedResult).then(function (json) {
+                                console.log(json);
+                                if (json.status_code == 0) {
+
+                                    if(!angular.isDefined($scope.image_list)) {
+                                        $scope.image_list = [];
+                                    }
+
+                                    //console.log(json.data);
+                                    $scope.image_list.push(json.data);
+
+                                    //$.toast('提交成功');
+                                    success ++;
+
+                                } else {
+                                    //$.toast('提交失败', 'cancel');
+                                }
+                            }, function (error) {
+                                //$.toast('提交失败', 'cancel');
+                            })
+                        };
+
+                        fileReader.readAsDataURL(fileToLoad);
+                    }//for
+
+                    if(success>0){
+                        $.toast('提交成功');
+                    }
+
+                }//length
             }
     }]);

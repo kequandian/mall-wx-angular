@@ -11,14 +11,15 @@ angular.module("salesReturn.service", [])
         return {
 
             //提交退货信息
-            SalesReturnService: function (order_number, service_type, reason, content) {
+            SalesReturnService: function (order_number, service_type, reason, content, image_list) {
                 var deferred = $q.defer();
                 var url = GlobalVariable.SERVER_PATH + "/order_customer_service";
                 $http.post(url, {
                     "order_number": order_number,
                     "service_type": service_type,
                     "reason": reason,
-                    "content": content
+                    "content": content,
+                    "images": image_list
                 }, {
                     headers: {
                         "Authorization": GlobalVariable.ACCESS_TOKEN
@@ -50,6 +51,22 @@ angular.module("salesReturn.service", [])
                         return deferred.reject(data);
                     });
 
+                return deferred.promise;
+            },
+
+            uploadImage: function(data){
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + "/upload_image";
+                $http.post(url,data,{
+                    headers:{
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
+                })
+                    .success(function (data) {
+                        return deferred.resolve(data);
+                    }).error(function (data) {
+                        return deferred.reject(data);
+                    });
                 return deferred.promise;
             }
         }
