@@ -30,7 +30,8 @@
         <form class="weui_search_outer">
             <div class="weui_search_inner">
                 <i class="weui_icon_search" style="top: 8px;"></i>
-                <input type="search" style="font-family:'Microsoft YaHei';" class="weui_search_input" id="search_input" ng-disabled="true"
+                <input type="search" style="font-family:'Microsoft YaHei';" class="weui_search_input" id="search_input"
+                       ng-disabled="true"
                        placeholder="搜索你想要的商品" required/>
                 <!--<a href="javascript:" class="weui_icon_clear" id="search_clear"></a>-->
             </div>
@@ -63,7 +64,8 @@
                 <bs-switch data-type="slider" auto-play="2500" data-ratio="0.426">
                     <bs-switch-content>
                         <bs-switch-panel ng-repeat="img in ad_list">
-                            <a ng-href="{{img.target_url}}"><img alt="" ng-src="{{img.image}}" style="width: 100%; height: auto;"/></a>
+                            <a ng-href="{{img.target_url}}"><img alt="" ng-src="{{img.image}}"
+                                                                 style="width: 100%; height: auto;"/></a>
                         </bs-switch-panel>
                     </bs-switch-content>
                     <bs-switch-nav class="ui-switch-nav"></bs-switch-nav>
@@ -194,30 +196,32 @@
             <label>/精选为你推荐/</label>
         </div>
 
-        <div class="area-product">
-            <div id="homeProductGrids">
-                <div class="weui_grids">
-                    <a ui-sref="details({productId:item.id})" class="weui_grid product_item"
-                       ng-repeat="item in rec_product">
-                        <!--product cover-->
-                        <div class="pro-item-margin">
-                            <div class="weui_grid_icon home_grid_img">
-                                <img square-img ng-src="{{item.cover}}">
-                            </div>
-                        </div>
-                        <!--product desc-->
-                        <div class="pro-item-desc">
-                            <div class="weui_grid_label home_grid_text">
-                                {{item.name | cutText:true:26:'...'}}
-                            </div>
-                            <div class="home_grid_footer_text">
-                                <div class="home_g_left c-left">{{item.price | currency:"￥"}}</div>
-                                <div ng-if="item.suggested_price>item.price" class="home_g_right c-right">
-                                    <span><s>{{item.suggested_price | currency:"￥"}}</s></span>
+        <div oc-lazy-load="SquareImg">
+            <div class="area-product">
+                <div id="homeProductGrids">
+                    <div class="weui_grids">
+                        <a ui-sref="details({productId:item.id})" class="weui_grid product_item"
+                           ng-repeat="item in rec_product">
+                            <!--product cover-->
+                            <div class="pro-item-margin">
+                                <div class="weui_grid_icon home_grid_img">
+                                    <img square-img ng-src="{{item.cover}}">
                                 </div>
                             </div>
-                        </div>
-                    </a>
+                            <!--product desc-->
+                            <div class="pro-item-desc">
+                                <div class="weui_grid_label home_grid_text">
+                                    {{item.name | cutText:true:26:'...'}}
+                                </div>
+                                <div class="home_grid_footer_text">
+                                    <div class="home_g_left c-left">{{item.price | currency:"￥"}}</div>
+                                    <div ng-if="item.suggested_price>item.price" class="home_g_right c-right">
+                                        <span><s>{{item.suggested_price | currency:"￥"}}</s></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

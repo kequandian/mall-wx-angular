@@ -12,7 +12,8 @@
             <form class="weui_search_outer">
                 <div class="weui_search_inner">
                     <i class="weui_icon_search" style="top: 7px;"></i>
-                    <input type="search" class="weui_search_input" id="search_input" placeholder="搜索你想要的商品" ng-disabled="true" required/>
+                    <input type="search" class="weui_search_input" id="search_input" placeholder="搜索你想要的商品"
+                           ng-disabled="true" required/>
                     <!--<a href="javascript:" class="weui_icon_clear" id="search_clear"></a>-->
                 </div>
             </form>
@@ -50,14 +51,16 @@
                             </a>-->
 
                             <!--Product list-->
-                            <a class="weui_grids" ng-repeat="itemList in itemCateList.sub_categories">
-                                <div class="weui_grid item-box" ng-click="goToGoodsList(itemList.id)">
-                                    <div>
-                                        <span>{{itemList.name}}</span>
-                                        <img square-img ng-src="{{itemList.cover | defaultCover}}">
+                            <div oc-lazy-load="SquareImg">
+                                <a class="weui_grids" ng-repeat="itemList in itemCateList.sub_categories">
+                                    <div class="weui_grid item-box" ng-click="goToGoodsList(itemList.id)">
+                                        <div>
+                                            <span>{{itemList.name}}</span>
+                                            <img square-img ng-src="{{itemList.cover | defaultCover}}">
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
+                                </a>
+                            </div>
                         </div>
                     </div>
 
