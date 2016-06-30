@@ -17,10 +17,10 @@ var del = require('del');
 var path = require('path');
 
 gulp.task('default', function () {
-    return gulp.src('app/lib/custom/js/*.js')
+    return gulp.src('app/lib/angular-ad-switch/js/switch.js')
         .pipe(rename({suffix: '.min'}))
         .pipe(uglify())
-        .pipe(gulp.dest('app/lib/custom/js'));
+        .pipe(gulp.dest('app/lib/angular-ad-switch/js'));
 });
 
 gulp.task('ad', function () {
@@ -75,7 +75,7 @@ gulp.task('rep', function () {
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('dist', function () {
+gulp.task('bundle', function () {
     var minifyapp = gulp.src([  'app/js/*.js',
                                 '!app/js/home.js',
                                 '!app/js/bundle.js',
@@ -175,9 +175,53 @@ gulp.task('dist', function () {
     return merge(minifyapp, homejs, homecss, minify, minifycss, index, html, lib, img, bower, js, debug);
 });
 
+gulp.task('dist', function () {
+    var js = gulp.src('app/js/*.js')
+        .pipe(uglify())
+        .pipe(gulp.dest('dist/js'));
+
+    var pages = gulp.src('app/pages/**/*.js')
+        .pipe(ngAnnotate())
+        .pipe(stripDebug())
+        .pipe(uglify())
+        .pipe(gulp.dest('dist/pages'));
+
+    var css = gulp.src('app/css/**/*.css')
+        .pipe(cleanCSS())
+        .pipe(gulp.dest('dist/css'));
+
+    var index = gulp.src(['app/index.html'])
+        .pipe(replace(/(\<script src=\"js\/global\.js"\>\<\/script\>)/, '<!--$1-->'))
+        .pipe(replace(/(\<script src=\"js\/apps\.js"\>\<\/script\>)/, '<!--$1-->'))
+        .pipe(replace(/(\<script src=\"js\/home\.js"\>\<\/script\>)/, '<!--$1-->'))
+        .pipe(replace(/(\<script src=\"js\/bundle\.js"\>\<\/script\>)/, '<!--$1-->'))
+        .pipe(replace(/(\<link rel=\"stylesheet\" href=\"css\/home\.css\"\>)/, '<!--$1-->'))
+        .pipe(replace(/(\<link rel=\"stylesheet\" href=\"css\/bundle\.css\" lazyload\>)/, '<!--$1-->'))
+        .pipe(removeHtmlComments())
+        .pipe(removeEmptyLines({removeComments: true}))
+        .pipe(gulp.dest('dist'));
+
+    var html = gulp.src('app/pages/**/*.html')
+        .pipe(htmlmin({collapseWhitespace: true}))
+        .pipe(gulp.dest('dist/pages'));
+
+    var lib = gulp.src('app/lib/**/*')
+        .pipe(gulp.dest('dist/lib'));
+
+    var img = gulp.src('app/img/**/*')
+        .pipe(gulp.dest('dist/img'));
+
+    var bower = gulp.src(['app/bower_components/**/*.js', 'app/bower_components/**/*.css'])
+        .pipe(gulp.dest('dist/bower_components'));
+
+    var debug = gulp.src('app/js/global.js')
+        .pipe(gulp.dest('dist/js'));
+
+    return merge(js, pages, css, index, html, lib, img, bower, debug);
+});
+
 gulp.task('debug', function () {
     return gulp.src(['dist/index.html'])
-        .pipe(replace(/(\"pages\/.+)\.js/g, '$1\.min\.js'))
         .pipe(replace(/(\<\/body\>)/g, '\<script src=\"js\/global.js\"></script>$1'))
         .pipe(gulp.dest('dist'));
 });
