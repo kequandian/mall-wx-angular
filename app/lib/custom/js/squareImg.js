@@ -10,7 +10,7 @@ angular.module('squareImg', [])
             link: function (scope, $el, attrs) {
 
                 var el = $el[0];
-                $el.css('height', max(180,el.width));
+                $el.css('height', el.width);
                 //console.log("squareImg: width?"+el.width+",height?"+el.height);
             }
         };

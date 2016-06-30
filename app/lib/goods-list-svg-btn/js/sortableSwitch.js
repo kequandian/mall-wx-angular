@@ -37,6 +37,10 @@ angular.module('sortableSwitch', [])
 
         function link($scope, $element, $attrs) {
 
+            $attrs.$observe('arrow', function(val){
+                console.log("observe?"+val);
+            });
+
             console.log("arrow:" + $scope.arrow);
 
             var status = $scope.arrow;
