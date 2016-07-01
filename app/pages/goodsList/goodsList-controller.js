@@ -1,9 +1,16 @@
 angular.module('goodsList.controller', ['goodsList.service'])
 
     .controller('GoodsListController', ['$scope', '$state', '$stateParams','$rootScope', 'GoodsListFty', 'searchInfo', 'goodListParams', 'areasStatus',
-        function ($scope, $state, $stateParams,$rootScope, GoodsListFty, searchInfo, goodListParams, areasStatus) {
+        '$ocLazyLoad', function ($scope, $state, $stateParams,$rootScope, GoodsListFty, searchInfo, goodListParams, areasStatus, $ocLazyLoad) {
 
             document.title = "商品列表";
+
+            $ocLazyLoad.load('Jquery').then(function(){
+                $ocLazyLoad.load('JqueryWeUI').then(function(){
+                    console.log("details:jquery loaded");
+                })
+            });
+
 
             var orderBy = "";
             var pageNumber = 1;

@@ -6,7 +6,11 @@ angular.module('details.controller', ['details.service'])
             //title
             document.title = "商品详情";
 
-            //$ocLazyLoad.load('JqueryWeUI');
+            /*$ocLazyLoad.load('Jquery').then(function(){
+                $ocLazyLoad.load('JqueryWeUI').then(function(){
+                    console.log("details:jquery loaded");
+                })
+            });*/
 
             //商品详情
             detailsInfo();
@@ -21,20 +25,23 @@ angular.module('details.controller', ['details.service'])
                             if ($scope.details.covers.length > 0) {
                                 $scope.details_content_sheet_img = $scope.details.covers[0].url;
                             }
-                            if ($scope.details.properties.length > 0) {
-                                var properties = [];
 
-                                var rep = false;  // replace new properties is required
-                                angular.forEach($scope.details.properties, function (v, k) {
-                                    if (v.property_value != null) {
-                                        properties.push(v);
-                                    }else{
-                                        rep = true;
+                            if(angular.isDefined($scope.details.specifications)) {
+                                if ($scope.details.specifications.length > 0) {
+                                    var properties = [];
+
+                                    var rep = false;  // replace new properties is required
+                                    angular.forEach($scope.details.specifications, function (v, k) {
+                                        if (v.property_value != null) {
+                                            properties.push(v);
+                                        } else {
+                                            rep = true;
+                                        }
+                                    });
+
+                                    if (rep) {
+                                        $scope.details.specifications = properties;
                                     }
-                                });
-
-                                if(rep) {
-                                    $scope.details.properties = properties;
                                 }
                             }
                         } else {
@@ -64,6 +71,7 @@ angular.module('details.controller', ['details.service'])
 
             $scope.get_input_value = function (value) {
                 $scope.product_property_value = value;
+                alert(value)
             };
 
             $scope.q_count = 1;
@@ -95,7 +103,7 @@ angular.module('details.controller', ['details.service'])
             $scope.buy_product_option = function (productInfo, productId, quantity) {
 
                 var product_property = $scope.product_property_value;
-                if ($scope.details.properties.length > 0 && product_property == null) {
+                if ($scope.details.specifications.length > 0 && product_property == null) {
                     $.toast('请选择商品规格');
                     return;
                 }

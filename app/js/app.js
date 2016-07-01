@@ -48,15 +48,22 @@
                     files: ['lib/custom/css/fiveStar.css', 'lib/custom/css/levelProgress.css', 'lib/custom/js/fiveStar.js', 'lib/custom/js/levelProgress.js'],
                     cache: true
                 }, {
+                    name: 'SquareImg',
+                    files: ['lib/custom/js/squareImg.js'],
+                    cache: true
+                },{
                     name: 'GoodsListSvgBtn',
                     files: ['lib/goods-list-svg-btn/css/sortable-switch.css', 'lib/goods-list-svg-btn/js/sortableSwitch.js'],
                     cache: true
                 }, {
+                    name: 'Jquery',
+                    files: ['bower_components/jquery/dist/jquery.min.js'],
+                    cache: true
+                }, {
                     name: 'JqueryWeUI',
-                    files: ['bower_components/jquery/dist/jquery.min.js',
-                        'bower_components/jquery-weui/dist/js/jquery-weui.min.js',
+                    files: ['bower_components/jquery-weui/dist/js/jquery-weui.min.js',
                         'js/weui.js',
-                        'bower_components/jquery-weui/dist/css/jquery-weui.min.css'],
+                        {type: 'css', path: 'bower_components/jquery-weui/dist/css/jquery-weui.min.css'}],
                     cache: true
                 }
                 ]
@@ -66,16 +73,17 @@
     myapp.run(['$ocLazyLoad', function ($ocLazyLoad) {
         angular.element(document).ready(function () {
             //document.getElementById('msg').innerHTML = 'Hello';
-
             //$ocLazyLoad.load('bower_components/angular-ui-router/release/angular-ui-router.min.js')
 
-            $ocLazyLoad.load('bower_components/jquery/dist/jquery.min.js')
+            /*$ocLazyLoad.load('bower_components/jquery/dist/jquery.min.js')
                 .then(function () {
                     $ocLazyLoad.load([{type: 'css', path: 'bower_components/jquery-weui/dist/css/jquery-weui.min.css'},
                         'bower_components/jquery-weui/dist/js/jquery-weui.min.js',
                         'js/weui.js'
-                    ]);
-                });
+                    ]).then(function () {
+                        console.log("loaded jquery");
+                    })
+                });*/
         });
     }]);
 

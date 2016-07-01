@@ -407,7 +407,10 @@
 
                     if (!rightPanel) {
                         rightPanel = this.rightPanel = this._getNextPanelByIndex(this.currentPanelIndex);
-                        rightPanel.$el.removeClass('hide');
+
+                        if(angular.isDefined(rightPanel.$el)) {
+                            rightPanel.$el.removeClass('hide');
+                        }
                     }
 
                     this._transform(rightPanel.el, this.panelOffset + this.width);

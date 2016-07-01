@@ -2,7 +2,6 @@
  功  能：通用功能
  */
 angular.module('commonJs', [])
-
     .directive('squareImg', function () {
         return {
             restrict: 'A',
@@ -15,17 +14,14 @@ angular.module('commonJs', [])
             }
         };
     })
-
     .filter('NotNull', function () {
         return function (input) {
             if (!angular.isDefined(input)) {
                 return 0;
             }
-
             if (input == null) {
                 return 0;
             }
-
             return input;
         }
     })
@@ -46,7 +42,6 @@ angular.module('commonJs', [])
                     value = value.substr(0, lastspace);
                 }
             }
-
             return value + (tail || '…');
         };
     })

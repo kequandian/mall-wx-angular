@@ -1,22 +1,22 @@
-angular.module('orderDetails.controller', ['orderDetails.service',"express.service",'order.common'])
+angular.module('orderDetails.controller', ['orderDetails.service', "express.service", 'order.common'])
 
-    .controller('OrderDetailsController', ['$scope','$state', '$stateParams', 'OrderDetailsFty','ExpressInfo','OrderCommon',
-        function($scope,$state,$stateParams, OrderDetailsFty,ExpressInfo,OrderCommon){
+    .controller('OrderDetailsController', ['$scope', '$state', '$stateParams', 'OrderDetailsFty', 'ExpressInfo', 'OrderCommon',
+        '$ocLazyLoad', function ($scope, $state, $stateParams, OrderDetailsFty, ExpressInfo, OrderCommon, $ocLazyLoad) {
 
             orderDetails();
-            function orderDetails(){
+            function orderDetails() {
 
                 var orderNumber = $stateParams.orderNumber;
 
                 OrderDetailsFty.orderDetailsService(orderNumber)
-                    .then(function(json){
+                    .then(function (json) {
                         //alert(angular.toJson(json));
-                        if(json.status_code == 0){
+                        if (json.status_code == 0) {
                             $scope.detailsInfo = json.data;
                             var count = 0;
                             var t_price = 0;
-                            angular.forEach($scope.detailsInfo.order_items, function(v, k){
-                                count+= v.quantity;
+                            angular.forEach($scope.detailsInfo.order_items, function (v, k) {
+                                count += v.quantity;
                                 //t_price += (v.final_price * v.quantity);
                                 t_price += v.final_price;
                             });
@@ -24,22 +24,22 @@ angular.module('orderDetails.controller', ['orderDetails.service',"express.servi
                             $scope.total_price = t_price + $scope.detailsInfo.freight;
 
                             $scope.order_address = "";
-                            if($scope.detailsInfo.province != null){
+                            if ($scope.detailsInfo.province != null) {
                                 $scope.order_address += $scope.detailsInfo.province;
                             }
-                            if($scope.detailsInfo.city != null){
+                            if ($scope.detailsInfo.city != null) {
                                 $scope.order_address += $scope.detailsInfo.city;
                             }
-                            if($scope.detailsInfo.district != null){
+                            if ($scope.detailsInfo.district != null) {
                                 $scope.order_address += $scope.detailsInfo.district;
                             }
-                            if($scope.detailsInfo.street != null){
+                            if ($scope.detailsInfo.street != null) {
                                 $scope.order_address += $scope.detailsInfo.street;
                             }
-                            if($scope.detailsInfo.street_number != null){
+                            if ($scope.detailsInfo.street_number != null) {
                                 $scope.order_address += $scope.detailsInfo.street_number;
                             }
-                            if($scope.detailsInfo.detail != null){
+                            if ($scope.detailsInfo.detail != null) {
                                 $scope.order_address += $scope.detailsInfo.detail;
                             }
                             //倒计时
@@ -47,97 +47,114 @@ angular.module('orderDetails.controller', ['orderDetails.service',"express.servi
                             //物流信息
                             express_info($scope.detailsInfo.order_number);
 
-                        }else{
-                            $.toast("获取订单详情失败","cancel")
+                        } else {
+                            $.toast("获取订单详情失败", "cancel")
                         }
-                    }, function(error){
-                        $.toast("获取订单详情失败","cancel")
+                    }, function (error) {
+                        $.toast("获取订单详情失败", "cancel")
                     })
             }
 
             //自动收货时间
             /*function countDown(o_time){
-                var begintime_ms = Date.parse(new Date(o_time.replace(/-/g, "/")));
-                begintime_ms += 604800000;
-                var endtime_ms = Date.parse(new Date());
-                var overtime = begintime_ms - endtime_ms;
+             var begintime_ms = Date.parse(new Date(o_time.replace(/-/g, "/")));
+             begintime_ms += 604800000;
+             var endtime_ms = Date.parse(new Date());
+             var overtime = begintime_ms - endtime_ms;
 
-                var days = Math.floor(overtime/(24*3600*1000));
+             var days = Math.floor(overtime/(24*3600*1000));
 
-                var leave1 = overtime%(24*3600*1000);    //计算天数后剩余的毫秒数
-                var hours = Math.floor(leave1/(3600*1000));
-                //计算相差分钟数
-                //var leave2 = leave1%(3600*1000);        //计算小时数后剩余的毫秒数
-                //var minutes = Math.floor(leave2/(60*1000));
-                //计算相差秒数
-                //var leave3 = leave2%(60*1000);      //计算分钟数后剩余的毫秒数
-                //var seconds = Math.round(leave3/1000);
-                //alert(" 相差 "+days+"天 "+hours+"小时 "+minutes+" 分钟"+seconds+" 秒")
+             var leave1 = overtime%(24*3600*1000);    //计算天数后剩余的毫秒数
+             var hours = Math.floor(leave1/(3600*1000));
+             //计算相差分钟数
+             //var leave2 = leave1%(3600*1000);        //计算小时数后剩余的毫秒数
+             //var minutes = Math.floor(leave2/(60*1000));
+             //计算相差秒数
+             //var leave3 = leave2%(60*1000);      //计算分钟数后剩余的毫秒数
+             //var seconds = Math.round(leave3/1000);
+             //alert(" 相差 "+days+"天 "+hours+"小时 "+minutes+" 分钟"+seconds+" 秒")
 
-                $scope.over_time = overtime;
-                $scope.c_d_day = days;
-                $scope.c_d_hour = hours;
-            }
+             $scope.over_time = overtime;
+             $scope.c_d_day = days;
+             $scope.c_d_hour = hours;
+             }
 
-            //显示自动确认时间
-            $scope.auto_confirm_time = function(status){
-                if(status == 'PAID_CONFIRM_PENDING' || status == 'DELIVERED_CONFIRM_PENDING' || status == 'DELIVERING'){
-                    return true;
-                }
-                return false;
-            };*/
+             //显示自动确认时间
+             $scope.auto_confirm_time = function(status){
+             if(status == 'PAID_CONFIRM_PENDING' || status == 'DELIVERED_CONFIRM_PENDING' || status == 'DELIVERING'){
+             return true;
+             }
+             return false;
+             };*/
 
             //订单状态
-            $scope.order_status = function(orderStatus){
+            $scope.order_status = function (orderStatus) {
                 return OrderCommon.OrderStatus(orderStatus);
             };
 
             //物流信息
-            function express_info(order_number){
+            function express_info(order_number) {
 
                 ExpressInfo.ExpressService(order_number)
-                    .then(function(json){
+                    .then(function (json) {
                         //alert(angular.toJson(json));
                         $scope.j_status_code = json.status_code;
-                        if(json.status_code == 0){
+                        if (json.status_code == 0) {
                             $scope.ex_info = json.data.data;
-                            if($scope.ex_info.length > 0){
-                                $scope.ex_context =  $scope.ex_info[0].context;
-                                $scope.ex_time =  $scope.ex_info[0].time;
+                            if ($scope.ex_info.length > 0) {
+                                $scope.ex_context = $scope.ex_info[0].context;
+                                $scope.ex_time = $scope.ex_info[0].time;
                             }
                         }
-                    }, function(error){
+                    }, function (error) {
                         console.log("error" + error);
                     })
             }
 
             //进入退款退货
-            $scope.goToSalesReturn = function(o_number, total_price, s_r_status){
-                if(s_r_status == 1) {
-                    $.confirm('', '确认要退款吗？', function (){
-                        $state.go('salesReturn', {orderNumber: o_number, totalPrice: total_price, SalesReturnStatus:s_r_status});
-                    }, function() {
-                        //取消操作
-                    });
-                }else if(s_r_status == 2){
-                    $.confirm('', '确认要退货？', function (){
-                        $state.go('salesReturn', {orderNumber: o_number, totalPrice: total_price, SalesReturnStatus:s_r_status});
-                    }, function() {
-                        //取消操作
-                    });
-                }
+            $scope.goToSalesReturn = function (o_number, total_price, s_r_status, $ocLazyLoad) {
+
+                $ocLazyLoad.load('Jquery').then(function () {
+                    $ocLazyLoad.load('JqueryWeUI').then(function () {
+
+                        /*function start*/
+                        if (s_r_status == 1) {
+                            $.confirm('', '确认要退款吗？', function () {
+                                $state.go('salesReturn', {
+                                    orderNumber: o_number,
+                                    totalPrice: total_price,
+                                    SalesReturnStatus: s_r_status
+                                });
+                            }, function () {
+                                //取消操作
+                            });
+                        } else if (s_r_status == 2) {
+                            $.confirm('', '确认要退货？', function () {
+                                $state.go('salesReturn', {
+                                    orderNumber: o_number,
+                                    totalPrice: total_price,
+                                    SalesReturnStatus: s_r_status
+                                });
+                            }, function () {
+                                //取消操作
+                            });
+                        }
+                        /*function end*/
+
+                    })
+                });
             }
 
             //进入物流详情
-            $scope.goToExpress = function(item){
+            $scope.goToExpress = function (item) {
                 var o_number = item.order_number;
                 var p_img = item.order_items[0].cover;
                 var count = 0;
-                angular.forEach(item.order_items, function(v, k){
-                    count+= v.quantity;
+                angular.forEach(item.order_items, function (v, k) {
+                    count += v.quantity;
                 });
 
-                $state.go('express',{orderNumber:o_number,productImg: p_img, productCount:count});
+                $state.go('express', {orderNumber: o_number, productImg: p_img, productCount: count});
             }
 
-    }]);
+        }]);

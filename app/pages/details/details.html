@@ -170,16 +170,16 @@
                                 </div>
                             </div>
                             <ul class="weui_media_info detail_content_checkbox">
-                                <li class="weui_media_info_meta click_radio" ng-repeat="proItem in details.properties">
+                                <li class="weui_media_info_meta click_radio" ng-repeat="proItem in details.specifications">
                                     <!--<input class="c_checkbox" type="radio" value="" name="radio" data-labelauty="proItem.display_name">-->
-                                    <input class="detail_input_radio" id="pro_id_{{proItem.id}}"
+                                    <input class="detail_input_radio" id="pro_id_{{proItem.$index}}"
                                            type="radio" value="" name="radio"
-                                           ng-click="get_input_value(proItem.property_value)">
-                                    <label class="detail_label_radio" for="pro_id_{{proItem.id}}"
-                                           name="pro_id_{{proItem.id}}">{{proItem.display_name}}</label>
+                                           ng-click="get_input_value(proItem)">
+                                    <label class="detail_label_radio" for="pro_id_{{proItem.$index}}"
+                                           name="pro_id_{{proItem.$index}}">{{proItem}}</label>
                                 </li>
                                 <input id="property_hidden" type="hidden" value="{{product_property_value}}">
-                                <input id="propertis_null" type="hidden" value="{{details.properties.length}}">
+                                <input id="propertis_null" type="hidden" value="{{details.specifications.length}}">
                             </ul>
 
                             <div class="details-quantity-position">
