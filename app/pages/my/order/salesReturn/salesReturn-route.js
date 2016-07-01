@@ -18,5 +18,5 @@ angular.module("salesReturn.route", ["salesReturn.controller"])
                 'totalPrice':null,
                 'SalesReturnStatus':0
             }
-        })    
+        })
     }]);

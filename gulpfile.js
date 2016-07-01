@@ -169,10 +169,7 @@ gulp.task('bundle', function () {
     var js = gulp.src(['app/js/weui.js'])
         .pipe(gulp.dest('dist/js'));
 
-    var debug = gulp.src('app/js/global.js')
-        .pipe(gulp.dest('dist/js'));
-
-    return merge(minifyapp, homejs, homecss, minify, minifycss, index, html, lib, img, bower, js, debug);
+    return merge(minifyapp, homejs, homecss, minify, minifycss, index, html, lib, img, bower, js);
 });
 
 gulp.task('dist', function () {
@@ -214,16 +211,19 @@ gulp.task('dist', function () {
     var bower = gulp.src(['app/bower_components/**/*.js', 'app/bower_components/**/*.css'])
         .pipe(gulp.dest('dist/bower_components'));
 
-    var debug = gulp.src('app/js/global.js')
-        .pipe(gulp.dest('dist/js'));
-
-    return merge(js, pages, css, index, html, lib, img, bower, debug);
+    return merge(js, pages, css, index, html, lib, img, bower);
 });
 
 gulp.task('debug', function () {
-    return gulp.src(['dist/index.html'])
+
+    var debug = gulp.src('app/js/global.js')
+        .pipe(gulp.dest('dist/js'));
+
+    var index= gulp.src(['dist/index.html'])
         .pipe(replace(/(\<\/body\>)/g, '\<script src=\"js\/global.js\"></script>$1'))
         .pipe(gulp.dest('dist'));
+
+    return merge(debug, index);
 });
 
 gulp.task('clean', function () {
