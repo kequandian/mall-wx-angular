@@ -227,9 +227,9 @@ gulp.task('dist', function () {
         .pipe(replace(/(\<script src=\"pages\/\w+\/.+\-route.js"\>\<\/script\>)/g, '<!--$1-->'))
         .pipe(replace(/(\<script src=\"pages\/\w+\/.+\-controller.js"\>\<\/script\>)/g, '<!--$1-->'))
         .pipe(replace(/(\<script src=\"pages\/\w+\/.+\-service.js"\>\<\/script\>)/g, '<!--$1-->'))
-        // page cs
-        .pipe(removeHtmlComments())
-        .pipe(replace(/(\<link rel=\"stylesheet\" href=\"css\/\w+\/\w+\.css\"\>)/g, '<!--$1-->'))
+        // page css
+        //.pipe(removeHtmlComments())
+        //.pipe(replace(/(\<link rel=\"stylesheet\" href=\"css\/\w+\/\w+\.css\"\>)/g, '<!--$1-->'))
         //
         .pipe(removeHtmlComments())
         .pipe(removeEmptyLines({removeComments: true}))
@@ -262,13 +262,12 @@ gulp.task('dist', function () {
         .pipe(gulp.dest('dist/js'));
 
     // bundle css
-    var bundlecss = gulp.src(['dist/css/**/*.css', '!dist/css/home.css', '!dist/css/bundle.css'])
-        .pipe(concatCss('bundle.css'))
-        .pipe(cleanCSS())
-        .pipe(gulp.dest('dist/css'));
+    //var bundlecss = gulp.src(['dist/css/**/*.css', '!dist/css/home.css', '!dist/css/bundle.css'])
+    //    .pipe(concatCss('bundle.css'))
+    //    .pipe(cleanCSS())
+    //    .pipe(gulp.dest('dist/css'));
 
-    return merge(apps, homejs, homecss, routes, controllers, services, index, pagejs, pagecss, pagehtml, img, lib, bower, mis,
-        bundlecss);
+    return merge(apps, homejs, homecss, routes, controllers, services, index, pagejs, pagecss, pagehtml, img, lib, bower, mis);
 });
 
 gulp.task('debug', function () {
