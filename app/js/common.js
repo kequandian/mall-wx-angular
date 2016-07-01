@@ -2,6 +2,7 @@
  功  能：通用功能
  */
 angular.module('commonJs', [])
+
     .directive('squareImg', function () {
         return {
             restrict: 'A',

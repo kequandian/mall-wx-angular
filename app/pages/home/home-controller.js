@@ -60,7 +60,12 @@ angular.module('home.controller', ['cart.service'])
                 CartFty.getCarts()
                     .then(function(json){
                         if(json.status_code == 0){
-                            var c_count = json.data.length;
+                            var c_count = 0;
+                            if(json.data.length > 0) {
+                                angular.forEach(json.data, function (v, k) {
+                                    c_count += v.quantity;
+                                });
+                            }
                             if(c_count > 0){
                                 $scope.home_tabs[3].c_number = c_count;
                             }

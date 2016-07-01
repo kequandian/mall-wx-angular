@@ -21,11 +21,11 @@ angular.module('details.controller', ['details.service'])
                             if ($scope.details.covers.length > 0) {
                                 $scope.details_content_sheet_img = $scope.details.covers[0].url;
                             }
-                            if ($scope.details.product_specification.length > 0) {
+                            if ($scope.details.properties.length > 0) {
                                 var properties = [];
 
                                 var rep = false;  // replace new properties is required
-                                angular.forEach($scope.details.product_specification, function (v, k) {
+                                angular.forEach($scope.details.properties, function (v, k) {
                                     if (v.property_value != null) {
                                         properties.push(v);
                                     }else{
@@ -34,7 +34,7 @@ angular.module('details.controller', ['details.service'])
                                 });
 
                                 if(rep) {
-                                    $scope.details.product_specification = properties;
+                                    $scope.details.properties = properties;
                                 }
                             }
                         } else {

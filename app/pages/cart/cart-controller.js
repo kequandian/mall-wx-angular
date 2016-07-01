@@ -20,11 +20,19 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
                     //console.log(result.data);
                     if(result.status_code == 0) {
                         $scope.carts = result.data;
-                        $rootScope.cartCount = $scope.carts.length;
                         if ($scope.carts.length > 0) {
+
+                            var c_count = 0;
+
+                            angular.forEach($scope.carts, function(v, k){
+                               c_count += v.quantity;
+                            });
+                            $rootScope.cartCount = c_count;
+
                             $scope.empty_cart_hide = true;
                             $scope.cart_info_hide = false;
                         } else {
+                            $rootScope.cartCount = 0;
                             $scope.empty_cart_hide = false;
                             $scope.cart_info_hide = true;
                         }
@@ -146,11 +154,11 @@ angular.module('cart.controller', ['cart.service','addressManager.service'])
         $scope.cart_item_quantity = true;
         $scope.edit_action = function(){
             if($scope.edit_action_text == "编辑") {
-                $scope.edit_action_text = "取消";
+                $scope.edit_action_text = "完成";
                 $scope.cart_item_price = true;
                 $scope.cart_item_quantity = false;
                 $scope.edit_action_img = true;
-            }else if($scope.edit_action_text == "取消") {
+            }else if($scope.edit_action_text == "完成") {
                 $scope.edit_action_text = "编辑";
                 $scope.cart_item_price = false;
                 $scope.cart_item_quantity = true;

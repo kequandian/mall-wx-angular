@@ -35,10 +35,10 @@ angular.module('collection.controller', ['collection.service'])
         $scope.coll_item_close = true;
         $scope.edit_action = function(){
             if($scope.edit_action_text == "编辑") {
-                $scope.edit_action_text = "取消";
+                $scope.edit_action_text = "完成";
                 $scope.coll_item_close = false;
                 $scope.edit_action_img = true;
-            }else if($scope.edit_action_text == "取消") {
+            }else if($scope.edit_action_text == "完成") {
                 $scope.edit_action_text = "编辑";
                 $scope.coll_item_close = true;
                 $scope.edit_action_img = false;
