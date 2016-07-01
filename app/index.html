@@ -6,18 +6,13 @@
           content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
     <title>十美优品商城</title>
     <link rel="SHORTCUT ICON" href="img/about.png" lazyload/>
-
-    <!--ocLazyLoad-->
-    <!--<link rel="stylesheet" href="bower_components/jquery-weui/dist/css/jquery-weui.min.css" lazyload>-->
-
-    <!-- pre-load lib css -->
     <link rel="stylesheet" href="lib/css/ionicons/ionicons.min.css">
     <link rel="stylesheet" href="http://o9ixtumvv.bkt.clouddn.com/weui.min.css">
-    <!--<link rel="stylesheet" href="lib/css/weui/weui.min.css">-->
-    <!--pre-load custom css-->
-    <link rel="stylesheet" href="lib/angular-ad-switch/css/ui-switch.min.css">
-    <link rel="stylesheet" href="lib/custom/css/spinner.css">
+
     <!-- pre-load app css -->
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="lib/angular-ad-switch/css/ui-switch.css">
+    <link rel="stylesheet" href="lib/custom/css/spinner.css">
     <link rel="stylesheet" href="css/common/common.css">
     <link rel="stylesheet" href="css/home/homePage.css">
     <link rel="stylesheet" href="css/home/home.css">
@@ -25,6 +20,7 @@
     <!----------------------------------------------------------->
     <!-- app pages css-->
     <!----------------------------------------------------------->
+    <link rel="stylesheet" href="css/bundle.css">
     <link rel="stylesheet" href="css/goodsList/goodsList.css">
     <link rel="stylesheet" href="css/details/details.css">
     <link rel="stylesheet" href="css/addressManager/addressManager.css">
@@ -55,11 +51,6 @@
     <link rel="stylesheet" href="css/order/express.css">
     <link rel="stylesheet" href="css/my/salesReturn.css">
     <link rel="stylesheet" href="css/searchPage/searchPage.css">
-
-
-    <!-- stable includes-->
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/bundle.css" lazyload>
 </head>
 
 <body ontouchstart="">
@@ -98,142 +89,125 @@
 <script src="js/common.js"></script>
 <script src="js/moduleValue.js"></script>
 <script src="js/global.js"></script>
-<!-- pre-load custom js-->
+<!--bundle-->
+<script src="js/apps.js"></script>
+
+
+<!-- pre-load home js -->
 <script src="lib/angular-ad-switch/js/switch.js"></script>
 <script src="lib/custom/js/spinner.js"></script>
-<!-- pre-load home js -->
 <script src="pages/homePage/homePage-route.js"></script>
 <script src="pages/homePage/homePage-controller.js"></script>
 <script src="pages/homePage/homePage-service.js"></script>
 <script src="pages/home/home-route.js"></script>
 <script src="pages/home/home-controller.js"></script>
+<!--bundle-->
+<script src="js/home.js"></script>
 
 
-<!------------------------------------------------------------>
-<!--page js-->
-<!------------------------------------------------------------>
+<!-- pre-load route js -->
 <script src="pages/my/order/order-route.js"></script>
-<script src="pages/my/order/order-controller.js"></script>
-<script src="pages/my/order/order-service.js"></script>
-<script src="pages/my/order/order-common.js"></script>
 <script src="pages/my/order/orderDetails/orderDetail-route.js"></script>
-<script src="pages/my/order/orderDetails/orderDetail-controller.js"></script>
-<script src="pages/my/order/orderDetails/orderDetail-service.js"></script>
-
 <script src="pages/my/my-route.js"></script>
-<script src="pages/my/my-controller.js"></script>
-<script src="pages/my/my-service.js"></script>
-
 <script src="pages/cart/cart-route.js"></script>
-<script src="pages/cart/cart-controller.js"></script>
-<script src="pages/cart/cart-service.js"></script>
-
 <script src="pages/seller/seller-route.js"></script>
-<script src="pages/seller/seller-controller.js"></script>
-<script src="pages/seller/seller-service.js"></script>
-<script src="pages/seller/seller-session.js"></script>
-
 <script src="pages/goodsList/goodsList-route.js"></script>
-<script src="pages/goodsList/goodsList-controller.js"></script>
-<script src="pages/goodsList/goodsList-service.js"></script>
-
 <script src="pages/details/details-route.js"></script>
-<script src="pages/details/details-controller.js"></script>
-<script src="pages/details/details-service.js"></script>
-
 <script src="pages/my/addressManager/addressManager-route.js"></script>
-<script src="pages/my/addressManager/addressManager-controller.js"></script>
-<script src="pages/my/addressManager/addressManager-service.js"></script>
-
 <script src="pages/seller/pages/sellerPage/sellerPage-route.js"></script>
-<script src="pages/seller/pages/sellerPage/sellerPage-controller.js"></script>
-<script src="pages/seller/pages/sellerPage/sellerPage-service.js"></script>
-
 <script src="pages/seller/pages/myTeam/myTeam-route.js"></script>
-<script src="pages/seller/pages/myTeam/myTeam-controller.js"></script>
-<script src="pages/seller/pages/myTeam/myTeam-service.js"></script>
-
 <script src="pages/seller/pages/promotionOrder/promotionOrder-route.js"></script>
-<script src="pages/seller/pages/promotionOrder/promotionOrder-controller.js"></script>
-<script src="pages/seller/pages/promotionOrder/promotionOrder-service.js"></script>
-
 <script src="pages/seller/pages/marketing/marketing-route.js"></script>
-<script src="pages/seller/pages/marketing/marketing-controller.js"></script>
-<script src="pages/seller/pages/marketing/marketing-service.js"></script>
-
 <script src="pages/seller/pages/shopSettings/shopSettings-route.js"></script>
-<script src="pages/seller/pages/shopSettings/shopSettings-controller.js"></script>
-<script src="pages/seller/pages/shopSettings/shopSettings-service.js"></script>
-
 <script src="pages/category/category-route.js"></script>
-<script src="pages/category/category-controller.js"></script>
-<script src="pages/category/category-service.js"></script>
-
 <!--<script src="pages/my/userInfo/userInfo-route.js"></script>-->
-<!--<script src="pages/my/userInfo/userInfo-controller.js"></script>-->
-<!--<script src="pages/my/userInfo/userInfo-service.js"></script>-->
 <!--<script src="pages/my/coupon/coupon-route.js"></script>-->
-<!--<script src="pages/my/coupon/coupon-controller.js"></script>-->
-<!--<script src="pages/my/coupon/coupon-service.js"></script>-->
-
 <!--<script src="pages/seller/pages/commission/commission-route.js"></script>-->
-<!--<script src="pages/seller/pages/commission/commission-controller.js"></script>-->
-<!--<script src="pages/seller/pages/commission/commission-service.js"></script>-->
-
 <!--<script src="pages/seller/pages/myAgent/myAgent-route.js"></script>-->
-<!--<script src="pages/seller/pages/myAgent/myAgent-controller.js"></script>-->
-<!--<script src="pages/seller/pages/myAgent/myAgent-service.js"></script>-->
-
 <script src="pages/my/integral/integral-route.js"></script>
-<script src="pages/my/integral/integral-controller.js"></script>
-<script src="pages/my/integral/integral-serivce.js"></script>
-
-<script src="pages/my/feedback/feedback-rout.js"></script>
-<script src="pages/my/feedback/feedback-controller.js"></script>
-<script src="pages/my/feedback/feedback-service.js"></script>
-
+<script src="pages/my/feedback/feedback-route.js"></script>
 <script src="pages/my/commonProblem/commonProblem-route.js"></script>
-<script src="pages/my/commonProblem/commonProblem-controller.js"></script>
-<script src="pages/my/commonProblem/commonProblem-service.js"></script>
-
 <script src="pages/my/collection/collection-route.js"></script>
-<script src="pages/my/collection/collection-controller.js"></script>
-<script src="pages/my/collection/collection-service.js"></script>
-
 <script src="pages/seller/pages/distributionInfo/distributionInfo-route.js"></script>
+<script src="pages/my/order/salesReturn/salesReturn-route.js"></script>
+<script src="pages/seller/pages/withdraw/withdraw-route.js"></script>
+<script src="pages/my/order/express/express-route.js"></script>
+<script src="pages/my/order/refund/refund-route.js"></script>
+<script src="pages/searchPage/searchPage-route.js"></script>
+<!--bundle-->
+<script src="js/page-route.js"></script>
+
+
+<!------------------------------------------------------------>
+<!--page controller js-->
+<!------------------------------------------------------------>
+<script src="pages/my/order/order-controller.js"></script>
+<script src="pages/my/order/orderDetails/orderDetail-controller.js"></script>
+<script src="pages/my/my-controller.js"></script>
+<script src="pages/cart/cart-controller.js"></script>
+<script src="pages/seller/seller-controller.js"></script>
+<script src="pages/goodsList/goodsList-controller.js"></script>
+<script src="pages/details/details-controller.js"></script>
+<script src="pages/my/addressManager/addressManager-controller.js"></script>
+<script src="pages/seller/pages/sellerPage/sellerPage-controller.js"></script>
+<script src="pages/seller/pages/myTeam/myTeam-controller.js"></script>
+<script src="pages/seller/pages/promotionOrder/promotionOrder-controller.js"></script>
+<script src="pages/seller/pages/marketing/marketing-controller.js"></script>
+<script src="pages/seller/pages/shopSettings/shopSettings-controller.js"></script>
+<script src="pages/category/category-controller.js"></script>
+<!--<script src="pages/my/userInfo/userInfo-controller.js"></script>-->
+<!--<script src="pages/my/coupon/coupon-controller.js"></script>-->
+<!--<script src="pages/seller/pages/commission/commission-controller.js"></script>-->
+<!--<script src="pages/seller/pages/myAgent/myAgent-controller.js"></script>-->
+<script src="pages/my/integral/integral-controller.js"></script>
+<script src="pages/my/feedback/feedback-controller.js"></script>
+<script src="pages/my/commonProblem/commonProblem-controller.js"></script>
+<script src="pages/my/collection/collection-controller.js"></script>
 <script src="pages/seller/pages/distributionInfo/distributionInfo-controller.js"></script>
+<script src="pages/my/order/salesReturn/salesReturn-controller.js"></script>
+<script src="pages/seller/pages/withdraw/withdraw-controller.js"></script>
+<script src="pages/my/order/refund/refund-controller.js"></script>
+<script src="pages/my/order/express/express-controller.js"></script>
+<script src="pages/searchPage/searchPage-controller.js"></script>
+<!--bundle-->
+<script src="js/page-controller.js"></script>
+
+<!--page service js-->
+<script src="pages/my/order/order-service.js"></script>
+<script src="pages/my/order/order-common-service.js"></script>
+<script src="pages/my/order/orderDetails/orderDetail-service.js"></script>
+<script src="pages/my/my-service.js"></script>
+<script src="pages/cart/cart-service.js"></script>
+<script src="pages/seller/seller-service.js"></script>
+<script src="pages/seller/seller-session-service.js"></script>
+<script src="pages/goodsList/goodsList-service.js"></script>
+<script src="pages/details/details-service.js"></script>
+<script src="pages/my/addressManager/addressManager-service.js"></script>
+<script src="pages/seller/pages/sellerPage/sellerPage-service.js"></script>
+<script src="pages/seller/pages/myTeam/myTeam-service.js"></script>
+<script src="pages/seller/pages/promotionOrder/promotionOrder-service.js"></script>
+<script src="pages/seller/pages/marketing/marketing-service.js"></script>
+<script src="pages/seller/pages/shopSettings/shopSettings-service.js"></script>
+<script src="pages/category/category-service.js"></script>
+<!--<script src="pages/my/userInfo/userInfo-service.js"></script>-->
+<!--<script src="pages/my/coupon/coupon-service.js"></script>-->
+<!--<script src="pages/seller/pages/commission/commission-service.js"></script>-->
+<!--<script src="pages/seller/pages/myAgent/myAgent-service.js"></script>-->
+<script src="pages/my/integral/integral-service.js"></script>
+<script src="pages/my/feedback/feedback-service.js"></script>
+<script src="pages/my/commonProblem/commonProblem-service.js"></script>
+<script src="pages/my/collection/collection-service.js"></script>
 <!--<script src="pages/seller/pages/distributionInfo/distributionInfo-service.js"></script>-->
 <script src="pages/seller/pages/distributionInfo/userInfo-service.js"></script>
-
-<script src="pages/my/order/salesReturn/salesReturn-route.js"></script>
-<script src="pages/my/order/salesReturn/salesReturn-controller.js"></script>
 <script src="pages/my/order/salesReturn/salesReturn-service.js"></script>
-
-<script src="pages/seller/pages/withdraw/withdraw-route.js"></script>
-<script src="pages/seller/pages/withdraw/withdraw-controller.js"></script>
 <script src="pages/seller/pages/withdraw/withdraw-service.js"></script>
-
-<script src="pages/my/order/refund/refund-route.js"></script>
-<script src="pages/my/order/refund/refund-controller.js"></script>
 <script src="pages/my/order/refund/refund-service.js"></script>
-
-<script src="pages/my/order/express/express-route.js"></script>
-<script src="pages/my/order/express/express-controller.js"></script>
 <script src="pages/my/order/express/express-service.js"></script>
-
-<script src="pages/searchPage/searchPage-route.js"></script>
-<script src="pages/searchPage/searchPage-controller.js"></script>
 <script src="pages/searchPage/searchPage-service.js"></script>
-
-<script src="pages/pageCommon/imageUpLoad.js"></script>
-
-
+<!--bundle-->
+<script src="js/page-service.js"></script>
 
 
-<!-- stable includes -->
-<script src="js/apps.js"></script>
-<script src="js/home.js"></script>
-<script src="js/bundle.js"></script>
 <!--<script language="javascript">
     function downloadJSAtOnload(){
         loadScript("bower_components/jquery/dist/jquery.min.js", function(){

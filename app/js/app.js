@@ -5,13 +5,12 @@
         'ui.router',
         'oc.lazyLoad',
         'global',
-        'bsSwitch',
-        'spinner',
+        //'bsSwitch',
+        //'spinner',
         'commonJs',
         'moduleValueJs',
         'home.route',
         'homePage.route',
-        //pages
         'my.route',
         'cart.route',
         'seller.route',
@@ -35,9 +34,7 @@
         "express.route",
         "salesReturn.route",
         'searchPage.route'
-        //ocLazyLoad
-        //'levelProgress',
-        //'fiveStar'
+
     ]).config(["$urlRouterProvider", '$ocLazyLoadProvider',
         function ($urlRouterProvider, $ocLazyLoadProvider) {
             $urlRouterProvider.otherwise("/home/homePage");

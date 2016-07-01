@@ -70,7 +70,7 @@
 }
 
 #salesReturn .sub {
-    position: absolute;
+    /*position: absolute;*/
     bottom: 40px;
     left: 40px;
     right: 40px;

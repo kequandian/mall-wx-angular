@@ -6,10 +6,10 @@
  *
  */
 
-angular.module("salesReturn.controller", ["salesReturn.service","imageUpLoad.service"])
+angular.module("salesReturn.controller", ["salesReturn.service"])
 
-    .controller("ReturnController", ["$scope", "$state", '$stateParams', "$timeout", "SalesReturnInfo","ImageUpLoad",
-        function ($scope, $state, $stateParams,$timeout, SalesReturnInfo,ImageUpLoad) {
+    .controller("ReturnController", ["$scope", "$state", '$stateParams', "$timeout", "SalesReturnInfo",
+        '$ocLazyLoad','$injector', function ($scope, $state, $stateParams,$timeout, SalesReturnInfo, $ocLazyLoad, $injector) {
 
             document.title = "申请退货";
 
@@ -32,7 +32,7 @@ angular.module("salesReturn.controller", ["salesReturn.service","imageUpLoad.ser
             ];*/
 
             // get return reason
-            getReturnCauses();
+            //getReturnCauses();
 
             //退货金额
             $scope.total_price = $stateParams.totalPrice;
@@ -54,7 +54,7 @@ angular.module("salesReturn.controller", ["salesReturn.service","imageUpLoad.ser
                                reasons.push({key: item.name, value: item.name});
                             });
                             $scope.returnReason = reasons;
-                            console.log("causes: "+ angular.toJson($scope.returnReason));
+                            //console.log("causes: "+ angular.toJson($scope.returnReason));
                         }
                     }, function (error) {
                         $.toast("获取退货原因失败", "cancel");
@@ -116,11 +116,13 @@ angular.module("salesReturn.controller", ["salesReturn.service","imageUpLoad.ser
             };
 
             $scope.uploadImage = function(){
-                console.log('uploadImage');
-                loadImageFileAsURL();
+                $ocLazyLoad.load('pages/pageCommon/imageUpload.js').then(function(){
+                    var ImageUpLoad = $injector.get('ImageUpLoad');
+                    loadImageFileAsURL(ImageUpLoad);
+                });
             };
 
-            function loadImageFileAsURL() {
+            function loadImageFileAsURL(ImageUpLoad) {
 
                 var filesSelected = document.getElementById("inputFileToLoad").files;
 
