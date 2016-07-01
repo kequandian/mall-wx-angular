@@ -191,18 +191,18 @@ gulp.task('dist', function () {
         .pipe(concat('page-route.js'))
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'));
-    var controllers = gulp.src('app/pages/**/*-controller.js')
+    /*var controllers = gulp.src('app/pages/!**!/!*-controller.js')
         .pipe(ngAnnotate())
         .pipe(stripDebug())
         .pipe(concat('page-controller.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('dist/js'));
-    var services = gulp.src('app/pages/**/*-service.js')
+        .pipe(gulp.dest('dist/js'));*/
+    /*var services = gulp.src('app/pages/!**!/!*-service.js')
         .pipe(ngAnnotate())
         .pipe(stripDebug())
         .pipe(concat('page-service.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('dist/js'));
+        .pipe(gulp.dest('dist/js'));*/
 
     var index = gulp.src(['app/index.html'])
         // head
@@ -215,21 +215,18 @@ gulp.task('dist', function () {
         // home js
         .pipe(replace(/(\<script src=\"lib\/angular-ad-switch\/js\/switch\.js"\>\<\/script\>)/, '<!--$1-->'))
         .pipe(replace(/(\<script src=\"lib\/custom\/js\/spinner\.js"\>\<\/script\>)/, '<!--$1-->'))
-        .pipe(replace(/(\<script src=\"pages\/home\/\w+\.js"\>\<\/script\>)/g, '<!--$1-->'))
-        .pipe(replace(/(\<script src=\"pages\/homePage\/\w+\.js"\>\<\/script\>)/g, '<!--$1-->'))
+        .pipe(replace(/(\<script src=\"pages\/home\/[\w\-]+\.js"\>\<\/script\>)/g, '<!--$1-->'))
+        .pipe(replace(/(\<script src=\"pages\/homePage\/[\w\-]+\.js"\>\<\/script\>)/g, '<!--$1-->'))
         // home css
+        .pipe(removeHtmlComments())
         .pipe(replace(/(\<link rel=\"stylesheet\" href=\"lib\/angular-ad-switch\/css\/ui-switch\.css\"\>)/, '<!--$1-->'))
         .pipe(replace(/(\<link rel=\"stylesheet\" href=\"lib\/custom\/css\/spinner\.css\"\>)/, '<!--$1-->'))
         .pipe(replace(/(\<link rel=\"stylesheet\" href=\"css\/common\/common\.css\"\>)/, '<!--$1-->'))
         .pipe(replace(/(\<link rel=\"stylesheet\" href=\"css\/home\/home\.css\"\>)/, '<!--$1-->'))
         .pipe(replace(/(\<link rel=\"stylesheet\" href=\"css\/home\/homePage\.css\"\>)/, '<!--$1-->'))
-        // page js
+        // page route js
+        .pipe(removeHtmlComments())
         .pipe(replace(/(\<script src=\"pages\/\w+\/.+\-route.js"\>\<\/script\>)/g, '<!--$1-->'))
-        .pipe(replace(/(\<script src=\"pages\/\w+\/.+\-controller.js"\>\<\/script\>)/g, '<!--$1-->'))
-        .pipe(replace(/(\<script src=\"pages\/\w+\/.+\-service.js"\>\<\/script\>)/g, '<!--$1-->'))
-        // page css
-        //.pipe(removeHtmlComments())
-        //.pipe(replace(/(\<link rel=\"stylesheet\" href=\"css\/\w+\/\w+\.css\"\>)/g, '<!--$1-->'))
         //
         .pipe(removeHtmlComments())
         .pipe(removeEmptyLines({removeComments: true}))
@@ -240,10 +237,6 @@ gulp.task('dist', function () {
         .pipe(stripDebug())
         .pipe(uglify())
         .pipe(gulp.dest('dist/pages'));
-
-    var pagecss = gulp.src(['app/css/**/*.css', '!app/css/home.css'])
-        .pipe(cleanCSS())
-        .pipe(gulp.dest('dist/css'));
 
     var pagehtml = gulp.src('app/pages/**/*.html')
         .pipe(htmlmin({collapseWhitespace: true}))
@@ -266,8 +259,11 @@ gulp.task('dist', function () {
     //    .pipe(concatCss('bundle.css'))
     //    .pipe(cleanCSS())
     //    .pipe(gulp.dest('dist/css'));
+    var pagecss = gulp.src(['app/css/**/*.css', '!app/css/home.css'])
+        .pipe(cleanCSS())
+        .pipe(gulp.dest('dist/css'));
 
-    return merge(apps, homejs, homecss, routes, controllers, services, index, pagejs, pagecss, pagehtml, img, lib, bower, mis);
+    return merge(apps, homejs, homecss, routes, index, pagejs, pagehtml, img, lib, bower, mis, pagecss);
 });
 
 gulp.task('debug', function () {
