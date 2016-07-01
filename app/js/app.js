@@ -73,8 +73,8 @@
     myapp.run(['$ocLazyLoad', function ($ocLazyLoad) {
         angular.element(document).ready(function () {
             //document.getElementById('msg').innerHTML = 'Hello';
-
             //$ocLazyLoad.load('bower_components/angular-ui-router/release/angular-ui-router.min.js')
+
             /*$ocLazyLoad.load('bower_components/jquery/dist/jquery.min.js')
                 .then(function () {
                     $ocLazyLoad.load([{type: 'css', path: 'bower_components/jquery-weui/dist/css/jquery-weui.min.css'},

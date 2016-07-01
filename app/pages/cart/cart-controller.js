@@ -66,7 +66,6 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
             //删除购物车单项商品
             $scope.showDeleteConfirm = function (id) {
-                //$.confirm("您确定要删除该商品吗?", "确认删除?", function() {
                 $.confirm("", "确认要移除该商品吗？", function () {
                     CartFty.deleteCart(id).then(
                         function (result) {
