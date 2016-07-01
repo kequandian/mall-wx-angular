@@ -6,29 +6,21 @@
           content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
     <title>十美优品商城</title>
     <link rel="SHORTCUT ICON" href="img/about.png" lazyload/>
-
-    <!--ocLazyLoad-->
-    <!--<link rel="stylesheet" href="bower_components/jquery-weui/dist/css/jquery-weui.min.css" lazyload>-->
-
-    <!-- pre-load lib css -->
     <link rel="stylesheet" href="lib/css/ionicons/ionicons.min.css">
     <link rel="stylesheet" href="http://o9ixtumvv.bkt.clouddn.com/weui.min.css">
-    <!--<link rel="stylesheet" href="lib/css/weui/weui.min.css">-->
-    <!--pre-load custom css-->
-    <link rel="stylesheet" href="lib/angular-ad-switch/css/ui-switch.min.css">
-    <link rel="stylesheet" href="lib/custom/css/spinner.css">
+
     <!-- pre-load app css -->
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="lib/angular-ad-switch/css/ui-switch.css">
+    <link rel="stylesheet" href="lib/custom/css/spinner.css">
     <link rel="stylesheet" href="css/common/common.css">
     <link rel="stylesheet" href="css/home/homePage.css">
     <link rel="stylesheet" href="css/home/home.css">
 
-    <!-- bundle css-->
-    <link rel="stylesheet" href="css/home.css">
-
-
     <!----------------------------------------------------------->
     <!-- app pages css-->
     <!----------------------------------------------------------->
+    <link rel="stylesheet" href="css/bundle.css">
     <link rel="stylesheet" href="css/goodsList/goodsList.css">
     <link rel="stylesheet" href="css/details/details.css">
     <link rel="stylesheet" href="css/addressManager/addressManager.css">
@@ -97,17 +89,21 @@
 <script src="js/common.js"></script>
 <script src="js/moduleValue.js"></script>
 <script src="js/global.js"></script>
-<!-- pre-load custom js-->
-<script src="lib/angular-ad-switch/js/switch.js"></script>
-<script src="lib/custom/js/spinner.js"></script>
+<!--bundle-->
+<script src="js/apps.js"></script>
 
 
 <!-- pre-load home js -->
+<script src="lib/angular-ad-switch/js/switch.js"></script>
+<script src="lib/custom/js/spinner.js"></script>
 <script src="pages/homePage/homePage-route.js"></script>
 <script src="pages/homePage/homePage-controller.js"></script>
 <script src="pages/homePage/homePage-service.js"></script>
 <script src="pages/home/home-route.js"></script>
 <script src="pages/home/home-controller.js"></script>
+<!--bundle-->
+<script src="js/home.js"></script>
+
 
 <!-- pre-load route js -->
 <script src="pages/my/order/order-route.js"></script>
@@ -138,6 +134,8 @@
 <script src="pages/my/order/express/express-route.js"></script>
 <script src="pages/my/order/refund/refund-route.js"></script>
 <script src="pages/searchPage/searchPage-route.js"></script>
+<!--bundle-->
+<script src="js/page-route.js"></script>
 
 
 <!------------------------------------------------------------>
@@ -171,16 +169,17 @@
 <script src="pages/my/order/refund/refund-controller.js"></script>
 <script src="pages/my/order/express/express-controller.js"></script>
 <script src="pages/searchPage/searchPage-controller.js"></script>
-
+<!--bundle-->
+<script src="js/page-controller.js"></script>
 
 <!--page service js-->
 <script src="pages/my/order/order-service.js"></script>
-<script src="pages/my/order/order-common.js"></script>
+<script src="pages/my/order/order-common-service.js"></script>
 <script src="pages/my/order/orderDetails/orderDetail-service.js"></script>
 <script src="pages/my/my-service.js"></script>
 <script src="pages/cart/cart-service.js"></script>
 <script src="pages/seller/seller-service.js"></script>
-<script src="pages/seller/seller-session.js"></script>
+<script src="pages/seller/seller-session-service.js"></script>
 <script src="pages/goodsList/goodsList-service.js"></script>
 <script src="pages/details/details-service.js"></script>
 <script src="pages/my/addressManager/addressManager-service.js"></script>
@@ -205,11 +204,10 @@
 <script src="pages/my/order/refund/refund-service.js"></script>
 <script src="pages/my/order/express/express-service.js"></script>
 <script src="pages/searchPage/searchPage-service.js"></script>
+<!--bundle-->
+<script src="js/page-service.js"></script>
 
-<!-- stable includes -->
-<!--<script src="js/apps.js"></script>-->
-<!--<script src="js/home.js"></script>-->
-<!--<script src="js/bundle.js"></script>-->
+
 <!--<script language="javascript">
     function downloadJSAtOnload(){
         loadScript("bower_components/jquery/dist/jquery.min.js", function(){
