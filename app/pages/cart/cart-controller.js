@@ -23,6 +23,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 function (result) {
                     if(result.status_code == 0) {
                         $scope.carts = result.data;
+                        //alert(angular.toJson(result.data))
                         if ($scope.carts.length > 0) {
 
                             var c_count = 0;
@@ -90,7 +91,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
             //选购结算
             $scope.checkAll = function () {
-                if (typeof $scope.carts === undefined) {
+                if (typeof $scope.carts === 'undefined') {
                     return;
                 }
                 $scope.carts.forEach(function (it) {
@@ -98,7 +99,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 });
             };
             $scope.checkItem = function (item) {
-                if (typeof $scope.carts === undefined) {
+                if (typeof $scope.carts === 'undefined') {
                     return;
                 }
                 $scope.$allChecked = $scope.carts.every(function (it) {
@@ -106,7 +107,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 });
             };
             $scope.totalToPay = function () {
-                if (typeof $scope.carts === undefined) {
+                if (typeof $scope.carts === 'undefined') {
                     return;
                 }
                 return $scope.carts.reduce(function (prev, next) {
@@ -114,7 +115,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 }, 0);
             };
             $scope.totalFreight = function () {
-                if (typeof $scope.carts === undefined) {
+                if (typeof $scope.carts === 'undefined') {
                     return;
                 }
                 return $scope.carts.reduce(function (prev, next) {
@@ -122,7 +123,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 }, 0);
             };
             $scope.someChecked = function () {
-                if (typeof $scope.carts === undefined) {
+                if (typeof $scope.carts === 'undefined') {
                     return;
                 }
                 return $scope.carts.some(function (it) {
@@ -205,10 +206,14 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             $scope.settlementCarts = $stateParams.carts;
             $scope.settlementData = [];
             //console.log("carts:"+$stateParams.carts);
+
+            //alert(angular.toJson($stateParams.carts))
+
             angular.forEach($stateParams.carts, function (data, index) {
                 $scope.settlementData[index] = ({
                     "product_id": data.product_id,
-                    "quantity": data.quantity
+                    "quantity": data.quantity,
+                    "product_specification": data.product_specification
                 });
             });
             //console.log($scope.settlementData);
@@ -227,8 +232,6 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     return;
                 }
 
-                //alert(angular.toJson($scope.order));
-
                 CartFty.addOrder($scope.order).then(
                     function (result) {
                         //console.log(result.data);
@@ -242,13 +245,18 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
             //删除购物车商品
             function deleteProducts(items) {
+
                 $scope.product_items = [];
+                var del_item = {};
                 angular.forEach(items, function (data, index) {
-                    data.quantity = 0;
-                    $scope.product_items.push(data);
+                    del_item.product_id = data.product_id;
+                    del_item.quantity = 0;
+                    $scope.product_items.push(del_item);
                 });
+
                 CartFty.deleteProduct($scope.product_items)
                     .then(function (json) {
+                        console.log("删除购物车商品：" + json);
                     }, function (error) {
                         console.log(error);
                     })
@@ -331,7 +339,6 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     $.toast('详细地址不能为空', 'cancel');
                     return
                 }
-
 
                 var pcd_1 = $scope.pcd;
                 var pcds = pcd_1.split(/\s/);

@@ -6,11 +6,11 @@ angular.module('details.controller', ['details.service'])
             //title
             document.title = "商品详情";
 
-            /*$ocLazyLoad.load('Jquery').then(function(){
+            $ocLazyLoad.load('Jquery').then(function(){
                 $ocLazyLoad.load('JqueryWeUI').then(function(){
                     console.log("details:jquery loaded");
                 })
-            });*/
+            });
 
             //商品详情
             detailsInfo();
@@ -22,6 +22,7 @@ angular.module('details.controller', ['details.service'])
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $scope.details = json.data;
+
                             if ($scope.details.covers.length > 0) {
                                 $scope.details_content_sheet_img = $scope.details.covers[0].url;
                             }
@@ -32,7 +33,7 @@ angular.module('details.controller', ['details.service'])
 
                                     var rep = false;  // replace new properties is required
                                     angular.forEach($scope.details.specifications, function (v, k) {
-                                        if (v.property_value != null) {
+                                        if (v != null || v != "") {
                                             properties.push(v);
                                         } else {
                                             rep = true;
@@ -44,6 +45,7 @@ angular.module('details.controller', ['details.service'])
                                     }
                                 }
                             }
+
                         } else {
                             console.log("获取商品详情失败");
                         }
@@ -71,7 +73,6 @@ angular.module('details.controller', ['details.service'])
 
             $scope.get_input_value = function (value) {
                 $scope.product_property_value = value;
-                alert(value)
             };
 
             $scope.q_count = 1;
@@ -102,24 +103,26 @@ angular.module('details.controller', ['details.service'])
             //确认购买option
             $scope.buy_product_option = function (productInfo, productId, quantity) {
 
-                var product_property = $scope.product_property_value;
-                if ($scope.details.specifications.length > 0 && product_property == null) {
+                var product_property = null;
+                var product_specification = $scope.product_property_value;
+
+                if ($scope.details.specifications.length > 0 && product_specification == null) {
                     $.toast('请选择商品规格');
                     return;
                 }
 
                 var b_status = $scope.b_status;
                 if (b_status == "cart") {
-                    $scope.addProductToCart(productId, quantity, product_property);
+                    $scope.addProductToCart(productId, quantity, product_property,product_specification);
                 } else if (b_status == "buy") {
-                    $scope.buy_immediately(productInfo, quantity, product_property);
+                    $scope.buy_immediately(productInfo, quantity, product_property,product_specification);
                 }
             };
 
-
             //添加购物车
-            $scope.addProductToCart = function (productId, quantity, product_property) {
-                DetailsFty.addProToCatService(productId, quantity, product_property)
+            $scope.addProductToCart = function (productId, quantity, product_property,product_specification) {
+
+                DetailsFty.addProToCatService(productId, quantity, product_property,product_specification)
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $.toast.prototype.defaults.duration = 2000;
@@ -134,14 +137,15 @@ angular.module('details.controller', ['details.service'])
 
             //立即购买
             $scope.checkedCarts = [];
-            $scope.buy_immediately = function (item, quantity, product_property) {
+            $scope.buy_immediately = function (item, quantity, product_property,product_specification) {
                 //console.log("product.item?" + angular.toJson(item));
 
                 item.product_id = item.id;
                 item.quantity = $scope.q_count;
                 item.product_name = item.name;
                 item.price = item.price * quantity;
-                item.product_property = product_property;
+                //item.product_property = product_property;
+                item.product_specification = product_specification;
                 $scope.checkedCarts.push(item);
 
                 $state.go('cart-settlement', {
