@@ -5,11 +5,11 @@ angular.module('homePage.controller', ['homePage.service'])
 
             document.title = "十美优品商城";
 
-            $ocLazyLoad.load('Jquery').then(function(){
+            /*$ocLazyLoad.load('Jquery').then(function(){
                 $ocLazyLoad.load('JqueryWeUI').then(function(){
                     console.log("details:jquery loaded");
                 })
-            });
+            });*/
 
             $rootScope.tabsNumber = 1;
 

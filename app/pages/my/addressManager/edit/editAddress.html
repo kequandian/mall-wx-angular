@@ -57,7 +57,9 @@
                 <div class="weui_cell weui_cell_switch">
                     <div class="weui_cell_hd weui_cell_primary">设为默认地址</div>
                     <div class="weui_cell_ft">
-                        <input class="weui_switch" type="checkbox" ng-init="contact.is_default=editC.is_default==1?true:false" ng-model="contact.is_default">
+                        <input class="weui_switch" type="checkbox"
+                               ng-init="contact.is_default=editC.is_default==1?true:false"
+                               ng-model="contact.is_default">
                     </div>
                 </div>
             </div>
@@ -81,8 +83,9 @@
                     </div>
 
                     <div class="weui_cell_bd weui_cell_primary">
-                        <input class="weui_input settlement-font" id="city-picker" type="text" placeholder="输入省市区" ng-model="pcd"
-                               >
+                        <input class="weui_input settlement-font" id="city-picker" type="text" placeholder="输入省市区"
+                               ng-model="pcd"
+                                >
                         <!--ng-init="contact.pcd=pcd"-->
                     </div>
                 </div>

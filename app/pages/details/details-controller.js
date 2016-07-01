@@ -6,11 +6,11 @@ angular.module('details.controller', ['details.service'])
             //title
             document.title = "商品详情";
 
-            $ocLazyLoad.load('Jquery').then(function(){
+            /*$ocLazyLoad.load('Jquery').then(function(){
                 $ocLazyLoad.load('JqueryWeUI').then(function(){
                     console.log("details:jquery loaded");
                 })
-            });
+            });*/
 
             //商品详情
             detailsInfo();
