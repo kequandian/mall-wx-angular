@@ -48,7 +48,7 @@
                     name: 'SquareImg',
                     files: ['lib/custom/js/squareImg.js'],
                     cache: true
-                },{
+                }, {
                     name: 'GoodsListSvgBtn',
                     files: ['lib/goods-list-svg-btn/css/sortable-switch.css', 'lib/goods-list-svg-btn/js/sortableSwitch.js'],
                     cache: true
@@ -62,6 +62,12 @@
                         'js/weui.js',
                         {type: 'css', path: 'bower_components/jquery-weui/dist/css/jquery-weui.min.css'}],
                     cache: true
+                }, {
+                    name: 'GoodsList',
+                    files: ['pages/goodsList/goodsList-controller.js',
+                        'pages/goodsList/goodsList-service.js',
+                        {type: 'css', path: 'css/goodsList/goodsList.css'}],
+                    cache: true
                 }
                 ]
             });
@@ -73,14 +79,14 @@
             //$ocLazyLoad.load('bower_components/angular-ui-router/release/angular-ui-router.min.js')
 
             /*$ocLazyLoad.load('bower_components/jquery/dist/jquery.min.js')
-                .then(function () {
-                    $ocLazyLoad.load([{type: 'css', path: 'bower_components/jquery-weui/dist/css/jquery-weui.min.css'},
-                        'bower_components/jquery-weui/dist/js/jquery-weui.min.js',
-                        'js/weui.js'
-                    ]).then(function () {
-                        console.log("loaded jquery");
-                    })
-                });*/
+             .then(function () {
+             $ocLazyLoad.load([{type: 'css', path: 'bower_components/jquery-weui/dist/css/jquery-weui.min.css'},
+             'bower_components/jquery-weui/dist/js/jquery-weui.min.js',
+             'js/weui.js'
+             ]).then(function () {
+             console.log("loaded jquery");
+             })
+             });*/
         });
     }]);
 
