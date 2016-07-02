@@ -11,34 +11,34 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             $scope.empty_cart_hide = true;
             $scope.cart_info_hide = true;
 
-        AllCarts();
-        function AllCarts() {
-            CartFty.getCarts().then(
-                function (result) {
-                    if(result.status_code == 0) {
-                        $scope.carts = result.data;
-                        //alert(angular.toJson(result.data))
-                        if ($scope.carts.length > 0) {
+            AllCarts();
+            function AllCarts() {
+                CartFty.getCarts().then(
+                    function (result) {
+                        if (result.status_code == 0) {
+                            $scope.carts = result.data;
+                            //alert(angular.toJson(result.data))
+                            if ($scope.carts.length > 0) {
 
-                            var c_count = 0;
-                            angular.forEach($scope.carts, function (v, k) {
-                                c_count += v.quantity;
-                            });
-                            $rootScope.cartCount = c_count;
+                                var c_count = 0;
+                                angular.forEach($scope.carts, function (v, k) {
+                                    c_count += v.quantity;
+                                });
+                                $rootScope.cartCount = c_count;
 
-                            $scope.empty_cart_hide = true;
-                            $scope.cart_info_hide = false;
-                        } else {
-                            $rootScope.cartCount = 0;
-                            $scope.empty_cart_hide = false;
-                            $scope.cart_info_hide = true;
+                                $scope.empty_cart_hide = true;
+                                $scope.cart_info_hide = false;
+                            } else {
+                                $rootScope.cartCount = 0;
+                                $scope.empty_cart_hide = false;
+                                $scope.cart_info_hide = true;
 
+                            }
                         }
-                    }
-                }, function (error) {
-                    console.log(error);
-                    $.toast('获取购物车信息失败', 'cancel');
-                })
+                    }, function (error) {
+                        console.log(error);
+                        $.toast('获取购物车信息失败', 'cancel');
+                    })
             }
 
             //商品数量增减
@@ -236,7 +236,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
                 $scope.order.contact = $scope.currentContact;
 
-                 CartFty.addOrder($scope.order).then(
+                CartFty.addOrder($scope.order).then(
                     function (result) {
                         //console.log(result.data);
                         deleteProducts($scope.settlementData);

@@ -85,6 +85,14 @@ gulp.task('less', function () {
   .pipe(gulp.dest('./dist/css/'));
 });
 
+gulp.task('compact', function () {
+  return gulp.src(['./src/less/jquery-weui-compact.less'])
+      .pipe(less())
+      .pipe(autoprefixer())
+      .pipe(cssmin())
+      .pipe(gulp.dest('./dist/css/'));
+});
+
 gulp.task('cssmin', ["less"], function () {
   gulp.src(['./dist/css/*.css', '!./dist/css/*.min.css'])
     .pipe(cssmin())

@@ -60,7 +60,7 @@
                     name: 'JqueryWeUI',
                     files: ['bower_components/jquery-weui/dist/js/jquery-weui.min.js',
                         'js/weui.js',
-                        {type: 'css', path: 'bower_components/jquery-weui/dist/css/jquery-weui.min.css'}],
+                        {type: 'css', path: 'bower_components/jquery-weui/dist/css/jquery-weui-compact.css'}],
                     cache: true
                 }, {
                     name: 'GoodsList',
@@ -70,8 +70,10 @@
                     cache: false
                 }, {
                     name: 'Details',
-                    files: ['pages/details/details-controller.js',
+                    files: [
+                        'pages/details/details-controller.js',
                         'pages/details/details-service.js',
+                        {type: 'css', path: 'css/cart/cart.css'},
                         {type: 'css', path: 'css/details/details.css'}],
                     cache: false
                 }, {
