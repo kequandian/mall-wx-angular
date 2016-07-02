@@ -49,9 +49,9 @@
                     files: ['lib/custom/js/squareImg.js'],
                     cache: true
                 }, {
-                    name: 'GoodsListSvgBtn',
-                    files: ['lib/goods-list-svg-btn/css/sortable-switch.css', 'lib/goods-list-svg-btn/js/sortableSwitch.js'],
-                    cache: true
+                    name: 'SortableSwitch',
+                    files: ['lib/custom/css/sortableSwitch.css', 'lib/custom/js/sortableSwitch.js'],
+                    cache: false
                 }, {
                     name: 'Jquery',
                     files: ['bower_components/jquery/dist/jquery.min.js'],
