@@ -21,15 +21,15 @@
                 <div class="user-detail">
                     <p>
                         {{userInfo.name}}
-                        <span ng-if="userInfo.followed==0" class="owner_tag_left">推荐人：{{userInfo.inviter_name != null ? userInfo.inviter_name : "无"}}</span>
+                        <span class="owner_tag_left">推荐人：{{userInfo.inviter_name != null ? userInfo.inviter_name : "无"}}</span>
                     </p>
 
                     <div oc-lazy-load="FiveStar">
-                    <p class="user-lv-text">
-                        <span ng-if="owner_balance.is_member">级别: &nbsp;</span>
-                        <span ng-if="owner_balance.is_agent">代理商</span>
-                        <span ng-if="owner_balance.is_agent==0 && owner_balance.is_partner">经销商</span>
-                        <span ng-if="owner_balance.is_agent==0 && owner_balance.is_partner==0 && owner_balance.is_seller">销售商</span>
+                        <p class="user-lv-text">
+                            <span ng-if="owner_balance.is_member">级别: &nbsp;</span>
+                            <span ng-if="owner_balance.is_agent">代理商</span>
+                            <span ng-if="owner_balance.is_agent==0 && owner_balance.is_partner">经销商</span>
+                            <span ng-if="owner_balance.is_agent==0 && owner_balance.is_partner==0 && owner_balance.is_seller">销售商</span>
                         <span class="five-star-parent" ng-if="owner_balance.is_agent==0 && owner_balance.is_partner">
                         <!--<span class="five-star-parent" ng-if="owner_balance.is_partner">-->
                             <five-star rank-src="lib/custom/img/yellow_star.png" src="lib/custom/img/white_star.png"
@@ -42,7 +42,7 @@
                         <span class="crown-parent" ng-if="owner_balance.is_agent">
                               <img src="img/sellerPage/crown.png" class="agent_crown_img">
                         </span>
-                    </p>
+                        </p>
                     </div>
 
                 </div>

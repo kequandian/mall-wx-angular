@@ -1,16 +1,10 @@
 angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
-    .controller('CartController', ['$scope', '$state', '$rootScope', 'CartFty', '$ocLazyLoad',
-        function ($scope, $state, $rootScope, CartFty, $ocLazyLoad) {
+    .controller('CartController', ['$scope', '$state', '$rootScope', 'CartFty',
+        '$ocLazyLoad', function ($scope, $state, $rootScope, CartFty, $ocLazyLoad) {
 
             //title
             document.title = "购物车";
-
-            $ocLazyLoad.load('Jquery').then(function () {
-                $ocLazyLoad.load('JqueryWeUI').then(function () {
-                    console.log("cart:jquery loaded");
-                })
-            });
 
             $rootScope.tabsNumber = 4;
 
@@ -72,20 +66,28 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
             //删除购物车单项商品
             $scope.showDeleteConfirm = function (id) {
-                $.confirm("", "确认要移除该商品吗？", function () {
-                    CartFty.deleteCart(id).then(
-                        function (result) {
-                            //console.log(result);
-                            //$state.go('home.cart',{}, {reload: true});
+                $ocLazyLoad.load('Jquery').then(function () {
+                    $ocLazyLoad.load('JqueryWeUI').then(function () {
 
-                            AllCarts();//重新加载购物车
+                        /*start function*/
+                        $.confirm("", "确认要移除该商品吗？", function () {
+                            CartFty.deleteCart(id).then(
+                                function (result) {
+                                    //console.log(result);
+                                    //$state.go('home.cart',{}, {reload: true});
 
-                        }, function (error) {
-                            //console.log(error);
+                                    AllCarts();//重新加载购物车
+
+                                }, function (error) {
+                                    //console.log(error);
+                                });
+                            $.toast("移除成功!");
+                        }, function () {
+                            //取消操作
                         });
-                    $.toast("移除成功!");
-                }, function () {
-                    //取消操作
+                        /*end function*/
+
+                    })
                 });
             };
 
@@ -169,7 +171,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
         }])
 
     .controller('SettlementController', ['$scope', '$state', '$stateParams', '$location', 'AddressManagerFty', 'CartFty',
-        function ($scope, $state, $stateParams, $location, AddressManagerFty, CartFty) {
+        '$ocLazyLoad', function ($scope, $state, $stateParams, $location, AddressManagerFty, CartFty, $ocLazyLoad) {
 
             //title
             document.title = "结算";
@@ -275,24 +277,33 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             };
             //删除地址
             $scope.deleteContact = function (id) {
-                $.confirm("", "确认删除?", function () {
-                    AddressManagerFty.deleteContact(id).then(
-                        function (result) {
-                            console.log(result);
-                            $state.go('cart-settlement', {}, {reload: true});
-                        }, function (error) {
-                            console.log(error);
+
+                $ocLazyLoad.load('Jquery').then(function () {
+                    $ocLazyLoad.load('JqueryWeUI').then(function () {
+
+                        /*start function*/
+                        $.confirm("", "确认删除?", function () {
+                            AddressManagerFty.deleteContact(id).then(
+                                function (result) {
+                                    console.log(result);
+                                    $state.go('cart-settlement', {}, {reload: true});
+                                }, function (error) {
+                                    console.log(error);
+                                });
+                            $.toast("已经删除!");
+                        }, function () {
+                            //取消操作
                         });
-                    $.toast("已经删除!");
-                }, function () {
-                    //取消操作
+                        /*end function*/
+
+                    })
                 });
             };
 
             //选择地址
             $scope.changeContact = function (item) {
                 $scope.currentContact = item;
-                console.log($scope.currentContact);
+                //console.log($scope.currentContact);
             };
 
             //显示发票抬头
@@ -375,7 +386,13 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             }
 
             var pcd;
-            AllPCD();
+
+            $ocLazyLoad.load('Jquery').then(function () {
+                $ocLazyLoad.load('JqueryWeUI').then(function () {
+                    AllPCD();
+                })
+            });
+
             //获取省市区
             function AllPCD() {
                 CartFty.getPCDService()

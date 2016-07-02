@@ -13,7 +13,7 @@
         'homePage.route',
         'my.route',
         'cart.route',
-        'seller.route',
+        //'seller.route',
         'goodsList.route',
         'details.route',
         'addressManager.route',
@@ -21,10 +21,10 @@
         'sellerPage.route',
         'myTeam.route',
         'promotionOrder.route',
-        'marketing.route',
-        'shopSettings.route',
+        //'marketing.route',
+        //'shopSettings.route',
         'category.route',
-        'integral.route',
+        //'integral.route',
         'feedback.route',
         'commonProblem.route',
         'collection.route',
@@ -68,7 +68,133 @@
                         'pages/goodsList/goodsList-service.js',
                         {type: 'css', path: 'css/goodsList/goodsList.css'}],
                     cache: false
+                }, {
+                    name: 'Details',
+                    files: ['pages/details/details-controller.js',
+                        'pages/details/details-service.js',
+                        {type: 'css', path: 'css/details/details.css'}],
+                    cache: false
+                }, {
+                    name: 'Search',
+                    files: ['pages/searchPage/searchPage-controller.js',
+                        'pages/searchPage/searchPage-service.js',
+                        {type: 'css', path: 'css/searchPage/searchPage.css'}],
+                    cache: false
+                }, {
+                    name: 'SalesReturn',
+                    files: ['pages/my/order/salesReturn/salesReturn-controller.js',
+                        'pages/my/order/salesReturn/salesReturn-service.js',
+                        {type: 'css', path: 'css/my/salesReturn.css'}],
+                    cache: false
+                }, {
+                    name: 'Category',
+                    files: ['pages/category/category-controller.js',
+                        'pages/category/category-service.js',
+                        {type: 'css', path: 'css/category/category.css'}],
+                    cache: false
+                }, {
+                    name: 'Withdraw',
+                    files: ['pages/seller/pages/withdraw/withdraw-controller.js',
+                        'pages/seller/pages/withdraw/withdraw-service.js',
+                        'pages/seller/seller-session-service.js',
+                        {type: 'css', path: 'css/sellerPage/withdraw.css'}],
+                    cache: false
+                }, {
+                    name: 'Distribution',
+                    files: ['pages/seller/pages/distributionInfo/distributionInfo-controller.js',
+                        'pages/seller/pages/distributionInfo/userInfo-service.js',
+                        'pages/seller/seller-session-service.js',
+                        {type: 'css', path: 'css/sellerPage/distributionInfo.css'}],
+                    cache: false
+                }, {
+                    name: 'Order',
+                    files: ['pages/my/order/order-controller.js',
+                        'pages/my/order/order-service.js',
+                        'pages/my/order/order-common-service.js',
+                        {type: 'css', path: 'css/order/order.css'}],
+                    cache: false
+                }, , {
+                    name: 'OrderDetails',
+                    files: ['pages/my/order/orderDetails/orderDetail-controller.js',
+                        'pages/my/order/orderDetails/orderDetail-service.js',
+                        'pages/my/order/express/express-service.js',
+                        'pages/my/order/order-common-service.js',
+                        {type: 'css', path: 'css/order/orderDetails.css'}],
+                    cache: false
+                }, {
+                    name: 'Refund',
+                    files: ['pages/my/order/refund/refund-controller.js',
+                        'pages/my/order/refund/refund-service.js',
+                        {type: 'css', path: 'css/order/refund.css'}],
+                    cache: false
+                }, {
+                    name: 'Express',
+                    files: ['pages/my/order/express/express-controller.js',
+                        'pages/my/order/orderDetails/orderDetail-service.js',
+                        'pages/my/order/express/express-service.js',
+                        {type: 'css', path: 'css/order/express.css'}],
+                    cache: false
+                }, {
+                    name: 'Cart',
+                    files: ['pages/cart/cart-controller.js',
+                        'pages/cart/cart-service.js',
+                        'pages/my/addressManager/addressManager-service.js',
+                        {type: 'css', path: 'css/cart/cart.css'},
+                        {type: 'css', path: 'css/cart/settlement.css'}],
+                    cache: false
+                }, {
+                    name: 'SellerPage',
+                    files: ['pages/seller/pages/sellerPage/sellerPage-controller.js',
+                        'pages/seller/pages/sellerPage/sellerPage-service.js',
+                        'pages/seller/seller-session-service.js',
+                        {type: 'css', path: 'css/my/my.css'},
+                        {type: 'css', path: 'css/sellerPage/sellerPage.css'}],
+                    cache: false
+                }, {
+                    name: 'Team',
+                    files: ['pages/seller/pages/myTeam/myTeam-controller.js',
+                        'pages/seller/pages/myTeam/myTeam-service.js',
+                        {type: 'css', path: 'css/sellerPage/myTeam.css'}],
+                    cache: false
+                }, {
+                    name: 'PromotionOrder',
+                    files: ['pages/seller/pages/promotionOrder/promotionOrder-controller.js',
+                        'pages/seller/pages/promotionOrder/promotionOrder-service.js',
+                        'pages/seller/seller-session-service.js',
+                        {type: 'css', path: 'css/sellerPage/promotionOrder.css'}],
+                    cache: false
+                }, {
+                    name: 'My',
+                    files: ['pages/my/my-controller.js',
+                        'pages/my/my-service.js',
+                        {type: 'css', path: 'css/my/my.css'}],
+                    cache: false
+                }, {
+                    name: 'Feedback',
+                    files: ['pages/my/feedback/feedback-controller.js',
+                        'pages/my/feedback/feedback-service.js',
+                        {type: 'css', path: 'css/my/feedback.css'}],
+                    cache: false
+                }, {
+                    name: 'Collection',
+                    files: ['pages/my/collection/collection-controller.js',
+                        'pages/my/collection/collection-service.js',
+                        {type: 'css', path: 'css/my/collection.css'}],
+                    cache: false
+                }, {
+                    name: 'Questions',
+                    files: ['pages/my/commonProblem/commonProblem-controller.js',
+                        'pages/my/commonProblem/commonProblem-service.js',
+                        {type: 'css', path: 'css/my/commonProblem.css'}],
+                    cache: false
+                }, {
+                    name: 'Address',
+                    files: ['pages/my/addressManager/addressManager-controller.js',
+                        'pages/my/addressManager/addressManager-service.js',
+                        {type: 'css', path: 'css/addressManager/addressManager.css'}],
+                    cache: false
                 }
+
                 ]
             });
         }])

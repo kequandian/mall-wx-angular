@@ -6,13 +6,17 @@
  *
  */
 
-angular.module("salesReturn.route", ["salesReturn.controller"])
-
+angular.module("salesReturn.route", [])
     .config(["$stateProvider", function($stateProvider) {
         $stateProvider.state("salesReturn", {
             url: "/salesReturn",
             templateUrl:"pages/my/order/salesReturn/salesReturn.html",
             controller:"ReturnController",
+            resolve: {
+                loadGoodsList: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load('SalesReturn');
+                }]
+            },
             params:{
                 'orderNumber':null,
                 'totalPrice':null,
