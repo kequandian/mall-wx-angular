@@ -134,7 +134,7 @@
   margin-top: 7px;
 }
 
-#goodsList .goods-c-right span{
+#goodsList .goods-c-right s{
   color:#9F9F9F;
 }
 
@@ -189,6 +189,7 @@
   font-size: 15px;
   color: #7F7F7F;
   border-radius: 5px;
+  text-align: center;
   position: absolute;
 }
 #goodsList .load-more-product .load-more-button:active{

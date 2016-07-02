@@ -7,11 +7,9 @@ angular.module('commonJs', [])
             if (!angular.isDefined(input)) {
                 return 0;
             }
-
             if (input == null) {
                 return 0;
             }
-
             return input;
         }
     })
@@ -32,7 +30,6 @@ angular.module('commonJs', [])
                     value = value.substr(0, lastspace);
                 }
             }
-
             return value + (tail || '…');
         };
     })

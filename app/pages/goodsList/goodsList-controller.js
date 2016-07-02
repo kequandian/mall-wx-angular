@@ -36,7 +36,7 @@ angular.module('goodsList.controller', ['goodsList.service'])
             }
 
             //价格切换
-            //$scope.arrow = "both";
+            $scope.arrow = "both";
             $scope.price_arrow_hide = true;
             $scope.priceStatus = function () {
                 $scope.price_arrow_hide = false;
