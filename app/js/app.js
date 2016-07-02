@@ -147,6 +147,7 @@
                     files: ['pages/seller/pages/sellerPage/sellerPage-controller.js',
                         'pages/seller/pages/sellerPage/sellerPage-service.js',
                         'pages/seller/seller-session-service.js',
+                        {type: 'css', path: 'css/my/my.css'},
                         {type: 'css', path: 'css/sellerPage/sellerPage.css'}],
                     cache: false
                 }, {
