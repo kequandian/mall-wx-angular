@@ -37,7 +37,7 @@ angular.module('sortableSwitch', [])
         function link($scope, $element, $attrs) {
 
             $attrs.$observe('sort', function (status) {
-                console.log("sort?"+status);
+                //console.log("sort?"+status);
                 update($scope, status);
             });
 
