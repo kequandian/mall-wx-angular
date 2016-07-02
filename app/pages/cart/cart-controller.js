@@ -234,7 +234,9 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     return;
                 }
 
-                CartFty.addOrder($scope.order).then(
+                $scope.order.contact = $scope.currentContact;
+
+                 CartFty.addOrder($scope.order).then(
                     function (result) {
                         //console.log(result.data);
                         deleteProducts($scope.settlementData);
