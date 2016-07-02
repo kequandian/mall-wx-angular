@@ -7,7 +7,7 @@ angular.module('goodsList.controller', ['goodsList.service'])
 
             $ocLazyLoad.load('Jquery').then(function () {
                 $ocLazyLoad.load('JqueryWeUI').then(function () {
-                    //console.log("details:jquery loaded");
+                    console.log("goodsList:jquery loaded");
                 })
             });
 

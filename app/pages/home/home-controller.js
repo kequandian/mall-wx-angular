@@ -1,6 +1,6 @@
-angular.module('home.controller', ['cart.service'])
-    .controller('HomeController', ['$scope', '$state', '$rootScope', '$timeout', 'CartFty',
-        function ($scope, $state, $rootScope, $timeout, CartFty) {
+angular.module('home.controller', ['home.service'])
+    .controller('HomeController', ['$scope', '$state', '$rootScope', '$timeout', 'SimpleCartFty',
+        function ($scope, $state, $rootScope, $timeout, SimpleCartFty) {
 
             //获取购物车数量
             getCartCount();
@@ -57,7 +57,7 @@ angular.module('home.controller', ['cart.service'])
 
             //获取购物车数量
             function getCartCount() {
-                CartFty.getCarts()
+                SimpleCartFty.getCarts()
                     .then(function (json) {
                         if (json.status_code == 0) {
                             var c_count = json.data.length;
