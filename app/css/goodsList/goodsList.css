@@ -89,7 +89,7 @@
 
 #goodsList .goods-box-img{
   width: 120px;
-  height: 130px;
+  height: auto;
   margin-top: 5px;
   margin-bottom: 5px;
   /*background: #de7c23;*/

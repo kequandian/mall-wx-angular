@@ -34,12 +34,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="weui_tab_bd">
+                    <div class="weui_tab_bd" oc-lazy-load="SquareImg">
 
                         <div class="weui-row goods-box-header">
 
                             <div class="goods-box" ng-repeat="productItem in productList">
-                                <img ng-src="{{productItem.cover}}" class="goods-box-img"
+                                <img square-img ng-src="{{productItem.cover}}" class="goods-box-img"
                                      ui-sref="details({productId:productItem.id})">
 
                                 <div class="goods-box-text">

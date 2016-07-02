@@ -1,12 +1,10 @@
 angular.module('addressManager.controller', ['addressManager.service'])
 
-    .controller('AddressManagerController', ['$scope', '$state', '$stateParams','$rootScope', 'AddressManagerFty',
+    .controller('AddressManagerController', ['$scope', '$state', '$stateParams', '$rootScope', 'AddressManagerFty',
         '$ocLazyLoad', function ($scope, $state, $stateParams,$rootScope, AddressManagerFty, $ocLazyLoad) {
             var pcd;
 
             AllContacts();
-
-            //$rootScope.closePCD = '';
 
             $ocLazyLoad.load('Jquery').
                 then(function () {
@@ -15,11 +13,13 @@ angular.module('addressManager.controller', ['addressManager.service'])
                     })
                 });
 
-            //var scope = $rootScope;
-            //scope.$watch('closePCD',function(nValue, oValue){
-            //    var click = document.getElementsByClassName(nValue);
-            //    click.click();
-            //});
+            //自动关闭pcd控件
+            var scope1 = $rootScope;
+            scope1.$watch('closePCD',function(nValue, oValue){
+                $('.close-picker').click();
+                $('#city-picker').click();
+            });
+
 
             $scope.contact = {};
             var editingContact = $stateParams.data;
@@ -51,7 +51,6 @@ angular.module('addressManager.controller', ['addressManager.service'])
                             }
                         });
 
-                        $rootScope.closePCD = 'close-picker';
                     }, function (error) {
                         console.log(error);
                     })
