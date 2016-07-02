@@ -114,11 +114,9 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                         });
                         qrcode.makeCode(invitationUrl);
                     });
-
                 } else {
                     $.toast('生成二维码失败', 'cancel');
                 }
-
                 //关闭二维码
                 $scope.close_qrcode = function () {
                     document.getElementById('qrcode-backgroud').style.display = 'none';
