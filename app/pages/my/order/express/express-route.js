@@ -6,12 +6,17 @@
  *
  */
 
-angular.module("express.route", ["express.controller"])
+angular.module("express.route", [/*"express.controller"*/])
     .config(["$stateProvider", function($stateProvider) {
         $stateProvider.state("express", {
             url: "/express/:orderNumber",
             templateUrl: "pages/my/order/express/express.html",
             controller: "ExpressController",
+            resolve: {
+                loadData: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load('Express');
+                }]
+            },
             params:{
                 'orderNumber':null,
                 'productImg':null,

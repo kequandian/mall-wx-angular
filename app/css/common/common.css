@@ -8,6 +8,12 @@
 
 ::-webkit-scrollbar-thumb:active { background-color: #00FFFFFF }/* Scroll click & drag color */
 
+/*delete input up down btn*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
 
 .custom_weui_btn_border{
     margin-top: 15px;

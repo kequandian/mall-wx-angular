@@ -1,9 +1,14 @@
-angular.module('sellerPage.route', ['sellerPage.controller'])
+angular.module('sellerPage.route', [/*'sellerPage.controller'*/])
     .config(['$stateProvider', function($stateProvider) {
         $stateProvider.state('home.sellerPage', {
             url:'/sellerPage',
             templateUrl: 'pages/seller/pages/sellerPage/sellerPage.html',
-            controller:'SellerPageController'
+            controller:'SellerPageController',
+            resolve: {
+                loadData: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load('SellerPage');
+                }]
+            }
         })
     }])
     /*.config(['$stateProvider', function($stateProvider) {

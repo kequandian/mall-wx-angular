@@ -11,6 +11,11 @@ angular.module('cart.route', [
         url: '/cart-settlement',
         templateUrl: 'pages/cart/settlement/settlement.html',
         controller: 'SettlementController',
+        resolve: {
+            loadData: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load('Cart');
+            }]
+        },
         params: {
             'carts': null,
             'totalToPay': null,
@@ -21,6 +26,11 @@ angular.module('cart.route', [
         url:         '/orderConfirm',
         templateUrl: 'pages/cart/settlement/orderConfirm.html',
         controller: 'OrderConfirmController',
+        resolve: {
+            loadData: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load('Cart');
+            }]
+        },
         params: {
             'data': null
         }

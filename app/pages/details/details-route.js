@@ -1,8 +1,13 @@
-angular.module('details.route', ['details.controller', 'bsSwitch'])
+angular.module('details.route', ['bsSwitch'])
     .config(['$stateProvider', function($stateProvider) {
         $stateProvider.state('details', {
             url: '/details/:productId',
             templateUrl: 'pages/details/details.html',
-            controller:'DetailsController'
+            controller:'DetailsController',
+            resolve: {
+                loadGoodsList: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load('Details');
+                }]
+            }
         })
     }]);
