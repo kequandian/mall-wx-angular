@@ -349,10 +349,10 @@
     padding-left: 5px;
 }
 
-/*#sellerPage .five-star-parent img{*/
-    /*width: 16px;*/
-    /*height: 16px;*/
-/*}*/
+#sellerPage .five-star-parent img{
+    width: 16px;
+    height: 16px;
+}
 
 #sellerPage .crown-parent {
     position: absolute;

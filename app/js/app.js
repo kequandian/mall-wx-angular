@@ -42,7 +42,7 @@
             $ocLazyLoadProvider.config({
                 modules: [{
                     name: 'FiveStar',
-                    files: ['lib/custom/css/fiveStar.css', 'lib/custom/css/levelProgress.css', 'lib/custom/js/fiveStar.js', 'lib/custom/js/levelProgress.js'],
+                    files: [{type: 'css', path: 'lib/custom/css/fiveStar.css'}, 'lib/custom/css/levelProgress.css', 'lib/custom/js/fiveStar.js', 'lib/custom/js/levelProgress.js',],
                     cache: true
                 }, {
                     name: 'SquareImg',
