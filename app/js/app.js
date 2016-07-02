@@ -49,8 +49,8 @@
                     files: ['lib/custom/js/squareImg.js'],
                     cache: true
                 }, {
-                    name: 'GoodsListSvgBtn',
-                    files: ['lib/goods-list-svg-btn/css/sortable-switch.css', 'lib/goods-list-svg-btn/js/sortableSwitch.js'],
+                    name: 'SortableSwitch',
+                    files: ['lib/custom/css/sortableSwitch.css', 'lib/custom/js/sortableSwitch.js'],
                     cache: true
                 }, {
                     name: 'Jquery',
@@ -67,7 +67,7 @@
                     files: ['pages/goodsList/goodsList-controller.js',
                         'pages/goodsList/goodsList-service.js',
                         {type: 'css', path: 'css/goodsList/goodsList.css'}],
-                    cache: true
+                    cache: false
                 }
                 ]
             });

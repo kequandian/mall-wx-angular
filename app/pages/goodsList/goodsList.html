@@ -1,76 +1,83 @@
 <div id="goodsList">
 
-  <div id="content">
-    <!-- nav 导航 -->
-    <div class="page">
-      <div class="bd">
-        <div class="weui_tab">
-          <div class="weui_navbar">
-            <div class="weui_navbar_item goods_bar_item_on" style="position: relative;" ng-click="retArrowStatus(1)">
-              <div style="position: absolute; width: 100%; text-align: center;">
-                综合
-              </div>
-            </div>
-            <div class="weui_navbar_item" style="position: relative;" ng-click="retArrowStatus(2)">
-              <div style="position: absolute; width: 100%; text-align: center;">
-                人气
-              </div>
-            </div>
-            <div class="weui_navbar_item" style="position: relative;" ng-click="retArrowStatus(3)">
-              <div style="position: absolute; width: 100%; text-align: center;">
-                销量
-              </div>
-            </div>
+    <div id="content">
+        <!-- nav 导航 -->
+        <div class="page">
+            <div class="bd">
+                <div class="weui_tab" oc-lazy-load="SortableSwitch">
+                    <div class="weui_navbar">
+                        <div class="weui_navbar_item goods_bar_item_on" style="position: relative;"
+                             ng-click="retArrowStatus(1)">
+                            <div style="position: absolute; width: 100%; text-align: center;">
+                                综合
+                            </div>
+                        </div>
+                        <div class="weui_navbar_item" style="position: relative;" ng-click="retArrowStatus(2)">
+                            <div style="position: absolute; width: 100%; text-align: center;">
+                                人气
+                            </div>
+                        </div>
+                        <div class="weui_navbar_item" style="position: relative;" ng-click="retArrowStatus(3)">
+                            <div style="position: absolute; width: 100%; text-align: center;">
+                                销量
+                            </div>
+                        </div>
 
-            <div oc-lazy-load="GoodsListSvgBtn" class="weui_navbar_item" style="position: relative;">
-              <div style="position: absolute; width: 100%; text-align: center;">
-                价格
-              </div>
-              <sortable-switch arrow="{{arrow}}" svg-width="9" svg-height="9" offset="15" active-color="#B10000"  color="black">
-              </sortable-switch>
-            </div>
-          </div>
-          <div class="weui_tab_bd">
+                        <div class="weui_navbar_item" style="position: relative;" ng-click="priceStatus()">
+                            <div style="position: absolute; width: 100%; text-align: center;">
+                                价格
+                            </div>
+                            <div ng-hide="price_arrow_hide">
+                                <sortable-switch arrow-width="9" arrow-height="9" arrow-offset="15" active-color="#B10000" color="black"
+                                                 sort="{{arrow}}">
+                                </sortable-switch>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weui_tab_bd">
 
-            <div class="weui-row goods-box-header">
+                        <div class="weui-row goods-box-header">
 
-              <div class="goods-box" ng-repeat="productItem in productList">
-                <img ng-src="{{productItem.cover}}" class="goods-box-img" ui-sref="details({productId:productItem.id})">
-                <div class="goods-box-text">
-                  <div style=" word-wrap: break-word; word-break: normal;" ui-sref="details({productId:productItem.id})">
-                    {{productItem.name | cutText:true:20:'...'}}
-                  </div>
+                            <div class="goods-box" ng-repeat="productItem in productList">
+                                <img ng-src="{{productItem.cover}}" class="goods-box-img"
+                                     ui-sref="details({productId:productItem.id})">
+
+                                <div class="goods-box-text">
+                                    <div style=" word-wrap: break-word; word-break: normal;"
+                                         ui-sref="details({productId:productItem.id})">
+                                        {{productItem.name | cutText:true:20:'...'}}
+                                    </div>
+                                </div>
+                                <div class="goods-box-footer-text">
+                                    <div class="goods-c-left c-left">{{productItem.price | currency:"￥"}}</div>
+                                    <!--<div class="goods-c-right c-right" ng-click="addProductToCart(productItem.id)">
+                                      <img src="img/goodList/good-list-cart-icon.png">
+                                    </div>-->
+                                    <div class="goods-c-right c-right">
+                                        <s>{{productItem.suggested_price | currency:'￥'}}</s>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="load-more-product" ng-show="load_more_btn_show">
+                                <div class="load-more-button" ng-click="load_more_products()">加载更多</div>
+                            </div>
+
+                        </div>
+
+                        <!-- 底部 -->
+                        <!--<div id="content-footer" style="display: none;">
+                          <div class="content-footer-div">
+                            <div class="c-f-d-right">店铺主页</div>
+                            <div class="c-f-d-center">会员中心</div>
+                            <div class="c-f-d-left">推客申请</div>
+                          </div>
+                        </div>-->
+
+                    </div>
                 </div>
-                <div class="goods-box-footer-text">
-                  <div class="goods-c-left c-left">{{productItem.price | currency:"￥"}}</div>
-                  <!--<div class="goods-c-right c-right" ng-click="addProductToCart(productItem.id)">
-                    <img src="img/goodList/good-list-cart-icon.png">
-                  </div>-->
-                  <div class="goods-c-right c-right">
-                    <s>{{productItem.suggested_price | currency:'￥'}}</s>
-                  </div>
-                </div>
-              </div>
-
-              <div class="load-more-product" ng-hide="load_more_btn_show">
-                <div class="load-more-button" ng-click="load_more_products()">加载更多</div>
-              </div>
-
             </div>
-
-            <!-- 底部 -->
-            <!--<div id="content-footer" style="display: none;">
-              <div class="content-footer-div">
-                <div class="c-f-d-right">店铺主页</div>
-                <div class="c-f-d-center">会员中心</div>
-                <div class="c-f-d-left">推客申请</div>
-              </div>
-            </div>-->
-
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 
 </div>

@@ -1,17 +1,4 @@
-/*点击按钮控件*/
-.sortable-switch-up {
-    position: absolute;
-    margin-left: 20px;
-    top: 10px;
-}
-
-.sortable-switch-down {
-    position: absolute;
-    margin-left: 20px;
-    bottom:0;
-}
-
-.sortable-switch-panel {
+.sortable-switch {
     top:0;
     width: 100%;
     /*height:30px;*/
@@ -27,15 +14,22 @@
     -webkit-justify-content: center;
     justify-content: center;
     position: absolute;
-
 }
 
-.sortable-switch-panel .arrow_btn {
+.sortable-switch .arrow {
     height: 42px;
     margin-top: 5px;
     position: relative;
 }
 
-.sortable-switch-panel .txt {
-    margin-right: 2px;
+.sortable-switch .up {
+    position: absolute;
+    margin-left: 20px;
+    top: 10px;
+}
+
+.sortable-switch .down {
+    position: absolute;
+    margin-left: 20px;
+    bottom:0;
 }

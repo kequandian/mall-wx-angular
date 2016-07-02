@@ -1,10 +1,12 @@
 angular.module('addressManager.controller', ['addressManager.service'])
 
-    .controller('AddressManagerController', ['$scope', '$state', '$stateParams', 'AddressManagerFty',
-        '$ocLazyLoad', function ($scope, $state, $stateParams, AddressManagerFty, $ocLazyLoad) {
+    .controller('AddressManagerController', ['$scope', '$state', '$stateParams','$rootScope', 'AddressManagerFty',
+        '$ocLazyLoad', function ($scope, $state, $stateParams,$rootScope, AddressManagerFty, $ocLazyLoad) {
             var pcd;
 
             AllContacts();
+
+            //$rootScope.closePCD = '';
 
             $ocLazyLoad.load('Jquery').
                 then(function () {
@@ -12,6 +14,12 @@ angular.module('addressManager.controller', ['addressManager.service'])
                         AllPCD();
                     })
                 });
+
+            //var scope = $rootScope;
+            //scope.$watch('closePCD',function(nValue, oValue){
+            //    var click = document.getElementsByClassName(nValue);
+            //    click.click();
+            //});
 
             $scope.contact = {};
             var editingContact = $stateParams.data;
@@ -42,6 +50,8 @@ angular.module('addressManager.controller', ['addressManager.service'])
                                 //console.log($scope.currentContact);
                             }
                         });
+
+                        $rootScope.closePCD = 'close-picker';
                     }, function (error) {
                         console.log(error);
                     })
