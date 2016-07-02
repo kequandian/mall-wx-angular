@@ -11,7 +11,6 @@ angular.module('goodsList.controller', ['goodsList.service'])
                 })
             });
 
-
             var orderBy = "";
             var pageNumber = 1;
             var pageSize = 20;
