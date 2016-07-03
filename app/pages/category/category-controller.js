@@ -19,12 +19,14 @@ angular.module('category.controller', ['category.service'])
         }
     })
     .controller('CategoryController', ['$scope', '$state', '$rootScope', 'CategoryFty','goodListParams',
-        function ($scope, $state,$rootScope, CategoryFty,goodListParams) {
+        '$ocLazyLoad', function ($scope, $state,$rootScope, CategoryFty,goodListParams, $ocLazyLoad) {
 
             //title
             document.title = "商品分类";
 
             $rootScope.tabsNumber = 2;
+
+            $rootScope.jqueryLoaded = false;
 
             detailsInfo();
             function detailsInfo() {
@@ -58,16 +60,36 @@ angular.module('category.controller', ['category.service'])
 
             // 左侧分类单击样式修改
             $scope.categoryLeftClick = function (e) {
-                e.target.className = 'nav-current';
-                $(e.target).siblings().removeClass().addClass('nav-blur');
 
-                /// set previous item class
-                if($(e.target).prev()) {
-                    var pre = $(e.target).prev()[0];
-                    if(pre) {
-                        pre.className = 'nav-prev';
+                if($rootScope.jqueryLoaded){
+                    e.target.className = 'nav-current';
+                    $(e.target).siblings().removeClass().addClass('nav-blur');
+
+                    /// set previous item class
+                    if($(e.target).prev()) {
+                        var pre = $(e.target).prev()[0];
+                        if(pre) {
+                            pre.className = 'nav-prev';
+                        }
+                        //console.log("target: " + angular.toJson(pre) + 'class-name?' + pre.className);
                     }
-                    //console.log("target: " + angular.toJson(pre) + 'class-name?' + pre.className);
+                }else {
+                    $ocLazyLoad.load('bower_components/jquery/dist/jquery.min.js').then(function () {
+
+                        $rootScope.jqueryLoaded = true;
+
+                        e.target.className = 'nav-current';
+                        $(e.target).siblings().removeClass().addClass('nav-blur');
+
+                        /// set previous item class
+                        if ($(e.target).prev()) {
+                            var pre = $(e.target).prev()[0];
+                            if (pre) {
+                                pre.className = 'nav-prev';
+                            }
+                            //console.log("target: " + angular.toJson(pre) + 'class-name?' + pre.className);
+                        }
+                    })
                 }
             };
 
