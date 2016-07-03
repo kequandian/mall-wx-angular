@@ -62,6 +62,7 @@ angular.module('category.controller', ['category.service'])
             $scope.categoryLeftClick = function (e) {
 
                 if($rootScope.jqueryLoaded){
+                    console.log('Jquery loaded');
                     e.target.className = 'nav-current';
                     $(e.target).siblings().removeClass().addClass('nav-blur');
 
@@ -74,7 +75,9 @@ angular.module('category.controller', ['category.service'])
                         //console.log("target: " + angular.toJson(pre) + 'class-name?' + pre.className);
                     }
                 }else {
-                    $ocLazyLoad.load('bower_components/jquery/dist/jquery.min.js').then(function () {
+                    console.log('Jquery not loaded');
+                    $ocLazyLoad.load('Jquery').then(function () {
+                        console.log('Jquery loading and loaded');
 
                         $rootScope.jqueryLoaded = true;
 
