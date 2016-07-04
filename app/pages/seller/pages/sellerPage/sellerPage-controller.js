@@ -82,14 +82,19 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
             }
 
             function getLevelPercent(){
-                if($scope.owner_balance.partner_pool_count <= $scope.owner_balance.partner_level.headcount_quota){
-                    return 0;
+                ///if($scope.owner_balance.partner_pool_count <= $scope.owner_balance.next_partner_level.headcount_quota){
+                //    return 0;
+                //}
+
+                //var extra = $scope.owner_balance.partner_pool_count - $scope.owner_balance.partner_level.headcount_quota;
+                //var levelSpan = $scope.owner_balance.next_partner_level.headcount_quota - $scope.owner_balance.partner_level.headcount_quota;
+
+                if($scope.owner_balance.next_partner_level) {
+                    var val = ($scope.owner_balance.partner_pool_count * 100 / $scope.owner_balance.next_partner_level.headcount_quota);
+                    return parseInt(val);
                 }
 
-                var extra = $scope.owner_balance.partner_pool_count - $scope.owner_balance.partner_level.headcount_quota;
-                var levelSpan = $scope.owner_balance.next_partner_level.headcount_quota - $scope.owner_balance.partner_level.headcount_quota;
-
-                return (extra * 100 / levelSpan);
+                return 0;
             }
 
 

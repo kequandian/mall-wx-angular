@@ -7,6 +7,8 @@
 # 购买商品直接输入地址有问题
 # 分类产品详情
 # 待发货,待收货显示数量
+# $.toast 替换
+# 进度条%位置调整
 # angular-seed — the seed for AngularJS apps
 
 This project is an application skeleton for a typical [AngularJS](http://angularjs.org/) web app.
