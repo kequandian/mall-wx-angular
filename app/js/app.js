@@ -92,6 +92,7 @@
                     name: 'Category',
                     files: ['pages/category/category-controller.js',
                         'pages/category/category-service.js',
+                        {type: 'css', path: 'bower_components/jquery-weui/dist/css/jquery-weui-compact.css'},
                         {type: 'css', path: 'css/category/category.css'}],
                     cache: false
                 }, {
