@@ -1,3 +1,10 @@
+# 商品详情 包邮 (Depends)
+# 商品详情规格格价库存 (Depends)
+# 详情QQ (Research)
+# html5 加载图片缓存 (Research)
+# 加载进度条问题 (Research)
+# 购物车商品数量动态改变/详情页数量
+# 分类页底部栏可上移
 # angular-seed — the seed for AngularJS apps
 
 This project is an application skeleton for a typical [AngularJS](http://angularjs.org/) web app.

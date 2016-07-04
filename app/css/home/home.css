@@ -1,5 +1,5 @@
 .weui_tabbar_item.weui_bar_item_on .weui_tabbar_label {
-    color: #c20000;
+    color: #C20403;
 }
 
 .weui_tabbar_icon+.weui_tabbar_label  {
@@ -19,14 +19,14 @@
 }
 
 .weui_tabbar_item .home_tab_icon_color{
-    color: #c20000;
+    color: #C20403;
 }
 
 .cart_count{
     position:absolute;
     /*bottom:10px;*/
     right:18%;
-    background-color:#f15353;
+    background-color:#C20403;
     min-width: 20px;
     min-height: 20px;
     line-height:20px;

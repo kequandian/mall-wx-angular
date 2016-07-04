@@ -16,7 +16,7 @@
             <!--</div>-->
 
             <div oc-lazy-load="SquareImg"  ng-if="details.covers.length>0">
-                <bs-switch  data-type="slider" auto-play="2500" data-ratio="1">
+                <bs-switch  data-type="slider" data-ratio="1">
                     <bs-switch-content>
                         <bs-switch-panel ng-repeat="itemImg in details.covers">
                             <img square-img alt="" ng-src="{{itemImg.url}}" style="width: 100%; height: auto;"/>
@@ -51,7 +51,6 @@
                     <span>默认配送：天天快递</span>
                 </div>
             </div>
-
         </div>
 
         <div class="details-promise">

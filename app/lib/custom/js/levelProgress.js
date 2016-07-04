@@ -11,7 +11,10 @@ angular.module('levelProgress', [])
                 value: "@"
             },
             template:   "<div class='level-progress'>" +
-                            "<p class='level-progress-bar'><span class='level-progress-status' style='width:{{value}}%'></span></p>" +
+                            "<div class='level-progress-bar'>" +
+                                "<span class='level-progress-status' style='width:{{value}}%'>" +
+                                "</span>" +
+                            "</div>" +
                         "</div>",
         };
     });

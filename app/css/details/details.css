@@ -80,25 +80,26 @@
 }
 
 #details .product-f-left{
-    width: 44%;
+    width: auto;
     height: 35px;
     float: left;
+    margin-left: 16px;
 }
 
 #details .product-f-left img{
     width: auto;
     height: 20px;
-    margin-left: 10px;
     position: absolute;
     top: 5px;
 }
 
 #details .product-f-left span{
-    margin-left: 36px;
+    margin-left: 30px;
 }
 
 #details .product-f-right{
-    float: left;
+    float: right;
+    margin-right: 16px;
 }
 
 #details .product-f-right img{

@@ -152,45 +152,48 @@
 
 
         <!-- 商品系列 -->
-        <div class="panic-buying">
-            <div class="p-buying-left">
-                <div class="p-b-left">
-                    <img src="img/home/panic-buying-01.png">
+        <div ng-if="false">
+            <div class="panic-buying">
+                <div class="p-buying-left">
+                    <div class="p-b-left">
+                        <img src="img/home/panic-buying-01.png">
+                    </div>
+                    <div class="p-b-right">
+                        <div style="font-size: 20px;">今日<span style="color: orange; font-weight: 600;">抢购</span></div>
+                        <div style="font-size: 14px; color: #9B9B9B;">立即抢购>></div>
+                    </div>
                 </div>
-                <div class="p-b-right">
-                    <div style="font-size: 20px;">今日<span style="color: orange; font-weight: 600;">抢购</span></div>
-                    <div style="font-size: 14px; color: #9B9B9B;">立即抢购>></div>
+                <div class="p-buying-right">
+
+                    <div class="p-b-left">
+                        <img src="img/home/panic-buying-02.png">
+                    </div>
+                    <div class="p-b-right">
+                        <div style="font-size: 20px;">每日<span style="color: #F945A3; font-weight: 600;">新品</span></div>
+                        <div style="font-size: 14px; color: #9B9B9B;">立即抢购>></div>
+                    </div>
+
                 </div>
             </div>
-            <div class="p-buying-right">
 
-                <div class="p-b-left">
-                    <img src="img/home/panic-buying-02.png">
+            <!-- ad-2  ignore showing-->
+            <!--<div>
+                <div class="panic-buying-ad">
+                    <div class="ad-1">
+                        <img src="img/home/snaps-img-2.jpg">
+                    </div>
                 </div>
-                <div class="p-b-right">
-                    <div style="font-size: 20px;">每日<span style="color: #F945A3; font-weight: 600;">新品</span></div>
-                    <div style="font-size: 14px; color: #9B9B9B;">立即抢购>></div>
-                </div>
+            </div>-->
 
+            <div class="s-area-img">
+                <a ng-href="{{ad_banner_2.target_url}}"><img ng-src="{{ad_banner_2.image}}"></a>
             </div>
         </div>
-
-        <!-- ad-2  ignore showing-->
-        <!--<div>
-            <div class="panic-buying-ad">
-                <div class="ad-1">
-                    <img src="img/home/snaps-img-2.jpg">
-                </div>
-            </div>
-        </div>-->
     </div>
 
 
     <!-- 产品列表 -->
     <div class="s-size-area">
-        <div class="s-area-img">
-            <a ng-href="{{ad_banner_2.target_url}}"><img ng-src="{{ad_banner_2.image}}"></a>
-        </div>
 
         <div class="area-product-title">
             <label>/精选为你推荐/</label>
