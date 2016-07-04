@@ -5,7 +5,7 @@
 angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
 
     .controller('WithdrawController',['$scope','$state','$timeout','$stateParams','withdrawFty','BalanceSession','DWStatus',
-        function ($scope, $state, $timeout, $stateParams, withdrawFty, BalanceSession,DWStatus) {
+        '$ocLazyLoad', function ($scope, $state, $timeout, $stateParams, withdrawFty, BalanceSession,DWStatus, $ocLazyLoad) {
 
             document.title = "提现佣金";
 
@@ -41,8 +41,17 @@ angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
                     })
             }
 
+            $scope.postDrawNum = function(){
+                $ocLazyLoad.load('Jquery').then(function(){
+                    $ocLazyLoad.load('JqueryWeUI').then(function(){
+                        postDraw();
+                    })
+                })
+            }
+
+
             //提交提现信息
-            $scope.postDrawNum = function () {
+            function postDraw() {
 
                 var phone = $stateParams.accountPhone;
 
@@ -73,6 +82,7 @@ angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
                     return;
                 }
 
+                console.log('post draw');
 
                 withdrawFty.postDrawService(withdraw_account_id,withdraw_cash)
                     .then(function (json) {
