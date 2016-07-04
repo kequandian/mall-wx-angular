@@ -36,7 +36,7 @@ angular.module('my.order.service', [])
             closeOrderService: function (order_number) {
                 var deferred = $q.defer();
                 var url = GlobalVariable.SERVER_PATH + "/order/" + order_number;
-                $http.post(url,
+                $http.put(url,
                     {
                         "status":"CLOSED_CONFIRMED"
                     },
