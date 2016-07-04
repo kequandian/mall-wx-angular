@@ -28,7 +28,7 @@
                                 <level-progress style="margin-top:21px; margin-left: 2px;"
                                                 value="{{owner_balance.level_percent}}"></level-progress>
                             </span>
-                            <span style="margin-top:14px;font-size:9px">{{owner_balance.level_percent}}%</span>
+                            <span ng-if="owner_balance.is_agent==0 && owner_balance.is_partner" style="margin-top:14px;font-size:9px">{{owner_balance.level_percent}}%</span>
 
                         <span class="crown-parent" ng-if="owner_balance.is_agent">
                               <img src="img/sellerPage/crown.png" class="agent_crown_img">
