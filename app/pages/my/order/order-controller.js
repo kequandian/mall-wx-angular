@@ -455,8 +455,8 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
 
                         /*function start*/
                         $.confirm('', '确认收到货物吗？', function () {
-                            var order_status = "CLOSED_CONFIRMED";
-                            OrderFty.closeOrderService(order_number, order_status)
+                            //var order_status = "CLOSED_CONFIRMED";
+                            OrderFty.closeOrderService(order_number)
                                 .then(function (json) {
                                     //alert(angular.toJson(json));
                                     if (json.status_code == 0) {

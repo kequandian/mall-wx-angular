@@ -5,6 +5,8 @@
 # 加载进度条问题 (Research)
 # 购物车商品数量动态改变/详情页数量
 # 购买商品直接输入地址有问题
+# 分类产品详情
+# 待发货,待收货显示数量
 # angular-seed — the seed for AngularJS apps
 
 This project is an application skeleton for a typical [AngularJS](http://angularjs.org/) web app.
