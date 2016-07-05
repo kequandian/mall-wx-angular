@@ -194,6 +194,18 @@
     position: relative;
 }
 
+#details .ui-switch-nav-item{
+    color: orangered;
+}
+
+#details bs-switch img{
+    width: 100%;
+    height: auto;
+}
+#details bs-switch ui-image{
+    width: 100%;
+    height: auto;
+}
 
 /*====================ͼƬ���飨����һ��====================*/
 

@@ -69,8 +69,15 @@
                         {type: 'css', path: 'css/goodsList/goodsList.css'}],
                     cache: false
                 }, {
+                    name: 'ImageCache',
+                    files: [
+                        'lib/custom/js/imgcache.js',
+                        'lib/custom/js/ngImgCache.js'],
+                    cache: false
+                }, {
                     name: 'Details',
                     files: [
+                        'bower_components/jquery/dist/jquery.min.js',
                         'pages/details/details-controller.js',
                         'pages/details/details-service.js',
                         {type: 'css', path: 'css/cart/cart.css'},
