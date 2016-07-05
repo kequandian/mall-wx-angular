@@ -31,7 +31,7 @@ angular.module('home.controller', ['home.service'])
                 'srefName': '.category',
                 'home_tab_icon': 'weui_tabbar_icon ion-app-biliya-tabs-search',
                 'c_count': null,
-                'c_number': ""
+                'c_number': 0
             }, {
                 'id': '3',
                 'name': '销售中心',

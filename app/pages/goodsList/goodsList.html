@@ -36,7 +36,7 @@
                     </div>
                     <div class="weui_tab_bd" oc-lazy-load="SquareImg">
 
-                        <div class="weui-row goods-box-header">
+                        <!--<div class="weui-row">
 
                             <div class="goods-box" ng-repeat="productItem in productList">
                                 <img square-img ng-src="{{productItem.cover}}" class="goods-box-img"
@@ -50,16 +50,44 @@
                                 </div>
                                 <div class="goods-box-footer-text">
                                     <div class="goods-c-left c-left">{{productItem.price | currency:"￥"}}</div>
-                                    <!--<div class="goods-c-right c-right" ng-click="addProductToCart(productItem.id)">
+                                    &lt;!&ndash;<div class="goods-c-right c-right" ng-click="addProductToCart(productItem.id)">
                                       <img src="img/goodList/good-list-cart-icon.png">
-                                    </div>-->
+                                    </div>&ndash;&gt;
                                     <div class="goods-c-right c-right">
                                         <s>{{productItem.suggested_price | currency:'￥'}}</s>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="load-more-product" ng-show="load_more_btn_show">
+
+
+                        </div>-->
+
+
+                        <div class="weui_grids">
+                            <a ui-sref="details({productId:item.id})" class="weui_grid product_item"
+                               ng-repeat="item in productList">
+                                <!--product cover-->
+                                <div class="pro-item-margin">
+                                    <div class="weui_grid_icon home_grid_img">
+                                        <img square-img ng-src="{{item.cover}}">
+                                    </div>
+                                </div>
+                                <!--product desc-->
+                                <div class="pro-item-desc">
+                                    <div class="weui_grid_label home_grid_text">
+                                        {{item.name | cutText:true:26:'...'}}
+                                    </div>
+                                    <div class="home_grid_footer_text">
+                                        <div class="home_g_left c-left">{{item.price | currency:"￥"}}</div>
+                                        <div ng-if="item.suggested_price>item.price" class="home_g_right c-right">
+                                            <span><s>{{item.suggested_price | currency:"￥"}}</s></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <div class="weui_grid load-more-product" ng-show="load_more_btn_show">
                                 <div class="load-more-button" ng-click="load_more_products()">加载更多</div>
                             </div>
 
@@ -74,7 +102,13 @@
                           </div>
                         </div>-->
 
+
+
                     </div>
+
+
+
+
                 </div>
             </div>
         </div>
