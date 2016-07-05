@@ -398,7 +398,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 CartFty.addContact($scope.contact)
                     .then(function (result) {
 
-                        $scope.show_address_status = 'list';
+                        $scope.close_add_address = 'success';
                         AllContacts();
 
                         //$state.go('cart-settlement',{}, {reload: true});
@@ -583,10 +583,6 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 }($);
             }
 
-            //地址列表新增action
-            $scope.c_address_action = function () {
-                $scope.show_address_status = 'add';
-            }
         }])
 
 

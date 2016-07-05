@@ -228,4 +228,11 @@
     margin-left: 30px;
     color: green;
 }
+#settlement .weui_actionsheet{
+    z-index: 90;
+}
+
+.weui-picker-container{
+    z-index: 95;
+}
 

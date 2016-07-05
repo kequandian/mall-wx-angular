@@ -34,16 +34,22 @@ $(function () {
             var s_contact_phone = $('#s_contact_phone');
             var city_picker = $('#city-picker');
             var s_contact_detail = $('#s_contact_detail');
-
             var show_status = $("#show_address_status").val();
+
+            var close_value = $('#close_add_address').val();
+            if(close_value == 'success'){
+                $("#show_address_status").val("list");
+            }
+
             if (show_status == "add") {
                 var add_mask = $('#add_mask');
                 var weui_action_add_sheet = $('#weui_action_add_sheet');
                 weui_action_add_sheet.addClass('weui_actionsheet_toggle');
-                add_mask.show().addClass('weui_fade_toggle').one('click', function () {
+                add_mask.show().addClass('weui_fade_toggle').on('click', function () {
+                    //$("#show_address_status").val("list");
                     hideActionSheet_add(weui_action_add_sheet, add_mask);
                 });
-                $('#action_add_sheet_cancel').one('click', function () {
+                $('#action_add_sheet_cancel').on('click', function () {
                     if(s_contact_user.val().length <= 0){
                         return;
                     }
@@ -75,17 +81,16 @@ $(function () {
                 }
 
             } else {
-
                 var mask = $('#mask');
                 var weuiActionsheet = $('#weui_actionsheet');
                 weuiActionsheet.addClass('weui_actionsheet_toggle');
-                mask.show().addClass('weui_fade_toggle').one('click', function () {
+                mask.show().addClass('weui_fade_toggle').on('click', function () {
                     hideActionSheet(weuiActionsheet, mask);
                 });
-                $('#actionsheet_cancel').one('click', function () {
+                $('#actionsheet_cancel').on('click', function () {
                     hideActionSheet(weuiActionsheet, mask);
                 });
-                $('.selectContact').one('click', function () {
+                $('.selectContact').on('click', function () {
                     hideActionSheet(weuiActionsheet, mask);
                 });
                 weuiActionsheet.unbind('transitionend').unbind('webkitTransitionEnd');
@@ -105,7 +110,9 @@ $(function () {
 
         //address list add action
         .on('click', '#c_address_action',function(){
+            $("#show_address_status").val("add");
             $('#showAddress').click();
+            $('#actionsheet_cancel').click();
         })
 
 
