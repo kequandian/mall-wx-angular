@@ -8,9 +8,9 @@
 
 #spinner-wrap {
     position: fixed;
-    top: 0;
+    top: 60px;
     right: 0;
-    bottom: 0;
+    bottom: 60px;
     left: 0;
     z-index: 1100;
     background-color: rgba(0, 0, 0, 0);
