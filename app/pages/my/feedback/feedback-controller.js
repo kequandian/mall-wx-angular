@@ -1,7 +1,7 @@
 angular.module('feedback.controller', ['feedback.service'])
 
-    .controller('FeedbackController', ['$scope', '$state', 'FeedbackFty',
-        '$ocLazyLoad','$injector', function ($scope, $state, FeedbackFty,ImageUpLoad, $ocLazyLoad,$injector) {
+    .controller('FeedbackController', ['$scope', '$state', 'FeedbackFty','ImageUpLoad',
+        function ($scope, $state, FeedbackFty,ImageUpLoad) {
 
         //title
         document.title = "意见反馈";
@@ -34,10 +34,7 @@ angular.module('feedback.controller', ['feedback.service'])
         }
 
         $scope.uploadImage = function(){
-            $ocLazyLoad.load('pages/pageCommon/imageUpload.js').then(function(){
-                var ImageUpLoad = $injector.get('ImageUpLoad');
-                loadImageFileAsURL(ImageUpLoad);
-            });
+            loadImageFileAsURL(ImageUpLoad);
         }
 
         function loadImageFileAsURL(ImageUpLoad) {
@@ -79,9 +76,9 @@ angular.module('feedback.controller', ['feedback.service'])
                     fileReader.readAsDataURL(fileToLoad);
                 }//for
 
-                if(success>0){
-                    $.toast('提交成功');
-                }
+                //if(success>0){
+                //    $.toast('提交成功');
+                //}
 
             }//length
         }

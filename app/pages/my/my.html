@@ -45,18 +45,18 @@
                 </p>
             </a>
             <a href="#/order/payed" class="weui_grid kqd_grid_4">
-                <i ng-if="payedCount > 0" class="my_order_count">{{payedCount > 99 ? "99+": payedCount}}</i>
                 <div class="weui_grid_icon order_grid_img">
                     <img src="img/my/payed.png">
+                    <i ng-if="payedCount > 0" class="my_order_count">{{payedCount > 99 ? "99+": payedCount}}</i>
                 </div>
                 <p class="weui_grid_label kqd_grid_label_top">
                     待发货
                 </p>
             </a>
             <a href="#/order/delivered" class="weui_grid kqd_grid_4">
-                <i ng-if="deliveredCount > 0" class="my_order_count">{{deliveredCount > 99 ? "99+": deliveredCount}}</i>
                 <div class="weui_grid_icon order_grid_img">
                     <img src="img/my/reach.png">
+                    <i ng-if="deliveredCount > 0" class="my_order_count">{{deliveredCount > 99 ? "99+": deliveredCount}}</i>
                 </div>
                 <p class="weui_grid_label kqd_grid_label_top">
                     待收货

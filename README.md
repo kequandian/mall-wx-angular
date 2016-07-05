@@ -1,9 +1,7 @@
 # 商品详情 包邮 (Depends)
-# 商品详情规格格价库存 (Depends)
+# 商品详情规格格价库存
 # 详情QQ (Research)
-# 购物车商品数量动态改变/详情页数量
 # 购买商品直接输入地址有问题
-# 分类产品详情
 # 进度条%位置调整
 # angular-seed — the seed for AngularJS apps
 

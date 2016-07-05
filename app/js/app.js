@@ -177,14 +177,19 @@
                     cache: false
                 }, {
                     name: 'My',
-                    files: ['pages/my/my-controller.js',
+                    files: ['bower_components/jquery/dist/jquery.min.js',
+                        'pages/my/my-controller.js',
                         'pages/my/my-service.js',
                         {type: 'css', path: 'css/my/my.css'}],
                     cache: false
                 }, {
                     name: 'Feedback',
-                    files: ['pages/my/feedback/feedback-controller.js',
+                    files: [
+                        'bower_components/jquery-weui/dist/js/jquery-weui.min.js',
+                        'pages/my/feedback/feedback-controller.js',
+                        'pages/pageCommon/imageUpload.js',
                         'pages/my/feedback/feedback-service.js',
+                        {type: 'css', path: 'bower_components/jquery-weui/dist/css/jquery-weui-compact.css'},
                         {type: 'css', path: 'css/my/feedback.css'}],
                     cache: false
                 }, {
