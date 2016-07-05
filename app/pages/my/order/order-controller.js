@@ -237,7 +237,6 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                     .then(function (json) {
                         if (json.status_code == 0) {
                             var orders = json.data;
-                            //alert(angular.toJson($scope.orders));
                             $scope.payList = []; //待付款
                             angular.forEach(orders, function (v, k) {
                                 if (v.status == "CREATED_PAY_PENDING") {
@@ -356,7 +355,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                 OrderFty.deliverReminderService(order_number)
                     .then(function (json) {
                         if (json.status_code == 0) {
-                            $.toast('发送成功');
+                            $.toast('已提醒买家发货');
                             $state.go('order.pay', {}, {reload: true});
                         } else {
                             $.toast('发送失败', 'cancel');

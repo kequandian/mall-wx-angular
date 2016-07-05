@@ -165,8 +165,36 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     $scope.cart_item_price = false;
                     $scope.cart_item_quantity = true;
                     $scope.edit_action_img = false;
+                    editProductCount();
                 }
             };
+
+            //修改购物车商品数量
+            function editProductCount(){
+
+                var products = [];
+                angular.forEach($scope.carts,function(v, k){
+                    var productItem = {};
+                    productItem.product_id = v.product_id;
+                    productItem.quantity = v.quantity;
+                    products.push(productItem);
+                });
+
+                CartFty.editCountService(products)
+                    .then(function (json) {
+                        if (json.status_code == 0) {
+                            var count = 0;
+                            angular.forEach($scope.carts, function (v, k) {
+                                count += v.quantity;
+                            });
+                            $rootScope.cartCount = count;
+                        } else {
+                            console.log("修改失败：" + error)
+                        }
+                    }, function (error) {
+                        console.log("错误：" + error)
+                    })
+            }
 
         }])
 
