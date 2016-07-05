@@ -138,6 +138,23 @@ angular.module('cart.service', [])
                         deferred.reject(data);
                     });
                 return deferred.promise;
+            },
+
+            //修改商品数量
+            editCountService: function (products) {
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + "/shopping_cart?increase=false";
+                $http.post(url,products,{
+                    headers: {
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
+                })
+                    .success(function (data) {
+                        return deferred.resolve(data);
+                    }).error(function (data) {
+                        return deferred.reject(data);
+                    });
+                return deferred.promise;
             }
         };
     }]);

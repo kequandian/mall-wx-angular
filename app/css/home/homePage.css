@@ -272,6 +272,7 @@ body, html {
     border-right:1px solid #e3e3e3;
     margin-bottom: 2px;
     background-color: white;
+    padding: 0;
 }
 
 #homeProductGrids .weui_grid .weui_grid_label{
@@ -285,13 +286,13 @@ body, html {
     margin-top: 3px;
 }
 
+#content .area-product .pro-item-margin{
+    /*margin: 5px 5px 5px 5px;*/
+}
+
 #content .home_grid_img {
     width: 100%;
     height: auto;
-}
-
-#content .area-product .pro-item-margin{
-    /*margin: 5px 5px 5px 5px;*/
 }
 
 #content .area-product .pro-item-desc{

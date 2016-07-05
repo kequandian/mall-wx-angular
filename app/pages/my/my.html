@@ -45,6 +45,7 @@
                 </p>
             </a>
             <a href="#/order/payed" class="weui_grid kqd_grid_4">
+                <i ng-if="payedCount > 0" class="my_order_count">{{payedCount > 99 ? "99+": payedCount}}</i>
                 <div class="weui_grid_icon order_grid_img">
                     <img src="img/my/payed.png">
                 </div>
@@ -53,6 +54,7 @@
                 </p>
             </a>
             <a href="#/order/delivered" class="weui_grid kqd_grid_4">
+                <i ng-if="deliveredCount > 0" class="my_order_count">{{deliveredCount > 99 ? "99+": deliveredCount}}</i>
                 <div class="weui_grid_icon order_grid_img">
                     <img src="img/my/reach.png">
                 </div>
