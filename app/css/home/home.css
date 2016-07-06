@@ -25,11 +25,11 @@
 .cart_count{
     position:absolute;
     /*bottom:10px;*/
-    right:18%;
+    /*right:18%;*/
     background-color:red;
-    min-width: 20px;
-    min-height: 20px;
-    line-height:20px;
+    min-width: 18px;
+    min-height: 18px;
+    line-height:18px;
     /*padding: 1px 1px;*/
     text-align:center;
     color:#fff;
@@ -37,5 +37,7 @@
     font-weight:500;
     font-size: xx-small;
     font-family: 'Arial';
+    /*center offset 10px*/
+    left: 10px;
+    margin-left: 50%;
 }
-

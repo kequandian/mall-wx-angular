@@ -14,16 +14,18 @@
             <!--&lt;!&ndash;<div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1kQI3HpXXXXbSXFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>&ndash;&gt;-->
             <!--</div>-->
             <!--</div>-->
-
-            <div oc-lazy-load="SquareImg"  ng-if="details.covers.length>0">
-                <bs-switch  data-type="slider" data-ratio="1">
-                    <bs-switch-content>
-                        <bs-switch-panel ng-repeat="itemImg in details.covers">
-                            <img square-img alt="" ng-src="{{itemImg.url}}" style="width: 100%; height: auto;"/>
-                        </bs-switch-panel>
-                    </bs-switch-content>
-                    <bs-switch-nav class="ui-switch-nav"></bs-switch-nav>
-                </bs-switch>
+            <div oc-lazy-load="ImageCache">
+                <div oc-lazy-load="SquareImg" ng-if="details.covers.length>0">
+                    <bs-switch data-type="slider" data-ratio="1">
+                        <bs-switch-content>
+                            <bs-switch-panel ng-repeat="itemImg in details.covers">
+                                <!--<img square-img alt="" ng-src="{{itemImg.url}}"/>-->
+                                <img square-img ng-cache alt="" ng-src="{{itemImg.url}}"/>
+                            </bs-switch-panel>
+                        </bs-switch-content>
+                        <bs-switch-nav class="ui-switch-nav"></bs-switch-nav>
+                    </bs-switch>
+                </div>
             </div>
             <!--<img ng-src="{{details.cover}}">-->
         </div>
@@ -70,13 +72,14 @@
             </div>
         </div>
 
-        <!-- 其他信息 -->
-        <div class="product-info">
+        <!-- 商品详情 -->
+        <div oc-lazy-load="ImageCache" class="product-info">
 
             <div class="pictures-title">
                 <img src="img/details/product-imgs-icon.png">
                 <span>商品信息</span>
             </div>
+
             <div class="product-img-list" ng-bind-html="details.description | to_trusted">
                 <!--<img ng-src="{{imgs.url}}" ng-repeat="imgs in details.images">-->
                 <!--{{details.description}}-->
@@ -169,7 +172,8 @@
                                 </div>
                             </div>
                             <ul class="weui_media_info detail_content_checkbox">
-                                <li class="weui_media_info_meta click_radio" ng-repeat="proItem in details.specifications">
+                                <li class="weui_media_info_meta click_radio"
+                                    ng-repeat="proItem in details.specifications">
                                     <!--<input class="c_checkbox" type="radio" value="" name="radio" data-labelauty="proItem.display_name">-->
                                     <input class="detail_input_radio" id="pro_id_{{$index}}"
                                            type="radio" value="" name="radio"
