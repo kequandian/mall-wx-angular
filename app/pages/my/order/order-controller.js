@@ -135,31 +135,33 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             //进入退款退货
             $scope.goToSalesReturn = function (o_number, total_price, s_r_status) {
 
-                $ocLazyLoad.load('JqueryWeUI').then(function () {
+                $ocLazyLoad.load('Jquery').then(function () {
+                    $ocLazyLoad.load('JqueryWeUI').then(function () {
 
-                    /*function start*/
-                    if (s_r_status == 1) {
-                        $.confirm('', '确认要退款吗？', function () {
-                            $state.go('salesReturn', {
-                                orderNumber: o_number,
-                                totalPrice: total_price,
-                                SalesReturnStatus: s_r_status
+                        /*function start*/
+                        if (s_r_status == 1) {
+                            $.confirm('', '确认要退款吗？', function () {
+                                $state.go('salesReturn', {
+                                    orderNumber: o_number,
+                                    totalPrice: total_price,
+                                    SalesReturnStatus: s_r_status
+                                });
+                            }, function () {
+                                //取消操作
                             });
-                        }, function () {
-                            //取消操作
-                        });
-                    } else if (s_r_status == 2) {
-                        $.confirm('', '确认要退货？', function () {
-                            $state.go('salesReturn', {
-                                orderNumber: o_number,
-                                totalPrice: total_price,
-                                SalesReturnStatus: s_r_status
+                        } else if (s_r_status == 2) {
+                            $.confirm('', '确认要退货？', function () {
+                                $state.go('salesReturn', {
+                                    orderNumber: o_number,
+                                    totalPrice: total_price,
+                                    SalesReturnStatus: s_r_status
+                                });
+                            }, function () {
+                                //取消操作
                             });
-                        }, function () {
-                            //取消操作
-                        });
-                    }
-                    /*function end*/
+                        }
+                        /*function end*/
+                    })
                 });
                 /*end lazy*/
 
@@ -208,14 +210,16 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                 OrderFty.deliverReminderService(order_number)
                     .then(function (json) {
 
-                        $ocLazyLoad.load('JqueryWeUI').then(function () {
+                        $ocLazyLoad.load('Jquery').then(function () {
+                            $ocLazyLoad.load('JqueryWeUI').then(function () {
 
-                            if (json.status_code == 0) {
-                                $.toast('已提醒卖家发货');
-                                $state.go('order.all', {}, {reload: true});
-                            } else {
-                                $.toast('发送失败', 'cancel');
-                            }
+                                if (json.status_code == 0) {
+                                    $.toast('已提醒卖家发货');
+                                    $state.go('order.all', {}, {reload: true});
+                                } else {
+                                    $.toast('发送失败', 'cancel');
+                                }
+                            })
                         })
 
 
@@ -359,15 +363,17 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                 OrderFty.deliverReminderService(order_number)
                     .then(function (json) {
 
-                        $ocLazyLoad.load('JqueryWeUI').then(function () {
+                        $ocLazyLoad.load('Jquery').then(function () {
+                            $ocLazyLoad.load('JqueryWeUI').then(function () {
 
-                            if (json.status_code == 0) {
-                                $.toast('已提醒卖家发货');
-                                $state.go('order.pay', {}, {reload: true});
-                            } else {
-                                $.toast('发送失败', 'cancel');
-                            }
-                        })
+                                if (json.status_code == 0) {
+                                    $.toast('已提醒卖家发货');
+                                    $state.go('order.payed', {}, {reload: true});
+                                } else {
+                                    $.toast('发送失败', 'cancel');
+                                }
+                            })
+                        });
 
                     }, function (error) {
                         console.log(error);
@@ -429,19 +435,21 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             $scope.goToSalesReturn = function (o_number, total_price, s_r_status) {
                 if (s_r_status == 2) {
 
-                    $ocLazyLoad.load('JqueryWeUI').then(function () {
+                    $ocLazyLoad.load('Jquery').then(function () {
+                        $ocLazyLoad.load('JqueryWeUI').then(function () {
 
-                        /*function start*/
-                        $.confirm('', '确认要退货吗？', function () {
-                            $state.go('salesReturn', {
-                                orderNumber: o_number,
-                                totalPrice: total_price,
-                                SalesReturnStatus: s_r_status
+                            /*function start*/
+                            $.confirm('', '确认要退货吗？', function () {
+                                $state.go('salesReturn', {
+                                    orderNumber: o_number,
+                                    totalPrice: total_price,
+                                    SalesReturnStatus: s_r_status
+                                });
+                            }, function () {
+                                //取消操作
                             });
-                        }, function () {
-                            //取消操作
-                        });
-                        /*function end*/
+                            /*function end*/
+                        })
                     });
                     /*end lazy*/
 
@@ -457,25 +465,27 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             //确认订单
             $scope.close_order_action = function (order_number) {
 
-                $ocLazyLoad.load('JqueryWeUI').then(function () {
+                $ocLazyLoad.load('Jquery').then(function () {
+                    $ocLazyLoad.load('JqueryWeUI').then(function () {
 
-                    /*function start*/
-                    $.confirm('', '确认收到货物吗？', function () {
-                        //var order_status = "CLOSED_CONFIRMED";
-                        OrderFty.closeOrderService(order_number)
-                            .then(function (json) {
-                                console.log(angular.toJson(json));
-                                if (json.status_code == 0) {
-                                    $.toast('确认成功');
-                                    $state.go('order.finish', {}, {reload: true});
-                                } else {
-                                    $.toast('确认失败', 'cancel');
-                                }
-                            }, function (error) {
-                                console.log(error);
-                            })
+                        /*function start*/
+                        $.confirm('', '确认收到货物吗？', function () {
+                            //var order_status = "CLOSED_CONFIRMED";
+                            OrderFty.closeOrderService(order_number)
+                                .then(function (json) {
+                                    console.log(angular.toJson(json));
+                                    if (json.status_code == 0) {
+                                        $.toast('确认成功');
+                                        $state.go('order.finish', {}, {reload: true});
+                                    } else {
+                                        $.toast('确认失败', 'cancel');
+                                    }
+                                }, function (error) {
+                                    console.log(error);
+                                })
+                        })
+                        /*function end*/
                     })
-                    /*function end*/
                 });
                 /*end lazy*/
             };

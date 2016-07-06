@@ -72,8 +72,8 @@
                     name: 'ImageCache',
                     files: [
                         //  not used now
-                        //'lib/custom/js/imgcache.js',
-                        //'lib/custom/js/ngImgCache.js'
+                        'lib/custom/js/imgcache.js',
+                        'lib/custom/js/ngImgCache.js'
                         ],
                     cache: true
                 }, {
@@ -136,6 +136,7 @@
                         'pages/my/order/orderDetails/orderDetail-service.js',
                         'pages/my/order/express/express-service.js',
                         'pages/my/order/order-common-service.js',
+                        'pages/my/order/order-service.js',
                         {type: 'css', path: 'css/order/orderDetails.css'}],
                     cache: false
                 }, {

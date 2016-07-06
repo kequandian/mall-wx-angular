@@ -1,7 +1,9 @@
-angular.module('orderDetails.controller', ['orderDetails.service', "express.service", 'order.common'])
+angular.module('orderDetails.controller', ['orderDetails.service',
+    "express.service", 'order.common', 'my.order.service'])
 
-    .controller('OrderDetailsController', ['$scope', '$state', '$stateParams', 'OrderDetailsFty', 'ExpressInfo', 'OrderCommon',
-        '$ocLazyLoad', function ($scope, $state, $stateParams, OrderDetailsFty, ExpressInfo, OrderCommon, $ocLazyLoad) {
+    .controller('OrderDetailsController', ['$scope', '$state', '$stateParams', 'OrderDetailsFty', 'ExpressInfo',
+        'OrderCommon','OrderFty',
+        '$ocLazyLoad', function ($scope, $state, $stateParams, OrderDetailsFty, ExpressInfo, OrderCommon,OrderFty, $ocLazyLoad) {
 
             orderDetails();
             function orderDetails() {
@@ -112,35 +114,62 @@ angular.module('orderDetails.controller', ['orderDetails.service', "express.serv
             }
 
             //进入退款退货
-            $scope.goToSalesReturn = function (o_number, total_price, s_r_status, $ocLazyLoad) {
+            $scope.goToSalesReturn = function (o_number, total_price, s_r_status) {
 
-                $ocLazyLoad.load('JqueryWeUI').then(function () {
+                $ocLazyLoad.load('Jquery').then(function(){
+                    $ocLazyLoad.load('JqueryWeUI').then(function () {
 
-                    /*function start*/
-                    if (s_r_status == 1) {
-                        $.confirm('', '确认要退款吗？', function () {
-                            $state.go('salesReturn', {
-                                orderNumber: o_number,
-                                totalPrice: total_price,
-                                SalesReturnStatus: s_r_status
+                        /*function start*/
+                        if (s_r_status == 1) {
+                            $.confirm('', '确认要退款吗？', function () {
+                                $state.go('salesReturn', {
+                                    orderNumber: o_number,
+                                    totalPrice: total_price,
+                                    SalesReturnStatus: s_r_status
+                                });
+                            }, function () {
+                                //取消操作
                             });
-                        }, function () {
-                            //取消操作
-                        });
-                    } else if (s_r_status == 2) {
-                        $.confirm('', '确认要退货？', function () {
-                            $state.go('salesReturn', {
-                                orderNumber: o_number,
-                                totalPrice: total_price,
-                                SalesReturnStatus: s_r_status
+                        } else if (s_r_status == 2) {
+                            $.confirm('', '确认要退货？', function () {
+                                $state.go('salesReturn', {
+                                    orderNumber: o_number,
+                                    totalPrice: total_price,
+                                    SalesReturnStatus: s_r_status
+                                });
+                            }, function () {
+                                //取消操作
                             });
-                        }, function () {
-                            //取消操作
-                        });
-                    }
-                    /*function end*/
+                        }
+                        /*function end*/
 
+                    })
                 });
+                /*lazy load end*/
+
+            }
+
+            $scope.deliverReminder = function (order_number) {
+
+                OrderFty.deliverReminderService(order_number)
+                    .then(function (json) {
+
+                        $ocLazyLoad.load('Jquery').then(function () {
+                            $ocLazyLoad.load('JqueryWeUI').then(function () {
+
+                                if (json.status_code == 0) {
+                                    $.toast('已提醒卖家发货');
+                                    $state.go('orderDetails', {}, {reload: true});
+                                } else {
+                                    $.toast('发送失败', 'cancel');
+                                }
+                            })
+                        })
+
+
+                    }, function (error) {
+                        console.log(error);
+                    })
             }
 
             //进入物流详情

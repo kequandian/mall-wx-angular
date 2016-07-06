@@ -106,7 +106,8 @@
         <!-- 待发货 -->
         <div ng-if="detailsInfo.status == 'CONFIRMED_DELIVER_PENDING' || detailsInfo.status == 'PAID_CONFIRM_PENDING'">
 
-            <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_warn item-btn-right" style="margin:7px 5px 0 0;">
+            <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_warn item-btn-right" style="margin:7px 5px 0 0;"
+               ng-click="deliverReminder(detailsInfo.order_number)">
                 提醒发货
             </a>
             <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right" style="margin:7px 5px 3px 0;"
