@@ -82,15 +82,13 @@ angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
                     return;
                 }
 
-                console.log('post draw');
-
                 withdrawFty.postDrawService(withdraw_account_id,withdraw_cash)
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $scope.withDraw= json.data;
                         }
                     }, function (error) {
-                        // $.toast('提现失败', 'cancel');
+                        $.toast('提现失败', 'cancel');
                     })
             }
 

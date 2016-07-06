@@ -99,6 +99,7 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
 
                 SalesReturnInfo.SalesReturnService(order_number, service_type, reason, content, image_list)
                     .then(function (json) {
+                        //console.log(json);
                         if (json.status_code == 0) {
                             //$scope.salesReturn = json.data;
 
@@ -106,6 +107,7 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
 
                             $.toast.prototype.defaults = 500;
                             $.toast("提交成功");
+
                             $timeout(function(){
                                 $state.go('order.all')
                             }, 600);

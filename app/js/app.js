@@ -93,9 +93,13 @@
                     cache: false
                 }, {
                     name: 'SalesReturn',
-                    files: ['pages/my/order/salesReturn/salesReturn-controller.js',
+                    files: [
+                        'bower_components/jquery-weui/dist/js/jquery-weui.min.js',
+                        'pages/my/order/salesReturn/salesReturn-controller.js',
                         'pages/my/order/salesReturn/salesReturn-service.js',
-                        {type: 'css', path: 'css/my/salesReturn.css'}],
+                        {type: 'css', path: 'bower_components/jquery-weui/dist/css/jquery-weui-compact.css'},
+                        {type: 'css', path: 'css/my/salesReturn.css'}
+                    ],
                     cache: false
                 }, {
                     name: 'Category',
@@ -136,7 +140,8 @@
                     cache: false
                 }, {
                     name: 'Refund',
-                    files: ['pages/my/order/refund/refund-controller.js',
+                    files: [
+                        'pages/my/order/refund/refund-controller.js',
                         'pages/my/order/refund/refund-service.js',
                         {type: 'css', path: 'css/order/refund.css'}],
                     cache: false

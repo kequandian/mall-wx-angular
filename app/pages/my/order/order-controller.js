@@ -450,6 +450,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
 
             //进入物流详情
             $scope.goToExpress_delivered = function (o_number) {
+                console.log('go express')
                 $state.go('express', {orderNumber: o_number, productImg: null, productCount: null});
             };
 
@@ -463,7 +464,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                         //var order_status = "CLOSED_CONFIRMED";
                         OrderFty.closeOrderService(order_number)
                             .then(function (json) {
-                                //alert(angular.toJson(json));
+                                console.log(angular.toJson(json));
                                 if (json.status_code == 0) {
                                     $.toast('确认成功');
                                     $state.go('order.delivered', {}, {reload: true});
