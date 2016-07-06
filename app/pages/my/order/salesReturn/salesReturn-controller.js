@@ -116,7 +116,7 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
             };
 
             $scope.uploadImage = function(){
-                $ocLazyLoad.load('pages/pageCommon/imageUpload.js').then(function(){
+                $ocLazyLoad.load('pages/pageCommon/imageUpLoad.js').then(function(){
                     var ImageUpLoad = $injector.get('ImageUpLoad');
                     loadImageFileAsURL(ImageUpLoad);
                 });

@@ -64,7 +64,8 @@
                 <bs-switch data-type="slider" auto-play="2500" data-ratio="0.426">
                     <bs-switch-content>
                         <bs-switch-panel ng-repeat="img in ad_list">
-                            <a ng-href="{{img.target_url}}"><img alt="" ng-src="{{img.image}}"
+                            <a ng-href="{{img.target_url}}">
+                                <img alt="" ng-src="{{img.image}}"
                                                                  style="width: 100%; height: auto;"/></a>
                         </bs-switch-panel>
                     </bs-switch-content>

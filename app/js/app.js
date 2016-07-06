@@ -71,9 +71,11 @@
                 }, {
                     name: 'ImageCache',
                     files: [
-                        'lib/custom/js/imgcache.js',
-                        'lib/custom/js/ngImgCache.js'],
-                    cache: false
+                        //  not used now
+                        //'lib/custom/js/imgcache.js',
+                        //'lib/custom/js/ngImgCache.js'
+                        ],
+                    cache: true
                 }, {
                     name: 'Details',
                     files: [
@@ -187,7 +189,7 @@
                     files: [
                         'bower_components/jquery-weui/dist/js/jquery-weui.min.js',
                         'pages/my/feedback/feedback-controller.js',
-                        'pages/pageCommon/imageUpload.js',
+                        'pages/pageCommon/imageUpLoad.js',
                         'pages/my/feedback/feedback-service.js',
                         {type: 'css', path: 'bower_components/jquery-weui/dist/css/jquery-weui-compact.css'},
                         {type: 'css', path: 'css/my/feedback.css'}],
