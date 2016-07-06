@@ -111,13 +111,13 @@ angular.module('details.controller', ['details.service'])
             $scope.buy_product_option = function (productInfo, productId, quantity) {
 
                 var product_property = null;
-                var product_specification_id = 0;
+                var product_specification_id = null;
 
                 if($scope.product_property_value != null){
                     product_specification_id = $scope.product_property_value.id;
                 }
 
-                if ($scope.details.specifications.length > 0 && !product_specification_id > 0) {
+                if ($scope.details.specifications.length > 0 && product_specification_id == null) {
                     $.toast('请选择商品规格');
                     return;
                 }
@@ -171,10 +171,11 @@ angular.module('details.controller', ['details.service'])
             };
 
             //添加收藏
-            $scope.addProductToCollection = function (productId) {
 
-                $ocLazyLoad.load('Jquery').then(function () {
-                    $ocLazyLoad.load('JqueryWeUI').then(function () {
+            $ocLazyLoad.load('Jquery').then(function () {
+                $ocLazyLoad.load('JqueryWeUI').then(function () {
+                    $scope.addProductToCollection = function (productId) {
+
                         DetailsFty.addCollectionService(productId)
                             .then(function (json) {
                                 //alert(angular.toJson(json));
@@ -186,10 +187,12 @@ angular.module('details.controller', ['details.service'])
                             }, function (error) {
                                 $.toast('收藏失败', 'cancel');
                             })
-                    })
-                })
 
-            }
+                    }
+
+                })
+            })
         }])
+
 
 ;

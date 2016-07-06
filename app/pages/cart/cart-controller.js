@@ -17,7 +17,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     function (result) {
                         if (result.status_code == 0) {
                             $scope.carts = result.data;
-                            //alert(angular.toJson(result.data))
+                            alert(angular.toJson(result.data))
                             if ($scope.carts.length > 0) {
 
                                 var c_count = 0;
@@ -65,16 +65,21 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             //alert(angular.toJson($scope.carts));
 
             //删除购物车单项商品
-            $scope.showDeleteConfirm = function (id) {
+            $scope.showDeleteConfirm = function (cartItem) {
+
+                //alert(angular.toJson(cartItem));
+
                 $ocLazyLoad.load('Jquery').then(function () {
                     $ocLazyLoad.load('JqueryWeUI').then(function () {
 
                         /*start function*/
                         $.confirm("", "确认要移除该商品吗？", function () {
-                            CartFty.deleteCart(id).then(
+                            CartFty.deleteCart(cartItem).then(
                                 function (result) {
                                     //console.log(result);
                                     //$state.go('home.cart',{}, {reload: true});
+
+                                    //alert(angular.toJson(result));
 
                                     AllCarts();//重新加载购物车
 
@@ -263,9 +268,6 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 }
 
                 $scope.order.contact = $scope.currentContact;
-
-                alert(angular.toJson($scope.order));
-                return;
 
                 CartFty.addOrder($scope.order).then(
                     function (result) {

@@ -23,7 +23,6 @@ angular.module('details.service', [])
                 $http.post(url,[{
                     "product_id": productId,
                     "quantity": quantity,
-                    //"product_properties": properties,
                     "product_specification_id": specification_id
                 }],{
                     headers: {

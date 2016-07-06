@@ -20,13 +20,17 @@ angular.module('cart.service', [])
                 return deferred.promise;
             },
 
-            deleteCart: function (id) {
+            deleteCart: function (cartItem) {
                 var deferred = $q.defer();
                 var url = GlobalVariable.SERVER_PATH + '/shopping_cart';
                 $http({
                     method: 'POST',
                     url: url,
-                    data: [{product_id: id, quantity: 0}],
+                    data: [{
+                        product_id: cartItem.product_id,
+                        quantity: 0,
+                        product_specification_id:cartItem.product_specification_id
+                    }],
                     headers: {
                         'Authorization': GlobalVariable.ACCESS_TOKEN
                     }
