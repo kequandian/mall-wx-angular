@@ -188,7 +188,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                                 .then(function (json) {
                                     if (json.status_code == 0) {
                                         $.toast('确认成功');
-                                        $state.go('order.all', {}, {reload: true});
+                                        $state.go('order.finish', {}, {reload: true});
                                     } else {
                                         $.toast('确认失败', 'cancel');
                                     }
@@ -299,7 +299,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                             //alert(angular.toJson($scope.orders));
                             $scope.payedList = [];//待发货
                             angular.forEach(orders, function (v, k) {
-                                if (v.status == "CONFIRMED_DELIVER_PENDING" || v.status == "PAID_CONFIRM_PENDING") {
+                                if (v.status == "CONFIRMED_DELIVER_PENDING" || v.status == "DELIVERING") {
                                     $scope.payedList.push(v);
                                 }
                             });
@@ -395,7 +395,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                             //alert(angular.toJson($scope.orders));
                             $scope.deliveredList = [];//待收货
                             angular.forEach(orders, function (v, k) {
-                                if (v.status == "DELIVERING" || v.status == "DELIVERED_CONFIRM_PENDING") {
+                                if (v.status == "PAID_CONFIRM_PENDING" || v.status == "DELIVERED_CONFIRM_PENDING") {
                                     $scope.deliveredList.push(v);
                                 }
                             });
@@ -467,7 +467,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                                 console.log(angular.toJson(json));
                                 if (json.status_code == 0) {
                                     $.toast('确认成功');
-                                    $state.go('order.delivered', {}, {reload: true});
+                                    $state.go('order.finish', {}, {reload: true});
                                 } else {
                                     $.toast('确认失败', 'cancel');
                                 }

@@ -30,7 +30,8 @@
             <div class="item-detail-btn">
 
                 <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_warn item-btn-right"
-                   style="margin-right: 5px;" ng-click="close_order_action(items.order_number)">
+                   style="margin-right: 5px;" ng-click="close_order_action(items.order_number)"
+                   ng-if="items.status == 'DELIVERED_CONFIRM_PENDING'">
                     确认收货
                 </a>
                 <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right"

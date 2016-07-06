@@ -29,7 +29,8 @@
             </div>
             <div class="item-detail-btn">
                 <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_warn item-btn-right" style="margin-right: 5px;"
-                        ng-click="deliverReminder(items.order_number)">
+                        ng-click="deliverReminder(items.order_number)"
+                   ng-if="items.status == 'CONFIRMED_DELIVER_PENDING'">
                     提醒发货
                 </a>
                 <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right" style="margin-right: 5px;"
