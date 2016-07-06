@@ -17,7 +17,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     function (result) {
                         if (result.status_code == 0) {
                             $scope.carts = result.data;
-                            alert(angular.toJson(result.data))
+                            //alert(angular.toJson(result.data))
                             if ($scope.carts.length > 0) {
 
                                 var c_count = 0;
@@ -62,13 +62,8 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 //console.log($scope.carts);
             };
 
-            //alert(angular.toJson($scope.carts));
-
             //删除购物车单项商品
             $scope.showDeleteConfirm = function (cartItem) {
-
-                //alert(angular.toJson(cartItem));
-
                 $ocLazyLoad.load('Jquery').then(function () {
                     $ocLazyLoad.load('JqueryWeUI').then(function () {
 
@@ -78,11 +73,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                                 function (result) {
                                     //console.log(result);
                                     //$state.go('home.cart',{}, {reload: true});
-
-                                    //alert(angular.toJson(result));
-
                                     AllCarts();//重新加载购物车
-
                                 }, function (error) {
                                     //console.log(error);
                                 });
@@ -268,7 +259,6 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 }
 
                 $scope.order.contact = $scope.currentContact;
-
                 CartFty.addOrder($scope.order).then(
                     function (result) {
                         //console.log(result.data);
@@ -288,6 +278,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 angular.forEach(items, function (data, index) {
                     del_item.product_id = data.product_id;
                     del_item.quantity = 0;
+                    del_item.product_specification_id = data.product_specification_id;
                     $scope.product_items.push(del_item);
                 });
 

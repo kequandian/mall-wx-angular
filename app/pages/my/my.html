@@ -39,6 +39,7 @@
             <a href="#/order/pay" class="weui_grid kqd_grid_4">
                 <div class="weui_grid_icon order_grid_img">
                     <img src="img/my/pay.png">
+                    <i ng-if="payCount > 0" class="my_order_count">{{payCount > 99 ? "99+": payCount}}</i>
                 </div>
                 <p class="weui_grid_label kqd_grid_label_top">
                     待付款
