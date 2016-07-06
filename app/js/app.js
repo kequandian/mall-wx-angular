@@ -71,9 +71,11 @@
                 }, {
                     name: 'ImageCache',
                     files: [
-                        'lib/custom/js/imgcache.js',
-                        'lib/custom/js/ngImgCache.js'],
-                    cache: false
+                        //  not used now
+                        //'lib/custom/js/imgcache.js',
+                        //'lib/custom/js/ngImgCache.js'
+                        ],
+                    cache: true
                 }, {
                     name: 'Details',
                     files: [
@@ -91,9 +93,13 @@
                     cache: false
                 }, {
                     name: 'SalesReturn',
-                    files: ['pages/my/order/salesReturn/salesReturn-controller.js',
+                    files: [
+                        'bower_components/jquery-weui/dist/js/jquery-weui.min.js',
+                        'pages/my/order/salesReturn/salesReturn-controller.js',
                         'pages/my/order/salesReturn/salesReturn-service.js',
-                        {type: 'css', path: 'css/my/salesReturn.css'}],
+                        {type: 'css', path: 'bower_components/jquery-weui/dist/css/jquery-weui-compact.css'},
+                        {type: 'css', path: 'css/my/salesReturn.css'}
+                    ],
                     cache: false
                 }, {
                     name: 'Category',
@@ -118,7 +124,8 @@
                     cache: false
                 }, {
                     name: 'Order',
-                    files: ['pages/my/order/order-controller.js',
+                    files: [
+                        'pages/my/order/order-controller.js',
                         'pages/my/order/order-service.js',
                         'pages/my/order/order-common-service.js',
                         {type: 'css', path: 'css/order/order.css'}],
@@ -133,7 +140,8 @@
                     cache: false
                 }, {
                     name: 'Refund',
-                    files: ['pages/my/order/refund/refund-controller.js',
+                    files: [
+                        'pages/my/order/refund/refund-controller.js',
                         'pages/my/order/refund/refund-service.js',
                         {type: 'css', path: 'css/order/refund.css'}],
                     cache: false
@@ -187,7 +195,7 @@
                     files: [
                         'bower_components/jquery-weui/dist/js/jquery-weui.min.js',
                         'pages/my/feedback/feedback-controller.js',
-                        'pages/pageCommon/imageUpload.js',
+                        'pages/pageCommon/imageUpLoad.js',
                         'pages/my/feedback/feedback-service.js',
                         {type: 'css', path: 'bower_components/jquery-weui/dist/css/jquery-weui-compact.css'},
                         {type: 'css', path: 'css/my/feedback.css'}],
