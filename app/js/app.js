@@ -120,7 +120,8 @@
                     cache: false
                 }, {
                     name: 'Order',
-                    files: ['pages/my/order/order-controller.js',
+                    files: [
+                        'pages/my/order/order-controller.js',
                         'pages/my/order/order-service.js',
                         'pages/my/order/order-common-service.js',
                         {type: 'css', path: 'css/order/order.css'}],
