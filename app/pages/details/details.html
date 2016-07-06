@@ -167,21 +167,26 @@
                             <div oc-lazy-load="SquareImg" class="select_contact detail_content_title">
                                 <img square-img ng-src="{{details_content_sheet_img}}">
 
-                                <div class="weui_media_desc">
+                                <div class="weui_media_desc" ng-if="!details.specifications.length > 0">
                                     {{details.name}}
                                 </div>
+                                <div class="weui_media_desc spec_info" ng-if="details.specifications.length > 0">
+                                    <div>￥{{spec_item_price != null ? spec_item_price : details_price}}</div>
+                                    <div>库存：{{spec_item_stock_balance != null ? spec_item_stock_balance : details_stock_balance}}</div>
+                                    <div>已选：{{spec_item_name != null ? spec_item_name : '规格分类'}}</div>
+                                </div>
                             </div>
+                            <div ng-if="details.specifications.length > 0" style="font-size: 14px;">商品规格</div>
                             <ul class="weui_media_info detail_content_checkbox">
                                 <li class="weui_media_info_meta click_radio"
-                                    ng-repeat="proItem in details.specifications">
-                                    <!--<input class="c_checkbox" type="radio" value="" name="radio" data-labelauty="proItem.display_name">-->
-                                    <input class="detail_input_radio" id="pro_id_{{$index}}"
+                                    ng-repeat="specItem in details.specifications">
+                                    <input class="detail_input_radio detail_is_checked" id="pro_id_{{$index}}"
                                            type="radio" value="" name="radio"
-                                           ng-click="get_input_value(proItem)">
+                                           ng-click="get_input_value(specItem)">
                                     <label class="detail_label_radio" for="pro_id_{{$index}}"
-                                           name="pro_id_{{$index}}">{{proItem}}</label>
+                                           name="pro_id_{{$index}}">{{specItem.name}}</label>
                                 </li>
-                                <input id="property_hidden" type="hidden" value="{{product_property_value}}">
+                                <input id="property_hidden" type="hidden" value="{{product_property_value.name}}">
                                 <input id="propertis_null" type="hidden" value="{{details.specifications.length}}">
                             </ul>
 

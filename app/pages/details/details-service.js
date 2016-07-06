@@ -17,14 +17,14 @@ angular.module('details.service', [])
                 return deferred.promise;
             },
 
-            addProToCatService: function (productId,quantity,properties,specification) {
+            addProToCatService: function (productId,quantity,properties,specification_id) {
                 var deferred = $q.defer();
                 var url = GlobalVariable.SERVER_PATH + "/shopping_cart";
                 $http.post(url,[{
                     "product_id": productId,
                     "quantity": quantity,
                     //"product_properties": properties,
-                    "product_specification": specification
+                    "product_specification_id": specification_id
                 }],{
                     headers: {
                         'Authorization': GlobalVariable.ACCESS_TOKEN

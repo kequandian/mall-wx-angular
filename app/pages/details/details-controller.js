@@ -20,6 +20,9 @@ angular.module('details.controller', ['details.service'])
                         if (json.status_code == 0) {
                             $scope.details = json.data;
 
+                            $scope.details_stock_balance = $scope.details.stock_balance;
+                            $scope.details_price = $scope.details.price;
+
                             if ($scope.details.covers.length > 0) {
                                 $scope.details_content_sheet_img = $scope.details.covers[0].url;
                             }
@@ -42,7 +45,6 @@ angular.module('details.controller', ['details.service'])
                                     }
                                 }
                             }
-
                         } else {
                             console.log("获取商品详情失败");
                         }
@@ -68,8 +70,16 @@ angular.module('details.controller', ['details.service'])
              }).appendTo($body);
              }*/
 
-            $scope.get_input_value = function (value) {
-                $scope.product_property_value = value;
+            $scope.spec_item_price = null;
+            $scope.spec_item_stock_balance = null;
+            $scope.spec_item_name = null;
+
+            $scope.get_input_value = function (item) {
+                $scope.product_property_value = item;
+
+                $scope.spec_item_price = item.price;
+                $scope.spec_item_stock_balance = item.stock_balance;
+                $scope.spec_item_name = item.name;
             };
 
             $scope.q_count = 1;
@@ -101,40 +111,48 @@ angular.module('details.controller', ['details.service'])
             $scope.buy_product_option = function (productInfo, productId, quantity) {
 
                 var product_property = null;
-                var product_specification = $scope.product_property_value;
+                var product_specification_id = 0;
 
-                if ($scope.details.specifications.length > 0 && product_specification == null) {
+                if($scope.product_property_value != null){
+                    product_specification_id = $scope.product_property_value.id;
+                }
+
+                if ($scope.details.specifications.length > 0 && !product_specification_id > 0) {
                     $.toast('请选择商品规格');
                     return;
                 }
 
                 var b_status = $scope.b_status;
                 if (b_status == "cart") {
-                    $scope.addProductToCart(productId, quantity, product_property,product_specification);
+                    $scope.addProductToCart(productId, quantity, product_property,product_specification_id);
                 } else if (b_status == "buy") {
-                    $scope.buy_immediately(productInfo, quantity, product_property,product_specification);
+                    $scope.buy_immediately(productInfo, quantity, product_property,product_specification_id);
                 }
             };
 
             //添加购物车
-            $scope.addProductToCart = function (productId, quantity, product_property,product_specification) {
+            $scope.addProductToCart = function (productId, quantity, product_property,product_specification_id) {
 
-                DetailsFty.addProToCatService(productId, quantity, product_property,product_specification)
-                    .then(function (json) {
-                        if (json.status_code == 0) {
-                            $.toast.prototype.defaults.duration = 2000;
-                            $.toast("成功添加商品");
-                        } else {
-                            $.toast("添加失败", "cancel");
-                        }
-                    }, function (error) {
-                        $.toast("添加失败", "cancel");
+                $ocLazyLoad.load('Jquery').then(function () {
+                    $ocLazyLoad.load('JqueryWeUI').then(function () {
+                        DetailsFty.addProToCatService(productId, quantity, product_property,product_specification_id)
+                            .then(function (json) {
+                                if (json.status_code == 0) {
+                                    //$.toast.prototype.defaults.duration = 2000;
+                                    $.toast("成功添加商品");
+                                } else {
+                                    $.toast("添加失败", "cancel");
+                                }
+                            }, function (error) {
+                                $.toast("添加失败", "cancel");
+                            })
                     })
+                })
             };
 
             //立即购买
             $scope.checkedCarts = [];
-            $scope.buy_immediately = function (item, quantity, product_property,product_specification) {
+            $scope.buy_immediately = function (item, quantity, product_property,product_specification_id) {
                 //console.log("product.item?" + angular.toJson(item));
 
                 item.product_id = item.id;
@@ -142,7 +160,7 @@ angular.module('details.controller', ['details.service'])
                 item.product_name = item.name;
                 item.price = item.price * quantity;
                 //item.product_property = product_property;
-                item.product_specification = product_specification;
+                item.product_specification_id = product_specification_id;
                 $scope.checkedCarts.push(item);
 
                 $state.go('cart-settlement', {
@@ -154,20 +172,24 @@ angular.module('details.controller', ['details.service'])
 
             //添加收藏
             $scope.addProductToCollection = function (productId) {
-                DetailsFty.addCollectionService(productId)
-                    .then(function (json) {
-                        //alert(angular.toJson(json));
-                        if (json.status_code == 0) {
-                            $.toast('收藏成功');
-                        } else {
-                            $.toast('收藏失败', 'cancel');
-                        }
-                    }, function (error) {
-                        $.toast('收藏失败', 'cancel');
+
+                $ocLazyLoad.load('Jquery').then(function () {
+                    $ocLazyLoad.load('JqueryWeUI').then(function () {
+                        DetailsFty.addCollectionService(productId)
+                            .then(function (json) {
+                                //alert(angular.toJson(json));
+                                if (json.status_code == 0) {
+                                    $.toast('收藏成功');
+                                } else {
+                                    $.toast('收藏失败', 'cancel');
+                                }
+                            }, function (error) {
+                                $.toast('收藏失败', 'cancel');
+                            })
                     })
+                })
+
             }
-
-
         }])
 
 ;

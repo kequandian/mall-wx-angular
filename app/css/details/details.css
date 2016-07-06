@@ -479,6 +479,17 @@
     padding-left: 10px;
 }
 
+#details .spec_info div{
+    color: #4c4c4c;
+    height: 22px;
+    line-height: 22px;
+}
+
+#details .spec_info div:first-child{
+    color: red;
+    font-size: 16px;
+}
+
 
 #details .weui_media_box{
     padding: 15px 15px 0 15px;
@@ -488,7 +499,7 @@
 
 
 #details .weui_media_box.weui_media_text .weui_media_info{
-    margin-top: 12px;
+    margin-top: 6px;
     margin-bottom: 5px;
 }
 
@@ -509,17 +520,17 @@
 
 #details .detail_label_radio{
     /*cursor: pointer;*/
-    padding: 3px;
-    border-radius: 3px;
-    color: #A7A7A7;
-    background-color: #EAEAEA;
+    padding: 5px 10px;
+    border-radius: 8px;
+    color: #A3A3A3;
+    background-color: #F2F2F2;
 }
 
 #details .detail_label_radio_checked{
-    padding: 4px;
-    border-radius: 3px;
+    padding: 5px 10px;
+    border-radius: 8px;
     color: white;
-    background-color: #3489DB;
+    background-color: #FF6846;
 }
 
 

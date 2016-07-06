@@ -243,7 +243,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 $scope.settlementData[index] = ({
                     "product_id": data.product_id,
                     "quantity": data.quantity,
-                    "product_specification": data.product_specification
+                    "product_specification_id": data.product_specification_id
                 });
             });
             //console.log($scope.settlementData);
@@ -263,6 +263,9 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 }
 
                 $scope.order.contact = $scope.currentContact;
+
+                alert(angular.toJson($scope.order));
+                return;
 
                 CartFty.addOrder($scope.order).then(
                     function (result) {
