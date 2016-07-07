@@ -6,11 +6,13 @@ angular.module('details.controller', ['details.service'])
             //title
             document.title = "商品详情";
 
-            $ocLazyLoad.load('JqueryWeUI').then(function(){
-                console.log("details:jquery loaded");
-                //商品详情
-                detailsInfo();
-            })
+            $ocLazyLoad.load('Jquery').then(function(){
+                $ocLazyLoad.load('JqueryWeUI').then(function(){
+                    console.log("details:jquery loaded");
+                    //商品详情
+                    detailsInfo();
+                });
+            });
 
             $scope.properties_list = [];
             function detailsInfo() {
@@ -134,21 +136,17 @@ angular.module('details.controller', ['details.service'])
             //添加购物车
             $scope.addProductToCart = function (productId, quantity, product_property,product_specification_id) {
 
-                $ocLazyLoad.load('Jquery').then(function () {
-                    $ocLazyLoad.load('JqueryWeUI').then(function () {
-                        DetailsFty.addProToCatService(productId, quantity, product_property,product_specification_id)
-                            .then(function (json) {
-                                if (json.status_code == 0) {
-                                    //$.toast.prototype.defaults.duration = 2000;
-                                    $.toast("成功添加商品");
-                                } else {
-                                    $.toast("添加失败", "cancel");
-                                }
-                            }, function (error) {
-                                $.toast("添加失败", "cancel");
-                            })
+                DetailsFty.addProToCatService(productId, quantity, product_property,product_specification_id)
+                    .then(function (json) {
+                        if (json.status_code == 0) {
+                            //$.toast.prototype.defaults.duration = 2000;
+                            $.toast("成功添加商品");
+                        } else {
+                            $.toast("添加失败", "cancel");
+                        }
+                    }, function (error) {
+                        $.toast("添加失败", "cancel");
                     })
-                })
             };
 
             //立即购买
@@ -172,27 +170,20 @@ angular.module('details.controller', ['details.service'])
             };
 
             //添加收藏
+            $scope.addProductToCollection = function (productId) {
 
-            $ocLazyLoad.load('Jquery').then(function () {
-                $ocLazyLoad.load('JqueryWeUI').then(function () {
-                    $scope.addProductToCollection = function (productId) {
-
-                        DetailsFty.addCollectionService(productId)
-                            .then(function (json) {
-                                //alert(angular.toJson(json));
-                                if (json.status_code == 0) {
-                                    $.toast('收藏成功');
-                                } else {
-                                    $.toast('收藏失败', 'cancel');
-                                }
-                            }, function (error) {
-                                $.toast('收藏失败', 'cancel');
-                            })
-
-                    }
-
-                })
-            })
+                DetailsFty.addCollectionService(productId)
+                    .then(function (json) {
+                        //alert(angular.toJson(json));
+                        if (json.status_code == 0) {
+                            $.toast('收藏成功');
+                        } else {
+                            $.toast('收藏失败', 'cancel');
+                        }
+                    }, function (error) {
+                        $.toast('收藏失败', 'cancel');
+                    })
+            }
         }])
 
 

@@ -51,11 +51,13 @@
 
                                         <div class="cart-quantity-form-position" ng-hide="cart_item_quantity">
                                             <div class="cart-quantity-form">
-                                                <a href="javascript:void(0);" class="cart-quantity-decrement" ng-click="downQuantity(cart.product_id)">
+                                                <a href="javascript:void(0);" class="cart-quantity-decrement"
+                                                   ng-click="downQuantity(cart.product_id, cart.product_specification_id)">
                                                     <span>-</span>
                                                 </a>
                                                 <input autocomplete="off" class="cart-quantity" value="{{ cart.quantity }}" type="text" readonly>
-                                                <a href="javascript:void(0);" class="cart-quantity-increment"  ng-click="upQuantity(cart.product_id)">
+                                                <a href="javascript:void(0);" class="cart-quantity-increment"
+                                                   ng-click="upQuantity(cart.product_id, cart.product_specification_id)">
                                                     <span>+</span>
                                                 </a>
                                             </div>

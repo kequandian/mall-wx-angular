@@ -139,7 +139,6 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                 script.src = src;
             }
 
-
             //进入提现页
             $scope.goToWithdrow = function (phone) {
                 $state.go('withdraw', {accountPhone: phone})
@@ -150,8 +149,6 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                 DWStatus.d_w_status = 1;
                 $state.go('distributionInfo');
             };
-
-
 
         }])
 
