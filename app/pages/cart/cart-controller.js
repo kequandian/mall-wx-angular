@@ -294,13 +294,14 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 }
 
 
-                console.log('提交前：' + angular.toJson($scope.order))
+                //console.log('提交前：' + angular.toJson($scope.order))
 
                 $scope.order.contact = $scope.currentContact;
 
                 CartFty.addOrder($scope.order).then(
                     function (result) {
                         //console.log('提交成功：' + angular.toJson(result.data));
+                        $scope.order_number = result.data.order_number;
                         deleteProducts($scope.settlementData);
 
                         //$state.go('order-confirm',{data:result.data});
@@ -311,6 +312,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
             //删除购物车商品
             function deleteProducts(items) {
+                //console.log("items：" + angular.toJson(items));
 
                 $ocLazyLoad.load('Jquery').then(function () {
                     $ocLazyLoad.load('JqueryWeUI').then(function () {
@@ -327,8 +329,8 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                         CartFty.deleteProduct($scope.product_items)
                             .then(function (result) {
                                 if (result.status_code == 0) {
-                                    window.location.href = '/app/payment/wpay/' + result.data.order_number;
-                                    console.log("删除购物车商品：" + angular.toJson(result));
+                                    //console.log("删除购物车商品：" + $scope.order_number);
+                                    window.location.href = '/app/payment/wpay/' + $scope.order_number;
                                 } else {
                                     $.toast('直接支付失败', 'cancel');
                                 }
