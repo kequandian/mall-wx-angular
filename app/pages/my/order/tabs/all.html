@@ -37,10 +37,9 @@
                 </div>
 
                 <!-- 待发货 -->
-                <div ng-if="items.status == 'CONFIRMED_DELIVER_PENDING' || items.status == 'DELIVERING'">
+                <div ng-if="items.status == 'CONFIRMED_DELIVER_PENDING'">
                     <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_warn item-btn-right" style="margin-right: 5px;"
-                            ng-click="deliverReminder(items.order_number)"
-                            ng-if="items.status == 'CONFIRMED_DELIVER_PENDING'">
+                            ng-click="deliverReminder(items.order_number)">
                         提醒发货
                     </a>
                     <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right"
@@ -50,7 +49,7 @@
                 </div>
 
                 <!-- 待收货 -->
-                <div ng-if="items.status == 'PAID_CONFIRM_PENDING' || items.status == 'DELIVERED_CONFIRM_PENDING'" style="margin-right: 5px;">
+                <div ng-if="items.status == 'DELIVERING' || items.status == 'DELIVERED_CONFIRM_PENDING'" style="margin-right: 5px;">
                     <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_warn item-btn-right"
                        ng-click="a_close_order_action()"
                        ng-if="items.status == 'DELIVERED_CONFIRM_PENDING'"
@@ -68,7 +67,8 @@
 
                 <!-- 已完成 -->
                 <a ng-if="items.status == 'CLOSED_CONFIRMED' || items.status == 'CLOSED_REFUNDED'"
-                   href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right" ng-click="goToExpress_all(items.order_number)">
+                   href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right" style="margin-right: 5px;"
+                   ng-click="goToExpress_all(items.order_number)">
                     物流详情
                 </a>
 

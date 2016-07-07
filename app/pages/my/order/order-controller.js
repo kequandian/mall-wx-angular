@@ -88,7 +88,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
 
                             //待发货
                             angular.forEach($scope.orders, function (v, k) {
-                                if (v.status == "CONFIRMED_DELIVER_PENDING" || v.status == "PAID_CONFIRM_PENDING") {
+                                if (v.status == "CONFIRMED_DELIVER_PENDING") {
                                     $scope.order_list.push(v);
                                 }
                             });
@@ -303,7 +303,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                             //alert(angular.toJson($scope.orders));
                             $scope.payedList = [];//待发货
                             angular.forEach(orders, function (v, k) {
-                                if (v.status == "CONFIRMED_DELIVER_PENDING" || v.status == "DELIVERING") {
+                                if (v.status == "CONFIRMED_DELIVER_PENDING") {
                                     $scope.payedList.push(v);
                                 }
                             });
@@ -401,7 +401,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                             //alert(angular.toJson($scope.orders));
                             $scope.deliveredList = [];//待收货
                             angular.forEach(orders, function (v, k) {
-                                if (v.status == "PAID_CONFIRM_PENDING" || v.status == "DELIVERED_CONFIRM_PENDING") {
+                                if (v.status == "DELIVERING" || v.status == "DELIVERED_CONFIRM_PENDING") {
                                     $scope.deliveredList.push(v);
                                 }
                             });
@@ -512,7 +512,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                             $scope.finishList = [];//已完成
                             angular.forEach(orders, function (v, k) {
                                 //已完成
-                                if (v.status == "CLOSED_CONFIRMED" || v.status == "CLOSED_REFUNDED") {
+                                if (v.status == "CLOSED_CONFIRMED") {
                                     $scope.finishList.push(v);
                                 }
                             });
@@ -539,6 +539,11 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             //订单状态
             $scope.order_list_status = function (orderStatus) {
                 return OrderCommon.OrderStatus(orderStatus);
+            };
+
+            //进入物流详情
+            $scope.goToExpress_finish = function (number) {
+                $state.go('express', {orderNumber: number, productImg: null, productCount: null});
             };
 
         }])

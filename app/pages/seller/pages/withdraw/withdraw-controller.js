@@ -47,7 +47,7 @@ angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
                         postDraw();
                     })
                 })
-            }
+            };
 
 
             //提交提现信息
@@ -86,6 +86,11 @@ angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $scope.withDraw= json.data;
+                            $.toast.prototype.defaults = 1000;
+                            $.toast('已提交');
+                            $timeout(function(){
+                                $state.go('home.sellerPage');
+                            }, 1100);
                         }
                     }, function (error) {
                         $.toast('提现失败', 'cancel');

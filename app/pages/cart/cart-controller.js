@@ -42,22 +42,46 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             }
 
             //商品数量增减
-            $scope.downQuantity = function (id) {
+            $scope.downQuantity = function (id, product_spec_id) {
                 angular.forEach($scope.carts, function (value, key) {
                     //console.log(id);
-                    if (value.product_id == id) {
-                        if (value.quantity > 1) {
-                            value.quantity = value.quantity - 1;
+
+                    if(product_spec_id == null){
+                        if (value.product_id == id) {
+                            if (value.quantity > 1) {
+                                value.quantity = value.quantity - 1;
+                            }
+                        }
+                    }else if(product_spec_id > 0){
+                        if (value.product_id == id && value.product_specification_id == product_spec_id) {
+                            if (value.quantity > 1) {
+                                value.quantity = value.quantity - 1;
+                            }
                         }
                     }
+
                 }, $scope.carts);
                 //console.log($scope.carts);
             };
-            $scope.upQuantity = function (id) {
+            $scope.upQuantity = function (id, product_spec_id) {
                 angular.forEach($scope.carts, function (value, key) {
-                    if (value.product_id == id) {
-                        value.quantity = value.quantity + 1;
+
+                    if(product_spec_id == null){
+                        if (value.product_id == id) {
+                            value.quantity = value.quantity + 1;
+                            if(value.quantity > 99){
+                                value.quantity = 99;
+                            }
+                        }
+                    }else if(product_spec_id > 0){
+                        if (value.product_id == id && value.product_specification_id == product_spec_id) {
+                            value.quantity = value.quantity + 1;
+                            if(value.quantity > 99){
+                                value.quantity = 99;
+                            }
+                        }
                     }
+
                 }, $scope.carts);
                 //console.log($scope.carts);
             };
@@ -173,11 +197,16 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     var productItem = {};
                     productItem.product_id = v.product_id;
                     productItem.quantity = v.quantity;
+                    productItem.product_specification_id = v.product_specification_id;
                     products.push(productItem);
                 });
 
+                console.log(angular.toJson(products));
+
                 CartFty.editCountService(products)
                     .then(function (json) {
+
+                        console.log('修改成功：' + angular.toJson(json));
                         if (json.status_code == 0) {
                             var count = 0;
                             angular.forEach($scope.carts, function (v, k) {
@@ -247,6 +276,8 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             $scope.freight = $stateParams.totalFreight;
             $scope.total_price = $stateParams.totalToPay + $stateParams.totalFreight;
 
+
+
             //提交订单
             $scope.order = {};
             $scope.addOrderSubmit = function () {
@@ -258,12 +289,16 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     return;
                 }
 
+
+                console.log('提交前：' + angular.toJson($scope.order))
+
                 $scope.order.contact = $scope.currentContact;
+
                 CartFty.addOrder($scope.order).then(
                     function (result) {
-                        //console.log(result.data);
+                        //console.log('提交成功：' + angular.toJson(result.data));
                         deleteProducts($scope.settlementData);
-                        window.location.href = '/app/payment/wpay/' + result.data.order_number;
+
                         //$state.go('order-confirm',{data:result.data});
                     }, function (error) {
                         console.log(error);
@@ -273,22 +308,33 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             //删除购物车商品
             function deleteProducts(items) {
 
-                $scope.product_items = [];
-                var del_item = {};
-                angular.forEach(items, function (data, index) {
-                    del_item.product_id = data.product_id;
-                    del_item.quantity = 0;
-                    del_item.product_specification_id = data.product_specification_id;
-                    $scope.product_items.push(del_item);
-                });
+                //console.log("items: " + angular.toJson(items));
 
-                CartFty.deleteProduct($scope.product_items)
-                    .then(function (json) {
-                        console.log("删除购物车商品：" + json);
-                    }, function (error) {
-                        console.log(error);
+
+                $ocLazyLoad.load('Jquery').then(function () {
+                    $ocLazyLoad.load('JqueryWeUI').then(function () {
+                        $scope.product_items = [];
+                        angular.forEach(items, function (data, index) {
+                            var del_item = {};
+                            del_item.product_id = data.product_id;
+                            del_item.quantity = 0;
+                            del_item.product_specification_id = data.product_specification_id;
+                            $scope.product_items.push(del_item);
+                        });
+
+                        CartFty.deleteProduct($scope.product_items)
+                            .then(function (json) {
+                                if(json.status_code == 0){
+                                    window.location.href = '/app/payment/wpay/' + result.data.order_number;
+                                    console.log("删除购物车商品：" + angular.toJson(json));
+                                }else{
+                                    $.toast('直接支付失败', 'cancel');
+                                }
+                            }, function (error) {
+                                console.log(error);
+                            })
                     })
-
+                })
             }
 
 
@@ -446,7 +492,6 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
                 +function ($) {
                     "use strict";
-
 
                     var defaults;
 
