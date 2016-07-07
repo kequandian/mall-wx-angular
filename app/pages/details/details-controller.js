@@ -154,17 +154,26 @@ angular.module('details.controller', ['details.service'])
             $scope.buy_immediately = function (item, quantity, product_property,product_specification_id) {
                 //console.log("product.item?" + angular.toJson(item));
 
+                var buy_price = 0;
+                if(item.specifications.length > 0){
+                    angular.forEach(item.specifications, function(v, k){
+                        if(v.id == product_specification_id){
+                            buy_price = v.price;
+                        }
+                    });
+                    item.price = buy_price;
+                }
+
                 item.product_id = item.id;
                 item.quantity = $scope.q_count;
                 item.product_name = item.name;
-                item.price = item.price * quantity;
                 //item.product_property = product_property;
                 item.product_specification_id = product_specification_id;
                 $scope.checkedCarts.push(item);
 
                 $state.go('cart-settlement', {
                     carts: $scope.checkedCarts,
-                    totalToPay: item.price,
+                    totalToPay: item.price * quantity,
                     totalFreight: item.freight
                 });
             };
