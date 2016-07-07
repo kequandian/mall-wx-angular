@@ -26,9 +26,10 @@
                         <div class="weui_panel_bd">
                             <div class="weui_media_box weui_media_small_appmsg">
                                 <div class="weui_cells weui_cells_access">
-                                    <a class="weui_cell" href="javascript:;" id="showAddress">
-                                        <input type="hidden" id="show_address_status" ng-model="show_address_status">
-                                        <div class="weui_cell_bd weui_cell_primary">
+                                    <a class="weui_cell" href="javascript:;" id="showAddress" ng-hide="!contacts.length > 0">
+                                        <input type="hidden" id="show_address_status" ng-hide="show_address_status">
+                                        <div class="weui_cell_bd weui_cell_primary" style="min-height: 69px;">
+                                            <!--<p>添加收货地址</p>-->
                                             <p class="contact-info-space">收货人：{{currentContact.contact_user}} <span style="margin-left: 10px;">{{currentContact.phone}}</span></p>
                                             <p class="address-info">
                                                 <img src="img/cart/address.png" class="address-img">
@@ -38,11 +39,20 @@
                                                 <!--<input type="hidden" ng-model="order.contact=currentContact">-->
                                                 <!--<input type="hidden" ng-model="order.contact" ng-init="order.contact=currentContact">-->
                                                 <!--<input type="hidden" ng-model="order.remark">-->
-                                                <input id="close_add_address" type="hidden" value="{{close_add_address}}">
                                             </p>
                                         </div>
                                         <span class="weui_cell_ft"></span>
                                     </a>
+                                    <a class="weui_cell" href="javascript:;" id="createAddress" ng-hide="contacts.length > 0">
+                                        <div class="weui_cell_bd weui_cell_primary" style="min-height: 69px;">
+                                            <p style="font-size: 14px; line-height: 89px; color: #4c4c4c;">添加收货地址</p>
+                                        </div>
+                                        <span class="weui_cell_ft"></span>
+                                    </a>
+
+
+
+
                                     <!--<div class="weui_cell weui_cell_select weui_select_after">-->
                                         <!--<div class="weui_cell_hd weui_media_desc">-->
                                             <!--收货时间-->
@@ -273,7 +283,7 @@
                         <div>合计:<span style="color: red;" ng-bind="total_price|currency:'￥'"></span></div>
                     </div>
                 </div>
-                <button class="footRight" type="submit" ng-disabled="settlementCarts.length==null">确认付款</button>
+                <button class="footRight" type="submit" ng-disabled="settlementCarts.length==0">确认付款</button>
                 <input type="hidden" ng-model="order.order_items" ng-init="order.order_items=settlementData">
             </footer>
         </div>

@@ -106,7 +106,6 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                             //取消操作
                         });
                         /*end function*/
-
                     })
                 });
             };
