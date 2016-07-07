@@ -23,7 +23,7 @@ angular.module('userInfo.service', [])
                 var deferred = $q.defer();
                 var url = GlobalVariable.SERVER_PATH + "/profile";
                 $http.post(url,{
-                    "name":name,
+                    "real_name":name,
                     "phone": phone
                 },{
                     headers:{
