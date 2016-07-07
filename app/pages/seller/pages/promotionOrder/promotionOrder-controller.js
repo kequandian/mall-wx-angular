@@ -93,6 +93,7 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
                     newItem.agent_reward = 0;
                     newItem.partner_reward = 0;
                     newItem.seller_reward = 0;
+                    newItem.platform_reward = 0;
 
                     if(item.type == 'SELLER') {
                         newItem.seller_reward = item.reward ;
@@ -105,6 +106,7 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
                     }else if(item.type == 'PLATFORM'){
                         newItem.platform_reward = item.reward;
                     }
+                    newItem.total_reward = newItem.seller_reward + newItem.agent_reward + newItem.partner_reward;
 
                     order_hash[item.order_number] = newItem;
 
@@ -123,6 +125,8 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
                     }else if(item.type == 'PLATFORM'){
                         child.platform_reward += item.reward;
                     }
+
+                    child.total_reward += child.seller_reward + child.agent_reward + child.partner_reward;
                 }
 
                 //console.log(order_hash[item.order_number]);

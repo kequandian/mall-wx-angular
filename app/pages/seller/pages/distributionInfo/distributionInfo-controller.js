@@ -30,7 +30,7 @@ angular.module('distributionInfo.controller', ['userInfo.service', 'seller.sessi
             //提交个人信息
             $scope.postUserInfo = function () {
 
-                var name = $scope.userInfo.name;
+                var real_name = $scope.userInfo.real_name;
                 var phone = $scope.userInfo.phone;
 
                 if(!angular.isString($scope.userInfo.name)
@@ -47,7 +47,7 @@ angular.module('distributionInfo.controller', ['userInfo.service', 'seller.sessi
                     return
                 }
 
-                UserInfoFty.postInfoService(name, phone)
+                UserInfoFty.postInfoService(real_name, phone)
                     .then(function (json) {
                         if (json.status_code == 0) {
                             //alert(angular.toJson(json));
