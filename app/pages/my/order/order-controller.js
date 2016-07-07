@@ -215,7 +215,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
 
                                 if (json.status_code == 0) {
                                     $.toast('已提醒卖家发货');
-                                    $state.go('order.all', {}, {reload: true});
+                                    //$state.go('order.all', {}, {reload: true});
                                 } else {
                                     $.toast('发送失败', 'cancel');
                                 }
@@ -368,7 +368,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
 
                                 if (json.status_code == 0) {
                                     $.toast('已提醒卖家发货');
-                                    $state.go('order.payed', {}, {reload: true});
+                                    //$state.go('order.payed', {}, {reload: true});
                                 } else {
                                     $.toast('发送失败', 'cancel');
                                 }
