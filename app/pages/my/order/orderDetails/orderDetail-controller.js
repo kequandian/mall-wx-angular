@@ -159,7 +159,7 @@ angular.module('orderDetails.controller', ['orderDetails.service',
 
                                 if (json.status_code == 0) {
                                     $.toast('已提醒卖家发货');
-                                    $state.go('orderDetails', {}, {reload: true});
+                                    //$state.go('orderDetails', {}, {reload: true});
                                 } else {
                                     $.toast('发送失败', 'cancel');
                                 }
