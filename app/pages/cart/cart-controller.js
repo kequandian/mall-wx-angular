@@ -46,13 +46,13 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 angular.forEach($scope.carts, function (value, key) {
                     //console.log(id);
 
-                    if(product_spec_id == null){
+                    if (product_spec_id == null) {
                         if (value.product_id == id) {
                             if (value.quantity > 1) {
                                 value.quantity = value.quantity - 1;
                             }
                         }
-                    }else if(product_spec_id > 0){
+                    } else if (product_spec_id > 0) {
                         if (value.product_id == id && value.product_specification_id == product_spec_id) {
                             if (value.quantity > 1) {
                                 value.quantity = value.quantity - 1;
@@ -66,19 +66,19 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             $scope.upQuantity = function (id, product_spec_id) {
                 angular.forEach($scope.carts, function (value, key) {
 
-                    if(product_spec_id == null){
+                    if (product_spec_id == null) {
                         if (value.product_id == id) {
                             value.quantity = value.quantity + 1;
-                            if(value.quantity > 99){
-                                value.quantity = 99;
-                            }
+                            //if (value.quantity > 99) {
+                            //    value.quantity = 99;
+                            //}
                         }
-                    }else if(product_spec_id > 0){
+                    } else if (product_spec_id > 0) {
                         if (value.product_id == id && value.product_specification_id == product_spec_id) {
                             value.quantity = value.quantity + 1;
-                            if(value.quantity > 99){
-                                value.quantity = 99;
-                            }
+                            //if (value.quantity > 99) {
+                            //    value.quantity = 99;
+                            //}
                         }
                     }
 
@@ -189,10 +189,10 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             };
 
             //修改购物车商品数量
-            function editProductCount(){
+            function editProductCount() {
 
                 var products = [];
-                angular.forEach($scope.carts,function(v, k){
+                angular.forEach($scope.carts, function (v, k) {
                     var productItem = {};
                     productItem.product_id = v.product_id;
                     productItem.quantity = v.quantity;
@@ -227,6 +227,12 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
             //title
             document.title = "结算";
+
+            $ocLazyLoad.load('Jquery').then(function () {
+                $ocLazyLoad.load('JqueryWeUI').then(function () {
+                    console.log('settlement:jquery loaded');
+                })
+            });
 
             $scope.show_address_status = 'add';
             AllContacts();
@@ -276,7 +282,6 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             $scope.total_price = $stateParams.totalToPay + $stateParams.totalFreight;
 
 
-
             //提交订单
             $scope.order = {};
             $scope.addOrderSubmit = function () {
@@ -307,11 +312,9 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             //删除购物车商品
             function deleteProducts(items) {
 
-                //console.log("items: " + angular.toJson(items));
-
-
                 $ocLazyLoad.load('Jquery').then(function () {
                     $ocLazyLoad.load('JqueryWeUI').then(function () {
+
                         $scope.product_items = [];
                         angular.forEach(items, function (data, index) {
                             var del_item = {};
@@ -322,11 +325,11 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                         });
 
                         CartFty.deleteProduct($scope.product_items)
-                            .then(function (json) {
-                                if(json.status_code == 0){
+                            .then(function (result) {
+                                if (result.status_code == 0) {
                                     window.location.href = '/app/payment/wpay/' + result.data.order_number;
-                                    console.log("删除购物车商品：" + angular.toJson(json));
-                                }else{
+                                    console.log("删除购物车商品：" + angular.toJson(result));
+                                } else {
                                     $.toast('直接支付失败', 'cancel');
                                 }
                             }, function (error) {
@@ -643,5 +646,3 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 });
         }
     }]);
-
-

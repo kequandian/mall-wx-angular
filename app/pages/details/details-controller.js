@@ -138,12 +138,23 @@ angular.module('details.controller', ['details.service'])
 
                 DetailsFty.addProToCatService(productId, quantity, product_property,product_specification_id)
                     .then(function (json) {
-                        if (json.status_code == 0) {
-                            //$.toast.prototype.defaults.duration = 2000;
-                            $.toast("成功添加商品");
-                        } else {
-                            $.toast("添加失败", "cancel");
-                        }
+
+                        $ocLazyLoad.load('Jquery').then(function(){
+                            $ocLazyLoad.load('JqueryWeUI').then(function(){
+
+                                /*start function*/
+                                if (json.status_code == 0) {
+                                    //$.toast.prototype.defaults.duration = 2000;
+                                    $.toast("成功添加商品");
+                                } else {
+                                    $.toast("添加失败", "cancel");
+                                }
+                                /*end function*/
+
+                            });
+                        });
+
+
                     }, function (error) {
                         $.toast("添加失败", "cancel");
                     })
@@ -183,12 +194,22 @@ angular.module('details.controller', ['details.service'])
 
                 DetailsFty.addCollectionService(productId)
                     .then(function (json) {
-                        //alert(angular.toJson(json));
-                        if (json.status_code == 0) {
-                            $.toast('收藏成功');
-                        } else {
-                            $.toast('收藏失败', 'cancel');
-                        }
+
+                        $ocLazyLoad.load('Jquery').then(function(){
+                            $ocLazyLoad.load('JqueryWeUI').then(function(){
+
+                                /*start function*/
+                                //alert(angular.toJson(json));
+                                if (json.status_code == 0) {
+                                    $.toast('收藏成功');
+                                } else {
+                                    $.toast('收藏失败', 'cancel');
+                                }
+                                /*end function*/
+
+                            });
+                        });
+
                     }, function (error) {
                         $.toast('收藏失败', 'cancel');
                     })
