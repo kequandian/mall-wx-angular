@@ -105,6 +105,7 @@ angular.module('goodsList.controller', ['goodsList.service'])
                                 } else if (new_code.length == 0) {
                                     $.toast("暂无更多的分类商品信息");
                                 }
+
                             }
 
                         } else {

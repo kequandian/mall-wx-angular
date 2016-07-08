@@ -210,15 +210,34 @@
     margin-left: 5px;
 }
 .cart-list li .item-info .item-title {
-    font-weight: 400;
-    height: 50px;
+    height: 23px;
     overflow:hidden;
     padding-right:10px;
-    line-height:26px;
+    line-height:25px;
     font-size:13px;
     color:#222;
     margin-bottom: 5px;
 }
+.cart-list li .item-info .item-title-2 {
+    height: 50px;
+    overflow:hidden;
+    padding-right:10px;
+    line-height:25px;
+    font-size:13px;
+    color:#222;
+    margin-bottom: 5px;
+}
+
+.cart-list li .item-info .item-spec {
+    height: 23px;
+    overflow:hidden;
+    padding-right:10px;
+    line-height:25px;
+    font-size:13px;
+    color:#8C8C8C;
+    margin-bottom: 5px;
+}
+
 /*.cart-list li .item-info .item-created-date {*/
 /*position:absolute;*/
 /*right:0;*/

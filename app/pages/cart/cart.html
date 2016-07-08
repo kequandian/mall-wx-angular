@@ -41,7 +41,13 @@
                                     <img ng-src="{{cart.cover}}">
                                 </a>
                                 <div class="">
-                                    <a  ui-sref="details({productId:cart.product_id})"><h4 class="item-title">{{cart.product_name}}</h4></a>
+                                    <a  ui-sref="details({productId:cart.product_id})" ng-if="cart.product_specification_name != null">
+                                        <h4 class="item-title">{{cart.product_name | cutText:true:16:"..."}}</h4>
+                                        <div class="item-spec">规格：{{cart.product_specification_name}}</div>
+                                    </a>
+                                    <a  ui-sref="details({productId:cart.product_id})" ng-if="cart.product_specification_name == null">
+                                        <div class="item-title-2">{{cart.product_name}}</div>
+                                    </a>
                                     <div class="item-info-bottom">
 
                                         <div class="item-price-position" ng-hide="cart_item_price">
