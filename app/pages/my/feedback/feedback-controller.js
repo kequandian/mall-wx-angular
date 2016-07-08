@@ -34,7 +34,11 @@ angular.module('feedback.controller', ['feedback.service'])
         }
 
         $scope.uploadImage = function(){
-            loadImageFileAsURL(ImageUpLoad);
+            if($scope.image_list.length > 5){
+                $.toast('提交图片不能超过5张', 'cancel');
+            }else {
+                loadImageFileAsURL(ImageUpLoad);
+            }
         }
 
         function loadImageFileAsURL(ImageUpLoad) {
