@@ -26,8 +26,8 @@
                         <div class="weui_panel_bd">
                             <div class="weui_media_box weui_media_small_appmsg">
                                 <div class="weui_cells weui_cells_access">
-                                    <a class="weui_cell" href="javascript:;" id="showAddress" ng-hide="!contacts.length > 0">
-                                        <input type="hidden" id="show_address_status" ng-hide="show_address_status">
+                                    <a class="weui_cell" href="javascript:;" id="showAddress" ng-if="contacts.length > 0">
+                                        <input type="hidden" id="show_address_status" ng-model="show_address_status">
                                         <div class="weui_cell_bd weui_cell_primary" style="min-height: 69px;">
                                             <!--<p>添加收货地址</p>-->
                                             <p class="contact-info-space">收货人：{{currentContact.contact_user}} <span style="margin-left: 10px;">{{currentContact.phone}}</span></p>
@@ -43,7 +43,7 @@
                                         </div>
                                         <span class="weui_cell_ft"></span>
                                     </a>
-                                    <a class="weui_cell" href="javascript:;" id="createAddress" ng-hide="contacts.length > 0">
+                                    <a class="weui_cell" href="javascript:;" id="createAddress" ng-if="!contacts.length > 0">
                                         <div class="weui_cell_bd weui_cell_primary" style="min-height: 69px;">
                                             <p style="font-size: 14px; line-height: 89px; color: #4c4c4c;">添加收货地址</p>
                                         </div>

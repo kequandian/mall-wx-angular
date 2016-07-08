@@ -25,11 +25,13 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                                     c_count += v.quantity;
                                 });
                                 $rootScope.cartCount = c_count;
+                                $rootScope.detailsCartCount = c_count;
 
                                 $scope.empty_cart_hide = true;
                                 $scope.cart_info_hide = false;
                             } else {
                                 $rootScope.cartCount = 0;
+                                $rootScope.detailsCartCount = 0;
                                 $scope.empty_cart_hide = false;
                                 $scope.cart_info_hide = true;
 
@@ -205,13 +207,14 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 CartFty.editCountService(products)
                     .then(function (json) {
 
-                        console.log('修改成功：' + angular.toJson(json));
+                        //console.log('修改成功：' + angular.toJson(json));
                         if (json.status_code == 0) {
                             var count = 0;
                             angular.forEach($scope.carts, function (v, k) {
                                 count += v.quantity;
                             });
                             $rootScope.cartCount = count;
+                            $rootScope.detailsCartCount = count;
                         } else {
                             console.log("修改失败：" + error)
                         }
@@ -329,6 +332,13 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                         CartFty.deleteProduct($scope.product_items)
                             .then(function (result) {
                                 if (result.status_code == 0) {
+                                    var count = 0;
+                                    angular.forEach(result.data, function (v, k) {
+                                        count += v.quantity;
+                                    });
+                                    $rootScope.cartCount = count;
+                                    $rootScope.detailsCartCount = count;
+
                                     //console.log("删除购物车商品：" + $scope.order_number);
                                     window.location.href = '/app/payment/wpay/' + $scope.order_number;
                                 } else {
@@ -361,8 +371,17 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                         $.confirm("", "确认删除?", function () {
                             AddressManagerFty.deleteContact(id).then(
                                 function (result) {
-                                    console.log(result);
-                                    $state.go('cart-settlement', {}, {reload: true});
+                                    if(result.status_code == 0) {
+                                        var count = 0;
+                                        angular.forEach(result.data, function (v, k) {
+                                            count += v.quantity;
+                                        });
+                                        $rootScope.cartCount = count;
+                                        $rootScope.detailsCartCount = count;
+                                        $state.go('cart-settlement', {}, {reload: true});
+                                    }else{
+                                        console.log('删除购物车商品失败')
+                                    }
                                 }, function (error) {
                                     console.log(error);
                                 });

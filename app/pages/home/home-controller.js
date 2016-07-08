@@ -68,6 +68,7 @@ angular.module('home.controller', ['home.service'])
                             }
                             if (c_count > 0) {
                                 $scope.home_tabs[3].c_number = c_count;
+                                $rootScope.detailsCartCount = c_count;
                             }
                         }
                     }, function (error) {

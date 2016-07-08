@@ -57,7 +57,6 @@ $(function () {
 
         //结算页添加收货地址
         .on('click', '#createAddress', function () {
-
             var s_contact_user = $('#s_contact_user');
             var s_contact_phone = $('#s_contact_phone');
             var city_picker = $('#city-picker');
@@ -102,8 +101,48 @@ $(function () {
 
         //address list add action
         .on('click', '#c_address_action',function(){
-            $("#createAddress").click();
+            //$("#createAddress").click();
             $('#actionsheet_cancel').click();
+            var s_contact_user = $('#s_contact_user');
+            var s_contact_phone = $('#s_contact_phone');
+            var city_picker = $('#city-picker');
+            var s_contact_detail = $('#s_contact_detail');
+            var add_mask = $('#add_mask');
+            var weui_action_add_sheet = $('#weui_action_add_sheet');
+            weui_action_add_sheet.addClass('weui_actionsheet_toggle');
+            add_mask.show().addClass('weui_fade_toggle').on('click', function () {
+                hideActionSheet_add(weui_action_add_sheet, add_mask);
+            });
+            $('#action_add_sheet_cancel').on('click', function () {
+                if(s_contact_user.val().length <= 0){
+                    return;
+                }
+                if(s_contact_phone.val().length <= 0){
+                    return;
+                }
+                if(city_picker.val().length <= 0){
+                    return;
+                }
+                if(s_contact_detail.val().length <= 0){
+                    return;
+                }
+                hideActionSheet_add(weui_action_add_sheet, add_mask);
+                $('#actionsheet_cancel').click();
+            });
+            $('.selectContact').one('click', function () {
+                hideActionSheet_add(weui_action_add_sheet, add_mask);
+            });
+            weui_action_add_sheet.unbind('transitionend').unbind('webkitTransitionEnd');
+
+            function hideActionSheet_add(weui_action_add_sheet, add_mask) {
+                weui_action_add_sheet.removeClass('weui_actionsheet_toggle');
+                add_mask.removeClass('weui_fade_toggle');
+                weui_action_add_sheet.on('transitionend', function () {
+                    add_mask.hide();
+                }).on('webkitTransitionEnd', function () {
+                    add_mask.hide();
+                })
+            }
         })
 
 

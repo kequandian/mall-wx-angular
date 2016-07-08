@@ -1,7 +1,7 @@
 angular.module('details.controller', ['details.service'])
 
-    .controller('DetailsController', ['$scope', '$state', '$stateParams', 'DetailsFty', '$ocLazyLoad',
-        function ($scope, $state, $stateParams, DetailsFty, $ocLazyLoad) {
+    .controller('DetailsController', ['$scope', '$state', '$stateParams','$rootScope', 'DetailsFty', '$ocLazyLoad',
+        function ($scope, $state, $stateParams,$rootScope, DetailsFty, $ocLazyLoad) {
 
             //title
             document.title = "商品详情";
@@ -12,6 +12,12 @@ angular.module('details.controller', ['details.service'])
                     //商品详情
                     detailsInfo();
                 });
+            });
+
+            var scope = $rootScope;
+            scope.$watch('detailsCartCount',function(nValue, oValue){
+                $scope.d_cart_count = nValue;
+                console.log('新值：' + nValue + "-------" + '旧值：' + oValue);
             });
 
             $scope.properties_list = [];
@@ -94,11 +100,12 @@ angular.module('details.controller', ['details.service'])
                 }
             };
             $scope.upQ = function () {
-                if ($scope.q_count < 99) {
-                    $scope.q_count++;
-                } else {
-                    $scope.q_count = 99;
-                }
+                $scope.q_count++;
+                //if ($scope.q_count < 99) {
+                //    $scope.q_count++;
+                //} else {
+                //    $scope.q_count = 99;
+                //}
             };
 
             //购买状态
@@ -145,6 +152,13 @@ angular.module('details.controller', ['details.service'])
                                 /*start function*/
                                 if (json.status_code == 0) {
                                     //$.toast.prototype.defaults.duration = 2000;
+                                    var c_count = 0;
+                                    if (json.data.length > 0) {
+                                        angular.forEach(json.data, function (v, k) {
+                                            c_count += v.quantity;
+                                        });
+                                    }
+                                    $rootScope.detailsCartCount = c_count;
                                     $.toast("成功添加商品");
                                 } else {
                                     $.toast("添加失败", "cancel");

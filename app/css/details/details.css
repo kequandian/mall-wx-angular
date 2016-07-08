@@ -397,6 +397,24 @@
     color:#5F5D5E;
 }
 
+#details .details_cart_count{
+    top: 3%;
+    position:absolute;
+    /*bottom:10px;*/
+    /*right: 27%;*/
+    background-color:red;
+    min-width: 16px;
+    min-height: 16px;
+    line-height:16px;
+    /*padding: 1px 1px;*/
+    text-align:center;
+    color:#fff;
+    border-radius:10px; /*圆角*/
+    font-weight:500;
+    font-size: xx-small;
+    font-family: 'Arial';
+}
+
 #details .footer-cart{
     width:22%;
     height: 50px;
@@ -462,6 +480,7 @@
     background-color: red;
     float: right;
 }
+
 
 /* details content sheet*/
 #details .detail_content_title{
