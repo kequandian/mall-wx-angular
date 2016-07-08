@@ -225,8 +225,8 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
         }])
 
-    .controller('SettlementController', ['$scope', '$state', '$stateParams', '$location', 'AddressManagerFty', 'CartFty',
-        '$ocLazyLoad', function ($scope, $state, $stateParams, $location, AddressManagerFty, CartFty, $ocLazyLoad) {
+    .controller('SettlementController', ['$scope', '$state', '$stateParams', '$location','$rootScope', 'AddressManagerFty', 'CartFty',
+        '$ocLazyLoad', function ($scope, $state, $stateParams, $location,$rootScope, AddressManagerFty, CartFty, $ocLazyLoad) {
 
             //title
             document.title = "结算";

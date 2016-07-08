@@ -25,7 +25,7 @@
 .cart_count{
     position:absolute;
     /*bottom:10px;*/
-    /*right:18%;*/
+    right: 23%;
     background-color:red;
     min-width: 18px;
     min-height: 18px;
@@ -38,6 +38,6 @@
     font-size: xx-small;
     font-family: 'Arial';
     /*center offset 10px*/
-    left: 10px;
-    margin-left: 50%;
+    /*left: 10px;*/
+    /*margin-left: 50%;*/
 }
