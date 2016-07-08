@@ -17,7 +17,7 @@ angular.module('details.controller', ['details.service'])
             var scope = $rootScope;
             scope.$watch('detailsCartCount',function(nValue, oValue){
                 $scope.d_cart_count = nValue;
-                console.log('新值：' + nValue + "-------" + '旧值：' + oValue);
+                //console.log('新值：' + nValue + "-------" + '旧值：' + oValue);
             });
 
             $scope.properties_list = [];

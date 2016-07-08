@@ -230,6 +230,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
             //title
             document.title = "结算";
+            $scope.settlementCarts = [];
 
             $ocLazyLoad.load('Jquery').then(function () {
                 $ocLazyLoad.load('JqueryWeUI').then(function () {
@@ -289,7 +290,6 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             $scope.order = {};
             $scope.addOrderSubmit = function () {
                 //console.log($scope.order);
-
                 if ($scope.show_address_status == 'add') {
                     var click_index = document.getElementById('showAddress');
                     click_index.click();
@@ -304,6 +304,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 CartFty.addOrder($scope.order).then(
                     function (result) {
                         //console.log('提交成功：' + angular.toJson(result.data));
+                        $scope.settlementCarts = [];
                         $scope.order_number = result.data.order_number;
                         deleteProducts($scope.settlementData);
 
@@ -462,12 +463,8 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
                 CartFty.addContact($scope.contact)
                     .then(function (result) {
-
-                        $scope.close_add_address = 'success';
                         AllContacts();
-
                         //$state.go('cart-settlement',{}, {reload: true});
-
                     }, function (error) {
                         console.log(error);
                     });
