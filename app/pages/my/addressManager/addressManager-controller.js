@@ -6,12 +6,12 @@ angular.module('addressManager.controller', ['addressManager.service'])
 
             AllContacts();
 
-            $ocLazyLoad.load('Jquery').
-                then(function () {
-                    $ocLazyLoad.load('JqueryWeUI').then(function () {
+            //$ocLazyLoad.load('Jquery').
+            //    then(function () {
+            //        $ocLazyLoad.load('JqueryWeUI').then(function () {
                         AllPCD();
-                    })
-                });
+            //       })
+            //   });
 
             //自动关闭pcd控件
             var scope1 = $rootScope;

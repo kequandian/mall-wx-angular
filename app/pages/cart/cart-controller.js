@@ -17,7 +17,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     function (result) {
                         if (result.status_code == 0) {
                             $scope.carts = result.data;
-                            //alert(angular.toJson(result.data))
+                            //console.log(angular.toJson(result.data))
                             if ($scope.carts.length > 0) {
 
                                 var c_count = 0;
@@ -90,8 +90,9 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
             //删除购物车单项商品
             $scope.showDeleteConfirm = function (cartItem) {
-                $ocLazyLoad.load('Jquery').then(function () {
-                    $ocLazyLoad.load('JqueryWeUI').then(function () {
+
+                //$ocLazyLoad.load('Jquery').then(function () {
+                //    $ocLazyLoad.load('JqueryWeUI').then(function () {
 
                         /*start function*/
                         $.confirm("", "确认要移除该商品吗？", function () {
@@ -100,16 +101,20 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                                     //console.log(result);
                                     //$state.go('home.cart',{}, {reload: true});
                                     AllCarts();//重新加载购物车
+
+                                    $.toast("移除成功!");
+
                                 }, function (error) {
                                     //console.log(error);
                                 });
-                            $.toast("移除成功!");
+
                         }, function () {
                             //取消操作
                         });
                         /*end function*/
-                    })
-                });
+
+                    //})
+                //});
             };
 
             //选购结算
@@ -225,11 +230,12 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
         }])
 
-    .controller('SettlementController', ['$scope', '$state', '$stateParams', '$location','$rootScope', 'AddressManagerFty', 'CartFty',
-        '$ocLazyLoad', function ($scope, $state, $stateParams, $location,$rootScope, AddressManagerFty, CartFty, $ocLazyLoad) {
+    .controller('SettlementController', ['$scope', '$state', '$stateParams', '$location', '$rootScope', 'AddressManagerFty', 'CartFty',
+        '$ocLazyLoad', function ($scope, $state, $stateParams, $location, $rootScope, AddressManagerFty, CartFty, $ocLazyLoad) {
 
             //title
             document.title = "结算";
+            $scope.settlementCarts = [];
 
             $ocLazyLoad.load('Jquery').then(function () {
                 $ocLazyLoad.load('JqueryWeUI').then(function () {
@@ -289,7 +295,6 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             $scope.order = {};
             $scope.addOrderSubmit = function () {
                 //console.log($scope.order);
-
                 if ($scope.show_address_status == 'add') {
                     var click_index = document.getElementById('showAddress');
                     click_index.click();
@@ -304,6 +309,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 CartFty.addOrder($scope.order).then(
                     function (result) {
                         //console.log('提交成功：' + angular.toJson(result.data));
+                        $scope.settlementCarts = [];
                         $scope.order_number = result.data.order_number;
                         deleteProducts($scope.settlementData);
 
@@ -371,7 +377,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                         $.confirm("", "确认删除?", function () {
                             AddressManagerFty.deleteContact(id).then(
                                 function (result) {
-                                    if(result.status_code == 0) {
+                                    if (result.status_code == 0) {
                                         var count = 0;
                                         angular.forEach(result.data, function (v, k) {
                                             count += v.quantity;
@@ -379,7 +385,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                                         $rootScope.cartCount = count;
                                         $rootScope.detailsCartCount = count;
                                         $state.go('cart-settlement', {}, {reload: true});
-                                    }else{
+                                    } else {
                                         console.log('删除购物车商品失败')
                                     }
                                 }, function (error) {
@@ -462,12 +468,8 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
                 CartFty.addContact($scope.contact)
                     .then(function (result) {
-
-                        $scope.close_add_address = 'success';
                         AllContacts();
-
                         //$state.go('cart-settlement',{}, {reload: true});
-
                     }, function (error) {
                         console.log(error);
                     });

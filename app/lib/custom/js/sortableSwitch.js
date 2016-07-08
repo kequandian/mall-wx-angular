@@ -20,11 +20,11 @@ angular.module('sortableSwitch', [])
 
             '<div class="arrow">' +
 
-            '<svg class="up" width="{{arrowWidth}}" height="{{arrowHeight}}" viewBox="0 0 25 25">' +
+            '<svg class="up" width="9" height="9" viewBox="0 0 25 25">' +
             '   <polygon points="0,15 20,15 10,0" fill="{{upColor}}">' +
             '</svg>' +
 
-            '<svg class="down" width="{{arrowWidth}}" height="{{arrowHeight}}" viewBox="0 0 25 25" style="bottom:{{arrowOffset}}px">' +
+            '<svg class="down" width="9" height="9" viewBox="0 0 25 25" style="bottom:{{arrowOffset}}px">' +
             '   <polygon points="0,0 20,0 10,15" fill="{{downColor}}">' +
             '</svg>' +
 

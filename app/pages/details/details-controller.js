@@ -6,18 +6,13 @@ angular.module('details.controller', ['details.service'])
             //title
             document.title = "商品详情";
 
-            $ocLazyLoad.load('Jquery').then(function(){
-                $ocLazyLoad.load('JqueryWeUI').then(function(){
-                    console.log("details:jquery loaded");
-                    //商品详情
-                    detailsInfo();
-                });
-            });
+            //商品详情
+            detailsInfo();
 
             var scope = $rootScope;
             scope.$watch('detailsCartCount',function(nValue, oValue){
                 $scope.d_cart_count = nValue;
-                console.log('新值：' + nValue + "-------" + '旧值：' + oValue);
+                //console.log('新值：' + nValue + "-------" + '旧值：' + oValue);
             });
 
             $scope.properties_list = [];
@@ -131,12 +126,24 @@ angular.module('details.controller', ['details.service'])
                     $.toast('请选择商品规格');
                     return;
                 }
+                if ($scope.details.specifications.length > 0 && $scope.product_property_value.stock_balance == 0) {
+                    $.toast('此商品暂无库存');
+                    return;
+                }
 
                 var b_status = $scope.b_status;
                 if (b_status == "cart") {
-                    $scope.addProductToCart(productId, quantity, product_property,product_specification_id);
+                    if(productInfo.stock_balance > 0) {
+                        $scope.addProductToCart(productId, quantity, product_property, product_specification_id);
+                    }else{
+                        $.toast('此商品暂无库存');
+                    }
                 } else if (b_status == "buy") {
-                    $scope.buy_immediately(productInfo, quantity, product_property,product_specification_id);
+                    if(productInfo.stock_balance > 0) {
+                        $scope.buy_immediately(productInfo, quantity, product_property,product_specification_id);
+                    }else{
+                        $.toast('此商品暂无库存');
+                    }
                 }
             };
 
@@ -159,7 +166,7 @@ angular.module('details.controller', ['details.service'])
                                         });
                                     }
                                     $rootScope.detailsCartCount = c_count;
-                                    $.toast("成功添加商品");
+                                    //$.toast("成功添加商品");
                                 } else {
                                     $.toast("添加失败", "cancel");
                                 }

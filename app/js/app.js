@@ -40,7 +40,17 @@
             $urlRouterProvider.otherwise("/home/homePage");
 
             $ocLazyLoadProvider.config({
-                modules: [{
+                modules: [ {
+                    name: 'Jquery',
+                    files: ['bower_components/jquery/dist/jquery.min.js'],
+                    cache: true
+                }, {
+                    name: 'JqueryWeUI',
+                    files: ['bower_components/jquery-weui/dist/js/jquery-weui.min.js',
+                        'js/weui.js',
+                        {type: 'css', path: 'bower_components/jquery-weui/dist/css/jquery-weui-compact.css'}],
+                    cache: true
+                }, {
                     name: 'FiveStar',
                     files: [{type: 'css', path: 'lib/custom/css/fiveStar.css'}, 'lib/custom/css/levelProgress.css', 'lib/custom/js/fiveStar.js', 'lib/custom/js/levelProgress.js',],
                     cache: true
@@ -53,22 +63,6 @@
                     files: ['lib/custom/css/sortableSwitch.css', 'lib/custom/js/sortableSwitch.js'],
                     cache: true
                 }, {
-                    name: 'Jquery',
-                    files: ['bower_components/jquery/dist/jquery.min.js'],
-                    cache: true
-                }, {
-                    name: 'JqueryWeUI',
-                    files: ['bower_components/jquery-weui/dist/js/jquery-weui.min.js',
-                        'js/weui.js',
-                        {type: 'css', path: 'bower_components/jquery-weui/dist/css/jquery-weui-compact.css'}],
-                    cache: true
-                }, {
-                    name: 'GoodsList',
-                    files: ['pages/goodsList/goodsList-controller.js',
-                        'pages/goodsList/goodsList-service.js',
-                        {type: 'css', path: 'css/goodsList/goodsList.css'}],
-                    cache: false
-                }, {
                     name: 'ImageCache',
                     files: [
                         //  not used now
@@ -77,9 +71,16 @@
                         ],
                     cache: true
                 }, {
+                    name: 'GoodsList',
+                    files: ['pages/goodsList/goodsList-controller.js',
+                        'pages/goodsList/goodsList-service.js',
+                        'lib/custom/js/sortableSwitch.js',
+                        {type: 'css', path: 'lib/custom/css/sortableSwitch.css'},
+                        {type: 'css', path: 'css/goodsList/goodsList.css'}],
+                    cache: false
+                }, {
                     name: 'Details',
                     files: [
-                        'bower_components/jquery/dist/jquery.min.js',
                         'pages/details/details-controller.js',
                         'pages/details/details-service.js',
                         {type: 'css', path: 'css/cart/cart.css'},
@@ -94,10 +95,8 @@
                 }, {
                     name: 'SalesReturn',
                     files: [
-                        'bower_components/jquery-weui/dist/js/jquery-weui.min.js',
                         'pages/my/order/salesReturn/salesReturn-controller.js',
                         'pages/my/order/salesReturn/salesReturn-service.js',
-                        {type: 'css', path: 'bower_components/jquery-weui/dist/css/jquery-weui-compact.css'},
                         {type: 'css', path: 'css/my/salesReturn.css'}
                     ],
                     cache: false
@@ -105,7 +104,6 @@
                     name: 'Category',
                     files: ['pages/category/category-controller.js',
                         'pages/category/category-service.js',
-                        {type: 'css', path: 'bower_components/jquery-weui/dist/css/jquery-weui-compact.css'},
                         {type: 'css', path: 'css/category/category.css'}],
                     cache: false
                 }, {
@@ -186,7 +184,7 @@
                     cache: false
                 }, {
                     name: 'My',
-                    files: ['bower_components/jquery/dist/jquery.min.js',
+                    files: [
                         'pages/my/my-controller.js',
                         'pages/my/my-service.js',
                         {type: 'css', path: 'css/my/my.css'}],
@@ -194,11 +192,9 @@
                 }, {
                     name: 'Feedback',
                     files: [
-                        'bower_components/jquery-weui/dist/js/jquery-weui.min.js',
                         'pages/my/feedback/feedback-controller.js',
                         'pages/pageCommon/imageUpLoad.js',
                         'pages/my/feedback/feedback-service.js',
-                        {type: 'css', path: 'bower_components/jquery-weui/dist/css/jquery-weui-compact.css'},
                         {type: 'css', path: 'css/my/feedback.css'}],
                     cache: false
                 }, {

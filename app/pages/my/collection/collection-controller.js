@@ -47,10 +47,11 @@ angular.module('collection.controller', ['collection.service'])
             };
 
             //移除收藏商品
-            $scope.delete_coll_item = function (coll_id) {
 
-                $ocLazyLoad.load('Jquery').then(function () {
-                    $ocLazyLoad.load('JqueryWeUI').then(function () {
+            $ocLazyLoad.load('Jquery').then(function () {
+                $ocLazyLoad.load('JqueryWeUI').then(function () {
+                    $scope.delete_coll_item = function (coll_id) {
+
                         /*start*/
                         $.confirm("", "确认删除?", function () {
                             CollectionFty.deleteCollectionSerivce(coll_id)
@@ -67,8 +68,8 @@ angular.module('collection.controller', ['collection.service'])
                             //取消操作
                         });
                         /*end*/
-                    })
-                });
-            }
+                    }
+                })
+            });
         }])
 ;

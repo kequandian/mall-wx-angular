@@ -24,7 +24,6 @@ angular.module('fiveStar', [])
         };
 
        function link($scope, $element, $arrts) {
-           console.log('aaaaaaa');
            var yellowList = [];
            var whiteList = [];
 
@@ -36,7 +35,6 @@ angular.module('fiveStar', [])
            var rankTop = $scope.rankTop;
            if($scope.rankTop === undefined){
                rankTop = rank;
-               console.log('rankTop?'+rankTop);
            }
 
            var src = $arrts.src;

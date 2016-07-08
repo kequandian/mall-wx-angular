@@ -2,9 +2,9 @@ angular.module('homePage.service', [])
     .factory('HomePageFty', ['$http', '$q','GlobalVariable',
         function($http,$q,GlobalVariable) {
             return{
-                recommendProductService: function () {
+                recommendProductService: function (pageNumber, pageSize) {
                     var deferred = $q.defer();
-                    var url = GlobalVariable.SERVER_PATH + "/product?pageNumber=1&pageSize=10";
+                    var url = GlobalVariable.SERVER_PATH + "/product?pageNumber=" + pageNumber + "&pageSize=" + pageSize;
                     $http.get(url)
                         .success(function (data) {
                             return deferred.resolve(data);

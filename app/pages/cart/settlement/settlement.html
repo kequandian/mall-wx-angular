@@ -52,7 +52,6 @@
 
 
 
-
                                     <!--<div class="weui_cell weui_cell_select weui_select_after">-->
                                         <!--<div class="weui_cell_hd weui_media_desc">-->
                                             <!--收货时间-->
@@ -180,8 +179,10 @@
                             </a>
                             <div class="">
                                 <div class="settlement-cart-title">
-                                    {{cart.product_name}}
-                                    <p class="settlement-cart-type">包装分类</p>
+                                    {{cart.product_name | cutText:true:20:"..."}}
+                                    <p class="settlement-cart-type" ng-if="cart.product_specification_name">
+                                        规格：{{cart.product_specification_name}}
+                                    </p>
                                 </div>
                                 <div class="settlement-cart-bottom">
                                     <span class="settlement-cart-price">{{cart.price|currency:'￥'}}</span>

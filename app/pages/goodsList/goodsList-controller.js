@@ -1,15 +1,9 @@
 angular.module('goodsList.controller', ['goodsList.service'])
 
     .controller('GoodsListController', ['$scope', '$state', '$stateParams', '$rootScope', 'GoodsListFty', 'searchInfo', 'goodListParams', 'areasStatus',
-        '$ocLazyLoad', function ($scope, $state, $stateParams, $rootScope, GoodsListFty, searchInfo, goodListParams, areasStatus, $ocLazyLoad) {
+        function ($scope, $state, $stateParams, $rootScope, GoodsListFty, searchInfo, goodListParams, areasStatus) {
 
             document.title = "商品列表";
-
-            $ocLazyLoad.load('Jquery').then(function () {
-                $ocLazyLoad.load('JqueryWeUI').then(function () {
-                    console.log("goodsList:jquery loaded");
-                })
-            });
 
             var orderBy = "";
             var pageNumber = 1;
@@ -108,9 +102,16 @@ angular.module('goodsList.controller', ['goodsList.service'])
                                     angular.forEach(new_code, function (v, k) {
                                         $scope.productList.push(v);
                                     });
+                                    if(new_code.length < 20){
+                                        $scope.load_more_btn_show = false;
+                                        $.toast("已加载全部的商品");
+                                    }
                                 } else if (new_code.length == 0) {
+
+                                    $scope.load_more_btn_show = false;
                                     $.toast("暂无更多的分类商品信息");
                                 }
+
                             }
 
                         } else {
