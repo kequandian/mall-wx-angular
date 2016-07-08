@@ -345,12 +345,11 @@ body, html {
 
 #content .load-more-product{
     width: 100%;
-    position: relative;
 }
 
 #content .load-more-product .load-more-button{
-    left: 21%;
-    right: 21%;
+    /*left: 21%;*/
+    /*right: 21%;*/
     padding: 1px 0;
     border: 1px solid #989898;
     font-size: 15px;
@@ -358,7 +357,10 @@ body, html {
     border-radius: 5px;
     text-align: center;
     bottom: 7px;
-    position: absolute;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 25%;
+    margin-right: 25%;
 }
 #content .load-more-product .load-more-button:active{
     background-color: #989898;
