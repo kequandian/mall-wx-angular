@@ -33,8 +33,8 @@ angular.module('distributionInfo.controller', ['userInfo.service', 'seller.sessi
                 var real_name = $scope.userInfo.real_name;
                 var phone = $scope.userInfo.phone;
 
-                if(!angular.isString($scope.userInfo.name)
-                    || $scope.userInfo.name.length==0){
+                if(!angular.isString($scope.userInfo.real_name)
+                    || $scope.userInfo.real_name.length==0){
                     $.toast('姓名不能为空', 'cancel');
                     return
                 }

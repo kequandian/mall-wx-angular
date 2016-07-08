@@ -6,10 +6,6 @@ angular.module('my.controller', ['my.service'])
             //title
             document.title = "个人中心";
 
-            //$ocLazyLoad.load('JqueryWeUI').then(function(){
-            //    console.log("my:jquery loaded");
-            //})
-
             $rootScope.tabsNumber = 5;
 
             //用户信息

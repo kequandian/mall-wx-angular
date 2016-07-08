@@ -1,7 +1,7 @@
 angular.module('goodsList.controller', ['goodsList.service'])
 
     .controller('GoodsListController', ['$scope', '$state', '$stateParams', '$rootScope', 'GoodsListFty', 'searchInfo', 'goodListParams', 'areasStatus',
-        '$ocLazyLoad', function ($scope, $state, $stateParams, $rootScope, GoodsListFty, searchInfo, goodListParams, areasStatus, $ocLazyLoad) {
+        function ($scope, $state, $stateParams, $rootScope, GoodsListFty, searchInfo, goodListParams, areasStatus) {
 
             document.title = "商品列表";
 
