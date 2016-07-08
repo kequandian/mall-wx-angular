@@ -90,8 +90,9 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
             //删除购物车单项商品
             $scope.showDeleteConfirm = function (cartItem) {
-                $ocLazyLoad.load('Jquery').then(function () {
-                    $ocLazyLoad.load('JqueryWeUI').then(function () {
+
+                //$ocLazyLoad.load('Jquery').then(function () {
+                //    $ocLazyLoad.load('JqueryWeUI').then(function () {
 
                         /*start function*/
                         $.confirm("", "确认要移除该商品吗？", function () {
@@ -100,16 +101,20 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                                     //console.log(result);
                                     //$state.go('home.cart',{}, {reload: true});
                                     AllCarts();//重新加载购物车
+
+                                    $.toast("移除成功!");
+
                                 }, function (error) {
                                     //console.log(error);
                                 });
-                            $.toast("移除成功!");
+
                         }, function () {
                             //取消操作
                         });
                         /*end function*/
-                    })
-                });
+
+                    //})
+                //});
             };
 
             //选购结算
@@ -225,8 +230,8 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
         }])
 
-    .controller('SettlementController', ['$scope', '$state', '$stateParams', '$location','$rootScope', 'AddressManagerFty', 'CartFty',
-        '$ocLazyLoad', function ($scope, $state, $stateParams, $location,$rootScope, AddressManagerFty, CartFty, $ocLazyLoad) {
+    .controller('SettlementController', ['$scope', '$state', '$stateParams', '$location', '$rootScope', 'AddressManagerFty', 'CartFty',
+        '$ocLazyLoad', function ($scope, $state, $stateParams, $location, $rootScope, AddressManagerFty, CartFty, $ocLazyLoad) {
 
             //title
             document.title = "结算";
@@ -372,7 +377,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                         $.confirm("", "确认删除?", function () {
                             AddressManagerFty.deleteContact(id).then(
                                 function (result) {
-                                    if(result.status_code == 0) {
+                                    if (result.status_code == 0) {
                                         var count = 0;
                                         angular.forEach(result.data, function (v, k) {
                                             count += v.quantity;
@@ -380,7 +385,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                                         $rootScope.cartCount = count;
                                         $rootScope.detailsCartCount = count;
                                         $state.go('cart-settlement', {}, {reload: true});
-                                    }else{
+                                    } else {
                                         console.log('删除购物车商品失败')
                                     }
                                 }, function (error) {

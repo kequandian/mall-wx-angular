@@ -6,13 +6,8 @@ angular.module('details.controller', ['details.service'])
             //title
             document.title = "商品详情";
 
-            $ocLazyLoad.load('Jquery').then(function(){
-                $ocLazyLoad.load('JqueryWeUI').then(function(){
-                    console.log("details:jquery loaded");
-                    //商品详情
-                    detailsInfo();
-                });
-            });
+            //商品详情
+            detailsInfo();
 
             var scope = $rootScope;
             scope.$watch('detailsCartCount',function(nValue, oValue){
@@ -159,7 +154,7 @@ angular.module('details.controller', ['details.service'])
                                         });
                                     }
                                     $rootScope.detailsCartCount = c_count;
-                                    $.toast("成功添加商品");
+                                    //$.toast("成功添加商品");
                                 } else {
                                     $.toast("添加失败", "cancel");
                                 }

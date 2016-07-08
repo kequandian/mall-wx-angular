@@ -5,12 +5,6 @@ angular.module('goodsList.controller', ['goodsList.service'])
 
             document.title = "商品列表";
 
-            $ocLazyLoad.load('Jquery').then(function () {
-                $ocLazyLoad.load('JqueryWeUI').then(function () {
-                    console.log("goodsList:jquery loaded");
-                })
-            });
-
             var orderBy = "";
             var pageNumber = 1;
             var pageSize = 20;
