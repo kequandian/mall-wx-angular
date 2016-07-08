@@ -11,14 +11,14 @@ angular.module('squareImg', [])
 
                 var el = $el[0];
 
-                while(!(el.width>0)){
+                while(!(el.width>100)){
                     $timeout(function(){
-                        $el.css('height', el.width);
+                        $el.css('height', max(175, el.width));
                     }, 500);
                 }
 
                 $el.css('height', el.width);
-                //console.log("squareImg: width?"+el.width+",height?"+el.height);
+                console.log("squareImg: width?"+el.width+",height?"+el.height);
             }
         };
     })
