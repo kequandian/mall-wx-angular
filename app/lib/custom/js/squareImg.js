@@ -10,13 +10,16 @@ angular.module('squareImg', [])
             link: function (scope, $el, attrs) {
 
                 var el = $el[0];
-                $el.css('height',0);
-
+                $el.css('height', 'auto');
                 //console.log("squareImg: width?"+el.width+",height?"+el.height);
 
-                if(el.width>0) {
-                    $el.css('height', el.width);
-                }
+                scope.$watch(function() {
+                    //console.log("watch width?"+ $el[0].width+", height?"+$el[0].height);
+                    return $el[0].width;
+                }, function(value){
+                    $el.css('height', value);
+                    //console.log("watch onchange()?"+ $el[0].width+", clientHeight?"+$el[0].height);
+                });
 
                 //while(!(el.width>100)){
                 //    $timeout(function(){
