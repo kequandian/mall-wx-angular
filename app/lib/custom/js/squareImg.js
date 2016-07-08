@@ -17,7 +17,7 @@ angular.module('squareImg', [])
                     }, 500);
                 }
 
-                $el.css('height', el.width);
+                $el.css('height', max(175, el.width));
                 console.log("squareImg: width?"+el.width+",height?"+el.height);
             }
         };
