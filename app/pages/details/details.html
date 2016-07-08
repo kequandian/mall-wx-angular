@@ -169,7 +169,8 @@
                                 <img square-img ng-src="{{details_content_sheet_img}}">
 
                                 <div class="weui_media_desc" ng-if="!details.specifications.length > 0">
-                                    {{details.name}}
+                                    {{details.name | cutText:true:32:"..."}}
+                                    <div style="padding-left: 0; margin-top: 6px;">库存：{{details_stock_balance != null ? details_stock_balance : 0}}</div>
                                 </div>
                                 <div class="weui_media_desc spec_info" ng-if="details.specifications.length > 0">
                                     <div>￥{{spec_item_price != null ? spec_item_price : details_price}}</div>
@@ -177,6 +178,7 @@
                                     <!--<div>已选：{{spec_item_name != null ? spec_item_name : '规格分类'}}</div>-->
                                     <div ng-if="spec_item_name != null">已选：{{spec_item_name}}</div>
                                 </div>
+
                             </div>
                             <div ng-if="details.specifications.length > 0" style="font-size: 14px;">商品规格</div>
                             <ul class="weui_media_info detail_content_checkbox">
@@ -190,6 +192,8 @@
                                 </li>
                                 <input id="property_hidden" type="hidden" value="{{product_property_value.name}}">
                                 <input id="propertis_null" type="hidden" value="{{details.specifications.length}}">
+                                <input id="product_stock_balance" type="hidden" value="{{spec_item_stock_balance}}">
+                                <input id="details_stock_balance" type="hidden" value="{{details_stock_balance}}">
                             </ul>
 
                             <div class="details-quantity-position">

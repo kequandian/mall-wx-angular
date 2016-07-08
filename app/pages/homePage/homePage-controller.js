@@ -75,7 +75,13 @@ angular.module('homePage.controller', ['homePage.service'])
                                     angular.forEach(json.data, function (v, k) {
                                         $scope.rec_product.push(v);
                                     })
+
+                                    if(json.data.length < 20){
+                                        $scope.home_load_more_btn_show = false;
+                                        $.toast("已加载全部的推荐商品");
+                                    }
                                 }else if (json.data.length == 0) {
+                                    $scope.home_load_more_btn_show = false;
                                     $.toast("暂无更多的推荐商品");
                                 }
 

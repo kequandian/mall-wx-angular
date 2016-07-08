@@ -126,12 +126,24 @@ angular.module('details.controller', ['details.service'])
                     $.toast('请选择商品规格');
                     return;
                 }
+                if ($scope.details.specifications.length > 0 && $scope.product_property_value.stock_balance == 0) {
+                    $.toast('此商品暂无库存');
+                    return;
+                }
 
                 var b_status = $scope.b_status;
                 if (b_status == "cart") {
-                    $scope.addProductToCart(productId, quantity, product_property,product_specification_id);
+                    if(productInfo.stock_balance > 0) {
+                        $scope.addProductToCart(productId, quantity, product_property, product_specification_id);
+                    }else{
+                        $.toast('此商品暂无库存');
+                    }
                 } else if (b_status == "buy") {
-                    $scope.buy_immediately(productInfo, quantity, product_property,product_specification_id);
+                    if(productInfo.stock_balance > 0) {
+                        $scope.buy_immediately(productInfo, quantity, product_property,product_specification_id);
+                    }else{
+                        $.toast('此商品暂无库存');
+                    }
                 }
             };
 

@@ -102,7 +102,13 @@ angular.module('goodsList.controller', ['goodsList.service'])
                                     angular.forEach(new_code, function (v, k) {
                                         $scope.productList.push(v);
                                     });
+                                    if(new_code.length < 20){
+                                        $scope.load_more_btn_show = false;
+                                        $.toast("已加载全部的商品");
+                                    }
                                 } else if (new_code.length == 0) {
+
+                                    $scope.load_more_btn_show = false;
                                     $.toast("暂无更多的分类商品信息");
                                 }
 
