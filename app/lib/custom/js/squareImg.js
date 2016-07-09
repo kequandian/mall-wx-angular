@@ -21,7 +21,7 @@ angular.module('squareImg', [])
                 scope.$watch(function() {
                     //console.log("watch width?"+ $el[0].width+", height?"+$el[0].height);
                     return $el[0].clientWidth;
-                    
+
                 }, function(value, oldValue){
 
                     if( ! (el.width> 0 && el.height > 0 && el.width==el.height)) {

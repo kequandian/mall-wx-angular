@@ -1,7 +1,7 @@
 angular.module('homePage.controller', ['homePage.service'])
 
-    .controller('HomePageController', ['$scope', '$state', '$rootScope', 'HomePageFty','areasStatus','goodListParams',
-        '$ocLazyLoad', function ($scope, $state,$rootScope, HomePageFty,areasStatus,goodListParams, $ocLazyLoad) {
+    .controller('HomePageController', ['$scope', '$rootScope', '$state', '$rootScope', 'HomePageFty','areasStatus','goodListParams',
+        '$ocLazyLoad', function ($scope, $rootScope, $state, $rootScope, HomePageFty,areasStatus,goodListParams, $ocLazyLoad) {
 
             document.title = "十美优品商城";
 
@@ -12,7 +12,9 @@ angular.module('homePage.controller', ['homePage.service'])
             });
 
             $rootScope.tabsNumber = 1;
-            $scope.home_load_more_btn_show = false;
+
+            var pageNumber = $rootScope.rec_session.page_number;
+            var pageSize = $rootScope.rec_session.page_size;
 
             /* setTimeout(function(){
              document.title = "首页";
@@ -45,19 +47,22 @@ angular.module('homePage.controller', ['homePage.service'])
              }).appendTo($body);
              }*/
 
-            $scope.currentId = 1;
-            var pageNumber = 1;
-            var pageSize = 10;
-
+            $scope.currentId = 1;   //??? for what
 
             //获取广告
             getAdHome();
             getAdBanner();
-            //获取推荐商品
-            getRecommendProduct(pageNumber, pageSize);
 
+
+            //获取推荐商品
+            if($rootScope.rec_session.rec_product.length == 0) {
+                getRecommendProduct(pageNumber, pageSize);
+            }else{
+                $scope.rec_product = $rootScope.rec_session.rec_product;
+            }
 
             function getRecommendProduct(pageNumber, pageSize) {
+
                 HomePageFty.recommendProductService(pageNumber, pageSize)
                     .then(function (json) {
                         if (json.status_code == 0) {
@@ -78,11 +83,11 @@ angular.module('homePage.controller', ['homePage.service'])
 
                                     if(json.data.length < 20){
                                         $scope.home_load_more_btn_show = false;
-                                        $.toast("已加载全部的推荐商品");
+                                        //$.toast("已加载全部的推荐商品");
                                     }
                                 }else if (json.data.length == 0) {
                                     $scope.home_load_more_btn_show = false;
-                                    $.toast("暂无更多的推荐商品");
+                                    //$.toast("暂无更多的推荐商品");
                                 }
 
                             }
@@ -144,8 +149,12 @@ angular.module('homePage.controller', ['homePage.service'])
             //加载更多
             $scope.home_load_more_product = function(){
                 pageNumber += 1;
-                getRecommendProduct(pageNumber, pageSize);
-            }
+                $rootScope.rec_session.page_number = pageNumber;
 
+                getRecommendProduct(pageNumber, pageSize);
+
+                $rootScope.rec_session.rec_product = $scope.rec_product;
+                $rootScope.rec_session.load_more = $scope.home_load_more_btn_show;
+            }
 
         }]);
