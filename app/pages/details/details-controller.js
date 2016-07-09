@@ -1,7 +1,7 @@
 angular.module('details.controller', ['details.service'])
 
-    .controller('DetailsController', ['$scope', '$state', '$stateParams','$rootScope', 'DetailsFty', '$ocLazyLoad',
-        function ($scope, $state, $stateParams,$rootScope, DetailsFty, $ocLazyLoad) {
+    .controller('DetailsController', ['$scope', '$state', '$stateParams', '$rootScope', 'DetailsFty', '$ocLazyLoad',
+        function ($scope, $state, $stateParams, $rootScope, DetailsFty, $ocLazyLoad) {
 
             //title
             document.title = "商品详情";
@@ -10,7 +10,7 @@ angular.module('details.controller', ['details.service'])
             detailsInfo();
 
             var scope = $rootScope;
-            scope.$watch('detailsCartCount',function(nValue, oValue){
+            scope.$watch('detailsCartCount', function (nValue, oValue) {
                 $scope.d_cart_count = nValue;
                 //console.log('新值：' + nValue + "-------" + '旧值：' + oValue);
             });
@@ -31,7 +31,7 @@ angular.module('details.controller', ['details.service'])
                                 $scope.details_content_sheet_img = $scope.details.covers[0].url;
                             }
 
-                            if(angular.isDefined($scope.details.specifications)) {
+                            if (angular.isDefined($scope.details.specifications)) {
                                 if ($scope.details.specifications.length > 0) {
                                     var properties = [];
 
@@ -118,7 +118,7 @@ angular.module('details.controller', ['details.service'])
                 var product_property = null;
                 var product_specification_id = null;
 
-                if($scope.product_property_value != null){
+                if ($scope.product_property_value != null) {
                     product_specification_id = $scope.product_property_value.id;
                 }
 
@@ -133,28 +133,28 @@ angular.module('details.controller', ['details.service'])
 
                 var b_status = $scope.b_status;
                 if (b_status == "cart") {
-                    if(productInfo.stock_balance > 0) {
+                    if (productInfo.stock_balance > 0) {
                         $scope.addProductToCart(productId, quantity, product_property, product_specification_id);
-                    }else{
+                    } else {
                         $.toast('此商品暂无库存');
                     }
                 } else if (b_status == "buy") {
-                    if(productInfo.stock_balance > 0) {
-                        $scope.buy_immediately(productInfo, quantity, product_property,product_specification_id);
-                    }else{
+                    if (productInfo.stock_balance > 0) {
+                        $scope.buy_immediately(productInfo, quantity, product_property, product_specification_id);
+                    } else {
                         $.toast('此商品暂无库存');
                     }
                 }
             };
 
             //添加购物车
-            $scope.addProductToCart = function (productId, quantity, product_property,product_specification_id) {
+            $scope.addProductToCart = function (productId, quantity, product_property, product_specification_id) {
 
-                DetailsFty.addProToCatService(productId, quantity, product_property,product_specification_id)
+                DetailsFty.addProToCatService(productId, quantity, product_property, product_specification_id)
                     .then(function (json) {
 
-                        $ocLazyLoad.load('Jquery').then(function(){
-                            $ocLazyLoad.load('JqueryWeUI').then(function(){
+                        $ocLazyLoad.load('Jquery').then(function () {
+                            $ocLazyLoad.load('JqueryWeUI').then(function () {
 
                                 /*start function*/
                                 if (json.status_code == 0) {
@@ -183,13 +183,13 @@ angular.module('details.controller', ['details.service'])
 
             //立即购买
             $scope.checkedCarts = [];
-            $scope.buy_immediately = function (item, quantity, product_property,product_specification_id) {
+            $scope.buy_immediately = function (item, quantity, product_property, product_specification_id) {
                 //console.log("product.item?" + angular.toJson(item));
 
                 var buy_price = 0;
-                if(item.specifications.length > 0){
-                    angular.forEach(item.specifications, function(v, k){
-                        if(v.id == product_specification_id){
+                if (item.specifications.length > 0) {
+                    angular.forEach(item.specifications, function (v, k) {
+                        if (v.id == product_specification_id) {
                             buy_price = v.price;
                         }
                     });
@@ -216,8 +216,8 @@ angular.module('details.controller', ['details.service'])
                 DetailsFty.addCollectionService(productId)
                     .then(function (json) {
 
-                        $ocLazyLoad.load('Jquery').then(function(){
-                            $ocLazyLoad.load('JqueryWeUI').then(function(){
+                        $ocLazyLoad.load('Jquery').then(function () {
+                            $ocLazyLoad.load('JqueryWeUI').then(function () {
 
                                 /*start function*/
                                 //alert(angular.toJson(json));
