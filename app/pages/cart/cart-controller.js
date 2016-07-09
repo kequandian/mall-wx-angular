@@ -1,5 +1,12 @@
 angular.module('cart.controller', ['cart.service', 'addressManager.service'])
-
+    .filter('defaultCover', function(){
+        return function(input){
+            if(input==null){
+                return 'img/category/category_cover.png'
+            }
+            return input;
+        }
+    })
     .controller('CartController', ['$scope', '$state', '$rootScope', 'CartFty',
         '$ocLazyLoad', function ($scope, $state, $rootScope, CartFty, $ocLazyLoad) {
 

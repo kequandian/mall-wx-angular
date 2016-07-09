@@ -1,7 +1,7 @@
 angular.module('homePage.controller', ['homePage.service'])
 
-    .controller('HomePageController', ['$scope', '$rootScope', '$state', '$rootScope', 'HomePageFty','areasStatus','goodListParams',
-        '$ocLazyLoad', function ($scope, $rootScope, $state, $rootScope, HomePageFty,areasStatus,goodListParams, $ocLazyLoad) {
+    .controller('HomePageController', ['$scope', '$rootScope', '$state', 'HomePageFty','areasStatus','goodListParams',
+        '$ocLazyLoad', function ($scope, $rootScope, $state, HomePageFty,areasStatus,goodListParams, $ocLazyLoad) {
 
             document.title = "十美优品商城";
 

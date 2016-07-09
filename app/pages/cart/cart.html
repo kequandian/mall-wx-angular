@@ -38,7 +38,7 @@
                             </div>
                             <div class="item-info">
                                 <a href="" class="item-image" ui-sref="details({productId:cart.product_id})">
-                                    <img ng-src="{{cart.cover}}">
+                                    <img ng-src="{{cart.cover | defaultCover}}">
                                 </a>
                                 <div class="">
                                     <a  ui-sref="details({productId:cart.product_id})" ng-if="cart.product_specification_name != null">

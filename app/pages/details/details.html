@@ -3,7 +3,7 @@
     <div class="content">
 
         <!-- 商品图片 -->
-        <div class="product-img">
+        <div oc-lazy-load="SquareImg"  class="product-img">
             <!--<div id="headerSlider" class="swiper-container">-->
             <!--<div class="swiper-wrapper">-->
             <!--<div class="swiper-slide" ng-repeat="itemImg in details.covers">-->
@@ -15,8 +15,8 @@
             <!--</div>-->
             <!--</div>-->
             <!--<div oc-lazy-load="ImageCache">-->
-                <div oc-lazy-load="SquareImg" ng-if="details.covers.length>0">
-                    <bs-switch data-type="slider" data-ratio="1">
+                <div ng-if="details.covers.length>0">
+                    <bs-switch data-type="slider" auto-play="2500" data-ratio="1">
                         <bs-switch-content>
                             <bs-switch-panel ng-repeat="itemImg in details.covers">
                                 <!--<img square-img alt="" ng-src="{{itemImg.url}}"/>-->
