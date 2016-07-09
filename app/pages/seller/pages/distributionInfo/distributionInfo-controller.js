@@ -21,6 +21,8 @@ angular.module('distributionInfo.controller', ['userInfo.service', 'seller.sessi
                         if (json.status_code == 0) {
                             $scope.userInfo = json.data;
                             //console.log(json.data);
+
+                            $scope.real_name_settled = $scope.userInfo.real_name && $scope.userInfo.real_name.length > 0;
                         }
                     }, function (error) {
                         $.toast('获取信息失败', 'cancel');
