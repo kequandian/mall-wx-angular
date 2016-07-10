@@ -1,7 +1,7 @@
 angular.module('feedback.controller', ['feedback.service'])
 
     .controller('FeedbackController', ['$scope', '$state', 'FeedbackFty','ImageUpLoad',
-        function ($scope, $state, FeedbackFty,ImageUpLoad) {
+        '$ocLazyLoad', function ($scope, $state, FeedbackFty,ImageUpLoad, $ocLazyLoad) {
 
         //title
         document.title = "意见反馈";
@@ -38,7 +38,9 @@ angular.module('feedback.controller', ['feedback.service'])
             if($scope.image_list.length > 5){
                 $.toast('提交图片不能超过5张', 'cancel');
             }else {
-                loadImageFileAsURL(ImageUpLoad);
+                $ocLazyLoad.load('lib/utils/compressImg.js').then(function () {
+                    loadImageFileAsURL(ImageUpLoad);
+                })
             }
         }
 
@@ -58,7 +60,7 @@ angular.module('feedback.controller', ['feedback.service'])
                         var compressedImage = compressImg.compress(prevImage, fileToLoad.type, 90);
 
                         ImageUpLoad.uploadImage(compressedImage.src).then(function (json) {
-                            console.log(json);
+                            //console.log(json);
                             if (json.status_code == 0) {
 
                                 if(!angular.isDefined($scope.image_list)) {
@@ -90,14 +92,14 @@ angular.module('feedback.controller', ['feedback.service'])
         }
 
         //TODO: move to utils
-        var compressImg = {
-            /**
+        /*var compressImg = {
+            /!**
              * Receives an Image Object (can be JPG OR PNG) and returns a new Image Object compressed
              * @param {Image} sourceImg The source Image Object
              * @param {String} mimeType
              * @param {Integer} quality The output quality of Image Object
              * @return {Image} resultImg The compressed Image Object
-             */
+             *!/
             compress: function(sourceImg, mimeType, quality) {
                 var maxWidth = 1024;
                 var maxHeight = 1024;
@@ -129,6 +131,6 @@ angular.module('feedback.controller', ['feedback.service'])
                 }
             }
 
-        };
+        };*/
 
     }]);

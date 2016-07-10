@@ -118,13 +118,14 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
             };
 
             $scope.uploadImage = function(){
-                $ocLazyLoad.load('pages/pageCommon/imageUpLoad.js').then(function(){
+                $ocLazyLoad.load(['pages/pageCommon/imageUpLoad.js', 'lib/custom/js/compressImg.js']).then(function(){
                     var ImageUpLoad = $injector.get('ImageUpLoad');
-                    loadImageFileAsURL(ImageUpLoad);
+                    var CompressImg = $injector.get('CompressImg');
+                    loadImageFileAsURL(ImageUpLoad, CompressImg);
                 });
             };
 
-            function loadImageFileAsURL(ImageUpLoad) {
+            function loadImageFileAsURL(ImageUpLoad, CompressImg) {
 
                 var filesSelected = document.getElementById("inputFileToLoad").files;
 
@@ -138,15 +139,13 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
 
                         fileReader.onload = function (fileLoadedEvent) {
                             var encodedResult = fileLoadedEvent.target.result;
-                            console.log(encodedResult.length);
 
-                            if(encodedResult.length > 212000){
-                                $.toast('该图片超出范围','cancel');
-                                return;
-                            }
+                            var prevImage = new Image();
+                            prevImage.src = fileLoadedEvent.target.result;
+                            var compressedImage = CompressImg.compress(prevImage, fileToLoad.type, 90);
 
-                            ImageUpLoad.uploadImage(encodedResult).then(function (json) {
-                                console.log(json);
+                            ImageUpLoad.uploadImage(compressedImage.src).then(function (json) {
+                                //console.log(json);
                                 if (json.status_code == 0) {
 
                                     if(!angular.isDefined($scope.image_list)) {
