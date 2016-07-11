@@ -17,4 +17,9 @@ angular.module('moduleValueJs',[])
         areas_status : null
     })
 
+    //首页商品分页number
+    .value('homeProductPageNumber',{
+        h_p_page_number : 1
+    })
+
 ;

@@ -1,7 +1,7 @@
 angular.module('homePage.controller', ['homePage.service'])
 
     .controller('HomePageController', ['$scope', '$state', '$rootScope', 'HomePageFty','areasStatus','goodListParams',
-        '$ocLazyLoad', function ($scope, $state,$rootScope, HomePageFty,areasStatus,goodListParams, $ocLazyLoad) {
+        '$ocLazyLoad','homeProductPageNumber', function ($scope, $state,$rootScope, HomePageFty,areasStatus,goodListParams, $ocLazyLoad,homeProductPageNumber) {
 
             document.title = "十美优品商城";
 
@@ -46,7 +46,7 @@ angular.module('homePage.controller', ['homePage.service'])
              }*/
 
             $scope.currentId = 1;
-            var pageNumber = 1;
+            var pageNumber = homeProductPageNumber.h_p_page_number;
             var pageSize = 10;
 
 
@@ -58,6 +58,12 @@ angular.module('homePage.controller', ['homePage.service'])
 
 
             function getRecommendProduct(pageNumber, pageSize) {
+                alert(pageNumber);
+                //if(pageNumber == null){
+                //    pageNumber = 1;
+                //    $rootScope.homeProductPageNumber = 1;
+                //}
+
                 HomePageFty.recommendProductService(pageNumber, pageSize)
                     .then(function (json) {
                         if (json.status_code == 0) {
@@ -74,7 +80,7 @@ angular.module('homePage.controller', ['homePage.service'])
                                 if(json.data.length > 0) {
                                     angular.forEach(json.data, function (v, k) {
                                         $scope.rec_product.push(v);
-                                    })
+                                    });
 
                                     if(json.data.length < 20){
                                         $scope.home_load_more_btn_show = false;
@@ -143,8 +149,11 @@ angular.module('homePage.controller', ['homePage.service'])
 
             //加载更多
             $scope.home_load_more_product = function(){
-                pageNumber += 1;
-                getRecommendProduct(pageNumber, pageSize);
+
+                var p_umber = homeProductPageNumber.h_p_page_number;
+                p_umber++;
+                homeProductPageNumber.h_p_page_number = p_umber;
+                getRecommendProduct(p_umber, pageSize);
             }
 
 
