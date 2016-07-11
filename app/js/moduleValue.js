@@ -22,4 +22,9 @@ angular.module('moduleValueJs',[])
         h_p_page_number : 1
     })
 
+    //保存可提现金额
+    .value('withdrawBalance', {
+        balance: 0
+    })
+
 ;

@@ -55,7 +55,7 @@
                 <div class="commission-price">{{owner_balance.balance != null ? owner_balance.balance : '0' |
                     currency:""}}
                 </div>
-                <div class="cash-botton" ng-click="goToWithdrow(userInfo.phone)">
+                <div class="cash-botton" ng-click="goToWithdrow(userInfo.phone,owner_balance.balance)">
                     <img src="img/sellerPage/takeCash.png">
                 </div>
             </div>
@@ -249,7 +249,7 @@
 
         <div class="qrcode-tip-footer">长按识别二维码</div>
 
-        <span ng-click="close_qrcode()" style="color:black;z-index:9999;padding-bottom: 6px;">
+        <span ng-click="close_qrcode()" style="color:black;z-index:9999;padding: 8px;">
             关闭
         </span>
     </div>

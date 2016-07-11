@@ -367,3 +367,7 @@
     position: absolute;
     margin-bottom: 2px;
 }
+
+.weui_grid:active {
+    background-color: white;
+}

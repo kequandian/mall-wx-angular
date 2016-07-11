@@ -5,7 +5,7 @@
 angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
 
     .controller('WithdrawController',['$scope','$state','$timeout','$stateParams','withdrawFty','BalanceSession','DWStatus',
-        '$ocLazyLoad', function ($scope, $state, $timeout, $stateParams, withdrawFty, BalanceSession,DWStatus, $ocLazyLoad) {
+        '$ocLazyLoad','withdrawBalance', function ($scope, $state, $timeout, $stateParams, withdrawFty, BalanceSession,DWStatus, $ocLazyLoad,withdrawBalance) {
 
             document.title = "提现佣金";
 
@@ -54,11 +54,18 @@ angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
             function postDraw() {
 
                 var phone = $stateParams.accountPhone;
+                var balance = withdrawBalance.balance;
 
-                if(phone == null){
+                if(!balance > 0) {
+                    $.toast.prototype.defaults.duration = 800;
+                    $.toast('可提现的金额不足');
+                    return;
+                }
+
+                if (phone == null) {
                     $.toast.prototype.defaults.duration = 800;
                     $.toast('需要设置手机号码');
-                    $timeout(function(){
+                    $timeout(function () {
                         DWStatus.d_w_status = 2;
                         $state.go('distributionInfo');
                     }, 1000);

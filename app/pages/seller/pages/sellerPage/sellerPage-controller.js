@@ -31,8 +31,8 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
         }
     })
 
-    .controller('SellerPageController', ['$scope', '$state', '$rootScope', 'SellerPageFty', 'BalanceSession', 'UserInfo', 'DWStatus',
-        function ($scope, $state, $rootScope, SellerPageFty, BalanceSession, UserInfo, DWStatus) {
+    .controller('SellerPageController', ['$scope', '$state', '$rootScope', 'SellerPageFty', 'BalanceSession', 'UserInfo', 'DWStatus','withdrawBalance',
+        function ($scope, $state, $rootScope, SellerPageFty, BalanceSession, UserInfo, DWStatus,withdrawBalance) {
 
             //title
             document.title = "销售中心";
@@ -140,8 +140,11 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
             }
 
             //进入提现页
-            $scope.goToWithdrow = function (phone) {
-                $state.go('withdraw', {accountPhone: phone})
+            $scope.goToWithdrow = function (phone, balance) {
+                withdrawBalance.balance = balance;
+                $state.go('withdraw', {
+                    accountPhone: phone
+                })
             };
 
             //进入我的信息页
