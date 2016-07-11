@@ -3,7 +3,7 @@
     <div class="content">
 
         <!-- 商品图片 -->
-        <div class="product-img">
+        <div oc-lazy-load="SquareImg"  class="product-img">
             <!--<div id="headerSlider" class="swiper-container">-->
             <!--<div class="swiper-wrapper">-->
             <!--<div class="swiper-slide" ng-repeat="itemImg in details.covers">-->
@@ -15,7 +15,7 @@
             <!--</div>-->
             <!--</div>-->
             <!--<div oc-lazy-load="ImageCache">-->
-                <div oc-lazy-load="SquareImg" ng-if="details.covers.length>0">
+                <div ng-if="details.covers.length>0">
                     <bs-switch data-type="slider" data-ratio="1">
                         <bs-switch-content>
                             <bs-switch-panel ng-repeat="itemImg in details.covers">
@@ -36,7 +36,7 @@
                 {{details.name}}
             </div>
             <div class="product-price">
-                <span>{{details.price|currency:"￥"}}</span>
+                <span>{{details.price|currency:"￥"}}</span><span class="product-rebate" ng-if="product_rebate > 0">{{product_rebate}}</span>
 
                 <div class="product-price-market"><span>市场价：</span><s>{{details.suggested_price | currency:'￥'}}</s>
                 </div>
@@ -220,6 +220,10 @@
             </div>
         </div>
     </div>
+    
+    <a class="call-service" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3080348136&site=qq&menu=yes">
+        <img src="img/details/customer-service.png">
+    </a>
 
 
 </div>

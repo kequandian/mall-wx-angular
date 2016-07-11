@@ -17,6 +17,22 @@ angular.module('details.service', [])
                 return deferred.promise;
             },
 
+            productRebateServoce:function(productId){
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + "/product_settlement?id=" + productId;
+                $http.get(url,{
+                    headers: {
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
+                })
+                    .success(function (data) {
+                        return deferred.resolve(data);
+                    }).error(function (data) {
+                        return deferred.reject(data);
+                    });
+                return deferred.promise;
+            },
+
             addProToCatService: function (productId,quantity,properties,specification_id) {
                 var deferred = $q.defer();
                 var url = GlobalVariable.SERVER_PATH + "/shopping_cart";

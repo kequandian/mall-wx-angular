@@ -15,6 +15,7 @@ var replace = require('gulp-replace');
 var merge = require('merge-stream');
 var del = require('del');
 var path = require('path');
+var connect = require('gulp-connect');
 
 gulp.task('default', function () {
     return gulp.src('app/lib/angular-ad-switch/js/switch.js')
@@ -283,3 +284,10 @@ gulp.task('clean', function () {
 });
 
 gulp.task('build', ['clean', 'dist']);
+
+gulp.task('connect', function() {
+  connect.server({
+    root: 'app',
+    livereload: true
+  });
+});

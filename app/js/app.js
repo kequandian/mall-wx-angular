@@ -221,7 +221,14 @@
             });
         }])
 
-    myapp.run(['$ocLazyLoad', function ($ocLazyLoad) {
+    myapp.run(['$ocLazyLoad', '$rootScope', function ($ocLazyLoad, $rootScope) {
+
+        $rootScope.rec_session = {};
+        $rootScope.rec_session.rec_product = [];
+        $rootScope.rec_session.load_more = false;
+        $rootScope.rec_session.page_size  = 10;
+        $rootScope.rec_session.page_number  = 1;
+
         angular.element(document).ready(function () {
             //document.getElementById('msg').innerHTML = 'Hello';
             //$ocLazyLoad.load('bower_components/angular-ui-router/release/angular-ui-router.min.js')
