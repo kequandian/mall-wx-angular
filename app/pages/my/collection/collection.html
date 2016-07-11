@@ -2,8 +2,8 @@
 
     <div class="coll-text">
         <span class="coll-text-left">最近一个月的收藏</span>
-        <span class="coll-text-right" ng-click="edit_action()">{{edit_action_text}}</span>
-        <i class="edit-img" ng-click="edit_action()" ng-hide="edit_action_img"></i>
+        <span class="coll-text-right" ng-click="edit_action()" ng-show="coll_null">{{edit_action_text}}</span>
+        <i class="edit-img" ng-click="edit_action()" ng-hide="edit_action_img" ng-show="coll_null"></i>
     </div>
 
     <div class="coll-null" ng-hide="coll_null">
