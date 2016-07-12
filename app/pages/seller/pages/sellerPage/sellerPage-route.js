@@ -11,6 +11,19 @@ angular.module('sellerPage.route', [/*'sellerPage.controller'*/])
             }
         })
     }])
+
+    .config(['$stateProvider', function($stateProvider) {
+        $stateProvider.state('home.becomeDistributor', {
+            url:'/becomeDistributor',
+            templateUrl: 'pages/seller/pages/distributionInfo/distributionInfo.html',
+            controller:'becomeDistributorController',
+            resolve: {
+                loadData: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load('becomeDistributor');
+                }]
+            }
+        })
+    }])
     /*.config(['$stateProvider', function($stateProvider) {
         $stateProvider.state('pianPage', {
             url:'/pianPage',

@@ -6,14 +6,20 @@ angular.module('distributionInfo.controller', ['userInfo.service', 'seller.sessi
     .controller('DistributionInfoController', ['$scope','$state','$timeout','UserInfoFty','DWStatus',
         function($scope,$state,$timeout,UserInfoFty,DWStatus){
 
+            $ocLazyLoad.load('Jquery').then(function () {
+                $ocLazyLoad.load('JqueryWeUI').then(function () {
+                    console.log('settlement:jquery loaded');
+                })
+            });
             //title
             document.title = "我的信息";
+
+            $scope.distributionInfoBtn = true;  //修改我的信息按钮
+            $scope.becomeDistributorBtn = false;   //成为分销商按钮
 
             //获取个人信息
             getUserInfo();
 
-
-            //获取个人信息
             function getUserInfo() {
 
                 UserInfoFty.myInfoService()

@@ -33,6 +33,23 @@ angular.module('sellerPage.service', [])
                         return deferred.reject(data);
                     });
                 return deferred.promise;
+            },
+
+            //成为分销商
+            becomeDistribution: function (real_name,phone) {
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + "/owner_balance";
+                $http.post(url,{
+                    headers:{
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
+                })
+                    .success(function (data) {
+                        return deferred.resolve(data);
+                    }).error(function (data) {
+                        return deferred.reject(data);
+                    });
+                return deferred.promise;
             }
         }
     }]);

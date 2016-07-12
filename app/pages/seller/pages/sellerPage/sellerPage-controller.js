@@ -54,6 +54,7 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                         }
                     }, function (error) {
                         $.toast('获取信息失败', 'cancel');
+                        console.log('获取信息失败：' + error);
                     })
             }
 
@@ -154,6 +155,83 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
             };
 
         }])
+
+
+    /*
+    * 成为分销商
+    * */
+    .controller('becomeDistributorController',['$scope', '$state','$rootScope','$ocLazyLoad', 'SellerPageFty',
+        function ($scope, $state,$rootScope,$ocLazyLoad, SellerPageFty){
+
+            $ocLazyLoad.load('Jquery').then(function () {
+                $ocLazyLoad.load('JqueryWeUI').then(function () {
+                    console.log('settlement:jquery loaded');
+                })
+            });
+
+            $rootScope.tabsNumber = 3;
+
+            $scope.distributionInfoBtn = false;  //修改我的信息按钮
+            $scope.becomeDistributorBtn = true;   //成为分销商按钮
+
+            //获取个人信息
+            getUserInfo();
+
+            function getUserInfo() {
+                SellerPageFty.sellerUserInfoService()
+                    .then(function (json) {
+                        if (json.status_code == 0) {
+                            $scope.userInfo = json.data;
+                            //console.log(angular.toJson($scope.userInfo));
+                        }
+                    }, function (error) {
+                        $.toast('获取信息失败', 'cancel');
+                    })
+            }
+
+            //提交分销商信息
+            $scope.postDistributorInfo = function () {
+
+                var real_name = $scope.userInfo.real_name;
+                var phone = $scope.userInfo.phone;
+
+                if (!angular.isString($scope.userInfo.real_name)
+                    || $scope.userInfo.real_name.length == 0) {
+                    $.toast('姓名不能为空', 'cancel');
+                    return;
+                }
+                if (!angular.isString($scope.userInfo.phone)
+                    || $scope.userInfo.phone.length == 0) {
+                    $.toast('手机号不能为空', 'cancel');
+                    return;
+                } else if (!checkPhone($scope.userInfo.phone)) {
+                    $.toast('手机号码无效', 'cancel');
+                    return;
+                }
+
+                console.log("姓名：" + real_name + " " + "手机号：" + phone);
+
+                return;
+
+                SellerPageFty.becomeDistribution(real_name,phone)
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            $.toast('申请成功');
+                            $state.go('home.homePage');
+                        }
+                    }, function(error){
+                        $.toast('提交信息失败','cancel');
+                        console.log('提交信息失败：' + angular.toJson(error));
+                    })
+
+            };
+
+            function checkPhone(str){
+                var isphone = /^((\+|0)86)?\d{11}$/.test(str);
+                return isphone;
+            }
+
+    }])
 
     /*
      * 提佣方案

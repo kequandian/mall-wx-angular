@@ -35,9 +35,9 @@ angular.module('category.controller', ['category.service'])
                         if (json.status_code == 0) {
                             $scope.categoryItem = json.data;
                             //console.log('scope.categoryItem?'+angular.toJson($scope.categoryItem));
-                            //alert(angular.toJson(json.data))
+                            //console.log(angular.toJson(json.data))
 
-                            $scope.getCategoryDetailData(json.data[0].id);
+                            $scope.getCategoryDetailData(json.data[0].id, json.data[0]);
 
                         } else {
                             console.log('获取商品分类失败');
@@ -48,13 +48,31 @@ angular.module('category.controller', ['category.service'])
             }
 
             // 点击左侧分类单
-            $scope.getCategoryDetailData = function (typeNumber) {
+            $scope.getCategoryDetailData = function (typeNumber, item) {
                 //if(CategoryPage.goods_list_go_back_number > 0){
                 //    $scope.cateId = CategoryPage.cate_detail_data_id;
                 //    CategoryPage.goods_list_go_back_number = 0;
                 //}else {
                 $scope.cateId = typeNumber;
                 //}
+
+                var cateCount = 0;
+                if(item.sub_categories != null && item.sub_categories.length > 0){
+                    cateCount++;
+                    //console.log(cateCount + ": " + angular.toJson(item.sub_categories));
+                }
+                if(item.sub_categories != null && item.sub_categories.length > 0 && item.sub_categories[0].sub_categories != null && item.sub_categories[0].sub_categories.length > 0){
+                    cateCount++;
+                    //console.log(cateCount + ": " + angular.toJson(item.sub_categories));
+                }
+                //if(item.sub_categories != null && item.sub_categories.length > 0 && item.sub_categories[0].sub_categories != null && item.sub_categories[0].sub_categories.length > 0 &&
+                //    item.sub_categories[0].sub_categories[0].sub_categories != null &&item.sub_categories[0].sub_categories[0].sub_categories.length > 0){
+                //    cateCount++;
+                //    console.log(cateCount + ": " + angular.toJson(item.sub_categories));
+                //}
+
+                $scope.cateCoumt = cateCount;
+
             };
 
 

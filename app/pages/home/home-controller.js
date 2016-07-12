@@ -76,4 +76,26 @@ angular.module('home.controller', ['home.service'])
                     })
             }
 
+            //获取个人信息
+            function getUserInfo(){
+                SimpleCartFty.userInfoService()
+                    .then(function (json) {
+                        if (json.status_code == 0) {
+                            $scope.userInfo = json.data;
+                            //console.log(angular.toJson($scope.userInfo));
+
+                            if($scope.userInfo){
+                                $scope.home_tabs[2].name = '销售中心';
+                                $scope.home_tabs[2].srefName = '.sellerPage';
+                            }else if($scope.userInfo){
+                                $scope.home_tabs[2].name = '分销';
+                                $scope.home_tabs[2].srefName = '.becomeDistributor';
+                            }
+                        }
+                    }, function (error) {
+                        $.toast('获取信息失败', 'cancel');
+                        console.log('获取信息失败：' + error);
+                    })
+            }
+
         }]);

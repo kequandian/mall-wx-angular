@@ -50,9 +50,14 @@
 
         </div>
 
-        <div class="custom_weui_btn_border">
+        <div class="custom_weui_btn_border" ng-if="distributionInfoBtn">
             <input type="submit" class="weui_btn weui_btn_primary" value="保存"
                    ng-click="postUserInfo()">
+        </div>
+
+        <div class="custom_weui_btn_border" ng-if="becomeDistributorBtn">
+            <input type="submit" class="weui_btn weui_btn_primary" value="提交"
+                   ng-click="postDistributorInfo()">
         </div>
 
     </form>

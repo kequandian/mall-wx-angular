@@ -128,7 +128,7 @@
                         'pages/my/order/order-common-service.js',
                         {type: 'css', path: 'css/order/order.css'}],
                     cache: false
-                }, , {
+                },  {
                     name: 'OrderDetails',
                     files: ['pages/my/order/orderDetails/orderDetail-controller.js',
                         'pages/my/order/orderDetails/orderDetail-service.js',
@@ -214,6 +214,13 @@
                     files: ['pages/my/addressManager/addressManager-controller.js',
                         'pages/my/addressManager/addressManager-service.js',
                         {type: 'css', path: 'css/addressManager/addressManager.css'}],
+                    cache: false
+                }, {
+                    name: 'becomeDistributor',
+                    files: ['pages/seller/pages/sellerPage/sellerPage-controller.js',
+                        'pages/seller/pages/sellerPage/sellerPage-service.js',
+                        'pages/seller/seller-session-service.js',
+                        {type: 'css', path: 'css/sellerPage/distributionInfo.css'}],
                     cache: false
                 }
 
