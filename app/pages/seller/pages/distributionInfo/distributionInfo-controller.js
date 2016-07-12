@@ -6,11 +6,6 @@ angular.module('distributionInfo.controller', ['userInfo.service', 'seller.sessi
     .controller('DistributionInfoController', ['$scope','$state','$timeout','UserInfoFty','DWStatus',
         function($scope,$state,$timeout,UserInfoFty,DWStatus){
 
-            $ocLazyLoad.load('Jquery').then(function () {
-                $ocLazyLoad.load('JqueryWeUI').then(function () {
-                    console.log('settlement:jquery loaded');
-                })
-            });
             //title
             document.title = "我的信息";
 

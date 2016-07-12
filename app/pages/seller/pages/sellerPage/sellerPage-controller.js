@@ -169,6 +169,8 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                 })
             });
 
+            document.title = '成为分销商';
+
             $rootScope.tabsNumber = 3;
 
             $scope.distributionInfoBtn = false;  //修改我的信息按钮
