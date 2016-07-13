@@ -22,18 +22,23 @@
     position: relative;
 }
 
-#comm-pro-content .comm-pro-item img{
+#comm-pro-content .comm-pro-item .numberImg{
     width: 17px;
     height: 17px;
-    margin-top: 12px;
+    font-size: 10px;
+    line-height: 17px;
+    text-align: center;
+    margin-top: 11px;
     margin-left: 10px;
+    border: 2px solid #4c4c4c;
+    border-radius: 50%;
 }
 
 #comm-pro-content .comm-pro-item span{
     font-size: 16px;
     color: #676D6E;
     line-height: 42px;
-    margin-left: 5px;
+    margin-left: 37px;
     position: absolute;
 }
 

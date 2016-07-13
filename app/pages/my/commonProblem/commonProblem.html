@@ -6,12 +6,17 @@
 
     <div id="comm-pro-content">
 
-        <div class="comm-pro-item" ui-sref="serviceProblemPage">
-            <img src="img/my/commonProblem/item-img-1.png">
-            <span>售后策划</span>
+        <div class="comm-pro-item" ng-click="goToServiceProblemPage(item.name)" ng-repeat="item in mycommonProblemInfo">
+            <span class="numberImg">{{$index + 1}}</span>
+            <span>{{item.name}}</span>
             <i class="comm-pro-item-arrow"></i>
         </div>
 
+        <!--<div class="comm-pro-item" ui-sref="serviceProblemPage" ng-init="itemIndex = 0">
+            <p>1</p>
+            <span>售后策划</span>
+            <i class="comm-pro-item-arrow"></i>
+        </div>
         <div class="comm-pro-item" ui-sref="commProblemPage">
             <img src="img/my/commonProblem/item-img-2.png">
             <span>常见问题</span>
@@ -22,7 +27,7 @@
             <img src="img/my/commonProblem/item-img-3.png">
             <span>商品配送</span>
             <i class="comm-pro-item-arrow"></i>
-        </div>
+        </div>-->
 
     </div>
 
