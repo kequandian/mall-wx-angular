@@ -2,9 +2,9 @@ angular.module('commonProblem.service', [])
     .factory('CommonProblemFty', ['$http','$q', "GlobalVariable", function($http, $q,GlobalVariable) {
         return{
             // 获取常见问题数据
-            commonProblemService: function (name) {
+            commonProblemService: function (id) {
                 var deferred = $q.defer();
-                var url      = GlobalVariable.SERVER_PATH + "/faq?type=" + name + "&pageNumber=1&pageSize=20";
+                var url      = GlobalVariable.SERVER_PATH + "/faq?typeId=" + id + "&pageNumber=1&pageSize=20";
                 $http.get(url, {
                     headers: {
                         "Authorization": GlobalVariable.ACCESS_TOKEN

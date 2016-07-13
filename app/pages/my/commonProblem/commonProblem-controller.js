@@ -13,14 +13,15 @@ angular.module('commonProblem.controller', [/*'commonProblem.service'*/])
         // 获取问题类型数据
         getmyCommonProblemInfo();
 
-        function getCommonProblemInfo(name) {
-            CommonProblemFty.commonProblemService(name)
+        function getCommonProblemInfo(item) {
+            console.log(item.id)
+            CommonProblemFty.commonProblemService(item.id)
                 .then(function (json) {
                     console.log("json数据：" + angular.toJson(json));
                     if (json.status_code == 0) {
                         $scope.commonProblemInfo = json.data;
                         queryData.queryInfo = json.data;
-                        queryData.name = name;
+                        queryData.name = item.name;
 
                         $state.go('serviceProblemPage');
                         // queryData.queryInfo = json.data[0];
@@ -45,10 +46,10 @@ angular.module('commonProblem.controller', [/*'commonProblem.service'*/])
                 })
         }
 
-        $scope.goToServiceProblemPage = function(name){
-            //console.log(name)
-            if(name != null) {
-                getCommonProblemInfo(name);
+        $scope.goToServiceProblemPage = function(item){
+            //console.log(angular.toJson(item));
+            if(item != null) {
+                getCommonProblemInfo(item);
             }
         };
 
