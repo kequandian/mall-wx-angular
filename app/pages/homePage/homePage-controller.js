@@ -67,11 +67,13 @@ angular.module('homePage.controller', ['homePage.service'])
 
                             if(pageNumber == 1){
                                 $scope.rec_product = json.data;
-                                if ($scope.rec_product.length >= 10) {
+
+                                if ($scope.rec_product.length >= pageSize) {
                                     $scope.home_load_more_btn_show = true;
                                 } else {
                                     $scope.home_load_more_btn_show = false;
                                 }
+
                             }else if(pageNumber > 1){
 
                                 if(json.data.length > 0) {
@@ -79,7 +81,7 @@ angular.module('homePage.controller', ['homePage.service'])
                                         $scope.rec_product.push(v);
                                     });
 
-                                    if(json.data.length < 20){
+                                    if(json.data.length <  pageSize){
                                         $scope.home_load_more_btn_show = false;
                                         //$.toast("已加载全部的推荐商品");
                                     }

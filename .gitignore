@@ -6,4 +6,4 @@ tmp
 .DS_Store
 .idea/
 /dist/
-/app/npm-debug.log
+/npm-debug.log
