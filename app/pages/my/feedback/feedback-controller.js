@@ -57,18 +57,20 @@ angular.module('feedback.controller', ['feedback.service'])
 
                     fileReader.onload = function (fileLoadedEvent) {
                         var prevImage = new Image();
+                        
                         prevImage.onload = function(){
-
                             if(fileType == 'image/png') {
-                                var canvas = document.createElement('canvas'),
-                                    ctx = canvas.getContext('2d');
+                                if(prevImage.width > 128 || prevImage.height > 128) {
+                                    var canvas = document.createElement('canvas'),
+                                        ctx = canvas.getContext('2d');
 
-                                fileType = 'image/jpeg'
-                                ctx.drawImage(prevImage, 0, 0);
+                                    fileType = 'image/jpeg'
+                                    ctx.drawImage(prevImage, 0, 0);
 
-                                var dataUrl = canvas.toDataURL('image/jpeg', 0.8);
-                                prevImage.src = dataUrl;
-                                //console.log(prevImage.src);
+                                    var dataUrl = canvas.toDataURL('image/jpeg', 0.8);
+                                    prevImage.src = dataUrl;
+                                    //console.log(prevImage.src);
+                                }
                             }
 
                             var compressedImage = compressImg.compress(prevImage, fileType, 90);

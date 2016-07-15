@@ -13,8 +13,8 @@ var compressImg;
          * @return {Image} resultImg The compressed Image Object
          */
         compress: function (sourceImg, mimeType, quality) {
-            var maxWidth = 1024;
-            var maxHeight = 1024;
+            var maxWidth = 720;
+            var maxHeight = 720;
             if (sourceImg.width > maxWidth || sourceImg.height > maxHeight) {
                 var cvs = document.createElement('canvas');
                 cvs.width = sourceImg.width;
@@ -29,7 +29,7 @@ var compressImg;
                 }
                 var xRate = cvs.width / sourceImg.naturalWidth;
                 var yRate = cvs.height / sourceImg.naturalHeight;
-                //naturalWidthÕæÊµÍ¼Æ¬µÄ¿í¶È
+                //naturalWidthï¿½ï¿½ÊµÍ¼Æ¬ï¿½Ä¿ï¿½ï¿½
                 var cvsContext = cvs.getContext('2d');
                 cvsContext.scale(xRate, yRate);
                 var ctx = cvsContext.drawImage(sourceImg, 0, 0);
