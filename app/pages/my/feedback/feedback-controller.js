@@ -51,34 +51,54 @@ angular.module('feedback.controller', ['feedback.service'])
                 var success = 0;
                 for (var i = 0; i < filesSelected.length; i++) {
                     var fileToLoad = filesSelected[i];
+                    var fileType = fileToLoad.type;
 
                     var fileReader = new FileReader();
 
                     fileReader.onload = function (fileLoadedEvent) {
                         var prevImage = new Image();
-                        prevImage.src = fileLoadedEvent.target.result;
-                        var compressedImage = compressImg.compress(prevImage, fileToLoad.type, 90);
+                        prevImage.onload = function(){
 
-                        ImageUpLoad.uploadImage(compressedImage.src).then(function (json) {
-                            //console.log(json);
-                            if (json.status_code == 0) {
+                            if(fileType == 'image/png') {
+                                var canvas = document.createElement('canvas'),
+                                    ctx = canvas.getContext('2d');
 
-                                if(!angular.isDefined($scope.image_list)) {
-                                    $scope.image_list = [];
-                                }
+                                fileType = 'image/jpeg'
+                                ctx.drawImage(prevImage, 0, 0);
 
-                                //console.log(json.data);
-                                $scope.image_list.push(json.data);
-
-                                //$.toast('提交成功');
-                                success ++;
-
-                            } else {
-                                //$.toast('提交失败', 'cancel');
+                                var dataUrl = canvas.toDataURL('image/jpeg', 0.8);
+                                prevImage.src = dataUrl;
+                                //console.log(prevImage.src);
                             }
-                        }, function (error) {
-                            //$.toast('提交失败', 'cancel');
-                        })
+
+                            var compressedImage = compressImg.compress(prevImage, fileType, 90);
+
+                            ImageUpLoad.uploadImage(compressedImage.src).then(function (json) {
+                                //console.log(json);
+                                if (json.status_code == 0) {
+
+                                    if(!angular.isDefined($scope.image_list)) {
+                                        $scope.image_list = [];
+                                    }
+
+                                    //console.log(json.data);
+                                    $scope.image_list.push(json.data);
+
+                                    //$.toast('提交成功');
+                                    success ++;
+
+                                } else {
+                                    //$.toast('提交失败', 'cancel');
+                                }
+                            }, function (error) {
+                                //$.toast('提交失败', 'cancel');
+                            })
+                            //console.log('image/jpeg?'+data);
+                        };
+
+                        prevImage.src = fileLoadedEvent.target.result;
+                        //console.log('image/base64?'+prevImage.src);
+
                     };
 
                     fileReader.readAsDataURL(fileToLoad);
