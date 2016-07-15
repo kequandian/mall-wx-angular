@@ -10,7 +10,7 @@ angular.module('squareImg', [])
             link: function (scope, $el, attrs) {
 
                 var el = $el[0];
-                console.log("squareImg: width?"+el.width+",height?"+el.height);
+                //console.log("squareImg: width?"+el.width+",height?"+el.height);
 
                 if( $el[0].clientWidth > 0){
                     $el.css('height',$el[0].clientWidth);
