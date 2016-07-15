@@ -66,7 +66,7 @@
                         <bs-switch-panel ng-repeat="img in ad_list">
                             <a ng-href="{{img.target_url}}">
                                 <img alt="" ng-src="{{img.image}}"
-                                                                 style="width: 100%; height: auto;"/></a>
+                                     style="width: 100%; height: auto;"/></a>
                         </bs-switch-panel>
                     </bs-switch-content>
                     <bs-switch-nav class="ui-switch-nav"></bs-switch-nav>
@@ -206,21 +206,23 @@
                     <div class="weui_grids">
                         <a ui-sref="details({productId:item.id})" class="weui_grid product_item"
                            ng-repeat="item in rec_product">
-                            <!--product cover-->
-                            <div class="pro-item-margin">
-                                <div class="weui_grid_icon home_grid_img">
-                                    <img square-img ng-src="{{item.cover}}">
+                            <div ng-click="gotoDetail()">
+                                <!--product cover-->
+                                <div class="pro-item-margin">
+                                    <div class="weui_grid_icon home_grid_img">
+                                        <img square-img ng-src="{{item.cover}}">
+                                    </div>
                                 </div>
-                            </div>
-                            <!--product desc-->
-                            <div class="pro-item-desc">
-                                <div class="weui_grid_label home_grid_text">
-                                    {{item.name | cutText:true:26:'...'}}
-                                </div>
-                                <div class="home_grid_footer_text">
-                                    <div class="home_g_left c-left">{{item.price | currency:"￥"}}</div>
-                                    <div ng-if="item.suggested_price>item.price" class="home_g_right c-right">
-                                        <span><s>{{item.suggested_price | currency:"￥"}}</s></span>
+                                <!--product desc-->
+                                <div class="pro-item-desc">
+                                    <div class="weui_grid_label home_grid_text">
+                                        {{item.name | cutText:true:26:'...'}}
+                                    </div>
+                                    <div class="home_grid_footer_text">
+                                        <div class="home_g_left c-left">{{item.price | currency:"￥"}}</div>
+                                        <div ng-if="item.suggested_price>item.price" class="home_g_right c-right">
+                                            <span><s>{{item.suggested_price | currency:"￥"}}</s></span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -57,7 +57,7 @@ angular.module('feedback.controller', ['feedback.service'])
 
                     fileReader.onload = function (fileLoadedEvent) {
                         var prevImage = new Image();
-                        
+
                         prevImage.onload = function(){
                             if(fileType == 'image/png') {
                                 if(prevImage.width > 128 || prevImage.height > 128) {

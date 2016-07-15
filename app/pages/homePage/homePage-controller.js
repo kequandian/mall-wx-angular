@@ -1,7 +1,7 @@
 angular.module('homePage.controller', ['homePage.service'])
 
     .controller('HomePageController', ['$scope', '$rootScope', '$state', 'HomePageFty','areasStatus','goodListParams',
-        '$ocLazyLoad', function ($scope, $rootScope, $state, HomePageFty,areasStatus,goodListParams, $ocLazyLoad) {
+        '$anchorScroll', '$ocLazyLoad', function ($scope, $rootScope, $state, HomePageFty,areasStatus,goodListParams,$anchorScroll,$ocLazyLoad) {
 
             document.title = "十美优品商城";
 
@@ -132,6 +132,15 @@ angular.module('homePage.controller', ['homePage.service'])
             $scope.goToSearchPage = function(){
                 $state.go('searchPage');
             };
+
+            $scope = gotoDetail = function(){
+                console.log('anchor yOffset?'+$anchorScroll.yOffset);
+                $rootScope.yOffset = window.scrollY > 0 ? window.scrollY : $anchorScroll.yOffset > 0 ? $anchorScroll.yOffset : 0;
+            };
+            if($rootScope.yOffset && $rootScope.yOffset > 0) {
+                $anchorScroll.yOffset = $rootScope.yOffset;
+                //$anchorScroll();
+            }
 
             //分类区域
             $scope.areasStatus = function(number){
