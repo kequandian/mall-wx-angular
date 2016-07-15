@@ -134,12 +134,17 @@ angular.module('homePage.controller', ['homePage.service'])
             };
 
             $scope.gotoDetail = function(){
-                $rootScope.yOffset = 0;
-                //console.log('anchor yOffset?'+$rootScope.yOffset);
+                // get scroll position
+                $rootScope.yOffset = document.getElementById('content').scrollTop;
+                console.log('anchor yOffset?'+$rootScope.yOffset);
             };
-            //if($rootScope.yOffset && $rootScope.yOffset > 0) {
-            //    $anchorScroll.yOffset = $rootScope.yOffset;
-            //}
+            if($rootScope.yOffset && $rootScope.yOffset > 0) {
+                // TODO, goback to offset
+                //document.getElementById('content').scrollTop = $rootScope.yOffset;
+                //$location.hash('content');
+                //$anchorScroll.yOffset = $rootScope.yOffset;
+            }
+
 
             //分类区域
             $scope.areasStatus = function(number){
