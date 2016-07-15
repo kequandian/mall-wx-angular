@@ -133,14 +133,14 @@ angular.module('homePage.controller', ['homePage.service'])
                 $state.go('searchPage');
             };
 
-            $scope = gotoDetail = function(){
+            /*$scope = gotoDetail = function(){
                 console.log('anchor yOffset?'+$anchorScroll.yOffset);
                 $rootScope.yOffset = window.scrollY > 0 ? window.scrollY : $anchorScroll.yOffset > 0 ? $anchorScroll.yOffset : 0;
             };
             if($rootScope.yOffset && $rootScope.yOffset > 0) {
                 $anchorScroll.yOffset = $rootScope.yOffset;
                 //$anchorScroll();
-            }
+            }*/
 
             //分类区域
             $scope.areasStatus = function(number){
