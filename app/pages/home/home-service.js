@@ -18,11 +18,6 @@ angular.module('home.service', [])
                         deferred.reject(data);
                     });
                 return deferred.promise;
-            },
-
-            //是否分销商
-            isSeller:function(){
-                return GlobalVariable.IS_SELLER;
             }
         };
     }]);

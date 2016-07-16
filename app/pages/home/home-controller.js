@@ -1,6 +1,6 @@
 angular.module('home.controller', ['home.service'])
-    .controller('HomeController', ['$scope', '$state', '$rootScope', '$timeout', 'SimpleCartFty',
-        function ($scope, $state, $rootScope, $timeout, SimpleCartFty) {
+    .controller('HomeController', ['$scope', '$state', '$rootScope', '$timeout', 'SimpleCartFty','GlobalVariable',
+        function ($scope, $state, $rootScope, $timeout, SimpleCartFty, GlobalVariable) {
 
             //获取购物车数量
             getCartCount();
@@ -34,8 +34,8 @@ angular.module('home.controller', ['home.service'])
                 'c_number': 0
             }, {
                 'id': '3',
-                'name': SimpleCartFty.isSeller == true ? '销售中心' : '分销',
-                'srefName': SimpleCartFty.isSeller == true ? '.sellerPage' : '.becomeDistributor',
+                'name': GlobalVariable.IS_SELLER ? '销售中心' : '分销',
+                'srefName': GlobalVariable.IS_SELLER ? '.sellerPage' : '.becomeDistributor',
                 'home_tab_icon': 'weui_tabbar_icon ion-app-biliya-tabs-team',
                 'c_count': null,
                 'c_number': 0
