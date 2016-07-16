@@ -1,4 +1,14 @@
 angular.module('homePage.controller', ['homePage.service'])
+    .directive('onFinishRender', function($timeout) {
+        return function(scope, element, attrs) {
+            if (scope.$last){
+                $timeout(function () {
+                    scope.$emit('$onFinishRender');
+                });
+                //  document.getElementById('content').scrollTop = 500;
+            }
+        };
+    })
 
     .controller('HomePageController', ['$scope', '$rootScope', '$state', 'HomePageFty','areasStatus','goodListParams',
         '$anchorScroll', '$ocLazyLoad', function ($scope, $rootScope, $state, HomePageFty,areasStatus,goodListParams,$anchorScroll,$ocLazyLoad) {
@@ -7,7 +17,7 @@ angular.module('homePage.controller', ['homePage.service'])
 
             $ocLazyLoad.load('Jquery').then(function () {
                 $ocLazyLoad.load('JqueryWeUI').then(function () {
-                    console.log("homePage:jquery loaded");
+                    //console.log("homePage:jquery loaded");
                 })
             });
 
@@ -136,14 +146,15 @@ angular.module('homePage.controller', ['homePage.service'])
             $scope.gotoDetail = function(){
                 // get scroll position
                 $rootScope.yOffset = document.getElementById('content').scrollTop;
-                console.log('anchor yOffset?'+$rootScope.yOffset);
+                //console.log('anchor yOffset?'+$rootScope.yOffset);
             };
-            if($rootScope.yOffset && $rootScope.yOffset > 0) {
-                // TODO, goback to offset
-                //document.getElementById('content').scrollTop = $rootScope.yOffset;
-                //$location.hash('content');
-                //$anchorScroll.yOffset = $rootScope.yOffset;
-            }
+            $scope.$on('$onFinishRender', function(){
+                if($rootScope.yOffset && $rootScope.yOffset > 0) {
+                    document.getElementById('content').scrollTop = $rootScope.yOffset;
+                    //$location.hash('content');
+                    //$anchorScroll.yOffset = $rootScope.yOffset;
+                }
+            })
 
 
             //分类区域
