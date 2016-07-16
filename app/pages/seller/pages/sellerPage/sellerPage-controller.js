@@ -211,15 +211,15 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                     return;
                 }
 
-                console.log("姓名：" + real_name + " " + "手机号：" + phone);
-
-                return;
+                //console.log("姓名：" + real_name + " " + "手机号：" + phone);
 
                 SellerPageFty.becomeDistribution(real_name,phone)
                     .then(function(json){
                         if(json.status_code == 0){
                             $.toast('申请成功');
                             $state.go('home.homePage');
+                        }else{
+                            $.toast('申请失败请与客服联系','cancel');
                         }
                     }, function(error){
                         $.toast('提交信息失败','cancel');

@@ -146,7 +146,7 @@ angular.module('homePage.controller', ['homePage.service'])
             $scope.gotoDetail = function(){
                 // get scroll position
                 $rootScope.yOffset = document.getElementById('content').scrollTop;
-                //console.log('anchor yOffset?'+$rootScope.yOffset);
+                console.log('anchor yOffset?'+$rootScope.yOffset);
             };
             $scope.$on('$onFinishRender', function(){
                 if($rootScope.yOffset && $rootScope.yOffset > 0) {

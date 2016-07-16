@@ -3,6 +3,7 @@ angular.module('goodsList.controller', ['goodsList.service'])
     .controller('GoodsListController', ['$scope', '$state', '$stateParams', '$rootScope', 'GoodsListFty', 'searchInfo', 'goodListParams', 'areasStatus',
         function ($scope, $state, $stateParams, $rootScope, GoodsListFty, searchInfo, goodListParams, areasStatus) {
 
+
             document.title = "商品列表";
 
             var orderBy = "";
@@ -241,6 +242,20 @@ angular.module('goodsList.controller', ['goodsList.service'])
                 } else if (s_status == 3) {
                     areasProductList(pageNumber, pageSize);
                 }
-            }
+            };
+
+            $scope.gotoDetail = function(){
+                // get scroll position
+                $rootScope.yOffset = document.getElementById('product_list_content').scrollTop;
+                console.log('anchor yOffset?'+$rootScope.yOffset);
+            };
+
+            $scope.$on('$onFinishRender', function(){
+                if($rootScope.yOffset && $rootScope.yOffset > 0) {
+                    document.getElementById('product_list_content').scrollTop = $rootScope.yOffset;
+                    //$location.hash('content');
+                    //$anchorScroll.yOffset = $rootScope.yOffset;
+                }
+            })
 
         }]);

@@ -38,8 +38,11 @@ angular.module('sellerPage.service', [])
             //成为分销商
             becomeDistribution: function (real_name,phone) {
                 var deferred = $q.defer();
-                var url = GlobalVariable.SERVER_PATH + "/owner_balance";
+                var url = GlobalVariable.SERVER_PATH + "/seller";
                 $http.post(url,{
+                    "real_name": real_name,
+                    "phone":phone
+                },{
                     headers:{
                         'Authorization': GlobalVariable.ACCESS_TOKEN
                     }
