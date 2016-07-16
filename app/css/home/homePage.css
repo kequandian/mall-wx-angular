@@ -42,6 +42,10 @@ body, html {
     background-color: white;
 }
 
+.weui_search_inner .weui_search_input{
+    width: 118%;
+}
+
 .weui_search_text .weui_icon_search{
     margin-left: 9px;
     margin-right: 2px;

@@ -77,17 +77,18 @@ angular.module('home.controller', ['home.service'])
             }
 
             //获取个人信息
+            //getUserInfo()
             function getUserInfo(){
                 SimpleCartFty.userInfoService()
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $scope.userInfo = json.data;
-                            //console.log(angular.toJson($scope.userInfo));
+                            console.log(angular.toJson($scope.userInfo));
 
-                            if($scope.userInfo){
+                            if($scope.userInfo.is_seller){
                                 $scope.home_tabs[2].name = '销售中心';
                                 $scope.home_tabs[2].srefName = '.sellerPage';
-                            }else if($scope.userInfo){
+                            }else if($scope.userInfo.is_seller){
                                 $scope.home_tabs[2].name = '分销';
                                 $scope.home_tabs[2].srefName = '.becomeDistributor';
                             }

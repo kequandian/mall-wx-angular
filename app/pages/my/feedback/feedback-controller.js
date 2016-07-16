@@ -1,7 +1,7 @@
 angular.module('feedback.controller', ['feedback.service'])
 
-    .controller('FeedbackController', ['$scope', '$state', 'FeedbackFty','ImageUpLoad',
-        '$ocLazyLoad', function ($scope, $state, FeedbackFty,ImageUpLoad, $ocLazyLoad) {
+    .controller('FeedbackController', ['$scope', '$state','$timeout', 'FeedbackFty','ImageUpLoad',
+        '$ocLazyLoad', function ($scope, $state, $timeout, FeedbackFty,ImageUpLoad, $ocLazyLoad) {
 
         //title
         document.title = "意见反馈";
@@ -23,8 +23,11 @@ angular.module('feedback.controller', ['feedback.service'])
                         // reset
                         $scope.q_content = undefined;
                         $scope.image_list = undefined;
-
+                        $.toast.prototype.defaults = 800;
                         $.toast('提交成功');
+                        $timeout(function(){
+                            $state.go('home.my');
+                        }, 900);
                     } else {
                         $.toast('提交失败', 'cancel');
                     }
@@ -32,7 +35,7 @@ angular.module('feedback.controller', ['feedback.service'])
                 }, function (error) {
                     $.toast('提交失败', 'cancel');
                 })
-        }
+        };
 
         $scope.uploadImage = function(){
             if($scope.image_list.length > 5){
@@ -42,7 +45,7 @@ angular.module('feedback.controller', ['feedback.service'])
                     loadImageFileAsURL(ImageUpLoad);
                 })
             }
-        }
+        };
 
         function loadImageFileAsURL(ImageUpLoad) {
             var filesSelected = document.getElementById("inputFileToLoad").files;

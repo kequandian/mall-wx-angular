@@ -149,3 +149,7 @@
     font-family: 'Arial';
 }
 
+#my #myOrder .weui_cell:active{
+    background: white;
+}
+
