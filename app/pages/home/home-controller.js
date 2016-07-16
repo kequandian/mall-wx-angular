@@ -34,8 +34,8 @@ angular.module('home.controller', ['home.service'])
                 'c_number': 0
             }, {
                 'id': '3',
-                'name': '销售中心',
-                'srefName': '.sellerPage',
+                'name': SimpleCartFty.isSeller == true ? '销售中心' : '分销',
+                'srefName': SimpleCartFty.isSeller == true ? '.sellerPage' : '.becomeDistributor',
                 'home_tab_icon': 'weui_tabbar_icon ion-app-biliya-tabs-team',
                 'c_count': null,
                 'c_number': 0
@@ -76,27 +76,5 @@ angular.module('home.controller', ['home.service'])
                     })
             }
 
-            //获取个人信息
-            //getUserInfo()
-            function getUserInfo(){
-                SimpleCartFty.userInfoService()
-                    .then(function (json) {
-                        if (json.status_code == 0) {
-                            $scope.userInfo = json.data;
-                            console.log(angular.toJson($scope.userInfo));
-
-                            if($scope.userInfo.is_seller){
-                                $scope.home_tabs[2].name = '销售中心';
-                                $scope.home_tabs[2].srefName = '.sellerPage';
-                            }else if($scope.userInfo.is_seller){
-                                $scope.home_tabs[2].name = '分销';
-                                $scope.home_tabs[2].srefName = '.becomeDistributor';
-                            }
-                        }
-                    }, function (error) {
-                        $.toast('获取信息失败', 'cancel');
-                        console.log('获取信息失败：' + error);
-                    })
-            }
 
         }]);
