@@ -217,11 +217,11 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                     .then(function(json){
                         //console.log(angular.toJson(json));
                         if(json.status_code == 0){
-                            $.toast('申请成功');
+                            $.toast('提交成功');
                             GlobalVariable.SELLER_SHIP = 'APPLYING';
                             $state.go('home.homePage',{},{reload:true});
                         }else{
-                            $.toast('申请失败请与客服联系','cancel');
+                            $.toast('提交失败请与客服联系','cancel');
                         }
                     }, function(error){
                         $.toast('提交信息失败','cancel');
