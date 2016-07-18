@@ -215,6 +215,7 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
 
                 SellerPageFty.becomeDistribution(real_name,phone)
                     .then(function(json){
+                        //console.log(angular.toJson(json));
                         if(json.status_code == 0){
                             $.toast('申请成功');
                             GlobalVariable.SELLER_SHIP = 'APPLYING';
@@ -235,10 +236,20 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
 
     }])
 
-    .controller('SellerApplyingController', ['$scope', function ($scope) {
+    .controller('SellerApplyingController', ['$scope','$state', '$timeout','$ocLazyLoad', function ($scope, $state, $timeout,$ocLazyLoad) {
 
         //title
         document.title = "申请";
+
+        $timeout(function(){
+            alert("OK");
+            $state.go('home.homePage');
+        },5000);
+        //立即跳转首页
+        $scope.goToHomePage = function(){
+            $state.go('home.homePage');
+        }
+
     }])
 
     /*

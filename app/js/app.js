@@ -222,6 +222,13 @@
                         'pages/seller/seller-session-service.js',
                         {type: 'css', path: 'css/sellerPage/distributionInfo.css'}],
                     cache: false
+                }, {
+                    name: 'sellerApplying',
+                    files: ['pages/seller/pages/sellerPage/sellerPage-controller.js',
+                        'pages/seller/pages/sellerPage/sellerPage-service.js',
+                        'pages/seller/seller-session-service.js',
+                        {type: 'css', path: 'css/sellerPage/sellerApplying.css'}],
+                    cache: false
                 }
 
                 ]

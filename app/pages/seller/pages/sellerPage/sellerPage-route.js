@@ -28,7 +28,13 @@ angular.module('sellerPage.route', [/*'sellerPage.controller'*/])
     .config(['$stateProvider', function($stateProvider) {
         $stateProvider.state('home.sellerApplying', {
             url:'/sellerApplying',
-            templateUrl: 'pages/seller/pages/sellerPage/sellerApplying.html'
+            templateUrl: 'pages/seller/pages/sellerPage/sellerApplying.html',
+            controller:'SellerApplyingController',
+            resolve: {
+                loadData: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load('sellerApplying');
+                }]
+            }
         })
     }])
 
