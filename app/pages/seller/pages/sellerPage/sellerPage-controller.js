@@ -242,7 +242,6 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
         document.title = "申请";
 
         $timeout(function(){
-            alert("OK");
             $state.go('home.homePage');
         },5000);
         //立即跳转首页
