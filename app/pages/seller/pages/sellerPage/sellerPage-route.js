@@ -24,6 +24,14 @@ angular.module('sellerPage.route', [/*'sellerPage.controller'*/])
             }
         })
     }])
+
+    .config(['$stateProvider', function($stateProvider) {
+        $stateProvider.state('home.sellerApplying', {
+            url:'/sellerApplying',
+            templateUrl: 'pages/seller/pages/sellerPage/sellerApplying.html'
+        })
+    }])
+
     /*.config(['$stateProvider', function($stateProvider) {
         $stateProvider.state('pianPage', {
             url:'/pianPage',

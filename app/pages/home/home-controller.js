@@ -34,8 +34,8 @@ angular.module('home.controller', ['home.service'])
                 'c_number': 0
             }, {
                 'id': '3',
-                'name': GlobalVariable.IS_SELLER ? '销售中心' : '分销',
-                'srefName': GlobalVariable.IS_SELLER ? '.sellerPage' : '.becomeDistributor',
+                'name': GlobalVariable.SELLER_SHIP=='NO' ? '分销' : '销售中心',
+                'srefName': GlobalVariable.SELLER_SHIP=='YES' ? '.sellerPage' : GlobalVariable.SELLER_SHIP=='NO' ?  '.becomeDistributor' : 'sellerApplying',
                 'home_tab_icon': 'weui_tabbar_icon ion-app-biliya-tabs-team',
                 'c_count': null,
                 'c_number': 0

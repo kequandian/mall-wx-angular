@@ -163,11 +163,11 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
     .controller('becomeDistributorController',['$scope', '$state','$rootScope','$ocLazyLoad', 'SellerPageFty',
         function ($scope, $state,$rootScope,$ocLazyLoad, SellerPageFty){
 
-            $ocLazyLoad.load('Jquery').then(function () {
-                $ocLazyLoad.load('JqueryWeUI').then(function () {
-                    console.log('settlement:jquery loaded');
-                })
-            });
+            //$ocLazyLoad.load('Jquery').then(function () {
+            //    $ocLazyLoad.load('JqueryWeUI').then(function () {
+            //        console.log('settlement:jquery loaded');
+            //    })
+            //});
 
             document.title = '成为分销商';
 
@@ -225,7 +225,6 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                         $.toast('提交信息失败','cancel');
                         console.log('提交信息失败：' + angular.toJson(error));
                     })
-
             };
 
             function checkPhone(str){
@@ -233,6 +232,12 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                 return isphone;
             }
 
+    }])
+
+    .controller('SellerApplyingController', ['$scope', function ($scope) {
+
+        //title
+        document.title = "申请";
     }])
 
     /*
