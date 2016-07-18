@@ -160,8 +160,8 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
     /*
     * 成为分销商
     * */
-    .controller('becomeDistributorController',['$scope', '$state','$rootScope','$ocLazyLoad', 'SellerPageFty',
-        function ($scope, $state,$rootScope,$ocLazyLoad, SellerPageFty){
+    .controller('becomeDistributorController',['$scope', '$state','$rootScope','$ocLazyLoad', 'SellerPageFty','GlobalVariable',
+        function ($scope, $state,$rootScope,$ocLazyLoad, SellerPageFty,GlobalVariable){
 
             //$ocLazyLoad.load('Jquery').then(function () {
             //    $ocLazyLoad.load('JqueryWeUI').then(function () {
@@ -217,7 +217,8 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                     .then(function(json){
                         if(json.status_code == 0){
                             $.toast('申请成功');
-                            $state.go('home.homePage');
+                            GlobalVariable.SELLER_SHIP = 'APPLYING';
+                            $state.go('home.homePage',{},{reload:true});
                         }else{
                             $.toast('申请失败请与客服联系','cancel');
                         }
