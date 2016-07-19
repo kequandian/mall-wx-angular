@@ -14,14 +14,28 @@ angular.module('my.controller', ['my.service'])
             myOrderList();
 
             function getUserInfo(){
-                MyFty.userInfoService()
-                    .then(function(json){
-                        if(json.status_code == 0){
-                            $scope.userInfo = json.data;
-                        }
-                    }, function(error){
-                        $.toast('获取信息失败', 'cancel');
-                    })
+                var loaded = false;
+                if ($rootScope.profile_session) {
+                    if ($rootScope.profile_session.userInfo) {
+                        loaded = true;
+                        //console.log('userInfo loaded')
+                    }
+                } else {
+                    $rootScope.profile_session = {}
+                }
+
+                if(!loaded) {
+                    MyFty.userInfoService()
+                        .then(function (json) {
+                            if (json.status_code == 0) {
+                                $scope.userInfo = json.data;
+                            }
+                        }, function (error) {
+                            $.toast('获取信息失败', 'cancel');
+                        })
+                }else{
+                    $scope.userInfo = $rootScope.profile_session.userInfo;
+                }
             }
 
             //获取订单信息

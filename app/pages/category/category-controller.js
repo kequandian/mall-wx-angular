@@ -27,26 +27,7 @@ angular.module('category.controller', ['category.service'])
             $rootScope.tabsNumber = 2;
 
             $rootScope.jqueryLoaded = false;
-
-            detailsInfo();
-            function detailsInfo() {
-                CategoryFty.categoryService()
-                    .then(function (json) {
-                        if (json.status_code == 0) {
-                            $scope.categoryItem = json.data;
-                            //console.log('scope.categoryItem?'+angular.toJson($scope.categoryItem));
-                            console.log(angular.toJson(json.data))
-
-                            $scope.getCategoryDetailData(json.data[0].id, json.data[0]);
-
-                        } else {
-                            console.log('获取商品分类失败');
-                        }
-                    }, function (error) {
-                        console.log('获取商品分类失败');
-                    })
-            }
-
+            
             // 点击左侧分类单
             $scope.getCategoryDetailData = function (typeNumber, item) {
                 //if(CategoryPage.goods_list_go_back_number > 0){
@@ -74,6 +55,43 @@ angular.module('category.controller', ['category.service'])
                 $scope.cateCoumt = cateCount;
 
             };
+
+            detailsInfo();
+
+            function detailsInfo() {
+                var loaded = false;
+                if($rootScope.cat_session){
+                    if($rootScope.cat_session.categoryItem) {
+                        loaded = true;
+                        //console.log('cat_session loaded')
+                    }
+                }else{
+                    $rootScope.cat_session = {}
+                }
+
+                if(!loaded) {
+                    CategoryFty.categoryService()
+                        .then(function (json) {
+                            if (json.status_code == 0) {
+                                $scope.categoryItem = json.data;
+                                //console.log('scope.categoryItem?'+angular.toJson($scope.categoryItem));
+                                //console.log(angular.toJson(json.data))
+
+                                $scope.getCategoryDetailData(json.data[0].id, json.data[0]);
+
+                                $rootScope.cat_session.categoryItem = $scope.categoryItem;
+
+                            } else {
+                                console.log('获取商品分类失败');
+                            }
+                        }, function (error) {
+                            console.log('获取商品分类失败');
+                        })
+                }else{
+                    $scope.categoryItem = $rootScope.cat_session.categoryItem;
+                    $scope.getCategoryDetailData($scope.categoryItem[0].id, $scope.categoryItem[0]);
+                }
+            }
 
 
             // 左侧分类单击样式修改

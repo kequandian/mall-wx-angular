@@ -1,21 +1,21 @@
 angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session'])
     /*.directive('bindJavascript', function () {
-        return {
-            restrict: 'A',
-            scope: {
-                javascript: '@'
-            },
-            replace: false,
-            link: function ($scope, element, attr) {
-                var script = angular.element(document.createElement('script'));
-                var source = $scope.javascript;
-                console.log(source);
+     return {
+     restrict: 'A',
+     scope: {
+     javascript: '@'
+     },
+     replace: false,
+     link: function ($scope, element, attr) {
+     var script = angular.element(document.createElement('script'));
+     var source = $scope.javascript;
+     console.log(source);
 
-                script[0].text = source;
-                angular.element(element).append(script[0]);
-            }
-        };
-    })*/
+     script[0].text = source;
+     angular.element(element).append(script[0]);
+     }
+     };
+     })*/
     .filter("OrderState", function () {
         return function (input) {
             if (input == 'PENDING_SETTLEMENT') {
@@ -31,8 +31,8 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
         }
     })
 
-    .controller('SellerPageController', ['$scope', '$state', '$rootScope', 'SellerPageFty', 'BalanceSession', 'UserInfo', 'DWStatus','withdrawBalance',
-        function ($scope, $state, $rootScope, SellerPageFty, BalanceSession, UserInfo, DWStatus,withdrawBalance) {
+    .controller('SellerPageController', ['$scope', '$state', '$rootScope', 'SellerPageFty', 'BalanceSession', 'UserInfo', 'DWStatus', 'withdrawBalance',
+        function ($scope, $state, $rootScope, SellerPageFty, BalanceSession, UserInfo, DWStatus, withdrawBalance) {
 
             //title
             document.title = "销售中心";
@@ -45,17 +45,35 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
             getOwnerBalance();
 
             function getUserInfo() {
-                SellerPageFty.sellerUserInfoService()
-                    .then(function (json) {
-                        if (json.status_code == 0) {
-                            $scope.userInfo = json.data;
-                            //alert(angular.toJson($scope.userInfo));
-                            UserInfo.register_date = $scope.userInfo.register_date;
-                        }
-                    }, function (error) {
-                        $.toast('获取信息失败', 'cancel');
-                        console.log('获取信息失败：' + error);
-                    })
+                var loaded = false;
+                if ($rootScope.profile_session) {
+                    if ($rootScope.profile_session.userInfo) {
+                        loaded = true;
+                        console.log('userInfo loaded')
+                    }
+                } else {
+                    $rootScope.profile_session = {}
+                }
+
+                if (!loaded) {
+                    SellerPageFty.sellerUserInfoService()
+                        .then(function (json) {
+                            if (json.status_code == 0) {
+                                $scope.userInfo = json.data;
+                                //alert(angular.toJson($scope.userInfo));
+                                UserInfo.register_date = $scope.userInfo.register_date;
+
+
+                                $rootScope.profile_session.userInfo = $scope.userInfo;
+                            }
+                        }, function (error) {
+                            $.toast('获取信息失败', 'cancel');
+                            console.log('获取信息失败：' + error);
+                        })
+                } else {
+                    $scope.userInfo = $rootScope.profile_session.userInfo;
+                    UserInfo.register_date = $rootScope.profile_session.userInfo.register_date;
+                }
             }
 
             function getOwnerBalance() {
@@ -69,20 +87,19 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                                 || $scope.owner_balance.is_partner
                                 || $scope.owner_balance.is_seller;
 
-                            if($scope.owner_balance.is_partner) {
+                            if ($scope.owner_balance.is_partner) {
                                 $scope.owner_balance.level_percent = getLevelPercent();
                             }
 
                             /// save session
                             BalanceSession.balance = $scope.owner_balance.balance;
-
                         }
                     }, function (error) {
                         $.toast('获取信息失败', 'cancel');
                     })
             }
 
-            function getLevelPercent(){
+            function getLevelPercent() {
                 ///if($scope.owner_balance.partner_pool_count <= $scope.owner_balance.next_partner_level.headcount_quota){
                 //    return 0;
                 //}
@@ -90,7 +107,7 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                 //var extra = $scope.owner_balance.partner_pool_count - $scope.owner_balance.partner_level.headcount_quota;
                 //var levelSpan = $scope.owner_balance.next_partner_level.headcount_quota - $scope.owner_balance.partner_level.headcount_quota;
 
-                if($scope.owner_balance.next_partner_level) {
+                if ($scope.owner_balance.next_partner_level) {
                     var val = ($scope.owner_balance.partner_pool_count * 100 / $scope.owner_balance.next_partner_level.headcount_quota);
                     return parseInt(val);
                 }
@@ -113,7 +130,7 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                 }
                 var invitationUrl = "http://www.kequandian.net/app/app?invite_code=" + q_r_code;
                 if (invitationUrl != null) {
-                    loadScript("lib/qrcodejs/qrcode.min.js", function(){
+                    loadScript("lib/qrcodejs/qrcode.min.js", function () {
                         var qrcode = new QRCode(divhtml, {
                             width: 220,
                             height: 220
@@ -158,10 +175,10 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
 
 
     /*
-    * 成为分销商
-    * */
-    .controller('becomeDistributorController',['$scope', '$state','$rootScope','$ocLazyLoad', 'SellerPageFty','GlobalVariable',
-        function ($scope, $state,$rootScope,$ocLazyLoad, SellerPageFty,GlobalVariable){
+     * 成为分销商
+     * */
+    .controller('becomeDistributorController', ['$scope', '$state', '$rootScope', '$ocLazyLoad', 'SellerPageFty', 'GlobalVariable',
+        function ($scope, $state, $rootScope, $ocLazyLoad, SellerPageFty, GlobalVariable) {
 
             //$ocLazyLoad.load('Jquery').then(function () {
             //    $ocLazyLoad.load('JqueryWeUI').then(function () {
@@ -213,39 +230,39 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
 
                 //console.log("姓名：" + real_name + " " + "手机号：" + phone);
 
-                SellerPageFty.becomeDistribution(real_name,phone)
-                    .then(function(json){
+                SellerPageFty.becomeDistribution(real_name, phone)
+                    .then(function (json) {
                         //console.log(angular.toJson(json));
-                        if(json.status_code == 0){
+                        if (json.status_code == 0) {
                             $.toast('提交成功');
                             GlobalVariable.SELLER_SHIP = 'APPLYING';
-                            $state.go('home.homePage',{},{reload:true});
-                        }else{
-                            $.toast('提交失败请与客服联系','cancel');
+                            $state.go('home.homePage', {}, {reload: true});
+                        } else {
+                            $.toast('提交失败请与客服联系', 'cancel');
                         }
-                    }, function(error){
-                        $.toast('提交信息失败','cancel');
+                    }, function (error) {
+                        $.toast('提交信息失败', 'cancel');
                         console.log('提交信息失败：' + angular.toJson(error));
                     })
             };
 
-            function checkPhone(str){
+            function checkPhone(str) {
                 var isphone = /^((\+|0)86)?\d{11}$/.test(str);
                 return isphone;
             }
 
-    }])
+        }])
 
-    .controller('SellerApplyingController', ['$scope','$state', '$timeout','$ocLazyLoad', function ($scope, $state, $timeout,$ocLazyLoad) {
+    .controller('SellerApplyingController', ['$scope', '$state', '$timeout', '$ocLazyLoad', function ($scope, $state, $timeout, $ocLazyLoad) {
 
         //title
         document.title = "申请";
 
-        $timeout(function(){
+        $timeout(function () {
             $state.go('home.homePage');
-        },5000);
+        }, 5000);
         //立即跳转首页
-        $scope.goToHomePage = function(){
+        $scope.goToHomePage = function () {
             $state.go('home.homePage');
         }
 

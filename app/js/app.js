@@ -243,6 +243,11 @@
         $rootScope.rec_session.page_size  = 10;
         $rootScope.rec_session.page_number  = 1;
 
+        /*//Do your $on in here, like this:
+        $rootScope.$on("$locationChangeStart",function(event, next, current){
+            console.log('$locationChangeStart')
+        });*/
+
         angular.element(document).ready(function () {
             //document.getElementById('msg').innerHTML = 'Hello';
             //$ocLazyLoad.load('bower_components/angular-ui-router/release/angular-ui-router.min.js')
