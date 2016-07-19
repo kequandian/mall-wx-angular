@@ -180,16 +180,31 @@ angular.module('homePage.controller', ['homePage.service'])
 
             $scope.gotoDetail = function(){
                 // get scroll position
-                $rootScope.yOffset = document.getElementById('content').scrollTop;
-                console.log('anchor yOffset?'+$rootScope.yOffset);
+                if(!$rootScope.scrolls){
+                    $rootScope.scrolls = {}
+                }
+
+                $rootScope.scrolls.yOffset = document.getElementById('content').scrollTop;
+                $rootScope.scrolls.stacked = true;  //remember home stacked to details and will come back.
+
+                console.log('anchor yOffset?'+$rootScope.scrolls.yOffset);
             };
             $scope.$on('$onFinishRender', function(){
-                if($rootScope.yOffset && $rootScope.yOffset > 0) {
-                    document.getElementById('content').scrollTop = $rootScope.yOffset;
+                if($rootScope.scrolls && $rootScope.scrolls.yOffset && $rootScope.scrolls.stacked) {
+                    $rootScope.scrolls.stacked = false;
+
+                    document.getElementById('content').scrollTop = $rootScope.scrolls.yOffset;
+
                     //$location.hash('content');
                     //$anchorScroll.yOffset = $rootScope.yOffset;
                 }
             })
+            //Do your $on in here, like this:
+            $rootScope.$on("$locationChangeStart",function(event, next, current){
+                if($rootScope.scrolls && !$rootScope.scrolls.stacked) {
+                    $rootScope.scrolls.yOffset = 0;
+                }
+            });
 
 
             //分类区域
