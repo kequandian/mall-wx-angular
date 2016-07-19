@@ -35,7 +35,7 @@ angular.module('category.controller', ['category.service'])
                         if (json.status_code == 0) {
                             $scope.categoryItem = json.data;
                             //console.log('scope.categoryItem?'+angular.toJson($scope.categoryItem));
-                            //console.log(angular.toJson(json.data))
+                            console.log(angular.toJson(json.data))
 
                             $scope.getCategoryDetailData(json.data[0].id, json.data[0]);
 
