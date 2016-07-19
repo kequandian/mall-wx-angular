@@ -110,32 +110,67 @@ angular.module('homePage.controller', ['homePage.service'])
             }
 
             function getAdHome() {
-                HomePageFty.getAdService()
-                    .then(function (json) {
-                        if (json.status_code == 0) {
-                            $scope.ad_list = json.data;
-                            //console.log(angular.toJson($scope.ad_list));
-                        }
-                    }, function (error) {
-                        console.log(error);
-                        //$.toast('获取广告信息失败', 'cancel');
-                    })
+                var loaded = false;
+                if($rootScope.ad_session){
+                    if($rootScope.ad_session.ad_list) {
+                        loaded = true;
+                        //console.log('ad_list loaded')
+                    }
+                }else{
+                    $rootScope.ad_session = {}
+                }
+
+                if(!loaded) {
+                    HomePageFty.getAdService()
+                        .then(function (json) {
+                            if (json.status_code == 0) {
+                                $scope.ad_list = json.data;
+                                //console.log(angular.toJson($scope.ad_list));
+
+                                $rootScope.ad_session.ad_list = $scope.ad_list;
+                            }
+                        }, function (error) {
+                            console.log(error);
+                            //$.toast('获取广告信息失败', 'cancel');
+                        })
+                }else{
+                    $scope.ad_list = $rootScope.ad_session.ad_list;
+                }
             }
 
             function getAdBanner() {
-                HomePageFty.getAdBanner()
-                    .then(function (json) {
-                        if (json.status_code == 0) {
-                            $scope.ad_banner = json.data;
-                            //console.log("ad?"+angular.toJson($scope.ad_banner ));
-                            $scope.ad_banner_1 = $scope.ad_banner[0];
-                            $scope.ad_banner_2 = $scope.ad_banner[1];
-                            //console.log("ad-banner-1?"+angular.toJson($scope.ad_banner_1));
-                        }
-                    }, function (error) {
-                        console.log(error);
-                        //$.toast('获取广告列表失败', 'cancel');
-                    })
+                var loaded = false;
+                if($rootScope.ad_session){
+                    if($rootScope.ad_session.ad_banner) {
+                        loaded = true;
+                        //console.log('ad_banner loaded')
+                    }
+                }else{
+                    $rootScope.ad_session = {}
+                }
+
+                if(!loaded) {
+                    HomePageFty.getAdBanner()
+                        .then(function (json) {
+                            if (json.status_code == 0) {
+                                $scope.ad_banner = json.data;
+                                //console.log("ad?"+angular.toJson($scope.ad_banner ));
+                                $scope.ad_banner_1 = $scope.ad_banner[0];
+                                $scope.ad_banner_2 = $scope.ad_banner[1];
+                                //console.log("ad-banner-1?"+angular.toJson($scope.ad_banner_1));
+
+                                $rootScope.ad_session.ad_banner = $scope.ad_banner;
+                            }
+                        }, function (error) {
+                            console.log(error);
+                            //$.toast('获取广告列表失败', 'cancel');
+                        })
+                }else{
+                    $scope.ad_banner = $rootScope.ad_session.ad_banner;
+
+                    $scope.ad_banner_1 = $scope.ad_banner[0];
+                    $scope.ad_banner_2 = $scope.ad_banner[1];
+                }
             }
 
             //搜索栏
@@ -180,5 +215,4 @@ angular.module('homePage.controller', ['homePage.service'])
                 $rootScope.rec_session.rec_product = $scope.rec_product;
                 $rootScope.rec_session.load_more = $scope.home_load_more_btn_show;
             }
-
         }]);
