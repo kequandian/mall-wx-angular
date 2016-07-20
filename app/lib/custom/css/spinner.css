@@ -18,12 +18,12 @@
 
 .spinner-loader {
     position: absolute;
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
     left: 50%;
     top: 50%;
-    margin-left: -8px; /* -1 * image width / 2 */
-    margin-top: -8px; /* -1 * image height / 2 */
+    margin-left: -10px; /* -1 * image width / 2 */
+    margin-top: -10px; /* -1 * image height / 2 */
     display: block;
     opacity: 0.8;
 }
@@ -62,7 +62,8 @@
 }
 
 .spinner-rotating {
-    -webkit-animation: spinner-fadein 2s ease-in, spinner-rotating 0.8s ease-out infinite;
+    /*-webkit-animation: spinner-fadein 2s ease-in, spinner-rotating 0.8s ease-out infinite;*/
+    -webkit-animation: spinner-fadein 2s ease-in, spinner-rotating 0.8s linear infinite;
 }
 
 /*rotate Y*/

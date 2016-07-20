@@ -378,6 +378,7 @@ body, html {
     right: 12px;
     position: fixed;
     z-index: 1;
+    opacity: 0.8;
 }
 
 #content .topit img{

@@ -118,11 +118,16 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
             };
 
             $scope.uploadImage = function(){
-                $ocLazyLoad.load(['pages/pageCommon/imageUpLoad.js', 'lib/custom/js/compressImg.js']).then(function(){
-                    var ImageUpLoad = $injector.get('ImageUpLoad');
-                    var CompressImg = $injector.get('CompressImg');
-                    loadImageFileAsURL(ImageUpLoad, CompressImg);
-                });
+
+                if($scope.image_list.length >= 5){
+                    $.toast('提交图片不能超过5张', 'cancel');
+                }else {
+                    $ocLazyLoad.load(['pages/pageCommon/imageUpLoad.js', 'lib/custom/js/compressImg.js']).then(function(){
+                        var ImageUpLoad = $injector.get('ImageUpLoad');
+                        var CompressImg = $injector.get('CompressImg');
+                        loadImageFileAsURL(ImageUpLoad, CompressImg);
+                    });
+                }
             };
 
             function loadImageFileAsURL(ImageUpLoad, CompressImg) {
@@ -131,62 +136,67 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
 
                 if (filesSelected.length > 0) {
 
-                    var success = 0;
-                    for (var i = 0; i < filesSelected.length; i++) {
-                        var fileToLoad = filesSelected[i];
-                        var fileType = fileToLoad.type;
+                    if( ($scope.image_list.length + filesSelected.length) > 5){
+                        $.toast('提交图片不能超过5张', 'cancel');
+                    }else {
 
-                        var fileReader = new FileReader();
+                        var success = 0;
+                        for (var i = 0; i < filesSelected.length; i++) {
+                            var fileToLoad = filesSelected[i];
+                            var fileType = fileToLoad.type;
 
-                        fileReader.onload = function (fileLoadedEvent) {
-                            var prevImage = new Image();
+                            var fileReader = new FileReader();
 
-                            if(fileType == 'image/png') {
-                                if(prevImage.width > 128 || prevImage.height > 128) {
-                                    var canvas = document.createElement('canvas'),
-                                        ctx = canvas.getContext('2d');
+                            fileReader.onload = function (fileLoadedEvent) {
+                                var prevImage = new Image();
 
-                                    fileType = 'image/jpeg'
-                                    ctx.drawImage(prevImage, 0, 0);
+                                if (fileType == 'image/png') {
+                                    if (prevImage.width > 128 || prevImage.height > 128) {
+                                        var canvas = document.createElement('canvas'),
+                                            ctx = canvas.getContext('2d');
 
-                                    var dataUrl = canvas.toDataURL('image/jpeg', 0.8);
-                                    prevImage.src = dataUrl;
-                                    //console.log(prevImage.src);
+                                        fileType = 'image/jpeg'
+                                        ctx.drawImage(prevImage, 0, 0);
+
+                                        var dataUrl = canvas.toDataURL('image/jpeg', 0.8);
+                                        prevImage.src = dataUrl;
+                                        //console.log(prevImage.src);
+                                    }
+
+                                    var compressedImage = CompressImg.compress(prevImage, fileType, 90);
+
+                                    ImageUpLoad.uploadImage(compressedImage.src).then(function (json) {
+                                        //console.log(json);
+                                        if (json.status_code == 0) {
+
+                                            if (!angular.isDefined($scope.image_list)) {
+                                                $scope.image_list = [];
+                                            }
+
+                                            //console.log(json.data);
+                                            $scope.image_list.push(json.data);
+
+                                            //$.toast('提交成功');
+                                            success++;
+
+                                        } else {
+                                            //$.toast('提交失败', 'cancel');
+                                        }
+                                    }, function (error) {
+                                        //$.toast('提交失败', 'cancel');
+                                    })
                                 }
 
-                                var compressedImage = CompressImg.compress(prevImage, fileType, 90);
+                                prevImage.src = fileLoadedEvent.target.result;
+                            };
 
-                                ImageUpLoad.uploadImage(compressedImage.src).then(function (json) {
-                                    //console.log(json);
-                                    if (json.status_code == 0) {
+                            fileReader.readAsDataURL(fileToLoad);
+                        }
 
-                                        if(!angular.isDefined($scope.image_list)) {
-                                            $scope.image_list = [];
-                                        }
-
-                                        //console.log(json.data);
-                                        $scope.image_list.push(json.data);
-
-                                        //$.toast('提交成功');
-                                        success ++;
-
-                                    } else {
-                                        //$.toast('提交失败', 'cancel');
-                                    }
-                                }, function (error) {
-                                    //$.toast('提交失败', 'cancel');
-                                })
-                            }
-
-                            prevImage.src = fileLoadedEvent.target.result;
-                        };
-
-                        fileReader.readAsDataURL(fileToLoad);
+                        //if(success>0){
+                        //    $.toast('提交成功');
+                        //}
                     }
-
-                    //if(success>0){
-                    //    $.toast('提交成功');
-                    //}
 
                 }//length
             }

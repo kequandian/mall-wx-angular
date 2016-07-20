@@ -32,8 +32,8 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
     })
 
     .controller('SellerPageController', ['$scope', '$state', '$rootScope', 'SellerPageFty', 'BalanceSession', 'UserInfo', 'DWStatus',
-        'withdrawBalance','cateLeftIndex',
-        function ($scope, $state, $rootScope, SellerPageFty, BalanceSession, UserInfo, DWStatus, withdrawBalance,cateLeftIndex) {
+        'withdrawBalance', 'cateLeftIndex',
+        function ($scope, $state, $rootScope, SellerPageFty, BalanceSession, UserInfo, DWStatus, withdrawBalance, cateLeftIndex) {
 
             //title
             document.title = "销售中心";
@@ -237,10 +237,10 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                         //console.log(angular.toJson(json));
                         if (json.status_code == 0) {
 
-                            if(json.data.seller_ship==0) {
+                            if (json.data.seller_ship == 0) {
                                 GlobalVariable.SELLER_SHIP = 'APPLYING';
                                 $state.go('home.sellerApplying', {}, {reload: true});
-                            }else if(json.data.seller_ship==1){
+                            } else if (json.data.seller_ship == 1) {
                                 GlobalVariable.SELLER_SHIP = 'YES';
                                 $state.go('home.sellerPage', {}, {reload: true});
                             }
@@ -263,20 +263,35 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
 
         }])
 
-    .controller('SellerApplyingController', ['$scope', '$state', '$timeout', '$ocLazyLoad', function ($scope, $state, $timeout, $ocLazyLoad) {
+    .controller('SellerApplyingController', ['$scope', '$rootScope', '$state', '$timeout',
+        function ($scope, $rootScope, $state, $timeout) {
 
-        //title
-        document.title = "申请";
+            //title
+            document.title = "申请";
 
-        $timeout(function () {
-            $state.go('home.homePage');
-        }, 5000);
-        //立即跳转首页
-        $scope.goToHomePage = function () {
-            $state.go('home.homePage');
-        }
+            // just go in page area
+            $scope.in_page = true;
 
-    }])
+            $timeout(function () {
+                if( $scope.in_page) {
+                    $state.go('home.homePage');
+                }
+            }, 5000);
+
+            //立即跳转首页
+            $scope.goToHomePage = function () {
+                $state.go('home.homePage');
+            };
+
+            //Do your $on in here, like this:
+            $rootScope.$on("$locationChangeStart", function (event, next, current) {
+                if(current.indexOf('#/home/sellerApplying') > -1){
+                    $scope.in_page = false;
+                    //console.log('in-page?'+$scope.in_page);
+                }
+            });
+
+        }])
 
     /*
      * 提佣方案
