@@ -5,7 +5,7 @@ angular.module('global', [])
         // 服务器地址
         SERVER_PATH: 'http://112.74.26.228:10080/rest',
         ACCESS_TOKEN: 'eyJ0b2tlbiI6IjIwN2JjOTVjNGZiMDU5YTQ2ZDQzZjIyZGRiZGM0YTIzNDQ5ZTY4OTkiLCJsb2dpbl9uYW1lIjoiamluZ2ZlaSJ9',
-        SELLER_SHIP: 'APPLYING'
+        SELLER_SHIP: 'YES'
     })
     .value('LoginSession', {
         token: 'token'

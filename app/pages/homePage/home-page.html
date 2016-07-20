@@ -228,7 +228,7 @@
                         </a>
 
                         <div class="weui_grid load-more-product" ng-show="home_load_more_btn_show">
-                            <div class="load-more-button" ng-click="home_load_more_product()">加载更多</div>
+                            <div class="load-more-button">拼命加载中……</div>
                         </div>
                     </div>
                 </div>
@@ -245,7 +245,7 @@
         <!--</div>-->
     <!--</div>-->
 
-    <div class="topit" ng-click="onTop()">
+    <div ng-show="top_btn_show" class="topit"  ng-class="{'dropdown':false}" ng-click="onTop()">
         <img src="img/top.png">
     </div>
 </div>
