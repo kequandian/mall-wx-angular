@@ -234,9 +234,17 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                     .then(function (json) {
                         //console.log(angular.toJson(json));
                         if (json.status_code == 0) {
+
+                            if(json.data.seller_ship==0) {
+                                GlobalVariable.SELLER_SHIP = 'APPLYING';
+                                $state.go('home.sellerApplying', {}, {reload: true});
+                            }else if(json.data.seller_ship==1){
+                                GlobalVariable.SELLER_SHIP = 'YES';
+                                $state.go('home.sellerPage', {}, {reload: true});
+                            }
+
+
                             $.toast('提交成功');
-                            GlobalVariable.SELLER_SHIP = 'APPLYING';
-                            $state.go('home.homePage', {}, {reload: true});
                         } else {
                             $.toast('提交失败请与客服联系', 'cancel');
                         }

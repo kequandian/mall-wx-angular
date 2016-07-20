@@ -163,11 +163,12 @@
     height: 16px;
     position: absolute;
     border-radius: 50%;
-    top: 18px;
+    top: 50%;
+    margin-top: -8px;
 }
 
 #details .d-p-d-right span{
-    margin-left: 18px;
+    margin-left: 20px;
 }
 
 #details .d-p-d-center{
@@ -182,11 +183,12 @@
     height: 16px;
     position: absolute;
     border-radius: 50%;
-    top: 18px;
+    top: 50%;
+    margin-top: -8px;
 }
 
 #details .d-p-d-center span{
-    margin-left: 18px;
+    margin-left: 20px;
 }
 
 #details .d-p-d-left{
@@ -196,13 +198,13 @@
     float: left;
 }
 
-
 #details .d-p-d-left img{
     width:16px;
     height: 16px;
     position: absolute;
     border-radius: 50%;
-    top: 18px;
+    top: 50%;
+    margin-top: -8px;
 }
 
 #details .d-p-d-left span{
