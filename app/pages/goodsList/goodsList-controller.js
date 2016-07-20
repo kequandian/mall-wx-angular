@@ -1,10 +1,12 @@
 angular.module('goodsList.controller', ['goodsList.service'])
 
-    .controller('GoodsListController', ['$scope', '$state', '$stateParams', '$rootScope', 'GoodsListFty', 'searchInfo', 'goodListParams', 'areasStatus',
-        function ($scope, $state, $stateParams, $rootScope, GoodsListFty, searchInfo, goodListParams, areasStatus) {
+    .controller('GoodsListController', ['$scope', '$state', '$stateParams', '$rootScope', 'GoodsListFty', 'searchInfo',
+        'goodListParams', 'areasStatus', 'cateLeftIndex',
+        function ($scope, $state, $stateParams, $rootScope, GoodsListFty, searchInfo, goodListParams, areasStatus,cateLeftIndex) {
 
 
             document.title = "商品列表";
+            cateLeftIndex.goods_list_index = 1;
 
             var orderBy = "";
             var pageNumber = 1;

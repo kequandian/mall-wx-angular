@@ -41,6 +41,7 @@ angular.module('homePage.controller', ['homePage.service'])
 
             $rootScope.tabsNumber = 1;
             cateLeftIndex.cate_nav_index = 0;
+            cateLeftIndex.goods_list_index = 0;
 
             var pageNumber = $rootScope.rec_session.page_number;
             var pageSize = $rootScope.rec_session.page_size;
