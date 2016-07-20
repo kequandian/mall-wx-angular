@@ -136,6 +136,7 @@ angular.module('category.controller', ['category.service'])
             $scope.indexPos = cateLeftIndex.cate_nav_index;
 
             $scope.getIndex = function (e, navCateId) {
+                console.log('navCateId:  ' + navCateId);
                 cateLeftIndex.cate_nav_index = e;
                 cateLeftIndex.cate_detail_data_id = navCateId;
             };
