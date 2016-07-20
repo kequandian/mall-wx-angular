@@ -28,7 +28,8 @@ angular.module('homePage.controller', ['homePage.service'])
     })
 
     .controller('HomePageController', ['$scope', '$rootScope', '$state', 'HomePageFty', 'areasStatus', 'goodListParams',
-        '$anchorScroll', '$ocLazyLoad', function ($scope, $rootScope, $state, HomePageFty, areasStatus, goodListParams, $anchorScroll, $ocLazyLoad) {
+        '$anchorScroll', '$ocLazyLoad','cateLeftIndex',
+        function ($scope, $rootScope, $state, HomePageFty, areasStatus, goodListParams, $anchorScroll, $ocLazyLoad,cateLeftIndex) {
 
             document.title = "十美优品商城";
 
@@ -39,6 +40,7 @@ angular.module('homePage.controller', ['homePage.service'])
             });
 
             $rootScope.tabsNumber = 1;
+            cateLeftIndex.cate_nav_index = 0;
 
             var pageNumber = $rootScope.rec_session.page_number;
             var pageSize = $rootScope.rec_session.page_size;

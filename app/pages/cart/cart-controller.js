@@ -8,12 +8,13 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
         }
     })
     .controller('CartController', ['$scope', '$state', '$rootScope', 'CartFty',
-        '$ocLazyLoad', function ($scope, $state, $rootScope, CartFty, $ocLazyLoad) {
+        '$ocLazyLoad','cateLeftIndex', function ($scope, $state, $rootScope, CartFty, $ocLazyLoad,cateLeftIndex) {
 
             //title
             document.title = "购物车";
 
             $rootScope.tabsNumber = 4;
+            cateLeftIndex.cate_nav_index = 0;
 
             $scope.empty_cart_hide = true;
             $scope.cart_info_hide = true;

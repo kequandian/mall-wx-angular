@@ -1,12 +1,13 @@
 angular.module('my.controller', ['my.service'])
 
-    .controller('MyController', ['$scope','$state','$rootScope','MyFty','$ocLazyLoad',
-        function($scope,$state,$rootScope, MyFty, $ocLazyLoad){
+    .controller('MyController', ['$scope','$state','$rootScope','MyFty','$ocLazyLoad','cateLeftIndex',
+        function($scope,$state,$rootScope, MyFty, $ocLazyLoad,cateLeftIndex){
 
             //title
             document.title = "个人中心";
 
             $rootScope.tabsNumber = 5;
+            cateLeftIndex.cate_nav_index = 0;
 
             //用户信息
             getUserInfo();

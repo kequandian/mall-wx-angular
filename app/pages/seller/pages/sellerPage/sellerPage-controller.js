@@ -38,6 +38,7 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
             document.title = "销售中心";
 
             $rootScope.tabsNumber = 3;
+            cateLeftIndex.cate_nav_index = 0;
 
             //用户信息
             getUserInfo();

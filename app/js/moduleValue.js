@@ -27,4 +27,9 @@ angular.module('moduleValueJs',[])
         balance: 0
     })
 
+    //商品分类 index
+    .value('cateLeftIndex',{
+        cate_nav_index : 0
+    })
+
 ;

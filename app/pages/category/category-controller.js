@@ -19,13 +19,12 @@ angular.module('category.controller', ['category.service'])
         }
     })
     .controller('CategoryController', ['$scope', '$state', '$rootScope', 'CategoryFty','goodListParams',
-        '$ocLazyLoad', function ($scope, $state,$rootScope, CategoryFty,goodListParams, $ocLazyLoad) {
+        '$ocLazyLoad','cateLeftIndex', function ($scope, $state,$rootScope, CategoryFty,goodListParams, $ocLazyLoad, cateLeftIndex) {
 
             //title
             document.title = "商品分类";
 
             $rootScope.tabsNumber = 2;
-
             $rootScope.jqueryLoaded = false;
 
             // 点击左侧分类单
@@ -132,12 +131,12 @@ angular.module('category.controller', ['category.service'])
                 }
             };
 
-            $scope.indexPos = 0;
-            //$scope.indexPos = CategoryPage.cate_nav_index;
+            //$scope.indexPos = 0;
+            $scope.indexPos = cateLeftIndex.cate_nav_index;
 
             $scope.getIndex = function (e, navCateId) {
-                //CategoryPage.cate_nav_index = e;
-                //CategoryPage.cate_detail_data_id = navCateId;
+                cateLeftIndex.cate_nav_index = e;
+                //cateLeftIndex.cate_detail_data_id = navCateId;
             };
 
             $scope.goToGoodsList = function (gItemtId) {
