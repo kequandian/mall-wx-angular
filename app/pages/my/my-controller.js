@@ -8,6 +8,7 @@ angular.module('my.controller', ['my.service'])
 
             $rootScope.tabsNumber = 5;
             cateLeftIndex.cate_nav_index = 0;
+            cateLeftIndex.goods_list_index = 0;
 
             //用户信息
             getUserInfo();

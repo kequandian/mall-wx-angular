@@ -29,6 +29,7 @@ angular.module('category.controller', ['category.service'])
 
             // 点击左侧分类单
             $scope.getCategoryDetailData = function (typeNumber, item) {
+                //console.log('cate_detail_data_id:  ' + cateLeftIndex.goods_list_index);
                 if(cateLeftIndex.goods_list_index > 0){
                     $scope.cateId = cateLeftIndex.cate_detail_data_id;
                     cateLeftIndex.goods_list_index = 0;

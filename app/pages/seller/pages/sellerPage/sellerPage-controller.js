@@ -40,6 +40,7 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
 
             $rootScope.tabsNumber = 3;
             cateLeftIndex.cate_nav_index = 0;
+            cateLeftIndex.goods_list_index = 0;
 
             //用户信息
             getUserInfo();

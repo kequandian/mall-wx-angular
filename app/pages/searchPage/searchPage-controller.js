@@ -1,10 +1,13 @@
 angular.module('searchPage.controller', ['searchPage.service'])
 
-    .controller('SearchPageController', ['$scope', '$state', '$stateParams','$timeout', 'SearchPageFty', 'searchInfo','goodListParams',
-        function ($scope, $state, $stateParams,$timeout, SearchPageFty, searchInfo,goodListParams) {
+    .controller('SearchPageController', ['$scope', '$state', '$stateParams','$timeout', 'SearchPageFty', 'searchInfo',
+        'goodListParams','cateLeftIndex',
+        function ($scope, $state, $stateParams,$timeout, SearchPageFty, searchInfo,goodListParams,cateLeftIndex) {
 
             //title
             document.title = "商品搜索";
+
+            cateLeftIndex.goods_list_index = 1;
 
             //搜索页
             input_focus();
