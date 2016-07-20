@@ -27,7 +27,7 @@ angular.module('category.controller', ['category.service'])
             $rootScope.tabsNumber = 2;
 
             $rootScope.jqueryLoaded = false;
-            
+
             // 点击左侧分类单
             $scope.getCategoryDetailData = function (typeNumber, item) {
                 //if(CategoryPage.goods_list_go_back_number > 0){
