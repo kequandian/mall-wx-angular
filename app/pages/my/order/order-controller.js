@@ -226,7 +226,29 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                     }, function (error) {
                         console.log(error);
                     })
+            };
+
+            //删除支付超时订单
+            $scope.delete_over_time_order = function(orderId){
+                OrderFty.deleteOverTimeOrderService(orderId)
+                    .then(function (json) {
+                        $ocLazyLoad.load('Jquery').then(function () {
+                            $ocLazyLoad.load('JqueryWeUI').then(function () {
+
+                                if (json.status_code == 0) {
+                                    $.toast('移除成功');
+                                    //$state.go('order.all', {}, {reload: true});
+                                } else {
+                                    $.toast('移除失败', 'cancel');
+                                }
+                            })
+                        })
+                    }, function (error) {
+                        console.log(angular.toJson(error));
+                    })
             }
+
+
         }])
 
     /* 待付款 */

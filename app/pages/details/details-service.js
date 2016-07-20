@@ -17,7 +17,7 @@ angular.module('details.service', [])
                 return deferred.promise;
             },
 
-            productRebateServoce:function(productId){
+            productRebateService:function(productId){
                 var deferred = $q.defer();
                 var url = GlobalVariable.SERVER_PATH + "/product_settlement?id=" + productId;
                 $http.get(url,{
@@ -59,6 +59,22 @@ angular.module('details.service', [])
                 $http.post(url,{
                     "product_id": productId
                 },{
+                    headers:{
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
+                })
+                    .success(function (data) {
+                        return deferred.resolve(data);
+                    }).error(function (data) {
+                        return deferred.reject(data);
+                    });
+                return deferred.promise;
+            },
+
+            expressSerivce: function () {
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + "/default_express";
+                $http.get(url,{
                     headers:{
                         'Authorization': GlobalVariable.ACCESS_TOKEN
                     }

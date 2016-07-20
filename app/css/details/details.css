@@ -105,7 +105,7 @@
     width: auto;
     height: 35px;
     float: left;
-    margin-left: 16px;
+    margin-left: 5px;
 }
 
 #details .product-f-left img{
@@ -116,7 +116,7 @@
 }
 
 #details .product-f-left span{
-    margin-left: 30px;
+    margin-left: 25px;
 }
 
 #details .product-f-right{
@@ -132,7 +132,7 @@
 }
 
 #details .product-f-right span{
-    margin-left: 36px;
+    margin-left: 31px;
 }
 
 

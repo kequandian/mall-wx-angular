@@ -22,7 +22,7 @@ angular.module('details.controller', ['details.service'])
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $scope.details = json.data;
-                            //console.log(angular.toJson(json.data));
+                            console.log(angular.toJson(json.data));
 
                             $scope.details_stock_balance = $scope.details.stock_balance;
                             $scope.details_price = $scope.details.price;
@@ -52,6 +52,8 @@ angular.module('details.controller', ['details.service'])
 
                             //获取商品返利
                             getProductRabate(product_id);
+                            //获取默认快递公司
+                            expressInfo();
                         } else {
                             console.log("获取商品详情失败");
                         }
@@ -60,8 +62,21 @@ angular.module('details.controller', ['details.service'])
                     })
             }
 
+            function expressInfo(){
+                DetailsFty.expressSerivce()
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            $scope.default_express = json.data.name;
+                        }else{
+                            console.log('获取默认快递公司失败');
+                        }
+                    }, function(error){
+                        console.log('获取默认快递公司失败：' + angular.toJson(error));
+                    })
+            }
+
             function getProductRabate(product_id){
-                DetailsFty.productRebateServoce(product_id)
+                DetailsFty.productRebateService(product_id)
                     .then(function(json){
                         if(json.status_code == 0){
                             $scope.product_rebate = json.data;

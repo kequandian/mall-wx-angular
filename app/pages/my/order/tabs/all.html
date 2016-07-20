@@ -27,7 +27,8 @@
             <div class="item-detail-btn" style="border-bottom: 1px solid #cccccc">
                 <div class="order-item-price">总价：￥{{items.total_price}}</div>
             </div>
-            <div class="item-detail-btn" ng-if="items.status != 'CLOSED_PAY_TIMEOUT'">
+            <!--<div class="item-detail-btn" ng-if="items.status != 'CLOSED_PAY_TIMEOUT'">-->
+            <div class="item-detail-btn">
                 <!-- 待付款 -->
                 <div ng-if="items.status == 'CREATED_PAY_PENDING'">
                     <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_warn item-btn-right" style="margin-right: 5px;"
@@ -70,6 +71,13 @@
                    href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right" style="margin-right: 5px;"
                    ng-click="goToExpress_all(items.order_number)">
                     物流详情
+                </a>
+
+                <!-- 支付超时 -->
+                <a ng-if="items.status == 'CLOSED_PAY_TIMEOUT'"
+                   href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right" style="margin-right: 5px;"
+                   ng-click="delete_over_time_order(items.order_number)">
+                    删除
                 </a>
 
             </div>
