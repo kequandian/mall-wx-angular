@@ -29,12 +29,12 @@ angular.module('category.controller', ['category.service'])
 
             // 点击左侧分类单
             $scope.getCategoryDetailData = function (typeNumber, item) {
-                //if(CategoryPage.goods_list_go_back_number > 0){
-                //    $scope.cateId = CategoryPage.cate_detail_data_id;
-                //    CategoryPage.goods_list_go_back_number = 0;
-                //}else {
-                $scope.cateId = typeNumber;
-                //}
+                if(cateLeftIndex.goods_list_index > 0){
+                    $scope.cateId = cateLeftIndex.cate_detail_data_id;
+                    cateLeftIndex.goods_list_index = 0;
+                }else {
+                    $scope.cateId = typeNumber;
+                }
 
                 var cateCount = 0;
                 if(item.sub_categories != null && item.sub_categories.length > 0){
@@ -136,7 +136,7 @@ angular.module('category.controller', ['category.service'])
 
             $scope.getIndex = function (e, navCateId) {
                 cateLeftIndex.cate_nav_index = e;
-                //cateLeftIndex.cate_detail_data_id = navCateId;
+                cateLeftIndex.cate_detail_data_id = navCateId;
             };
 
             $scope.goToGoodsList = function (gItemtId) {

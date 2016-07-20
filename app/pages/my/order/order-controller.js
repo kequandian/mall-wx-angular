@@ -229,8 +229,8 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             };
 
             //删除支付超时订单
-            $scope.delete_over_time_order = function(orderId){
-                OrderFty.deleteOverTimeOrderService(orderId)
+            $scope.delete_over_time_order = function(order_number){
+                OrderFty.deleteOverTimeOrderService(order_number)
                     .then(function (json) {
                         $ocLazyLoad.load('Jquery').then(function () {
                             $ocLazyLoad.load('JqueryWeUI').then(function () {

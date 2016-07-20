@@ -22,7 +22,7 @@ angular.module('details.controller', ['details.service'])
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $scope.details = json.data;
-                            console.log(angular.toJson(json.data));
+                            //console.log(angular.toJson(json.data));
 
                             $scope.details_stock_balance = $scope.details.stock_balance;
                             $scope.details_price = $scope.details.price;
