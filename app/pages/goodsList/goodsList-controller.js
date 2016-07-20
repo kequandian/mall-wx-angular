@@ -256,6 +256,10 @@ angular.module('goodsList.controller', ['goodsList.service'])
                     //$location.hash('content');
                     //$anchorScroll.yOffset = $rootScope.yOffset;
                 }
+            });
+
+            $scope.$on('$onScrollBottom', function(){
+                console.log('滑动测试');
             })
 
         }]);
