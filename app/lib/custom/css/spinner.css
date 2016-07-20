@@ -18,12 +18,12 @@
 
 .spinner-loader {
     position: absolute;
-    width: 32px;
-    height: 32px;
+    width: 16px;
+    height: 16px;
     left: 50%;
     top: 50%;
-    margin-left: -16px; /* -1 * image width / 2 */
-    margin-top: -16px; /* -1 * image height / 2 */
+    margin-left: -8px; /* -1 * image width / 2 */
+    margin-top: -8px; /* -1 * image height / 2 */
     display: block;
     opacity: 0.8;
 }
