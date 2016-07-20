@@ -206,7 +206,7 @@ angular.module('homePage.controller', ['homePage.service'])
                 $rootScope.scrolls.yOffset = document.getElementById('content').scrollTop;
                 $rootScope.scrolls.stacked = true;  //remember home stacked to details and will come back.
 
-                console.log('anchor yOffset?' + $rootScope.scrolls.yOffset);
+                //console.log('anchor yOffset?' + $rootScope.scrolls.yOffset);
             };
             $scope.$on('$onFinishRender', function () {
                 if ($rootScope.scrolls && $rootScope.scrolls.yOffset && $rootScope.scrolls.stacked) {
@@ -255,4 +255,8 @@ angular.module('homePage.controller', ['homePage.service'])
                     $scope.home_load_more_product();
                 }
             });
+
+            $scope.onTop = function(){
+                document.getElementById('content').scrollTop = 0;
+            }
         }]);
