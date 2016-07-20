@@ -402,6 +402,8 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                             $scope.deliveredList = [];//待收货
                             angular.forEach(orders, function (v, k) {
                                 if (v.status == "DELIVERING" || v.status == "DELIVERED_CONFIRM_PENDING") {
+                                    v.isDelivered = (v.status=="DELIVERED_CONFIRM_PENDING");
+
                                     $scope.deliveredList.push(v);
                                 }
                             });
@@ -473,7 +475,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                             //var order_status = "CLOSED_CONFIRMED";
                             OrderFty.closeOrderService(order_number)
                                 .then(function (json) {
-                                    console.log(angular.toJson(json));
+                                    //console.log(angular.toJson(json));
                                     if (json.status_code == 0) {
                                         $.toast('确认成功');
                                         $state.go('order.finish', {}, {reload: true});
