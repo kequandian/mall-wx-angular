@@ -29,6 +29,9 @@ angular.module('my.controller', ['my.service'])
                         .then(function (json) {
                             if (json.status_code == 0) {
                                 $scope.userInfo = json.data;
+                                //console.log('userInfo?'+angular.toJson(json.data))
+
+                                $rootScope.profile_session.userInfo = $scope.userInfo;
                             }
                         }, function (error) {
                             $.toast('获取信息失败', 'cancel');

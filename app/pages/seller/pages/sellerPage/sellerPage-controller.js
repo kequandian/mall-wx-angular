@@ -63,7 +63,6 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                                 //alert(angular.toJson($scope.userInfo));
                                 UserInfo.register_date = $scope.userInfo.register_date;
 
-
                                 $rootScope.profile_session.userInfo = $scope.userInfo;
                             }
                         }, function (error) {
