@@ -13,16 +13,16 @@ angular.module('my.order.route', [/*'my.order.controller'*/])
                 }]
             }
         })
-        //.state('order.all', {
-        //    url: "/all",
-        //    templateUrl: "pages/my/order/tabs/all.html",
-        //    controller:'allController',
-        //    resolve: {
-        //        loadData: ['$ocLazyLoad', function ($ocLazyLoad) {
-        //            return $ocLazyLoad.load('Order');
-        //        }]
-        //    }
-        //})
+        .state('order.all', {
+            url: "/all",
+            templateUrl: "pages/my/order/tabs/all.html",
+            controller:'allController',
+            resolve: {
+                loadData: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load('Order');
+                }]
+            }
+        })
         .state('order.pay', {
             url: "/pay",
             templateUrl: "pages/my/order/tabs/pay.html",

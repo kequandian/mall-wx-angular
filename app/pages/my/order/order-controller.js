@@ -25,31 +25,31 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                 $scope.currentId = id;
             };
             //title li
-            $scope.order_titles = [/*{
+            $scope.order_titles = [{
                 'id': '1',
                 'name': '全部',
                 'srefName': '.all'
-            }, */{
-                'id': '1',
+            }, {
+                'id': '2',
                 'name': '待付款',
                 'srefName': '.pay'
             }, {
-                'id': '2',
+                'id': '3',
                 'name': '待发货',
                 'srefName': '.payed'
             }, {
-                'id': '3',
+                'id': '4',
                 'name': '待收货',
                 'srefName': '.delivered'
             }, {
-                'id': '4',
+                'id': '5',
                 'name': '已完成',
                 'srefName': '.finish'
             }];
         }])
 
     /* 全部订单 */
-    /*.controller('allController', ['$scope', '$state', '$rootScope', '$timeout', 'OrderFty', 'OrderCommon',
+    .controller('allController', ['$scope', '$state', '$rootScope', '$timeout', 'OrderFty', 'OrderCommon',
         '$ocLazyLoad', function ($scope, $state, $rootScope, $timeout, OrderFty, OrderCommon, $ocLazyLoad) {
 
             $rootScope.orderTabsIndex = 1;
@@ -183,7 +183,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                 $ocLazyLoad.load('Jquery').then(function () {
                     $ocLazyLoad.load('JqueryWeUI').then(function () {
 
-                        /!*function start*!/
+                        /*function start*/
                         $.confirm('', '确认收到货物吗？', function () {
                             var order_status = "CLOSED_CONFIRMED";
                             OrderFty.closeOrderService(order_number, order_status)
@@ -198,10 +198,10 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                                     console.log(error);
                                 })
                         })
-                        /!*function end*!/
+                        /*function end*/
                     })
                 });
-                /!*end lazy*!/
+                /*end lazy*/
             };
 
             //提醒发货
@@ -227,13 +227,13 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                         console.log(error);
                     })
             }
-        }])*/
+        }])
 
     /* 待付款 */
     .controller('payController', ['$scope', '$state', '$rootScope', '$timeout', 'OrderFty', 'OrderCommon',
         function ($scope, $state, $rootScope, $timeout, OrderFty, OrderCommon) {
 
-            $rootScope.orderTabsIndex = 1;
+            $rootScope.orderTabsIndex = 2;
             //$.showLoading("正在加载...");
 
             $scope.payIsNull = true;
@@ -287,7 +287,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
     .controller('payedController', ['$scope', '$state', '$rootScope', '$timeout', 'OrderFty', 'OrderCommon',
         '$ocLazyLoad', function ($scope, $state, $rootScope, $timeout, OrderFty, OrderCommon, $ocLazyLoad) {
 
-            $rootScope.orderTabsIndex = 2;
+            $rootScope.orderTabsIndex = 3;
 
             //$.showLoading("正在加载...");
 
@@ -386,7 +386,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
     .controller('deliveredController', ['$scope', '$state', '$rootScope', '$timeout', 'OrderFty', 'OrderCommon',
         '$ocLazyLoad', function ($scope, $state, $rootScope, $timeout, OrderFty, OrderCommon, $ocLazyLoad) {
 
-            $rootScope.orderTabsIndex = 3;
+            $rootScope.orderTabsIndex = 4;
             //$.showLoading("正在加载...");
 
             $scope.deliveredIsNull = true;
@@ -496,7 +496,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
     .controller('finishController', ['$scope', '$state', '$rootScope', '$timeout', 'OrderFty', 'OrderCommon',
         function ($scope, $state, $rootScope, $timeout, OrderFty, OrderCommon) {
 
-            $rootScope.orderTabsIndex = 4;
+            $rootScope.orderTabsIndex = 5;
             //$.showLoading("正在加载...");
 
             $scope.finishIsNull = true;
