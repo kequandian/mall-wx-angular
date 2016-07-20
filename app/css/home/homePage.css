@@ -371,13 +371,19 @@ body, html {
     color: white;
 }
 
+#content .topit {
+    width: 48px;
+    height: 48px;
+    bottom: 70px;
+    right: 12px;
+    position: fixed;
+    z-index: 1;
+}
 
-
-
-
-
-
-
+#content .topit img{
+    width: 48px;
+    height: 48px;
+}
 
 /*#content .box-header{
     margin-left: 5px;
