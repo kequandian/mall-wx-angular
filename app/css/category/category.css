@@ -54,7 +54,7 @@
     top:45px;
     bottom:0;
     width:90px;
-    height: 100%;
+    height: auto;
     overflow:hidden;
     background-color:white;
     margin-bottom: 60px;
@@ -101,7 +101,7 @@
     top:45px;
     right:0;
     bottom:0;
-    height: 100%;
+    height: auto;
     overflow-x: hidden;
     overflow-y: scroll;
     margin-bottom: 60px;
@@ -117,6 +117,7 @@
 }
 #category .pro-warp{
     width:100%;
+    height: auto;
     background-color:#efeff3;
 }
 
