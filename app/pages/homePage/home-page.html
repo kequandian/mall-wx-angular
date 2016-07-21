@@ -205,7 +205,7 @@
                     <div class="weui_grids">
                         <a ui-sref="details({productId:item.id})" class="weui_grid product_item" on-finish-render
                            ng-repeat="item in rec_product">
-                            <div ng-click="gotoDetail()" >
+                            <div ng-click="gotoDetail()">
                                 <!--product cover-->
                                 <div class="pro-item-margin">
                                     <div class="weui_grid_icon home_grid_img">
@@ -238,14 +238,17 @@
 
     <!-- 底部 -->
     <!--<div id="content-footer" style="display: none;">-->
-        <!--<div class="content-footer-div">-->
-            <!--<div class="c-f-d-right">店铺主页</div>-->
-            <!--<div class="c-f-d-center">会员中心</div>-->
-            <!--<div class="c-f-d-left">推客申请</div>-->
-        <!--</div>-->
+    <!--<div class="content-footer-div">-->
+    <!--<div class="c-f-d-right">店铺主页</div>-->
+    <!--<div class="c-f-d-center">会员中心</div>-->
+    <!--<div class="c-f-d-left">推客申请</div>-->
+    <!--</div>-->
     <!--</div>-->
 
-    <div ng-show="top_btn_show" class="topit"  ng-class="{'dropdown':false}" ng-click="onTop()">
+</div>
+
+<div id="footer">
+    <div ng-show="top_btn_show" class="topit" ng-class="{'dropdown':false}" ng-click="onTop()">
         <img src="img/top.png">
     </div>
 </div>
