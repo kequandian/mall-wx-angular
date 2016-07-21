@@ -263,17 +263,17 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
 
         }])
 
-    .controller('SellerApplyingController', ['$scope', '$state', '$timeout', '$ocLazyLoad', function ($scope, $state, $timeout, $ocLazyLoad) {
+    .controller('SellerApplyingController', ['$scope', '$state','$rootScope', '$timeout', '$ocLazyLoad', function ($scope, $state,$rootScope, $timeout, $ocLazyLoad) {
 
         //title
         document.title = "申请";
 
         $timeout(function () {
-            $state.go('home.homePage');
+            $state.go('home.homePage',{},{reload:true});
         }, 5000);
         //立即跳转首页
         $scope.goToHomePage = function () {
-            $state.go('home.homePage');
+            $state.go('home.homePage',{},{reload:true});
         }
 
     }])
