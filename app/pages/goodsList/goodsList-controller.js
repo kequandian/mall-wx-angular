@@ -4,13 +4,13 @@ angular.module('goodsList.controller', ['goodsList.service'])
         'goodListParams', 'areasStatus', 'cateLeftIndex',
         function ($scope, $state, $stateParams, $rootScope, GoodsListFty, searchInfo, goodListParams, areasStatus,cateLeftIndex) {
 
-
             document.title = "商品列表";
             cateLeftIndex.goods_list_index = 1;
 
             var orderBy = "";
             var pageNumber = 1;
             var pageSize = 20;
+            var loading = false;  //状态标记
 
             var s_status = goodListParams.searchStatus;
             $scope.load_more_btn_show = false;
@@ -86,6 +86,7 @@ angular.module('goodsList.controller', ['goodsList.service'])
 
             //分类---商品列表
             function cateProductList(pageNumber, pageSize) {
+
                 var cateId = goodListParams.typeNumber;
 
                 GoodsListFty.goodsListService(cateId, pageNumber, pageSize, orderBy)
@@ -96,23 +97,27 @@ angular.module('goodsList.controller', ['goodsList.service'])
                                 $scope.productList = json.data.products;
                                 if ($scope.productList.length >= 20) {
                                     $scope.load_more_btn_show = true;
+                                    loading = false;
                                 } else {
                                     $scope.load_more_btn_show = false;
+                                    loading = true;
                                 }
                             } else if (pageNumber > 1) {
                                 var new_code = json.data.products;
                                 if (new_code.length > 0) {
+                                    loading = false;
                                     angular.forEach(new_code, function (v, k) {
                                         $scope.productList.push(v);
                                     });
                                     if(new_code.length < 20){
+                                        loading = true;
                                         $scope.load_more_btn_show = false;
-                                        $.toast("已加载全部的商品");
+                                        //$.toast("已加载全部的商品");
                                     }
                                 } else if (new_code.length == 0) {
-
+                                    loading = true;
                                     $scope.load_more_btn_show = false;
-                                    $.toast("暂无更多的分类商品信息");
+                                    //$.toast("暂无更多的分类商品信息");
                                 }
 
                             }
@@ -129,7 +134,6 @@ angular.module('goodsList.controller', ['goodsList.service'])
 
             //搜索--商品列表
             function searchProductList(pageNumber, pageSize) {
-
                 var p_name = searchInfo.search_name;
 
                 GoodsListFty.sGoodsProductService(p_name, pageNumber, pageSize, orderBy)
@@ -139,18 +143,28 @@ angular.module('goodsList.controller', ['goodsList.service'])
                             if (pageNumber == 1) {
                                 $scope.productList = json.data;
                                 if ($scope.productList.length >= 20) {
+                                    loading = false;
                                     $scope.load_more_btn_show = true;
                                 } else {
+                                    loading = true;
                                     $scope.load_more_btn_show = false;
                                 }
                             } else if (pageNumber > 1) {
                                 var new_code = json.data;
                                 if (new_code.length > 0) {
+                                    loading = false;
                                     angular.forEach(new_code, function (v, k) {
                                         $scope.productList.push(v);
                                     });
+                                    if(new_code.length < 20){
+                                        loading = true;
+                                        $scope.load_more_btn_show = false;
+                                        //$.toast("已加载全部的商品");
+                                    }
                                 } else if (new_code.length == 0) {
-                                    $.toast("暂无更多的搜索商品信息");
+                                    loading = true;
+                                    $scope.load_more_btn_show = false;
+                                    //$.toast("暂无更多的搜索商品信息");
                                 }
                             }
                         }
@@ -176,7 +190,6 @@ angular.module('goodsList.controller', ['goodsList.service'])
 
             //分区商品列表
             function areasProductList(pageNumber, pageSize) {
-
                 var zone = areasStatus.areas_status;
 
                 GoodsListFty.areasProductService(zone, pageNumber, pageSize, orderBy)
@@ -186,18 +199,27 @@ angular.module('goodsList.controller', ['goodsList.service'])
                             if (pageNumber == 1) {
                                 $scope.productList = json.data;
                                 if ($scope.productList.length >= 20) {
+                                    loading = false;
                                     $scope.load_more_btn_show = true;
                                 } else {
+                                    loading = true;
                                     $scope.load_more_btn_show = false;
                                 }
                             } else if (pageNumber > 1) {
                                 var new_code = json.data;
                                 if (new_code.length > 0) {
+                                    loading = false;
                                     angular.forEach(new_code, function (v, k) {
                                         $scope.productList.push(v);
                                     });
-                                } else if (new_code.length == 0) {
-                                    $.toast("暂无更多的分区商品信息");
+                                    if(new_code.length < 20){
+                                        loading = true;
+                                        $scope.load_more_btn_show = false;
+                                    }
+                                } else if (new_code.length > 0) {
+                                    loading = true;
+                                    $scope.load_more_btn_show = false;
+                                    //$.toast("暂无更多的分区商品信息");
                                 }
                             }
                         }
@@ -207,31 +229,17 @@ angular.module('goodsList.controller', ['goodsList.service'])
             }
 
             ////滚动加载
-            /* var loading = false;  //状态标记
-             $("#goodsList_content").infinite().on("infinite", function() {
-             if(loading){
-             return;
-             }
-             loading = true;
-             setTimeout(function() {
-
-             if (s_status == 1) {
-             alert(1);
-             //cateProductList();
-             } else if (s_status == 2) {
-             alert(2);
-             loading = true;
-             return;
-             //$("#goodsList_content").destroyInfinite();
-             //searchProductList();
-             } else if (s_status == 3) {
-             alert(3);
-             //areasProductList();
-             }
-
-             loading = false;
-             }, 1000);   //模拟延迟
-             });*/
+             $("#product_list_content").infinite().on("infinite", function() {
+                 if(loading){
+                     //console.log('loading : ' + loading);
+                    return;
+                 }
+                 loading = true;
+                 setTimeout(function() {
+                     $scope.load_more_products();
+                     loading = false;
+                 }, 500);   //模拟延迟
+             });
 
             $scope.load_more_products = function () {
                 pageNumber += 1;
@@ -260,8 +268,9 @@ angular.module('goodsList.controller', ['goodsList.service'])
                 }
             });
 
-            $scope.$on('$onScrollBottom', function(){
-                console.log('滑动测试');
-            })
+            //$scope.$on('$onScrollBottom', function(){
+            //    console.log('load more products...');
+            //    $scope.load_more_products();
+            //})
 
         }]);

@@ -38,7 +38,7 @@ angular.module('feedback.controller', ['feedback.service'])
         };
 
         $scope.uploadImage = function(){
-            if($scope.image_list.length > 5){
+            if($scope.image_list.length >= 5){
                 $.toast('提交图片不能超过5张', 'cancel');
             }else {
                 $ocLazyLoad.load('lib/utils/compressImg.js').then(function () {
@@ -51,67 +51,72 @@ angular.module('feedback.controller', ['feedback.service'])
             var filesSelected = document.getElementById("inputFileToLoad").files;
             if (filesSelected.length > 0) {
 
-                var success = 0;
-                for (var i = 0; i < filesSelected.length; i++) {
-                    var fileToLoad = filesSelected[i];
-                    var fileType = fileToLoad.type;
+                if( ($scope.image_list.length + filesSelected.length) > 5){
+                    $.toast('提交图片不能超过5张', 'cancel');
+                }else {
 
-                    var fileReader = new FileReader();
+                    var success = 0;
+                    for (var i = 0; i < filesSelected.length; i++) {
+                        var fileToLoad = filesSelected[i];
+                        var fileType = fileToLoad.type;
 
-                    fileReader.onload = function (fileLoadedEvent) {
-                        var prevImage = new Image();
+                        var fileReader = new FileReader();
 
-                        prevImage.onload = function(){
-                            if(fileType == 'image/png') {
-                                if(prevImage.width > 128 || prevImage.height > 128) {
-                                    var canvas = document.createElement('canvas'),
-                                        ctx = canvas.getContext('2d');
+                        fileReader.onload = function (fileLoadedEvent) {
+                            var prevImage = new Image();
 
-                                    fileType = 'image/jpeg'
-                                    ctx.drawImage(prevImage, 0, 0);
+                            prevImage.onload = function () {
+                                if (fileType == 'image/png') {
+                                    if (prevImage.width > 128 || prevImage.height > 128) {
+                                        var canvas = document.createElement('canvas'),
+                                            ctx = canvas.getContext('2d');
 
-                                    var dataUrl = canvas.toDataURL('image/jpeg', 0.8);
-                                    prevImage.src = dataUrl;
-                                    //console.log(prevImage.src);
-                                }
-                            }
+                                        fileType = 'image/jpeg'
+                                        ctx.drawImage(prevImage, 0, 0);
 
-                            var compressedImage = compressImg.compress(prevImage, fileType, 90);
-
-                            ImageUpLoad.uploadImage(compressedImage.src).then(function (json) {
-                                //console.log(json);
-                                if (json.status_code == 0) {
-
-                                    if(!angular.isDefined($scope.image_list)) {
-                                        $scope.image_list = [];
+                                        var dataUrl = canvas.toDataURL('image/jpeg', 0.8);
+                                        prevImage.src = dataUrl;
+                                        //console.log(prevImage.src);
                                     }
-
-                                    //console.log(json.data);
-                                    $scope.image_list.push(json.data);
-
-                                    //$.toast('提交成功');
-                                    success ++;
-
-                                } else {
-                                    //$.toast('提交失败', 'cancel');
                                 }
-                            }, function (error) {
-                                //$.toast('提交失败', 'cancel');
-                            })
-                            //console.log('image/jpeg?'+data);
+
+                                var compressedImage = compressImg.compress(prevImage, fileType, 90);
+
+                                ImageUpLoad.uploadImage(compressedImage.src).then(function (json) {
+                                    //console.log(json);
+                                    if (json.status_code == 0) {
+
+                                        if (!angular.isDefined($scope.image_list)) {
+                                            $scope.image_list = [];
+                                        }
+
+                                        //console.log(json.data);
+                                        $scope.image_list.push(json.data);
+
+                                        //$.toast('提交成功');
+                                        success++;
+
+                                    } else {
+                                        //$.toast('提交失败', 'cancel');
+                                    }
+                                }, function (error) {
+                                    //$.toast('提交失败', 'cancel');
+                                })
+                                //console.log('image/jpeg?'+data);
+                            };
+
+                            prevImage.src = fileLoadedEvent.target.result;
+                            //console.log('image/base64?'+prevImage.src);
+
                         };
 
-                        prevImage.src = fileLoadedEvent.target.result;
-                        //console.log('image/base64?'+prevImage.src);
+                        fileReader.readAsDataURL(fileToLoad);
+                    }//for
 
-                    };
-
-                    fileReader.readAsDataURL(fileToLoad);
-                }//for
-
-                //if(success>0){
-                //    $.toast('提交成功');
-                //}
+                    //if(success>0){
+                    //    $.toast('提交成功');
+                    //}
+                }
 
             }//length
         }

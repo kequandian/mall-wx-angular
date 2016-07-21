@@ -18,9 +18,27 @@ angular.module('homePage.controller', ['homePage.service'])
                 var raw = element[0];
                 element.bind('scroll', function () {
                     //console.log(raw.scrollTop + raw.offsetHeight);
-                    if (raw.scrollHeight - (raw.scrollTop + raw.offsetHeight) < 3) { //at the bottom
+                    if (raw.scrollHeight - (raw.scrollTop + raw.offsetHeight) < 2) { //at the bottom
                         scope.$emit('$onScrollBottom');
                         //scope.$apply(attrs.scrolly);
+                    }
+
+                    if (raw.scrollTop < 64) { //at the bottom
+                        if(!scope.emittedOnScrollTop) {
+                            scope.$emit('$onScrollTop');
+                            //console.log('$onScrollTop');
+
+                            scope.emittedOnScrollTop = true;
+                        }
+                        scope.emittedOnScrollTopCancelled = false;
+                    }else{
+                        if(!scope.emittedOnScrollTopCancelled) {
+                            scope.$emit('$onScrollTopCancelled');
+                           //console.log('$onScrollTopCancelled');
+
+                            scope.emittedOnScrollTopCancelled = true;
+                        }
+                        scope.emittedOnScrollTop = false;
                     }
                 })
             }
@@ -28,8 +46,8 @@ angular.module('homePage.controller', ['homePage.service'])
     })
 
     .controller('HomePageController', ['$scope', '$rootScope', '$state', 'HomePageFty', 'areasStatus', 'goodListParams',
-        '$anchorScroll', '$ocLazyLoad','cateLeftIndex',
-        function ($scope, $rootScope, $state, HomePageFty, areasStatus, goodListParams, $anchorScroll, $ocLazyLoad,cateLeftIndex) {
+        '$anchorScroll', '$ocLazyLoad','cateLeftIndex','$timeout',
+        function ($scope, $rootScope, $state, HomePageFty, areasStatus, goodListParams, $anchorScroll, $ocLazyLoad,cateLeftIndex,$timeout) {
 
             document.title = "十美优品商城";
 
@@ -45,6 +63,8 @@ angular.module('homePage.controller', ['homePage.service'])
 
             var pageNumber = $rootScope.rec_session.page_number;
             var pageSize = $rootScope.rec_session.page_size;
+
+            $scope.top_btn_show = true;
 
             /* setTimeout(function(){
              document.title = "首页";
@@ -250,14 +270,29 @@ angular.module('homePage.controller', ['homePage.service'])
                 $rootScope.rec_session.load_more = $scope.home_load_more_btn_show;
             }
 
+            $scope.onTop = function(){
+                document.getElementById('content').scrollTop = 0;
+                $scope.pressed = true;
+            }
+
+
             $scope.$on('$onScrollBottom', function () {
                 if($scope.home_load_more_btn_show) {
                     console.log('load more products...');
                     $scope.home_load_more_product();
                 }
             });
+            $scope.$on('$onScrollTop', function () {
+                $timeout(function(){
+                    $scope.top_btn_show = false;
+                })
+                //console.log('$onScrollTop');
+            });
+            $scope.$on('$onScrollTopCancelled', function () {
+                $timeout(function(){
+                    $scope.top_btn_show = true;
+                })
+                //console.log('$onScrollTopCancelled');
+            });
 
-            $scope.onTop = function(){
-                document.getElementById('content').scrollTop = 0;
-            }
         }]);

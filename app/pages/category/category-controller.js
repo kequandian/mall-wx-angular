@@ -79,6 +79,8 @@ angular.module('category.controller', ['category.service'])
 
                                 $scope.getCategoryDetailData(json.data[0].id, json.data[0]);
 
+                                cateLeftIndex.cate_detail_data_id = json.data[0].id;
+
                                 $rootScope.cat_session.categoryItem = $scope.categoryItem;
 
                             } else {
