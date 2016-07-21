@@ -2,7 +2,7 @@ angular.module('details.controller', ['details.service'])
 
     .controller('DetailsController', ['$scope', '$state', '$stateParams', '$rootScope', 'DetailsFty', '$ocLazyLoad',
         function ($scope, $state, $stateParams, $rootScope, DetailsFty, $ocLazyLoad) {
-            
+
             $ocLazyLoad.load('Jquery').then(function () {
                 $ocLazyLoad.load('JqueryWeUI').then(function () {
                     //console.log("homePage:jquery loaded");
