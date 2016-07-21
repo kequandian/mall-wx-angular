@@ -263,11 +263,14 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
 
         }])
 
-    .controller('SellerApplyingController', ['$scope', '$rootScope', '$state', '$timeout',
-        function ($scope, $rootScope, $state, $timeout) {
+    .controller('SellerApplyingController', ['$scope', '$rootScope', '$state', '$timeout','cateLeftIndex',
+        function ($scope, $rootScope, $state, $timeout, cateLeftIndex) {
 
             //title
             document.title = "申请";
+
+            cateLeftIndex.cate_nav_index = 0;
+            cateLeftIndex.goods_list_index = 0;
 
             // just go in page area
             $scope.in_page = true;
