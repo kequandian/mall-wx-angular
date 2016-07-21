@@ -374,7 +374,7 @@ body, html {
     color: white;
 }
 
-#content .topit {
+/*#content .topit {
     width: 48px;
     height: 48px;
     bottom: 70px;
@@ -385,6 +385,21 @@ body, html {
 }
 
 #content .topit img {
+    width: 48px;
+    height: 48px;
+}*/
+
+#footer .topit {
+    width: 48px;
+    height: 48px;
+    bottom: 70px;
+    right: 12px;
+    position: fixed;
+    z-index: 1;
+    opacity: 0.8;
+}
+
+#footer .topit img {
     width: 48px;
     height: 48px;
 }
