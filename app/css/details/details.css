@@ -73,7 +73,7 @@
 #details .call-service{
     width: 25px;
     height: 105px;
-    background-color: #007aff;
+    /*background-color: #007aff;*/
     top: 65%;
     right: 12px;
     position: fixed;
