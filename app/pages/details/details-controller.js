@@ -59,6 +59,8 @@ angular.module('details.controller', ['details.service'])
                             getProductRabate(product_id);
                             //获取默认快递公司
                             expressInfo();
+                            //获取客服QQ
+                            getKFQQ();
                         } else {
                             console.log("获取商品详情失败");
                         }
@@ -77,6 +79,20 @@ angular.module('details.controller', ['details.service'])
                         }
                     }, function(error){
                         console.log('获取默认快递公司失败：' + angular.toJson(error));
+                    })
+            }
+
+            function getKFQQ(){
+                DetailsFty.kqQQService()
+                    .then(function(json){
+                        console.log(angular.toJson(json));
+                        if(json.status_code == 0){
+                            $scope.kf_qq = json.data[0].number;
+                        }else{
+                            console.log("获取客服QQ失败：" + angular.toJson(json));
+                        }
+                    }, function(error){
+                        console.log("获取客服QQ失败：" + angular.toJson(error));
                     })
             }
 

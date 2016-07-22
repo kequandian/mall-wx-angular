@@ -85,6 +85,22 @@ angular.module('details.service', [])
                         return deferred.reject(data);
                     });
                 return deferred.promise;
+            },
+
+            kqQQService: function () {
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + "/kf_qq";
+                $http.get(url,{
+                    headers:{
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
+                })
+                    .success(function (data) {
+                        return deferred.resolve(data);
+                    }).error(function (data) {
+                        return deferred.reject(data);
+                    });
+                return deferred.promise;
             }
         }
     }]);
