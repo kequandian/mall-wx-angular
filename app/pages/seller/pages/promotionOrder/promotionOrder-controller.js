@@ -126,7 +126,7 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
                         child.platform_reward += item.reward;
                     }
 
-                    child.total_reward += child.seller_reward + child.agent_reward + child.partner_reward;
+                    child.total_reward += item.reward;
                 }
 
                 //console.log(order_hash[item.order_number]);
