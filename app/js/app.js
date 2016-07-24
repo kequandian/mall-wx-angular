@@ -243,6 +243,10 @@
         $rootScope.rec_session.page_size  = 10;
         $rootScope.rec_session.page_number  = 1;
 
+        //商品详情
+        $rootScope.rec_session.default_express  = null; //快递公司名称
+        $rootScope.kf_qq = null;    //客服QQ
+
         /*//Do your $on in here, like this:
         $rootScope.$on("$locationChangeStart",function(event, next, current){
             console.log('$locationChangeStart')

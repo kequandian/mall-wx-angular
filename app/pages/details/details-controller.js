@@ -58,9 +58,17 @@ angular.module('details.controller', ['details.service'])
                             //获取商品返利
                             getProductRabate(product_id);
                             //获取默认快递公司
-                            expressInfo();
+                            if($rootScope.default_express == null){
+                                expressInfo();
+                            }else{
+                                $scope.default_express = $rootScope.default_express;
+                            }
                             //获取客服QQ
-                            getKFQQ();
+                            if($rootScope.kf_qq == null){
+                                getKFQQ();
+                            }else{
+                                $scope.kf_qq = $rootScope.kf_qq;
+                            }
                         } else {
                             console.log("获取商品详情失败");
                         }
@@ -74,6 +82,7 @@ angular.module('details.controller', ['details.service'])
                     .then(function(json){
                         if(json.status_code == 0){
                             $scope.default_express = json.data.name;
+                            $rootScope.default_express = $scope.default_express;
                         }else{
                             console.log('获取默认快递公司失败');
                         }
@@ -85,9 +94,10 @@ angular.module('details.controller', ['details.service'])
             function getKFQQ(){
                 DetailsFty.kqQQService()
                     .then(function(json){
-                        console.log(angular.toJson(json));
+                        //console.log(angular.toJson(json));
                         if(json.status_code == 0){
                             $scope.kf_qq = json.data[0].number;
+                            $rootScope.kf_qq = $scope.kf_qq;
                         }else{
                             console.log("获取客服QQ失败：" + angular.toJson(json));
                         }
