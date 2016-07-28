@@ -362,10 +362,10 @@
     margin-bottom: 1px;
 }
 #sellerPage  .agent_crown_img{
-    width: 30px;
-    height: 21px;
+    width: 32px;
+    height: auto;
     position: absolute;
-    margin-bottom: 2px;
+    bottom: -20px;
 }
 
 .weui_grid:active {
