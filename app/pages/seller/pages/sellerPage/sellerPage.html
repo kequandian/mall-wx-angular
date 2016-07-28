@@ -20,16 +20,16 @@
                             <span ng-if="owner_balance.is_agent==0 && owner_balance.is_partner">经销商</span>
                             <span ng-if="owner_balance.is_agent==0 && owner_balance.is_partner==0 && owner_balance.is_seller">经销商</span>
                             <!--<span class="five-star-parent" ng-if="owner_balance.is_agent==0 && owner_balance.is_partner">-->
-                            <span class="five-star-parent" ng-if="owner_balance.is_seller && owner_balance.partner_level.level < 6">
-                                <five-star rank-src="lib/custom/img/yellow_star.png" src="lib/custom/img/white_star.png"
-                                           style="margin-top:1px;"
-                                           rank="{{owner_balance.partner_level.level}}"></five-star>
-                                <!--<level-progress style="margin-top:21px; margin-left: 2px;"
-                                                value="{{owner_balance.level_percent}}"></level-progress>-->
-                            </span>
+                            <!--<span class="five-star-parent" ng-if="owner_balance.is_seller && owner_balance.partner_level.level < 6">-->
+                                <!--<five-star rank-src="lib/custom/img/yellow_star.png" src="lib/custom/img/white_star.png"-->
+                                           <!--style="margin-top:1px;"-->
+                                           <!--rank="{{owner_balance.partner_level.level}}"></five-star>-->
+                                <!--&lt;!&ndash;<level-progress style="margin-top:21px; margin-left: 2px;"-->
+                                                <!--value="{{owner_balance.level_percent}}"></level-progress>&ndash;&gt;-->
+                            <!--</span>-->
                             <!--<span ng-if="owner_balance.is_agent==0 && owner_balance.is_partner" style="margin-top:15px;font-size:9px">{{owner_balance.level_percent}}%</span>-->
 
-                            <span class="crown-parent" ng-if="owner_balance.is_seller && owner_balance.partner_level.level >= 6">
+                            <span class="crown-parent" ng-if="owner_balance.is_seller">
                                   <img src="img/sellerPage/crown.png" class="agent_crown_img">
                             </span>
                         </p>
