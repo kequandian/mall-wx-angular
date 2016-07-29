@@ -9,7 +9,7 @@
 angular.module("salesReturn.controller", ["salesReturn.service"])
 
     .controller("ReturnController", ["$scope", "$state", '$stateParams', "$timeout", "SalesReturnInfo",
-        '$ocLazyLoad','$injector', function ($scope, $state, $stateParams,$timeout, SalesReturnInfo, $ocLazyLoad, $injector) {
+        '$ocLazyLoad','ImageUpLoad', function ($scope, $state, $stateParams,$timeout, SalesReturnInfo, $ocLazyLoad,ImageUpLoad) {
 
             document.title = "申请退货";
             $scope.image_list = [];
@@ -123,15 +123,19 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
                 if($scope.image_list.length >= 5){
                     $.toast('提交图片不能超过5张', 'cancel');
                 }else {
-                    $ocLazyLoad.load(['pages/pageCommon/imageUpLoad.js', 'lib/custom/js/compressImg.js']).then(function(){
+                    /*$ocLazyLoad.load(['pages/pageCommon/imageUpLoad.js', 'lib/custom/js/compressImg.js']).then(function(){
                         var ImageUpLoad = $injector.get('ImageUpLoad');
                         var CompressImg = $injector.get('CompressImg');
                         loadImageFileAsURL(ImageUpLoad, CompressImg);
-                    });
+                    });*/
+
+                    $ocLazyLoad.load('lib/utils/compressImg.js').then(function () {
+                        loadImageFileAsURL(ImageUpLoad);
+                    })
                 }
             };
 
-            function loadImageFileAsURL(ImageUpLoad, CompressImg) {
+            function loadImageFileAsURL(ImageUpLoad) {
 
                 var filesSelected = document.getElementById("inputFileToLoad").files;
 
@@ -164,7 +168,7 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
                                         //console.log(prevImage.src);
                                     }
 
-                                    var compressedImage = CompressImg.compress(prevImage, fileType, 90);
+                                    var compressedImage = compressImg.compress(prevImage, fileType, 90);
 
                                     ImageUpLoad.uploadImage(compressedImage.src).then(function (json) {
                                         //console.log(json);
