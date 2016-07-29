@@ -92,6 +92,7 @@ angular.module('feedback.controller', ['feedback.service'])
 
                                         //console.log(json.data);
                                         $scope.image_list.push(json.data);
+                                        console.log(angular.toJson($scope.image_list));
 
                                         //$.toast('提交成功');
                                         success++;

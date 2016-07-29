@@ -12,6 +12,7 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
         '$ocLazyLoad','$injector', function ($scope, $state, $stateParams,$timeout, SalesReturnInfo, $ocLazyLoad, $injector) {
 
             document.title = "申请退货";
+            $scope.image_list = [];
 
             $scope.returnType = [
                 {key: "请选择服务", value: "请选择服务"},
@@ -175,6 +176,7 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
 
                                             //console.log(json.data);
                                             $scope.image_list.push(json.data);
+                                            console.log(angular.toJson($scope.image_list));
 
                                             //$.toast('提交成功');
                                             success++;
