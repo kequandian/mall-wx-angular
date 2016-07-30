@@ -16,8 +16,9 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
 
             $scope.returnType = [
                 {key: "请选择服务", value: "请选择服务"},
-                {key: "RETURN", value: "换货和退货"},
-                {key: "REFUND", value: "仅退款"}
+                {key: "RETURN", value: "退货"},
+                {key: "RETAKE", value: "换货"},
+                {key: "REFUND", value: "退款"}
                 /*{key: "RETAKE", value: "换货"}*/
             ];
 
@@ -78,11 +79,11 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
             $scope.total_price = $stateParams.totalPrice;
             var s_r_status = $stateParams.SalesReturnStatus;
             if (s_r_status == 1) {
-                $scope.returnType.key = 'REFUND';
-            } else if (s_r_status == 2) {
                 $scope.returnType.key = 'RETURN';
-            } else if (s_r_status == 3) {
+            } else if (s_r_status == 2) {
                 $scope.returnType.key = 'RETAKE';
+            } else if (s_r_status == 3) {
+                $scope.returnType.key = 'REFUND';
             }
 
 
