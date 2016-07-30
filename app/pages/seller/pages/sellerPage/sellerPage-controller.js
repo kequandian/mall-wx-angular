@@ -134,8 +134,8 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                 if (invitationUrl != null) {
                     loadScript("lib/qrcodejs/qrcode.min.js", function () {
                         var qrcode = new QRCode(divhtml, {
-                            width: 220,
-                            height: 220
+                            width: 210,
+                            height: 210
                         });
                         qrcode.makeCode(invitationUrl);
                     });
