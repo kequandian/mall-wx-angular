@@ -132,7 +132,7 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                 }
                 var invitationUrl = "http://www.kequandian.net/app/app?invite_code=" + q_r_code;
                 if (invitationUrl != null) {
-                    loadScript("lib/qrcodejs/qrcode.min.js", function () {
+                    loadScript("lib/qrcodejs/qrcode.js", function () {
                         var qrcode = new QRCode(divhtml, {
                             width: 210,
                             height: 210
