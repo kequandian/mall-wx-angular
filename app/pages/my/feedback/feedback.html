@@ -49,7 +49,7 @@
 
             <div>
                 <span class="a-p-text">
-                    添加图片（选填，提供问题截图）
+                    添加图片（选填，提供问题截图, 长按删除）
                 </span>
                 <div class="weui_cell_bd weui_cell_primary" style="background-color: white; padding-top: 10px; padding-bottom: 6px;margin-left: 10px;">
                     <div class="weui_uploader">
@@ -70,7 +70,9 @@
                             </ul>-->
 
                             <ul ng-if="image_list.length>0" class="weui_uploader_files" ng-repeat="url in image_list">
-                                <li class="weui_uploader_file" style="background-image:url({{url}})"></li>
+                                <li class="weui_uploader_file" style="background-image:url({{url}})"
+                                    ng-touchstart="onTouchStart(url)"
+                                    ng-touchend="onTouchEnd(url)"></li>
                             </ul>
 
                             <div class="weui_uploader_input_wrp">

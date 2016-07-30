@@ -60,14 +60,16 @@
             <!--</div>-->
 
 
-            <div class="weui_cells_title bg pad">添加图片</div>
+            <div class="weui_cells_title bg pad">添加图片 (长按删除)</div>
             <div class="weui_cell_bd weui_cell_primary" style="background-color: white; padding-top: 10px; padding-bottom: 6px;margin-left: 10px;">
                 <div class="weui_uploader">
 
                     <div class="weui_uploader_bd">
 
                         <ul ng-if="image_list.length>0" class="weui_uploader_files" ng-repeat="url in image_list">
-                            <li class="weui_uploader_file" style="background-image:url({{url}})"></li>
+                            <li class="weui_uploader_file" style="background-image:url({{url}})"
+                                ng-touchstart="onTouchStart(url)"
+                                ng-touchend="onTouchEnd(url)"></li>
                         </ul>
 
                         <div class="weui_uploader_input_wrp">

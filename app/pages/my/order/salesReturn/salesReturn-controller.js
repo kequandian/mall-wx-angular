@@ -16,7 +16,7 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
 
             $scope.returnType = [
                 {key: "请选择服务", value: "请选择服务"},
-                {key: "RETURN", value: "退货退款"},
+                {key: "RETURN", value: "换货和退货"},
                 {key: "REFUND", value: "仅退款"}
                 /*{key: "RETAKE", value: "换货"}*/
             ];
@@ -35,6 +35,44 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
 
             // get return reason
             //getReturnCauses();
+            var timestamp, end_timestamp;
+
+            $scope.onTouchStart = function(url) {
+                console.log('----------touchstart event called----------');
+                timestamp = new Date().getTime();
+                console.log('timestamp?'+end_timestamp);
+
+                $timeout(function(){
+
+                    if( end_timestamp==null ) {
+                        deleteImage(url);
+                    }else if((timestamp - end_timestamp)<1800){
+                        // do nothing
+                        //console.log('do nothing:timestamp='+ timestamp + ';end_timestamp=' + end_timestamp+ '; ' + (timestamp - end_timestamp));
+
+                    }else if(timestamp > end_timestamp){
+                        deleteImage(url);
+                    }
+
+                    end_timestamp = new Date().getTime();
+                }, 2000);
+            }
+
+            function deleteImage(url){
+                var index = $scope.image_list.indexOf(url);
+                $scope.image_list.splice(index);
+            }
+
+            $scope.onTouchEnd = function(url) {
+                // current time, means end
+                console.log('touchend event called');
+                end_timestamp = new Date().getTime();
+                console.log('end_timestamp?'+end_timestamp);
+            }
+
+
+
+
 
             //退货金额
             $scope.total_price = $stateParams.totalPrice;
