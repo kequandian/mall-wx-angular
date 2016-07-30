@@ -303,10 +303,14 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             //提交订单
             $scope.order = {};
             $scope.addOrderSubmit = function () {
-                //console.log($scope.order);
+                //console.log('addOrderSubmit:'+$scope.order);
                 if ($scope.show_address_status == 'add') {
                     var click_index = document.getElementById('showAddress');
-                    click_index.click();
+                    if(click_index!=null && angular.isDefined(click_index)) {
+                        click_index.click();
+                    }else{
+                        $.toast('请先添加收货地址', 'cancel');
+                    }
                     return;
                 }
 
