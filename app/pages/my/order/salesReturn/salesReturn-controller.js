@@ -16,10 +16,9 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
 
             $scope.returnType = [
                 {key: "请选择服务", value: "请选择服务"},
-                {key: "RETURN",   value: "退货"},
+                {key: "RETURN",   value: "退货退款"},
                 {key: "EXCHANGE", value: "换货"},
                 {key: "REFUND",   value: "退款"}
-                /*{key: "RETAKE", value: "换货"}*/
             ];
 
             /*$scope.returnReason = [
