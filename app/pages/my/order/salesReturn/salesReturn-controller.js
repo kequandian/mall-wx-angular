@@ -8,8 +8,8 @@
 
 angular.module("salesReturn.controller", ["salesReturn.service"])
 
-    .controller("ReturnController", ["$scope", "$state", '$stateParams', "$timeout", "SalesReturnInfo",
-        '$ocLazyLoad','ImageUpLoad', function ($scope, $state, $stateParams,$timeout, SalesReturnInfo, $ocLazyLoad,ImageUpLoad) {
+    .controller("ReturnController", ["$scope", '$injector', "$state", '$stateParams', "$timeout", "SalesReturnInfo",
+        '$ocLazyLoad', function ($scope, $injector, $state, $stateParams,$timeout, SalesReturnInfo, $ocLazyLoad) {
 
             document.title = "申请退货";
             $scope.image_list = [];
@@ -123,19 +123,19 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
                 if($scope.image_list.length >= 5){
                     $.toast('提交图片不能超过5张', 'cancel');
                 }else {
-                    /*$ocLazyLoad.load(['pages/pageCommon/imageUpLoad.js', 'lib/custom/js/compressImg.js']).then(function(){
+                    $ocLazyLoad.load(['pages/pageCommon/imageUpLoad.js', 'lib/custom/js/compressImg.js']).then(function(){
                         var ImageUpLoad = $injector.get('ImageUpLoad');
                         var CompressImg = $injector.get('CompressImg');
                         loadImageFileAsURL(ImageUpLoad, CompressImg);
-                    });*/
+                    });
 
-                    $ocLazyLoad.load('lib/utils/compressImg.js').then(function () {
+                    /*$ocLazyLoad.load('lib/utils/compressImg.js').then(function () {
                         loadImageFileAsURL(ImageUpLoad);
-                    })
+                    })*/
                 }
             };
 
-            function loadImageFileAsURL(ImageUpLoad) {
+            function loadImageFileAsURL(ImageUpLoad, CompressImg) {
 
                 var filesSelected = document.getElementById("inputFileToLoad").files;
 
@@ -155,20 +155,22 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
                             fileReader.onload = function (fileLoadedEvent) {
                                 var prevImage = new Image();
 
-                                if (fileType == 'image/png') {
-                                    if (prevImage.width > 128 || prevImage.height > 128) {
-                                        var canvas = document.createElement('canvas'),
-                                            ctx = canvas.getContext('2d');
+                                prevImage.onload = function () {
+                                    if (fileType == 'image/png') {
+                                        if (prevImage.width > 256 || prevImage.height > 256) {
+                                            var canvas = document.createElement('canvas'),
+                                                ctx = canvas.getContext('2d');
 
-                                        fileType = 'image/jpeg'
-                                        ctx.drawImage(prevImage, 0, 0);
+                                            fileType = 'image/jpeg'
+                                            ctx.drawImage(prevImage, 0, 0);
 
-                                        var dataUrl = canvas.toDataURL('image/jpeg', 0.8);
-                                        prevImage.src = dataUrl;
-                                        //console.log(prevImage.src);
+                                            var dataUrl = canvas.toDataURL('image/jpeg', 0.8);
+                                            prevImage.src = dataUrl;
+                                            //console.log(prevImage.src);
+                                        }
                                     }
 
-                                    var compressedImage = compressImg.compress(prevImage, fileType, 90);
+                                    var compressedImage = CompressImg.compress(prevImage, fileType, 90);
 
                                     ImageUpLoad.uploadImage(compressedImage.src).then(function (json) {
                                         //console.log(json);
@@ -191,9 +193,11 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
                                     }, function (error) {
                                         //$.toast('提交失败', 'cancel');
                                     })
-                                }
+                                    //console.log('image/jpeg?'+data);
+                                };
 
                                 prevImage.src = fileLoadedEvent.target.result;
+                                //console.log('image/base64?'+prevImage.src);
                             };
 
                             fileReader.readAsDataURL(fileToLoad);

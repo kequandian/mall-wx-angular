@@ -67,7 +67,7 @@ angular.module('feedback.controller', ['feedback.service'])
 
                             prevImage.onload = function () {
                                 if (fileType == 'image/png') {
-                                    if (prevImage.width > 128 || prevImage.height > 128) {
+                                    if (prevImage.width > 256 || prevImage.height > 256) {
                                         var canvas = document.createElement('canvas'),
                                             ctx = canvas.getContext('2d');
 
