@@ -60,13 +60,13 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     if (product_spec_id == null) {
                         if (value.product_id == id) {
                             if (value.quantity > 1) {
-                                value.quantity = value.quantity - 1;
+                                value.quantity--;
                             }
                         }
                     } else if (product_spec_id > 0) {
                         if (value.product_id == id && value.product_specification_id == product_spec_id) {
                             if (value.quantity > 1) {
-                                value.quantity = value.quantity - 1;
+                                value.quantity--;
                             }
                         }
                     }
@@ -76,26 +76,73 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             };
             $scope.upQuantity = function (id, product_spec_id) {
                 angular.forEach($scope.carts, function (value, key) {
-
                     if (product_spec_id == null) {
                         if (value.product_id == id) {
-                            value.quantity = value.quantity + 1;
+                            value.quantity++;
                             //if (value.quantity > 99) {
                             //    value.quantity = 99;
                             //}
                         }
                     } else if (product_spec_id > 0) {
+                        console.log(value.quantity)
                         if (value.product_id == id && value.product_specification_id == product_spec_id) {
-                            value.quantity = value.quantity + 1;
+                            value.quantity++;
                             //if (value.quantity > 99) {
                             //    value.quantity = 99;
                             //}
                         }
+                        console.log(value.quantity)
                     }
 
                 }, $scope.carts);
                 //console.log($scope.carts);
             };
+
+            //检查数量
+            $scope.countChange = function(id, product_spec_id, quantity){
+                if(!checkNumber(quantity)){
+                    //console.log('不是数字')
+                    $.toast('请输入数字', 'cancel');
+                    angular.forEach($scope.carts, function(v, k){
+                        if (product_spec_id == null) {
+                            if (v.product_id == id) {
+                                v.quantity = 1;
+                            }
+                        } else if (product_spec_id > 0) {
+                            if (v.product_id == id && v.product_specification_id == product_spec_id) {
+                                v.quantity = 1;
+                            }
+                        }
+                    });
+                    return;
+                }
+
+                if(quantity < 0){
+                    $.toast('输入数字不能为负数', 'cancel');
+                    return;
+                }
+                angular.forEach($scope.carts, function(v, k){
+                    if (product_spec_id == null) {
+                        if (v.product_id == id) {
+                            if(v.quantity === "" || v.quantity ===undefined || v.quantity == 0 || v.quantity < 0){
+                                v.quantity = 1;
+                            }
+                        }
+                    } else if (product_spec_id > 0) {
+                        if (v.product_id == id && v.product_specification_id == product_spec_id) {
+                            if(v.quantity === "" || v.quantity ===undefined || v.quantity == 0 || v.quantity < 0){
+                                v.quantity = 1;
+                            }
+                        }
+                    }
+                })
+            };
+
+            //验证数字
+            function checkNumber(number){
+                var isNumber = /^[0-9]*$/.test(number);
+                return isNumber;
+            }
 
             //删除购物车单项商品
             $scope.showDeleteConfirm = function (cartItem) {

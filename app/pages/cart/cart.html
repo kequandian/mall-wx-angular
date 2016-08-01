@@ -61,7 +61,9 @@
                                                    ng-click="downQuantity(cart.product_id, cart.product_specification_id)">
                                                     <span>-</span>
                                                 </a>
-                                                <input autocomplete="off" class="cart-quantity" value="{{ cart.quantity }}" type="text" readonly>
+                                                <input autocomplete="off" class="cart-quantity" ng-model="cart.quantity"
+                                                       type="text" ng-change="countChange(cart.product_id, cart.product_specification_id,cart.quantity)"
+                                                        >
                                                 <a href="javascript:void(0);" class="cart-quantity-increment"
                                                    ng-click="upQuantity(cart.product_id, cart.product_specification_id)">
                                                     <span>+</span>

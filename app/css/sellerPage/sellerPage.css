@@ -252,7 +252,7 @@
     right: 10%;
     text-align: center;
     /*width: 50%;*/
-    height: 415px;
+    height: 405px;
     /*padding: 16px;*/
     border-radius: 12px;
     background-color: #F8F8F8;
@@ -324,9 +324,13 @@
 .qrcode-img{
     margin: 0 auto;
     width: 230px;
-    height: 230px;
-    line-height: 230px;
+    height: 215px;
+    /*line-height: 230px;*/
     background-color: white;
+}
+.qrcode-img img{
+    width: 220px;
+    height: 220px;
 }
 
 .qrcode-img div{
