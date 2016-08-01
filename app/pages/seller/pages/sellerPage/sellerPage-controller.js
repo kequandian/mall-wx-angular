@@ -63,7 +63,7 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                         .then(function (json) {
                             if (json.status_code == 0) {
                                 $scope.userInfo = json.data;
-                                console.log(angular.toJson($scope.userInfo));
+                                //console.log(angular.toJson($scope.userInfo));
                                 UserInfo.register_date = $scope.userInfo.register_date;
 
                                 $rootScope.profile_session.userInfo = $scope.userInfo;
@@ -134,8 +134,8 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                 if (invitationUrl != null) {
                     loadScript("lib/qrcodejs/qrcode.min.js", function () {
                         var qrcode = new QRCode(divhtml, {
-                            width: 220,
-                            height: 220
+                            width: 210,
+                            height: 210
                         });
                         qrcode.makeCode(invitationUrl);
                     });

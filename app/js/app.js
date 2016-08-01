@@ -97,6 +97,7 @@
                     files: [
                         'pages/my/order/salesReturn/salesReturn-controller.js',
                         'pages/my/order/salesReturn/salesReturn-service.js',
+                        'lib/ng-touch.min.js',
                         {type: 'css', path: 'css/my/salesReturn.css'}
                     ],
                     cache: false
@@ -194,6 +195,7 @@
                     files: [
                         'pages/my/feedback/feedback-controller.js',
                         'pages/pageCommon/imageUpLoad.js',
+                        'lib/ng-touch.min.js',
                         'pages/my/feedback/feedback-service.js',
                         {type: 'css', path: 'css/my/feedback.css'}],
                     cache: false
