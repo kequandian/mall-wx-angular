@@ -201,8 +201,9 @@
                                     <a href="javascript:void(0);" class="cart-quantity-decrement" ng-click="downQ()">
                                         <span>-</span>
                                     </a>
-                                    <input autocomplete="off" class="cart-quantity" value="{{ q_count }}" type="text"
-                                           readonly>
+                                    <input autocomplete="off" class="cart-quantity detail_product_count" ng-model="q_count" type="text"
+                                           ng-change="countChange()"
+                                            >
                                     <a href="javascript:void(0);" class="cart-quantity-increment" ng-click="upQ()">
                                         <span>+</span>
                                     </a>

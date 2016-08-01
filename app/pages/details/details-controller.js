@@ -165,6 +165,30 @@ angular.module('details.controller', ['details.service'])
                 //}
             };
 
+            //检查数量
+            $scope.countChange = function(){
+
+                var quantity = $scope.q_count;
+
+                if(!checkNumber(quantity) && quantity.length > 0){
+                    //console.log('不是数字')
+                    $.toast('请输入数字', 'cancel');
+                    $scope.q_count = 1;
+                    return;
+                }
+
+                if(quantity < 0){
+                    $.toast('输入数字不能为负数', 'cancel');
+                    $scope.q_count = 1;
+                }
+            };
+
+            //验证数字
+            function checkNumber(number){
+                var isNumber = /^[0-9]*$/.test(number);
+                return isNumber;
+            }
+
             //购买状态
             $scope.buy_status = function (number) {
                 if (number == 1) {
@@ -212,6 +236,11 @@ angular.module('details.controller', ['details.service'])
             //添加购物车
             $scope.addProductToCart = function (productId, quantity, product_property, product_specification_id) {
 
+                if(!quantity > 0){
+                    $.toast('请输入商品数量','cancel');
+                    return;
+                }
+
                 DetailsFty.addProToCatService(productId, quantity, product_property, product_specification_id)
                     .then(function (json) {
 
@@ -231,6 +260,7 @@ angular.module('details.controller', ['details.service'])
                                     //$.toast("成功添加商品");
                                 } else {
                                     $.toast("添加失败", "cancel");
+                                    console.log("添加失败：" + angular.toJson(json));
                                 }
                                 /*end function*/
 
@@ -240,6 +270,7 @@ angular.module('details.controller', ['details.service'])
 
                     }, function (error) {
                         $.toast("添加失败", "cancel");
+                        console.log("添加失败：" + angular.toJson(error));
                     })
             };
 
@@ -247,6 +278,11 @@ angular.module('details.controller', ['details.service'])
             $scope.checkedCarts = [];
             $scope.buy_immediately = function (item, quantity, product_property, product_specification_id) {
                 //console.log("product.item?" + angular.toJson(item));
+
+                if(!quantity > 0){
+                    $.toast('请输入商品数量','cancel');
+                    return;
+                }
 
                 var buy_price = 0;
                 if (item.specifications.length > 0) {

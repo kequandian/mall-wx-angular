@@ -100,7 +100,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
             //检查数量
             $scope.countChange = function(id, product_spec_id, quantity){
-                if(!checkNumber(quantity)){
+                if(!checkNumber(quantity) && quantity.length > 0){
                     //console.log('不是数字')
                     $.toast('请输入数字', 'cancel');
                     angular.forEach($scope.carts, function(v, k){
@@ -119,23 +119,33 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
                 if(quantity < 0){
                     $.toast('输入数字不能为负数', 'cancel');
-                    return;
+                    angular.forEach($scope.carts, function(v, k){
+                        if (product_spec_id == null) {
+                            if (v.product_id == id) {
+                                v.quantity = 1;
+                            }
+                        } else if (product_spec_id > 0) {
+                            if (v.product_id == id && v.product_specification_id == product_spec_id) {
+                                v.quantity = 1;
+                            }
+                        }
+                    });
                 }
-                angular.forEach($scope.carts, function(v, k){
-                    if (product_spec_id == null) {
-                        if (v.product_id == id) {
-                            if(v.quantity === "" || v.quantity ===undefined || v.quantity == 0 || v.quantity < 0){
-                                v.quantity = 1;
-                            }
-                        }
-                    } else if (product_spec_id > 0) {
-                        if (v.product_id == id && v.product_specification_id == product_spec_id) {
-                            if(v.quantity === "" || v.quantity ===undefined || v.quantity == 0 || v.quantity < 0){
-                                v.quantity = 1;
-                            }
-                        }
-                    }
-                })
+                //angular.forEach($scope.carts, function(v, k){
+                //    if (product_spec_id == null) {
+                //        if (v.product_id == id) {
+                //            if(v.quantity === "" || v.quantity ===undefined || v.quantity == 0 || v.quantity < 0){
+                //                v.quantity = 1;
+                //            }
+                //        }
+                //    } else if (product_spec_id > 0) {
+                //        if (v.product_id == id && v.product_specification_id == product_spec_id) {
+                //            if(v.quantity === "" || v.quantity ===undefined || v.quantity == 0 || v.quantity < 0){
+                //                v.quantity = 1;
+                //            }
+                //        }
+                //    }
+                //})
             };
 
             //验证数字

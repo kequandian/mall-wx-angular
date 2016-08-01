@@ -156,6 +156,8 @@ $(function () {
             var product_stock_balance = $('#product_stock_balance');
             var details_stock_balance = $('#details_stock_balance');
 
+            var details_product_count = $('.detail_product_count');
+
             weuiActionsheet.addClass('weui_actionsheet_toggle');
             mask.show().addClass('weui_fade_toggle').on('click', function () {
                 hideActionSheet(weuiActionsheet, mask);
@@ -163,10 +165,14 @@ $(function () {
 
             $('#action_sheet_cancel').on('click', function () {
                 if(p_list_null.val() == 0 && details_stock_balance.val() > 0) {
-                    hideActionSheet(weuiActionsheet, mask);
+                    if(details_product_count.val() > 0) {
+                        hideActionSheet(weuiActionsheet, mask);
+                    }
                 }else if(p_list_null.val() > 0){
                     if (p_value.val().length > 0 && product_stock_balance.val() > 0) {
-                        hideActionSheet(weuiActionsheet, mask);
+                        if(details_product_count.val() > 0){
+                            hideActionSheet(weuiActionsheet, mask);
+                        }
                     }
                 }
 
