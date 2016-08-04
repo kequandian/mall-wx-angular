@@ -159,6 +159,26 @@ angular.module('cart.service', [])
                         return deferred.reject(data);
                     });
                 return deferred.promise;
+            },
+
+            //ºÏ≤È…Ã∆∑ø‚¥Ê
+            withStockBalance: function () {
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + '/shopping_cart?with_stock_balance=true';
+                $http({
+                    method: 'GET',
+                    url: url,
+                    headers: {
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
+                })
+                    .success(function (data) {
+                        deferred.resolve(data);
+                    })
+                    .error(function (data) {
+                        deferred.reject(data);
+                    });
+                return deferred.promise;
             }
         };
     }]);

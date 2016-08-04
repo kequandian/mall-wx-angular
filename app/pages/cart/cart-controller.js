@@ -26,7 +26,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     function (result) {
                         if (result.status_code == 0) {
                             $scope.carts = result.data;
-                            //console.log(angular.toJson(result.data))
+                            //console.log(angular.toJson(result.data));
                             if ($scope.carts.length > 0) {
 
                                 var c_count = 0;
@@ -79,29 +79,28 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     if (product_spec_id == null) {
                         if (value.product_id == id) {
                             value.quantity++;
-                            //if (value.quantity > 99) {
-                            //    value.quantity = 99;
+                            //if (value.quantity > value.stock_balance) {
+                            //    value.quantity = value.stock_balance;
                             //}
                         }
                     } else if (product_spec_id > 0) {
-                        console.log(value.quantity)
+                        //console.log(value.quantity)
                         if (value.product_id == id && value.product_specification_id == product_spec_id) {
                             value.quantity++;
-                            //if (value.quantity > 99) {
-                            //    value.quantity = 99;
+                            //if (value.quantity > value.stock_balance) {
+                            //    value.quantity = value.stock_balance;
                             //}
                         }
-                        console.log(value.quantity)
+                        //console.log(value.quantity)
                     }
 
                 }, $scope.carts);
-                //console.log($scope.carts);
+                //console.log(angular.toJson($scope.carts));
             };
 
             //检查数量
             $scope.countChange = function(id, product_spec_id, quantity){
                 if(!checkNumber(quantity) && quantity.length > 0){
-                    //console.log('不是数字')
                     $.toast('请输入数字', 'cancel');
                     angular.forEach($scope.carts, function(v, k){
                         if (product_spec_id == null) {
@@ -268,17 +267,17 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 angular.forEach($scope.carts, function (v, k) {
                     var productItem = {};
                     productItem.product_id = v.product_id;
-                    productItem.quantity = v.quantity;
+                    productItem.quantity = parseInt(v.quantity);
                     productItem.product_specification_id = v.product_specification_id;
                     products.push(productItem);
                 });
 
-                console.log(angular.toJson(products));
+                //console.log(angular.toJson(products));
 
                 CartFty.editCountService(products)
                     .then(function (json) {
 
-                        //console.log('修改成功：' + angular.toJson(json));
+                        console.log('修改成功：' + angular.toJson(json));
                         if (json.status_code == 0) {
                             var count = 0;
                             angular.forEach($scope.carts, function (v, k) {
@@ -286,8 +285,9 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                             });
                             $rootScope.cartCount = count;
                             $rootScope.detailsCartCount = count;
+                            $state.go('home.cart', {},{reload:true});
                         } else {
-                            console.log("修改失败：" + error)
+                            console.log("修改失败：" + angular.toJson(json))
                         }
                     }, function (error) {
                         console.log("错误：" + error)
@@ -371,12 +371,45 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     return;
                 }
 
+                CartFty.withStockBalance()
+                    .then(function(json){
+                        if(json.status_code == 0){
 
-                //console.log('提交前：' + angular.toJson($scope.order))
+                            var isBuy = true;
+                            //console.log(angular.toJson(json));
+                            console.log(angular.toJson($scope.settlementData));
 
+                            angular.forEach($scope.settlementData,function(oValue,k){
+
+                                angular.forEach(json.data, function(nValue, k){
+
+                                    if(oValue.product_id == nValue.product_id){
+                                        if(oValue.quantity >  nValue.quantity){
+                                            isBuy = false;
+                                        }
+                                    }
+
+                                })
+
+                            });
+
+                            if(isBuy){
+                                submitOrder($scope.order);
+                            }else{
+                                $.toast("商品库存不足，请与客服联系","cencal")
+                            }
+                        }
+
+                    }, function(error){
+                        console.log("获取库存信息错误：" + error);
+                    })
+
+            };
+
+            //提交订单信息
+            function submitOrder(order){
                 $scope.order.contact = $scope.currentContact;
-
-                CartFty.addOrder($scope.order).then(
+                CartFty.addOrder(order).then(
                     function (result) {
                         //console.log('提交成功：' + angular.toJson(result.data));
                         $scope.settlementCarts = [];
@@ -387,7 +420,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     }, function (error) {
                         console.log(error);
                     });
-            };
+            }
 
             //删除购物车商品
             function deleteProducts(items) {

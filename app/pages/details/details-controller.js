@@ -32,6 +32,12 @@ angular.module('details.controller', ['details.service'])
                             $scope.details_stock_balance = $scope.details.stock_balance;
                             $scope.details_price = $scope.details.price;
 
+                            if($scope.details_stock_balance > 0){
+                                $scope.b_status_btn = true;
+                            }else{
+                                $scope.b_status_btn = true;
+                            }
+
                             if ($scope.details.covers.length > 0) {
                                 $scope.details_content_sheet_img = $scope.details.covers[0].url;
                             }
@@ -146,6 +152,7 @@ angular.module('details.controller', ['details.service'])
                 $scope.spec_item_price = item.price;
                 $scope.spec_item_stock_balance = item.stock_balance;
                 $scope.spec_item_name = item.name;
+                $scope.q_count = 1;
             };
 
             $scope.q_count = 1;
@@ -166,7 +173,7 @@ angular.module('details.controller', ['details.service'])
             };
 
             //检查数量
-            $scope.countChange = function(){
+            $scope.countChange = function(details){
 
                 var quantity = $scope.q_count;
 
@@ -180,7 +187,19 @@ angular.module('details.controller', ['details.service'])
                 if(quantity < 0){
                     $.toast('输入数字不能为负数', 'cancel');
                     $scope.q_count = 1;
+                    return;
                 }
+
+                if($scope.product_property_value!=null){
+                    if($scope.q_count > $scope.product_property_value.stock_balance){
+                        $scope.q_count = $scope.product_property_value.stock_balance;
+                    }
+                }else{
+                    if($scope.q_count > details.stock_balance){
+                        $scope.q_count = details.stock_balance;
+                    }
+                }
+
             };
 
             //验证数字
@@ -190,7 +209,11 @@ angular.module('details.controller', ['details.service'])
             }
 
             //购买状态
-            $scope.buy_status = function (number) {
+            $scope.buy_status = function (number, b_status) {
+                if(!b_status){
+                    $.toast('该商品暂无库存', 'cancel');
+                    return;
+                }
                 if (number == 1) {
                     $scope.b_status = "cart";
                 } else if (number == 2) {

@@ -142,11 +142,11 @@
 
         <div class="detail-footer-right">
             <div class="item-button">
-                <div class="details_buy_css product_info" ng-click="buy_status(2)">
+                <div class="details_buy_css" ng-click="buy_status(2,b_status_btn)" ng-class="b_status_btn ? 'product_info':''">
                     <!--<div class="details_buy_css product_info" ng-click="buy_immediately(details)">-->
                     立即购买
                 </div>
-                <div class="details_cart_css product_info" ng-click="buy_status(1)">
+                <div class="details_cart_css" ng-click="buy_status(1,b_status_btn)" ng-class="b_status_btn ? 'product_info':''">
                     <!--<div class="details_cart_css product_info" ng-click="addProductToCart(details.id)">-->
                     加入购物车
                 </div>
@@ -202,7 +202,7 @@
                                         <span>-</span>
                                     </a>
                                     <input autocomplete="off" class="cart-quantity detail_product_count" ng-model="q_count" type="text"
-                                           ng-change="countChange()"
+                                           ng-change="countChange(details)"
                                             >
                                     <a href="javascript:void(0);" class="cart-quantity-increment" ng-click="upQ()">
                                         <span>+</span>
@@ -215,7 +215,7 @@
                 </div>
                 <div class="weui_actionsheet_action">
                     <div class="weui_actionsheet_cell" id="action_sheet_cancel"
-                         ng-click="buy_product_option(details, details.id, q_count)">确定
+                         ng-click="buy_product_option(details, details.id, q_count,stock_balance_option)">确定
                     </div>
                 </div>
             </div>
