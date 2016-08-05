@@ -396,7 +396,8 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                             if(isBuy){
                                 submitOrder($scope.order);
                             }else{
-                                $.toast("商品库存不足，请与客服联系","cencal")
+                                $.toast("商品库存不足，请与客服联系","cencal");
+                                $state.go('home.cart')
                             }
                         }
 
@@ -417,6 +418,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                         deleteProducts($scope.settlementData);
 
                         //$state.go('order-confirm',{data:result.data});
+                        window.location.href = '/app/payment/wpay/' + $scope.order_number;
                     }, function (error) {
                         console.log(error);
                     });
@@ -449,7 +451,6 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                                     $rootScope.detailsCartCount = count;
 
                                     //console.log("删除购物车商品：" + $scope.order_number);
-                                    window.location.href = '/app/payment/wpay/' + $scope.order_number;
                                 } else {
                                     $.toast('直接支付失败', 'cancel');
                                 }
