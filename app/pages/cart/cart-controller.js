@@ -52,6 +52,15 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     })
             }
 
+            //检查商品库存
+            $scope.check_stock_balance = function(count){
+                if(count > 0){
+                    return '';
+                }else{
+                    return 'color: #BCBCBC;';
+                }
+            };
+
             //商品数量增减
             $scope.downQuantity = function (id, product_spec_id) {
                 angular.forEach($scope.carts, function (value, key) {
@@ -188,7 +197,9 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     return;
                 }
                 $scope.carts.forEach(function (it) {
-                    it.$checked = $scope.$allChecked;
+                    if(it.stock_balance > 0){
+                        it.$checked = $scope.$allChecked;
+                    }
                 });
             };
             $scope.checkItem = function (item) {
@@ -237,7 +248,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 });
                 //$scope.checkedCarts.push(pay);
                 //$scope.checkedCarts.push(freight);
-                //console.log($scope.checkedCarts);
+                //console.log(angular.toJson($scope.checkedCarts));
                 $state.go('cart-settlement', {carts: $scope.checkedCarts, totalToPay: pay, totalFreight: freight});
             };
 
@@ -302,8 +313,6 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             //title
             document.title = "结算";
             $scope.settlementCarts = [];
-            //库存
-            $scope.isBuy = true;
 
             $ocLazyLoad.load('Jquery').then(function () {
                 $ocLazyLoad.load('JqueryWeUI').then(function () {
@@ -374,66 +383,20 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 }
                 $scope.order.contact = $scope.currentContact;
 
-                if($scope.isBuy){
-                    //console.log('ok')
-                    CartFty.addOrder($scope.order).then(
-                        function (result) {
-                            //console.log('提交成功：' + angular.toJson(result.data));
-                            $scope.settlementCarts = [];
-                            $scope.order_number = result.data.order_number;
-                            deleteProducts($scope.settlementData);
+                //console.log('ok')
+                CartFty.addOrder($scope.order).then(
+                    function (result) {
+                        //console.log('提交成功：' + angular.toJson(result.data));
+                        $scope.settlementCarts = [];
+                        $scope.order_number = result.data.order_number;
+                        deleteProducts($scope.settlementData);
 
-                            //$state.go('order-confirm',{data:result.data});
-                        }, function (error) {
-                            console.log(error);
-                        });
-                }else{
-                    //console.log('no')
-                    $.toast("商品库存不足，请与客服联系","cancel");
-                    //$state.go('home.cart')
-                }
+                        //$state.go('order-confirm',{data:result.data});
+                    }, function (error) {
+                        console.log(error);
+                    });
 
             };
-
-            //提交订单信息
-            submitOrder();
-            function submitOrder(){
-
-                CartFty.withStockBalance()
-                    .then(function(json){
-                        if(json.status_code == 0){
-
-                            //console.log(angular.toJson(json));
-                            //console.log(angular.toJson($scope.settlementData));
-
-                            angular.forEach($scope.settlementData,function(oValue,k){
-                                angular.forEach(json.data, function(nValue, k){
-
-                                    if(oValue.product_specification_id != null){
-                                        if(nValue.product_specification_id == oValue.product_specification_id){
-                                            if(nValue.product_id == oValue.product_id){
-                                                if(oValue.quantity >  nValue.stock_balance){
-                                                    $scope.isBuy = false;
-                                                }
-                                            }
-                                        }
-                                    }else{
-                                        if(oValue.product_id == nValue.product_id){
-                                            if(oValue.quantity >  nValue.stock_balance){
-                                                $scope.isBuy = false;
-                                            }
-                                        }
-                                    }
-
-                                })
-                            });
-                        }
-                    }, function(error){
-                        console.log("获取库存信息错误：" + error);
-                    })
-
-
-            }
 
             //删除购物车商品
             function deleteProducts(items) {
@@ -512,7 +475,6 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                             //取消操作
                         });
                         /*end function*/
-
                     })
                 });
             };

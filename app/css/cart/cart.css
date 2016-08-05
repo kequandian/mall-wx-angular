@@ -170,7 +170,7 @@
     flex:1;
     position:relative;
     padding-left: 97px;
-    min-height:85px
+    min-height:85px;
 }
 .cart-list li .item-info .item-info-bottom{
     height: 28px;
@@ -184,9 +184,10 @@
     display: block;
     min-width: 60px;
     margin-top: 2px;
-    margin-right: 2px;
+    margin-right: 5px;
     color:red;
 }
+
 .cart-list li .item-info .item-info-bottom .ion-close{
     position: relative;
     margin-top: 3px;

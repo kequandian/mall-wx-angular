@@ -32,8 +32,10 @@
 
                     <ul class="cart-list" ng-repeat="cart in carts">
                         <li class="">
+
                             <div class="" ng-hide="cart_item_price">
-                                <input class="cart-checkbox" type="checkbox" id="check{{cart.id}}" ng-model="cart.$checked" ng-change="checkItem(cart)">
+                                <input class="cart-checkbox" type="checkbox" id="check{{cart.id}}"
+                                       ng-model="cart.$checked" ng-change="checkItem(cart)" ng-disabled="cart.stock_balance <= 0">
                                 <label class="ion-ios-checkmark cart-item-label" for="check{{cart.id}}"></label>
                             </div>
                             <div class="item-info">
@@ -42,17 +44,18 @@
                                 </a>
                                 <div class="">
                                     <a  ui-sref="details({productId:cart.product_id})" ng-if="cart.product_specification_name != null">
-                                        <h4 class="item-title">{{cart.product_name | cutText:true:16:"..."}}</h4>
-                                        <div class="item-spec">规格：{{cart.product_specification_name}}</div>
+                                        <h4 class="item-title" style="{{check_stock_balance(cart.stock_balance)}}">{{cart.product_name | cutText:true:16:"..."}}</h4>
+                                        <div class="item-spec" style="{{check_stock_balance(cart.stock_balance)}}">规格：{{cart.product_specification_name}}</div>
                                     </a>
                                     <a  ui-sref="details({productId:cart.product_id})" ng-if="cart.product_specification_name == null">
-                                        <div class="item-title-2">{{cart.product_name}}</div>
+                                        <div class="item-title-2" style="{{check_stock_balance(cart.stock_balance)}}">{{cart.product_name}}</div>
                                     </a>
                                     <div class="item-info-bottom">
 
                                         <div class="item-price-position" ng-hide="cart_item_price">
-                                            <span class="item-price">{{cart.price|currency:'￥'}}</span>
-                                            <span class="ion-close">x {{ cart.quantity }}</span>
+                                            <span class="item-price" style="{{check_stock_balance(cart.stock_balance)}}">{{cart.price|currency:'￥'}}</span>
+                                            <span class="item-price" ng-if="cart.stock_balance <= 0">库存不足</span>
+                                            <span class="ion-close" style="{{check_stock_balance(cart.stock_balance)}}">x {{ cart.quantity }}</span>
                                         </div>
 
                                         <div class="cart-quantity-form-position" ng-hide="cart_item_quantity">
@@ -76,6 +79,10 @@
                                     </div>
 
                                 </div>
+                            </div>
+
+                            <div class="balance_is_null">
+
                             </div>
                         </li>
                     </ul>
