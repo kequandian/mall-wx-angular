@@ -302,6 +302,8 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             //title
             document.title = "结算";
             $scope.settlementCarts = [];
+            //库存
+            $scope.isBuy = true;
 
             $ocLazyLoad.load('Jquery').then(function () {
                 $ocLazyLoad.load('JqueryWeUI').then(function () {
@@ -370,58 +372,67 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     }
                     return;
                 }
+                $scope.order.contact = $scope.currentContact;
+
+                if($scope.isBuy){
+                    //console.log('ok')
+                    CartFty.addOrder($scope.order).then(
+                        function (result) {
+                            //console.log('提交成功：' + angular.toJson(result.data));
+                            $scope.settlementCarts = [];
+                            $scope.order_number = result.data.order_number;
+                            deleteProducts($scope.settlementData);
+
+                            //$state.go('order-confirm',{data:result.data});
+                        }, function (error) {
+                            console.log(error);
+                        });
+                }else{
+                    //console.log('no')
+                    $.toast("商品库存不足，请与客服联系","cancel");
+                    //$state.go('home.cart')
+                }
+
+            };
+
+            //提交订单信息
+            submitOrder();
+            function submitOrder(){
 
                 CartFty.withStockBalance()
                     .then(function(json){
                         if(json.status_code == 0){
 
-                            var isBuy = true;
                             //console.log(angular.toJson(json));
-                            console.log(angular.toJson($scope.settlementData));
+                            //console.log(angular.toJson($scope.settlementData));
 
                             angular.forEach($scope.settlementData,function(oValue,k){
-
                                 angular.forEach(json.data, function(nValue, k){
 
-                                    if(oValue.product_id == nValue.product_id){
-                                        if(oValue.quantity >  nValue.quantity){
-                                            isBuy = false;
+                                    if(oValue.product_specification_id != null){
+                                        if(nValue.product_specification_id == oValue.product_specification_id){
+                                            if(nValue.product_id == oValue.product_id){
+                                                if(oValue.quantity >  nValue.stock_balance){
+                                                    $scope.isBuy = false;
+                                                }
+                                            }
+                                        }
+                                    }else{
+                                        if(oValue.product_id == nValue.product_id){
+                                            if(oValue.quantity >  nValue.stock_balance){
+                                                $scope.isBuy = false;
+                                            }
                                         }
                                     }
 
                                 })
-
                             });
-
-                            if(isBuy){
-                                submitOrder($scope.order);
-                            }else{
-                                $.toast("商品库存不足，请与客服联系","cencal");
-                                $state.go('home.cart')
-                            }
                         }
-
                     }, function(error){
                         console.log("获取库存信息错误：" + error);
                     })
 
-            };
 
-            //提交订单信息
-            function submitOrder(order){
-                $scope.order.contact = $scope.currentContact;
-                CartFty.addOrder(order).then(
-                    function (result) {
-                        //console.log('提交成功：' + angular.toJson(result.data));
-                        $scope.settlementCarts = [];
-                        $scope.order_number = result.data.order_number;
-                        deleteProducts($scope.settlementData);
-
-                        //$state.go('order-confirm',{data:result.data});
-                        window.location.href = '/app/payment/wpay/' + $scope.order_number;
-                    }, function (error) {
-                        console.log(error);
-                    });
             }
 
             //删除购物车商品
@@ -451,6 +462,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                                     $rootScope.detailsCartCount = count;
 
                                     //console.log("删除购物车商品：" + $scope.order_number);
+                                    window.location.href = '/app/payment/wpay/' + $scope.order_number;
                                 } else {
                                     $.toast('直接支付失败', 'cancel');
                                 }
