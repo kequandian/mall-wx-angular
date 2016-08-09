@@ -3,7 +3,7 @@ angular.module('cart.service', [])
         return {
             getCarts: function () {
                 var deferred = $q.defer();
-                var url = GlobalVariable.SERVER_PATH + '/shopping_cart';
+                var url = GlobalVariable.SERVER_PATH + '/shopping_cart?with_stock_balance=true';
                 $http({
                     method: 'GET',
                     url: url,

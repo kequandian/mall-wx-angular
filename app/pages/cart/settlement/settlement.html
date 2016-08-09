@@ -31,15 +31,17 @@
                                         <div class="weui_cell_bd weui_cell_primary" style="min-height: 69px;">
                                             <!--<p>添加收货地址</p>-->
                                             <p class="contact-info-space">收货人：{{currentContact.contact_user}} <span style="margin-left: 10px;">{{currentContact.phone}}</span></p>
-                                            <p class="address-info">
+                                            <div class="address-info">
                                                 <img src="img/cart/address.png" class="address-img">
-                                                收货地址：{{currentContact.province}}{{currentContact.city}}{{currentContact.district}}
-                                                {{currentContact.street}}{{currentContact.street_number}} {{currentContact.detail}}
+                                                <div class="address-text">
+                                                    收货地址：{{currentContact.province}}{{currentContact.city}}{{currentContact.district}}
+                                                    {{currentContact.street}}{{currentContact.street_number}} {{currentContact.detail}}
+                                                </div>
                                                 <!--<input type="hidden" ng-model="order.contact">-->
                                                 <!--<input type="hidden" ng-model="order.contact=currentContact">-->
                                                 <!--<input type="hidden" ng-model="order.contact" ng-init="order.contact=currentContact">-->
                                                 <!--<input type="hidden" ng-model="order.remark">-->
-                                            </p>
+                                            </div>
                                         </div>
                                         <span class="weui_cell_ft"></span>
                                     </a>

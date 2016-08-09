@@ -35,22 +35,35 @@
     font-size: 15px;
 }
 .address-info {
-    padding: 5px 0;
+    /*padding: 5px 0;*/
     color: black;
     font-size: 13px;
     line-height: 1.2;
     overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    /*text-overflow: ellipsis;*/
+    /*display: -webkit-box;*/
+    /*-webkit-box-orient: vertical;*/
+    /*-webkit-line-clamp: 2;*/
 }
 .address-img {
+    /*width: 23px;*/
     height: 23px;
     float: left;
     margin-top: 5px;
     margin-right: 10px;
 }
+
+.address-text{
+    width: 85%;
+    height: 32px;
+    line-height: 32px;
+    /*margin-left: 25px;*/
+    white-space:nowrap;
+    word-break:keep-all;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
 .settlement-list li {
     display: -webkit-box;
     -webkit-box-align: center;
@@ -235,5 +248,9 @@
 
 .weui-picker-container{
     z-index: 95;
+}
+
+#settlement .weui_media_box .weui_media_desc{
+    margin-bottom: 10px;
 }
 
