@@ -66,6 +66,8 @@ angular.module('homePage.controller', ['homePage.service'])
 
             $scope.top_btn_show = true;
 
+            $scope.followus = HomePageFty.getFollowusUrl();
+
             /* setTimeout(function(){
              document.title = "首页";
              var iframe = document.createElement('iframe');
