@@ -90,14 +90,16 @@
               <img ng-src="img/home/brand-img.png" alt="">
               <h2>品牌推荐</h2>
             </span>-->
-
-        <span class="group-span-top" ng-click="areasStatus(1)">
-            <img ng-src="img/home/group_zero.png" alt="">
-            <h2>零元区</h2>
-        </span>
-        <span class="group-span-top" ng-click="areasStatus(3)">
+        <!--<span class="group-span-top" ng-click="areasStatus(3)">-->
+        <span class="group-span-top" ui-sref="collection">
              <img ng-src="img/home/group_special.png" alt="">
-             <h2>特价区</h2>
+             <h2>我的收藏</h2>
+        </span>
+
+        <!--<span class="group-span-top" ng-click="areasStatus(1)">-->
+        <span class="group-span-top" ui-sref="order.all">
+            <img ng-src="img/home/group_zero.png" alt="">
+            <h2>我的订单</h2>
         </span>
 
         <span class="group-span-top" ui-sref="home.category">
