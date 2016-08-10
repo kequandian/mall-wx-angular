@@ -36,6 +36,10 @@ angular.module('homePage.service', [])
                             return deferred.reject(data);
                         });
                     return deferred.promise;
+                },
+
+                getFollowusUrl: function() {
+                    return GlobalVariable.FOLLOW_US_URL;
                 }
             }
     }]);
