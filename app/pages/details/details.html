@@ -37,11 +37,11 @@
             </div>
             <div class="product-price">
                 <span style="margin-right:2px">{{details.price|currency:"￥"}}</span>
-                <span class="point">/ {{details.price*point_rate | number:0}}积分</span>
+                <span class="point">/ {{ (details.price*point_rate) | number:0}}积分</span>
 
                 <span class="rebate" ng-if="product_rebate > 0">
                     <span class="product-rebate-small">攒</span>
-                    <span class="product-rebate">{{product_rebate*point_rate | number:0}}</span>
+                    <span class="product-rebate">{{(product_rebate*point_rate) | number:0}}</span>
                     <span  class="product-rebate-small">积分</span>
                 </span>
 

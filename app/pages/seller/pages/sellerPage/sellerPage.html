@@ -49,13 +49,13 @@
         <div class="seller-profit">
             <div class="s-p-top">
                 <span style="font-size: 12px;">累计积分：</span>
-                {{ (owner_balance.total_reward  | NotNull) * point_rate | number:0}}
+                {{ ((owner_balance.total_reward  | NotNull) * point_rate) | number:0}}
             </div>
             <div class="s-p-bottom">
                 <span style="font-size: 12px;">可用积分：</span>
                 <!--<span style="color: red; padding-left: 4px; font-size: 14px;">￥</span>-->
 
-                <div class="commission-price">{{ (owner_balance.balance  | NotNull) * point_rate | number:0}}
+                <div class="commission-price">{{ ((owner_balance.balance  | NotNull) * point_rate) | number:0}}
                 </div>
                 <div ng-if="owner_balance.is_agent || owner_balance.is_partner"
                      class="cash-botton" ng-click="goToWithdrow(userInfo.phone,owner_balance.balance)">
