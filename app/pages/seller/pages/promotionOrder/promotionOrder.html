@@ -18,15 +18,15 @@
             <div class="order-item-text">
                 <div>
                     本月总积分：
-                    <span class="pro-red">{{(rewards.pending_reward + rewards.settled_reward)*point_rate | number:0}}</span>
+                    <span class="pro-red">{{((rewards.pending_reward + rewards.settled_reward)*point_rate) | number:0}}</span>
                 </div>
                 <div>
                     已结算积分：
-                    <span class="pro-black">{{rewards.settled_reward*point_rate | number:0}}</span>
+                    <span class="pro-black">{{(rewards.settled_reward*point_rate) | number:0}}</span>
                 </div>
                 <div>
                     未结算积分：
-                    <span class="pro-black">{{rewards.pending_reward*point_rate | number:0}}</span>
+                    <span class="pro-black">{{(rewards.pending_reward*point_rate) | number:0}}</span>
                 </div>
                 <div>
                     本月总订单：
@@ -53,11 +53,11 @@
                         订单金额：{{item.settled_price|NotNull|currency:"￥"}}
                     </div>
                     <div class="p-order-price">
-                        我的收入：
+                        所攒积分：
                         <!--<span ng-if="item.agent_reward">代理商{{item.agent_reward|NotNull|currency:"￥"}}</span>
                         <span ng-if="item.partner_reward">经销商{{item.partner_reward|NotNull|currency:"￥"}}</span>
                         <span ng-if="item.seller_reward">销售商{{item.seller_reward|NotNull|currency:"￥"}}</span>-->
-                        <span>{{item.total_reward|NotNull|currency:"￥"}}</span>
+                        <span>{{ ((item.total_reward|NotNull)*point_rate) | number:0}}</span>
                     </div>
                     <div class="p-order-time">订单时间：{{item.settled_time}}</div>
                 </div>

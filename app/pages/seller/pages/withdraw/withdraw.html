@@ -11,7 +11,7 @@
 
             <div class="weui_cell draw" >
                 <div class="weui_cell_bd weui_cell_primary">
-                    <input class="weui_input" type="number" id="drawNum" placeholder="可兑现积分 {{balance*point_rate | number:0}}" ng-model="withdraw.withdraw_cash">
+                    <input class="weui_input" type="number" id="drawNum" placeholder="可兑现积分 {{ (balance*point_rate) | number:0}}" ng-model="withdraw.withdraw_cash">
                 </div>
             </div>
 
