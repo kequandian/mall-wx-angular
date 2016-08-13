@@ -17,16 +17,16 @@
                 >
             <div class="order-item-text">
                 <div>
-                    本月总收入：
-                    <span class="pro-red">{{(rewards.pending_reward + rewards.settled_reward)|currency:""}}元</span>
+                    本月总积分：
+                    <span class="pro-red">{{(rewards.pending_reward + rewards.settled_reward)*point_rate}}</span>
                 </div>
                 <div>
-                    已结算收入：
-                    <span class="pro-black">{{rewards.settled_reward|currency:""}}元</span>
+                    已结算积分：
+                    <span class="pro-black">{{rewards.settled_reward*point_rate}}</span>
                 </div>
                 <div>
-                    未结算收入：
-                    <span class="pro-black">{{rewards.pending_reward|currency:""}}元</span>
+                    未结算积分：
+                    <span class="pro-black">{{rewards.pending_reward*point_rate}}</span>
                 </div>
                 <div>
                     本月总订单：
@@ -40,7 +40,7 @@
             </div>
 
             <div class="order-item-explain">
-                说明：订单状态为 "交易成功" 时金额自动进入钱包，您可以在销售中心进行提现操作。
+                说明：订单状态为 "交易成功" 时积分自动进入可用积分，您可以在商城进行商品对换操作。
             </div>
 
             <div class="order-list">

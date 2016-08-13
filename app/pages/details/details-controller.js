@@ -1,7 +1,7 @@
 angular.module('details.controller', ['details.service'])
 
-    .controller('DetailsController', ['$scope', '$state', '$stateParams', '$rootScope', 'DetailsFty', '$ocLazyLoad',
-        function ($scope, $state, $stateParams, $rootScope, DetailsFty, $ocLazyLoad) {
+    .controller('DetailsController', ['$scope', '$state', '$stateParams', '$rootScope', 'DetailsFty', 'PointRate', '$ocLazyLoad',
+        function ($scope, $state, $stateParams, $rootScope, DetailsFty, PointRate, $ocLazyLoad) {
 
             $ocLazyLoad.load('Jquery').then(function () {
                 $ocLazyLoad.load('JqueryWeUI').then(function () {
@@ -10,6 +10,8 @@ angular.module('details.controller', ['details.service'])
             });
             //title
             document.title = "商品详情";
+
+            $scope.point_rate = PointRate.rate;
 
             //商品详情
             detailsInfo();

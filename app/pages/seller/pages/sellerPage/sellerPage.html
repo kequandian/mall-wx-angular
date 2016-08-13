@@ -18,7 +18,7 @@
                             <span ng-if="owner_balance.is_member">级别: &nbsp;</span>
                             <span ng-if="owner_balance.is_agent">经销商</span>
                             <span ng-if="owner_balance.is_agent==0 && owner_balance.is_partner">经销商</span>
-                            <span ng-if="owner_balance.is_agent==0 && owner_balance.is_partner==0 && owner_balance.is_seller">经销商</span>
+                            <span ng-if="owner_balance.is_agent==0 && owner_balance.is_partner==0 && owner_balance.is_seller">会员</span>
                             <!--<span class="five-star-parent" ng-if="owner_balance.is_agent==0 && owner_balance.is_partner">-->
 
                             <span class="five-star-parent" ng-if="owner_balance.is_seller && owner_balance.partner_level.level < 6">
@@ -48,18 +48,21 @@
         <!--</div>-->
         <div class="seller-profit">
             <div class="s-p-top">
-                <span style="font-size: 12px;">累计金额：</span>
-                {{owner_balance.total_reward != null ? owner_balance.total_reward : '0' | currency:"￥"}}
+                <span style="font-size: 12px;">累计积分：</span>
+                {{ (owner_balance.total_reward != null ? owner_balance.total_reward : '0') * point_rate}}
             </div>
             <div class="s-p-bottom">
-                <span style="font-size: 12px;">可提金额：</span>
-                <span style="color: red; padding-left: 4px; font-size: 14px;">￥</span>
+                <span style="font-size: 12px;">可用积分：</span>
+                <!--<span style="color: red; padding-left: 4px; font-size: 14px;">￥</span>-->
 
-                <div class="commission-price">{{owner_balance.balance != null ? owner_balance.balance : '0' |
-                    currency:""}}
+                <div class="commission-price">{{ (owner_balance.balance != null ? owner_balance.balance : '0') * point_rate}}
                 </div>
-                <div class="cash-botton" ng-click="goToWithdrow(userInfo.phone,owner_balance.balance)">
+                <div ng-if="owner_balance.is_agent || owner_balance.is_partner"
+                     class="cash-botton" ng-click="goToWithdrow(userInfo.phone,owner_balance.balance)">
                     <img src="img/sellerPage/takeCash.png">
+                </div>
+                <div class="points-desc" ng-if="owner_balance.is_agent==0 && owner_balance.is_partner==0 && owner_balance.is_seller">
+                    积分仅限在商城对换商品，不可兑换
                 </div>
             </div>
         </div>
@@ -127,7 +130,7 @@
                         <img src="img/sellerPage/sellerOrder.png">
                     </div>
                     <p class="weui_grid_label">
-                        销售订单
+                        积分订单
                     </p>
                 </a>
                 <a class="weui_grid kqd_grid_4" data-id="cell" ng-click="goToDistributionInfo()">
@@ -240,9 +243,8 @@
 
         <div ng-if="false" class="qrcode-tip">
             <div class="qrcode-tip-div">
-                <p>邀你来十美优品商城，创业就那么简单！</p>
-
-                <p>大众创业，万众创新</p>
+                <p>邀您分享十美优品商城，攒积分免费领取商品就那么简单！</p>
+                <!--<p>大众创业，万众创新</p>-->
             </div>
         </div>
 

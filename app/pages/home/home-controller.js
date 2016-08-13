@@ -1,6 +1,9 @@
 angular.module('home.controller', ['home.service'])
-    .controller('HomeController', ['$scope', '$state', '$rootScope', '$timeout', 'SimpleCartFty','GlobalVariable',
-        function ($scope, $state, $rootScope, $timeout, SimpleCartFty, GlobalVariable) {
+    .controller('HomeController', ['$scope', '$state', '$rootScope', '$timeout', 'SimpleCartFty','GlobalVariable','ConfigFty','PointRate','MinWithdraw',
+        function ($scope, $state, $rootScope, $timeout, SimpleCartFty, GlobalVariable,ConfigFty,PointRate, MinWithdraw) {
+
+            //获取全局设置
+            getGlobalConfigs();
 
             //获取购物车数量
             getCartCount();
@@ -34,7 +37,7 @@ angular.module('home.controller', ['home.service'])
                 'c_number': 0
             }, {
                 'id': '3',
-                'name': GlobalVariable.SELLER_SHIP=='YES' ? '销售中心' : '我要经销',
+                'name': GlobalVariable.SELLER_SHIP=='YES' ? '积分中心' : '申请会员',
                 'srefName': GlobalVariable.SELLER_SHIP=='YES' ? '.sellerPage' : GlobalVariable.SELLER_SHIP=='NO' ?  '.becomeDistributor' : '.sellerApplying',
                 'home_tab_icon': 'weui_tabbar_icon ion-app-biliya-tabs-team',
                 'c_count': null,
@@ -54,6 +57,26 @@ angular.module('home.controller', ['home.service'])
                 'c_count': null,
                 'c_number': 0
             }];
+
+
+            //获取全局设置
+            function getGlobalConfigs() {
+                ConfigFty.getConfigs()
+                    .then(function (json) {
+                        if (json.status_code == 0) {
+                            var data = json.data;
+
+                            PointRate.rate = data.point_exchange_rate.value;
+                            MinWithdraw.value = data.drawing_condition.value;
+
+                            //console.log("rate?"+PointRate.rate);
+
+                            //TODO, other configs
+                        }
+                    }, function (error) {
+                        console.log(error)
+                    })
+            }
 
             //获取购物车数量
             function getCartCount() {

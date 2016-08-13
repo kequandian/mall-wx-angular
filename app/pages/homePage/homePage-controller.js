@@ -46,10 +46,12 @@ angular.module('homePage.controller', ['homePage.service'])
     })
 
     .controller('HomePageController', ['$scope', '$rootScope', '$state', 'HomePageFty', 'areasStatus', 'goodListParams',
-        '$anchorScroll', '$ocLazyLoad','cateLeftIndex','$timeout',
-        function ($scope, $rootScope, $state, HomePageFty, areasStatus, goodListParams, $anchorScroll, $ocLazyLoad,cateLeftIndex,$timeout) {
+        '$anchorScroll', '$ocLazyLoad','cateLeftIndex','$timeout','PointRate',
+        function ($scope, $rootScope, $state, HomePageFty, areasStatus, goodListParams, $anchorScroll, $ocLazyLoad,cateLeftIndex,$timeout,PointRate) {
 
             document.title = "十美优品商城";
+
+            $scope.point_rate = PointRate.rate;
 
             $ocLazyLoad.load('Jquery').then(function () {
                 $ocLazyLoad.load('JqueryWeUI').then(function () {
@@ -102,7 +104,6 @@ angular.module('homePage.controller', ['homePage.service'])
             //获取广告
             getAdHome();
             getAdBanner();
-
 
             //获取推荐商品
             if ($rootScope.rec_session.rec_product.length == 0) {
@@ -214,6 +215,7 @@ angular.module('homePage.controller', ['homePage.service'])
                     $scope.ad_banner_2 = $scope.ad_banner[1];
                 }
             }
+
 
             //搜索栏
             $scope.goToSearchPage = function () {

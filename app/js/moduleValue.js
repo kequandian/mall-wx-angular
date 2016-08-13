@@ -33,5 +33,11 @@ angular.module('moduleValueJs',[])
         goods_list_index: 0,
         cate_detail_data_id:0
     })
+    .value('PointRate', {
+        rate: 100
+    })
+    .value('MinWithdraw', {
+        value: 100
+    })
 
 ;

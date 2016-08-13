@@ -32,11 +32,13 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
     })
 
     .controller('SellerPageController', ['$scope', '$state', '$rootScope', 'SellerPageFty', 'BalanceSession', 'UserInfo', 'DWStatus',
-        'withdrawBalance', 'cateLeftIndex',
-        function ($scope, $state, $rootScope, SellerPageFty, BalanceSession, UserInfo, DWStatus, withdrawBalance, cateLeftIndex) {
+        'withdrawBalance', 'cateLeftIndex','PointRate',
+        function ($scope, $state, $rootScope, SellerPageFty, BalanceSession, UserInfo, DWStatus, withdrawBalance, cateLeftIndex, PointRate) {
 
             //title
             document.title = "销售中心";
+
+            $scope.point_rate = PointRate.rate;
 
             $rootScope.tabsNumber = 3;
             cateLeftIndex.cate_nav_index = 0;
@@ -162,6 +164,7 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
             //进入提现页
             $scope.goToWithdrow = function (phone, balance) {
                 withdrawBalance.balance = balance;
+
                 $state.go('withdraw', {
                     accountPhone: phone
                 })

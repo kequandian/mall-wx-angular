@@ -53,8 +53,14 @@
 #details .product-price .product-rebate{
     color:#F15353;
     font-size: 14px;
-    margin-left: 10px;
     font-weight: bold;
+    margin-left: -3px;
+    margin-right: -3px;
+}
+
+#details .product-price .product-rebate-small{
+    color:#F15353;
+    font-size: 6px;
 }
 
 #details .product-price-market span{

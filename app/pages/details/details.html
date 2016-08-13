@@ -36,7 +36,13 @@
                 {{details.name}}
             </div>
             <div class="product-price">
-                <span>{{details.price|currency:"￥"}}</span><span class="product-rebate" ng-if="product_rebate > 0">{{product_rebate}}</span>
+                <span style="margin-right:10px">{{details.price|currency:"￥"}}</span>
+                <span ng-if="product_rebate > 0">
+                    <span class="product-rebate-small">攒</span>
+                    <span class="product-rebate">{{product_rebate*point_rate}}</span>
+                    <span  class="product-rebate-small">积分</span>
+                </span>
+
 
                 <div class="product-price-market"><span>市场价：</span><s>{{details.suggested_price | currency:'￥'}}</s>
                 </div>

@@ -2,10 +2,13 @@
 * 分销订单
 * */
 angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.session'])
-    .controller('PromotionOrderController', ['$scope', '$filter', 'PromotionOrderFty', 'UserInfo', function($scope, $filter, PromotionOrderFty, UserInfo){
+    .controller('PromotionOrderController', ['$scope', '$filter', 'PromotionOrderFty', 'UserInfo','PointRate',
+        function($scope, $filter, PromotionOrderFty, UserInfo, PointRate){
 
         //title
         document.title = "销售订单";
+
+        $scope.point_rate = PointRate.rate;
 
         /*$scope.pro_order_groups = [
             {

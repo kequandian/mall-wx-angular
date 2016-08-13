@@ -336,7 +336,6 @@ body, html {
 }
 
 #content .home_g_right span {
-
     color: #9F9F9F;
 }
 
@@ -489,6 +488,10 @@ body, html {
 /* common style*/
 .c-left {
     float: left;
+}
+
+.c-left-minor{
+    font-size: 8px;
 }
 
 .c-right {

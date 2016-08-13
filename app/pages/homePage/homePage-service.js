@@ -42,4 +42,5 @@ angular.module('homePage.service', [])
                     return GlobalVariable.FOLLOW_US_URL;
                 }
             }
-    }]);
+    }])
+;

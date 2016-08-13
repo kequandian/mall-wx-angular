@@ -14,6 +14,8 @@ angular.module('commonJs', [])
         }
     })
 
+    .filter('Int')
+
     //截取文字长度过滤器
     .filter('cutText', function () {
         return function (value, wordwise, max, tail) {

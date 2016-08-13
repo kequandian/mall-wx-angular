@@ -32,3 +32,10 @@
     margin-left: 20px;
     margin-right: 20px;
 }
+
+#withdraw .user-info-body .desc{
+    font-size: 12px;
+    display: block;
+    float: bottom;
+}
+
