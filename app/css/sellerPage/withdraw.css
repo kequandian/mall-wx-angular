@@ -13,7 +13,7 @@
 }
 
 #withdraw .draw {
-    margin-top: 15px;
+    margin-top: 12px;
     margin-bottom: 15px;
     background-color: #fff;
 }
@@ -34,8 +34,18 @@
 }
 
 #withdraw .user-info-body .desc{
-    font-size: 12px;
-    display: block;
-    float: bottom;
+    position: absolute;
+    font-size: 14px;
+    color:#777;
+    text-align: center;
+    top: 24px;
+    left: 24px;
 }
 
+#withdraw .user-info-body img{
+    position: absolute;
+    width:18px;
+    height:18px;
+    opacity:0.5;
+    top: 25px;
+}

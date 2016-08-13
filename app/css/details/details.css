@@ -63,6 +63,16 @@
     font-size: 6px;
 }
 
+#details .product-price .point{
+    color:#333;
+    font-size: 14px;
+}
+
+#details .product-price .rebate{
+    float:right;
+    margin-right:12px
+}
+
 #details .product-price-market span{
     font-size: 12px;
     height: 26px;

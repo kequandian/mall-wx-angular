@@ -18,15 +18,15 @@
             <div class="order-item-text">
                 <div>
                     本月总积分：
-                    <span class="pro-red">{{(rewards.pending_reward + rewards.settled_reward)*point_rate}}</span>
+                    <span class="pro-red">{{(rewards.pending_reward + rewards.settled_reward)*point_rate | number:0}}</span>
                 </div>
                 <div>
                     已结算积分：
-                    <span class="pro-black">{{rewards.settled_reward*point_rate}}</span>
+                    <span class="pro-black">{{rewards.settled_reward*point_rate | number:0}}</span>
                 </div>
                 <div>
                     未结算积分：
-                    <span class="pro-black">{{rewards.pending_reward*point_rate}}</span>
+                    <span class="pro-black">{{rewards.pending_reward*point_rate | number:0}}</span>
                 </div>
                 <div>
                     本月总订单：
