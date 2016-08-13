@@ -370,6 +370,9 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
             //提交订单
             $scope.order = {};
+
+            $scope.order.payment_type = "WECHAT";
+
             $scope.addOrderSubmit = function () {
                 //console.log('addOrderSubmit:'+$scope.order);
                 if ($scope.show_address_status == 'add') {
