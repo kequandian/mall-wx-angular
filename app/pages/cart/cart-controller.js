@@ -308,7 +308,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
         }])
 
     .controller('SettlementController', ['$scope', '$state', '$stateParams', '$location', '$rootScope', 'AddressManagerFty', 'CartFty',
-        '$ocLazyLoad', function ($scope, $state, $stateParams, $location, $rootScope, AddressManagerFty, CartFty, $ocLazyLoad) {
+        'PointRate', '$ocLazyLoad', function ($scope, $state, $stateParams, $location, $rootScope, AddressManagerFty, CartFty, PointRate, $ocLazyLoad) {
 
             //title
             document.title = "结算";
@@ -319,6 +319,15 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     console.log('settlement:jquery loaded');
                 })
             });
+
+
+            //feature: point
+            $scope.point_rate = PointRate.rate;
+            //$scope.onPaymentTypeChange = function(){
+            //    console.log($scope.order.payment_type);
+            //};
+
+
 
             $scope.show_address_status = 'add';
             AllContacts();
@@ -733,17 +742,24 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
         }])
 
 
-    .controller('OrderConfirmController', ['$scope', '$state', '$stateParams', 'CartFty', function ($scope, $state, $stateParams, CartFty) {
+    .controller('OrderConfirmController', ['$scope', '$state', '$stateParams', 'CartFty', 'BalanceSession',
+        function ($scope, $state, $stateParams, CartFty, BalanceSession) {
 
         //title
         document.title = "付款";
 
         $scope.orderData = $stateParams.data;
+
         $scope.confirm = function (order_number) {
+            //feature:point
+            // - check the account first
+
+
             //console.log(order_number);
             CartFty.wpay(order_number).then(
                 function (result) {
                     console.log(result);
+
                     //$state.go('cart-settlement',{}, {reload: true});
                 }, function (error) {
                     console.log(error);

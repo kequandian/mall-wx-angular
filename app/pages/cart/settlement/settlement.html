@@ -187,7 +187,9 @@
                                     </p>
                                 </div>
                                 <div class="settlement-cart-bottom">
-                                    <span class="settlement-cart-price">{{cart.price|currency:'￥'}}</span>
+                                    <span ng-if="order.payment_type=='WECHAT'" class="settlement-cart-price">{{cart.price|currency:'￥'}}</span>
+                                    <span ng-if="order.payment_type=='POINT'" class="settlement-cart-price"><span>{{cart.price*point_rate|number:0}}</span>
+                                        <span style="font-size:14px">积分</span></span>
                                     <span class="settlement-cart-quantity">x{{cart.quantity}}</span>
                                 </div>
                             </div>
@@ -213,7 +215,9 @@
                     <div class="settlement-final">
                         <span class="settlement-total">
                             共{{settlementCarts.length}}件商品 &nbsp;&nbsp;&nbsp;合计(不含邮费):
-                            <span style="color: red;">{{pay|currency:'￥'}}</span>
+                            <span ng-if="order.payment_type=='WECHAT'" style="color: red;">{{pay|currency:'￥'}}</span>
+                            <span ng-if="order.payment_type=='POINT'" style="color: red;">
+                                <span>{{(pay*point_rate)|number:0}}</span><span style="margin-left:2px">积分</span></span>
                         </span>
                     </div>
                 </div>
@@ -255,7 +259,8 @@
                         </div>
                         <div class="weui_cell_ft">
                             <input type="radio" name="radio1" class="weui_check" id="x12" checked="checked" value="WECHAT"
-                                   ng-model="order.payment_type">
+                                   ng-model="order.payment_type"
+                                    ng-change="onPaymentTypeChange()">
                             <span class="weui_icon_checked"></span>
                         </div>
                     </label>
@@ -268,7 +273,8 @@
                         </div>
                         <div class="weui_cell_ft">
                             <input type="radio" name="radio1" class="weui_check" id="x13" value="POINT"
-                                   ng-model="order.payment_type">
+                                   ng-model="order.payment_type"
+                                    ng-change="onPaymentTypeChange()">
                             <span class="weui_icon_checked"></span>
                         </div>
                     </label>
@@ -298,7 +304,12 @@
             <footer id="foot" class="settlement-foot">
                 <div class="footLeft">
                     <div class="settlement-price">
-                        <div>合计:<span style="color: red;" ng-bind="total_price|currency:'￥'"></span></div>
+                        <div>合计:
+                            <span ng-if="order.payment_type=='WECHAT'" style="color: red;" ng-bind="total_price|currency:'￥'"></span>
+                            <span ng-if="order.payment_type=='POINT'" style="color: red;position:relative;">
+                                <span style="padding-top:9px;" ng-bind="total_price * point_rate | number:0"></span>
+                                <span style="font-size:14px;">积分</span></span>
+                        </div>
                     </div>
                 </div>
                 <button class="footRight" type="submit" ng-disabled="settlementCarts.length==0">确认付款</button>

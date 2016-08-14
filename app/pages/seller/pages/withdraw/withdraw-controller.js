@@ -107,6 +107,9 @@ angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
                             $timeout(function(){
                                 $state.go('home.sellerPage');
                             }, 1100);
+
+                            // update BalanceSession
+                            BalanceSession.balance -= real_withdraw_cash;
                         }
                     }, function (error) {
                         $.toast('兑现失败', 'cancel');
