@@ -49,8 +49,8 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
         }])
 
     /* 全部订单 */
-    .controller('allController', ['$scope', '$state', '$rootScope', '$timeout', 'OrderFty', 'OrderCommon',
-        '$ocLazyLoad', function ($scope, $state, $rootScope, $timeout, OrderFty, OrderCommon, $ocLazyLoad) {
+    .controller('allController', ['$scope', '$state', '$rootScope', '$timeout', 'OrderFty', 'OrderCommon', 'BalanceSession',
+        '$ocLazyLoad', function ($scope, $state, $rootScope, $timeout, OrderFty, OrderCommon, BalanceSession, $ocLazyLoad) {
 
             $rootScope.orderTabsIndex = 1;
 
@@ -175,9 +175,11 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             //立即付款
             $scope.weixin_pay = function (order) {
 
-                if(order.payment_type == "POINT"){
+                if(order.payment_type == "POINT" && BalanceSession.balance >= order.totalPrice){
                     window.location.href = '/app/payment/ppay/' + order.order_number;//积分
                 }else if(order.payment_type == "WECHAT"){
+                    window.location.href = '/app/payment/wpay/' + order.order_number; //微信
+                }else{
                     window.location.href = '/app/payment/wpay/' + order.order_number; //微信
                 }
 
@@ -306,9 +308,12 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
 
             //立即付款
             $scope.weixin_pay = function (order) {
-                if(order.payment_type == "POINT"){
+                if(order.payment_type == "POINT" && BalanceSession.balance >= order.totalPrice){
                     window.location.href = '/app/payment/ppay/' + order.order_number;//积分
                 }else if(order.payment_type == "WECHAT"){
+                    window.location.href = '/app/payment/wpay/' + order.order_number; //微信
+                }else{
+                    // default to wechat
                     window.location.href = '/app/payment/wpay/' + order.order_number; //微信
                 }
             }
@@ -385,7 +390,6 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                         })
                     });
                     /*end lazy*/
-
                 }
             };
 
