@@ -26,7 +26,9 @@ angular.module('moduleValueJs',[])
     .value('withdrawBalance', {
         balance: 0
     })
-
+    .value('BalanceSession', {
+        balance: '0'
+    })
     //商品分类 index
     .value('cateLeftIndex',{
         cate_nav_index : 0,

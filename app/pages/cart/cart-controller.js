@@ -307,8 +307,8 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
         }])
 
-    .controller('SettlementController', ['$scope', '$state', '$stateParams', '$location', '$rootScope', 'AddressManagerFty', 'CartFty',
-        'PointRate', '$ocLazyLoad', function ($scope, $state, $stateParams, $location, $rootScope, AddressManagerFty, CartFty, PointRate, $ocLazyLoad) {
+    .controller('SettlementController', ['$scope', '$state', '$stateParams', '$location', '$rootScope', 'AddressManagerFty', 'CartFty','BalanceSession',
+        'PointRate', '$ocLazyLoad', function ($scope, $state, $stateParams, $location, $rootScope, AddressManagerFty, CartFty, BalanceSession, PointRate, $ocLazyLoad) {
 
             //title
             document.title = "结算";
@@ -321,7 +321,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             });
 
 
-            //feature: point
+            //FEATURE: point
             $scope.point_rate = PointRate.rate;
             //$scope.onPaymentTypeChange = function(){
             //    console.log($scope.order.payment_type);
@@ -395,18 +395,25 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 }
                 $scope.order.contact = $scope.currentContact;
 
-                //console.log('ok')
-                CartFty.addOrder($scope.order).then(
-                    function (result) {
-                        //console.log('提交成功：' + angular.toJson(result.data));
-                        $scope.settlementCarts = [];
-                        $scope.order_number = result.data.order_number;
-                        deleteProducts($scope.settlementData);
+                //FEATURE: point
+                // - check balance
+                if($scope.order.payment_type == "POINT" && BalanceSession.balance < $scope.total_price){
+                    $.toast('你当前的积分不足', 'cancel');
+                    $scope.order.payment_type = "WECHAT";
+                }else {
+                    //console.log('ok')
+                    CartFty.addOrder($scope.order).then(
+                        function (result) {
+                            //console.log('提交成功：' + angular.toJson(result.data));
+                            $scope.settlementCarts = [];
+                            $scope.order_number = result.data.order_number;
+                            deleteProducts($scope.settlementData);
 
-                        //$state.go('order-confirm',{data:result.data});
-                    }, function (error) {
-                        console.log(error);
-                    });
+                            //$state.go('order-confirm',{data:result.data});
+                        }, function (error) {
+                            console.log(error);
+                        });
+                }
 
             };
 
@@ -436,8 +443,17 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                                     $rootScope.cartCount = count;
                                     $rootScope.detailsCartCount = count;
 
-                                    //console.log("删除购物车商品：" + $scope.order_number);
-                                    window.location.href = '/app/payment/wpay/' + $scope.order_number;
+
+                                    if($scope.order.payment_type == 'WECHAT') {
+                                        //console.log("删除购物车商品：" + $scope.order_number);
+                                        window.location.href = '/app/payment/wpay/' + $scope.order_number;
+                                    }else if($scope.order.payment_type == 'POINT'){
+                                        window.location.href = '/app/payment/ppay/' + $scope.order_number;
+                                    }else{
+                                        $.toast('未知支付方式', 'cancel');
+                                    }
+
+
                                 } else {
                                     $.toast('直接支付失败', 'cancel');
                                 }
@@ -751,10 +767,6 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
         $scope.orderData = $stateParams.data;
 
         $scope.confirm = function (order_number) {
-            //feature:point
-            // - check the account first
-
-
             //console.log(order_number);
             CartFty.wpay(order_number).then(
                 function (result) {
