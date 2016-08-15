@@ -173,8 +173,14 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             };
 
             //立即付款
-            $scope.weixin_pay = function (order_number) {
-                window.location.href = '/app/payment/wpay/' + order_number;
+            $scope.weixin_pay = function (order) {
+
+                if(order.payment_type == "POINT"){
+                    window.location.href = '/app/payment/ppay/' + order.order_number;//积分
+                }else if(order.payment_type == "WECHAT"){
+                    window.location.href = '/app/payment/wpay/' + order.order_number; //微信
+                }
+
             };
 
             //确认订单

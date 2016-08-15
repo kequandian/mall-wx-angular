@@ -254,3 +254,19 @@
     margin-bottom: 10px;
 }
 
+#settlement .weui_cell_primary{
+    line-height: 40px;
+}
+
+#settlement .payment-icon{
+    width: 40px;
+    height: 40px;
+    float: left;
+}
+
+#settlement .payment-icon img{
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+}
+
