@@ -127,7 +127,7 @@
                  </div>
              </div>-->
 
-            <div class="footer-cart" ui-sref="home.cart">
+            <div ng-if="false" class="footer-cart" ui-sref="home.cart">
                 <div class="f-h-top">
                     <img src="img/details/cart-img.png">
                 </div>
@@ -136,6 +136,15 @@
                     购物车
                 </div>
             </div>
+
+            <a class="footer-cart" target="_blank"  href="http://wpa.qq.com/msgrd?v=3&uin={{kf_qq}}&site=qq&menu=yes">
+                <div class="f-h-top">
+                    <img src="img/details/qq.png">
+                </div>
+                <div class="f-h-bottom">
+                    客服咨询
+                </div>
+            </a>
 
             <div class="footer-collection" ng-click="addProductToCollection(details.id)">
                 <div class="f-h-top">
@@ -230,7 +239,7 @@
         </div>
     </div>
 
-    <a class="call-service" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={{kf_qq}}&site=qq&menu=yes">
+    <a ng-if="false" class="call-service" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={{kf_qq}}&site=qq&menu=yes">
         <img src="img/details/customer-service.png">
     </a>
 
