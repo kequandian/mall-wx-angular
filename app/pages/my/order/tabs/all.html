@@ -43,7 +43,7 @@
                             ng-click="deliverReminder(items.order_number)">
                         提醒发货
                     </a>
-                    <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right"
+                    <a ng-if="false" href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right"
                        ng-click="goToSalesReturn(items.order_number,items.total_price,1)">
                         申请退款
                     </a>
