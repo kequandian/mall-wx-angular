@@ -317,7 +317,8 @@
                         </div>
                     </div>
                 </div>
-                <button class="footRight" type="submit" ng-disabled="settlementCarts.length==0">确认付款</button>
+                <button ng-if="order.payment_type=='WECHAT'" class="footRight" type="submit" ng-disabled="settlementCarts.length==0">确认付款</button>
+                <button ng-if="order.payment_type=='POINT'" class="footRight" type="submit" ng-disabled="settlementCarts.length==0">确认兑换</button>
                 <input type="hidden" ng-model="order.order_items" ng-init="order.order_items=settlementData">
             </footer>
         </div>
