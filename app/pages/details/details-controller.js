@@ -228,6 +228,7 @@ angular.module('details.controller', ['details.service'])
 
                 var product_property = null;
                 var product_specification_id = null;
+                var int_quantity = parseInt(quantity);
 
                 if ($scope.product_property_value != null) {
                     product_specification_id = $scope.product_property_value.id;
@@ -245,13 +246,13 @@ angular.module('details.controller', ['details.service'])
                 var b_status = $scope.b_status;
                 if (b_status == "cart") {
                     if (productInfo.stock_balance > 0) {
-                        $scope.addProductToCart(productId, quantity, product_property, product_specification_id);
+                        $scope.addProductToCart(productId, int_quantity, product_property, product_specification_id);
                     } else {
                         $.toast('此商品暂无库存');
                     }
                 } else if (b_status == "buy") {
                     if (productInfo.stock_balance > 0) {
-                        $scope.buy_immediately(productInfo, quantity, product_property, product_specification_id);
+                        $scope.buy_immediately(productInfo, int_quantity, product_property, product_specification_id);
                     } else {
                         $.toast('此商品暂无库存');
                     }
@@ -282,7 +283,7 @@ angular.module('details.controller', ['details.service'])
                                         });
                                     }
                                     $rootScope.detailsCartCount = c_count;
-                                    //$.toast("成功添加商品");
+                                    $.toast("成功添加商品");
                                 } else {
                                     $.toast("添加失败", "cancel");
                                     console.log("添加失败：" + angular.toJson(json));
