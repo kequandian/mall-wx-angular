@@ -245,7 +245,6 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                             $ocLazyLoad.load('JqueryWeUI').then(function () {
 
                                 if (json.status_code == 0) {
-                                    $.toast('移除成功');
                                     //$state.go('order.all', {}, {reload: true});
 
                                     angular.forEach($scope.order_list, function(v , k){
@@ -253,6 +252,8 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                                             $scope.order_list.splice(k,1);
                                         }
                                     });
+
+                                    $.toast('移除成功');
 
                                 } else {
                                     $.toast('移除失败', 'cancel');
