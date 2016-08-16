@@ -246,12 +246,14 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
 
                                 if (json.status_code == 0) {
                                     $.toast('移除成功');
-                                    $state.go('order.all', {}, {reload: true});
-                                    //angular.forEach($scope.order_list, function(v , k){
-                                    //    if(v.order_number == order_number){
-                                    //        delete $scope.order_list[k]
-                                    //    }
-                                    //})
+                                    //$state.go('order.all', {}, {reload: true});
+
+                                    angular.forEach($scope.order_list, function(v , k){
+                                        if(v.order_number == order_number){
+                                            $scope.order_list.splice(k,1);
+                                        }
+                                    });
+
                                 } else {
                                     $.toast('移除失败', 'cancel');
                                 }
