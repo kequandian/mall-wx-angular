@@ -2,8 +2,8 @@ angular.module('orderDetails.controller', ['orderDetails.service',
     "express.service", 'order.common', 'my.order.service'])
 
     .controller('OrderDetailsController', ['$scope', '$state', '$stateParams', 'OrderDetailsFty', 'ExpressInfo',
-        'OrderCommon','OrderFty',
-        '$ocLazyLoad', function ($scope, $state, $stateParams, OrderDetailsFty, ExpressInfo, OrderCommon,OrderFty, $ocLazyLoad) {
+        'OrderCommon','OrderFty', '$ocLazyLoad','BalanceSession',
+        function ($scope, $state, $stateParams, OrderDetailsFty, ExpressInfo, OrderCommon,OrderFty, $ocLazyLoad,BalanceSession) {
 
             orderDetails();
             function orderDetails() {
@@ -182,6 +182,21 @@ angular.module('orderDetails.controller', ['orderDetails.service',
                 });
 
                 $state.go('express', {orderNumber: o_number, productImg: p_img, productCount: count});
+            }
+
+            //立即付款
+            $scope.weixin_pay = function (order_number) {
+
+                var orderNumber = parseInt(order_number);
+
+                if(order.payment_type == "POINT" && BalanceSession.balance >= order.totalPrice){
+                    window.location.href = '/app/payment/ppay/' + order_number;//积分
+                }else if(order.payment_type == "WECHAT"){
+                    window.location.href = '/app/payment/wpay/' + order_number; //微信
+                }else{
+                    // default to wechat
+                    window.location.href = '/app/payment/wpay/' + order_number; //微信
+                }
             }
 
         }]);
