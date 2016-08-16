@@ -175,14 +175,12 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             //立即付款
             $scope.weixin_pay = function (order) {
 
-                var orderNumber = parseInt(order.order_number);
-
                 if(order.payment_type == "POINT" && BalanceSession.balance >= order.totalPrice){
-                    window.location.href = '/app/payment/ppay/' + orderNumber;//积分
+                    window.location.href = '/app/payment/ppay/' + order.order_number;//积分
                 }else if(order.payment_type == "WECHAT"){
-                    window.location.href = '/app/payment/wpay/' + orderNumber; //微信
+                    window.location.href = '/app/payment/wpay/' + order.order_number; //微信
                 }else{
-                    window.location.href = '/app/payment/wpay/' + orderNumber; //微信
+                    window.location.href = '/app/payment/wpay/' + order.order_number; //微信
                 }
 
             };
@@ -319,15 +317,13 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
 
             //立即付款
             $scope.weixin_pay = function (order) {
-
-                var orderNumber = parseInt(order.order_number);
-
                 if(order.payment_type == "POINT" && BalanceSession.balance >= order.totalPrice){
-                    window.location.href = '/app/payment/ppay/' + orderNumber;//积分
+                    window.location.href = '/app/payment/ppay/' + order.order_number;//积分
                 }else if(order.payment_type == "WECHAT"){
-                    window.location.href = '/app/payment/wpay/' + orderNumber; //微信
+                    window.location.href = '/app/payment/wpay/' + order.order_number; //微信
                 }else{
-                    window.location.href = '/app/payment/wpay/' + orderNumber; //微信
+                    // default to wechat
+                    window.location.href = '/app/payment/wpay/' + order.order_number; //微信
                 }
             }
 
