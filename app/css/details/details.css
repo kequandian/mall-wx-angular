@@ -102,18 +102,18 @@
 }
 
 #details .go-home{
-    width: 35px;
-    height: 35px;
+    width: 48px;
+    height: 48px;
     /*background-color: #007aff;*/
-    top: 20px;
-    right: 12px;
+    top: 15px;
+    right: 15px;
     position: fixed;
     z-index: 1;
 }
 
 #details .go-home img{
-    width: 25px;
-    height: 25px;
+    width: 48px;
+    height: 48px;
 }
 
 /*#details .product-price div i{*/
