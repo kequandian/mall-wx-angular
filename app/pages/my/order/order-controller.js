@@ -198,7 +198,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                                 .then(function (json) {
                                     if (json.status_code == 0) {
                                         $.toast('确认成功');
-                                        $state.go('order.finish', {}, {reload: true});
+                                        //$state.go('order.finish', {}, {reload: true});
                                     } else {
                                         $.toast('确认失败', 'cancel');
                                     }
@@ -238,6 +238,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
 
             //删除支付超时订单
             $scope.delete_over_time_order = function(order_number){
+
                 OrderFty.deleteOverTimeOrderService(order_number)
                     .then(function (json) {
                         $ocLazyLoad.load('Jquery').then(function () {
@@ -245,7 +246,12 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
 
                                 if (json.status_code == 0) {
                                     $.toast('移除成功');
-                                    //$state.go('order.all', {}, {reload: true});
+                                    $state.go('order.all', {}, {reload: true});
+                                    //angular.forEach($scope.order_list, function(v , k){
+                                    //    if(v.order_number == order_number){
+                                    //        delete $scope.order_list[k]
+                                    //    }
+                                    //})
                                 } else {
                                     $.toast('移除失败', 'cancel');
                                 }
@@ -401,7 +407,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
 
                         $ocLazyLoad.load('Jquery').then(function () {
                             $ocLazyLoad.load('JqueryWeUI').then(function () {
-
+                                console.log(json)
                                 if (json.status_code == 0) {
                                     $.toast('已提醒卖家发货');
                                     //$state.go('order.payed', {}, {reload: true});

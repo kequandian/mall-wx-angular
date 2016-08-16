@@ -36,11 +36,9 @@ angular.module('my.order.service', [])
             closeOrderService: function (order_number) {
                 var deferred = $q.defer();
                 var url = GlobalVariable.SERVER_PATH + "/order/" + order_number;
-                $http.put(url,
-                    {
+                $http.put(url, {
                         "status":"CLOSED_CONFIRMED"
-                    },
-                    {
+                    }, {
                     headers: {
                         'Authorization': GlobalVariable.ACCESS_TOKEN
                     }
@@ -53,17 +51,15 @@ angular.module('my.order.service', [])
                 return deferred.promise;
             },
 
-            //É¾³ý¶©µ¥
+            //É¾³ý¶©µ¥{"status":"CLOSED_PAY_TIMEOUT"},
             deleteOverTimeOrderService: function (order_number) {
                 var deferred = $q.defer();
                 var url = GlobalVariable.SERVER_PATH + "/order/" + order_number;
-                $http.delete(url,{
-                        "status":"CLOSED_PAY_TIMEOUT"
-                    }, {
-                        headers: {
-                            'Authorization': GlobalVariable.ACCESS_TOKEN
-                        }
-                    })
+                $http.delete(url, {
+                    headers: {
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
+                })
                     .success(function (data) {
                         return deferred.resolve(data);
                     }).error(function (data) {
