@@ -260,7 +260,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
         }])
 
     /* 待付款 */
-    .controller('payController', ['$scope', '$state', '$rootScope', '$timeout', 'OrderFty', 'OrderCommon','BalanceSession'
+    .controller('payController', ['$scope', '$state', '$rootScope', '$timeout', 'OrderFty', 'OrderCommon','BalanceSession',
         function ($scope, $state, $rootScope, $timeout, OrderFty, OrderCommon, BalanceSession) {
 
             $rootScope.orderTabsIndex = 2;
