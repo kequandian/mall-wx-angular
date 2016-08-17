@@ -1,5 +1,5 @@
 angular.module('global', [])
-    .constant('API', 'http://112.74.26.228:10080/rest')
+    .constant('API', 'http://123.207.114.250:10080/rest') // deploy
 
     .constant('GlobalVariable', {
         // 服务器地址
