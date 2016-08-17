@@ -15,9 +15,9 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
             $scope.image_list = [];
 
             $scope.returnType = [
-                {key: "请选择服务", value: "请选择服务"},
+                //{key: "请选择服务", value: "请选择服务"},
                 {key: "RETURN",   value: "退货"},
-                {key: "EXCHANGE", value: "换货【仅允许更换同款同价商品】"},
+                //{key: "EXCHANGE", value: "换货【仅允许更换同款同价商品】"},
                 {key: "REFUND",   value: "退款"}
             ];
 
@@ -83,7 +83,7 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
             }
 
 
-            function getReturnCauses() {
+            /*function getReturnCauses() {
                 SalesReturnInfo.getReturnCauses()
                     .then(function (json) {
                         if (json.status_code == 0) {
@@ -98,9 +98,12 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
                     }, function (error) {
                         $.toast("获取退货原因失败", "cancel");
                     })
-            }
+            }*/
 
+
+            //
             $scope.salesReturn = {
+                // 退货说明
                 content: null
             };
 
@@ -111,14 +114,18 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
                 var service_type = $scope.returnType.key;
                 //var reason = $scope.salesReturn.reason;
                 var reason = "退货退款";
-                var content = $scope.salesReturn.content;
+                var content = $scope.salesReturn.content;  //退货说明
 
                 if (order_number == null) {
                     $.toast("订单号出错", "cancel");
                     return;
                 }
                 if ($scope.total_price == null) {
-                    $.toast("退货金额不正确", "cancel");
+                    if(service_type == 'REFUND') {
+                        $.toast("退款金额不正确", "cancel");
+                    }else{
+                        $.toast("退货金额不正确", "cancel");
+                    }
                     return;
                 }
                 //if (service_type == "请选择服务") {
@@ -130,7 +137,11 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
                 //}
 
                 if (content == null || content == "") {
-                    $.toast("请填写退货说明", "cancel");
+                    if(service_type == 'REFUND') {
+                        $.toast("请填写退款说明", "cancel");
+                    }else{
+                        $.toast("请填写退货说明", "cancel");
+                    }
                     return;
                 }
 

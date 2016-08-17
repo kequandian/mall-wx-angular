@@ -17,7 +17,7 @@
             <div class="weui_cell weui_cell_select bg apply">
                 <div class="weui_cell_hd">申请服务 :</div>
                 <div class="weui_cell_bd weui_cell_primary">
-                    <select id="test" class="weui_select" ng-options="i.key as i.value for i in returnType"
+                    <select id="test" class="weui_select" disabled ng-options="i.key as i.value for i in returnType"
                             ng-model="returnType.key">
                     </select>
                 </div>
@@ -37,15 +37,15 @@
             <!--退货金额-->
             <div class="weui_cell bg mon">
                 <div class="weui_cell_bd weui_cell_primary">
-                    <p>退货金额 : <span class="returnMon">{{total_price | currency:'￥'}}</span></p>
+                    <p>{{returnType.key=='REFUND' ? '退款金额' : '退货金额'}} : <span class="returnMon">{{total_price | currency:'￥'}}</span></p>
                 </div>
             </div>
             <!--<p class="explain">（最多29.90元，含发货邮费0.00元）</p>-->
 
             <!--退货说明-->
-            <div class="weui_cells_title bg pad">退货说明</div>
+            <div class="weui_cells_title bg pad">{{returnType.key=='REFUND' ? '退款说明' : '退货说明'}}</div>
             <div class="weui_cell ">
-                <textarea class="weui_textarea" placeholder="请输入退货说明" rows="3" ng-model="salesReturn.content"></textarea>
+                <textarea class="weui_textarea" placeholder="请输入详细说明" rows="3" ng-model="salesReturn.content"></textarea>
             </div>
 
 

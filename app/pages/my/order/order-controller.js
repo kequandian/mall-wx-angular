@@ -139,7 +139,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                     $ocLazyLoad.load('JqueryWeUI').then(function () {
 
                         /!*function start*!/
-                        if (s_r_status == 1) {
+                        if (s_r_status == 3) {
                             $.confirm('', '确认要退款吗？', function () {
                                 $state.go('salesReturn', {
                                     orderNumber: o_number,
@@ -149,7 +149,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                             }, function () {
                                 //取消操作
                             });
-                        } else if (s_r_status == 2) {
+                        } else if (s_r_status == 1) {
                             $.confirm('', '确认要退货？', function () {
                                 $state.go('salesReturn', {
                                     orderNumber: o_number,
@@ -380,7 +380,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
 
             //进入退款退货
             $scope.goToSalesReturn = function (o_number, total_price, s_r_status) {
-                if (s_r_status == 1) {
+                if (s_r_status == 3) {
 
                     $ocLazyLoad.load('Jquery').then(function () {
                         $ocLazyLoad.load('JqueryWeUI').then(function () {
@@ -480,7 +480,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
 
             //进入退款退货
             $scope.goToSalesReturn = function (o_number, total_price, s_r_status) {
-                if (s_r_status == 2) {
+                if (s_r_status == 1) {
 
                     $ocLazyLoad.load('Jquery').then(function () {
                         $ocLazyLoad.load('JqueryWeUI').then(function () {

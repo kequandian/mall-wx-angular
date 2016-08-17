@@ -120,7 +120,7 @@ angular.module('orderDetails.controller', ['orderDetails.service',
                     $ocLazyLoad.load('JqueryWeUI').then(function () {
 
                         /*function start*/
-                        if (s_r_status == 1) {
+                        if (s_r_status == 3) {
                             $.confirm('', '确认要退款吗？', function () {
                                 $state.go('salesReturn', {
                                     orderNumber: o_number,
@@ -130,7 +130,7 @@ angular.module('orderDetails.controller', ['orderDetails.service',
                             }, function () {
                                 //取消操作
                             });
-                        } else if (s_r_status == 2) {
+                        } else if (s_r_status == 1) {
                             $.confirm('', '确认要退货？', function () {
                                 $state.go('salesReturn', {
                                     orderNumber: o_number,
