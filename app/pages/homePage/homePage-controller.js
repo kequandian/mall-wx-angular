@@ -63,8 +63,8 @@ angular.module('homePage.controller', ['homePage.service'])
             cateLeftIndex.cate_nav_index = 0;
             cateLeftIndex.goods_list_index = 0;
 
-            var pageNumber = $rootScope.rec_session.page_number;
-            var pageSize = $rootScope.rec_session.page_size;
+            var PAGE_SIZE = $rootScope.rec_session.page_size;
+            var page_number = $rootScope.rec_session.page_number;
 
             $scope.top_btn_show = true;
 
@@ -107,7 +107,7 @@ angular.module('homePage.controller', ['homePage.service'])
 
             //获取推荐商品
             if ($rootScope.rec_session.rec_product.length == 0) {
-                getRecommendProduct(pageNumber, pageSize);
+                getRecommendProduct(page_number, PAGE_SIZE);
             } else {
                 $scope.rec_product = $rootScope.rec_session.rec_product;
             }
@@ -144,6 +144,9 @@ angular.module('homePage.controller', ['homePage.service'])
                                 }
 
                             }
+
+                            //ISSUE FIX: loaded
+                            $rootScope.rec_session.rec_product = $scope.rec_product;
                             //console.log(angular.toJson(json.data));
                         }
                     }, function (error) {
@@ -265,13 +268,13 @@ angular.module('homePage.controller', ['homePage.service'])
 
             //加载更多
             $scope.home_load_more_product = function () {
-                pageNumber += 1;
-                $rootScope.rec_session.page_number = pageNumber;
+                page_number += 1;
+                $rootScope.rec_session.page_number = page_number;
 
-                getRecommendProduct(pageNumber, pageSize);
+                getRecommendProduct(page_number, PAGE_SIZE);
 
-                $rootScope.rec_session.rec_product = $scope.rec_product;
-                $rootScope.rec_session.load_more = $scope.home_load_more_btn_show;
+                //ISSUE: not yet loaded here
+                //$rootScope.rec_session.rec_product = $scope.rec_product;
             }
 
             $scope.onTop = function(){

@@ -241,7 +241,6 @@
 
         $rootScope.rec_session = {};
         $rootScope.rec_session.rec_product = [];
-        $rootScope.rec_session.load_more = false;
         $rootScope.rec_session.page_size  = 10;
         $rootScope.rec_session.page_number  = 1;
 
