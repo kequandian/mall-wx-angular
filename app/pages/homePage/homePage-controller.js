@@ -63,8 +63,11 @@ angular.module('homePage.controller', ['homePage.service'])
             cateLeftIndex.cate_nav_index = 0;
             cateLeftIndex.goods_list_index = 0;
 
+            // recommend product session
             var PAGE_SIZE = $rootScope.rec_session.page_size;
             var page_number = $rootScope.rec_session.page_number;
+            $scope.home_load_more_btn_show = $rootScope.rec_session.load_more;
+
 
             $scope.top_btn_show = true;
 
@@ -110,6 +113,7 @@ angular.module('homePage.controller', ['homePage.service'])
                 getRecommendProduct(page_number, PAGE_SIZE);
             } else {
                 $scope.rec_product = $rootScope.rec_session.rec_product;
+
             }
 
             function getRecommendProduct(pageNumber, pageSize) {
@@ -147,6 +151,7 @@ angular.module('homePage.controller', ['homePage.service'])
 
                             //ISSUE FIX: loaded
                             $rootScope.rec_session.rec_product = $scope.rec_product;
+                            $rootScope.rec_session.load_more = $scope.home_load_more_btn_show;
                             //console.log(angular.toJson(json.data));
                         }
                     }, function (error) {
