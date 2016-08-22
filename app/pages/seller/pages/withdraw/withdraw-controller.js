@@ -60,17 +60,20 @@ angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
             function postDraw() {
 
                 var phone = $stateParams.accountPhone;
-                var balance = withdrawBalance.balance;
+                //var balance = withdrawBalance.balance;
+
+                //积分
+                var balance = $scope.balance * PointRate.rate;
 
                 if(!balance > 0) {
                     $.toast.prototype.defaults.duration = 800;
-                    $.toast('可兑现的积分不足');
+                    $.toast('可兑现的积分不足', 'cancel');
                     return;
                 }
 
                 if (phone == null) {
                     $.toast.prototype.defaults.duration = 800;
-                    $.toast('需要设置手机号码');
+                    $.toast('需要设置手机号码', 'cancel');
                     $timeout(function () {
                         DWStatus.d_w_status = 2;
                         $state.go('distributionInfo');
@@ -82,16 +85,17 @@ angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
                 var withdraw_cash        = $scope.withdraw.withdraw_cash;
                 //console.log(withdraw_account_id, withdraw_cash);
 
+
                 if(withdraw_cash == undefined) {
-                    $.toast('请输入要兑现的积分');
+                    $.toast('请输入要兑现的积分', 'cancel');
                     return;
                 }
                 else if (withdraw_cash<10000){
-                    $.toast('积分还不足10000');
+                    $.toast('积分还不足10000', 'cancel');
                     return;
                 }
-                else if(withdraw_cash>$scope.balance){
-                    $.toast('没有足够的积分可兑现');
+                else if(withdraw_cash> balance){
+                    $.toast('没有足够的积分可兑现', 'cancel');
                     return;
                 }
 
