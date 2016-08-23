@@ -18,6 +18,9 @@ angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
             $scope.point_rate = PointRate.rate;
             $scope.min_withdraw = MinWithdraw.value;
 
+            var min_withdraw_point = MinWithdraw.value * PointRate.rate;
+
+
             // personal balance
             $scope.balance = BalanceSession.balance;
             //console.log('Balance?'+$scope.balance);
@@ -60,17 +63,6 @@ angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
             function postDraw() {
 
                 var phone = $stateParams.accountPhone;
-                //var balance = withdrawBalance.balance;
-
-                //积分
-                var balance = $scope.balance * PointRate.rate;
-
-                if(!balance > 0) {
-                    $.toast.prototype.defaults.duration = 800;
-                    $.toast('可兑现的积分不足', 'cancel');
-                    return;
-                }
-
                 if (phone == null) {
                     $.toast.prototype.defaults.duration = 800;
                     $.toast('需要设置手机号码', 'cancel');
@@ -81,6 +73,17 @@ angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
                     return;
                 }
 
+
+                //积分
+                var balance = $scope.balance * PointRate.rate;
+
+                if(! (balance > 0) ) {
+                    $.toast.prototype.defaults.duration = 800;
+                    $.toast('没有可兑现的积分', 'cancel');
+                    return;
+                }
+
+
                 var withdraw_account_id  = $scope.withdraw.id;
                 var withdraw_cash        = $scope.withdraw.withdraw_cash;
                 //console.log(withdraw_account_id, withdraw_cash);
@@ -90,8 +93,8 @@ angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
                     $.toast('请输入要兑现的积分', 'cancel');
                     return;
                 }
-                else if (withdraw_cash<10000){
-                    $.toast('积分还不足10000', 'cancel');
+                else if (withdraw_cash < min_withdraw_point){
+                    $.toast('积分不足 ' + min_withdraw_point, 'cancel');
                     return;
                 }
                 else if(withdraw_cash> balance){
