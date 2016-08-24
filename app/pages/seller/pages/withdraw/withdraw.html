@@ -2,17 +2,29 @@
 
     <div class="user-info-body">
         <form ng-submit="">
-            <div style="margin-left:15px;height:60px;position: relative">
-                <img src="img/info.png"/>
-                <span class="desc">
-                    {{point_rate}} 积分可兑现1元<span style="margin-left:12px"></span>(至少{{point_rate*min_withdraw}}积分才可以兑现)
-                </span>
+
+            <div class="weui_cell draw">
+                <div class="weui_cell_bd weui_cell_primary" style="margin-top: 5px;">
+                    <input class="weui_input" type="number" id="drawNum"
+                           placeholder="请输入兑现积分"
+                           ng-model="withdraw.withdraw_cash"
+                            ng-change="check_point()">
+                    <div class="show_convert">
+                        兑现：{{withdraw.withdraw_cash != null ? withdraw.withdraw_cash/point_rate : 0 | currency:'￥'}}
+                    </div>
+                </div>
             </div>
 
-            <div class="weui_cell draw" >
-                <div class="weui_cell_bd weui_cell_primary">
-                    <input class="weui_input" type="number" id="drawNum" placeholder="可兑现积分 {{ (balance*point_rate) | number:0}}" ng-model="withdraw.withdraw_cash">
+
+            <div class="point_explain">
+                <!--<img src="img/info.png"/>-->
+                <div class="account_point">
+                    可用积分：{{ (balance*point_rate) | number:0}}
                 </div>
+                <span class="desc">
+                    [{{point_rate}} 积分可兑现1元<span style="margin-left:12px"></span>(至少{{point_rate*min_withdraw}}积分才可以兑现)]</br>
+                    兑换金额将自动转入微信零钱
+                </span>
             </div>
 
             <!--<p class="allowWithdraw">可兑换积分: {{balance}} &lt;!&ndash;<span class="limit" >( 至少10,000积分才可以提现 )</span>&ndash;&gt;</p>-->

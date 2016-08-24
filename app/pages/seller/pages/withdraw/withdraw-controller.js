@@ -120,4 +120,15 @@ angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
                     })
             }
 
+            //检查积分是否产出范围
+            $scope.check_point = function(){
+                var withdraw_cash        = $scope.withdraw.withdraw_cash;
+                //积分
+                var balance = $scope.balance * PointRate.rate;
+
+                if(withdraw_cash > balance){
+                    $scope.withdraw.withdraw_cash = balance;
+                }
+            }
+
     }]);
