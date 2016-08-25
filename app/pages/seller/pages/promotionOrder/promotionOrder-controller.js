@@ -6,7 +6,7 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
         function($scope, $filter, PromotionOrderFty, UserInfo, PointRate){
 
         //title
-        document.title = "销售订单";
+        document.title = "积分订单";
 
         $scope.point_rate = PointRate.rate;
 

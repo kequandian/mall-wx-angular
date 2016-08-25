@@ -110,7 +110,10 @@ angular.module('homePage.controller', ['homePage.service'])
 
             //获取推荐商品
             if ($rootScope.rec_session.rec_product.length == 0) {
+
+                $rootScope.rec_session.loading_in_progress = true;
                 getRecommendProduct(page_number, PAGE_SIZE);
+
             } else {
                 $scope.rec_product = $rootScope.rec_session.rec_product;
 
@@ -154,8 +157,11 @@ angular.module('homePage.controller', ['homePage.service'])
                             $rootScope.rec_session.load_more = $scope.home_load_more_btn_show;
                             //console.log(angular.toJson(json.data));
                         }
+
+                        $rootScope.loading_in_progress = false;
                     }, function (error) {
                         console.log(error);
+                        $rootScope.loading_in_progress = false;
                         //$.toast('获取推荐商品失败', 'cancel');
                     })
             }
@@ -276,6 +282,8 @@ angular.module('homePage.controller', ['homePage.service'])
                 page_number += 1;
                 $rootScope.rec_session.page_number = page_number;
 
+                $rootScope.loading_in_progress = true;
+
                 getRecommendProduct(page_number, PAGE_SIZE);
 
                 //ISSUE: not yet loaded here
@@ -289,9 +297,13 @@ angular.module('homePage.controller', ['homePage.service'])
 
 
             $scope.$on('$onScrollBottom', function () {
-                if($scope.home_load_more_btn_show) {
-                    console.log('load more products...');
-                    $scope.home_load_more_product();
+                if($rootScope.loading_in_progress) {
+                   // do nothing
+                }else{
+                    if ($scope.home_load_more_btn_show) {
+                        console.log('load more products...');
+                        $scope.home_load_more_product();
+                    }
                 }
             });
             $scope.$on('$onScrollTop', function () {

@@ -36,7 +36,7 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
         function ($scope, $state, $rootScope, SellerPageFty, BalanceSession, UserInfo, DWStatus, withdrawBalance, cateLeftIndex, PointRate) {
 
             //title
-            document.title = "销售中心";
+            document.title = "积分中心";
 
             $scope.point_rate = PointRate.rate;
 
