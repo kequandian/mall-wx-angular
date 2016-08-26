@@ -37,8 +37,10 @@
                     <div class="weui_tab_bd" id="product_list_content" oc-lazy-load="SquareImg">
 
                         <div class="weui_grids">
+                            <!--<a ui-sref="details({productId:item.id})" class="weui_grid product_item"-->
+                               <!--ng-repeat="item in productList" on-finish-render>-->
                             <a ui-sref="details({productId:item.id})" class="weui_grid product_item"
-                               ng-repeat="item in productList" on-finish-render>
+                               ng-repeat="item in productList">
 
                                 <div ng-click="gotoDetail()">
                                     <!--product cover-->
