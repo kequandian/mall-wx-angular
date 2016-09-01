@@ -77,6 +77,10 @@ angular.module('details.controller', ['details.service'])
                             }else{
                                 $scope.kf_qq = $rootScope.kf_qq;
                             }
+
+                            //运费
+                            $scope.fare_info = $scope.details.fare_template;
+
                         } else {
                             console.log("获取商品详情失败");
                         }
