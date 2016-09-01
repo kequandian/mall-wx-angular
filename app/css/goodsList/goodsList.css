@@ -208,6 +208,10 @@
   color: white;
 }
 
+/*no span for product top*/
+#goodsList .weui_navbar + .weui_tab_bd {
+  padding-top: 40px;
+}
 
 #goodsList .weui_grid{
   min-height: 35px;
