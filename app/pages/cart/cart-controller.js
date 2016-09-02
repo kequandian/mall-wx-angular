@@ -559,6 +559,9 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             $scope.changeContact = function (item) {
                 $scope.currentContact = item;
                 //console.log($scope.currentContact);
+                $scope.productFrieghts.province = $scope.currentContact.province;
+                $scope.productFrieghts.city = $scope.currentContact.city;
+                getFrieght();
             };
 
             //显示发票抬头
