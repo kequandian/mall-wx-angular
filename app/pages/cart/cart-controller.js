@@ -343,6 +343,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
                         if ($scope.currentContact == null) {
                             $scope.currentContact = null;
+                            $scope.product_frieght = null;
                         }
 
                         if ($scope.currentContact != null) {
