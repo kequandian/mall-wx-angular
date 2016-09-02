@@ -159,6 +159,23 @@ angular.module('cart.service', [])
                         return deferred.reject(data);
                     });
                 return deferred.promise;
+            },
+
+            //修改商品数量
+            frieghtService: function (fare_item) {
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + "/product_carriage";
+                $http.post(url,fare_item,{
+                    headers: {
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
+                })
+                    .success(function (data) {
+                        return deferred.resolve(data);
+                    }).error(function (data) {
+                        return deferred.reject(data);
+                    });
+                return deferred.promise;
             }
         };
     }]);

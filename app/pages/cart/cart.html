@@ -97,7 +97,8 @@
                     <div class="check-text">全选</div>
                     <div class="foot-info">
                         <div>合计:<strong style="display: inline;color:red" ng-bind="totalToPay()|currency:'￥'"></strong></div>
-                        <span style="font-size: 12px;">运费:<span ng-bind="totalFreight()|currency:'￥'"></span></span>
+                        <!--<span style="font-size: 12px;">运费:<span ng-bind="totalFreight()|currency:'￥'"></span></span>-->
+                        <span style="font-size: 12px;">不含运费</span>
                     </div>
                 </div>
                 <button class="footRight" ng-click="goSettlement(totalToPay(),totalFreight())" ng-disabled="!someChecked()">

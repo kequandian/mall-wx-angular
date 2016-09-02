@@ -248,7 +248,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 });
                 //$scope.checkedCarts.push(pay);
                 //$scope.checkedCarts.push(freight);
-                //console.log(angular.toJson($scope.checkedCarts));
+                console.log(angular.toJson($scope.checkedCarts));
                 $state.go('cart-settlement', {carts: $scope.checkedCarts, totalToPay: pay, totalFreight: freight});
             };
 
@@ -328,7 +328,6 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             //};
 
 
-
             $scope.show_address_status = 'add';
             AllContacts();
             function AllContacts() {
@@ -346,6 +345,12 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                             $scope.currentContact = null;
                         }
 
+                        if ($scope.currentContact != null) {
+                            $scope.productFrieghts.province = $scope.currentContact.province;
+                            $scope.productFrieghts.city = $scope.currentContact.city;
+                            getFrieght();
+                        }
+
                         if ($scope.contacts.length > 0) {
                             $scope.show_address_status = 'list'
                         } else {
@@ -360,9 +365,9 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             //获取结算数据
             $scope.settlementCarts = $stateParams.carts;
             $scope.settlementData = [];
-            //console.log("carts:"+$stateParams.carts);
 
-            //alert(angular.toJson($stateParams.carts))
+            //console.log("carts:"+$stateParams.carts);
+            //console.log(angular.toJson($stateParams.carts))
 
             angular.forEach($stateParams.carts, function (data, index) {
                 $scope.settlementData[index] = ({
@@ -371,10 +376,47 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     "product_specification_id": data.product_specification_id
                 });
             });
-            //console.log($scope.settlementData);
-            $scope.pay = $stateParams.totalToPay;
-            $scope.freight = $stateParams.totalFreight;
-            $scope.total_price = $stateParams.totalToPay + $stateParams.totalFreight;
+            //console.log("$scope.productFrieghts:  " + angular.toJson($scope.productFrieghts));
+
+
+            //获取运费信息
+            $scope.productFrieghts = {
+                "province": null,
+                "city": null,
+                "data":[]
+            };
+            function getFrieght(){
+
+                //console.log(angular.toJson($stateParams.carts))
+                angular.forEach($stateParams.carts, function (data, index) {
+                    $scope.productFrieghts.data[index] = ({
+                        "fare_id": data.fare_id,
+                        "price": data.price,
+                        "quantity": data.quantity
+                    })
+                });
+
+                CartFty.frieghtService($scope.productFrieghts)
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            console.log(angular.toJson(json));
+
+                            $scope.product_frieght = json.data;
+
+                            $scope.pay = $stateParams.totalToPay;
+                            $scope.freight = $stateParams.totalFreight;
+                            if($scope.product_frieght > 0){
+                                $scope.total_price = $stateParams.totalToPay + $scope.product_frieght;
+                            }else{
+                                $scope.total_price = $stateParams.totalToPay;
+                            }
+                        }else{
+                            $.toast('获取运费失败', 'cancel');
+                        }
+                    }, function(error){
+                        $.toast('获取运费失败', 'cancel');
+                    })
+            }
 
 
             //提交订单
@@ -394,6 +436,11 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     return;
                 }
                 $scope.order.contact = $scope.currentContact;
+
+                $scope.productFrieghts.province = $scope.order.contact.province;
+                $scope.productFrieghts.city = $scope.order.contact.city;
+
+                console.log('$scope.productFrieghts: '+ angular.toJson($scope.productFrieghts));
 
                 //FEATURE: point
                 // - check balance
