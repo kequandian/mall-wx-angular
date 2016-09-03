@@ -80,6 +80,7 @@ angular.module('details.controller', ['details.service'])
 
                             //运费
                             $scope.fare_info = $scope.details.fare_template;
+                            console.log("fare_info  ?   " + angular.toJson($scope.fare_info));
 
                         } else {
                             console.log("获取商品详情失败");

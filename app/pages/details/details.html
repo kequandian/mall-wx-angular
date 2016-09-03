@@ -47,6 +47,7 @@
 
 
                 <div class="product-price-market"><span>市场价：</span><s>{{details.suggested_price | currency:'￥'}}</s>
+                    <span class="freight_if">{{fare_info.name}}</span>
                 </div>
             </div>
 
@@ -55,8 +56,8 @@
                     <img src="img/details/price-icon.png"/>
                     <span ng-if="fare_info.is_incl_postage == 1">运费:包邮</span>
                     <span ng-if="fare_info.is_incl_postage_by_if == 1">运费:
-                        <span ng-if="fare_info.carry_modes.region != null">地区{{fare_info.carry_modes.region}}</span>
-                        满{{fare_info.carry_modes.first_amount}}金额包邮
+                        <!--<span ng-if="fare_info.carry_modes.region != null">地区{{fare_info.carry_modes.region}}</span>-->
+                        {{fare_info.carry_modes[0].first_amount | currency:"￥"}}
                     </span>
                 </div>
                 <div class="product-f-right">

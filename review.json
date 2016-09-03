@@ -1,0 +1,55 @@
+{
+  "id": 2,
+  "shop_addr": "广东-广州",
+  "incl_postage_provisoes": [
+    {
+      "amount": 38,
+      "region": "北京|天津|河北|山西|辽宁|吉林|黑龙江|上海|江苏|浙江|安徽|福建|江西|山东|河南|湖北|湖南|广东|广西|海南|重庆|四川|贵州|云南|陕西|甘肃|钓鱼岛",
+      "id": 9,
+      "bulk_no": null,
+      "piece_no": null,
+      "carry_way": 0,
+      "type": 3,
+      "weight_no": null,
+      "fare_id": 2
+    }
+  ],
+  "last_modified_date": "2016-09-02 17:36:59",
+  "name": "满38包邮",
+  "is_incl_postage": 0,
+  "carry_modes": [
+    {
+      "region": "内蒙古|西藏|青海|宁夏|新疆|台湾|澳门|香港",
+      "first_weight": null,
+      "second_amount": 5,
+      "carry_way": 0,
+      "is_default": 0,
+      "first_piece": 1,
+      "second_piece": 1,
+      "second_weight": null,
+      "fare_id": 2,
+      "id": 7,
+      "first_amount": 10,
+      "first_bulk": null,
+      "second_bulk": null
+    },
+    {
+      "region": null,
+      "first_weight": null,
+      "second_amount": 8,
+      "carry_way": 0,
+      "is_default": 1,
+      "first_piece": 1,
+      "second_piece": 1,
+      "second_weight": null,
+      "fare_id": 2,
+      "id": 6,
+      "first_amount": 8,
+      "first_bulk": null,
+      "second_bulk": null
+    }
+  ],
+  "valuation_model": 0,
+  "is_incl_postage_by_if": 1,
+  "dispatch_time": "36"
+}

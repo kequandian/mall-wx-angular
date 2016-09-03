@@ -80,6 +80,14 @@
     color:#7D7D7D;
 }
 
+#details .product-price-market .freight_if{
+    font-size: 14px;
+    height: 28px;
+    line-height: 28px;
+    color:#F15353;
+    margin-left: 10px;
+}
+
 #details .product-price s{
     font-size: 14px;
     height: 20px;
