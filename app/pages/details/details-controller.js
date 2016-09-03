@@ -80,7 +80,15 @@ angular.module('details.controller', ['details.service'])
 
                             //运费
                             $scope.fare_info = $scope.details.fare_template;
-                            console.log("fare_info  ?   " + angular.toJson($scope.fare_info));
+
+                            //console.log("fare_info  ?   " + angular.toJson($scope.fare_info));
+                            $scope.fare_info.is_excl_postage = ($scope.fare_info.is_incl_postage==0 && $scope.fare_info.is_incl_postage_by_if==0);
+
+                            angular.forEach($scope.fare_info.carry_modes, function(item){
+                                if(item.is_default){
+                                    $scope.fare_info.default_amount = item.first_amount;
+                                }
+                            })
 
                         } else {
                             console.log("获取商品详情失败");

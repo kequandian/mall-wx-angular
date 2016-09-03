@@ -59,6 +59,9 @@
                         <!--<span ng-if="fare_info.carry_modes.region != null">地区{{fare_info.carry_modes.region}}</span>-->
                         {{fare_info.carry_modes[0].first_amount | currency:"￥"}}
                     </span>
+                    <span ng-if="fare_info.is_excl_postage">运费:
+                        {{fare_info.default_amount | currency:"￥"}}
+                    </span>
                 </div>
                 <div class="product-f-right">
                     <!--<span>销量：{{details.sales}}件</span>-->
