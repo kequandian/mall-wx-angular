@@ -246,6 +246,8 @@
         $rootScope.rec_session.load_more = false;
         $rootScope.rec_session.loading_in_progress = false;
 
+        $rootScope.jumpStatus = false;
+
 
         //商品详情
         $rootScope.rec_session.default_express  = null; //快递公司名称

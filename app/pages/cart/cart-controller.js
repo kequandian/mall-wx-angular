@@ -311,6 +311,10 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
         'PointRate', '$ocLazyLoad','areasStatus','goodListParams', function ($scope, $state, $stateParams, $location, $rootScope, AddressManagerFty, CartFty,
                                               BalanceSession, PointRate, $ocLazyLoad,areasStatus,goodListParams) {
 
+            if($rootScope.jumpStatus){
+               $state.go('home.homePage');
+            }
+
             //title
             document.title = "结算";
             $scope.settlementCarts = [];
@@ -441,6 +445,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             $scope.goToTenAreas = function(){
                 areasStatus.areas_status = 1;
                 goodListParams.searchStatus = 3;
+                $rootScope.jumpStatus = true;
                 $state.go('goodsList');
             };
 
