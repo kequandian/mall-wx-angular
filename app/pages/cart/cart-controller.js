@@ -308,7 +308,8 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
         }])
 
     .controller('SettlementController', ['$scope', '$state', '$stateParams', '$location', '$rootScope', 'AddressManagerFty', 'CartFty','BalanceSession',
-        'PointRate', '$ocLazyLoad', function ($scope, $state, $stateParams, $location, $rootScope, AddressManagerFty, CartFty, BalanceSession, PointRate, $ocLazyLoad) {
+        'PointRate', '$ocLazyLoad','areasStatus','goodListParams', function ($scope, $state, $stateParams, $location, $rootScope, AddressManagerFty, CartFty,
+                                              BalanceSession, PointRate, $ocLazyLoad,areasStatus,goodListParams) {
 
             //title
             document.title = "结算";
@@ -386,6 +387,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 "city": null,
                 "data":[]
             };
+            var delta = null;
             function getFrieght(){
 
                 //console.log(angular.toJson($stateParams.carts))
@@ -402,7 +404,9 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                         if(json.status_code == 0){
                             console.log(angular.toJson(json));
 
-                            $scope.product_frieght = json.data;
+                            var carriage = json.data.carriage;
+                            delta = json.data.delta;
+                            $scope.product_frieght = carriage;
 
                             $scope.pay = $stateParams.totalToPay;
                             $scope.freight = $stateParams.totalFreight;
@@ -426,6 +430,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             $scope.order.payment_type = "WECHAT";
 
             $scope.addOrderSubmit = function () {
+
                 //console.log('addOrderSubmit:'+$scope.order);
                 if ($scope.show_address_status == 'add') {
                     var click_index = document.getElementById('showAddress');
@@ -436,6 +441,29 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     }
                     return;
                 }
+
+                if(delta != null){
+                    if(delta < 0){
+
+                        var deltaStr = delta + "" ;
+                        deltaStr = deltaStr.substr(1,deltaStr.length -1);
+                        console.log("包邮差额：" + deltaStr);
+
+                        /*start function*/
+                        $.confirm("", "还差"+ deltaStr +"元就可以包邮啦，继续购物吗?", function () {
+                            areasStatus.areas_status = 1;
+                            goodListParams.searchStatus = 3;
+                            $state.go('goodsList');
+                        }, function () {
+                            //取消操作
+                        });
+                        /*end function*/
+                    }
+                }else{
+                    $.toast('获取运费异常', 'cancel');
+                    return;
+                }
+
                 $scope.order.contact = $scope.currentContact;
 
                 $scope.productFrieghts.province = $scope.order.contact.province;

@@ -223,7 +223,7 @@
                     <div class="settlement-final" ng-if="product_frieght != null">
                         <span class="settlement-total">
                             运费:
-                            <span ng-if="product_frieght == 0">免邮费</span>
+                            <span ng-if="product_frieght == 0">包邮</span>
                             <span ng-if="order.payment_type=='WECHAT' && product_frieght > 0" style="color: red;">{{product_frieght|currency:'￥'}}</span>
                             <span ng-if="order.payment_type=='POINT' && product_frieght > 0" style="color: red;">
                                 <span>{{(product_frieght*point_rate)|number:0}}</span><span style="margin-left:2px">积分</span></span>
