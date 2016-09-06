@@ -119,7 +119,7 @@
 }
 
 .settlement-options {
-    height: 95px;
+    height: auto;
     margin: 3px 13px;
 }
 .settlement-option {
@@ -137,15 +137,6 @@
     float: right;
     /*margin-top: 15px;*/
     font-size: 14px;
-}
-
-#settlement .weui_cells_title{
-    margin-top: 0.77em;
-}
-
-
-#settlement .weui_cells_title_e{
-    margin-top: 5.3em;
 }
 
 .kqd-cell-ft {
