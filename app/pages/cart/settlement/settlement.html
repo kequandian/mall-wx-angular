@@ -229,6 +229,11 @@
                                 <span>{{(product_frieght*point_rate)|number:0}}</span><span style="margin-left:2px">积分</span></span>
                         </span>
                     </div>
+                    <div class="settlement-final" ng-if="delta_count < 0" ng-click="goToTenAreas()">
+                        <span class="settlement-total" style="font-size: 12px;">
+                            还差{{deltaCount}}元免邮，进入选购 >>
+                        </span>
+                    </div>
                 </div>
                 <!--<div class="settlement-option-bottom"></div>-->
 

@@ -408,6 +408,20 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                             delta = json.data.delta;
                             $scope.product_frieght = carriage;
 
+                            if(delta != null){
+                                if(delta < 0){
+                                    $scope.delta_count = delta;
+                                    var deltaStr = delta + "" ;
+                                    deltaStr = deltaStr.substr(1,deltaStr.length -1);
+                                    console.log("包邮差额：" + deltaStr);
+                                    $scope.deltaCount = deltaStr;
+
+                                }
+                            }else{
+                                $.toast('获取运费异常', 'cancel');
+                                return;
+                            }
+
                             $scope.pay = $stateParams.totalToPay;
                             $scope.freight = $stateParams.totalFreight;
                             if($scope.product_frieght > 0){
@@ -423,6 +437,12 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     })
             }
 
+            //进入10元区
+            $scope.goToTenAreas = function(){
+                areasStatus.areas_status = 1;
+                goodListParams.searchStatus = 3;
+                $state.go('goodsList');
+            };
 
             //提交订单
             $scope.order = {};
@@ -439,28 +459,6 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     }else{
                         $.toast('请先添加收货地址', 'cancel');
                     }
-                    return;
-                }
-
-                if(delta != null){
-                    if(delta < 0){
-
-                        var deltaStr = delta + "" ;
-                        deltaStr = deltaStr.substr(1,deltaStr.length -1);
-                        console.log("包邮差额：" + deltaStr);
-
-                        /*start function*/
-                        $.confirm("", "还差"+ deltaStr +"元就可以包邮啦，继续购物吗?", function () {
-                            areasStatus.areas_status = 1;
-                            goodListParams.searchStatus = 3;
-                            $state.go('goodsList');
-                        }, function () {
-                            //取消操作
-                        });
-                        /*end function*/
-                    }
-                }else{
-                    $.toast('获取运费异常', 'cancel');
                     return;
                 }
 

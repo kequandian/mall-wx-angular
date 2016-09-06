@@ -139,8 +139,13 @@
     font-size: 14px;
 }
 
+#settlement .weui_cells_title{
+    margin-top: 0.77em;
+}
+
+
 #settlement .weui_cells_title_e{
-    margin-top: 2.77em;
+    margin-top: 5.3em;
 }
 
 .kqd-cell-ft {
