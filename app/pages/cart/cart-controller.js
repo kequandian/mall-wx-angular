@@ -248,7 +248,9 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 });
                 //$scope.checkedCarts.push(pay);
                 //$scope.checkedCarts.push(freight);
+
                 console.log(angular.toJson($scope.checkedCarts));
+                $rootScope.settle_product_code = $scope.checkedCarts;
                 $state.go('cart-settlement', {carts: $scope.checkedCarts, totalToPay: pay, totalFreight: freight});
             };
 
@@ -364,7 +366,8 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             }
 
             //获取结算数据
-            $scope.settlementCarts = $stateParams.carts;
+            //$scope.settlementCarts = $stateParams.carts;
+            $scope.settlementCarts = $rootScope.settle_product_code;
             $scope.settlementData = [];
 
             //console.log("carts:"+$stateParams.carts);
@@ -389,14 +392,17 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             var delta = null;
             function getFrieght(){
 
-                //console.log(angular.toJson($stateParams.carts))
-                angular.forEach($stateParams.carts, function (data, index) {
+                //console.log(angular.toJson($rootScope.settle_product_code))
+                //angular.forEach($stateParams.carts, function (data, index) {
+                angular.forEach($rootScope.settle_product_code, function (data, index) {
                     $scope.productFrieghts.data[index] = ({
                         "fare_id": data.fare_id,
                         "price": data.price,
                         "quantity": data.quantity
                     })
                 });
+
+                //console.log('$scope.productFrieghts：' + angular.toJson($scope.productFrieghts));
 
                 CartFty.frieghtService($scope.productFrieghts)
                     .then(function(json){
@@ -429,9 +435,11 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                                 $scope.total_price = $stateParams.totalToPay;
                             }
                         }else{
+                            console.log('error：' + angular.toJson(json))
                             $.toast('获取运费失败', 'cancel');
                         }
                     }, function(error){
+                        console.log('error：' + angular.toJson(error))
                         $.toast('获取运费失败', 'cancel');
                     })
             }

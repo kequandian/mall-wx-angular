@@ -250,6 +250,9 @@
         $rootScope.rec_session.default_express  = null; //快递公司名称
         $rootScope.kf_qq = null;    //客服QQ
 
+        //结算页缓存
+        $rootScope.settle_product_code = null;
+
         /*//Do your $on in here, like this:
         $rootScope.$on("$locationChangeStart",function(event, next, current){
             console.log('$locationChangeStart')

@@ -105,7 +105,7 @@
 .settlement-cart-type {
     color: #A0A0A0;
     font-size: 13px;
-    margin-top: 10px;
+    margin-top: 7px;
 }
 .settlement-cart-quantity {
     position: absolute;
@@ -137,6 +137,10 @@
     float: right;
     /*margin-top: 15px;*/
     font-size: 14px;
+}
+
+#settlement .weui_cells_title{
+    margin-top: 0;
 }
 
 .kqd-cell-ft {

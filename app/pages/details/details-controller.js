@@ -323,22 +323,48 @@ angular.module('details.controller', ['details.service'])
                     return;
                 }
 
+                var p_info = [];
+                var p_item = {
+                    product_id:null,
+                    product_name:null,
+                    quantity:null,
+                    cover:null,
+                    product_specification_id:null,
+                    product_specification_name:null,
+                    stock_balance:null,
+                    fare_id:null
+                };
                 var buy_price = 0;
                 if (item.specifications.length > 0) {
                     angular.forEach(item.specifications, function (v, k) {
                         if (v.id == product_specification_id) {
                             buy_price = v.price;
+                            p_item.product_specification_name = v.name;
+                            p_item.stock_balance = v.stock_balance;
                         }
                     });
-                    item.price = buy_price;
+                    p_item.price = buy_price;
                 }
 
-                item.product_id = item.id;
-                item.quantity = $scope.q_count;
-                item.product_name = item.name;
-                //item.product_property = product_property;
-                item.product_specification_id = product_specification_id;
+                p_item.product_id = item.id;
+                p_item.quantity = $scope.q_count;
+                p_item.product_name = item.name;
+                p_item.product_name = item.name;
+                p_item.fare_id = item.fare_id;
+                p_item.cover = item.cover;
+
+                if(product_specification_id == null){
+                    p_item.stock_balance = item.stock_balance;
+                    p_item.price = item.price;
+                }
+
+                p_item.product_specification_id = product_specification_id;
                 $scope.checkedCarts.push(item);
+
+                p_info.push(p_item);
+
+                $rootScope.settle_product_code = p_info;
+                console.log(angular.toJson(p_item));
 
                 $state.go('cart-settlement', {
                     carts: $scope.checkedCarts,
