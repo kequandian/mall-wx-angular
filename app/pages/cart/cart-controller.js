@@ -373,7 +373,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             //console.log("carts:"+$stateParams.carts);
             //console.log(angular.toJson($stateParams.carts))
 
-            angular.forEach($stateParams.carts, function (data, index) {
+            angular.forEach($scope.settlementCarts, function (data, index) {
                 $scope.settlementData[index] = ({
                     "product_id": data.product_id,
                     "quantity": data.quantity,
@@ -476,6 +476,10 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 $scope.productFrieghts.city = $scope.order.contact.city;
 
                 console.log('$scope.productFrieghts: '+ angular.toJson($scope.productFrieghts));
+                console.log('$scope.settlementData: '+ angular.toJson($scope.order));
+
+                return;
+
 
                 //FEATURE: point
                 // - check balance
@@ -486,14 +490,19 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     //console.log('ok')
                     CartFty.addOrder($scope.order).then(
                         function (result) {
-                            //console.log('提交成功：' + angular.toJson(result.data));
-                            $scope.settlementCarts = [];
-                            $scope.order_number = result.data.order_number;
-                            deleteProducts($scope.settlementData);
-
+                            if(result.status_code == 0){
+                                console.log('提交成功：' + angular.toJson(result));
+                                $scope.settlementCarts = [];
+                                $scope.order_number = result.data.order_number;
+                                deleteProducts($scope.settlementData);
+                            }else{
+                                $.toast('确认失败','cencal');
+                                console.log('提交失败：' + angular.toJson(result));
+                            }
                             //$state.go('order-confirm',{data:result.data});
                         }, function (error) {
-                            console.log(error);
+                            $.toast('确认失败','cencal');
+                            console.log('提交失败：' + angular.toJson(error));
                         });
                 }
 
