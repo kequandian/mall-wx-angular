@@ -475,11 +475,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 $scope.productFrieghts.province = $scope.order.contact.province;
                 $scope.productFrieghts.city = $scope.order.contact.city;
 
-                console.log('$scope.productFrieghts: '+ angular.toJson($scope.productFrieghts));
-                console.log('$scope.settlementData: '+ angular.toJson($scope.order));
-
-                return;
-
+                //console.log('$scope.productFrieghts: '+ angular.toJson($scope.productFrieghts));
 
                 //FEATURE: point
                 // - check balance
