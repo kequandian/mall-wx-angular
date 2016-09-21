@@ -46,8 +46,8 @@ angular.module('homePage.controller', ['homePage.service'])
     })
 
     .controller('HomePageController', ['$scope', '$rootScope', '$state', 'HomePageFty', 'areasStatus', 'goodListParams',
-        '$anchorScroll', '$ocLazyLoad','cateLeftIndex','$timeout','PointRate',
-        function ($scope, $rootScope, $state, HomePageFty, areasStatus, goodListParams, $anchorScroll, $ocLazyLoad,cateLeftIndex,$timeout,PointRate) {
+        '$anchorScroll', '$ocLazyLoad','cateLeftIndex','$timeout','PointRate','BalanceSession',
+        function ($scope, $rootScope, $state, HomePageFty, areasStatus, goodListParams, $anchorScroll, $ocLazyLoad,cateLeftIndex,$timeout,PointRate,BalanceSession) {
 
             document.title = "十美优品商城";
 
@@ -107,6 +107,8 @@ angular.module('homePage.controller', ['homePage.service'])
             //获取广告
             getAdHome();
             getAdBanner();
+            //获取积分
+            getBalance();
 
             //获取推荐商品
             if ($rootScope.rec_session.rec_product.length == 0) {
@@ -288,12 +290,13 @@ angular.module('homePage.controller', ['homePage.service'])
 
                 //ISSUE: not yet loaded here
                 //$rootScope.rec_session.rec_product = $scope.rec_product;
-            }
+            };
 
+            //返回顶部
             $scope.onTop = function(){
                 document.getElementById('content').scrollTop = 0;
                 $scope.pressed = true;
-            }
+            };
 
 
             $scope.$on('$onScrollBottom', function () {
@@ -318,5 +321,20 @@ angular.module('homePage.controller', ['homePage.service'])
                 })
                 //console.log('$onScrollTopCancelled');
             });
+
+
+            //获取积分
+            function getBalance(){
+                HomePageFty.getBalanceService()
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            $scope.owner_balance = json.data;
+                            /// save session
+                            BalanceSession.balance = $scope.owner_balance.balance;
+                        }
+                    }, function(error){
+                        console.log('获取积分失败: ' + angular.toJson(error));
+                    })
+            }
 
         }]);

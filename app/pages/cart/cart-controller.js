@@ -492,13 +492,29 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                                 $scope.order_number = result.data.order_number;
                                 deleteProducts($scope.settlementData);
                             }else{
-                                $.toast('确认失败','cencal');
-                                console.log('提交失败：' + angular.toJson(result));
+                                if($scope.order.payment_type == 'WECHAT') {
+                                    $.toast('支付失败','cancel');
+                                    console.log('支付失败：' + angular.toJson(result));
+                                }else if($scope.order.payment_type == 'POINT'){
+                                    $.toast('兑换失败','cancel');
+                                    console.log('兑换失败：' + angular.toJson(result));
+                                }else{
+                                    $.toast('未知支付方式', 'cancel');
+                                    console.log('未知支付方式：' + angular.toJson(result));
+                                }
                             }
                             //$state.go('order-confirm',{data:result.data});
                         }, function (error) {
-                            $.toast('确认失败','cencal');
-                            console.log('提交失败：' + angular.toJson(error));
+                            if($scope.order.payment_type == 'WECHAT') {
+                                $.toast('支付失败','cancel');
+                                console.log('支付失败：' + angular.toJson(error));
+                            }else if($scope.order.payment_type == 'POINT'){
+                                $.toast('兑换失败','cancel');
+                                console.log('兑换失败：' + angular.toJson(error));
+                            }else{
+                                $.toast('未知支付方式', 'cancel');
+                                console.log('未知支付方式：' + angular.toJson(error));
+                            }
                         });
                 }
 
