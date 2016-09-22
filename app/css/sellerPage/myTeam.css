@@ -54,7 +54,7 @@
     width: 100%;
     height: 40px;
     line-height: 40px;
-    /*margin-top: 12px;*/
+    padding-top: 12px;
 }
 
 #myTeam #nav .nav-right .my-team-info span{
