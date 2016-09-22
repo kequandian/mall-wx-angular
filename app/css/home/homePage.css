@@ -309,7 +309,7 @@ body, html {
     height: 40px;
     /*border-top: 1px solid #cccccc;*/
     text-align: left;
-    padding: 3px 3px;
+    padding: 3px 8px 0px 8px;
     color: #4c4c4c;
     font-size: 12px;
 }
@@ -328,6 +328,8 @@ body, html {
 #content .home_g_left {
     min-width: 30px;
     color: #F15353;
+    margin-left: 5px;
+    margin-bottom: 3px;
 }
 
 #content .home_g_right {
