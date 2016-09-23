@@ -215,7 +215,7 @@
 
 #goodsList .weui_grid{
   min-height: 35px;
-  padding: 0 10px;
+  /*padding: 0 10px;*/
 }
 
 #goodsList .product_item{
@@ -255,7 +255,7 @@
   height: 40px;
   /*border-top: 1px solid #cccccc;*/
   text-align: left;
-  padding: 3px 3px;
+  padding: 3px 8px;
   color: #4c4c4c;
   font-size: 12px;
 }
@@ -273,7 +273,7 @@
 
 #goodsList .home_g_left{
   min-width: 30px;
-  padding: 0 5px 5px 5px;
+  /*padding: 0 5px 5px 5px;*/
   color:#F15353;
 }
 
