@@ -211,7 +211,8 @@
     color: white;
     padding: 1px;
     border-radius: 2px;
-    margin-left: 5px;
+    margin-top: 5px;
+    /*margin-left: 5px;*/
 }
 
 #sellerPage .lv_status{
