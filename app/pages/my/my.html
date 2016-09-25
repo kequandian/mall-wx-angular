@@ -13,7 +13,7 @@
                 <p style="font-size: 15px;">
                     ID： {{userInfo.uid}}
                 </p>
-                <p class="user-lv-text">
+                <p ng-if="userInfo.followed==0" class="user-lv-text">
                     关注时间： {{userInfo.follow_time}}
                 </p>
             </div>
