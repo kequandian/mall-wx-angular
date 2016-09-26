@@ -512,6 +512,10 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             //确认订单
             $scope.close_order_action = function (order_number) {
 
+                console.log(order_number)
+
+                return;
+
                 $ocLazyLoad.load('Jquery').then(function () {
                     $ocLazyLoad.load('JqueryWeUI').then(function () {
 

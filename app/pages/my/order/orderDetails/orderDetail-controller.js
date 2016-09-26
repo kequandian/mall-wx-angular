@@ -195,6 +195,35 @@ angular.module('orderDetails.controller', ['orderDetails.service',
                     // default to wechat
                     window.location.href = '/app/payment/wpay/' + order.order_number; //微信
                 }
-            }
+            };
+
+
+            //确认订单
+            $scope.close_order_action = function (order_number) {
+
+                $ocLazyLoad.load('Jquery').then(function () {
+                    $ocLazyLoad.load('JqueryWeUI').then(function () {
+
+                        /*function start*/
+                        $.confirm('', '确认收到货物吗？', function () {
+                            //var order_status = "CLOSED_CONFIRMED";
+                            OrderDetailsFty.closeOrderService(order_number)
+                                .then(function (json) {
+                                    //console.log(angular.toJson(json));
+                                    if (json.status_code == 0) {
+                                        $.toast('确认成功');
+                                        $state.go('order.finish', {}, {reload: true});
+                                    } else {
+                                        $.toast('确认失败', 'cancel');
+                                    }
+                                }, function (error) {
+                                    console.log(error);
+                                })
+                        })
+                        /*function end*/
+                    })
+                });
+                /*end lazy*/
+            };
 
         }]);
