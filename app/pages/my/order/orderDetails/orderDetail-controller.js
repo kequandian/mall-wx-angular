@@ -173,7 +173,7 @@ angular.module('orderDetails.controller', ['orderDetails.service',
                     }, function (error) {
                         console.log(error);
                     })
-            }
+            };
 
             //进入物流详情
             $scope.goToExpress = function (item) {
