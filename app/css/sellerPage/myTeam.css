@@ -131,8 +131,15 @@
     float: left;
 }
 
-
-
+#myTeam .item-right .item_user_name{
+    float: left;
+    font-size: 18px;
+    width:100%;
+    white-space:nowrap;
+    word-break:keep-all;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
 #myTeam .item-right div{
     height: 23px;
     line-height: 23px;
