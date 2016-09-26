@@ -5,6 +5,7 @@ angular.module('orderDetails.controller', ['orderDetails.service',
         'OrderCommon','OrderFty', '$ocLazyLoad','BalanceSession',
         function ($scope, $state, $stateParams, OrderDetailsFty, ExpressInfo, OrderCommon,OrderFty, $ocLazyLoad,BalanceSession) {
 
+            var loaded = false;
             orderDetails();
             function orderDetails() {
 
@@ -54,6 +55,8 @@ angular.module('orderDetails.controller', ['orderDetails.service',
                         }
                     }, function (error) {
                         $.toast("获取订单详情失败", "cancel")
+                    }).finally(function(){
+                        loaded = true;
                     })
             }
 
@@ -200,6 +203,11 @@ angular.module('orderDetails.controller', ['orderDetails.service',
 
             //确认订单
             $scope.close_order_action = function (order_number) {
+
+                if(!loaded){
+                    $.toast('加载中', 'cancel');
+                    return;
+                }
 
                 $ocLazyLoad.load('Jquery').then(function () {
                     $ocLazyLoad.load('JqueryWeUI').then(function () {

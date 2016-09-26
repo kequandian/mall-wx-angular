@@ -436,6 +436,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
 
             $scope.deliveredIsNull = true;
             $scope.deliveredShow = true;
+            var loaded = false;
 
             deliveredOrders();
             function deliveredOrders() {
@@ -462,9 +463,11 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                         if ($scope.deliveredList.length > 0) {
                             $scope.deliveredIsNull = true;
                             $scope.deliveredShow = false;
+                            loaded = true;
                         } else {
                             $scope.deliveredIsNull = false;
                             $scope.deliveredShow = true;
+                            loaded = false;
                         }
                         $timeout(function () {
                             //$.hideLoading();
@@ -511,6 +514,11 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
 
             //确认订单
             $scope.close_order_action = function (order_number) {
+
+                if(!loaded){
+                    $.toast('加载中', 'cancel');
+                    return;
+                }
 
                 $ocLazyLoad.load('Jquery').then(function () {
                     $ocLazyLoad.load('JqueryWeUI').then(function () {
