@@ -134,7 +134,7 @@
 #myTeam .item-right .item_user_name{
     float: left;
     font-size: 18px;
-    width:100%;
+    width:75%;
     white-space:nowrap;
     word-break:keep-all;
     overflow:hidden;

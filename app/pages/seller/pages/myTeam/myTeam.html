@@ -39,15 +39,15 @@
     <div class="myTeam-content">
         <div>
 
-            <!--<div class="t-m-item" ng-repeat="item in myTeams.children">-->
-            <div class="t-m-item">
+            <div class="t-m-item" ng-repeat="item in myTeams.children">
                 <div class="item-left">
                     <img ng-src="{{item.avatar != null ? item.avatar : 'img/sellerPage/commission/default-avatar.png'}}">
                 </div>
                 <div class="item-right">
                     <div>
                         <div class="item_user_name">{{item.user_name}}</div>
-                        <div ng-if="item.followed==0" class="item-comcerned">已关注</div>
+
+                        <div class="item-comcerned">已关注</div>
                     </div>
                     <div>ID:{{item.uid}}</div>
                     <div ng-if="item.followed==0" style="font-size: 14px;">关注时间：{{item.follow_time}}</div>
