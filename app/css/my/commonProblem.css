@@ -57,6 +57,7 @@
 
 /*售后政策*/
 #disProblemPage{
+    padding-top: 15px;
     background-color: #FFFFFF;
 }
 
@@ -69,7 +70,6 @@
     color:white;
     border-radius: 10px;
     background-color: #FF4B00;
-    margin-top: 15px;
     margin-left: 7px;
 }
 
@@ -84,6 +84,12 @@
 
 #commonProblem li, #disProblemPage li {
     padding-top: 10px;
+}
+
+
+#commonProblem li, #disProblemPage li img{
+    width: 100%;
+    height: auto;
 }
 
 
