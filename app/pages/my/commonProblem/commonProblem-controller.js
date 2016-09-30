@@ -20,6 +20,7 @@ angular.module('commonProblem.controller', [/*'commonProblem.service'*/])
                     console.log("json数据：" + angular.toJson(json));
                     if (json.status_code == 0) {
                         $scope.commonProblemInfo = json.data;
+                        //console.log(angular.toJson($scope.commonProblemInfo));
                         queryData.queryInfo = json.data;
                         queryData.name = item.name;
 

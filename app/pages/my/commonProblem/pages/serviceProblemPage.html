@@ -6,7 +6,7 @@
         <ul>
             <li ng-repeat="item in query">
                 <h4 class="title">{{item.title}}</h4>
-                <p>{{item.content}}</p>
+                <p ng-bind-html="item.content | to_trusted"></p>
             </li>
         </ul>
     </div>
