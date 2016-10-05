@@ -58,6 +58,8 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
             $scope.thisMon = new Date().getMonth();
             $scope.year = $scope.thisYear;
             $scope.mon = $scope.thisMon;
+            //console.log("curYear:"+$scope.year);
+            //console.log("curMon:"+$scope.mon);
 
 
             //获取分销订单
@@ -193,11 +195,10 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
             }
 
             function getDefaultYears() {
-                var years = [
-                    {key: 2015, value: "2015年"},
-                    {key: 2016, value: "2016年"}
-                ];
-                return years;
+                //var years = [
+                //    {key: 2015, value: "2015年"},
+                //    {key: 2016, value: "2016年"}
+                //];
 
                 var years = [];
 
