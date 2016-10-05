@@ -201,6 +201,8 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
 
                 if(isNaN(reg_date)){
                     var date_s = date_string.replace(/\-/g, '/');
+                    date_s = date_s.substr(0, 10);
+
                     reg_date = new Date(date_s);
                 }
 
@@ -219,6 +221,11 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
                 var curYear = new Date().getYear() + 1900;
                 var regDate = registered ? fixIOSDate(UserInfo.register_date) : new Date();
                 var regYear = regDate.getYear() + 1900;
+
+                if(isNaN(regDate)) {
+                    years.push({key: 1900, value: UserInfo.register_date});
+                    years.push({key: curYear, value: curYear + '年'});
+                }
 
                 for (var y = regYear; y <= curYear; y++) {
                     years.push({key: y, value: y + '年'})
