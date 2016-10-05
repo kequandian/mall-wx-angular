@@ -200,10 +200,8 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
                 var reg_date = new Date(date_string);
 
                 if(isNaN(reg_date)){
-                    var date_s = date_string.replace("-", "/");
+                    var date_s = date_string.replace(/\-/g, '/');
                     reg_date = new Date(date_s);
-
-                    return reg_date;
                 }
 
                 return reg_date;
