@@ -214,7 +214,7 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
                     years.push({key: regYear, value: regYear + '年'});
                 }else{
                     years.push({key: 2000, value: '2000年'});
-                    years.push({key: regYear, value: regYear + '年'});
+                    years.push({key: regYear, value: UserInfo.register_date});
                     years.push({key: curYear, value: curYear + '年'});
                 }
 
