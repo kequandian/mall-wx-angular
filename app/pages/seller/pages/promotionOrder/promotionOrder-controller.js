@@ -207,9 +207,18 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
                 var curYear = new Date().getYear() + 1900;
                 var regDate = registered ? new Date(UserInfo.register_date) : new Date();
                 var regYear = regDate.getYear() + 1900;
-                var regMont = regDate.getMonth();
+                var regMon = regDate.getMonth();
 
-                //console.log("regiterYear?"+regYear+",registerMon?"+regMont);
+                if(regYear==curYear){
+                    years.push({key: 1900, value: '1900年'});
+                    years.push({key: regYear, value: regYear + '年'});
+                }else{
+                    years.push({key: 2000, value: '2000年'});
+                    years.push({key: regYear, value: regYear + '年'});
+                    years.push({key: curYear, value: curYear + '年'});
+                }
+
+                //console.log("regiterYear?"+regYear+",registerMon?"+regMon);
 
                 for (var y = regYear; y <= curYear; y++) {
                     years.push({key: y, value: y + '年'})
