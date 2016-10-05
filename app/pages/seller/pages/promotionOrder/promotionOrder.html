@@ -4,9 +4,18 @@
 
         <div class="item-stable">
 
-            <select class="weui_select year" ng-options="i.key as i.value for i in yearDefault" ng-model="year"
+            <!--<select class="weui_select year" ng-options="i.key as i.value for i in yearDefault" ng-model="year"
                     ng-init="year=thisYear" ng-change="onSelectedYear()">
+            </select>-->
+
+            <select>
+                <option class="weui_select year" selected="selected">Choose option</option>
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+                <option>Option 4</option>
             </select>
+
             订单明细
             <select class="weui_select mon" ng-options="i.key as i.value for i in monDefault" ng-model="mon"
                     ng-init="mon=thisMon" ng-change="postOrder()">
