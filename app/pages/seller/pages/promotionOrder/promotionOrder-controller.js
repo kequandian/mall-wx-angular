@@ -176,6 +176,7 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
 
             $scope.onSelectedYear = function () {
                 /// set curMon
+                $scope.monDefault = getDefaultMons();
 
                 //console.log("selectedYea?"+$scope.year+",selectedMon?"+$scope.mon);
                 if ($scope.year == $scope.thisYear) {
@@ -183,9 +184,12 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
                     if ($scope.mon > curMon) {
                         $scope.mon = curMon;
                     }
+                }else{
+                    var firstMon = $scope.monDefault[0];
+                    if($scope.mon < firstMon){
+                        $scope.mon = firstMon;
+                    }
                 }
-
-                $scope.monDefault = getDefaultMons();
             }
 
             function getDefaultYears() {
