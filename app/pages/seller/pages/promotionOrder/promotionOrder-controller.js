@@ -194,6 +194,21 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
                 }
             }
 
+            /// fix IOS date format issue
+            function fixIOSDate(date_string){
+
+                var reg_date = new Date(date_string);
+
+                if(isNaN(reg_date)){
+                    var date_s = date_string.replace("-", "/");
+                    reg_date = new Date(date_s);
+
+                    return reg_date;
+                }
+
+                return reg_date;
+            }
+
             function getDefaultYears() {
                 //var years = [
                 //    {key: 2015, value: "2015年"},
@@ -203,22 +218,9 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
                 var years = [];
 
                 var registered = !(UserInfo.register_date === undefined || UserInfo.register_date == null || UserInfo.register_date.length == 0);
-
                 var curYear = new Date().getYear() + 1900;
-                var regDate = registered ? new Date(UserInfo.register_date) : new Date();
+                var regDate = registered ? fixIOSDate(UserInfo.register_date) : new Date();
                 var regYear = regDate.getYear() + 1900;
-                var regMon = regDate.getMonth();
-
-                if(regYear==curYear){
-                    years.push({key: 1900, value: '1900年'});
-                    years.push({key: regYear, value: regYear + '年'});
-                }else{
-                    years.push({key: 2000, value: '2000年'});
-                    years.push({key: regYear, value: UserInfo.register_date});
-                    years.push({key: curYear, value: curYear + '年'});
-                }
-
-                //console.log("regiterYear?"+regYear+",registerMon?"+regMon);
 
                 for (var y = regYear; y <= curYear; y++) {
                     years.push({key: y, value: y + '年'})
@@ -235,13 +237,12 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
                 var curMon = now.getMonth();
                 var selectedYear = $scope.year ? $scope.year : curYear;
 
-                //console.log("yea?"+curYear+",selectedYea?"+selectedYear);
                 if (curYear != selectedYear) {
                     return defaultMons;
                 }
 
                 var registered = !(UserInfo.register_date === undefined || UserInfo.register_date == null || UserInfo.register_date.length == 0);
-                var regDate = registered ? new Date(UserInfo.register_date) : new Date();
+                var regDate = registered ? fixIOSDate(UserInfo.register_date) : new Date();
                 var regMonth = regDate.getMonth();
 
                 for (var m = regMonth; m <= curMon; m++) {
