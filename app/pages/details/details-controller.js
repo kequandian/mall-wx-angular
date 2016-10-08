@@ -24,11 +24,16 @@ angular.module('details.controller', ['details.service'])
             if (true || window.history.replaceState) {
                 var currentState = history.state;
                 var newurl;
+
                 if(window.location.href.indexOf('?') > 0){
-                    newurl = '&fallback=details-'+ product_id +'#/details/' + product_id;
+                    var params = window.location.href.split('?');
+                    var newParams = params[1].split('#')[0];
+                    newurl = '?' + newParams + '&fallback=details-'+ product_id +'#/details/' + product_id;
                 }else{
                     newurl = '?fallback=details-'+ product_id +'#/details/' + product_id;
                 }
+
+                console.log('newurl: ' + newurl);
 
                 //prevents browser from storing history with each change:
                 window.history.pushState(currentState, document.title, newurl);
