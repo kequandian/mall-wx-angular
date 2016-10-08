@@ -34,6 +34,11 @@ angular.module('details.controller', ['details.service'])
                 }
 
                 console.log('newurl: ' + newurl);
+                console.log('state: ' + currentState);
+                if (currentState == null) {
+                    currentState = { title: document.title, url: newurl };
+                }
+                console.log('state2: ' + currentState);
 
                 //prevents browser from storing history with each change:
                 window.history.pushState(currentState, document.title, newurl);
