@@ -21,10 +21,13 @@ angular.module('details.controller', ['details.service'])
             var product_id = $stateParams.productId;
 
             //修改url地址，用于分享
-            if (true || window.history.replaceState) {
+            if ( ! (window.location.href.indexOf('fallback=')>0) ) {
                 var currentState = history.state;
-                var newurl;
+                if (currentState == null) {
+                    currentState = { title: document.title, url: newurl };
+                }
 
+                var newurl;
                 if(window.location.href.indexOf('?') > 0){
                     var params = window.location.href.split('?');
                     var newParams = params[1].split('#')[0];
@@ -33,12 +36,7 @@ angular.module('details.controller', ['details.service'])
                     newurl = '?fallback=details-'+ product_id +'#/details/' + product_id;
                 }
 
-                console.log('newurl: ' + newurl);
-                console.log('state: ' + currentState);
-                if (currentState == null) {
-                    currentState = { title: document.title, url: newurl };
-                }
-                console.log('state2: ' + currentState);
+                //console.log('newurl: ' + newurl);
 
                 //prevents browser from storing history with each change:
                 window.history.pushState(currentState, document.title, newurl);
@@ -53,7 +51,7 @@ angular.module('details.controller', ['details.service'])
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $scope.details = json.data;
-                            console.log(angular.toJson(json.data.description));
+                            //console.log(angular.toJson(json.data.description));
 
                             $scope.details_stock_balance = $scope.details.stock_balance;
                             $scope.details_price = $scope.details.price;
@@ -389,7 +387,7 @@ angular.module('details.controller', ['details.service'])
                 p_info.push(p_item);
 
                 $rootScope.settle_product_code = p_info;
-                console.log(angular.toJson(p_item));
+                //console.log(angular.toJson(p_item));
 
                 $state.go('cart-settlement', {
                     carts: $scope.checkedCarts,
