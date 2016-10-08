@@ -35,8 +35,9 @@
         "salesReturn.route",
         'searchPage.route'
 
-    ]).config(["$urlRouterProvider", '$ocLazyLoadProvider',
-        function ($urlRouterProvider, $ocLazyLoadProvider) {
+    ]).config(["$urlRouterProvider", '$ocLazyLoadProvider','$locationProvider',
+        function ($urlRouterProvider, $ocLazyLoadProvider,$locationProvider) {
+
             $urlRouterProvider.otherwise("/home/homePage");
 
             $ocLazyLoadProvider.config({

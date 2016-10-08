@@ -11,7 +11,20 @@ angular.module('details.controller', ['details.service'])
             //title
             document.title = "商品详情";
 
-            $scope.point_rate = PointRate.rate;
+            //$scope.point_rate = PointRate.rate;
+            var product_id = $stateParams.productId;
+
+            //window.location.href = '?details='+ product_id +'#/details/' + product_id
+
+            //var absurl = window.location.absUrl;
+            //console.log(absurl);
+
+            if (true || window.history.replaceState) {
+                var currentState = history.state;
+                var newurl = '?details='+ product_id +'#/details/' + product_id
+                //prevents browser from storing history with each change:
+                window.history.pushState(currentState, document.title, newurl);
+            }
 
             //商品详情
             detailsInfo();
@@ -24,7 +37,6 @@ angular.module('details.controller', ['details.service'])
 
             $scope.properties_list = [];
             function detailsInfo() {
-                var product_id = $stateParams.productId;
                 DetailsFty.detailsService(product_id)
                     .then(function (json) {
                         if (json.status_code == 0) {
@@ -95,6 +107,7 @@ angular.module('details.controller', ['details.service'])
                         }
                     }, function (error) {
                         console.log("获取商品详情失败");
+                    }).finally(function(){
                     })
             }
 
