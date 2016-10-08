@@ -11,29 +11,31 @@ angular.module('details.controller', ['details.service'])
             //title
             document.title = "商品详情";
 
+            var scope = $rootScope;
+            scope.$watch('detailsCartCount', function (nValue, oValue) {
+                $scope.d_cart_count = nValue;
+                //console.log('新值：' + nValue + "-------" + '旧值：' + oValue);
+            });
+
             //$scope.point_rate = PointRate.rate;
             var product_id = $stateParams.productId;
 
-            //window.location.href = '?details='+ product_id +'#/details/' + product_id
-
-            //var absurl = window.location.absUrl;
-            //console.log(absurl);
-
+            //修改url地址，用于分享
             if (true || window.history.replaceState) {
                 var currentState = history.state;
-                var newurl = '?details='+ product_id +'#/details/' + product_id
+                var newurl;
+                if(window.location.href.indexOf('?') > 0){
+                    newurl = '&fallback=details-'+ product_id +'#/details/' + product_id;
+                }else{
+                    newurl = '?fallback=details-'+ product_id +'#/details/' + product_id;
+                }
+
                 //prevents browser from storing history with each change:
                 window.history.pushState(currentState, document.title, newurl);
             }
 
             //商品详情
             detailsInfo();
-
-            var scope = $rootScope;
-            scope.$watch('detailsCartCount', function (nValue, oValue) {
-                $scope.d_cart_count = nValue;
-                //console.log('新值：' + nValue + "-------" + '旧值：' + oValue);
-            });
 
             $scope.properties_list = [];
             function detailsInfo() {
