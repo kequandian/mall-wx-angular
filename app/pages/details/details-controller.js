@@ -21,7 +21,7 @@ angular.module('details.controller', ['details.service'])
             var product_id = $stateParams.productId;
 
             //修改url地址，用于分享
-            if ( ! (window.location.href.indexOf('fallback=')>0) ) {
+            if ( ! (window.location.href.indexOf('fb_redirect=true')>0) ) {
                 var currentState = history.state;
                 if (currentState == null) {
                     currentState = { title: document.title, url: newurl };
