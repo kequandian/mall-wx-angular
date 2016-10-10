@@ -22,20 +22,33 @@ angular.module('my.controller', ['my.service'])
                 if (!(window.location.href.indexOf('fb_redirect=true')> 0)) {
                     var currentState = history.state;
 
+
                     var routes = routeValue.split('/');
                     var fallValue = routes.join('-');
+                    if(fallValue.indexOf('-')==0){
+                        fallValue = fallValue.substr(1,fallValue.length);
+                        console.log("fallValue?"+fallValue);
+                    }
 
                     var newurl = "";
                     if (window.location.href.indexOf('?') > 0) {
                         var params = window.location.href.split('?');
-                        var newParams = params[1].split('#')[0];
-                        newurl = '?' + newParams + '&fallback="' + fallValue + '#' + routeValue;
+                        var paramLong = params[1];
+                        console.log("paramLong?"+paramLong);
+
+                        //TODO, REGEX
+                        var param = paramLong.replace(/\[?&](fallback=[\w\-]+)[&#]]/, "fallback="+fallValue);
+                        console.log("param?", param);
+
+                        var param = param.split('#')[0];
+                        newurl = '?' + param + '&fallback=' + fallValue + '#' + routeValue;
+                        console.log('newurl: ' + newurl);
 
                     } else {
                         newurl = '?fallback='+fallValue+'#'+ routeValue;
-
+                        console.log('newurl: ' + newurl);
                     }
-                    //console.log('newurl: ' + newurl);
+
 
                     //prevents browser from storing history with each change:
                     window.history.pushState(currentState, document.title, newurl);

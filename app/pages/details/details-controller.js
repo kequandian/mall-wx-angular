@@ -35,9 +35,9 @@ angular.module('details.controller', ['details.service'])
                 //console.log('newurl: ' + newurl);
 
                 //prevents browser from storing history with each change:
-                //if (currentState == null) {
-                //    currentState = { title: document.title, url: newurl };
-                //}
+                if (currentState == null) {
+                    currentState = { title: document.title, url: newurl };
+                }
                 window.history.pushState(currentState, document.title, newurl);
             }
 
