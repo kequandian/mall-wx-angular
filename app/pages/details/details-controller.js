@@ -23,9 +23,6 @@ angular.module('details.controller', ['details.service'])
             //修改url地址，用于分享
             if ( ! (window.location.href.indexOf('fb_redirect=true')>0) ) {
                 var currentState = history.state;
-                if (currentState == null) {
-                    currentState = { title: document.title, url: newurl };
-                }
 
                 var newurl;
                 if(window.location.href.indexOf('?') > 0){
@@ -35,10 +32,12 @@ angular.module('details.controller', ['details.service'])
                 }else{
                     newurl = '?fallback=details-'+ product_id +'#/details/' + product_id;
                 }
-
                 //console.log('newurl: ' + newurl);
 
                 //prevents browser from storing history with each change:
+                //if (currentState == null) {
+                //    currentState = { title: document.title, url: newurl };
+                //}
                 window.history.pushState(currentState, document.title, newurl);
             }
 

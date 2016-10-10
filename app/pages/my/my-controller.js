@@ -15,6 +15,33 @@ angular.module('my.controller', ['my.service'])
             //获取订单信息
             myOrderList();
 
+            //fallbackRedirect('/home/my');
+
+            //修改url地址，用于分享
+            function fallbackRedirect(routeValue) {
+                if (!(window.location.href.indexOf('fb_redirect=true')> 0)) {
+                    var currentState = history.state;
+
+                    var routes = routeValue.split('/');
+                    var fallValue = routes.join('-');
+
+                    var newurl = "";
+                    if (window.location.href.indexOf('?') > 0) {
+                        var params = window.location.href.split('?');
+                        var newParams = params[1].split('#')[0];
+                        newurl = '?' + newParams + '&fallback="' + fallValue + '#' + routeValue;
+
+                    } else {
+                        newurl = '?fallback='+fallValue+'#'+ routeValue;
+
+                    }
+                    //console.log('newurl: ' + newurl);
+
+                    //prevents browser from storing history with each change:
+                    window.history.pushState(currentState, document.title, newurl);
+                }
+            }
+
             function getUserInfo(){
                 var loaded = false;
                 if ($rootScope.profile_session) {
