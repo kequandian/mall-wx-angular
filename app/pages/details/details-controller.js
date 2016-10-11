@@ -21,11 +21,11 @@ angular.module('details.controller', ['details.service'])
             var product_id = $stateParams.productId;
 
             //修改url地址，用于分享
-            if ( ! (window.location.href.indexOf('fb_redirect=true')>0) ) {
+            if ( window.location.href.indexOf('fb_redirect=true') == -1 ) {
                 var currentState = history.state;
 
                 var newurl;
-                if(window.location.href.indexOf('?') > 0){
+                if(window.location.href.indexOf('?') >= 0){
                     var params = window.location.href.split('?');
                     var newParams = params[1].split('#')[0];
                     newurl = '?' + newParams + '&fallback=details-'+ product_id +'#/details/' + product_id;
