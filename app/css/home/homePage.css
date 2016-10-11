@@ -108,6 +108,39 @@ body, html {
     height: auto;
 }
 
+#content #notice{
+    width: 100%;
+    height: 48px;
+    position: relative;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background-color: #e3e3e3;
+}
+#content #notice .notice-right{
+    width: 50px;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    float: left;
+    background-color: white;
+    border-right: 1px solid #cccccc;
+}
+#content #notice .notice-center{
+    line-height: 48px;
+    position: absolute;
+    left: 52px;
+    right: 40px;
+    padding-left: 1px;
+    background-color: white;
+}
+#content #notice .notice-left{
+    width: 40px;
+    line-height: 48px;
+    text-align: center;
+    float: right;
+    background-color: white;
+}
+
 /**/
 #content #nav {
     /*height:160px;*/
