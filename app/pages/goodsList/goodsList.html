@@ -54,9 +54,9 @@
                                         <div class="weui_grid_label home_grid_text">
                                             {{item.name | cutText:true:21:'...'}}
                                         </div>
-                                        <div class="home_grid_footer_text">
-                                            <div class="home_g_left c-left">{{item.price | currency:"￥"}}</div>
-                                            <div ng-if="item.suggested_price>item.price" class="home_g_right c-right">
+                                        <div class="home_grid_footer_tex">
+                                            <div class="goods_g_left c-left">{{item.price | currency:"￥"}}</div>
+                                            <div ng-if="item.suggested_price>item.price" class="goods_g_right c-right">
                                                 <span><s>{{item.suggested_price | currency:"￥"}}</s></span>
                                             </div>
                                         </div>

@@ -237,7 +237,7 @@
 
         <div oc-lazy-load="SquareImg" ng-repeat="productItem in rec_product"style="margin-top: 8px;">
 
-            <div class="area_title">
+            <div class="area_title" ng-click="goToGoodsList(productItem.id)">
                 {{productItem.name}}
                 <img src="img/home/arrow.png">
             </div>

@@ -1,6 +1,7 @@
 angular.module('home.controller', ['home.service'])
-    .controller('HomeController', ['$scope', '$state', '$rootScope', '$timeout', 'SimpleCartFty','GlobalVariable','ConfigFty','PointRate','MinWithdraw',
-        function ($scope, $state, $rootScope, $timeout, SimpleCartFty, GlobalVariable,ConfigFty,PointRate, MinWithdraw) {
+    .controller('HomeController', ['$scope', '$state', '$rootScope', '$timeout', 'SimpleCartFty','GlobalVariable',
+        'ConfigFty','PointRate','MinWithdraw','goodListParams',
+        function ($scope, $state, $rootScope, $timeout, SimpleCartFty, GlobalVariable,ConfigFty,PointRate, MinWithdraw,goodListParams) {
 
             //获取全局设置
             getGlobalConfigs();
@@ -98,6 +99,13 @@ angular.module('home.controller', ['home.service'])
                         console.log(error)
                     })
             }
+
+            //推荐商品
+            $scope.goToGoodsList = function (gItemtId) {
+                goodListParams.typeNumber = gItemtId;
+                goodListParams.searchStatus = 4;
+                $state.go('goodsList')
+            };
 
 
         }]);
