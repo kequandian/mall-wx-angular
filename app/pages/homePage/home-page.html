@@ -91,13 +91,13 @@
         <!-- 导航专区 -->
         <div id="ad_area">
             <div class="ad-left">
-                <img src="img/home/img1.png">
+                <a ng-href="{{ad_banner_1.target_url}}"><img ng-src="{{ad_banner_1.image}}"></a>
             </div>
             <div class="ad-right">
                 <div class="ad-right-top">
                     <img src="img/home/img2.png">
                 </div>
-                <div class="ad-right-bottom">
+                <div class="ad-right-bottom" ng-click="areasStatus(1)">
                     <img src="img/home/img3.png">
                 </div>
             </div>
