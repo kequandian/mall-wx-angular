@@ -1,0 +1,65 @@
+{
+  "payment_type": "WECHAT",
+  "order_items": [
+    {
+      "product_id": 100,
+      "quantity": 2,
+      "product_specification_id": null
+    },
+    {
+      "product_id": 100,
+      "quantity": 2,
+      "product_specification_id": null
+    },
+    {
+      "product_id": 100,
+      "quantity": 2,
+      "product_specification_id": null
+    },
+    {
+      "product_id": 100,
+      "quantity": 2,
+      "product_specification_id": null
+    },
+    {
+      "product_id": 100,
+      "quantity": 2,
+      "product_specification_id": null
+    },
+    {
+      "product_id": 100,
+      "quantity": 2,
+      "product_specification_id": null
+    },
+    {
+      "product_id": 100,
+      "quantity": 2,
+      "product_specification_id": null
+    },
+    {
+      "product_id": 100,
+      "quantity": 2,
+      "product_specification_id": null
+    },
+    {
+      "product_id": 100,
+      "quantity": 2,
+      "product_specification_id": null
+    }
+  ],
+  "contact": {
+    "id": 280,
+    "zip": null,
+    "detail": "广东省中山市南区丹荔路15号理丹电子有限公司",
+    "phone": "18775300546",
+    "contact_user": "李婷婷",
+    "street": null,
+    "province": "广东",
+    "is_default": 1,
+    "street_number": null,
+    "user_id": 1413,
+    "district": "中山",
+    "city": "中山"
+  }
+}
+
