@@ -17,7 +17,7 @@ angular.module('details.controller', ['details.service'])
                 //console.log('新值：' + nValue + "-------" + '旧值：' + oValue);
             });
 
-            //$scope.point_rate = PointRate.rate;
+            $scope.point_rate = PointRate.rate;
             var product_id = $stateParams.productId;
 
             //修改url地址，用于分享
@@ -50,7 +50,7 @@ angular.module('details.controller', ['details.service'])
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $scope.details = json.data;
-                            //console.log(angular.toJson(json.data.description));
+                            //console.log(angular.toJson(json.data));
 
                             $scope.details_stock_balance = $scope.details.stock_balance;
                             $scope.details_price = $scope.details.price;
@@ -154,6 +154,7 @@ angular.module('details.controller', ['details.service'])
                     .then(function(json){
                         if(json.status_code == 0){
                             $scope.product_rebate = json.data;
+                            //console.log("获取商品返利信息: "  + angular.toJson(json.data));
                         }else{
                             console.log("获取商品返利信息失败：" + angular.toJson(json));
                         }
