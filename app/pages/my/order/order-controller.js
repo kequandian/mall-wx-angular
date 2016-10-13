@@ -410,7 +410,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
 
                         $ocLazyLoad.load('Jquery').then(function () {
                             $ocLazyLoad.load('JqueryWeUI').then(function () {
-                                console.log(json)
+                                console.log(json);
                                 if (json.status_code == 0) {
                                     $.toast('已提醒卖家发货');
                                     //$state.go('order.payed', {}, {reload: true});
@@ -508,7 +508,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
 
             //进入物流详情
             $scope.goToExpress_delivered = function (o_number) {
-                console.log('go express')
+                console.log('go express');
                 $state.go('express', {orderNumber: o_number, productImg: null, productCount: null});
             };
 
@@ -538,7 +538,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                                 }, function (error) {
                                     console.log(error);
                                 })
-                        })
+                        });
                         /*function end*/
                     })
                 });
