@@ -17,7 +17,7 @@ angular.module('details.controller', ['details.service'])
                 //console.log('新值：' + nValue + "-------" + '旧值：' + oValue);
             });
 
-            //$scope.point_rate = PointRate.rate;
+            $scope.point_rate = PointRate.rate;
             var product_id = $stateParams.productId;
 
             //修改url地址，用于分享
