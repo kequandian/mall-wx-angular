@@ -32,7 +32,7 @@ angular.module('details.controller', ['details.service'])
                 }else{
                     newurl = '?fallback=details-'+ product_id +'#/details/' + product_id;
                 }
-                //console.log('newurl: ' + newurl); 
+                //console.log('newurl: ' + newurl);
 
                 //prevents browser from storing history with each change:
                 if (currentState == null) {

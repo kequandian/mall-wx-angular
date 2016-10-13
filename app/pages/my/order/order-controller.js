@@ -193,19 +193,19 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
 
                         /*function start*/
                         $.confirm('', '确认收到货物吗？', function () {
-                            var order_status = "CLOSED_CONFIRMED";
-                            OrderFty.closeOrderService(order_number, order_status)
+                            //var order_status = "CLOSED_CONFIRMED";
+                            OrderFty.closeOrderService(order_number)
                                 .then(function (json) {
                                     if (json.status_code == 0) {
                                         $.toast('确认成功');
-                                        //$state.go('order.finish', {}, {reload: true});
+                                        $state.go('order.finish', {}, {reload: true});
                                     } else {
                                         $.toast('确认失败', 'cancel');
                                     }
                                 }, function (error) {
                                     console.log(error);
                                 })
-                        })
+                        });
                         /*function end*/
                     })
                 });
