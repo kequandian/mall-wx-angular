@@ -21,18 +21,17 @@ angular.module('details.controller', ['details.service'])
             var product_id = $stateParams.productId;
 
             //修改url地址，用于分享
+            var newurl;
+            if(window.location.href.indexOf('?') >= 0){
+                var params = window.location.href.split('?');
+                var newParams = params[1].split('#')[0];
+                newurl = '?' + newParams + '&fallback=details-'+ product_id +'#/details/' + product_id;
+            }else{
+                newurl = '?fallback=details-'+ product_id +'#/details/' + product_id;
+            }
+            //console.log('newurl: ' + newurl);
             if ( window.location.href.indexOf('fb_redirect=true') == -1 ) {
                 var currentState = history.state;
-
-                var newurl;
-                if(window.location.href.indexOf('?') >= 0){
-                    var params = window.location.href.split('?');
-                    var newParams = params[1].split('#')[0];
-                    newurl = '?' + newParams + '&fallback=details-'+ product_id +'#/details/' + product_id;
-                }else{
-                    newurl = '?fallback=details-'+ product_id +'#/details/' + product_id;
-                }
-                //console.log('newurl: ' + newurl);
 
                 //prevents browser from storing history with each change:
                 if (currentState == null) {
@@ -387,6 +386,10 @@ angular.module('details.controller', ['details.service'])
 
                 $rootScope.settle_product_code = p_info;
                 //console.log(angular.toJson(p_item));
+
+                var newUrl = '#/cart-settlement';
+                var title = '结算';
+                window.history.pushState(currentState, title, newUrl);
 
                 $state.go('cart-settlement', {
                     carts: $scope.checkedCarts,
