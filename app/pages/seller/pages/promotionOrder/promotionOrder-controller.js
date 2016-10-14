@@ -93,7 +93,7 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
                     if (!angular.isDefined(order_hash[item.order_number])) {
                         //console.log(order_hash[item.order_number]);
 
-                        var newItem = {"order_number": item.order_number, "name": item.name};
+                        var newItem = {"order_number": item.order_number, "name": item.order_user_name};
                         newItem.state = item.state;
                         newItem.settled_time = item.order_paid_time;
                         newItem.settled_price = item.order_total_price;
