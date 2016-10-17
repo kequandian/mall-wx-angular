@@ -55,16 +55,25 @@ angular.module('homePage.controller', ['homePage.service'])
     })
     .filter('formatDetailsLocation', function() {
         return function (value) {
-            if(value==null || value ==undefined || value.length==0){
+            if (value == null || value === undefined || value.length == 0) {
                 return "#";
             }
             // value: #details/36
             // value: #/details/36
 
-            var n  = value.lastIndexOf('/');
-            var id = value.substr(n+1, value.length);
+            var n = value.lastIndexOf('/');
+            var id = value.substr(n + 1, value.length);
 
             return 'details({productId:' + id + '})';
+        }
+    })    
+    //默认分类广告图片
+    .filter('defaultImg',function(){
+        return function(value){
+            if(value==null || value===undefined || value.length==0){
+                return 'img/home/defaultImg.png';
+            }
+            return value;
         }
     })
 
