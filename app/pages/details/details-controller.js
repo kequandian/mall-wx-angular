@@ -277,6 +277,26 @@ angular.module('details.controller', ['details.service'])
                     return;
                 }
 
+                if($scope.details.purchase_strategy != null){
+                    DetailsFty.check_buy_count(productId, quantity)
+                        .then(function(json){
+                            console.log("限购信息：" + angular.toJson(json));
+                            if(json.status_code == 0){
+                                buy_option(productInfo,productId, int_quantity,product_property,product_specification_id);
+                            }else{
+                                $.toast(json.message,'cancel');
+                                console.log("获取限购信息失败：" + angular.toJson(json))
+                            }
+                        }, function(error){
+                            console.log("获取限购信息失败：" + angular.toJson(error))
+                        });
+                }else if($scope.details.purchase_strategy == null){
+                    buy_option(productInfo, productId, int_quantity,product_property,product_specification_id);
+                }
+            };
+
+            //选择方式
+            function buy_option(productInfo,productId, int_quantity,product_property,product_specification_id){
                 var b_status = $scope.b_status;
                 if (b_status == "cart") {
                     if (productInfo.stock_balance > 0) {
@@ -291,7 +311,7 @@ angular.module('details.controller', ['details.service'])
                         $.toast('此商品暂无库存');
                     }
                 }
-            };
+            }
 
             //添加购物车
             $scope.addProductToCart = function (productId, quantity, product_property, product_specification_id) {

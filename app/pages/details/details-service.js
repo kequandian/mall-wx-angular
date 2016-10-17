@@ -101,6 +101,22 @@ angular.module('details.service', [])
                         return deferred.reject(data);
                     });
                 return deferred.promise;
+            },
+
+            check_buy_count: function (productId, quantity) {
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + "/product_purchase_strategy?productId="+productId+"&quantity="+quantity;
+                $http.get(url,{
+                    headers:{
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
+                })
+                    .success(function (data) {
+                        return deferred.resolve(data);
+                    }).error(function (data) {
+                        return deferred.reject(data);
+                    });
+                return deferred.promise;
             }
         }
     }]);
