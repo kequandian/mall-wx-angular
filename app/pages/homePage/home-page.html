@@ -235,7 +235,7 @@
             <label>/精选为你推荐/</label>
         </div>
 
-        <div oc-lazy-load="SquareImg" ng-repeat="productItem in rec_product"style="margin-top: 8px;">
+        <div oc-lazy-load="SquareImg" ng-repeat="productItem in rec_product" style="margin-top: 8px;">
 
             <div class="area_title" ng-click="goToGoodsList(productItem.id)">
                 {{productItem.name}}
@@ -260,8 +260,8 @@
                                 </div>
                                 <!--product desc-->
                                 <div class="pro-item-desc">
-                                    <div class="weui_grid_label home_grid_text">
-                                        {{item.name | cutText:true:12:'...'}}
+                                    <div class="weui_grid_label home_grid_text center">
+                                        {{item.short_name | defaultShortName}}
                                     </div>
                                     <div class="home_grid_footer_text">
                                         <div class="home_g_left c-left">{{item.price | currency:"￥"}}</div>

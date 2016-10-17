@@ -44,6 +44,15 @@ angular.module('homePage.controller', ['homePage.service'])
             }
         };
     })
+    .filter('defaultShortName', function () {
+        return function (value) {
+            if (!value || value===undefined || value.length==0){
+                return '十美优品';
+            }
+
+            return value;
+        };
+    })
 
     .controller('HomePageController', ['$scope', '$rootScope', '$state', 'HomePageFty', 'areasStatus', 'goodListParams',
         '$anchorScroll', '$ocLazyLoad','cateLeftIndex','$timeout','PointRate','BalanceSession',
@@ -212,6 +221,7 @@ angular.module('homePage.controller', ['homePage.service'])
                         if (json.status_code == 0) {
 
                             $scope.rec_product = json.data;
+                            console.log(json.data);
 
                         /*    if (pageNumber == 1) {
                                 $scope.rec_product = json.data;
