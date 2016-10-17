@@ -53,6 +53,15 @@ angular.module('homePage.controller', ['homePage.service'])
             return value;
         };
     })
+    //默认分类广告图片
+    .filter('defaultImg',function(){
+        return function(value){
+            if(!value || value===undefined || value.length==0){
+                return 'img/home/defaultImg.png';
+            }
+            return value;
+        }
+    })
 
     .controller('HomePageController', ['$scope', '$rootScope', '$state', 'HomePageFty', 'areasStatus', 'goodListParams',
         '$anchorScroll', '$ocLazyLoad','cateLeftIndex','$timeout','PointRate','BalanceSession',

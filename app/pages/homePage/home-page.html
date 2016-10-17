@@ -235,15 +235,24 @@
             <label>/精选为你推荐/</label>
         </div>
 
-        <div oc-lazy-load="SquareImg" ng-repeat="productItem in rec_product" style="margin-top: 8px;">
+        <div ng-repeat="productItem in rec_product" style="margin-top: 8px;">
 
             <div class="area_title" ng-click="goToGoodsList(productItem.id)">
                 {{productItem.name}}
                 <img src="img/home/arrow.png">
             </div>
 
-            <div class="area_cover" ng-if="productItem.cover != null">
-                <img square-img src="{{productItem.cover}}">
+            <!--<div class="area_cover" ng-if="productItem.cover != null">-->
+            <div class="area_cover">
+                <!--<img src="{{productItem.cover | defaultImg}}">-->
+                <img src="">
+                <div class="area_cover_name">
+                    <div class="div1">
+                        <div class="div2">
+                                测试字体
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div oc-lazy-load="SquareImg" class="area-product">
@@ -260,7 +269,7 @@
                                 </div>
                                 <!--product desc-->
                                 <div class="pro-item-desc">
-                                    <div class="weui_grid_label home_grid_text center">
+                                    <div class="weui_grid_label home_grid_text">
                                         {{item.short_name | defaultShortName}}
                                     </div>
                                     <div class="home_grid_footer_text">
