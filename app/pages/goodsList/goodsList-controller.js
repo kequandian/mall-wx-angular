@@ -15,6 +15,8 @@ angular.module('goodsList.controller', ['goodsList.service'])
             var s_status = goodListParams.searchStatus;
             $scope.load_more_btn_show = false;
 
+            var cateId = goodListParams.typeNumber;
+
             if (s_status == 1) {
                 // from category
                 //console.log("cate goodsList");
@@ -29,6 +31,8 @@ angular.module('goodsList.controller', ['goodsList.service'])
             } else if (s_status == 3) {
                 console.log("areas goodsList");
                 areasProductList(pageNumber, pageSize);
+            } else if (s_status == 4){
+                homeAreaProductList(pageNumber, pageSize);
             }
 
             //价格切换
@@ -56,6 +60,8 @@ angular.module('goodsList.controller', ['goodsList.service'])
                     searchProductList(pageNumber, pageSize)
                 } else if (s_status == 3) {
                     areasProductList(pageNumber, pageSize)
+                } else if(s_status == 4){
+                    homeAreaProductList(pageNumber, pageSize)
                 }
             };
 
@@ -80,14 +86,14 @@ angular.module('goodsList.controller', ['goodsList.service'])
                     searchProductList(pageNumber, pageSize);
                 } else if (s_status == 3) {
                     areasProductList(pageNumber, pageSize);
+                } else if(s_status == 4){
+                    homeAreaProductList(pageNumber, pageSize)
                 }
             };
 
 
             //分类---商品列表
             function cateProductList(pageNumber, pageSize) {
-
-                var cateId = goodListParams.typeNumber;
 
                 GoodsListFty.goodsListService(cateId, pageNumber, pageSize, orderBy)
                     .then(function (json) {
@@ -222,9 +228,51 @@ angular.module('goodsList.controller', ['goodsList.service'])
                                     //$.toast("暂无更多的分区商品信息");
                                 }
                             }
+                        }else{
+                            console.log('获取分区商品信息失败：' + angular.toJson(json));
                         }
                     }, function (error) {
-                        console.log(error)
+                        console.log('获取分区商品信息失败：' + angular.toJson(error));
+                    })
+            }
+
+            //首页推荐商品
+            function homeAreaProductList(pageNumber, pageSize){
+                GoodsListFty.recommendProductService(pageNumber,pageSize,orderBy,cateId)
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            //console.log(angular.toJson(json));
+                            if (pageNumber == 1) {
+                                $scope.productList = json.data.products;
+                                if ($scope.productList.length >= 20) {
+                                    loading = false;
+                                    $scope.load_more_btn_show = true;
+                                } else {
+                                    loading = true;
+                                    $scope.load_more_btn_show = false;
+                                }
+                            } else if (pageNumber > 1) {
+                                var new_code = json.data.products;
+                                if (new_code.length > 0) {
+                                    loading = false;
+                                    angular.forEach(new_code, function (v, k) {
+                                        $scope.productList.push(v);
+                                    });
+                                    if(new_code.length < 20){
+                                        loading = true;
+                                        $scope.load_more_btn_show = false;
+                                    }
+                                } else if (new_code.length > 0) {
+                                    loading = true;
+                                    $scope.load_more_btn_show = false;
+                                    //$.toast("暂无更多的分区商品信息");
+                                }
+                            }
+                        }else{
+                            console.log('获取首页推荐商品失败：' + angular.toJson(json));
+                        }
+                    }, function(error){
+                        console.log('获取首页推荐商品失败：' + angular.toJson(error));
                     })
             }
 
@@ -251,6 +299,8 @@ angular.module('goodsList.controller', ['goodsList.service'])
                     searchProductList(pageNumber, pageSize);
                 } else if (s_status == 3) {
                     areasProductList(pageNumber, pageSize);
+                } else if(s_status == 4){
+                    homeAreaProductList(pageNumber, pageSize)
                 }
             };
 

@@ -49,7 +49,7 @@ angular.module('details.controller', ['details.service'])
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $scope.details = json.data;
-                            //console.log(angular.toJson(json.data.description));
+                            //console.log(angular.toJson(json.data));
 
                             $scope.details_stock_balance = $scope.details.stock_balance;
                             $scope.details_price = $scope.details.price;
@@ -153,6 +153,7 @@ angular.module('details.controller', ['details.service'])
                     .then(function(json){
                         if(json.status_code == 0){
                             $scope.product_rebate = json.data;
+                            //console.log("获取商品返利信息: "  + angular.toJson(json.data));
                         }else{
                             console.log("获取商品返利信息失败：" + angular.toJson(json));
                         }
@@ -284,7 +285,7 @@ angular.module('details.controller', ['details.service'])
                             if(json.status_code == 0){
                                 buy_option(productInfo,productId, int_quantity,product_property,product_specification_id);
                             }else{
-                                $.alert(json.message);
+                                $.toast(json.message,'cancel');
                                 console.log("获取限购信息失败：" + angular.toJson(json))
                             }
                         }, function(error){

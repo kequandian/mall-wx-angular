@@ -44,6 +44,15 @@ angular.module('homePage.controller', ['homePage.service'])
             }
         };
     })
+    .filter('defaultShortName', function () {
+        return function (value) {
+            if (!value || value===undefined || value.length==0){
+                return '十美优品';
+            }
+
+            return value;
+        };
+    })
 
     .controller('HomePageController', ['$scope', '$rootScope', '$state', 'HomePageFty', 'areasStatus', 'goodListParams',
         '$anchorScroll', '$ocLazyLoad','cateLeftIndex','$timeout','PointRate','BalanceSession',
@@ -211,7 +220,10 @@ angular.module('homePage.controller', ['homePage.service'])
                     .then(function (json) {
                         if (json.status_code == 0) {
 
-                            if (pageNumber == 1) {
+                            $scope.rec_product = json.data;
+                            console.log(json.data);
+
+                        /*    if (pageNumber == 1) {
                                 $scope.rec_product = json.data;
 
                                 if ($scope.rec_product.length >= pageSize) {
@@ -236,7 +248,7 @@ angular.module('homePage.controller', ['homePage.service'])
                                     //$.toast("暂无更多的推荐商品");
                                 }
 
-                            }
+                            }*/
 
                             //ISSUE FIX: loaded
                             $rootScope.rec_session.rec_product = $scope.rec_product;
