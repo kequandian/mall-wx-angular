@@ -20,25 +20,53 @@ angular.module('details.controller', ['details.service'])
             $scope.point_rate = PointRate.rate;
             var product_id = $stateParams.productId;
 
-            //修改url地址，用于分享
-            var newurl;
-            if(window.location.href.indexOf('?') >= 0){
-                var params = window.location.href.split('?');
-                var newParams = params[1].split('#')[0];
-                newurl = '?' + newParams + '&fallback=details-'+ product_id +'#/details/' + product_id;
-            }else{
-                newurl = '?fallback=details-'+ product_id +'#/details/' + product_id;
-            }
-            //console.log('newurl: ' + newurl);
-            if ( window.location.href.indexOf('fb_redirect=true') == -1 ) {
-                var currentState = history.state;
 
-                //prevents browser from storing history with each change:
-                if (currentState == null) {
-                    currentState = { title: document.title, url: newurl };
+            //修改url地址，用于分享
+            appendFallback(product_id);
+
+
+            function appendFallback(product_id){
+                if ( window.location.href.indexOf('fb_redirect=true') >=0 ) {
+                    return false;
                 }
-                window.history.pushState(currentState, document.title, newurl);
+
+                var newurl;
+                if(window.location.href.indexOf('?') >= 0){
+                    var params = window.location.href.split('?');
+                    var longParam = params[1];
+                    var param = longParam.split('#')[0];
+
+                    /// already has fallback
+                    if(param.indexOf('fallback=details-')>=0){
+                        param = param.replace(/fallback=details\-\d+/,  'fallback=details-'+product_id);
+                        //console.log("param>> "+param);
+                    }else{
+                        param = param + '&fallback=details-' + product_id;
+                        //console.log("param> "+param);
+                    }
+
+                    /// append details
+                    ///
+                    newurl = '?' + param + '#/details/' + product_id;
+                    //console.log("newurl>>> "+newurl);
+                }else{
+                    newurl = '?fallback=details-'+ product_id +'#/details/' + product_id;
+                    //console.log("newurl> "+newurl);
+                }
+
+
+                if(longParam != newurl) {
+                    //prevents browser from storing history with each change:
+                    var currentState = history.state;
+                    if (currentState == null) {
+                        currentState = {title: document.title, url: newurl};
+                    }
+
+                    //console.log("newurl<< "+newurl);
+                    window.history.pushState(currentState, document.title, newurl);
+                }
             }
+
 
             //商品详情
             detailsInfo();
