@@ -284,7 +284,7 @@ angular.module('details.controller', ['details.service'])
                             if(json.status_code == 0){
                                 buy_option(productInfo,productId, int_quantity,product_property,product_specification_id);
                             }else{
-                                $.toast(json.message,'cancel');
+                                $.alert(json.message);
                                 console.log("获取限购信息失败：" + angular.toJson(json))
                             }
                         }, function(error){
