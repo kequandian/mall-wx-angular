@@ -61,6 +61,19 @@ angular.module('goodsList.service', [])
                         return deferred.reject(data);
                     });
                 return deferred.promise;
+            },
+
+            //首页推荐商品
+            recommendProductService: function (pageNumber,pageSize,orderBy,cateId) {
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + "/product_category/" + cateId + "?pageNumber=" + pageNumber + "&pageSize=" + pageSize + orderBy + "&promoted=true";
+                $http.get(url)
+                    .success(function (data) {
+                        return deferred.resolve(data);
+                    }).error(function (data) {
+                        return deferred.reject(data);
+                    });
+                return deferred.promise;
             }
         }
     }]);

@@ -1,0 +1,137 @@
+{
+  "partner_level_zone": 2,
+  "stock_balance": 1000,
+  "fare_id": 2,
+  "id": 35,
+  "cover": "http://images.10mup.com/20160722155600409-t2lJM6oT.jpg",
+  "description": "<p><img src=\"http://images.10mup.com/20160713110650213-P4ouE9jN.jpg\" title=\"1468379209497025075.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713110650312-iEVfZ0XM.jpg\" title=\"1468379209509066792.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713110651821-SYlnaXOi.jpg\" title=\"1468379209530012128.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713110656880-AEbBc565.jpg\" title=\"1468379210721015872.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713110656056-EgzQ31Q5.jpg\" title=\"1468379211586091380.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713110653515-SxhcVhK0.jpg\" title=\"1468379212287068011.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713110656122-kMD0udjH.jpg\" title=\"1468379214063005639.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713110658163-JeHYZGi7.jpg\" title=\"1468379217737045242.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713110659995-g2Z32sQ2.jpg\" title=\"1468379218559038535.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713110701265-XFyY4IpC.jpg\" title=\"1468379221200032698.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713110701814-M01zmg6q.jpg\" title=\"1468379221775049131.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713110703567-v4pHaD9k.jpg\" title=\"1468379223509093722.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713110704139-GIdesbyi.jpg\" title=\"1468379224091046715.jpg\"></p>\n<p><br></p>",
+  "sales": 42,
+  "promoted": 1,
+  "name": "亮白增艳护理洗衣液2.5L【全国包邮（甘肃、宁夏、新疆、西藏、青海、内蒙古除外）】",
+  "purchase_strategy": null,
+  "created_date": "2016-07-13 11:07:16",
+  "cost_price": 22.04,
+  "status": "ONSELL",
+  "free_shipping": 1,
+  "category_id": 27,
+  "suggested_price": 38.8,
+  "barcode": null,
+  "properties": [],
+  "short_name": "",
+  "specifications": [
+    {
+      "id": 12,
+      "price": 38.8,
+      "cost_price": 22.04,
+      "product_id": 35,
+      "name": "薰衣草",
+      "suggested_price": 38.8,
+      "stock_balance": 974
+    },
+    {
+      "id": 13,
+      "price": 38.8,
+      "cost_price": 22.04,
+      "product_id": 35,
+      "name": "法国香薰",
+      "suggested_price": 38.8,
+      "stock_balance": 986
+    },
+    {
+      "id": 14,
+      "price": 38.8,
+      "cost_price": 22.04,
+      "product_id": 35,
+      "name": "自然清香",
+      "suggested_price": 38.8,
+      "stock_balance": 998
+    }
+  ],
+  "fare_template": {
+    "id": 2,
+    "shop_addr": "广东-广州",
+    "incl_postage_provisoes": [
+      {
+        "amount": 38,
+        "region": "北京|天津|河北|山西|辽宁|吉林|黑龙江|上海|江苏|浙江|安徽|福建|江西|山东|河南|湖北|湖南|广东|广西|海南|重庆|四川|贵州|云南|陕西|甘肃|钓鱼岛",
+        "id": 11,
+        "bulk_no": null,
+        "piece_no": null,
+        "carry_way": 0,
+        "type": 3,
+        "weight_no": null,
+        "fare_id": 2
+      }
+    ],
+    "last_modified_date": "2016-09-03 17:26:34",
+    "name": "10区商品满38元包邮",
+    "is_incl_postage": 0,
+    "carry_modes": [
+      {
+        "region": "内蒙古|西藏|青海|宁夏|新疆|台湾|澳门|香港",
+        "first_weight": null,
+        "second_amount": 5,
+        "carry_way": 0,
+        "is_default": 0,
+        "first_piece": 1,
+        "second_piece": 1,
+        "second_weight": null,
+        "fare_id": 2,
+        "id": 7,
+        "first_amount": 8,
+        "first_bulk": null,
+        "second_bulk": null
+      },
+      {
+        "region": null,
+        "first_weight": null,
+        "second_amount": 10,
+        "carry_way": 0,
+        "is_default": 1,
+        "first_piece": 1,
+        "second_piece": 1,
+        "second_weight": null,
+        "fare_id": 2,
+        "id": 6,
+        "first_amount": 10,
+        "first_bulk": null,
+        "second_bulk": null
+      }
+    ],
+    "valuation_model": 0,
+    "is_incl_postage_by_if": 1,
+    "dispatch_time": "36",
+    "is_excl_postage": false,
+    "default_amount": 10
+  },
+  "unit": "2.5L*1瓶",
+  "last_modified_date": "2016-09-02 17:28:12",
+  "price": 38.8,
+  "covers": [
+    {
+      "id": 226,
+      "product_id": 35,
+      "sort_order": 1,
+      "type": 0,
+      "url": "http://images.10mup.com/20160722155600409-t2lJM6oT.jpg"
+    },
+    {
+      "id": 227,
+      "product_id": 35,
+      "sort_order": 2,
+      "type": 0,
+      "url": "http://images.10mup.com/20160722155600220-lf05QNAi.jpg"
+    },
+    {
+      "id": 228,
+      "product_id": 35,
+      "sort_order": 3,
+      "type": 0,
+      "url": "http://images.10mup.com/20160713110715438-dxnZow1X.jpg"
+    }
+  ],
+  "freight": 0,
+  "store_location": null,
+  "sort_order": 100,
+  "view_count": 487
+}

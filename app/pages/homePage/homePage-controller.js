@@ -211,7 +211,9 @@ angular.module('homePage.controller', ['homePage.service'])
                     .then(function (json) {
                         if (json.status_code == 0) {
 
-                            if (pageNumber == 1) {
+                            $scope.rec_product = json.data;
+
+                        /*    if (pageNumber == 1) {
                                 $scope.rec_product = json.data;
 
                                 if ($scope.rec_product.length >= pageSize) {
@@ -236,7 +238,7 @@ angular.module('homePage.controller', ['homePage.service'])
                                     //$.toast("暂无更多的推荐商品");
                                 }
 
-                            }
+                            }*/
 
                             //ISSUE FIX: loaded
                             $rootScope.rec_session.rec_product = $scope.rec_product;

@@ -4,7 +4,8 @@ angular.module('homePage.service', [])
             return{
                 recommendProductService: function (pageNumber, pageSize) {
                     var deferred = $q.defer();
-                    var url = GlobalVariable.SERVER_PATH + "/product?pageNumber=" + pageNumber + "&pageSize=" + pageSize;
+                    //var url = GlobalVariable.SERVER_PATH + "/product?pageNumber=" + pageNumber + "&pageSize=" + pageSize;
+                    var url = GlobalVariable.SERVER_PATH + "/product_category?promoted=true";
                     $http.get(url)
                         .success(function (data) {
                             return deferred.resolve(data);

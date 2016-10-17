@@ -641,6 +641,31 @@
 #details .details-quantity-position{
     height: 60px;
 }
+
+#details .details-quantity-position span{
+    float: left;
+}
+
+#details .details-quantity-position .f-span{
+    font-size: 14px;
+    margin-top: 3px;
+}
+
+
+#details .details-quantity-position .s-span{
+    font-size: 12px;
+    color: #4c4c4c;
+    margin-top: 5px;
+}
+
+#details .details-quantity-position .cart-quantity-form .cart-quantity-decrement span{
+    float: none;
+}
+
+#details .details-quantity-position .cart-quantity-form .cart-quantity-increment span{
+    float: none;
+}
+
 #details .weui_actionsheet_action{
     margin-top: 0;
     border: 0;

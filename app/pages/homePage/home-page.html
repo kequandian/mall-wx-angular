@@ -74,8 +74,37 @@
             </div>
         </div>
 
+        <!-- 公告栏 -->
+        <div id="notice">
+            <div class="notice-right">
+                公告
+            </div>
+            <div class="vertical_line"></div>
+            <div class="notice-center">
+                <marquee scrollamount="3">公告内容</marquee>
+            </div>
+            <div class="notice-left">
+               <img src="img/home/arrow.png">
+            </div>
+        </div>
+
+        <!-- 导航专区 -->
+        <div id="ad_area">
+            <div class="ad-left">
+                <a ng-href="{{ad_banner_1.target_url}}"><img ng-src="{{ad_banner_1.image}}"></a>
+            </div>
+            <div class="ad-right">
+                <div class="ad-right-top">
+                    <img src="img/home/img2.png">
+                </div>
+                <div class="ad-right-bottom" ng-click="areasStatus(1)">
+                    <img src="img/home/img3.png">
+                </div>
+            </div>
+        </div>
+
         <!-- 功能导航 -->
-        <nav id="nav">
+        <nav id="nav" ng-if="false">
 
             <!--<span class="group-span-top">
                 <img ng-src="img/home/new-product.png" alt="">
@@ -151,7 +180,7 @@
            </div>-->
 
         <!-- ad-1 -->
-        <div class="panic-buying-ad">
+        <div class="panic-buying-ad" ng-if="false">
             <div class="ad-1">
                 <!--<img src="img/home/snaps-img.jpg">-->
                 <a ng-href="{{ad_banner_1.target_url}}"><img ng-src="{{ad_banner_1.image}}"></a>
@@ -202,16 +231,26 @@
     <!-- 产品列表 -->
     <div class="s-size-area">
 
-        <div class="area-product-title">
+        <div class="area-product-title" ng-if="false">
             <label>/精选为你推荐/</label>
         </div>
 
-        <div oc-lazy-load="SquareImg">
-            <div class="area-product">
+        <div oc-lazy-load="SquareImg" ng-repeat="productItem in rec_product"style="margin-top: 8px;">
+
+            <div class="area_title" ng-click="goToGoodsList(productItem.id)">
+                {{productItem.name}}
+                <img src="img/home/arrow.png">
+            </div>
+
+            <div class="area_cover" ng-if="productItem.cover != null">
+                <img square-img src="{{productItem.cover}}">
+            </div>
+
+            <div oc-lazy-load="SquareImg" class="area-product">
                 <div id="homeProductGrids">
                     <div class="weui_grids">
                         <a ui-sref="details({productId:item.id})" class="weui_grid product_item" on-finish-render
-                           ng-repeat="item in rec_product">
+                           ng-repeat="item in productItem.products">
                             <div ng-click="gotoDetail()">
                                 <!--product cover-->
                                 <div class="pro-item-margin">
@@ -222,14 +261,14 @@
                                 <!--product desc-->
                                 <div class="pro-item-desc">
                                     <div class="weui_grid_label home_grid_text">
-                                        {{item.name | cutText:true:22:'...'}}
+                                        {{item.name | cutText:true:12:'...'}}
                                     </div>
                                     <div class="home_grid_footer_text">
                                         <div class="home_g_left c-left">{{item.price | currency:"￥"}}</div>
                                         <!--<div class="home_g_left c-left c-left-minor">/{{ (item.price * point_rate) | number:0}}<span style="font-size: 6px">积分</span></div>-->
-                                        <div ng-if="item.suggested_price>item.price" class="home_g_right c-right">
-                                            <span><s>{{item.suggested_price | currency:"￥"}}</s></span>
-                                        </div>
+                                        <!--<div ng-if="item.suggested_price>item.price" class="home_g_right c-right">-->
+                                            <!--<span><s>{{item.suggested_price | currency:"￥"}}</s></span>-->
+                                        <!--</div>-->
                                     </div>
                                 </div>
                             </div>
@@ -242,6 +281,8 @@
                 </div>
             </div>
         </div>
+
+
     </div>
 
     <!-- 底部 -->
