@@ -1,0 +1,95 @@
+<div id="category">
+
+    <!-- 头部logo -->
+    <div class="hd">
+
+        <div class="home-logo">
+            <!--<img src="img/home/shop-logo.png">-->
+        </div>
+
+        <!-- 搜索框 -->
+        <div class="weui_search_bar home-title-center" id="search_bar" ng-click="cateGoToSearchPage()">
+            <form class="weui_search_outer">
+                <div class="weui_search_inner">
+                    <i class="weui_icon_search" style="top: 7px;"></i>
+                    <input type="search" class="weui_search_input" id="search_input" placeholder="搜索你想要的商品"
+                           ng-disabled="true" required/>
+                    <!--<a href="javascript:" class="weui_icon_clear" id="search_clear"></a>-->
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+
+    <nav id="nav">
+        <ul>
+            <li ng-class="$index==indexPos?'nav-current':'nav-blur'"
+                ng-repeat="item in categoryItem"
+                ng-click="categoryLeftClick($event);getCategoryDetailData(item.id, item);getIndex($index,item.id);">
+                {{item.name}}
+            </li>
+        </ul>
+    </nav>
+
+    <div id="pro">
+        <div class="pro-scroll">
+            <div class="pro-warp">
+                <div ng-repeat="itemParent in categoryItem | cate:cateId" ng-if="cateCoumt == 2">
+                    <!--Level 2-->
+                    <div class="content" ng-repeat="itemCateList in itemParent.sub_categories">
+
+                        <div class="content-title">
+                            <span>{{itemCateList.name}}</span>
+                        </div>
+                        <!--Level 3-->
+                        <div class="content-body">
+                            <!--<a class="content-body-list" ng-repeat="gItems in itemCateList.sub_categories" ng-click="goToGoodsList();">
+                                <span>{{gItems.name}}<i style="float: right">|</i></span>
+                            </a>-->
+                            <!--Product list-->
+                            <div oc-lazy-load="SquareImg">
+                                <a class="weui_grids" ng-repeat="itemList in itemCateList.sub_categories">
+                                    <div class="weui_grid item-box" ng-click="goToGoodsList(itemList.id)">
+                                        <div>
+                                            <span>{{itemList.name}}</span>
+                                            <img square-img ng-src="{{itemList.cover | defaultCover}}">
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div ng-repeat="itemParent in categoryItem | cate:cateId" ng-if="cateCoumt == 1">
+                    <!--Level 2-->
+                    <div class="content">
+                        <!--Level 3-->
+                        <div class="content-body" style="margin-top: 10px;">
+                            <!--Product list-->
+                            <div oc-lazy-load="SquareImg">
+                                <!--<a class="weui_grids" ng-repeat="itemList in itemCateList.sub_categories">-->
+                                <a class="weui_grids" ng-repeat="itemCateList in itemParent.sub_categories">
+                                    <div class="weui_grid item-box-50" ng-click="goToGoodsList(itemCateList.id)">
+                                        <div>
+                                            <span>{{itemCateList.name}}</span>
+                                            <img square-img ng-src="{{itemCateList.cover | defaultCover}}">
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+</div>

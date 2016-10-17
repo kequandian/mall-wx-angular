@@ -10,205 +10,37 @@
 
 #category{
     background-color: #efeff3;
-}
-
-#category .hd {
     width: 100%;
-    height: 45px;
-    background-color: #C20403;
+    height: auto;
     position: relative;
-    border-bottom: 1px solid #cccccc;
 }
 
-#category .home-logo{
-    width: 80px;
-    height: 45px;
-    padding-left: 5px;
-    /*background-color: #262626;*/
-    background-color: #C20403;
-    position: absolute;
+#category .first-nav{
+    width: 100%;
+    height:42px;
+    position: fixed;
+    z-index: 2;
+    background-color: #007aff;
 }
 
-#category .home-logo img{
-    width: 80px;
-    height: 30px;
-    margin-top:7px;
+#category .second-nav{
+    width: 100%;
+    height:42px;
+    position: fixed;
+    top: 42px;
+    z-index: 2;
+    background-color: #FFBCF3;
 }
 
-#category .home-title-center{
-    left: 20px;
-    right: 20px;
-    height: 44px;
-    position: absolute;
-    background-color: #C20403;
-}
-
-#category .home-title-right{
-    width: 70px;
-    height: 44px;
-    right: 0;
-    text-align: center;
-    background-color: #C20403;
-    position: absolute;
-}
-
-#category .home-title-right img{
-    width: 21px;
-    height: 17px;
-    margin-top: 5px;
-    right: 0;
-}
-
-#category #nav{
-    position:absolute;
-    top:45px;
-    bottom:0;
-    width:90px;
-    height: auto;
-    overflow:hidden;
-    background-color:white;
-    margin-bottom: 60px;
-}
-#category #nav ul{
-    display:block;
-    width:100%;
-    height:100%;
-    overflow-x:hidden;
-    overflow-y:scroll;
-}
-#category #nav ul li{
-    /*border-bottom:1px solid #eeeeee;*/
-    text-align:center;
-    line-height:50px;
-    width:89px;
-    height:48px;
-    font-size:14px;
-    font-weight: 600;
-    color: #404040;
-    background-color:white;
-}
-#category #nav .nav-blur{
-    color:#252525;
-    border-right:1px solid #e0e2e0;
-    border-bottom:1px solid #e0e2e0;
-}
-#category #nav .nav-current{
-    color:#C20403;
-    background-color:#efeff3;
-    border-right:1px solid #efeff3;
-    border-bottom:1px solid #efeff3;
-}
-#category #nav .nav-prev{
-    color:#252525;
-    border-right:1px solid #e0e2e0;
-    border-bottom:1px solid #efeff3;
-}
-
-
-#category #pro{
-    position:absolute;
-    left:90px;
-    top:45px;
-    right:0;
-    bottom:0;
-    height: auto;
+#category .pro-content{
+    width: 100%;
+    height:700px;
     overflow-x: hidden;
     overflow-y: scroll;
-    margin-bottom: 60px;
-    background-color: #efeff3;
-}
-#category .pro-scroll{
-    height:100%;
-    margin-left:12px;
-    margin-right:12px;
-    background-color: #efeff3;
-}
-#category .pro-warp{
-    width:100%;
-    height: auto;
-    background-color:#efeff3;
+    position: absolute;
+    top: 82px;
+    z-index: 1;
+    background-color: #91FFC9;
 }
 
-#category #pro .content{
-    overflow:hidden;
-}
-#category #pro .content-title{
-    margin-top:15px;
-    font-size:14px;
-    font-weight:500;
-    padding-left:3px;
-    padding-bottom: 8px;
-    color:#777777;
-}
-#category #pro .content-body{
-    /*margin: 0 3px 0 3px;*/
-    /*overflow:hidden;*/
-}
-#category #pro .content-body-list{
-    /*line-height: 35px;*/
-    /*margin-top:5px;*/
-    /*float:left;*/
-}
-#category #pro .content-body-list span{
-    font-size:14px;
-    text-align:center;
-}
-
-#category .weui_grid{
-    padding: 0;
-}
-
-#category .item-box{
-    width: 33.333%;
-    text-align: center;
-    background-color: white;
-    float: left;
-    margin-bottom: 6px;
-    border-left: 3px solid #efeff3;
-    border-right: 3px solid #efeff3;
-}
-
-#category .item-box span{
-    height: 28px;
-    line-height: 28px;
-    color:#999999;
-    font-size:14px
-}
-
-#category .item-box div {
-    margin-top:5px;
-    margin-bottom:5px;
-}
-
-#category .item-box img{
-    width: 100%;
-    height: 72px;
-}
-
-#category .item-box-50{
-    width: 50%;
-    text-align: center;
-    background-color: white;
-    float: left;
-    margin-bottom: 6px;
-    border-left: 3px solid #efeff3;
-    border-right: 3px solid #efeff3;
-}
-
-#category .item-box-50 span{
-    height: 28px;
-    line-height: 28px;
-    color:#999999;
-    font-size:14px
-}
-
-#category .item-box-50 div {
-    margin-top:5px;
-    margin-bottom:5px;
-}
-
-#category .item-box-50 img{
-    width: 100%;
-    height: 72px;
-}
 
