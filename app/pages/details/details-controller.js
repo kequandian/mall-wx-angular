@@ -389,6 +389,10 @@ angular.module('details.controller', ['details.service'])
                 $rootScope.settle_product_code = p_info;
                 //console.log(angular.toJson(p_item));
 
+                var newUrl = '#/cart-settlement';
+                var title = '结算';
+                window.history.pushState(currentState, title, newUrl);
+
                 $state.go('cart-settlement', {
                     carts: $scope.checkedCarts,
                     totalToPay: item.price * quantity,
