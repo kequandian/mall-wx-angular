@@ -262,6 +262,7 @@ angular.module('homePage.controller', ['homePage.service'])
                                 //console.log("ad?"+angular.toJson($scope.ad_banner ));
                                 $scope.ad_banner_1 = $scope.ad_banner[0];
                                 $scope.ad_banner_2 = $scope.ad_banner[1];
+                                $scope.ad_banner_3 = $scope.ad_banner[2];
                                 //console.log("ad-banner-1?"+angular.toJson($scope.ad_banner_1));
 
                                 $rootScope.ad_session.ad_banner = $scope.ad_banner;
