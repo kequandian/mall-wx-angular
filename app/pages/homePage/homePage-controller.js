@@ -150,6 +150,8 @@ angular.module('homePage.controller', ['homePage.service'])
             getAdBanner();
             //获取积分
             getBalance();
+            //获取公告
+            getSystemAnnouncement();
 
             //获取推荐商品
             if ($rootScope.rec_session.rec_product.length == 0) {
@@ -169,7 +171,7 @@ angular.module('homePage.controller', ['homePage.service'])
                         if (json.status_code == 0) {
 
                             $scope.rec_product = json.data;
-                            //console.log(json.data);
+                            //console.log(angular.toJson(json.data));
 
                         /*    if (pageNumber == 1) {
                                 $scope.rec_product = json.data;
@@ -301,7 +303,7 @@ angular.module('homePage.controller', ['homePage.service'])
                     //$location.hash('content');
                     //$anchorScroll.yOffset = $rootScope.yOffset;
                 }
-            })
+            });
             //Do your $on in here, like this:
             $rootScope.$on("$locationChangeStart", function (event, next, current) {
                 if ($rootScope.scrolls && !$rootScope.scrolls.stacked) {
@@ -377,6 +379,19 @@ angular.module('homePage.controller', ['homePage.service'])
                         }
                     }, function(error){
                         console.log('获取积分失败: ' + angular.toJson(error));
+                    })
+            }
+
+            //获取系统公告
+            function getSystemAnnouncement(){
+                HomePageFty.getSystemAnnouncementService()
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            console.log(angular.toJson(json))
+                            $scope.sysAnn = json.data[0].content;
+                        }
+                    }, function(error){
+                        console.log('获取公告失败: ' + angular.toJson(error));
                     })
             }
 

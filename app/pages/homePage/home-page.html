@@ -81,7 +81,7 @@
             </div>
             <div class="vertical_line"></div>
             <div class="notice-center">
-                <marquee scrollamount="3">公告内容</marquee>
+                <marquee scrollamount="3">{{sysAnn}}</marquee>
             </div>
             <div class="notice-left">
                <img src="img/home/arrow.png">
@@ -245,10 +245,13 @@
             <!--<div class="area_cover" ng-if="productItem.cover != null">-->
             <div class="area_cover">
                 <img src="{{productItem.cover | defaultImg}}">
-                <div class="area_cover_name">
+                <!--<img src="">-->
+                <div class="area_cover_name" ng-if="false">
                     <div class="div1">
                         <div class="div2">
-                            测试字体
+                            <div class="div3">
+                                测试字体,测试字体,测试字体,
+                            </div>
                         </div>
                     </div>
                 </div>

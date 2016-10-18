@@ -313,7 +313,7 @@ angular.module('details.controller', ['details.service'])
                             if(json.status_code == 0){
                                 buy_option(productInfo,productId, int_quantity,product_property,product_specification_id);
                             }else{
-                                $.toast(json.message,'cancel');
+                                $.alert(json.message);
                                 console.log("获取限购信息失败：" + angular.toJson(json))
                             }
                         }, function(error){
@@ -438,7 +438,8 @@ angular.module('details.controller', ['details.service'])
 
                 var newUrl = '#/cart-settlement';
                 var title = '结算';
-                window.history.pushState(currentState, title, newUrl);
+                var c_state = history.state;
+                window.history.pushState(c_state, title, newUrl);
 
                 $state.go('cart-settlement', {
                     carts: $scope.checkedCarts,
