@@ -1,7 +1,7 @@
 <!-- 头部logo -->
 <div class="hd">
 
-    <div class="home-logo">
+    <div class="home-logo" ng-if="false">
         <svg style="vertical-align: middle;margin-top:9px" width="82.8" height="26" viewBox="0 0 892 280">
             <g>
                 <path fill="#de0122" opacity="1.00"
@@ -26,21 +26,22 @@
     </div>
 
     <!-- 搜索框 -->
-    <div class="weui_search_bar home-title-center" id="search_bar" ng-click="goToSearchPage()">
+    <div class="weui_search_bar home-title-center" id="search_bar" ng-click="goToSearchPage()" ng-if="false">
         <form class="weui_search_outer">
             <div class="weui_search_inner">
                 <i class="weui_icon_search" style="top: 8px;"></i>
-                <input type="search" style="font-family:'Microsoft YaHei';" class="weui_search_input" id="search_input"
-                       ng-disabled="true"
-                       placeholder="搜索你想要的商品" required/>
-                <!--<a href="javascript:" class="weui_icon_clear" id="search_clear"></a>-->
+                <!--<input type="search" style="font-family:'Microsoft YaHei';" class="weui_search_input" id="search_input"-->
+                       <!--ng-disabled="true"-->
+                       <!--placeholder="搜索你想要的商品" required/>-->
             </div>
-            <!--<label for="search_input" class="weui_search_text" id="search_text">-->
-            <!--<i class="weui_icon_search"></i>-->
-            <!--<span>搜索</span>-->
-            <!--</label>-->
         </form>
-        <!--<a href="javascript:" class="weui_search_cancel" id="search_cancel">取消</a>-->
+    </div>
+
+    <div class="home-title-center">
+        <div class="search_outer" ng-click="goToSearchPage()">
+            <i class="weui_icon_search"></i>
+            <span class="search_input" id="search_input">搜索你想要的商品</span>
+        </div>
     </div>
 
     <div class="home-title-right">
@@ -256,7 +257,6 @@
                     <div class="div1">
                         <div class="div2">
                             <div class="div3">
-                                <!--测试字体,测试字体,测试字体,-->
                                 {{productItem.description | defaultShortName}}
                             </div>
                         </div>

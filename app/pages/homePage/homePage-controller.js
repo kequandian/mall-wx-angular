@@ -214,6 +214,12 @@ angular.module('homePage.controller', ['homePage.service'])
                     })
             }
 
+            //分行
+            $scope.branch = function(content){
+
+            };
+
+            //获取广告
             function getAdHome() {
                 var loaded = false;
                 if ($rootScope.ad_session) {
