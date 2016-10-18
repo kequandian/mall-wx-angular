@@ -171,7 +171,7 @@ angular.module('homePage.controller', ['homePage.service'])
                         if (json.status_code == 0) {
 
                             $scope.rec_product = json.data;
-                            //console.log(angular.toJson(json.data));
+                            console.log(angular.toJson(json.data));
 
                         /*    if (pageNumber == 1) {
                                 $scope.rec_product = json.data;
@@ -387,7 +387,7 @@ angular.module('homePage.controller', ['homePage.service'])
                 HomePageFty.getSystemAnnouncementService()
                     .then(function(json){
                         if(json.status_code == 0){
-                            console.log(angular.toJson(json))
+                            //console.log(angular.toJson(json))
                             $scope.sysAnn = json.data[0].content;
                         }
                     }, function(error){

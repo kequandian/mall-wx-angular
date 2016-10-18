@@ -389,7 +389,7 @@ body, html {
 
 #content .area_cover img{
     width: 100%;
-    height: 150px;
+    height: auto;
     background-color: #464646;
 }
 

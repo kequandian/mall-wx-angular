@@ -246,11 +246,12 @@
             <div class="area_cover">
                 <img src="{{productItem.cover | defaultImg}}">
                 <!--<img src="">-->
-                <div class="area_cover_name" ng-if="false">
+                <div class="area_cover_name">
                     <div class="div1">
                         <div class="div2">
                             <div class="div3">
-                                测试字体,测试字体,测试字体,
+                                <!--测试字体,测试字体,测试字体,-->
+                                {{productItem.description | defaultShortName}}
                             </div>
                         </div>
                     </div>
