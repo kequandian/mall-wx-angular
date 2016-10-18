@@ -171,7 +171,7 @@ angular.module('homePage.controller', ['homePage.service'])
                         if (json.status_code == 0) {
 
                             $scope.rec_product = json.data;
-                            console.log(angular.toJson(json.data));
+                            //console.log(angular.toJson(json.data));
 
                         /*    if (pageNumber == 1) {
                                 $scope.rec_product = json.data;
