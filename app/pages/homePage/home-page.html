@@ -92,7 +92,7 @@
         <!-- 导航专区 -->
         <div id="ad_area">
             <div class="ad-left">
-                <a ng-href="{{ad_banner_1.target_url}}">
+                <a ui-sref="{{ad_banner_1.target_url | formatDetailsLocation}}">
                     <img ng-src="{{ad_banner_1.image != null ? ad_banner_1.image : 'img/home/img1.png'}}">
                 </a>
             </div>
