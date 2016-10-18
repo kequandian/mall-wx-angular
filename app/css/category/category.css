@@ -11,28 +11,70 @@
 #category{
     background-color: #efeff3;
     width: 100%;
-    height: auto;
     position: relative;
 }
 
-#category .first-nav{
-    width: 100%;
-    height:42px;
-    position: fixed;
-    z-index: 2;
-    background-color: #007aff;
+#category #nav{
 }
 
-#category .second-nav{
-    width: 100%;
+#category #nav .first-nav{
+    height: 42px;
+    overflow-x:scroll;
+    background-color: #E6E6E6;
+}
+
+#category #nav .first-nav ul{
+    width:480px;
     height:42px;
-    position: fixed;
-    top: 42px;
-    z-index: 2;
-    background-color: #FFBCF3;
+    border-bottom:1px solid #dfdfdf;
+}
+#category #nav .first-nav li{
+    float:left;
+    width:79px;
+    height:42px;
+    text-align:center;
+    line-height:42px;
+    border-right:1px solid #dfdfdf;
+}
+
+#category #nav .first-nav li:hover{
+    background-color: #0D3349;
+    color: white;
+}
+
+#category #nav .second-nav{
+    height: 42px;
+    overflow-x:scroll;
+    overflow-y: hidden;
+    background-color: #E6E6E6;
+}
+
+#category #nav .second-nav ul{
+    width:480px;
+    height:42px;
+    border-bottom:1px solid #dfdfdf;
+}
+#category #nav .second-nav li{
+    float:left;
+    width:79px;
+    height:42px;
+    text-align:center;
+    line-height:42px;
+    border-right:1px solid #dfdfdf;
 }
 
 #category .pro-content{
+    width: 100%;
+    height:700px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: absolute;
+    top: 82px;
+    z-index: 1;
+    background-color: #91FFC9;
+}
+
+#category .pro-content .content{
     width: 100%;
     height:700px;
     overflow-x: hidden;
