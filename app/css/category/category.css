@@ -20,11 +20,12 @@
 #category #nav .first-nav{
     height: 42px;
     overflow-x:scroll;
+    overflow-y: hidden;
     background-color: #E6E6E6;
 }
 
 #category #nav .first-nav ul{
-    width:480px;
+    width:560px;
     height:42px;
 }
 #category #nav .first-nav li{
