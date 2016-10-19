@@ -493,24 +493,10 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                                 deleteProducts($scope.settlementData);
                             }else{
                                 if($scope.order.payment_type == 'WECHAT') {
-                                    //$.toast('支付失败','cancel');
-                                    $.alert({
-                                        title:'支付失败',
-                                        text:result.message,
-                                        onOK:function(){
-                                            //
-                                        }
-                                    });
+                                    $.alert(result.message, '支付失败', function(){});
                                     console.log('支付失败：' + angular.toJson(result));
                                 }else if($scope.order.payment_type == 'POINT'){
-                                    //$.toast('兑换失败','cancel');
-                                    $.alert({
-                                        title:'兑换失败',
-                                        text:result.message,
-                                        onOK:function(){
-                                            //
-                                        }
-                                    });
+                                    $.alert(result.message, '兑换失败', function(){});
                                     console.log('兑换失败：' + angular.toJson(result));
                                 }else{
                                     $.toast('未知支付方式', 'cancel');

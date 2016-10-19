@@ -215,8 +215,20 @@ angular.module('homePage.controller', ['homePage.service'])
             }
 
             //分行
-            $scope.branch = function(content){
-
+            $scope.check_description = function(content){
+                if(content != null){
+                    if(content.indexOf('\\n') > 0) {
+                        var list = content.split('\n');
+                        $scope.des_branch_list = list;
+                        $scope.no_branch = false;
+                        $scope.des_branch = true;
+                    }else{
+                        $scope.no_branch = true;
+                        $scope.des_branch = false;
+                    }
+                    return true;
+                }
+                return false;
             };
 
             //获取广告

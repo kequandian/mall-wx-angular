@@ -258,11 +258,14 @@
             <div class="area_cover">
                 <img src="{{productItem.cover | defaultImg}}">
                 <!--<img src="">-->
-                <div class="area_cover_name" ng-if="productItem.cover != null">
+                <div class="area_cover_name" ng-if="check_description(productItem.description)">
                     <div class="div1">
                         <div class="div2">
                             <div class="div3">
-                                {{productItem.description | defaultShortName}}
+                                <div ng-if="no_branch">{{productItem.description}}</div>
+                                <div ng-if="des_branch">
+                                    <div ng-repeat="d_b_itemt in des_branch_list">{{d_b_itemt}}</div>
+                                </div>
                             </div>
                         </div>
                     </div>
