@@ -4,7 +4,7 @@
     <nav id="nav">
         <div class="first-nav">
             <ul>
-                <li>11.11</li>
+                <li class="li_bg">11.11</li>
                 <li>销量</li>
                 <li>价格</li>
                 <li>品牌</li>
@@ -24,6 +24,21 @@
             </ul>
         </div>
     </nav>
+
+    <div class="cate-search">
+        <!--new search input-->
+        <div class="cate-search-input">
+            <div class="search_outer" ng-click="goToSearchPage()">
+                <i class="weui_icon_search"></i>
+                <!--<span class="" id="search_input">搜索你想要的商品</span>-->
+                <input type="search" class="search_input" id="search_input"
+                       ng-disabled="true"
+                       placeholder="搜索你想要的商品" required/>
+
+            </div>
+        </div>
+    </div>
+
 
 
     <div class="pro-content">
