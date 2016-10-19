@@ -37,10 +37,15 @@
         </form>
     </div>
 
+    <!--new search input-->
     <div class="home-title-center">
         <div class="search_outer" ng-click="goToSearchPage()">
             <i class="weui_icon_search"></i>
-            <span class="search_input" id="search_input">搜索你想要的商品</span>
+            <!--<span class="" id="search_input">搜索你想要的商品</span>-->
+            <input type="search" class="search_input" id="search_input"
+                ng-disabled="true"
+                placeholder="搜索你想要的商品" required/>
+
         </div>
     </div>
 
@@ -76,7 +81,7 @@
         </div>
 
         <!-- 公告栏 -->
-        <div id="notice">
+        <div id="notice" ng-if="sysAnn != null">
             <div class="notice-right">
                 公告
             </div>

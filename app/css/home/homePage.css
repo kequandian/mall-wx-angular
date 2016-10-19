@@ -16,6 +16,8 @@ body, html {
     position: fixed;
     z-index: 2;
     border-bottom: 1px solid #cccccc;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 .home-logo {
@@ -53,14 +55,10 @@ body, html {
 }
 
 .home-title-center .search_input{
-    width: 86%;
-    height: 28px;
-    font-size: 14px;
-    color: #8e8e8e;
-    margin-top: 2px;
-    padding-left: 7px;
+    border: 0;
     border-left: 2px solid #cccccc;
     background-color: #e6e6e6;
+    padding: 3px 16px 3px 6px;
 }
 
 .weui_search_inner .weui_search_input {
