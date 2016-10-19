@@ -1,4 +1,4 @@
-::-webkit-scrollbar { width: 0; }/* Track & scroll thickness */
+::-webkit-scrollbar { width: 0; display: none }/* Track & scroll thickness */
 
 ::-webkit-scrollbar-track { background-color:#00FFFFFF; }/* Track color */
 
