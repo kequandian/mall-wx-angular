@@ -145,8 +145,8 @@ angular.module('category.controller', ['category.service'])
 
             $scope.goToGoodsList = function (gItemtId) {
                 goodListParams.typeNumber = gItemtId;
-                goodListParams.searchStatus = 1;
-                $state.go('goodsList')
+                //goodListParams.searchStatus = 1;
+                $state.go('goodsList',{statusNumber:1})
             };
 
             //点击搜索栏

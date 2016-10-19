@@ -218,7 +218,7 @@ angular.module('homePage.controller', ['homePage.service'])
             $scope.check_description = function(content){
                 if(content != null){
                     if(content.indexOf('\\n') > 0) {
-                        var list = content.split('\n');
+                        var list = content.split('\\n');
                         $scope.des_branch_list = list;
                         $scope.no_branch = false;
                         $scope.des_branch = true;
@@ -277,11 +277,10 @@ angular.module('homePage.controller', ['homePage.service'])
                         .then(function (json) {
                             if (json.status_code == 0) {
                                 $scope.ad_banner = json.data;
-                                //console.log("ad?"+angular.toJson($scope.ad_banner ));
                                 $scope.ad_banner_1 = $scope.ad_banner[0];
                                 $scope.ad_banner_2 = $scope.ad_banner[1];
                                 $scope.ad_banner_3 = $scope.ad_banner[2];
-                                //console.log("ad-banner-1?"+angular.toJson($scope.ad_banner_1));
+                                //console.log("ad-banner-1: "+angular.toJson($scope.ad_banner_1));
 
                                 $rootScope.ad_session.ad_banner = $scope.ad_banner;
                             }
@@ -294,6 +293,7 @@ angular.module('homePage.controller', ['homePage.service'])
 
                     $scope.ad_banner_1 = $scope.ad_banner[0];
                     $scope.ad_banner_2 = $scope.ad_banner[1];
+                    $scope.ad_banner_3 = $scope.ad_banner[2];
                 }
             }
 
@@ -331,7 +331,7 @@ angular.module('homePage.controller', ['homePage.service'])
             });
 
             //分类区域
-            $scope.areasStatus = function (number) {
+            /*$scope.areasStatus = function (number) {
                 if (number == 1) {
                     areasStatus.areas_status = 1;
                     goodListParams.searchStatus = 3;
@@ -341,7 +341,7 @@ angular.module('homePage.controller', ['homePage.service'])
                     goodListParams.searchStatus = 3;
                     $state.go('goodsList');
                 }
-            };
+            };*/
 
             //加载更多
             $scope.home_load_more_product = function () {

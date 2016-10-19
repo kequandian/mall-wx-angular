@@ -83,8 +83,8 @@ angular.module('searchPage.controller', ['searchPage.service'])
                             searchInfo.search_info = json.data;
                             searchInfo.search_name = p_name;
                             goodListParams.typeNumber = null;
-                            goodListParams.searchStatus = 2;
-                            $state.go('goodsList');
+                            //goodListParams.searchStatus = 2;
+                            $state.go('goodsList',{statusNumber:2});
                         }
                     }, function(error){
                         console.log(error)
