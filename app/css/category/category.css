@@ -15,54 +15,65 @@
 }
 
 #category #nav{
+    margin-bottom: 8px;
+    border-bottom: 1px solid #E0E0E0;
 }
 
 #category #nav .first-nav{
     height: 42px;
     overflow-x:scroll;
     overflow-y: hidden;
-    background-color: #E6E6E6;
+    background-color: white;
 }
 
 #category #nav .first-nav ul{
-    width:560px;
+    /*width:635px;*/
     height:42px;
 }
-#category #nav .first-nav li{
-    width:90px;
+#category #nav .first-nav ul li{
+    width:105px;
     height:42px;
+    font-size: 16px;
     text-align:center;
     line-height:42px;
+    list-style-type: none;
     float:left;
 }
 
-#category #nav .first-nav li:hover{
-    width:90px;
-    height:42px;
-    text-align: center;
-    background-color: #0D3349;
-    color: white;
+#category #nav .first-nav ul li .first-current{
+    color: red;
+    padding-bottom: 9px;
+    border-bottom: 2px solid red;
 }
 
 #category #nav .second-nav{
     height: 42px;
     overflow-x:scroll;
     overflow-y: hidden;
-    background-color: #E6E6E6;
+    background-color: white;
+    border-top: 1px solid #cccccc;
 }
 
 #category #nav .second-nav ul{
-    width:480px;
+    width:635px;
     height:42px;
     border-bottom:1px solid #dfdfdf;
 }
-#category #nav .second-nav li{
-    float:left;
-    width:79px;
+#category #nav .second-nav ul li{
+    width:105px;
     height:42px;
+    font-size: 14px;
     text-align:center;
     line-height:42px;
-    border-right:1px solid #dfdfdf;
+    list-style-type: none;
+    float:left;
+}
+
+#category #nav .second-nav ul li .second-current{
+    padding: 2px 10px;
+    border-radius: 15px;
+    background-color: red;
+    color: white;
 }
 
 #category .cate-search{
@@ -70,6 +81,7 @@
     height: 44px;
     position: relative;
     background-color: white;
+    margin-bottom: 8px;
 }
 
 #category .cate-search .cate-search-input {

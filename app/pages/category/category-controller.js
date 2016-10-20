@@ -152,5 +152,134 @@ angular.module('category.controller', ['category.service'])
             //点击搜索栏
             $scope.cateGoToSearchPage = function(){
                 $state.go('searchPage');
+            };
+
+
+            /* ==================================================== 分割线 ======================================================== */
+
+            //first
+            $scope.first_cate = [{
+                id:0,
+                name:'织物细条',
+                itemList:[{
+                    id:0,
+                    name:'洁厕用品',
+                    products:[{
+                        id:1,
+                        name:'商品1'
+                    },{
+                        id:2,
+                        name:'商品2'
+                    }]
+                },{
+                    id:1,
+                    name:'日用报货',
+                    products:[{
+                        id:1,
+                        name:'商品1'
+                    },{
+                        id:2,
+                        name:'商品2'
+                    },{
+                        id:3,
+                        name:'商品3'
+                    }]
+                },{
+                    id:2,
+                    name:'厨厕清洁用品'
+                }]
+            },{
+                id:1,
+                name:'日用洗护',
+                itemList:[{
+                    id:0,
+                    name:'洁厕用品23',
+                    products:[{
+                        id:1,
+                        name:'商品1'
+                    }]
+                },{
+                    id:1,
+                    name:'日用报货45',
+                    products:[{
+                        id:1,
+                        name:'商品1'
+                    },{
+                        id:2,
+                        name:'商品2'
+                    }]
+                },{
+                    id:2,
+                    name:'厨厕清洁12'
+                },{
+                    id:3,
+                    name:'织物细条'
+                },{
+                    id:4,
+                    name:'日用洗护'
+                }]
+            },{
+                id:2,
+                name:'厨房用品',
+                itemList:[]
+            },{
+                id:3,
+                name:'洁厕用品',
+                itemList:[]
+            },{
+                id:4,
+                name:'日用报货',
+                itemList:[]
+            }];
+
+            $scope.indexFirstCate = 0;
+
+            $scope.gFirstIndex = function(e, item){
+                $scope.indexFirstCate = e;
+                $scope.second_cate = item.itemList;
+                $scope.indexSecondCate = 0;
+                countItemWith(item);
+            };
+
+            //second
+            $scope.indexSecondCate = 0;
+            $scope.second_cate = $scope.first_cate[0].itemList;
+
+            $scope.gSecondIndex = function(e, item){
+                $scope.indexSecondCate = e;
+            };
+
+            //计算长度
+            $scope.countWith = function(content){
+                var count = content.length * 105 + 5;
+                console.log(count);
+                count = "width:" + count + "px;";
+                console.log(count);
+                return count;
+            };
+
+            countItemWith($scope.first_cate[0]);
+            //second nav
+            function countItemWith (content){
+                if(content.itemList.length > 0){
+                    var count = content.itemList.length * 105 + 5;
+                    //console.log(count);
+                    count = "width:" + count + "px;";
+                    //console.log(count);
+                    $scope.second_ul = count;
+                }else{
+                    $scope.second_ul = '';
+                }
             }
+
+            //productList($scope.first_cate[0].itemList);
+            //products
+            function productList(content){
+                if(content.products.length > 0){
+
+                }else{
+
+                }
+            }
+
         }]);

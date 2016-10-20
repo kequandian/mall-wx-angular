@@ -2,25 +2,29 @@
 
     <!-- 头部logo -->
     <nav id="nav">
+        <!-- first nav -->
         <div class="first-nav">
-            <ul>
-                <li>11.11</li>
-                <li>销量</li>
-                <li>价格</li>
-                <li>品牌</li>
-                <li>新品</li>
-                <li>服务</li>
+            <ul style="{{countWith(first_cate)}}">
+                <li ng-repeat="f_item in first_cate"
+                    ng-click="gFirstIndex($index,f_item);"
+                        >
+                    <span ng-class="$index == indexFirstCate ? 'first-current':''">
+                        {{f_item.name}}
+                    </span>
+                </li>
             </ul>
         </div>
 
-        <div class="second-nav">
-            <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
-                <li>6</li>
+        <!-- second nav -->
+        <div class="second-nav" ng-if="second_ul != ''">
+            <ul style="{{second_ul}}">
+                <li ng-repeat="s_item in second_cate"
+                    ng-click="gSecondIndex($index,s_item);"
+                        >
+                    <span ng-class="$index == indexSecondCate ? 'second-current':''">
+                        {{s_item.name}}
+                    </span>
+                </li>
             </ul>
         </div>
     </nav>
