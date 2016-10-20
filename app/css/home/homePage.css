@@ -11,7 +11,7 @@ body, html {
 
 .hd {
     width: 100%;
-    height: 44px;
+    height: 48px;
     background: white;
     position: fixed;
     z-index: 2;
@@ -37,9 +37,9 @@ body, html {
 }
 
 .home-title-center {
-    left: 20px;
-    right: 52px;
-    height: 44px;
+    left: 16px;
+    right: 48px;
+    height: 100%;
     position: absolute;
     background-color: white;
 }
@@ -47,7 +47,7 @@ body, html {
 .home-title-center .search_outer{
     width: 93%;
     height: 28px;
-    margin-top: 7px;
+    margin-top: 9px;
     padding-top: 2px;
     padding-left: 12px;
     background-color: #e6e6e6;
@@ -80,20 +80,20 @@ body, html {
     width: 48px;
     height: 42px;
     right: 5px;
-    top: 2px;
+    top: 6px;
     text-align: center;
     background-color: white;
     position: absolute;
 }
 
 .home-title-right img {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     right: 0;
 }
 
 .home-title-right div {
-    font-size: 10px;
+    font-size: 9px;
     color: #9B9B9B;
     margin-top: -2px;
     padding: 0;
