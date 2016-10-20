@@ -35,22 +35,47 @@
             <div class="search_outer" ng-click="goToSearchPage()">
                 <i class="weui_icon_search"></i>
                 <!--<span class="" id="search_input">搜索你想要的商品</span>-->
-                <input type="search" class="search_input" id="search_input"
-                       ng-disabled="true"
+                <input type="text" class="search_input" id="search_input"
                        placeholder="搜索你想要的商品" required/>
 
             </div>
         </div>
     </div>
 
-
-
     <div class="pro-content">
-        <div class="content">
-
+        <div class="product-item" ng-repeat="item in productList">
+            <div class="product-img">
+                <img src="{{item.cover != null ? item.cover: 'img/category/product-img.png'}}">
+            </div>
+            <div class="product-name">
+                {{item.name}}
+            </div>
+            <div class="product-price">
+                ￥{{item.price}}
+            </div>
         </div>
-        <div>sdfs</div>
-        <div>1234</div>
+        <div class="product-item" ng-repeat="item in productList">
+            <div class="product-img">
+                <img src="{{item.cover != null ? item.cover: 'img/category/product-img.png'}}">
+            </div>
+            <div class="product-name">
+                {{item.name}}
+            </div>
+            <div class="product-price">
+                ￥{{item.price}}
+            </div>
+        </div>
+        <div class="product-item" ng-repeat="item in productList">
+            <div class="product-img">
+                <img src="{{item.cover != null ? item.cover: 'img/category/product-img.png'}}">
+            </div>
+            <div class="product-name">
+                {{item.name}}
+            </div>
+            <div class="product-price">
+                ￥{{item.price}}
+            </div>
+        </div>
     </div>
 
 

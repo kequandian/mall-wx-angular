@@ -166,27 +166,38 @@ angular.module('category.controller', ['category.service'])
                     name:'洁厕用品',
                     products:[{
                         id:1,
-                        name:'商品1'
+                        name:'商品1',
+                        cover:'img/category/product-img.png',
+                        price:12
                     },{
                         id:2,
-                        name:'商品2'
+                        name:'商品2',
+                        cover:'img/category/product-img.png',
+                        price:23
                     }]
                 },{
                     id:1,
                     name:'日用报货',
                     products:[{
                         id:1,
-                        name:'商品1'
+                        name:'商品1',
+                        cover:'img/category/product-img.png',
+                        price:25
                     },{
                         id:2,
-                        name:'商品2'
+                        name:'商品2',
+                        cover:'img/category/product-img.png',
+                        price:62
                     },{
                         id:3,
-                        name:'商品3'
+                        name:'商品3',
+                        cover:'img/category/product-img.png',
+                        price:52
                     }]
                 },{
                     id:2,
-                    name:'厨厕清洁用品'
+                    name:'厨厕清洁用品',
+                    products:[]
                 }]
             },{
                 id:1,
@@ -196,27 +207,36 @@ angular.module('category.controller', ['category.service'])
                     name:'洁厕用品23',
                     products:[{
                         id:1,
-                        name:'商品1'
+                        name:'商品1',
+                        cover:'img/category/product-img.png',
+                        price:52
                     }]
                 },{
                     id:1,
                     name:'日用报货45',
                     products:[{
                         id:1,
-                        name:'商品1'
+                        name:'商品1',
+                        cover:'img/category/product-img.png',
+                        price:52
                     },{
                         id:2,
-                        name:'商品2'
+                        name:'商品2',
+                        cover:'img/category/product-img.png',
+                        price:52
                     }]
                 },{
                     id:2,
-                    name:'厨厕清洁12'
+                    name:'厨厕清洁12',
+                    products:[]
                 },{
                     id:3,
-                    name:'织物细条'
+                    name:'织物细条',
+                    products:[]
                 },{
                     id:4,
-                    name:'日用洗护'
+                    name:'日用洗护',
+                    products:[]
                 }]
             },{
                 id:2,
@@ -239,6 +259,7 @@ angular.module('category.controller', ['category.service'])
                 $scope.second_cate = item.itemList;
                 $scope.indexSecondCate = 0;
                 countItemWith(item);
+                productList(item.itemList[0])
             };
 
             //second
@@ -247,14 +268,15 @@ angular.module('category.controller', ['category.service'])
 
             $scope.gSecondIndex = function(e, item){
                 $scope.indexSecondCate = e;
+                $scope.productList = item.products;
             };
 
             //计算长度
             $scope.countWith = function(content){
                 var count = content.length * 105 + 5;
-                console.log(count);
+                //console.log(count);
                 count = "width:" + count + "px;";
-                console.log(count);
+                //console.log(count);
                 return count;
             };
 
@@ -272,13 +294,14 @@ angular.module('category.controller', ['category.service'])
                 }
             }
 
-            //productList($scope.first_cate[0].itemList);
+            productList($scope.first_cate[0].itemList[0]);
             //products
             function productList(content){
                 if(content.products.length > 0){
-
+                    $scope.productList = content.products;
+                    console.log("1234: " +angular.toJson($scope.productList))
                 }else{
-
+                    $scope.productList = null;
                 }
             }
 
