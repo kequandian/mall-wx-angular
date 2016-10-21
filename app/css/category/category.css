@@ -10,17 +10,12 @@
 
 #category{
     width: 100%;
-    height: auto;
-    background-color: #efeff3;
-}
-#category .weui_tab_bd{
-    width: 100%;
     height: 100%;
     background-color: #efeff3;
 }
 
 #category #nav{
-    margin-bottom: 8px;
+    margin-bottom: 2px;
     border-bottom: 1px solid #E0E0E0;
 }
 
@@ -85,7 +80,7 @@
     width: 100%;
     height: 44px;
     position: relative;
-    background-color: white;
+    background-color: #efeff3;
 }
 
 #category .cate-search .cate-search-input {
@@ -98,10 +93,10 @@
 #category .cate-search .cate-search-input .search_outer{
     /*width: 89%;*/
     height: 30px;
-    margin-top: 7px;
+    margin-top: 5px;
     padding-top: 2px;
     padding-left: 12px;
-    background-color: #e6e6e6;
+    background-color: white;
     border-radius: 12px;
 }
 
@@ -109,17 +104,16 @@
     width: 90%;
     height: 25px;
     border: 0;
-    border-left: 2px solid #cccccc;
-    background-color: #e6e6e6;
+    border-left: 1px solid #cccccc;
+    background-color: white;
     padding: 0 0 0 6px;
 }
 
-
 #category .pro-content{
     width: 100%;
-    height:auto;
+    height:100%;
     box-sizing: border-box;
-    padding-top: 8px;
+    padding-top: 2px;
 }
 
 #category .pro-content .product-item{
@@ -166,5 +160,51 @@
     color:red;
     text-align: center;
     background-color: white;
+}
+
+#category .weui_grid{
+    padding: 0;
+}
+
+#category .load-more-product {
+    width: 100%;
+}
+
+#category .load-more-product .load-more-button {
+    /*left: 21%;*/
+    /*right: 21%;*/
+    font-family: \000031;
+    padding: 1px 0;
+    /*border: 1px solid #989898;*/
+    font-size: 14px;
+    color: #BFBFBF;
+    border-radius: 5px;
+    text-align: center;
+    bottom: 7px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+#category .load-more-product .load-more-button:active {
+    background-color: #cccccc;
+    color: white;
+}
+
+
+#footer .topit {
+    width: 48px;
+    height: 48px;
+    bottom: 70px;
+    right: 12px;
+    position: fixed;
+    z-index: 1;
+    opacity: 0.8;
+}
+
+#footer .topit img {
+    width: 48px;
+    height: 48px;
 }
 

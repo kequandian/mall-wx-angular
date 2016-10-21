@@ -27,6 +27,8 @@ angular.module('category.controller', ['category.service'])
             $rootScope.tabsNumber = 2;
             $rootScope.jqueryLoaded = false;
 
+            $scope.top_btn_show = true;
+
             // 点击左侧分类单
             $scope.getCategoryDetailData = function (typeNumber, item) {
                 //console.log('cate_detail_data_id:  ' + cateLeftIndex.goods_list_index);
@@ -73,15 +75,22 @@ angular.module('category.controller', ['category.service'])
                     CategoryFty.categoryService()
                         .then(function (json) {
                             if (json.status_code == 0) {
-                                $scope.categoryItem = json.data;
+                                //$scope.categoryItem = json.data;
                                 //console.log('scope.categoryItem?'+angular.toJson($scope.categoryItem));
-                                //console.log(angular.toJson(json.data))
 
-                                $scope.getCategoryDetailData(json.data[0].id, json.data[0]);
+                                //$scope.getCategoryDetailData(json.data[0].id, json.data[0]);
 
-                                cateLeftIndex.cate_detail_data_id = json.data[0].id;
+                                //cateLeftIndex.cate_detail_data_id = json.data[0].id;
 
-                                $rootScope.cat_session.categoryItem = $scope.categoryItem;
+                                //$rootScope.cat_session.categoryItem = $scope.categoryItem;
+
+                                /*=====================================================*/
+                                $scope.first_cate = json.data;
+                                console.log(angular.toJson(json.data[0]));
+                                $scope.second_cate = $scope.first_cate[0].sub_categories;
+                                countWith($scope.first_cate);
+                                countItemWith($scope.first_cate[0]);
+                                productList($scope.first_cate[0].sub_categories[0].id);
 
                             } else {
                                 console.log('获取商品分类失败');
@@ -134,175 +143,148 @@ angular.module('category.controller', ['category.service'])
                 }
             };
 
-            //$scope.indexPos = 0;
-            $scope.indexPos = cateLeftIndex.cate_nav_index;
-
-            $scope.getIndex = function (e, navCateId) {
-                console.log('navCateId:  ' + navCateId);
-                cateLeftIndex.cate_nav_index = e;
-                cateLeftIndex.cate_detail_data_id = navCateId;
-            };
-
-            $scope.goToGoodsList = function (gItemtId) {
-                goodListParams.typeNumber = gItemtId;
-                //goodListParams.searchStatus = 1;
-                $state.go('goodsList',{statusNumber:1})
-            };
-
-            //点击搜索栏
-            $scope.cateGoToSearchPage = function(){
-                $state.go('searchPage');
-            };
-
-
             /* ==================================================== 分割线 ======================================================== */
-
-            //first
-            $scope.first_cate = [{
-                id:0,
-                name:'织物细条',
-                itemList:[{
-                    id:0,
-                    name:'洁厕用品',
-                    products:[{
-                        id:1,
-                        name:'商品1',
-                        cover:'img/category/product-img.png',
-                        price:12
-                    },{
-                        id:2,
-                        name:'商品2',
-                        cover:'img/category/product-img.png',
-                        price:23
-                    }]
-                },{
-                    id:1,
-                    name:'日用报货',
-                    products:[{
-                        id:1,
-                        name:'商品1',
-                        cover:'img/category/product-img.png',
-                        price:25
-                    },{
-                        id:2,
-                        name:'商品2',
-                        cover:'img/category/product-img.png',
-                        price:62
-                    },{
-                        id:3,
-                        name:'商品3',
-                        cover:'img/category/product-img.png',
-                        price:52
-                    }]
-                },{
-                    id:2,
-                    name:'厨厕清洁用品',
-                    products:[]
-                }]
-            },{
-                id:1,
-                name:'日用洗护',
-                itemList:[{
-                    id:0,
-                    name:'洁厕用品23',
-                    products:[{
-                        id:1,
-                        name:'商品1',
-                        cover:'img/category/product-img.png',
-                        price:52
-                    }]
-                },{
-                    id:1,
-                    name:'日用报货45',
-                    products:[{
-                        id:1,
-                        name:'商品1',
-                        cover:'img/category/product-img.png',
-                        price:52
-                    },{
-                        id:2,
-                        name:'商品2',
-                        cover:'img/category/product-img.png',
-                        price:52
-                    }]
-                },{
-                    id:2,
-                    name:'厨厕清洁12',
-                    products:[]
-                },{
-                    id:3,
-                    name:'织物细条',
-                    products:[]
-                },{
-                    id:4,
-                    name:'日用洗护',
-                    products:[]
-                }]
-            },{
-                id:2,
-                name:'厨房用品',
-                itemList:[]
-            },{
-                id:3,
-                name:'洁厕用品',
-                itemList:[]
-            },{
-                id:4,
-                name:'日用报货',
-                itemList:[]
-            }];
 
             $scope.indexFirstCate = 0;
 
             $scope.gFirstIndex = function(e, item){
                 $scope.indexFirstCate = e;
-                $scope.second_cate = item.itemList;
+                $scope.second_cate = item.sub_categories;
                 $scope.indexSecondCate = 0;
                 countItemWith(item);
-                productList(item.itemList[0])
+                productList(item.sub_categories[0].id)
             };
 
             //second
             $scope.indexSecondCate = 0;
-            $scope.second_cate = $scope.first_cate[0].itemList;
 
             $scope.gSecondIndex = function(e, item){
                 $scope.indexSecondCate = e;
                 $scope.productList = item.products;
+                console.log(angular.toJson(item));
+                productList(item.id)
             };
 
             //计算长度
-            $scope.countWith = function(content){
-                var count = content.length * 105 + 5;
-                //console.log(count);
-                count = "width:" + count + "px;";
-                //console.log(count);
+            function countWith(content){
+                if(content.length > 0){
+                    var count = content.length * 105 + 5;
+                    count = "width:" + count + "px;";
+                    $scope.first_ul = count;
+                }else{
+                    $scope.first_ul = '';
+                }
                 return count;
-            };
+            }
 
-            countItemWith($scope.first_cate[0]);
             //second nav
             function countItemWith (content){
-                if(content.itemList.length > 0){
-                    var count = content.itemList.length * 105 + 5;
-                    //console.log(count);
+                if(content.sub_categories.length > 0){
+                    var count = content.sub_categories.length * 105 + 5;
                     count = "width:" + count + "px;";
-                    //console.log(count);
                     $scope.second_ul = count;
                 }else{
                     $scope.second_ul = '';
                 }
             }
 
-            productList($scope.first_cate[0].itemList[0]);
             //products
-            function productList(content){
-                if(content.products.length > 0){
-                    $scope.productList = content.products;
-                    console.log("1234: " +angular.toJson($scope.productList))
-                }else{
-                    $scope.productList = null;
-                }
+            function productList(cateId){
+
+                var orderBy = "&orderBy=price";
+                var pageNumber = 1;
+                var pageSize = 10;
+
+                CategoryFty.getProductListService(cateId,pageNumber,pageSize,orderBy)
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            $scope.productList = json.data;
+                            //console.log(angular.toJson($scope.productList))
+                        }else{
+                            $scope.productList = null;
+                            console.log('获取商品列表失败：' + angular.toJson(error));
+                        }
+                    }, function(error){
+                        console.log('获取商品列表失败：' + angular.toJson(error));
+                    })
             }
+
+            //推荐商品
+            $scope.cateGoToDetails = function (item) {
+                $state.go('details',{productId:item.id})
+            };
+
+            //加载更多
+            $scope.home_load_more_product = function () {
+                page_number += 1;
+                $rootScope.rec_session.page_number = page_number;
+
+                $rootScope.loading_in_progress = true;
+
+                //getRecommendProduct(page_number, PAGE_SIZE);
+
+                //ISSUE: not yet loaded here
+                //$rootScope.rec_session.rec_product = $scope.rec_product;
+            };
+
+           /* //返回顶部
+            $scope.onTop = function(){
+                console.log('click to top');
+                console.log(document.getElementById('pro-height').scrollTop);
+                document.getElementById('pro-height').scrollTop = 0;
+                $scope.pressed = true;
+            };
+
+            $scope.$on('$onScrollBottom', function () {
+                if($rootScope.loading_in_progress) {
+                    // do nothing
+                }else{
+                    if ($scope.home_load_more_btn_show) {
+                        console.log('load more products...');
+                        $scope.home_load_more_product();
+                    }
+                }
+            });
+            $scope.$on('$onScrollTop', function () {
+                $timeout(function(){
+                    $scope.top_btn_show = false;
+                })
+                //console.log('$onScrollTop');
+            });
+            $scope.$on('$onScrollTopCancelled', function () {
+                $timeout(function(){
+                    $scope.top_btn_show = true;
+                })
+                //console.log('$onScrollTopCancelled');
+            });
+
+
+            $scope.gotoDetail = function () {
+                // get scroll position
+                if (!$rootScope.scrolls) {
+                    $rootScope.scrolls = {}
+                }
+
+                $rootScope.scrolls.yOffset = document.getElementById('category').scrollTop;
+                $rootScope.scrolls.stacked = true;  //remember home stacked to details and will come back.
+
+                console.log('anchor yOffset?' + $rootScope.scrolls.yOffset);
+            };
+            $scope.$on('$onFinishRender', function () {
+                if ($rootScope.scrolls && $rootScope.scrolls.yOffset && $rootScope.scrolls.stacked) {
+                    $rootScope.scrolls.stacked = false;
+
+                    document.getElementById('category').scrollTop = $rootScope.scrolls.yOffset;
+
+                    //$location.hash('content');
+                    //$anchorScroll.yOffset = $rootScope.yOffset;
+                }
+            });
+            //Do your $on in here, like this:
+            $rootScope.$on("$locationChangeStart", function (event, next, current) {
+                if ($rootScope.scrolls && !$rootScope.scrolls.stacked) {
+                    $rootScope.scrolls.yOffset = 0;
+                }
+            });*/
 
         }]);

@@ -1,10 +1,10 @@
-<div id="category">
+<div scrolly id="category" on-finish-render>
 
     <!-- 头部logo -->
     <nav id="nav">
         <!-- first nav -->
         <div class="first-nav">
-            <ul style="{{countWith(first_cate)}}">
+            <ul style="{{first_ul}}">
                 <li ng-repeat="f_item in first_cate"
                     ng-click="gFirstIndex($index,f_item);"
                         >
@@ -42,19 +42,31 @@
         </div>
     </div>
 
-    <div class="pro-content">
-        <div class="product-item" ng-repeat="item in productList">
+    <div class="pro-content" id="pro-height">
+        <div class="product-item"
+             ng-repeat="item in productList.products"
+             ng-click="cateGoToDetails(item);gotoDetail()"
+                >
             <div class="product-img">
-                <img src="{{item.cover != null ? item.cover: 'img/category/product-img.png'}}">
+                <img src="{{item.cover != null ? item.cover: 'img/category/category_cover.png'}}">
             </div>
             <div class="product-name">
-                {{item.name}}
+                {{item.short_name}}
             </div>
             <div class="product-price">
                 ￥{{item.price}}
             </div>
         </div>
+
+        <!--<div class="weui_grid load-more-product">-->
+            <!--<div class="load-more-button">拼命加载中……</div>-->
+        <!--</div>-->
     </div>
 
-
 </div>
+
+<!--<div id="footer">-->
+    <!--<div ng-show="top_btn_show" class="topit" ng-class="{'dropdown':false}" ng-click="onTop()">-->
+        <!--<img src="img/top.png">-->
+    <!--</div>-->
+<!--</div>-->

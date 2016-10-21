@@ -16,6 +16,19 @@ angular.module('category.service', [])
                         return deferred.reject(data);
                     });
                 return deferred.promise;
+            },
+
+            // 获取商品列表数据
+            getProductListService: function (cateId,pageNumber,pageSize,orderBy) {
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + "/product_category/" + cateId + "?pageNumber=" + pageNumber + "&pageSize=" + pageSize + orderBy;
+                $http.get(url)
+                    .success(function (data) {
+                        return deferred.resolve(data);
+                    }).error(function (data) {
+                        return deferred.reject(data);
+                    });
+                return deferred.promise;
             }
         }
     }]);
