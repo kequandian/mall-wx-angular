@@ -308,14 +308,14 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             }
 
             //default category params
-            cateCacheCode.index_first=0;
-            cateCacheCode.index_second=0;
-            cateCacheCode.cate_session=null;
-            cateCacheCode.second_cate=null;
-            cateCacheCode.product_list=null;
-            cateCacheCode.product_id=-1;
-            cateCacheCode.loading=false;
-            cateCacheCode.load_more_btn_show= true;
+            //cateCacheCode.index_first=0;
+            //cateCacheCode.index_second=0;
+            //cateCacheCode.cate_session=null;
+            //cateCacheCode.second_cate=null;
+            //cateCacheCode.product_list=null;
+            //cateCacheCode.product_id=-1;
+            //cateCacheCode.loading=false;
+            //cateCacheCode.load_more_btn_show= true;
 
         }])
 
