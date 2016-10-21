@@ -253,7 +253,7 @@ angular.module('category.controller', ['category.service'])
                                     }
                                 } else if (new_code.length == 0) {
                                     loading = true;
-                                    cateCacheCode.loading = true
+                                    cateCacheCode.loading = true;
                                     $scope.load_more_btn_show = false;
                                     cateCacheCode.load_more_btn_show = false;
                                     //$.toast("暂无更多的分类商品信息");
