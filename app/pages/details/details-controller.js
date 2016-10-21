@@ -20,26 +20,53 @@ angular.module('details.controller', ['details.service'])
             $scope.point_rate = PointRate.rate;
             var product_id = $stateParams.productId;
 
+
             //修改url地址，用于分享
-            if ( ! (window.location.href.indexOf('fb_redirect=true')>0) ) {
-                var currentState = history.state;
+            appendFallback(product_id);
+
+
+            function appendFallback(product_id){
+                if ( window.location.href.indexOf('fb_redirect=true') >=0 ) {
+                    return false;
+                }
 
                 var newurl;
-                if(window.location.href.indexOf('?') > 0){
+                if(window.location.href.indexOf('?') >= 0){
                     var params = window.location.href.split('?');
-                    var newParams = params[1].split('#')[0];
-                    newurl = '?' + newParams + '&fallback=details-'+ product_id +'#/details/' + product_id;
+                    var longParam = params[1];
+                    var param = longParam.split('#')[0];
+
+                    /// already has fallback
+                    if(param.indexOf('fallback=details-')>=0){
+                        param = param.replace(/fallback=details\-\d+/,  'fallback=details-'+product_id);
+                        //console.log("param>> "+param);
+                    }else{
+                        param = param + '&fallback=details-' + product_id;
+                        //console.log("param> "+param);
+                    }
+
+                    /// append details
+                    ///
+                    newurl = '?' + param + '#/details/' + product_id;
+                    //console.log("newurl>>> "+newurl);
                 }else{
                     newurl = '?fallback=details-'+ product_id +'#/details/' + product_id;
+                    //console.log("newurl> "+newurl);
                 }
-                //console.log('newurl: ' + newurl);
 
-                //prevents browser from storing history with each change:
-                if (currentState == null) {
-                    currentState = { title: document.title, url: newurl };
+
+                if(longParam != newurl) {
+                    //prevents browser from storing history with each change:
+                    var currentState = history.state;
+                    if (currentState == null) {
+                        currentState = {title: document.title, url: newurl};
+                    }
+
+                    //console.log("newurl<< "+newurl);
+                    window.history.pushState(currentState, document.title, newurl);
                 }
-                window.history.pushState(currentState, document.title, newurl);
             }
+
 
             //商品详情
             detailsInfo();
@@ -286,7 +313,7 @@ angular.module('details.controller', ['details.service'])
                             if(json.status_code == 0){
                                 buy_option(productInfo,productId, int_quantity,product_property,product_specification_id);
                             }else{
-                                $.toast(json.message,'cancel');
+                                $.alert(json.message);
                                 console.log("获取限购信息失败：" + angular.toJson(json))
                             }
                         }, function(error){
@@ -295,7 +322,6 @@ angular.module('details.controller', ['details.service'])
                 }else if($scope.details.purchase_strategy == null){
                     buy_option(productInfo, productId, int_quantity,product_property,product_specification_id);
                 }
-
             };
 
             //选择方式
@@ -412,7 +438,8 @@ angular.module('details.controller', ['details.service'])
 
                 var newUrl = '#/cart-settlement';
                 var title = '结算';
-                window.history.pushState(currentState, title, newUrl);
+                var c_state = history.state;
+                window.history.pushState(c_state, title, newUrl);
 
                 $state.go('cart-settlement', {
                     carts: $scope.checkedCarts,

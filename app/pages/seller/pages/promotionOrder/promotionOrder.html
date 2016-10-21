@@ -46,6 +46,7 @@
             <div class="order-list">
                 <div class="order-list-item" ng-repeat="item in rewards.orders">
                     <div class="p-order-number">订单编号：{{item.order_number}}</div>
+                    <div class="p-order-type">用户昵称：{{item.order_user_name}}</div>
                     <div class="p-order-type">
                         订单状态：{{item.state|OrderState}}
                     </div>

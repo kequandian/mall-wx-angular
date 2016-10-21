@@ -269,8 +269,11 @@
 
 .white_content .qrcode-title .qrcode-title-content{
     /*margin: 0 auto;*/
-    width: 200px;
+    width: 100%;
     height: 75px;
+    white-space:nowrap;
+    overflow: hidden;
+    text-overflow:ellipsis;
 }
 
 .white_content .qrcode-title .qrcode-title-content img{

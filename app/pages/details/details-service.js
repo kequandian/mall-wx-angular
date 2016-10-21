@@ -105,7 +105,7 @@ angular.module('details.service', [])
 
             check_buy_count: function (productId, quantity) {
                 var deferred = $q.defer();
-                var url = GlobalVariable.SERVER_PATH + "/product_purchase_strategy?productId=" + productId + "&quantity=" + quantity;
+                var url = GlobalVariable.SERVER_PATH + "/product_purchase_strategy?productId="+productId+"&quantity="+quantity;
                 $http.get(url,{
                     headers:{
                         'Authorization': GlobalVariable.ACCESS_TOKEN

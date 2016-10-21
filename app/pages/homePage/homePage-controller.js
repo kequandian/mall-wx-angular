@@ -44,6 +44,38 @@ angular.module('homePage.controller', ['homePage.service'])
             }
         };
     })
+    .filter('defaultShortName', function () {
+        return function (value) {
+            if (!value || value===undefined || value.length==0){
+                return '十美优品';
+            }
+
+            return value;
+        };
+    })
+    .filter('formatDetailsLocation', function() {
+        return function (value) {
+            if (value == null || value === undefined || value.length == 0) {
+                return "#";
+            }
+            // value: #details/36
+            // value: #/details/36
+
+            var n = value.lastIndexOf('/');
+            var id = value.substr(n + 1, value.length);
+
+            return 'details({productId:' + id + '})';
+        }
+    })    
+    //默认分类广告图片
+    .filter('defaultImg',function(){
+        return function(value){
+            if(value==null || value===undefined || value.length==0){
+                return 'img/home/defaultImg.png';
+            }
+            return value;
+        }
+    })
 
     .controller('HomePageController', ['$scope', '$rootScope', '$state', 'HomePageFty', 'areasStatus', 'goodListParams',
         '$anchorScroll', '$ocLazyLoad','cateLeftIndex','$timeout','PointRate','BalanceSession',
@@ -104,11 +136,22 @@ angular.module('homePage.controller', ['homePage.service'])
              }).appendTo($body);
              }*/
 
+
+            // cut off the fallback route from details
+            cutoffFallback();
+
+            function cutoffFallback(){
+                /// pending
+            }
+
+
             //获取广告
             getAdHome();
             getAdBanner();
             //获取积分
             getBalance();
+            //获取公告
+            getSystemAnnouncement();
 
             //获取推荐商品
             if ($rootScope.rec_session.rec_product.length == 0) {
@@ -128,6 +171,7 @@ angular.module('homePage.controller', ['homePage.service'])
                         if (json.status_code == 0) {
 
                             $scope.rec_product = json.data;
+                            //console.log(angular.toJson(json.data));
 
                         /*    if (pageNumber == 1) {
                                 $scope.rec_product = json.data;
@@ -170,6 +214,24 @@ angular.module('homePage.controller', ['homePage.service'])
                     })
             }
 
+            //分行
+            $scope.check_description = function(content){
+                if(content != null){
+                    if(content.indexOf('\\n') > 0) {
+                        var list = content.split('\\n');
+                        $scope.des_branch_list = list;
+                        $scope.no_branch = false;
+                        $scope.des_branch = true;
+                    }else{
+                        $scope.no_branch = true;
+                        $scope.des_branch = false;
+                    }
+                    return true;
+                }
+                return false;
+            };
+
+            //获取广告
             function getAdHome() {
                 var loaded = false;
                 if ($rootScope.ad_session) {
@@ -215,10 +277,10 @@ angular.module('homePage.controller', ['homePage.service'])
                         .then(function (json) {
                             if (json.status_code == 0) {
                                 $scope.ad_banner = json.data;
-                                //console.log("ad?"+angular.toJson($scope.ad_banner ));
                                 $scope.ad_banner_1 = $scope.ad_banner[0];
                                 $scope.ad_banner_2 = $scope.ad_banner[1];
-                                //console.log("ad-banner-1?"+angular.toJson($scope.ad_banner_1));
+                                $scope.ad_banner_3 = $scope.ad_banner[2];
+                                //console.log("ad-banner-1: "+angular.toJson($scope.ad_banner_1));
 
                                 $rootScope.ad_session.ad_banner = $scope.ad_banner;
                             }
@@ -231,9 +293,9 @@ angular.module('homePage.controller', ['homePage.service'])
 
                     $scope.ad_banner_1 = $scope.ad_banner[0];
                     $scope.ad_banner_2 = $scope.ad_banner[1];
+                    $scope.ad_banner_3 = $scope.ad_banner[2];
                 }
             }
-
 
             //搜索栏
             $scope.goToSearchPage = function () {
@@ -260,7 +322,7 @@ angular.module('homePage.controller', ['homePage.service'])
                     //$location.hash('content');
                     //$anchorScroll.yOffset = $rootScope.yOffset;
                 }
-            })
+            });
             //Do your $on in here, like this:
             $rootScope.$on("$locationChangeStart", function (event, next, current) {
                 if ($rootScope.scrolls && !$rootScope.scrolls.stacked) {
@@ -269,7 +331,7 @@ angular.module('homePage.controller', ['homePage.service'])
             });
 
             //分类区域
-            $scope.areasStatus = function (number) {
+            /*$scope.areasStatus = function (number) {
                 if (number == 1) {
                     areasStatus.areas_status = 1;
                     goodListParams.searchStatus = 3;
@@ -279,7 +341,7 @@ angular.module('homePage.controller', ['homePage.service'])
                     goodListParams.searchStatus = 3;
                     $state.go('goodsList');
                 }
-            };
+            };*/
 
             //加载更多
             $scope.home_load_more_product = function () {
@@ -336,6 +398,19 @@ angular.module('homePage.controller', ['homePage.service'])
                         }
                     }, function(error){
                         console.log('获取积分失败: ' + angular.toJson(error));
+                    })
+            }
+
+            //获取系统公告
+            function getSystemAnnouncement(){
+                HomePageFty.getSystemAnnouncementService()
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            //console.log(angular.toJson(json))
+                            $scope.sysAnn = json.data[0].content;
+                        }
+                    }, function(error){
+                        console.log('获取公告失败: ' + angular.toJson(error));
                     })
             }
 

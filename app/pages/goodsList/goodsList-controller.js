@@ -12,10 +12,13 @@ angular.module('goodsList.controller', ['goodsList.service'])
             var pageSize = 20;
             var loading = false;  //状态标记
 
-            var s_status = goodListParams.searchStatus;
+            //var s_status = goodListParams.searchStatus;
+            var s_status = $stateParams.statusNumber;
             $scope.load_more_btn_show = false;
 
             var cateId = goodListParams.typeNumber;
+
+            console.log($stateParams.statusNumber);
 
             if (s_status == 1) {
                 // from category
@@ -28,7 +31,7 @@ angular.module('goodsList.controller', ['goodsList.service'])
                 if ($scope.productList.length >= 20) {
                     $scope.load_more_btn_show = true;
                 }
-            } else if (s_status == 3) {
+            } else if (s_status == 10 || s_status == 0) {
                 console.log("areas goodsList");
                 areasProductList(pageNumber, pageSize);
             } else if (s_status == 4){
@@ -58,7 +61,7 @@ angular.module('goodsList.controller', ['goodsList.service'])
                     cateProductList(pageNumber, pageSize);
                 } else if (s_status == 2) {
                     searchProductList(pageNumber, pageSize)
-                } else if (s_status == 3) {
+                } else if (s_status == 10 || s_status == 0) {
                     areasProductList(pageNumber, pageSize)
                 } else if(s_status == 4){
                     homeAreaProductList(pageNumber, pageSize)
@@ -84,7 +87,7 @@ angular.module('goodsList.controller', ['goodsList.service'])
                     cateProductList(pageNumber, pageSize);
                 } else if (s_status == 2) {
                     searchProductList(pageNumber, pageSize);
-                } else if (s_status == 3) {
+                } else if (s_status == 10 || s_status == 0) {
                     areasProductList(pageNumber, pageSize);
                 } else if(s_status == 4){
                     homeAreaProductList(pageNumber, pageSize)
@@ -179,24 +182,19 @@ angular.module('goodsList.controller', ['goodsList.service'])
                     })
             }
 
-            //添加购物车
-            /*$scope.addProductToCart = function(productId){
-             GoodsListFty.addProToCatService(productId)
-             .then(function(json){
-             if(json.status_code == 0){
-             $.toast.prototype.defaults.duration = 2000;
-             $.toast("成功添加商品");
-             }else{
-             $.toast("添加失败", "cancel");
-             }
-             }, function(error){
-             $.toast("添加失败", "cancel");
-             })
-             };*/
-
             //分区商品列表
             function areasProductList(pageNumber, pageSize) {
-                var zone = areasStatus.areas_status;
+                var zone = -1;
+                if(s_status == 10){
+                    zone = 1;
+                }else if(s_status == 0){
+                    zone = 3;
+                }
+
+                if(zone == -1){
+                    console.log("获取分区状态失败");
+                    return;
+                }
 
                 GoodsListFty.areasProductService(zone, pageNumber, pageSize, orderBy)
                     .then(function (json) {
@@ -297,7 +295,7 @@ angular.module('goodsList.controller', ['goodsList.service'])
                     cateProductList(pageNumber, pageSize);
                 } else if (s_status == 2) {
                     searchProductList(pageNumber, pageSize);
-                } else if (s_status == 3) {
+                } else if (s_status == 10 || s_status == 0) {
                     areasProductList(pageNumber, pageSize);
                 } else if(s_status == 4){
                     homeAreaProductList(pageNumber, pageSize)
