@@ -78,8 +78,9 @@ angular.module('homePage.controller', ['homePage.service'])
     })
 
     .controller('HomePageController', ['$scope', '$rootScope', '$state', 'HomePageFty', 'areasStatus', 'goodListParams',
-        '$anchorScroll', '$ocLazyLoad','cateLeftIndex','$timeout','PointRate','BalanceSession',
-        function ($scope, $rootScope, $state, HomePageFty, areasStatus, goodListParams, $anchorScroll, $ocLazyLoad,cateLeftIndex,$timeout,PointRate,BalanceSession) {
+        '$anchorScroll', '$ocLazyLoad','cateLeftIndex','$timeout','PointRate','BalanceSession','cateCacheCode',
+        function ($scope, $rootScope, $state, HomePageFty, areasStatus, goodListParams, $anchorScroll, $ocLazyLoad,
+                  cateLeftIndex,$timeout,PointRate,BalanceSession,cateCacheCode) {
 
             document.title = "十美优品商城";
 
@@ -413,5 +414,15 @@ angular.module('homePage.controller', ['homePage.service'])
                         console.log('获取公告失败: ' + angular.toJson(error));
                     })
             }
+
+            //default category params
+            cateCacheCode.index_first=0;
+            cateCacheCode.index_second=0;
+            cateCacheCode.cate_session=null;
+            cateCacheCode.second_cate=null;
+            cateCacheCode.product_list=null;
+            cateCacheCode.product_id=-1;
+            cateCacheCode.loading=false;
+            cateCacheCode.load_more_btn_show= true;
 
         }]);

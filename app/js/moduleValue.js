@@ -42,4 +42,17 @@ angular.module('moduleValueJs',[])
         value: 100
     })
 
+    //分类页
+
+    .value('cateCacheCode',{
+        index_first:0,
+        index_second:0,
+        cate_session:null,
+        second_cate:null,
+        product_list:null,
+        product_id:-1,
+        loading:false,
+        load_more_btn_show: true
+    })
+
 ;
