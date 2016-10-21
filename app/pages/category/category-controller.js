@@ -106,7 +106,7 @@ angular.module('category.controller', ['category.service'])
 
 
             // 左侧分类单击样式修改
-            $scope.categoryLeftClick = function (e) {
+            /*$scope.categoryLeftClick = function (e) {
 
                 if($rootScope.jqueryLoaded){
                     console.log('Jquery loaded');
@@ -142,7 +142,7 @@ angular.module('category.controller', ['category.service'])
                     })
                 }
             };
-
+*/
             /* ==================================================== 分割线 ======================================================== */
 
             $scope.indexFirstCate = 0;
