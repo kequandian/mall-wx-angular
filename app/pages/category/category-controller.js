@@ -1,4 +1,14 @@
 angular.module('category.controller', ['category.service'])
+
+    .value('cateCacheCode',{
+        index_first:0,
+        index_second:0,
+        cate_session:null,
+        second_cate:null,
+        product_list:null
+
+    })
+
     .filter('cate', function(){
         return function(input, cateId){
             var rows = [];
@@ -19,7 +29,7 @@ angular.module('category.controller', ['category.service'])
         }
     })
     .controller('CategoryController', ['$scope', '$state', '$rootScope', 'CategoryFty','goodListParams',
-        '$ocLazyLoad','cateLeftIndex', function ($scope, $state,$rootScope, CategoryFty,goodListParams, $ocLazyLoad, cateLeftIndex) {
+        '$ocLazyLoad','cateLeftIndex','cateCacheCode', function ($scope, $state,$rootScope, CategoryFty,goodListParams, $ocLazyLoad, cateLeftIndex,cateCacheCode) {
 
             //title
             document.title = "商品分类";
@@ -30,7 +40,7 @@ angular.module('category.controller', ['category.service'])
             $scope.top_btn_show = true;
 
             // 点击左侧分类单
-            $scope.getCategoryDetailData = function (typeNumber, item) {
+            /*$scope.getCategoryDetailData = function (typeNumber, item) {
                 //console.log('cate_detail_data_id:  ' + cateLeftIndex.goods_list_index);
                 if(cateLeftIndex.goods_list_index > 0){
                     $scope.cateId = cateLeftIndex.cate_detail_data_id;
@@ -56,41 +66,36 @@ angular.module('category.controller', ['category.service'])
 
                 $scope.cateCoumt = cateCount;
 
-            };
+            };*/
 
             detailsInfo();
 
             function detailsInfo() {
                 var loaded = false;
-                if($rootScope.cat_session){
-                    if($rootScope.cat_session.categoryItem) {
+                if(cateCacheCode.cate_session){
+                    if(cateCacheCode.cate_session.length > 0) {
                         loaded = true;
                         //console.log('cat_session loaded')
                     }
                 }else{
-                    $rootScope.cat_session = {}
+                    cateCacheCode.cate_session = {}
                 }
 
                 if(!loaded) {
+                    console.log('load');
                     CategoryFty.categoryService()
                         .then(function (json) {
                             if (json.status_code == 0) {
-                                //$scope.categoryItem = json.data;
-                                //console.log('scope.categoryItem?'+angular.toJson($scope.categoryItem));
 
-                                //$scope.getCategoryDetailData(json.data[0].id, json.data[0]);
-
-                                //cateLeftIndex.cate_detail_data_id = json.data[0].id;
-
-                                //$rootScope.cat_session.categoryItem = $scope.categoryItem;
-
-                                /*=====================================================*/
                                 $scope.first_cate = json.data;
-                                console.log(angular.toJson(json.data[0]));
+                                //console.log(angular.toJson(json.data));
                                 $scope.second_cate = $scope.first_cate[0].sub_categories;
                                 countWith($scope.first_cate);
                                 countItemWith($scope.first_cate[0]);
                                 productList($scope.first_cate[0].sub_categories[0].id);
+
+                                cateCacheCode.cate_session = json.data;
+                                cateCacheCode.second_cate = $scope.first_cate[0];
 
                             } else {
                                 console.log('获取商品分类失败');
@@ -99,8 +104,12 @@ angular.module('category.controller', ['category.service'])
                             console.log('获取商品分类失败');
                         })
                 }else{
-                    $scope.categoryItem = $rootScope.cat_session.categoryItem;
-                    $scope.getCategoryDetailData($scope.categoryItem[0].id, $scope.categoryItem[0]);
+                    console.log('cache');
+                    $scope.first_cate = cateCacheCode.cate_session;
+                    $scope.second_cate = cateCacheCode.second_cate.sub_categories;
+                    countWith($scope.first_cate);
+                    countItemWith(cateCacheCode.second_cate);
+                    $scope.productList = cateCacheCode.product_list;
                 }
             }
 
@@ -145,24 +154,33 @@ angular.module('category.controller', ['category.service'])
 */
             /* ==================================================== 分割线 ======================================================== */
 
-            $scope.indexFirstCate = 0;
+            $scope.indexFirstCate = cateCacheCode.index_first;
 
             $scope.gFirstIndex = function(e, item){
                 $scope.indexFirstCate = e;
                 $scope.second_cate = item.sub_categories;
                 $scope.indexSecondCate = 0;
                 countItemWith(item);
-                productList(item.sub_categories[0].id)
+                if(item.sub_categories.length > 0){
+                    productList(item.sub_categories[0].id);
+                }else{
+                    productList(item.id);
+                }
+                cateCacheCode.index_first = e;
+                cateCacheCode.second_cate = item;
+
+                console.log(angular.toJson(item));
             };
 
             //second
-            $scope.indexSecondCate = 0;
+            $scope.indexSecondCate = cateCacheCode.index_second;
 
             $scope.gSecondIndex = function(e, item){
                 $scope.indexSecondCate = e;
                 $scope.productList = item.products;
-                console.log(angular.toJson(item));
-                productList(item.id)
+                //console.log(angular.toJson(item));
+                productList(item.id);
+                cateCacheCode.index_second = e;
             };
 
             //计算长度
@@ -179,6 +197,7 @@ angular.module('category.controller', ['category.service'])
 
             //second nav
             function countItemWith (content){
+                //console.log("content:"+angular.toJson(content));
                 if(content.sub_categories.length > 0){
                     var count = content.sub_categories.length * 105 + 5;
                     count = "width:" + count + "px;";
@@ -199,7 +218,8 @@ angular.module('category.controller', ['category.service'])
                     .then(function(json){
                         if(json.status_code == 0){
                             $scope.productList = json.data;
-                            //console.log(angular.toJson($scope.productList))
+                            //console.log('productList: '+ angular.toJson($scope.productList));
+                            cateCacheCode.product_list = json.data;
                         }else{
                             $scope.productList = null;
                             console.log('获取商品列表失败：' + angular.toJson(error));
