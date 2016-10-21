@@ -48,10 +48,10 @@
              ng-click="cateGoToDetails(item);gotoDetail()"
                 >
             <div class="product-img">
-                <img src="{{item.cover != null ? item.cover: 'img/category/category_cover.png'}}">
+                <img src="{{item.cover | defaultCover}}">
             </div>
             <div class="product-name">
-                {{item.short_name}}
+                {{item.short_name | defaultShortName}}
             </div>
             <div class="product-price">
                 ￥{{item.price}}

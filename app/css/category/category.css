@@ -97,12 +97,12 @@
     padding-top: 2px;
     padding-left: 12px;
     background-color: white;
-    border-radius: 12px;
+    border-radius: 15px;
 }
 
 #category .cate-search .cate-search-input .search_outer .search_input{
     width: 90%;
-    height: 25px;
+    height: 20px;
     border: 0;
     border-left: 1px solid #cccccc;
     background-color: white;
