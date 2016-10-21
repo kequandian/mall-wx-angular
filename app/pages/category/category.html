@@ -29,7 +29,7 @@
         </div>
     </nav>
 
-    <div class="cate-search">
+    <div class="cate-search" ng-if="false">
         <!--new search input-->
         <div class="cate-search-input">
             <div class="search_outer" ng-click="goToSearchPage()">
@@ -55,7 +55,7 @@
                 {{item.short_name | defaultShortName}}
             </div>
             <div class="product-price">
-                ￥{{item.price}}
+                {{item.price | currency:'￥'}}
             </div>
         </div>
 
