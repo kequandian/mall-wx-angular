@@ -32,8 +32,8 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
     })
 
     .controller('SellerPageController', ['$scope', '$state', '$rootScope', 'SellerPageFty', 'BalanceSession', 'UserInfo', 'DWStatus',
-        'withdrawBalance', 'cateLeftIndex','PointRate',
-        function ($scope, $state, $rootScope, SellerPageFty, BalanceSession, UserInfo, DWStatus, withdrawBalance, cateLeftIndex, PointRate) {
+        'withdrawBalance', 'cateLeftIndex','PointRate','cateCacheCode',
+        function ($scope, $state, $rootScope, SellerPageFty, BalanceSession, UserInfo, DWStatus, withdrawBalance, cateLeftIndex, PointRate, cateCacheCode) {
 
             //title
             document.title = "积分中心";
@@ -175,6 +175,16 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                 DWStatus.d_w_status = 1;
                 $state.go('distributionInfo');
             };
+
+            //default category params
+            cateCacheCode.index_first=0;
+            cateCacheCode.index_second=0;
+            cateCacheCode.cate_session=null;
+            cateCacheCode.second_cate=null;
+            cateCacheCode.product_list=null;
+            cateCacheCode.product_id=-1;
+            cateCacheCode.loading=false;
+            cateCacheCode.load_more_btn_show= true;
 
         }])
 

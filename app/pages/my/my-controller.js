@@ -1,7 +1,7 @@
 angular.module('my.controller', ['my.service'])
 
-    .controller('MyController', ['$scope','$state','$rootScope','MyFty','$ocLazyLoad','cateLeftIndex',
-        function($scope,$state,$rootScope, MyFty, $ocLazyLoad,cateLeftIndex){
+    .controller('MyController', ['$scope','$state','$rootScope','MyFty','$ocLazyLoad','cateLeftIndex','cateCacheCode',
+        function($scope,$state,$rootScope, MyFty, $ocLazyLoad,cateLeftIndex,cateCacheCode){
 
             //title
             document.title = "个人中心";
@@ -155,5 +155,14 @@ angular.module('my.controller', ['my.service'])
                     })
             }
 
+            //default category params
+            cateCacheCode.index_first=0;
+            cateCacheCode.index_second=0;
+            cateCacheCode.cate_session=null;
+            cateCacheCode.second_cate=null;
+            cateCacheCode.product_list=null;
+            cateCacheCode.product_id=-1;
+            cateCacheCode.loading=false;
+            cateCacheCode.load_more_btn_show= true;
 
     }]);
