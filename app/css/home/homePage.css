@@ -11,7 +11,7 @@ body, html {
 
 .hd {
     width: 100%;
-    height: 44px;
+    height: 48px;
     background: white;
     position: fixed;
     z-index: 2;
@@ -37,33 +37,34 @@ body, html {
 }
 
 .home-title-center {
-    left: 20px;
-    right: 52px;
-    height: 44px;
+    left: 16px;
+    right: 48px;
+    height: 100%;
     position: absolute;
     background-color: white;
 }
 
 .home-title-center .search_outer{
-    width: 93%;
-    height: 28px;
-    margin-top: 7px;
-    padding-top: 2px;
+    width: 95%;
+    height: 30px;
+    margin-top: 9px;
     padding-left: 12px;
     background-color: #e6e6e6;
-    border-radius: 12px;
+    border-radius: 15px;
 }
 
 .home-title-center .search_input{
+    width: 90%;
     border: 0;
+    font-size: 13px;
     border-left: 1px solid #cccccc;
     background-color: #e6e6e6;
     padding: 3px 16px 3px 6px;
 }
 
-.weui_search_inner .weui_search_input {
-    width: 118%;
-}
+/*.weui_search_inner .weui_search_input {
+    width: 100%;
+}*/
 
 .weui_search_text .weui_icon_search {
     margin-left: 9px;
@@ -77,26 +78,33 @@ body, html {
 }
 
 .home-title-right {
-    width: 48px;
-    height: 42px;
-    right: 5px;
-    top: 2px;
-    text-align: center;
-    background-color: white;
     position: absolute;
+    width: 48px;
+    height: 36px;
+    right: 0px;
+}
+
+.home-title-right .top {
+    width: 100%;
+    height: 60%;
+    margin-top: 6px;
+    box-sizing: border-box;
+    padding-bottom: 2px;
 }
 
 .home-title-right img {
     width: 24px;
     height: 24px;
-    right: 0;
+    margin-left: 12px;
 }
 
-.home-title-right div {
-    font-size: 10px;
+.home-title-right .bottom {
+    width: 100%;
+    height:40%;
+    font-size: 12px;
+    text-align: center;
     color: #9B9B9B;
-    margin-top: -2px;
-    padding: 0;
+    box-sizing: border-box;
 }
 
 #content {
@@ -401,7 +409,7 @@ body, html {
     width: 24px;
     height: 24px;
     position: absolute;
-    top: 14px;
+    top: 12px;
     margin-left: 16px;
 }
 
