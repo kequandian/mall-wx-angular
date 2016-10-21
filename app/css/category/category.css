@@ -23,6 +23,8 @@
 
 #category #nav .first-nav{
     height: 42px;
+    overflow-x:scroll;
+    overflow-y: hidden;
     background-color: white;
 }
 
