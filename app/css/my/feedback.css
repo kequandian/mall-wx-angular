@@ -1,5 +1,5 @@
 #feedback{
-    background-color: #F8F8F8;
+    /*background-color: #F8F8F8;*/
     height: 100%;
     overflow-x:hidden;
     overflow-y: scroll;
@@ -7,7 +7,6 @@
 
 #feedback .feedback-info{
     background-color: white;
-    margin-bottom: 50px;
 }
 
 #feedback .p-info-tab{
@@ -67,7 +66,7 @@
 
 #feedback .p-details{
     width:100%;
-    background-color: #F8F8F8;
+    background-color: #efeff3;
 }
 
 #feedback .a-p-text{
@@ -98,6 +97,11 @@
 }
 
 
+#feedback .weui_uploader{
+    padding-left: 12px;
+    padding-top: 12px;
+    background-color: white;
+}
 
 
 #feedback .footer {
@@ -110,6 +114,8 @@
     bottom: 0;
 }
 
+
+/*
 #feedback .footer-img {
     width: 100%;
     height: 80px;
@@ -120,9 +126,7 @@
 }
 
 #feedback .item-button{
-    /*margin-top: 6px;*/
-    /*margin-right: 7px;*/
     height: 45px;
     line-height: 45px;
     font-size: 16px;
-}
+}*/
