@@ -7,7 +7,7 @@
     right: 0;
     height: 44px;
     position: absolute;
-    background-color: #C20403;
+    background-color: #AD589B;
 }
 
 #searchPage .bd p{
@@ -68,12 +68,12 @@
     right: 10%;
     left: 10%;
     padding: 6px 0;
-    border: 1px solid #6BA6D5;
-    color: #6BA6D5;
+    border: 1px solid #AD589B;
+    color: #AD589B;
     border-radius: 5px;
     position: absolute;
 }
 #searchPage .foot-button .clear-history:active{
-    background-color: #007aff;
+    background-color: #AD589B;
     color: white;
 }
