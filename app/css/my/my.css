@@ -8,11 +8,16 @@
     margin-right:-10px;
 }
 
+#my .my-content{
+    height: 100%;
+    background: white;
+}
+
 .my-page-head {
     width: 100%;
     height: 85px;
     padding: 10px 0 10px 0;
-    background-color: #734284;
+    /*background-color: #734284;*/
     /*background-image: url(../../img/my/user-background.png);*/
 }
 .my-page-head .user-photo{

@@ -408,7 +408,7 @@ angular.module('homePage.controller', ['homePage.service'])
                     .then(function(json){
                         if(json.status_code == 0){
                             //console.log(angular.toJson(json))
-                            $scope.sysAnn = json.data[0].content;
+                            $scope.sysAnn = json.data[0].name;
                         }
                     }, function(error){
                         console.log('获取公告失败: ' + angular.toJson(error));

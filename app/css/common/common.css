@@ -14,11 +14,58 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
 
+/*weui changes*/
+.weui_btn_primary{
+    background-color: #AD589B;
+}
+.weui_btn_primary:not(.weui_btn_disabled):active {
+    color: rgba(255, 255, 255, 0.4);
+    background-color: #734284;
+}
+.weui_btn{
+    background-color: #734284;
+    color: white;
+}
+.weui_btn:not(.weui_btn_disabled):active {
+    color: rgba(255, 255, 255, 0.4);
+    background-color: #AD589B;
+}
+
+
+/* custom define */
+.custom_text_primary{
+    color: #AD589B;
+}
+
+.custom_titlebar_primary{
+    background-color: #AD589B;
+}
+
+.custom_flat_primary{
+    background-color: #AD589B;
+}
+
+.custom_flat_primary_dark{
+    background-color: #734284;
+}
 
 .custom_weui_btn_border{
-    margin-top: 15px;
+    margin-top: 24px;
     margin-left: 20px;
     margin-right: 20px;
+}
+
+.custom_weui_flat_btn{
+    border-radius: 0px;
+}
+
+.custom_flag_footer {
+    width: 100%;
+    height: 44px;
+    clear:both;
+    position: fixed;
+    bottom: 0px;
+    z-index: 200;
 }
 
 .kqd_grid_img_large {

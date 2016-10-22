@@ -21,7 +21,7 @@
                 <div class="account_point">
                     可用积分：{{ (balance*point_rate) | number:0}}
                 </div>
-                <span class="desc">
+                <span class="desc custom_text_primary">
                     【{{point_rate}} 积分可兑现1元，至少{{point_rate*min_withdraw}}积分才可以兑现】</br>
                      <span style="margin-left:5px"></span>兑现金额将自动转入微信零钱
                 </span>
@@ -29,7 +29,7 @@
 
             <!--<p class="allowWithdraw">可兑换积分: {{balance}} &lt;!&ndash;<span class="limit" >( 至少10,000积分才可以提现 )</span>&ndash;&gt;</p>-->
 
-            <div class="sub">
+            <div class="custom_weui_btn_border">
                 <input type="submit" class="weui_btn weui_btn_primary" value="确认兑现" ng-click="postDrawNum()">
             </div>
 
