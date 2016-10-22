@@ -16,37 +16,60 @@ input::-webkit-inner-spin-button {
 
 /*weui changes*/
 .weui_btn_primary{
-    background-color: #AD589B;
+    background-color: #A95296;
 }
 .weui_btn_primary:not(.weui_btn_disabled):active {
     color: rgba(255, 255, 255, 0.4);
     background-color: #734284;
 }
 .weui_btn{
-    background-color: #734284;
+    background-color: #A95296;
     color: white;
 }
 .weui_btn:not(.weui_btn_disabled):active {
     color: rgba(255, 255, 255, 0.4);
-    background-color: #AD589B;
+    background-color: #734284;
+}
+
+.weui_actionsheet_cell{
+    margin-top: 0;
+    border: 0;
+    color: white;
+    background-color: #A95296;
+}
+.weui_actionsheet_cell:active {
+    color: rgba(255, 255, 255, 0.4);
+    background-color: #734284;
 }
 
 
 /* custom define */
 .custom_text_primary{
-    color: #AD589B;
+    color: #734284;
+}
+
+.custom_text_primary_medium{
+    color: #A95296;
 }
 
 .custom_titlebar_primary{
-    background-color: #AD589B;
-}
-
-.custom_flat_primary{
-    background-color: #AD589B;
+    background-color: #A95296;
 }
 
 .custom_flat_primary_dark{
+    background-color: #4e3866
+}
+
+.custom_flat_primary{
     background-color: #734284;
+}
+
+.custom_flat_primary_medium{
+    background-color: #A95296;
+}
+
+.custom_flat_primary_light{
+    background-color: #c385b6;
 }
 
 .custom_weui_btn_border{

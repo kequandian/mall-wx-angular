@@ -130,7 +130,7 @@
     content:"\f3fe";
 }
 .cart-checkbox:checked + label:before {
-    color: red;
+    color: #734284;
     content:"\f3ff";
 }
 .cart-item-label {

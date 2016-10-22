@@ -41,6 +41,7 @@
     height: 72px;
     margin-left: 5px;
     margin-right: 5px;
+    color:#F15353;
 }
 
 #details .product-price span{
@@ -532,7 +533,7 @@
     height: 50px;
     line-height: 50px;
     text-align: center;
-    background-color: #C385B6;
+    /*background-color: #C385B6;*/
     float: right;
 }
 
@@ -540,7 +541,7 @@
     width: 50%;
     line-height: 50px;
     text-align: center;
-    background-color: #B668A4;
+    /*background-color: #B668A4;*/
     float: right;
 }
 
@@ -666,6 +667,7 @@
     float: none;
 }
 
+/*
 #details .weui_actionsheet_action{
     margin-top: 0;
     border: 0;
@@ -673,5 +675,6 @@
     background-color: red;
 }
 
+*/
 
 
