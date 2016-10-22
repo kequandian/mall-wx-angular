@@ -322,16 +322,15 @@
 }
 
 #empty-cart-content .empty-cart-button span{
-    width: 130px;
+    width: 150px;
     font-size: 18px;
-    color: #F63035;
-    border: 2px solid #F63035;
+    color: white;
+    border: 2px solid #734284;
     border-radius: 5px;
     padding: 8px 20px 8px 20px;
-    background-color: #FFF1F0;
+    background-color: #b668a4;
     margin-top: 10px;
 }
-
 
 
 .item-info-bottom .item-price-position{

@@ -294,6 +294,10 @@ body, html {
     padding: 7px 10px;
 }
 
+#details .ui-switch-nav-item{
+    color: #734284;
+}
+
 #content .panic-buying-ad {
     /*margin:0px 3px 0px 3px;*/
 }
@@ -513,13 +517,15 @@ body, html {
     /*padding:0 5px 0 5px;*/
     /*border-top: 1px solid #cccccc;*/
     font-size: 13px;
-    font-weight: bold;
+    /*font-weight: bold;*/
 }
 
 #content .home_g_left {
     width: 100%;
     color: #F15353;
     text-align: center;
+    font-family: "Microsoft YaHei";
+    /*font-weight: normal;*/
     /*margin-left: 5px;*/
     margin-bottom: 5px;
 }

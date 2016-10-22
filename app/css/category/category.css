@@ -43,9 +43,9 @@
 }
 
 #category #nav .first-nav ul li .first-current{
-    color: red;
+    color: #734284;
     padding-bottom: 9px;
-    border-bottom: 2px solid red;
+    border-bottom: 2px solid #4e3866;
 }
 
 #category #nav .second-nav{
@@ -74,7 +74,7 @@
 #category #nav .second-nav ul li .second-current{
     padding: 2px 10px;
     border-radius: 15px;
-    background-color: red;
+    background-color: #734284;
     color: white;
 }
 
