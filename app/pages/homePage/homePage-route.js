@@ -5,4 +5,9 @@ angular.module('homePage.route', ['homePage.controller', 'bsSwitch', 'spinner'])
             templateUrl: 'pages/homePage/home-page.html',
             controller:'HomePageController'
         })
+            .state('systemAnnouncement', {
+                url:'/systemAnnouncement',
+                templateUrl: 'pages/homePage/SystemAnnouncement/system-announcement.html',
+                controller:'SystemAnnouncementController'
+            })
 }]);

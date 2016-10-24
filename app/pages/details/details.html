@@ -29,13 +29,6 @@
             <!--</div>-->
             <!--<img ng-src="{{details.cover}}">-->
 
-
-            <a class="go-home" href="#/home/homePage">
-                <img src="img/home.png">
-            </a>
-            <a class="my-collection" ng-click="addProductToCollection(details.id)">
-                <img src="img/details/details-collection.png">
-            </a>
         </div>
 
         <!-- 商品内容 -->
@@ -257,6 +250,13 @@
 
     <a ng-if="false" class="call-service" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={{kf_qq}}&site=qq&menu=yes">
         <img src="img/details/customer-service.png">
+    </a>
+
+    <a class="go-home" href="#/home/homePage">
+        <img src="img/home.png">
+    </a>
+    <a class="my-collection" ng-click="addProductToCollection(details.id)">
+        <img src="img/details/details-collection.png">
     </a>
 
 </div>

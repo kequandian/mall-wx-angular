@@ -407,7 +407,7 @@ angular.module('homePage.controller', ['homePage.service'])
                 HomePageFty.getSystemAnnouncementService()
                     .then(function(json){
                         if(json.status_code == 0){
-                            //console.log(angular.toJson(json))
+                            console.log(angular.toJson(json))
                             if(json.data.length > 0){
                                 $scope.sysAnn = json.data[0].name;
                             }
@@ -427,4 +427,20 @@ angular.module('homePage.controller', ['homePage.service'])
             //cateCacheCode.loading=false;
             //cateCacheCode.load_more_btn_show= true;
 
-        }]);
+        }])
+
+
+    .controller('SystemAnnouncementController', ['$scope', '$rootScope', '$state', 'HomePageFty','$ocLazyLoad',
+    function ($scope, $rootScope, $state, HomePageFty,$ocLazyLoad) {
+
+        document.title = "十美优品商城";
+
+        $ocLazyLoad.load('Jquery').then(function () {
+            $ocLazyLoad.load('JqueryWeUI').then(function () {
+                //console.log("homePage:jquery loaded");
+            })
+        });
+
+
+
+    }]);

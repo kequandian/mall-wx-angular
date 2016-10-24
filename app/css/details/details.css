@@ -14,7 +14,6 @@
     /*background-color: #007aff;*/
     background-color:white;
     text-align: center;
-    position:relative;
 }
 
 #details .product-img .swiper-slide, .swiper-wrapper img{
@@ -115,10 +114,10 @@
     width: 35px;
     height: 35px;
     /*background-color: #007aff;*/
-    top: 56px;
+    top: 15px;
     right: 12px;
-    /*bottom: 15px;*/
-    position: absolute;
+    /* bottom: 15px; */
+    position: fixed;
     z-index: 1;
 }
 
@@ -132,9 +131,9 @@
     height: 35px;
     /*background-color: #007aff;*/
     top: 15px;
-    right: 13px;
-    /*bottom: 15px;*/
-    position: absolute;
+    right: 55px;
+    /* bottom: 15px; */
+    position: fixed;
     z-index: 1;
 }
 
