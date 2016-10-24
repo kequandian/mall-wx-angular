@@ -79,19 +79,18 @@ angular.module('category.controller', ['category.service'])
 
                 if(!loaded) {
                     if(cateCacheCode.cate_session == -1){
-                        console.log(12345)
+                        //console.log(12345)
                         CategoryFty.categoryService()
                             .then(function (json) {
                                 if (json.status_code == 0) {
 
                                     $scope.first_cate = json.data;
                                     $scope.second_cate = $scope.first_cate[cateCacheCode.index_first].sub_categories;
-                                    console.log('$scope.second_cate: ' + angular.toJson($scope.second_cate));
 
-                                    $scope.first_cate = cateCacheCode.cate_session;
                                     countWith($scope.first_cate);
                                     countItemWith($scope.first_cate[0]);
                                     $scope.productList = cateCacheCode.product_list;
+                                    //console.log('countItemWith: ' + angular.toJson(cateCacheCode.product_list));
 
                                     cateCacheCode.cate_session = json.data;
                                     cateCacheCode.second_cate =$scope.first_cate[cateCacheCode.index_first].sub_categories;

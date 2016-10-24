@@ -429,7 +429,7 @@ angular.module('homePage.controller', ['homePage.service'])
                 cateCacheCode.index_second=0;
                 cateCacheCode.cate_session=-1;
                 cateCacheCode.second_cate=null;
-                cateCacheCode.product_list=item.products;
+                cateCacheCode.product_list=item;
                 cateCacheCode.product_id=-1;
                 cateCacheCode.loading=false;
                 cateCacheCode.load_more_btn_show= true;
