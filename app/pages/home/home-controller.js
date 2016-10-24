@@ -100,12 +100,5 @@ angular.module('home.controller', ['home.service'])
                     })
             }
 
-            //推荐商品
-            $scope.goToGoodsList = function (gItemtId) {
-                goodListParams.typeNumber = gItemtId;
-                //goodListParams.searchStatus = 4;
-                $state.go('goodsList',{statusNumber:4})
-            };
-
 
         }]);

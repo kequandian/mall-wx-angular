@@ -417,6 +417,25 @@ angular.module('homePage.controller', ['homePage.service'])
                     })
             }
 
+            //推荐商品
+            $scope.goToGoodsList = function (item, index) {
+                console.log(angular.toJson(item));
+                //goodListParams.typeNumber = gItemtId;
+                //goodListParams.searchStatus = 4;
+                //$state.go('goodsList',{statusNumber:4})
+
+                //default category params
+                cateCacheCode.index_first=index;
+                cateCacheCode.index_second=0;
+                cateCacheCode.cate_session=-1;
+                cateCacheCode.second_cate=null;
+                cateCacheCode.product_list=item.products;
+                cateCacheCode.product_id=-1;
+                cateCacheCode.loading=false;
+                cateCacheCode.load_more_btn_show= true;
+                $state.go('home.category');
+            };
+
             //default category params
             //cateCacheCode.index_first=0;
             //cateCacheCode.index_second=0;

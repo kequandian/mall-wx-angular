@@ -78,28 +78,55 @@ angular.module('category.controller', ['category.service'])
                 }
 
                 if(!loaded) {
-                    console.log('load');
-                    CategoryFty.categoryService()
-                        .then(function (json) {
-                            if (json.status_code == 0) {
+                    if(cateCacheCode.cate_session == -1){
+                        console.log(12345)
+                        CategoryFty.categoryService()
+                            .then(function (json) {
+                                if (json.status_code == 0) {
 
-                                $scope.first_cate = json.data;
-                                //console.log(angular.toJson(json.data));
-                                $scope.second_cate = $scope.first_cate[0].sub_categories;
-                                countWith($scope.first_cate);
-                                countItemWith($scope.first_cate[0]);
-                                productList($scope.first_cate[0].sub_categories[0].id);
+                                    $scope.first_cate = json.data;
+                                    $scope.second_cate = $scope.first_cate[cateCacheCode.index_first].sub_categories;
+                                    console.log('$scope.second_cate: ' + angular.toJson($scope.second_cate));
 
-                                cateCacheCode.cate_session = json.data;
-                                cateCacheCode.second_cate = $scope.first_cate[0];
-                                cateCacheCode.product_id = $scope.first_cate[0].sub_categories[0].id;
+                                    $scope.first_cate = cateCacheCode.cate_session;
+                                    countWith($scope.first_cate);
+                                    countItemWith($scope.first_cate[0]);
+                                    $scope.productList = cateCacheCode.product_list;
 
-                            } else {
+                                    cateCacheCode.cate_session = json.data;
+                                    cateCacheCode.second_cate =$scope.first_cate[cateCacheCode.index_first].sub_categories;
+                                    cateCacheCode.product_id = $scope.first_cate[cateCacheCode.index_first].sub_categories[0].id;
+
+                                } else {
+                                    console.log('获取商品分类失败');
+                                }
+                            }, function (error) {
                                 console.log('获取商品分类失败');
-                            }
-                        }, function (error) {
-                            console.log('获取商品分类失败');
-                        })
+                            })
+                    }else{
+                        console.log('load');
+                        CategoryFty.categoryService()
+                            .then(function (json) {
+                                if (json.status_code == 0) {
+
+                                    $scope.first_cate = json.data;
+                                    //console.log(angular.toJson(json.data));
+                                    $scope.second_cate = $scope.first_cate[0].sub_categories;
+                                    countWith($scope.first_cate);
+                                    countItemWith($scope.first_cate[0]);
+                                    productList($scope.first_cate[0].sub_categories[0].id);
+
+                                    cateCacheCode.cate_session = json.data;
+                                    cateCacheCode.second_cate = $scope.first_cate[0];
+                                    cateCacheCode.product_id = $scope.first_cate[0].sub_categories[0].id;
+
+                                } else {
+                                    console.log('获取商品分类失败');
+                                }
+                            }, function (error) {
+                                console.log('获取商品分类失败');
+                            })
+                    }
                 }else{
                     console.log('cache');
                     $scope.first_cate = cateCacheCode.cate_session;

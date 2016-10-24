@@ -18,7 +18,8 @@
     height: 85px;
     padding: 10px 0 10px 0;
     /*background-color: #734284;*/
-    background-image: url(../../img/my/user-background.png);
+    /*background-image: url(../../img/my/user-background.png);*/
+    background-image: url(../../img/my/user-background-2.png);
 }
 .my-page-head .user-photo{
     width: 80px;
