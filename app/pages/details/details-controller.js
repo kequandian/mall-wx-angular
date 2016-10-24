@@ -473,5 +473,15 @@ angular.module('details.controller', ['details.service'])
                         $.toast('收藏失败', 'cancel');
                     })
             }
+
+            //进入购物车
+            $scope.goToCart = function(){
+                var newUrl = '#/home/cart';
+                var title = '购物车';
+                var c_state = history.state;
+                window.history.pushState(c_state, title, newUrl);
+
+                $state.go('home.cart');
+            }
         }])
 ;
