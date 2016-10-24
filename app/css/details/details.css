@@ -14,6 +14,7 @@
     /*background-color: #007aff;*/
     background-color:white;
     text-align: center;
+    position:relative;
 }
 
 #details .product-img .swiper-slide, .swiper-wrapper img{
@@ -111,18 +112,35 @@
 }
 
 #details .go-home{
-    width: 48px;
-    height: 48px;
+    width: 35px;
+    height: 35px;
     /*background-color: #007aff;*/
-    top: 15px;
-    right: 15px;
-    position: fixed;
+    top: 56px;
+    right: 12px;
+    /*bottom: 15px;*/
+    position: absolute;
     z-index: 1;
 }
 
 #details .go-home img{
-    width: 48px;
-    height: 48px;
+    width: 35px;
+    height: 35px;
+}
+
+#details .my-collection {
+    width: 35px;
+    height: 35px;
+    /*background-color: #007aff;*/
+    top: 15px;
+    right: 13px;
+    /*bottom: 15px;*/
+    position: absolute;
+    z-index: 1;
+}
+
+#details .my-collection img {
+    width: 35px;
+    height: 35px;
 }
 
 /*#details .product-price div i{*/
