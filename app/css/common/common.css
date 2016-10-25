@@ -8,6 +8,8 @@
 
 ::-webkit-scrollbar-thumb:active { background-color: #00FFFFFF }/* Scroll click & drag color */
 
+::-webkit-input-placeholder { color:#aaa; }
+
 /*delete input up down btn*/
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
