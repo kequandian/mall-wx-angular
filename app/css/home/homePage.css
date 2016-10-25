@@ -146,7 +146,7 @@ body, html {
 #content #notice .notice-right{
     width: 50px;
     height: 48px;
-    color: red;
+    /*color: red;*/
     font-weight: bold;
     font-family: "Bookman", Georgia, "Times New Roman", serif;
     line-height: 48px;
