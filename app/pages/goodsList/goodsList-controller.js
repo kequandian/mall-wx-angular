@@ -18,7 +18,7 @@ angular.module('goodsList.controller', ['goodsList.service'])
 
             var cateId = goodListParams.typeNumber;
 
-            console.log($stateParams.statusNumber);
+            //console.log($stateParams.statusNumber);
 
             if (s_status == 1) {
                 // from category
@@ -236,7 +236,13 @@ angular.module('goodsList.controller', ['goodsList.service'])
 
             //首页推荐商品
             function homeAreaProductList(pageNumber, pageSize){
-                GoodsListFty.recommendProductService(pageNumber,pageSize,orderBy,cateId)
+                var isPromoted  = goodListParams.promoted;
+                var promoted = '';
+                if(isPromoted){
+                    promoted = '&promoted=true'
+                }
+
+                GoodsListFty.recommendProductService(pageNumber,pageSize,orderBy,cateId,promoted)
                     .then(function(json){
                         if(json.status_code == 0){
                             //console.log(angular.toJson(json));
