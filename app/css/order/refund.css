@@ -35,7 +35,7 @@
 }
 #refund .item-refund-order-number span{
     right: 10px;
-    color: red;
+    /*color: red;*/
     position: absolute;
 }
 

@@ -75,7 +75,7 @@
 }
 #orders .item-order-number span{
     right: 10px;
-    color: #734284;
+    /*color: #734284;*/
     position: absolute;
 }
 
