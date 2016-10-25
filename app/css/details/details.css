@@ -527,6 +527,11 @@
     position:absolute;
 }
 
+#details .footer-collection .ion-app-biliya-tabs-cart{
+    width: 24px;
+    height: 24px;
+}
+
 
 #details .detail-footer-right{
     width: 56%;
