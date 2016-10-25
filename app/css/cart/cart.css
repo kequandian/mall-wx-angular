@@ -1,3 +1,4 @@
+}
 /*begin from collection style*/
 #cart .coll-text{
     width: 100%;
@@ -111,9 +112,9 @@
     height: 57px;
     position: fixed;
     bottom: 0;
-    /*margin-bottom: 55px;*/
 }
 .cart-foot {
+    margin-bottom: 55px;
 }
 
 
