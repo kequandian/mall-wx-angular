@@ -86,8 +86,8 @@
                 公告
             </div>
             <div class="vertical_line"></div>
-            <!--<div class="notice-center" ui-sref="systemAnnouncement">-->
-            <div class="notice-center">
+            <div class="notice-center" ui-sref="systemAnnouncement">
+            <!--<div class="notice-center">-->
                 <marquee scrollamount="3">{{sysAnn}}</marquee>
             </div>
             <!--<div class="notice-left" ui-sref="systemAnnouncement">-->
@@ -251,8 +251,8 @@
 
         <div ng-repeat="productItem in rec_product" style="margin-top: 8px;">
 
-            <div class="area_title" ng-click="goToGoodsList(productItem,$index)">
-            <!--<div class="area_title">-->
+            <!--<div class="area_title" ng-click="goToGoodsList(productItem,$index)">-->
+            <div class="area_title">
                 {{productItem.name}}
                 <img src="img/home/arrow.png">
             </div>

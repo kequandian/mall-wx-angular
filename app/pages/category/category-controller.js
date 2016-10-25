@@ -93,7 +93,8 @@ angular.module('category.controller', ['category.service'])
                                     //console.log('countItemWith: ' + angular.toJson(cateCacheCode.product_list));
 
                                     cateCacheCode.cate_session = json.data;
-                                    cateCacheCode.second_cate =$scope.first_cate[cateCacheCode.index_first].sub_categories;
+                                    cateCacheCode.second_cate =$scope.first_cate[cateCacheCode.index_first];
+                                    //console.log('cateCacheCode.second_cate: ' + angular.toJson($scope.first_cate[cateCacheCode.index_first]));
                                     cateCacheCode.product_id = $scope.first_cate[cateCacheCode.index_first].sub_categories[0].id;
 
                                 } else {
@@ -116,7 +117,7 @@ angular.module('category.controller', ['category.service'])
                                     productList($scope.first_cate[0].sub_categories[0].id);
 
                                     cateCacheCode.cate_session = json.data;
-                                    cateCacheCode.second_cate = $scope.first_cate[0];
+                                    cateCacheCode.second_cate = $scope.first_cate[0].sub_categories;
                                     cateCacheCode.product_id = $scope.first_cate[0].sub_categories[0].id;
 
                                 } else {
@@ -224,7 +225,7 @@ angular.module('category.controller', ['category.service'])
 
             //second nav
             function countItemWith (content){
-                //console.log("content:"+angular.toJson(content));
+                //console.log("content12345:"+angular.toJson(content));
                 if(content.sub_categories.length > 0){
                     var count = content.sub_categories.length * 105 + 5;
                     count = "width:" + count + "px;";
