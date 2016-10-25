@@ -9,7 +9,8 @@ angular.module('moduleValueJs',[])
     })
     .value('goodListParams',{
         typeNumber: null,
-        searchStatus: null
+        searchStatus: null,
+        promoted:false
     })
 
     //首页分类区域

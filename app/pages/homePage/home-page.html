@@ -251,14 +251,13 @@
 
         <div ng-repeat="productItem in rec_product" style="margin-top: 8px;">
 
-            <!--<div class="area_title" ng-click="goToGoodsList(productItem,$index)">-->
-            <div class="area_title">
+            <div class="area_title" ng-click="goToGoodsList(productItem,$index)">
+            <!--<div class="area_title">-->
                 {{productItem.name}}
                 <img src="img/home/arrow.png">
             </div>
 
-            <!--<div class="area_cover" ng-if="productItem.cover != null">-->
-            <div class="area_cover">
+            <div class="area_cover" ng-if="productItem.cover != null">
                 <img src="{{productItem.cover | defaultImg}}">
                 <!--<img src="">-->
                 <div class="area_cover_name" ng-if="check_description(productItem.description)">

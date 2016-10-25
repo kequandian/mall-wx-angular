@@ -64,9 +64,9 @@ angular.module('goodsList.service', [])
             },
 
             //首页推荐商品
-            recommendProductService: function (pageNumber,pageSize,orderBy,cateId) {
+            recommendProductService: function (pageNumber,pageSize,orderBy,cateId,promoted) {
                 var deferred = $q.defer();
-                var url = GlobalVariable.SERVER_PATH + "/product_category/" + cateId + "?pageNumber=" + pageNumber + "&pageSize=" + pageSize + orderBy + "&promoted=true";
+                var url = GlobalVariable.SERVER_PATH + "/product_category/" + cateId + "?pageNumber=" + pageNumber + "&pageSize=" + pageSize + orderBy + promoted;
                 $http.get(url)
                     .success(function (data) {
                         return deferred.resolve(data);

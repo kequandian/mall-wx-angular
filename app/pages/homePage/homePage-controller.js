@@ -172,7 +172,7 @@ angular.module('homePage.controller', ['homePage.service'])
                         if (json.status_code == 0) {
 
                             $scope.rec_product = json.data;
-                            //console.log(angular.toJson(json.data));
+                            //console.log(angular.toJson(json.data[0]));
 
                         /*    if (pageNumber == 1) {
                                 $scope.rec_product = json.data;
@@ -407,7 +407,7 @@ angular.module('homePage.controller', ['homePage.service'])
                 HomePageFty.getSystemAnnouncementService()
                     .then(function(json){
                         if(json.status_code == 0){
-                            console.log(angular.toJson(json))
+                            //console.log(angular.toJson(json))
                             if(json.data.length > 0){
                                 $scope.sysAnn = json.data[0].name;
                             }
@@ -419,21 +419,26 @@ angular.module('homePage.controller', ['homePage.service'])
 
             //推荐商品
             $scope.goToGoodsList = function (item, index) {
-                console.log(angular.toJson(item));
-                //goodListParams.typeNumber = gItemtId;
+                //console.log(angular.toJson(item));
+                goodListParams.typeNumber = item.id;
+                if(item.sub_categories.length > 0){
+                    goodListParams.promoted = true;
+                }else{
+                    goodListParams.promoted = false;
+                }
                 //goodListParams.searchStatus = 4;
-                //$state.go('goodsList',{statusNumber:4})
+                $state.go('goodsList',{statusNumber:4});
 
                 //default category params
-                cateCacheCode.index_first=index;
-                cateCacheCode.index_second=0;
-                cateCacheCode.cate_session=-1;
-                cateCacheCode.second_cate=null;
-                cateCacheCode.product_list=item;
-                cateCacheCode.product_id=-1;
-                cateCacheCode.loading=false;
-                cateCacheCode.load_more_btn_show= true;
-                $state.go('home.category');
+                //cateCacheCode.index_first=index;
+                //cateCacheCode.index_second=0;
+                //cateCacheCode.cate_session=-1;
+                //cateCacheCode.second_cate=null;
+                //cateCacheCode.product_list=item;
+                //cateCacheCode.product_id=-1;
+                //cateCacheCode.loading=false;
+                //cateCacheCode.load_more_btn_show= true;
+                //$state.go('home.category');
             };
 
             //default category params
