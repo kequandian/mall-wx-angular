@@ -62,7 +62,7 @@
 .view-container {
     /*padding-top:51px;*/
     padding-bottom: 57px;
-    height: 100%;
+    height: auto;
     background-color: white;
 }
 
@@ -111,9 +111,9 @@
     height: 57px;
     position: fixed;
     bottom: 0;
+    margin-bottom: 55px;
 }
 .cart-foot {
-    margin-bottom: 55px;
 }
 
 
