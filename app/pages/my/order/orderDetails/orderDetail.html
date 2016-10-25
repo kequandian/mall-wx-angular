@@ -96,7 +96,7 @@
     <div class="footer" ng-if="detailsInfo.status != 'CLOSED_PAY_TIMEOUT' || detailsInfo.status == 'CLOSED_CONFIRMED' || detailsInfo.status == 'CLOSED_REFUNDED'">
         <!-- 待付款 -->
         <div ng-if="detailsInfo.status == 'CREATED_PAY_PENDING'">
-            <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_warn item-btn-right"
+            <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_primary item-btn-right"
                style="margin:7px 5px 3px 0;"
                ng-click="weixin_pay(detailsInfo)">
                 立即付款
@@ -106,7 +106,7 @@
         <!-- 待发货 -->
         <div ng-if="detailsInfo.status == 'CONFIRMED_DELIVER_PENDING' || detailsInfo.status == 'PAID_CONFIRM_PENDING'">
 
-            <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_warn item-btn-right" style="margin:7px 5px 0 0;"
+            <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_primary item-btn-right" style="margin:7px 5px 0 0;"
                ng-click="deliverReminder(detailsInfo.order_number)">
                 提醒发货
             </a>
@@ -118,7 +118,7 @@
 
         <!-- 待收货 -->
         <div ng-if="detailsInfo.status == 'DELIVERING' || detailsInfo.status == 'DELIVERED_CONFIRM_PENDING'">
-            <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_warn item-btn-right" style="margin:7px 5px 3px 0;"
+            <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_primary item-btn-right" style="margin:7px 5px 3px 0;"
                ng-click="close_order_action(detailsInfo.order_number)">
                 确认收货
             </a>
