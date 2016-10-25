@@ -462,6 +462,7 @@
 }
 
 #details .f-h-top{
+    padding-top: 3px;
     height: 25px;
 }
 
@@ -469,6 +470,13 @@
     margin-top: 5px;
     width: auto;
     height: 20px;
+}
+
+#details .f-h-top label{
+    color: dimgray;
+    font-size: 28px;
+    text-align: center;
+    margin-top: 5px;
 }
 
 #details .f-h-bottom{
