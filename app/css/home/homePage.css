@@ -719,3 +719,23 @@ body, html {
     -webkit-animation: top-dropdown-anim 1s ease-in;
 }
 
+
+/*=================系统公告================*/
+#systemAnnouncement{
+
+}
+
+#systemAnnouncement .s-a-title{
+    width: 100%;
+    height: 48px;
+    line-height: 48px;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#systemAnnouncement .s-a-content{
+    width: 100%;
+    height: auto;
+}
+
