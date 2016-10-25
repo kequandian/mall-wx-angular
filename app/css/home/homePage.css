@@ -589,8 +589,8 @@ body, html {
 }*/
 
 #footer .topit {
-    width: 48px;
-    height: 48px;
+    width: 42px;
+    height: 42px;
     bottom: 70px;
     right: 12px;
     position: fixed;
@@ -599,8 +599,8 @@ body, html {
 }
 
 #footer .topit img {
-    width: 48px;
-    height: 48px;
+    width: 42px;
+    height: 42px;
 }
 
 /*#content .box-header{
