@@ -117,7 +117,7 @@ angular.module('category.controller', ['category.service'])
                                     productList($scope.first_cate[0].sub_categories[0].id);
 
                                     cateCacheCode.cate_session = json.data;
-                                    cateCacheCode.second_cate = $scope.first_cate[0].sub_categories;
+                                    cateCacheCode.second_cate = $scope.first_cate[0];
                                     cateCacheCode.product_id = $scope.first_cate[0].sub_categories[0].id;
 
                                 } else {
