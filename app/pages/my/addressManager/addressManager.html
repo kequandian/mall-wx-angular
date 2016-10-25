@@ -43,7 +43,7 @@
                                    ng-model="contact.id_default" ng-checked="contact.is_default == 1 ? 'checked':''"
                                     ng-click="defaultContact(contact.id)">
                             <label id="address-manager-check" for="add{{contact.id}}"  class="ion-android-checkbox-outline-blank active address-check-label"></label>
-                            <div class="address-check-text">默认地址</div>
+                            <div class="address-check-text custom_text_primary_medium">默认地址</div>
                         </li>
 
                         <li class="weui_media_info_meta weui_media_info_meta_extra"
@@ -61,8 +61,8 @@
                     </ul>
                 </div>
             </div>
-            <div class="custom_flag_footer">
-                <div class="weui_btn custom_weui_flat_btn" ng-click="addAddress()">添加收货地址</div>
+            <div class="custom_flat_footer custom_wrap_btn_height">
+                <div class="weui_btn weui_btn_primary custom_weui_btn_border" ng-click="addAddress()">添加收货地址</div>
             </div>
         </div>
 

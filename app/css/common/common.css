@@ -22,25 +22,25 @@ input::-webkit-inner-spin-button {
     color: rgba(255, 255, 255, 0.4);
     background-color: #734284;
 }
+
 .weui_btn{
-    background-color: #A95296;
+    /*background-color: #A95296;*/
     color: white;
     padding-bottom: 0px;
 }
 .weui_btn:not(.weui_btn_disabled):active {
     color: rgba(255, 255, 255, 0.4);
-    background-color: #734284;
+    /*background-color: #734284;*/
 }
-
 .weui_actionsheet_cell{
     margin-top: 0;
     border: 0;
     color: white;
-    background-color: #A95296;
+    /*background-color: #A95296;*/
 }
 .weui_actionsheet_cell:active {
     color: rgba(255, 255, 255, 0.4);
-    background-color: #734284;
+    /*background-color: #734284;*/
 }
 
 
@@ -83,13 +83,20 @@ input::-webkit-inner-spin-button {
     border-radius: 0px;
 }
 
-.custom_flag_footer {
+.custom_flat_footer {
     width: 100%;
-    height: 42px;
     clear:both;
     position: fixed;
     bottom: 0px;
     z-index: 200;
+}
+
+.custom_wrap_bar_height{
+    height: 44px;
+}
+
+.custom_wrap_btn_height{
+    height: 88px;
 }
 
 .kqd_grid_img_large {
