@@ -16,6 +16,7 @@ input::-webkit-inner-spin-button {
 
 /*weui changes*/
 .weui_btn_primary{
+    color: white;
     background-color: #A95296;
 }
 .weui_btn_primary:not(.weui_btn_disabled):active {
@@ -25,7 +26,6 @@ input::-webkit-inner-spin-button {
 
 .weui_btn{
     /*background-color: #A95296;*/
-    color: white;
     padding-bottom: 0px;
 }
 .weui_btn:not(.weui_btn_disabled):active {
