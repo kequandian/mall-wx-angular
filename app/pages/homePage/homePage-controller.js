@@ -23,7 +23,7 @@ angular.module('homePage.controller', ['homePage.service'])
                         //scope.$apply(attrs.scrolly);
                     }
 
-                    if (raw.scrollTop < 64) { //at the bottom
+                    if (raw.scrollTop < 400) { //at the bottom
                         if(!scope.emittedOnScrollTop) {
                             scope.$emit('$onScrollTop');
                             //console.log('$onScrollTop');
@@ -102,7 +102,7 @@ angular.module('homePage.controller', ['homePage.service'])
             $scope.home_load_more_btn_show = $rootScope.rec_session.load_more;
 
 
-            $scope.top_btn_show = true;
+            $scope.top_btn_show = false;
 
             $scope.followus = HomePageFty.getFollowusUrl();
 
