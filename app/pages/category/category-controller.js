@@ -298,7 +298,8 @@ angular.module('category.controller', ['category.service'])
 
             //推荐商品
             $scope.cateGoToDetails = function (item) {
-                $state.go('details',{productId:item.id})
+                console.log(angular.toJson(item))
+                //$state.go('details',{productId:item.id})
             };
 
             //滚动加载

@@ -49,6 +49,9 @@
                 >
             <div class="product-img">
                 <img square-img src="{{item.cover | defaultCover}}">
+                <div ng-if="item.feature == 0">
+                    <img src="img/category/feature.png">
+                </div>
             </div>
             <div class="product-name">
                 <!--{{item.name | cutText:true:20:'...'}}-->

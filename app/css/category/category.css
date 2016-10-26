@@ -140,10 +140,26 @@
     background-color: #efeff3;
 }
 
+#category .pro-content .product-item .product-img{
+    width: 100%;
+    height: auto;
+    position:relative;
+}
+
 #category .pro-content .product-item .product-img img{
     width: 100%;
     height: auto;
-    background-color: white;
+}
+
+#category .pro-content .product-item .product-img div{
+    position:absolute;
+    right: 10px;
+    bottom: 5px;
+}
+
+#category .pro-content .product-item .product-img div img{
+    width: 75px;
+    height: auto;
 }
 
 #category .pro-content .product-item .product-name{
