@@ -247,15 +247,15 @@
             <label>/精选为你推荐/</label>
         </div>
 
-        <div ng-repeat="productItem in rec_product" style="margin-top: 8px;">
+        <div ng-repeat="productItem in rec_product" style="margin-top: 8px;" on-finish-render>
 
-            <div class="area_title" ng-click="goToGoodsList(productItem,$index)">
+            <div class="area_title" ng-click="goToGoodsList(productItem,$index);gotoDetail()">
             <!--<div class="area_title">-->
                 {{productItem.name}}
                 <img src="img/home/arrow.png">
             </div>
 
-            <div class="area_cover" ng-if="productItem.cover != null" ng-click="goToGoodsList(productItem,$index)">
+            <div class="area_cover" ng-if="productItem.cover != null" ng-click="goToGoodsList(productItem,$index);gotoDetail()">
                 <img src="{{productItem.cover | defaultImg}}">
                 <!--<img src="">-->
                 <div class="area_cover_name" ng-if="check_description(productItem.description)">
@@ -275,7 +275,7 @@
             <div oc-lazy-load="SquareImg" class="area-product">
                 <div id="homeProductGrids">
                     <div class="weui_grids">
-                        <a ui-sref="details({productId:item.id})" class="weui_grid product_item" on-finish-render
+                        <a ui-sref="details({productId:item.id})" class="weui_grid product_item"
                            ng-repeat="item in productItem.products">
                             <div ng-click="gotoDetail()">
                                 <!--product cover-->

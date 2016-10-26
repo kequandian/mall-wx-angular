@@ -140,7 +140,9 @@ angular.module('details.controller', ['details.service'])
 
                         } else {
                             if(json.message == 'product.is.offsell'){
-                                $.alert('此商品已售罄');
+                                $.alert('此商品已售罄','提示', function(){
+                                    window.history.back();
+                                });
                             }else{
                                 $.toast('获取商品详情失败','cancel');
                                 console.log("获取商品详情失败");
