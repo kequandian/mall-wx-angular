@@ -162,7 +162,7 @@
     width: auto;
     height: 35px;
     float: left;
-    margin-left: 5px;
+    /*margin-left: 5px;*/
 }
 
 #details .product-f-left img{
@@ -173,7 +173,7 @@
 }
 
 #details .product-f-left span{
-    margin-left: 25px;
+    /*margin-left: 25px;*/
 }
 
 #details .product-f-right{

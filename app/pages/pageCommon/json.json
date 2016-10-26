@@ -1,28 +1,105 @@
 {
   "partner_level_zone": 2,
-  "weight": 500,
-  "stock_balance": 999,
-  "fare_id": 5,
-  "id": 79,
-  "cover": "http://o9ixtumvv.bkt.clouddn.com/20161018170250845-YNgF71xd.jpg",
-  "sales": 1,
+  "weight": 0,
+  "stock_balance": 1000,
+  "fare_id": 1,
+  "id": 57,
+  "cover": "http://o9ixtumvv.bkt.clouddn.com/20161018145446696-t9hXQatW.jpg",
+  "description": "<p><img src=\"http://images.10mup.com/20160713135644228-5cGYttHS.jpg\" title=\"1468389404169012324.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713135656435-xSc2PraS.jpg\" title=\"1468389404196036655.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713135647189-ktpnlJUb.jpg\" title=\"1468389404300095208.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713135646075-kkcdmpcW.jpg\" title=\"1468389404515096037.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713135649660-9hYVI3hc.jpg\" title=\"1468389406349058548.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713135649384-Q2Nbz0ZQ.jpg\" title=\"1468389408245060288.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713135652899-uXcmTQHL.jpg\" title=\"1468389409619053255.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713135652501-UZk4JY8C.jpg\" title=\"1468389410981060313.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713135654354-Ez7Be3Nj.jpg\" title=\"1468389413087019318.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713135656119-jbu5uUVn.jpg\" title=\"1468389415165087119.jpg\"></p>\n<p><br></p>",
+  "sales": 2,
   "promoted": 1,
-  "name": "妙管家厨房多功能清洁剂柠檬清香500g",
-  "created_date": "2016-07-25 14:32:45",
-  "cost_price": 16,
+  "name": "天然植物精华洗衣皂液2.5L【全国包邮（甘肃、宁夏、新疆、西藏、青海、内蒙古除外）】",
+  "purchase_strategy": null,
+  "created_date": "2016-07-13 13:57:14",
+  "cost_price": 23.14,
   "status": "ONSELL",
   "free_shipping": 1,
-  "category_id": 56,
-  "suggested_price": 22,
+  "category_id": 27,
+  "suggested_price": 45.8,
   "barcode": null,
-  "short_name": "厨房多功能清洁剂",
+  "properties": [],
+  "short_name": "植物精华洗衣皂液",
   "bulk": 0,
-  "unit": "500g*1瓶",
-  "last_modified_date": "2016-10-24 16:51:29",
-  "price": 22,
-  "category_name": "厨房清洁",
+  "specifications": [
+    {
+      "id": 18,
+      "weight": 0,
+      "price": 45.8,
+      "cost_price": 22,
+      "product_id": 57,
+      "name": "春竹",
+      "suggested_price": 45.8,
+      "bulk": 0,
+      "stock_balance": 1000
+    },
+    {
+      "id": 19,
+      "weight": 0,
+      "price": 45.8,
+      "cost_price": 22,
+      "product_id": 57,
+      "name": "风清白兰",
+      "suggested_price": 45.8,
+      "bulk": 0,
+      "stock_balance": 998
+    }
+  ],
+  "fare_template": {
+    "id": 1,
+    "shop_addr": "广东-广州",
+    "incl_postage_provisoes": [],
+    "last_modified_date": "2016-10-24 17:09:25",
+    "name": "按重量",
+    "is_incl_postage": 0,
+    "carry_modes": [
+      {
+        "region": null,
+        "first_weight": 3,
+        "second_amount": 3,
+        "carry_way": 0,
+        "is_default": 1,
+        "first_piece": null,
+        "second_piece": null,
+        "second_weight": 1,
+        "fare_id": 1,
+        "id": 10,
+        "first_amount": 7,
+        "first_bulk": null,
+        "second_bulk": null
+      }
+    ],
+    "valuation_model": 1,
+    "is_incl_postage_by_if": 0,
+    "dispatch_time": "36"
+  },
+  "unit": "2.5L*1瓶",
+  "last_modified_date": "2016-10-18 14:56:30",
+  "price": 45.8,
+  "covers": [
+    {
+      "id": 355,
+      "product_id": 57,
+      "sort_order": 1,
+      "type": 0,
+      "url": "http://o9ixtumvv.bkt.clouddn.com/20161018145446696-t9hXQatW.jpg"
+    },
+    {
+      "id": 356,
+      "product_id": 57,
+      "sort_order": 2,
+      "type": 0,
+      "url": "http://images.10mup.com/20160713135712134-GB7M8BqY.jpg"
+    },
+    {
+      "id": 357,
+      "product_id": 57,
+      "sort_order": 3,
+      "type": 0,
+      "url": "http://images.10mup.com/20160713135712808-voCZ100N.jpg"
+    }
+  ],
   "freight": 0,
   "store_location": null,
-  "sort_order": 54,
-  "view_count": 272
+  "sort_order": 90,
+  "view_count": 60
 }
