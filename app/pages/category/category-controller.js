@@ -216,7 +216,7 @@ angular.module('category.controller', ['category.service'])
                 var li_width = 0;
                 if(content.length > 0){
                     angular.forEach(content,function(v, k){
-                        li_width = li_width + (v.name.length * 16 + 20) + 3;
+                        li_width = li_width + (v.name.length * 16 + 30) + 3;
                     });
                     //var count = li_width * 105 + 5;
                     //count = "width:" + li_width + "px;";
