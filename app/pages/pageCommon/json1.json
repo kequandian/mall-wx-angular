@@ -1,0 +1,94 @@
+{
+  "partner_level_zone": 2,
+  "weight": 1000,
+  "stock_balance": 1000,
+  "fare_id": 5,
+  "id": 73,
+  "cover": "http://o9ixtumvv.bkt.clouddn.com/20161018165808452-IsTrVHNt.jpg",
+  "description": "<p><img src=\"http://images.10mup.com/20160723150829108-9hZk0dzs.jpg\" title=\"1469257706798078334.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160723150828242-uupN82nm.jpg\" title=\"1469257706822049508.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160723150829213-WFQ5cAvR.jpg\" title=\"1469257706830076403.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160723150830773-tngiABJH.jpg\" title=\"1469257709504087141.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160723150832755-5PdRBwCC.jpg\" title=\"1469257710819086329.jpg\"></p>\n<p><br></p>",
+  "sales": 0,
+  "promoted": 1,
+  "name": "妙管家管道快速疏通液 厨房浴室马桶水管下水道960g",
+  "purchase_strategy": null,
+  "created_date": "2016-07-23 15:08:53",
+  "cost_price": 12,
+  "status": "ONSELL",
+  "free_shipping": 1,
+  "category_id": 57,
+  "suggested_price": 19.9,
+  "barcode": null,
+  "properties": [],
+  "short_name": "家管道快速疏通液",
+  "bulk": 0,
+  "specifications": [],
+  "fare_template": {
+    "id": 5,
+    "shop_addr": "广东-广州",
+    "incl_postage_provisoes": [
+      {
+        "amount": 88,
+        "region": null,
+        "id": 15,
+        "bulk_no": null,
+        "piece_no": null,
+        "carry_way": 0,
+        "type": 3,
+        "weight_no": 10000,
+        "fare_id": 5
+      }
+    ],
+    "last_modified_date": "2016-10-24 17:35:51",
+    "name": "满88元包邮",
+    "is_incl_postage": 0,
+    "carry_modes": [
+      {
+        "region": null,
+        "first_weight": 1000,
+        "second_amount": 5,
+        "carry_way": 0,
+        "is_default": 1,
+        "first_piece": null,
+        "second_piece": null,
+        "second_weight": 1000,
+        "fare_id": 5,
+        "id": 9,
+        "first_amount": 10,
+        "first_bulk": null,
+        "second_bulk": null
+      }
+    ],
+    "valuation_model": 1,
+    "is_incl_postage_by_if": 1,
+    "dispatch_time": "24"
+  },
+  "unit": "960g",
+  "last_modified_date": "2016-10-24 17:36:54",
+  "price": 19.9,
+  "covers": [
+    {
+      "id": 455,
+      "product_id": 73,
+      "sort_order": 1,
+      "type": 0,
+      "url": "http://o9ixtumvv.bkt.clouddn.com/20161018165808452-IsTrVHNt.jpg"
+    },
+    {
+      "id": 456,
+      "product_id": 73,
+      "sort_order": 2,
+      "type": 0,
+      "url": "http://images.10mup.com/20160723150851664-T9J1yWLj.jpg"
+    },
+    {
+      "id": 457,
+      "product_id": 73,
+      "sort_order": 3,
+      "type": 0,
+      "url": "http://images.10mup.com/20160723150852388-VTexnVAG.jpg"
+    }
+  ],
+  "freight": 0,
+  "store_location": null,
+  "sort_order": 52,
+  "view_count": 61
+}

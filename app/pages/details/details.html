@@ -48,7 +48,8 @@
 
 
                 <div class="product-price-market"><span>市场价：</span><s>{{details.suggested_price | currency:'￥'}}</s>
-                    <span class="freight_if">{{fare_info.name}}</span>
+                    <span class="freight_if" ng-if="details.weight > 0">毛重：{{details.weight/1000}}kg</span>
+                    <span class="freight_if" ng-if="!details.weight > 0">{{fare_info.name}}</span>
                 </div>
             </div>
 
@@ -58,7 +59,7 @@
                     <span ng-if="fare_info.is_incl_postage == 1">运费:包邮</span>
                     <span ng-if="fare_info.is_incl_postage_by_if == 1">运费:
                         <!--<span ng-if="fare_info.carry_modes.region != null">地区{{fare_info.carry_modes.region}}</span>-->
-                        {{fare_info.default_amount | currency:"￥"}}
+                        {{fare_info.default_amount | currency:"￥"}}(3kg内)
                     </span>
                     <span ng-if="fare_info.is_excl_postage">运费:
                         {{fare_info.default_amount | currency:"￥"}}
@@ -70,7 +71,9 @@
                     <span>默认配送：{{default_express}}</span>
                 </div>
 
-                <div style="width: 100%; height: 42px; background-color: #57B4FF;"></div>
+                <div style="width: 100%; height: 42px; line-height: 16px; margin-top: 35px; font-size: 10px;" class="custom_text_primary">
+                    <!--省钱窍门：建议拼单购买接近3kg, 从而可降低单品运费; 超 3kg 按 3 元/kg 计算(超出不满 1kg 按 1kg计算)-->
+                </div>
             </div>
         </div>
 

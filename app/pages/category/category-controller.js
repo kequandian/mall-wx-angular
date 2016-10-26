@@ -213,23 +213,32 @@ angular.module('category.controller', ['category.service'])
 
             //计算长度
             function countWith(content){
+                var li_width = 0;
                 if(content.length > 0){
-                    var count = content.length * 105 + 5;
-                    count = "width:" + count + "px;";
-                    $scope.first_ul = count;
+                    angular.forEach(content,function(v, k){
+                        li_width = li_width + (v.name.length * 16 + 20) + 3;
+                    });
+                    //var count = li_width * 105 + 5;
+                    //count = "width:" + li_width + "px;";
+                    $scope.first_ul = "width:" + li_width + "px;";
                 }else{
                     $scope.first_ul = '';
                 }
-                return count;
+                //return count;
             }
 
             //second nav
             function countItemWith (content){
+                var li_width = 0;
                 //console.log("content12345:"+angular.toJson(content));
                 if(content.sub_categories.length > 0){
-                    var count = content.sub_categories.length * 105 + 5;
-                    count = "width:" + count + "px;";
-                    $scope.second_ul = count;
+                    angular.forEach(content.sub_categories,function(v, k){
+                        li_width = li_width + (v.name.length * 15 + 20) + 3;
+                        //console.log(v.name)
+                    });
+                    //var count = content.sub_categories.length * 105 + 5;
+                    //count = "width:" + count + "px;";
+                    $scope.second_ul = "width:" + li_width + "px;";
                 }else{
                     $scope.second_ul = '';
                 }

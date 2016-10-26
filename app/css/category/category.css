@@ -29,16 +29,18 @@
 }
 
 #category #nav .first-nav ul{
-    width:635px;
+    /*width:635px;*/
     height:42px;
+    padding-left: 3px;
 }
 #category #nav .first-nav ul li{
-    width:105px;
+    /*width:105px;*/
     height:42px;
     font-size: 16px;
     text-align:center;
     line-height:42px;
     list-style-type: none;
+    padding: 0 10px;
     float:left;
 }
 
@@ -57,21 +59,24 @@
 }
 
 #category #nav .second-nav ul{
-    width:635px;
+    /*width:635px;*/
     height:42px;
     border-bottom:1px solid #dfdfdf;
+    padding-left: 3px;
 }
 #category #nav .second-nav ul li{
-    width:105px;
+    /*width:105px;*/
     height:42px;
     font-size: 14px;
     text-align:center;
     line-height:42px;
     list-style-type: none;
+    padding: 0 10px;
     float:left;
 }
 
 #category #nav .second-nav ul li .second-current{
+    font-size: 14px;
     padding: 2px 6px;
     border-radius: 15px;
     /*background-color: #734284;*/

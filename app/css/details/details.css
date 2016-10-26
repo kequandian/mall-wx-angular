@@ -85,7 +85,8 @@
     font-size: 14px;
     height: 28px;
     line-height: 28px;
-    color:#F15353;
+    /*color:#F15353;*/
+    color:#7D7D7D;
     margin-left: 10px;
 }
 
@@ -149,7 +150,7 @@
 
 #details .product-freight{
     font-size: 14px;
-    height: 35px;
+    height: auto;
     line-height: 35px;
     margin-top: 1px;
     margin-left: 5px;
