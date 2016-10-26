@@ -58,7 +58,7 @@
 .owner_tag {
     font-size: 10px;
     background-color: white;
-    color: red;
+    /*color: red;*/
     padding: 1px;
     border-radius: 2px;
     margin-left: 5px;
