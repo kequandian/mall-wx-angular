@@ -45,7 +45,7 @@ angular.module('home.controller', ['home.service'])
                 'c_number': 0
             }, {
                 'id': '4',
-                'name': ' 购物车',
+                'name': '购物车',
                 'srefName': '.cart',
                 'home_tab_icon': 'weui_tabbar_icon ion-app-biliya-tabs-cart',
                 'c_count': 'cart_count',
