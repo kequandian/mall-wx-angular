@@ -1,8 +1,11 @@
 <div id="systemAnnouncement">
 
-    <div class="s-a-title custom_text_primary">
+    <div class="s-a-head custom_text_primary">
         系统公告
     </div>
-    <div class="s-a-content" ng-bind-html="details.description | to_trusted"></div>
+    <div class="s-a-title">
+        {{sys_ann_title}}
+    </div>
+    <div class="s-a-content" ng-bind-html="sys_ann_content | to_trusted"></div>
 
 </div>

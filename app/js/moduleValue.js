@@ -44,7 +44,6 @@ angular.module('moduleValueJs',[])
     })
 
     //分类页
-
     .value('cateCacheCode',{
         index_first:0,
         index_second:0,
@@ -55,5 +54,11 @@ angular.module('moduleValueJs',[])
         loading:false,
         load_more_btn_show: true
     })
+
+    //首页系统公告
+    .value('sysAnn',{
+        content:null
+    })
+
 
 ;

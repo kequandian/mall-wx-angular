@@ -78,9 +78,9 @@ angular.module('homePage.controller', ['homePage.service'])
     })
 
     .controller('HomePageController', ['$scope', '$rootScope', '$state', 'HomePageFty', 'areasStatus', 'goodListParams',
-        '$anchorScroll', '$ocLazyLoad','cateLeftIndex','$timeout','PointRate','BalanceSession','cateCacheCode',
+        '$anchorScroll', '$ocLazyLoad','cateLeftIndex','$timeout','PointRate','BalanceSession','cateCacheCode','sysAnn',
         function ($scope, $rootScope, $state, HomePageFty, areasStatus, goodListParams, $anchorScroll, $ocLazyLoad,
-                  cateLeftIndex,$timeout,PointRate,BalanceSession,cateCacheCode) {
+                  cateLeftIndex,$timeout,PointRate,BalanceSession,cateCacheCode,sysAnn) {
 
             document.title = "十美优品商城";
 
@@ -410,6 +410,7 @@ angular.module('homePage.controller', ['homePage.service'])
                             //console.log(angular.toJson(json))
                             if(json.data.length > 0){
                                 $scope.sysAnn = json.data[0].name;
+                                sysAnn.content = json.data;
                             }
                         }
                     }, function(error){
@@ -454,8 +455,8 @@ angular.module('homePage.controller', ['homePage.service'])
         }])
 
 
-    .controller('SystemAnnouncementController', ['$scope', '$rootScope', '$state', 'HomePageFty','$ocLazyLoad',
-    function ($scope, $rootScope, $state, HomePageFty,$ocLazyLoad) {
+    .controller('SystemAnnouncementController', ['$scope', '$rootScope', '$state', 'HomePageFty','$ocLazyLoad','sysAnn',
+    function ($scope, $rootScope, $state, HomePageFty,$ocLazyLoad,sysAnn) {
 
         document.title = "十美优品商城";
 
@@ -464,6 +465,13 @@ angular.module('homePage.controller', ['homePage.service'])
                 //console.log("homePage:jquery loaded");
             })
         });
+
+        if(sysAnn.content.length > 0){
+            $scope.sys_ann_title = sysAnn.content[0].name;
+            $scope.sys_ann_content = sysAnn.content[0].content;
+        }
+
+
 
 
 
