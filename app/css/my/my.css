@@ -51,11 +51,14 @@
     float: left;
 }
 
-.user-detail div{
+.user-detail .use_div{
+    width: 100%;
+    float: left;
     /*margin-top: 2px;*/
 }
 
 .user-detail p{
+    width: 100%;
     margin-top: 2px;
 }
 
