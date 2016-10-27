@@ -80,22 +80,67 @@ angular.module('category.controller', ['category.service'])
                 if(!loaded) {
                     if(cateCacheCode.cate_session == -1){
                         //console.log(12345)
+                        if(cateCacheCode.product_list == null){
+                            console.log('推荐商品分类信息有误');
+                            return;
+                        }
                         CategoryFty.categoryService()
                             .then(function (json) {
                                 if (json.status_code == 0) {
 
                                     $scope.first_cate = json.data;
-                                    $scope.second_cate = $scope.first_cate[cateCacheCode.index_first].sub_categories;
 
-                                    countWith($scope.first_cate);
-                                    countItemWith($scope.first_cate[0]);
-                                    $scope.productList = cateCacheCode.product_list;
-                                    //console.log('countItemWith: ' + angular.toJson(cateCacheCode.product_list));
+                                    if(cateCacheCode.product_list.sub_categories.length > 0){
+                                        console.log("sub_categories length > 0");
+                                        angular.forEach(json.data, function(v, k){
+                                            if(v.name == cateCacheCode.product_list.name){
+                                                $scope.indexFirstCate = k;
+                                            }
+                                        });
+                                        //console.log('$scope.indexFirstCate: ' + $scope.indexFirstCate);
+                                        $scope.second_cate = $scope.first_cate[0].sub_categories;
+                                        $scope.indexSecondCate = 0;
+                                        countWith($scope.first_cate);
+                                        countItemWith($scope.first_cate[0]);
+                                        //$scope.productList = cateCacheCode.product_list;
+                                        productList($scope.first_cate[1].sub_categories[0].id);
 
-                                    cateCacheCode.cate_session = json.data;
-                                    cateCacheCode.second_cate =$scope.first_cate[cateCacheCode.index_first];
-                                    //console.log('cateCacheCode.second_cate: ' + angular.toJson($scope.first_cate[cateCacheCode.index_first]));
-                                    cateCacheCode.product_id = $scope.first_cate[cateCacheCode.index_first].sub_categories[0].id;
+                                        cateCacheCode.index_first=$scope.indexFirstCate;
+                                        cateCacheCode.index_second=0;
+                                        cateCacheCode.cate_session = json.data;
+                                        cateCacheCode.second_cate =$scope.first_cate[$scope.indexFirstCate];
+                                        //console.log('cateCacheCode.second_cate: ' + angular.toJson($scope.first_cate[cateCacheCode.index_first]));
+                                        cateCacheCode.product_id = $scope.first_cate[$scope.indexFirstCate].sub_categories[0].id;
+
+                                    }else if(cateCacheCode.product_list.sub_categories.length == 0){
+                                        console.log("sub_categories length == 0");
+                                        angular.forEach(json.data, function(first, first_k){
+
+                                            angular.forEach(first.sub_categories, function(second, second_k){
+
+                                                if(second.name == cateCacheCode.product_list.name){
+                                                    $scope.indexFirstCate = first_k;
+                                                    $scope.indexSecondCate = second_k;
+                                                }
+                                            })
+
+                                        });
+
+                                        $scope.second_cate = $scope.first_cate[$scope.indexFirstCate].sub_categories;
+                                        countWith($scope.first_cate);
+                                        countItemWith($scope.first_cate[$scope.indexFirstCate]);
+                                        //$scope.productList = cateCacheCode.product_list;
+                                        productList($scope.first_cate[$scope.indexFirstCate].sub_categories[$scope.indexSecondCate].id);
+
+                                        cateCacheCode.index_first = $scope.indexFirstCate;
+                                        cateCacheCode.index_second = $scope.indexSecondCate;
+                                        cateCacheCode.cate_session = json.data;
+                                        cateCacheCode.second_cate =$scope.first_cate[$scope.indexFirstCate];
+                                        //console.log('cateCacheCode.second_cate: ' + angular.toJson($scope.first_cate[cateCacheCode.index_first]));
+                                        cateCacheCode.product_id = $scope.first_cate[$scope.indexFirstCate].sub_categories[$scope.indexSecondCate].id;
+
+                                    }
+
 
                                 } else {
                                     console.log('获取商品分类失败');
