@@ -249,8 +249,14 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 //$scope.checkedCarts.push(pay);
                 //$scope.checkedCarts.push(freight);
 
-                console.log(angular.toJson($scope.checkedCarts));
+                //console.log(angular.toJson($scope.checkedCarts));
                 $rootScope.settle_product_code = $scope.checkedCarts;
+
+                var newUrl = '#/cart-settlement';
+                var title = '购物车';
+                var c_state = history.state;
+                window.history.pushState(c_state, title, newUrl);
+
                 $state.go('cart-settlement', {carts: $scope.checkedCarts, totalToPay: pay, totalFreight: freight});
             };
 
