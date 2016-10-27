@@ -52,6 +52,8 @@
 }
 
 .user-detail p{
+    height: 28px;
+    line-height: 28px;
     margin-top: 2px;
 }
 
