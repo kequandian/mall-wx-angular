@@ -176,12 +176,12 @@
 }
 
 #details .product-f-left span{
-    /*margin-left: 25px;*/
+    margin-left: 12px;
 }
 
 #details .product-f-right{
     float: right;
-    margin-right: 5px;
+    margin-right: 12px;
 }
 
 #details .product-f-right img{
@@ -202,16 +202,21 @@
     font-size: 10px;
     position: absolute;
     top:35px;
+    margin: 6px 12px;
 }
 
 #details .product-freight .product_tips .p1{
+<<<<<<< HEAD
     width: 60px;
+=======
+    width: 68px;
+>>>>>>> f167cf19a39269206b306b4dedd6dd11ba672477
     font-weight: bold;
     float: left;
 }
 
 #details .product-freight .product_tips .p2{
-    width: 80%;
+    width: calc(100% - 80px);
     float: left;
 }
 
@@ -472,7 +477,6 @@
     text-align: left;
     float: left;
 }
-
 
 
 #details .footer {
