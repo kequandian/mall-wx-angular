@@ -24,8 +24,9 @@
 
 #details .product-content{
     width: 100%;
+    height:auto;
     margin-top: 2px;
-    margin-bottom: 5px;
+    /*margin-bottom: 5px;*/
     background-color: white;
 }
 
@@ -150,13 +151,14 @@
 
 #details .product-freight{
     font-size: 14px;
-    height: auto;
+    height: 80px;
     line-height: 35px;
     margin-top: 1px;
     margin-left: 5px;
     margin-right: 5px;
     color:#9D9D9D;
     position: relative;
+    padding-bottom: 8px;
 }
 
 #details .product-f-left{
@@ -179,7 +181,7 @@
 
 #details .product-f-right{
     float: right;
-    margin-right: 16px;
+    margin-right: 5px;
 }
 
 #details .product-f-right img{
@@ -191,6 +193,26 @@
 
 #details .product-f-right span{
     margin-left: 31px;
+}
+
+#details .product-freight .product_tips{
+    width: 100%;
+    height: auto;
+    line-height: 16px;
+    font-size: 10px;
+    position: absolute;
+    top:35px;
+}
+
+#details .product-freight .product_tips .p1{
+    width: 20%;
+    font-weight: bold;
+    float: left;
+}
+
+#details .product-freight .product_tips .p2{
+    width: 80%;
+    float: left;
 }
 
 

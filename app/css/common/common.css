@@ -108,3 +108,10 @@ input::-webkit-inner-spin-button {
 .kqd_grid_4{
     width: 25%;
 }
+
+/* goodsList tabs text color*/
+.goods_bar_item_on{
+    height: 20px;
+    color:#734284;
+    border-bottom: 3px solid #734284;
+}

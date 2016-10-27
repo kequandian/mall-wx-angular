@@ -34,11 +34,11 @@
   background-color: #dcdcdc;
 }
 
-#goodsList #content .goods_bar_item_on{
+/*#goodsList #content .goods_bar_item_on{
   height: 20px;
-  color:red;
-  border-bottom: 3px solid red;
-}
+  color:#734284;
+  border-bottom: 3px solid #734284;
+}*/
 
 .arrow-status{
   width: 17px;
