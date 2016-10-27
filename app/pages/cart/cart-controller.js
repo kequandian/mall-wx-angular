@@ -20,45 +20,6 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             $scope.empty_cart_hide = true;
             $scope.cart_info_hide = true;
 
-            // cutoff fallback
-            cutoffFallback();
-
-            function cutoffFallback() {
-                var newurl;
-
-                if (window.location.href.indexOf('?') >= 0) {
-                    var params = window.location.href.split('?');
-                    var longParam = params[1];
-                    //console.log("longParam> "+longParam);
-                    var ss = longParam.split('#');
-                    var param = ss[0];
-                    var route = '#' + ss[1];
-
-                    /// check has fallback
-                    if (param.indexOf('fallback=details-') >= 0) {
-                        param = param.replace(/fallback=details\-\d+/, '');
-                        //console.log("param>> "+param);
-                    }
-
-                    /// replace url
-                    newurl = param + route;
-                    console.log("newurl>>>" + newurl);
-                    if (longParam != newurl) {
-                        //prevents browser from storing history with each change:
-                        var currentState = history.state;
-                        if (currentState == null) {
-                            currentState = {title: document.title, url: newurl};
-                        }
-
-                        if( ! newurl.startsWith("#")){
-                            newurl = '?' + newurl;
-                        }
-                        console.log("newurl<< "+newurl);
-                        window.history.pushState(currentState, document.title, newurl);
-                    }
-                }
-            }
-
 
             AllCarts();
             function AllCarts() {

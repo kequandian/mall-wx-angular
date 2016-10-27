@@ -101,49 +101,49 @@ angular.module('homePage.controller', ['homePage.service'])
             var page_number = $rootScope.rec_session.page_number;
             $scope.home_load_more_btn_show = $rootScope.rec_session.load_more;
 
-
             $scope.top_btn_show = false;
 
             $scope.followus = HomePageFty.getFollowusUrl();
 
-            /* setTimeout(function(){
-             document.title = "首页";
-             var iframe = document.createElement('iframe');
-             iframe.style.visibility = 'hidden';
-             iframe.style.width = '1px';
-             iframe.style.height = '1px';
-             iframe.onload = function(){
-             setTimeout(function(){
-             document.body.removeChild(iframe);
-             },0)
-             }
-             },0);*/
-
-
-            /*TitleReSet("首页");
-             function TitleReSet(title) {
-             // body...
-             document.title = title;
-             //如果是IOS端微信,无法直接修改title.需要下面这一段神代码...
-             //没看懂为什么添加一个iframe,然后remove掉就能动态修改title
-             var $body = $('body');
-             var $iframe = $('<iframe src="img/home/home-title-img.png" style="display:none;"></iframe>');
-             $iframe.on('load', function (argument) {
-             //console.log("loading....");
-             setTimeout(function () {
-             //console.log("remove....");
-             $iframe.off('load').remove();
-             }, 0);
-             }).appendTo($body);
-             }*/
-
-
             // cut off the fallback route from details
-            cutoffFallback();
+            /*cutoffFallback();
 
             function cutoffFallback(){
                 /// pending
-            }
+                var newurl;
+
+                if (window.location.href.indexOf('?') >= 0) {
+                    var params = window.location.href.split('?');
+                    var longParam = params[1];
+                    //console.log("longParam> "+longParam);
+                    var ss = longParam.split('#');
+                    var param = ss[0];
+                    var route = '#' + ss[1];
+
+                    /// check has fallback
+                    if (param.indexOf('fallback=details-') >= 0) {
+                        param = param.replace(/fallback=details\-\d+/, '');
+                        //console.log("param>> "+param);
+                    }
+
+                    /// replace url
+                    newurl = param + route;
+                    console.log("newurl>>>" + newurl);
+                    if (longParam != newurl) {
+                        //prevents browser from storing history with each change:
+                        var currentState = history.state;
+                        if (currentState == null) {
+                            currentState = {title: document.title, url: newurl};
+                        }
+
+                        if( ! newurl.startsWith("#")){
+                            newurl = '?' + newurl;
+                        }
+                        console.log("newurl<< "+newurl);
+                        window.history.pushState(currentState, document.title, newurl);
+                    }
+                }
+            }*/
 
 
             //获取广告
