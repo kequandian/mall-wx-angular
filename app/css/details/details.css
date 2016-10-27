@@ -199,27 +199,22 @@
     width: 100%;
     height: auto;
     line-height: 16px;
-    font-size: 10px;
+    font-size: 11px;
     position: absolute;
     top:35px;
     margin: 6px 12px;
 }
 
 #details .product-freight .product_tips .p1{
-<<<<<<< HEAD
-    width: 60px;
-=======
     width: 68px;
->>>>>>> f167cf19a39269206b306b4dedd6dd11ba672477
     font-weight: bold;
     float: left;
 }
 
 #details .product-freight .product_tips .p2{
-    width: calc(100% - 80px);
+    width: calc(100% - 90px);
     float: left;
 }
-
 
 
 #details .details-promise{
@@ -395,8 +390,6 @@
     width:100%;
 }
 
-/*====================ͼƬ���飨��������====================*/
-
 #details .pictures-title{
 }
 
@@ -427,17 +420,6 @@
     height: auto;
     margin-bottom: 0px;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
