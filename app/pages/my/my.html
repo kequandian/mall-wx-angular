@@ -7,7 +7,7 @@
             </div>
             <div class="user-info">
                 <div class="user-detail">
-                    <div>
+                    <div style="float: left;">
                         <span style="float: left;">{{userInfo.name}}</span>
                         <div ng-if="true" class="owner_tag custom_text_primary_medium">已关注</div>
                         <!--<span class="owner_tag">已关注</span>-->
@@ -17,7 +17,7 @@
                         ID： {{userInfo.uid}}
                     </p>
 
-                    <p ng-if="userInfo.followed==0" class="user-lv-text">
+                    <p ng-if="userInfo.followed==0" class="user-lv-text" style="float: left;">
                         关注时间： {{userInfo.follow_time}}
                     </p>
                 </div>
