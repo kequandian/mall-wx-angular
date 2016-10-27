@@ -51,9 +51,13 @@
     float: left;
 }
 
-.user-detail p{
+.user-detail div{
     height: 28px;
     line-height: 28px;
+    margin-top: 2px;
+}
+
+.user-detail p{
     margin-top: 2px;
 }
 

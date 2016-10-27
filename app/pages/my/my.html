@@ -7,11 +7,11 @@
             </div>
             <div class="user-info">
                 <div class="user-detail">
-                    <p>
-                        {{userInfo.name}}
-                        <span ng-if="userInfo.followed==0" class="owner_tag custom_text_primary_medium">已关注</span>
+                    <div>
+                        <span>{{userInfo.name}}</span>
+                        <span ng-if="true" class="owner_tag custom_text_primary_medium">已关注</span>
                         <!--<span class="owner_tag">已关注</span>-->
-                    </p>
+                    </div>
 
                     <p style="font-size: 15px;">
                         ID： {{userInfo.uid}}
