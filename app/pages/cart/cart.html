@@ -54,6 +54,7 @@
                                         <div class="item-price-position" ng-hide="cart_item_price">
                                             <span class="item-price" style="{{check_stock_balance(cart.stock_balance)}}">{{cart.price|currency:'￥'}}</span>
                                             <span class="item-price" ng-if="cart.stock_balance <= 0">库存不足</span>
+                                            <span class="item-weight" ng-if="cart.stock_balance > 0 && cart.weight > 0">{{cart.weight / 1000 + "kg"}}</span>
                                             <span class="ion-close" style="{{check_stock_balance(cart.stock_balance)}}">x {{ cart.quantity }}</span>
                                         </div>
 
@@ -97,6 +98,7 @@
                         <div>合计:<strong style="display: inline;color:red" ng-bind="totalToPay()|currency:'￥'"></strong></div>
                         <!--<span style="font-size: 12px;">运费:<span ng-bind="totalFreight()|currency:'￥'"></span></span>-->
                         <span style="font-size: 12px;">不含运费</span>
+                        <p ng-bind="checkedWeight() > 0 ? checkedWeight()/1000+'kg' : checkedWeight()"></p>
                     </div>
                 </div>
                 <button class="footRight custom_flat_primary_medium" ng-click="goSettlement(totalToPay(),totalFreight())" ng-disabled="!someChecked()">

@@ -220,6 +220,15 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     return next.$checked ? prev + next.quantity * next.price : prev;
                 }, 0);
             };
+            //weight
+            $scope.checkedWeight = function () {
+                if (typeof $scope.carts === 'undefined') {
+                    return;
+                }
+                return $scope.carts.reduce(function (prev, next) {
+                    return next.$checked ? prev + next.weight * next.quantity : prev;
+                }, 0);
+            };
             $scope.totalFreight = function () {
                 if (typeof $scope.carts === 'undefined') {
                     return;

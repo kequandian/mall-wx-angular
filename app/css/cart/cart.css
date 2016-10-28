@@ -102,6 +102,14 @@
 }
 .foot-info span {
     font-size: 12px;
+    float: left;
+}
+.foot-info p {
+    min-width: 60px;
+    font-size: 12px;
+    color: #8C8C8C;
+    margin-left: 10px;
+    float: left;
 }
 .foot-info strong {
     font-size: 17px;
@@ -195,6 +203,15 @@
     margin-top: 2px;
     margin-right: 5px;
     color:red;
+}
+.cart-list li .item-info .item-info-bottom .item-weight{
+    float: left;
+    font-size:16px;
+    display: block;
+    min-width: 60px;
+    margin-top: 2px;
+    margin-right: 5px;
+    color:#8C8C8C;
 }
 
 .cart-list li .item-info .item-info-bottom .ion-close{
