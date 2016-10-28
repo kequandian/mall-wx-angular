@@ -369,10 +369,10 @@ angular.module('details.controller', ['details.service'])
                                     var c_count = 0;
                                     if (json.data.length > 0) {
                                         angular.forEach(json.data, function (v, k) {
-                                            c_count += v.quantity;
+                                            c_count += (v.weight * v.quantity);
                                         });
                                     }
-                                    $rootScope.detailsCartCount = c_count;
+                                    $rootScope.detailsCartCount = c_count/1000;
                                     $.toast("成功添加商品");
                                 } else {
                                     $.toast("添加失败", "cancel");

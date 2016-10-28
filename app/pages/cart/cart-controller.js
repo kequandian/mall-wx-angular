@@ -27,13 +27,14 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     function (result) {
                         if (result.status_code == 0) {
                             $scope.carts = result.data;
-                            //console.log(angular.toJson(result.data));
+                            //console.log(angular.toJson(result.data[0]));
                             if ($scope.carts.length > 0) {
 
                                 var c_count = 0;
                                 angular.forEach($scope.carts, function (v, k) {
-                                    c_count += v.quantity;
+                                    c_count += (v.weight * v.quantity);
                                 });
+                                c_count = c_count/1000;
                                 $rootScope.cartCount = c_count;
                                 $rootScope.detailsCartCount = c_count;
 
