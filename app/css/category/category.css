@@ -114,6 +114,8 @@
     border-left: 1px solid #cccccc;
     background-color: white;
     padding: 0 0 0 6px;
+    -webkit-appearance: none;
+    border-radius: 0;
 }
 
 #category .pro-content{

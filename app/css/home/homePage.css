@@ -59,9 +59,10 @@ body, html {
     font-size: 13px;
     border: 0;
     border-left: 1px solid #9a9b9d;
-    border-radius: 0;
     background-color: white;
     padding: 3px 16px 3px 6px;
+    -webkit-appearance: none;
+    border-radius: 0;
 }
 
 /*.weui_search_inner .weui_search_input {
