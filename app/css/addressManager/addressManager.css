@@ -165,3 +165,7 @@
     width: 60px;
     font-size: 13px;
 }
+
+#addressManager .weui_btn{
+    border-radius: 8px;
+}
