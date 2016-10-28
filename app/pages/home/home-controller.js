@@ -87,11 +87,12 @@ angular.module('home.controller', ['home.service'])
                             var c_count = 0;
                             if (json.data.length > 0) {
                                 angular.forEach(json.data, function (v, k) {
-                                    c_count += v.quantity;
+                                    c_count += v.weight;
                                 });
                             }
                             if (c_count > 0) {
-                                $scope.home_tabs[3].c_number = c_count;
+                                c_count = c_count/1000;
+                                $scope.home_tabs[3].c_number = c_count + 'kg';
                                 $rootScope.detailsCartCount = c_count;
                             }
                         }
