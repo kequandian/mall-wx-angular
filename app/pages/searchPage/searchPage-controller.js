@@ -18,8 +18,8 @@ angular.module('searchPage.controller', ['searchPage.service'])
             $scope.p_list = localStorage['productNameList'] != null ? JSON.parse(localStorage['productNameList']) : [];
 
             function input_focus(){
-                var o_focus = document.getElementById('search_page_input');
-                o_focus.focus();
+                //var o_focus = document.getElementById('search_page_input');
+                //o_focus.focus();
 
                 if(localStorage['productNameList'] != null){
                     $scope.product_name_list = JSON.parse(localStorage['productNameList']);

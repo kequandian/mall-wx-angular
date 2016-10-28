@@ -1,9 +1,9 @@
 <div id="searchPage">
 
-    <div class="hd">
+    <div class="hd" style="background-color: #AD589B;">
 
         <!-- 搜索框 -->
-        <div class="weui_search_bar home-title-center" id="search_bar">
+        <!--<div class="weui_search_bar home-title-center" id="search_bar">
             <form class="weui_search_outer">
                 <div class="weui_search_inner">
                     <i class="weui_icon_search" style="top: 7px;"></i>
@@ -11,6 +11,19 @@
                            ng-keypress="search_procudt_name($event)"/>
                 </div>
             </form>
+        </div>-->
+
+        <div class="cate-search" ng-if="true">
+            <!--new search input-->
+            <div class="cate-search-input">
+                <div class="search_outer" ng-click="goToSearchPage()">
+                    <i class="weui_icon_search"></i>
+                    <!--<span class="" id="search_input">搜索你想要的商品</span>-->
+                    <input type="text" class="search_input" id="search_page_input"
+                           placeholder="搜索你想要的商品" required/>
+
+                </div>
+            </div>
         </div>
 
     </div>
@@ -24,7 +37,7 @@
             </ul>
         </div>
 
-        <p>历史</p>
+        <p ng-if="product_name_list.length > 0">历史</p>
         <div class="history-terms">
 
             <ul>
@@ -34,7 +47,7 @@
     </div>
 
 
-    <div class="foot-button">
+    <div class="foot-button" ng-if="product_name_list.length > 0">
         <div class="clear-history" ng-click="clear_history()">清空历史搜索</div>
     </div>
 
