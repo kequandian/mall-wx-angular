@@ -18,7 +18,9 @@
     height: 85px;
     padding: 10px 0 10px 0;
     /*background-color: #734284;*/
-    background-image: url(../../img/my/user-background.png);
+    /*background-image: url(../../img/my/user-background.png);*/
+    /*background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#b8c4cb), to(#f6f6f8));*/
+    background: -webkit-linear-gradient(top, #D0CDD4, #E1D9C6)
 }
 .my-page-head .user-photo{
     width: 80px;
@@ -47,7 +49,7 @@
     min-width: 170px;
     font-size: 18px;
     line-height: 1.4;
-    color: #fff;
+    color: #FCF9F6;
     float: left;
 }
 
