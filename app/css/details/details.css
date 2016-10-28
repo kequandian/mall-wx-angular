@@ -6,6 +6,8 @@
     /*z-index: 100;*/
     min-height: 85%;
     margin-bottom: 48px;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 #details .product-img{
