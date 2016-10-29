@@ -730,13 +730,14 @@
     background-color: #fff;
 }
 
+/*
 #details .weui_actionsheet_cell{
     margin-top: 0;
     border: 0;
     color: white;
     border-radius: 8px;
-    padding: 8px 0;
 }
+*/
 
 #details .weui_panel:after{
     border-bottom: 0;

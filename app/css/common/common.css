@@ -38,6 +38,8 @@ input::-webkit-inner-spin-button {
     margin-top: 0;
     border: 0;
     color: white;
+    padding: 6px 0;
+    border-radius: 8px;
 }
 .weui_actionsheet_cell:active {
     color: rgba(255, 255, 255, 0.4);
