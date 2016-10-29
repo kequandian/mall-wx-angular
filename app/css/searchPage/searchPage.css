@@ -27,17 +27,22 @@
     border-radius: 15px;
 }
 
+#searchPage .cate-search .cate-search-input .search_outer .seperator{
+    width: 1px;
+    height: 20px;
+    /*border-left: 1px solid #cccccc;*/
+}
+
 #searchPage .cate-search .cate-search-input .search_outer .search_input{
     width: 90%;
-    height: 20px;
+    height: 28px;
     border: 0;
     border-left: 1px solid #cccccc;
     background-color: white;
-    padding: 0 0 0 6px;
     -webkit-appearance: none;
+    padding-left: 6px;
     border-radius: 0;
 }
-
 
 
 #searchPage .home-title-center{

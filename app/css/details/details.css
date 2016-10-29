@@ -208,13 +208,13 @@
 }
 
 #details .product-freight .product_tips .p1{
-    width: 64px;
+    width: 76px;
     font-weight: bold;
     float: left;
 }
 
 #details .product-freight .product_tips .p2{
-    width: calc(100% - 86px);
+    width: calc(100% - 100px);
     float: left;
 }
 
@@ -735,6 +735,7 @@
     border: 0;
     color: white;
     border-radius: 8px;
+    padding: 8px 0;
 }
 
 #details .weui_panel:after{
