@@ -31,7 +31,7 @@ angular.module('searchPage.controller', ['searchPage.service'])
             }
 
             //
-            $scope.search_procudt_name = function($event){
+            $scope.search_product_name = function($event){
                 if($event.keyCode == 13){
                     var p_name = $scope.product_name;
 
