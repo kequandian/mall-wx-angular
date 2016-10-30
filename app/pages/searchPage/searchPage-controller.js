@@ -9,6 +9,8 @@ angular.module('searchPage.controller', ['searchPage.service'])
 
             cateLeftIndex.goods_list_index = 1;
 
+            $scope.product_name = "";
+
             //搜索页
             input_focus();
 
