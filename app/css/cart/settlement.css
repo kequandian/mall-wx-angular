@@ -230,6 +230,14 @@
 
 }
 
+#settlement .view-container {
+    /*padding-top:51px;*/
+    /*padding-bottom: 57px;*/
+    padding-bottom: 57px;
+    height: auto;
+    background-color: white;
+}
+
 #settlement #weui_action_add_sheet .weui_cell{
     padding:7px 10px;
     font-size: 13px;
