@@ -44,6 +44,14 @@ angular.module('searchPage.controller', ['searchPage.service'])
                 }
             };
 
+            //$scope.goGoodsList = function(){
+            //    var newUrl = '#/goodsList';
+            //    var title = '商品列表';
+            //    var c_state = history.state;
+            //    console.l
+            //    window.history.pushState(c_state, title, newUrl);
+            //};
+
             //关键字搜索商品
             $scope.hot_word_search = function(hot_word){
                 search_product(hot_word);

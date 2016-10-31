@@ -59,7 +59,7 @@
                     <span ng-if="fare_info.is_incl_postage == 1">运费:包邮</span>
                     <span ng-if="fare_info.is_incl_postage_by_if == 1">运费:
                         <!--<span ng-if="fare_info.carry_modes.region != null">地区{{fare_info.carry_modes.region}}</span>-->
-                        {{fare_info.default_amount | currency:"￥"}}(3kg内)
+                        {{fare_info.default_amount | currency:"￥"}}
                     </span>
                     <span ng-if="fare_info.is_excl_postage">运费:
                         {{fare_info.default_amount | currency:"￥"}}
