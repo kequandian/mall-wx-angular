@@ -409,7 +409,9 @@ angular.module('details.controller', ['details.service'])
                     product_specification_id:null,
                     product_specification_name:null,
                     stock_balance:null,
-                    fare_id:null
+                    fare_id:null,
+                    weight:0,
+                    bulk:0
                 };
                 var buy_price = 0;
                 if (item.specifications.length > 0) {
@@ -423,12 +425,14 @@ angular.module('details.controller', ['details.service'])
                     p_item.price = buy_price;
                 }
 
+                //console.log("item::" + angular.toJson(item));
                 p_item.product_id = item.id;
                 p_item.quantity = $scope.q_count;
                 p_item.product_name = item.name;
-                p_item.product_name = item.name;
                 p_item.fare_id = item.fare_id;
                 p_item.cover = item.cover;
+                p_item.weight = item.weight;
+                p_item.bulk = item.bulk;
 
                 if(product_specification_id == null){
                     p_item.stock_balance = item.stock_balance;

@@ -419,13 +419,15 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             var delta = null;
             function getFrieght(){
 
-                //console.log(angular.toJson($rootScope.settle_product_code))
+                //console.log(angular.toJson($rootScope.settle_product_code));
                 //angular.forEach($stateParams.carts, function (data, index) {
                 angular.forEach($rootScope.settle_product_code, function (data, index) {
                     $scope.productFrieghts.data[index] = ({
-                        "fare_id": data.fare_id,
-                        "price": data.price,
-                        "quantity": data.quantity
+                        fare_id: data.fare_id,
+                        price: data.price,
+                        quantity: data.quantity,
+                        weight: data.weight,
+                        bulk: data.bulk
                     })
                 });
 
@@ -447,7 +449,6 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                                     deltaStr = deltaStr.substr(1,deltaStr.length -1);
                                     console.log("包邮差额：" + deltaStr);
                                     $scope.deltaCount = deltaStr;
-
                                 }
                             }else{
                                 $.toast('获取运费异常', 'cancel');
@@ -462,11 +463,11 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                                 $scope.total_price = $stateParams.totalToPay;
                             }
                         }else{
-                            console.log('error：' + angular.toJson(json))
+                            console.log('error：' + angular.toJson(json));
                             $.toast('获取运费失败', 'cancel');
                         }
                     }, function(error){
-                        console.log('error：' + angular.toJson(error))
+                        console.log('error：' + angular.toJson(error));
                         $.toast('获取运费失败', 'cancel');
                     })
             }
