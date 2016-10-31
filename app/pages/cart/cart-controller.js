@@ -260,7 +260,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 //$scope.checkedCarts.push(pay);
                 //$scope.checkedCarts.push(freight);
 
-                //console.log(angular.toJson($scope.checkedCarts));
+                console.log(angular.toJson($scope.checkedCarts));
                 $rootScope.settle_product_code = $scope.checkedCarts;
 
                 var newUrl = '#/cart-settlement';
@@ -431,7 +431,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     })
                 });
 
-                //console.log('$scope.productFrieghts：' + angular.toJson($scope.productFrieghts));
+                console.log('$scope.productFrieghts：' + angular.toJson($scope.productFrieghts));
 
                 CartFty.frieghtService($scope.productFrieghts)
                     .then(function(json){
