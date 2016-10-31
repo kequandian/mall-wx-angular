@@ -13,14 +13,14 @@
             </form>
         </div>-->
 
-        <form class="cate-search" ng-if="true" >
+        <form class="cate-search" action="">
             <!--new search input-->
             <div class="cate-search-input">
-                <div class="search_outer" ng-click="goToSearchPage()">
+                <div class="search_outer">
                     <i class="weui_icon_search"></i>
                     <!--<span class="" id="search_input">搜索你想要的商品</span>-->
                     <span class="seperator"></span>
-                    <input type="search" class="search_input" id="search_page_input" ng-model="product_name"
+                    <input type="search" name="search" class="search_input" id="search_page_input" ng-model="product_name"
                            placeholder="搜索你想要的商品" required ng-keypress="search_product_name($event,product_name)"/>
 
                 </div>
