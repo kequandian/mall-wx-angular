@@ -53,7 +53,7 @@
                 </div>
             </div>
 
-            <div class="product-freight" style="border-top: 1px solid #ECECEC;">
+            <div class="product-freight" style="{{fare_info_title(fare_info.title,fare_info.content)}}">
                 <div class="product-f-left">
                     <!--<img src="img/details/price-icon.png"/>-->
                     <span ng-if="fare_info.is_incl_postage == 1">运费:包邮</span>
@@ -71,7 +71,7 @@
                     <span>默认配送：{{default_express}}</span>
                 </div>
 
-                <div class="product_tips custom_text_primary_medium">
+                <div class="product_tips custom_text_primary_medium" ng-if="fare_info.title != null && fare_info.content != null">
                     <span class="p1">{{"【"+fare_info.title+"】"}}</span>
                     <span class="p2">{{fare_info.content}}</span>
                 </div>

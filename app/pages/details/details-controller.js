@@ -483,7 +483,7 @@ angular.module('details.controller', ['details.service'])
                     }, function (error) {
                         $.toast('收藏失败', 'cancel');
                     })
-            }
+            };
 
             //进入购物车
             $scope.goToCart = function(){
@@ -493,6 +493,14 @@ angular.module('details.controller', ['details.service'])
                 window.history.pushState(c_state, title, newUrl);
 
                 $state.go('home.cart');
+            };
+
+            $scope.fare_info_title = function(title, content){
+                if(title != null && content != null){
+                    return 'height: 83px; border-top: 1px solid #ECECEC;'
+                }else{
+                    return 'height: 35px; border-top: 1px solid #ECECEC;'
+                }
             }
         }])
 ;
