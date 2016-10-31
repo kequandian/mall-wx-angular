@@ -260,6 +260,8 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 //$scope.checkedCarts.push(pay);
                 //$scope.checkedCarts.push(freight);
 
+                console.log("pay: " + pay)
+
                 console.log(angular.toJson($scope.checkedCarts));
                 $rootScope.settle_product_code = $scope.checkedCarts;
 
@@ -268,7 +270,11 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 var c_state = history.state;
                 window.history.pushState(c_state, title, newUrl);
 
-                $state.go('cart-settlement', {carts: $scope.checkedCarts, totalToPay: pay, totalFreight: freight});
+                $state.go('cart-settlement', {
+                    carts: $scope.checkedCarts,
+                    totalToPay: pay,
+                    totalFreight: freight
+                });
             };
 
             //编辑
@@ -456,6 +462,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                             }
 
                             $scope.pay = $stateParams.totalToPay;
+                            console.log("$stateParams.totalToPay:" + $stateParams.totalToPay);
                             $scope.freight = $stateParams.totalFreight;
                             if($scope.product_frieght > 0){
                                 $scope.total_price = $stateParams.totalToPay + $scope.product_frieght;
