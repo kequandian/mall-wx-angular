@@ -33,13 +33,13 @@ angular.module('searchPage.controller', ['searchPage.service'])
             }
 
             //
-            $scope.search_product_name = function($event){
+            $scope.search_product_name = function($event, productName){
                 if($event.keyCode == 13){
-                    var p_name = $scope.product_name;
-
-                    if(p_name == undefined){
+                    var p_name = productName;
+                    if(p_name == undefined || p_name === null){
                         p_name = "";
                     }
+                    //console.log(p_name);
                     search_product(p_name);
                 }
             };
