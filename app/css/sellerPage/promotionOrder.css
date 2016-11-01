@@ -12,7 +12,6 @@
     color:white;
     /*background-color: #C50303;*/
     text-align: center;
-    margin-bottom: 6px;
 }
 
 /*#promotionOrder .active{
@@ -33,6 +32,7 @@
 
 #promotionOrder .item-accordion{
     background-color: white;
+    padding-top: 6px;
     /*padding: 5px;*/
 }
 

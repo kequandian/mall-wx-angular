@@ -229,9 +229,14 @@
                                 <span>{{(product_frieght*point_rate)|number:0}}</span><span style="margin-left:2px">积分</span></span>
                         </span>
                     </div>
-                    <div class="settlement-final" ng-if="delta_count < 0" ng-click="goToTenAreas()">
+                    <!--<div class="settlement-final" ng-if="delta_count < 0" ng-click="goToTenAreas()">
                         <span class="settlement-total" style="font-size: 12px; color:red;">
                             还差{{order.payment_type=="WECHAT"?deltaCount:deltaCount*point_rate}}元包邮，进入凑单 >>
+                        </span>
+                    </div>-->
+                    <div class="settlement-final" ng-if="product_message != null" ng-click="goToTenAreas()">
+                        <span class="settlement-total" style="font-size: 12px; color:red;">
+                            {{product_message}}
                         </span>
                     </div>
                 </div>

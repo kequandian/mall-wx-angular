@@ -422,7 +422,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 "city": null,
                 "data":[]
             };
-            var delta = null;
+            //var delta = null;
             function getFrieght(){
 
                 //console.log(angular.toJson($rootScope.settle_product_code));
@@ -445,21 +445,22 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                             console.log(angular.toJson(json));
 
                             var carriage = json.data.carriage;
-                            delta = json.data.delta;
+                            //delta = json.data.delta;
                             $scope.product_frieght = carriage;
+                            $scope.product_message = json.data.message;
 
-                            if(delta != null){
-                                if(delta < 0){
-                                    $scope.delta_count = delta;
-                                    var deltaStr = delta + "" ;
-                                    deltaStr = deltaStr.substr(1,deltaStr.length -1);
-                                    console.log("包邮差额：" + deltaStr);
-                                    $scope.deltaCount = deltaStr;
-                                }
-                            }else{
-                                $.toast('获取运费异常', 'cancel');
-                                return;
-                            }
+                            //if(delta != null){
+                            //    if(delta < 0){
+                            //        $scope.delta_count = delta;
+                            //        var deltaStr = delta + "" ;
+                            //        deltaStr = deltaStr.substr(1,deltaStr.length -1);
+                            //        console.log("包邮差额：" + deltaStr);
+                            //        $scope.deltaCount = deltaStr;
+                            //    }
+                            //}else{
+                            //    $.toast('获取运费异常', 'cancel');
+                            //    return;
+                            //}
 
                             //$scope.pay = $stateParams.totalToPay;
                             $scope.pay = $rootScope.settle_product_totalToPay;
@@ -482,10 +483,16 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
             //进入10元区
             $scope.goToTenAreas = function(){
+
+                var newUrl = '#/goodsList/10';
+                var title = '商品列表';
+                var c_state = history.state;
+                window.history.pushState(c_state, title, newUrl);
+
                 areasStatus.areas_status = 1;
                 goodListParams.searchStatus = 3;
                 $rootScope.jumpStatus = true;
-                $state.go('goodsList');
+                $state.go('goodsList',{statusNumber:10});
             };
 
             //提交订单
