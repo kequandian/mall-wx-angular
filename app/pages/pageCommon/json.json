@@ -1,109 +1,24 @@
 {
-  "partner_level_zone": 2,
-  "weight": 0,
-  "stock_balance": 1000,
-  "fare_id": 1,
-  "id": 54,
-  "cover": "http://o9ixtumvv.bkt.clouddn.com/20161018165116814-MoyMVgI8.jpg",
-  "description": "<p><img src=\"http://images.10mup.com/20160713124101276-cuXRhsgw.jpg\" title=\"1468384860598025097.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713124101657-YdhZgV0q.jpg\" title=\"1468384860614054368.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713124103070-3bEgLzXE.jpg\" title=\"1468384860630031550.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713124101826-VvrwQg1v.jpg\" title=\"1468384861795010248.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713124104984-3yVp8BaL.jpg\" title=\"1468384862856054536.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713124103603-YgwliYRB.jpg\" title=\"1468384863578035953.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713124104683-xwD4xsP3.jpg\" title=\"1468384864049016986.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713124105596-zCVWP6Ti.jpg\" title=\"1468384864672080524.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713124106401-hNynlJGr.jpg\" title=\"1468384865458032652.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713124108288-JPzmcjFa.jpg\" title=\"1468384865940045454.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713124109494-AqdEqNUM.jpg\" title=\"1468384867095038737.jpg\"></p>\n<p><img src=\"http://images.10mup.com/20160713124108924-kHrvtBpU.jpg\" title=\"1468384867162066659.jpg\"></p>\n<p><br></p>",
-  "sales": 0,
-  "promoted": 1,
-  "name": "拉芳新品邂逅香氛沐浴露550ml",
-  "purchase_strategy": null,
-  "created_date": "2016-07-13 12:41:33",
-  "cost_price": 28.96,
-  "status": "ONSELL",
-  "free_shipping": 1,
-  "category_id": 36,
-  "suggested_price": 39.9,
-  "barcode": null,
-  "properties": [
+  "payment_type": "WECHAT",
+  "order_items": [
     {
-      "value_type": "STRING",
-      "property_id": 26,
-      "id": 56,
-      "display_name": "沐浴露",
-      "property_value": null,
-      "product_id": 54
+      "product_id": 50,
+      "quantity": 2,
+      "product_specification_id": null
     }
   ],
-  "short_name": "邂逅香氛沐浴露",
-  "bulk": 0,
-  "specifications": [],
-  "fare_template": {
-    "content": "建议拼单购买接近3kg，从而可降低单品运费；超3kg按3元/kg计算（超出不满1kg按1kg计算）",
-    "id": 1,
-    "shop_addr": "广东-广州",
-    "incl_postage_provisoes": [],
-    "title": "省钱窍门",
-    "last_modified_date": "2016-10-29 17:17:02",
-    "name": "按重量",
-    "is_incl_postage": 0,
-    "carry_modes": [
-      {
-        "region": null,
-        "first_weight": 3000,
-        "second_amount": 3,
-        "carry_way": 0,
-        "is_default": 1,
-        "first_piece": null,
-        "second_piece": null,
-        "second_weight": 1000,
-        "fare_id": 1,
-        "id": 10,
-        "first_amount": 7,
-        "first_bulk": null,
-        "second_bulk": null
-      }
-    ],
-    "valuation_model": 1,
-    "is_incl_postage_by_if": 0,
-    "dispatch_time": "36",
-    "is_excl_postage": true,
-    "default_amount": 7
-  },
-  "unit": "550ml*1瓶",
-  "last_modified_date": "2016-10-18 16:51:17",
-  "price": 39.9,
-  "covers": [
-    {
-      "id": 344,
-      "product_id": 54,
-      "sort_order": 1,
-      "type": 0,
-      "url": "http://o9ixtumvv.bkt.clouddn.com/20161018165116814-MoyMVgI8.jpg"
-    },
-    {
-      "id": 345,
-      "product_id": 54,
-      "sort_order": 2,
-      "type": 0,
-      "url": "http://images.10mup.com/20160713124130970-ESoLK6jj.jpg"
-    },
-    {
-      "id": 346,
-      "product_id": 54,
-      "sort_order": 3,
-      "type": 0,
-      "url": "http://images.10mup.com/20160713124131138-2cAJ7PZi.jpg"
-    },
-    {
-      "id": 347,
-      "product_id": 54,
-      "sort_order": 4,
-      "type": 0,
-      "url": "http://images.10mup.com/20160713124131549-UEGD2CyX.jpg"
-    },
-    {
-      "id": 441,
-      "product_id": 54,
-      "sort_order": 5,
-      "type": 0,
-      "url": "http://images.10mup.com/20160722145154242-qEmazWEr.jpg"
-    }
-  ],
-  "freight": 0,
-  "store_location": null,
-  "sort_order": 81,
-  "view_count": 145
+  "contact": {
+    "id": 160,
+    "zip": null,
+    "detail": "123号",
+    "phone": "16398765286",
+    "contact_user": "huang",
+    "street": null,
+    "province": "广东",
+    "is_default": 1,
+    "street_number": null,
+    "user_id": 2,
+    "district": "白云区",
+    "city": "广州"
+  }
 }

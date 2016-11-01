@@ -445,6 +445,7 @@ angular.module('details.controller', ['details.service'])
                 p_info.push(p_item);
 
                 $rootScope.settle_product_code = p_info;
+                $rootScope.settle_product_totalToPay = item.price * quantity;
                 //console.log(angular.toJson(p_item));
 
                 var newUrl = '#/cart-settlement';

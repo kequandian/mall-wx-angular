@@ -253,6 +253,7 @@
 
         //结算页缓存
         $rootScope.settle_product_code = null;
+        $rootScope.settle_product_totalToPay = 0;
 
         /*//Do your $on in here, like this:
         $rootScope.$on("$locationChangeStart",function(event, next, current){

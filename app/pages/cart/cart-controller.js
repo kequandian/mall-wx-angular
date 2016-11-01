@@ -260,10 +260,10 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 //$scope.checkedCarts.push(pay);
                 //$scope.checkedCarts.push(freight);
 
-                console.log("pay: " + pay)
+                //console.log("pay: " + pay)
 
-                console.log(angular.toJson($scope.checkedCarts));
                 $rootScope.settle_product_code = $scope.checkedCarts;
+                $rootScope.settle_product_totalToPay = pay;
 
                 var newUrl = '#/cart-settlement';
                 var title = '购物车';
@@ -461,13 +461,14 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                                 return;
                             }
 
-                            $scope.pay = $stateParams.totalToPay;
-                            console.log("$stateParams.totalToPay:" + $stateParams.totalToPay);
+                            //$scope.pay = $stateParams.totalToPay;
+                            $scope.pay = $rootScope.settle_product_totalToPay;
+                            console.log("$stateParams.totalToPay:" + $scope.pay);
                             $scope.freight = $stateParams.totalFreight;
                             if($scope.product_frieght > 0){
-                                $scope.total_price = $stateParams.totalToPay + $scope.product_frieght;
+                                $scope.total_price = $scope.pay + $scope.product_frieght;
                             }else{
-                                $scope.total_price = $stateParams.totalToPay;
+                                $scope.total_price = $scope.pay;
                             }
                         }else{
                             console.log('error：' + angular.toJson(json));
@@ -510,7 +511,8 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 $scope.productFrieghts.province = $scope.order.contact.province;
                 $scope.productFrieghts.city = $scope.order.contact.city;
 
-                //console.log('$scope.productFrieghts: '+ angular.toJson($scope.order));
+                console.log('$scope.order: '+ angular.toJson($scope.order));
+                return;
 
                 //FEATURE: point
                 // - check balance
