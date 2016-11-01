@@ -239,30 +239,35 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             //删除支付超时订单
             $scope.delete_over_time_order = function(order_number){
 
-                OrderFty.deleteOverTimeOrderService(order_number)
-                    .then(function (json) {
-                        $ocLazyLoad.load('Jquery').then(function () {
-                            $ocLazyLoad.load('JqueryWeUI').then(function () {
+                $.confirm('', '确认要退款吗？', function () {
+                    OrderFty.deleteOverTimeOrderService(order_number)
+                        .then(function (json) {
+                            $ocLazyLoad.load('Jquery').then(function () {
+                                $ocLazyLoad.load('JqueryWeUI').then(function () {
 
-                                if (json.status_code == 0) {
-                                    //$state.go('order.all', {}, {reload: true});
+                                    if (json.status_code == 0) {
+                                        //$state.go('order.all', {}, {reload: true});
 
-                                    angular.forEach($scope.order_list, function(v , k){
-                                        if(v.order_number == order_number){
-                                            $scope.order_list.splice(k,1);
-                                        }
-                                    });
+                                        angular.forEach($scope.order_list, function(v , k){
+                                            if(v.order_number == order_number){
+                                                $scope.order_list.splice(k,1);
+                                            }
+                                        });
 
-                                    $.toast('移除成功');
+                                        $.toast('移除成功');
 
-                                } else {
-                                    $.toast('移除失败', 'cancel');
-                                }
+                                    } else {
+                                        $.toast('移除失败', 'cancel');
+                                    }
+                                })
                             })
+                        }, function (error) {
+                            console.log(angular.toJson(error));
                         })
-                    }, function (error) {
-                        console.log(angular.toJson(error));
-                    })
+                }, function () {
+                    //取消操作
+                });
+
             }
 
 

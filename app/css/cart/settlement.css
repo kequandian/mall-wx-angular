@@ -290,3 +290,12 @@
     margin-top: 8px;
 }
 
+#settlement .weui_actionsheet_action{
+    margin-top: 6px;
+    background-color: #fff;
+    padding: 0 13px 15px 13px;
+}
+
+/*#settlement .weui_panel:after{
+    border-bottom: 0;
+}*/

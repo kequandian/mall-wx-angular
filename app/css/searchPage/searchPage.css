@@ -35,14 +35,14 @@
 
 #searchPage .cate-search .cate-search-input .search_outer .search_input{
     width: 90%;
-    height: 20px;
     border: 0;
     border-left: 1px solid #cccccc;
     background-color: white;
     -webkit-appearance: none;
     padding-left: 6px;
     border-radius: 0;
-    font-size: 14px;
+    font-size: 13px;
+
 }
 
 
