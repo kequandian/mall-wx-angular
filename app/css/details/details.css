@@ -51,7 +51,8 @@
     font-size: 20px;
     height: 35px;
     line-height: 35px;
-    color:#3D3D3D;
+    /*color:#3D3D3D;*/
+    color:red;
 }
 
 #details .product-price .product-rebate{
