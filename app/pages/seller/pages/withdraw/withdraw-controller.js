@@ -117,9 +117,13 @@ angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
 
                             // update BalanceSession
                             BalanceSession.balance -= real_withdraw_cash;
+                        }else{
+                            $.toast('兑现失败', 'cancel');
+                            console.log('兑现失败: ' + angular.toJson(json));
                         }
                     }, function (error) {
                         $.toast('兑现失败', 'cancel');
+                        console.log('兑现失败: ' + angular.toJson(error));
                     })
             }
 
