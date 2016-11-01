@@ -362,6 +362,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             //    console.log($scope.order.payment_type);
             //};
 
+            $scope.pay = $rootScope.settle_product_totalToPay;
 
             $scope.show_address_status = 'add';
             AllContacts();
@@ -379,6 +380,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                         if ($scope.currentContact == null) {
                             $scope.currentContact = null;
                             $scope.product_frieght = null;
+                            $scope.total_price = $scope.pay + $scope.product_frieght;
                         }
 
                         if ($scope.currentContact != null) {
@@ -423,6 +425,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 "data":[]
             };
             //var delta = null;
+
             function getFrieght(){
 
                 //console.log(angular.toJson($rootScope.settle_product_code));
@@ -463,7 +466,6 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                             //}
 
                             //$scope.pay = $stateParams.totalToPay;
-                            $scope.pay = $rootScope.settle_product_totalToPay;
                             console.log("$stateParams.totalToPay:" + $scope.pay);
                             $scope.freight = $stateParams.totalFreight;
                             if($scope.product_frieght > 0){
