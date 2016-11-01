@@ -253,7 +253,7 @@
 
 #settlement #c_address_action{
     margin-left: 30px;
-    color: green;
+    /*color: green;*/
 }
 #settlement .weui_actionsheet{
     z-index: 90;
