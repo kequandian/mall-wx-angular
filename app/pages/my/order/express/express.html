@@ -18,7 +18,7 @@
             </a>
         </div>
         <div class="info">
-            <h4>物流状态 <span>{{expressInfo.state|expressStatus}}</span></h4>
+            <h4  class="custom_text_primary">物流状态 <span>{{expressInfo.state|expressStatus}}</span></h4>
             <p>承运公司: {{expressInfo.company}}</p>
             <p>运单编号: {{expressInfo.nu != null ? expressInfo.nu : '-'}}</p>
             <p>官方电话: <span class="tel">{{expressInfo.comcontact}}</span> </p>
@@ -27,7 +27,7 @@
     </div>
 
     <div class="express_tracking">
-        <h4>物流跟踪</h4>
+        <h4 class="custom_text_primary">物流跟踪</h4>
         <div class="track_list">
             <ul id="list">
                 <li ng-repeat="item in expressInfo.data" class="{{okclass}}">

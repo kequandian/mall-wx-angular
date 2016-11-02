@@ -420,7 +420,7 @@ angular.module('homePage.controller', ['homePage.service'])
 
             //推荐商品
             $scope.goToGoodsList = function (item, index) {
-                //console.log(angular.toJson(item));
+                console.log("item.id: " + angular.toJson(item.id));
                 //goodListParams.typeNumber = item.id;
                 //if(item.sub_categories.length > 0){
                 //    goodListParams.promoted = true;
