@@ -2,6 +2,7 @@
     width: 100%;
     height: 100%;
     background-color: white;
+    position: relative;
 }
 
 /*begin from collection style*/
@@ -68,7 +69,7 @@
 .view-container {
     /*padding-top:51px;*/
     /*padding-bottom: 57px;*/
-    padding-bottom: 113px;
+    padding-bottom: 108px;
     height: auto;
     background-color: white;
 }
@@ -125,7 +126,7 @@
 }
 #foot {
     width: 100%;
-    height: 57px;
+    height: 52px;
     position: fixed;
     bottom: 0;
 }

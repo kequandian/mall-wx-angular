@@ -26,7 +26,7 @@
                 <span>去逛逛</span>
             </div>
         </div>
-        <form ng-hide="cart_info_hide" style="padding-top: 35px;">
+        <div ng-hide="cart_info_hide" style="padding-top: 35px;">
             <div class="view-container">
 
                     <ul class="cart-list" ng-repeat="cart in carts">
@@ -88,25 +88,25 @@
                     </ul>
 
             </div>
-
-            <footer id="foot" class="cart-foot" ng-hide="cart_item_price">
-                <div class="footLeft">
-                    <input class="cart-checkbox" type="checkbox" value="全不选" id="selectAll" ng-model="$allChecked" ng-change="checkAll()">
-                    <label id="checkAll" class="ion-ios-checkmark active cart-item-label" for="selectAll"></label>
-                    <div class="check-text">全选</div>
-                    <div class="foot-info">
-                        <div>
-                            <span style="float: left; font-size: 14px; margin-top: 2px;">合计:</span><strong style="display: inline;color:red; float: left;" ng-bind="totalToPay()|currency:'￥'"></strong>
-                        </div>
-                        <!--<span style="font-size: 12px;">不含运费</span>-->
-                        <!--<span style="font-size: 12px;">运费:<span ng-bind="totalFreight()|currency:'￥'"></span></span>-->
-                        <p ng-bind="checkedWeight() > 0 ? '毛重：'+ checkedWeight()/1000+'kg' : '毛重：' + checkedWeight()"></p>
-                    </div>
-                </div>
-                <button class="footRight custom_flat_primary_medium" ng-click="goSettlement(totalToPay(),totalFreight())" ng-disabled="!someChecked()">
-                        去结算
-                </button>
-            </footer>
-        </form>
+        </div>
     </div>
+
+    <footer id="foot" class="cart-foot" ng-hide="cart_item_price">
+        <div class="footLeft">
+            <input class="cart-checkbox" type="checkbox" value="全不选" id="selectAll" ng-model="$allChecked" ng-change="checkAll()">
+            <label id="checkAll" class="ion-ios-checkmark active cart-item-label" for="selectAll"></label>
+            <div class="check-text">全选</div>
+            <div class="foot-info">
+                <div>
+                    <span style="float: left; font-size: 14px; margin-top: 2px;">合计:</span><strong style="display: inline;color:red; float: left;" ng-bind="totalToPay()|currency:'￥'"></strong>
+                </div>
+                <!--<span style="font-size: 12px;">不含运费</span>-->
+                <!--<span style="font-size: 12px;">运费:<span ng-bind="totalFreight()|currency:'￥'"></span></span>-->
+                <p ng-bind="checkedWeight() > 0 ? '毛重：'+ checkedWeight()/1000+'kg' : '毛重：' + checkedWeight()"></p>
+            </div>
+        </div>
+        <button class="footRight custom_flat_primary_medium" ng-click="goSettlement(totalToPay(),totalFreight())" ng-disabled="!someChecked()">
+            去结算
+        </button>
+    </footer>
 </div>

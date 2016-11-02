@@ -129,8 +129,8 @@
     position: absolute;
     overflow-x: hidden;
     overflow-y: scroll;
-    margin-bottom: 42px;
-    padding-bottom: 150px;
+    /*margin-bottom: 42px;*/
+    padding-bottom: 140px;
 }
 
 #category .pro-content .product-item{
