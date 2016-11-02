@@ -19,6 +19,7 @@
     top: 0;
     left: 0;
     right: 0;
+    overflow:hidden;
     z-index: 2;
 }
 
@@ -134,7 +135,8 @@
     position: fixed;
     left: 0;
     right: 0;
-    bottom: 55px;
+    bottom: 50px;
+    overflow:hidden;
 }
 .cart-foot {
     /*margin-bottom: 55px;*/
