@@ -164,10 +164,9 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
             //进入提现页
             $scope.goToWithdrow = function (phone, balance) {
                 withdrawBalance.balance = balance;
+                withdrawBalance.phone = phone;
 
-                $state.go('withdraw', {
-                    accountPhone: phone
-                })
+                $state.go('withdraw')
             };
 
             //进入我的信息页

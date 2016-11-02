@@ -62,8 +62,9 @@ angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
             //提交提现信息
             function postDraw() {
 
-                var phone = $stateParams.accountPhone;
-                if (phone == null) {
+                var phone = withdrawBalance.phone;
+
+                if (phone == -1 || phone === null || phone === undefined) {
                     $.toast.prototype.defaults.duration = 800;
                     $.toast('需要设置手机号码', 'cancel');
                     $timeout(function () {

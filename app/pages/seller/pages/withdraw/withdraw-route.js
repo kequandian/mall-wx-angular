@@ -12,9 +12,6 @@ angular.module('withdraw.route', [/*'withdraw.controller'*/])
                 loadData: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load('Withdraw');
                 }]
-            },
-            params:{
-                'accountPhone':null
             }
         })
     }]);

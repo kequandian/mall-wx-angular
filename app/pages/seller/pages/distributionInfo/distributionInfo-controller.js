@@ -3,8 +3,8 @@
 * */
 angular.module('distributionInfo.controller', ['userInfo.service', 'seller.session'])
 
-    .controller('DistributionInfoController', ['$scope','$state','$timeout','UserInfoFty','DWStatus',
-        function($scope,$state,$timeout,UserInfoFty,DWStatus){
+    .controller('DistributionInfoController', ['$scope','$state','$timeout','UserInfoFty','DWStatus','withdrawBalance',
+        function($scope,$state,$timeout,UserInfoFty,DWStatus,withdrawBalance){
 
             //title
             document.title = "我的信息";
@@ -62,8 +62,9 @@ angular.module('distributionInfo.controller', ['userInfo.service', 'seller.sessi
                                     $state.go('home.sellerPage');
                                 }, 1100);
                             }else if(DWStatus.d_w_status == 2){
+                                withdrawBalance.phone = phone;
                                 $timeout(function(){
-                                    $state.go('withdraw',{accountPhone:phone});
+                                    $state.go('withdraw');
                                 }, 1100);
                             }
 

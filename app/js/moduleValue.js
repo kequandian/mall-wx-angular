@@ -25,7 +25,8 @@ angular.module('moduleValueJs',[])
 
     //保存可提现金额
     .value('withdrawBalance', {
-        balance: 0
+        balance: 0,
+        phone:-1
     })
     .value('BalanceSession', {
         balance: '0'
