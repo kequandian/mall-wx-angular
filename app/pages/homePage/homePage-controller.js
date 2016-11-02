@@ -439,7 +439,7 @@ angular.module('homePage.controller', ['homePage.service'])
                 cateCacheCode.loading=false;
                 cateCacheCode.load_more_btn_show= true;
                 //console.log(angular.toJson(item))
-                $state.go('home.category');
+                $state.go('home.category',{cateId:-1});
             };
 
             //default category params

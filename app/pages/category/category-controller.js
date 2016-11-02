@@ -19,8 +19,9 @@ angular.module('category.controller', ['category.service'])
             return input;
         }
     })
-    .controller('CategoryController', ['$scope', '$state', '$rootScope', 'CategoryFty','goodListParams',
-        '$ocLazyLoad','cateLeftIndex','cateCacheCode', function ($scope, $state,$rootScope, CategoryFty,goodListParams, $ocLazyLoad, cateLeftIndex,cateCacheCode) {
+    .controller('CategoryController', ['$scope', '$state', '$rootScope','$stateParams', 'CategoryFty','goodListParams',
+        '$ocLazyLoad','cateLeftIndex','cateCacheCode',
+        function ($scope, $state,$rootScope,$stateParams, CategoryFty,goodListParams, $ocLazyLoad, cateLeftIndex,cateCacheCode) {
 
             //title
             document.title = "商品分类";
@@ -34,6 +35,13 @@ angular.module('category.controller', ['category.service'])
             var pageSize = 10;
             var orderBy = "&orderBy=price";
             $scope.load_more_btn_show = cateCacheCode.load_more_btn_show;
+
+            //首页广告商品分类ID
+            var categoryId = $stateParams.categoryId;
+            console.log('categoryId:  ' + categoryId);
+            if(categoryId > 0){
+                cateCacheCode.cate_session = -2;
+            }
 
             // 点击左侧分类单
             /*$scope.getCategoryDetailData = function (typeNumber, item) {
@@ -72,14 +80,17 @@ angular.module('category.controller', ['category.service'])
                     if(cateCacheCode.cate_session.length > 0) {
                         loaded = true;
                         //console.log('cat_session loaded')
+                    }else if(cateCacheCode.cate_session == null){
+                        loaded = false;
                     }
                 }else{
                     cateCacheCode.cate_session = {}
                 }
+                console.log('cateCacheCode.cate_session: ' + cateCacheCode.cate_session);
 
                 if(!loaded) {
                     if(cateCacheCode.cate_session == -1){
-                        //console.log(12345)
+                        console.log(12345);
                         if(cateCacheCode.product_list == null){
                             console.log('推荐商品分类信息有误');
                             return;
@@ -109,7 +120,6 @@ angular.module('category.controller', ['category.service'])
                                         cateCacheCode.index_second=0;
                                         cateCacheCode.cate_session = json.data;
                                         cateCacheCode.second_cate =$scope.first_cate[$scope.indexFirstCate];
-                                        //console.log('cateCacheCode.second_cate: ' + angular.toJson($scope.first_cate[cateCacheCode.index_first]));
                                         cateCacheCode.product_id = $scope.first_cate[$scope.indexFirstCate].sub_categories[0].id;
 
                                     }else if(cateCacheCode.product_list.sub_categories.length == 0){
@@ -155,15 +165,22 @@ angular.module('category.controller', ['category.service'])
                                 if (json.status_code == 0) {
 
                                     $scope.first_cate = json.data;
-                                    //console.log(angular.toJson(json.data));
-                                    $scope.second_cate = $scope.first_cate[0].sub_categories;
-                                    countWith($scope.first_cate);
-                                    countItemWith($scope.first_cate[0]);
-                                    productList($scope.first_cate[0].sub_categories[0].id);
 
-                                    cateCacheCode.cate_session = json.data;
-                                    cateCacheCode.second_cate = $scope.first_cate[0];
-                                    cateCacheCode.product_id = $scope.first_cate[0].sub_categories[0].id;
+                                    if(categoryId > 0){
+                                        console.log('categoryId > 0 ');
+                                        ad_category_product(categoryId);
+
+                                    }else{
+                                        //console.log(angular.toJson(json.data));
+                                        $scope.second_cate = $scope.first_cate[0].sub_categories;
+                                        countWith($scope.first_cate);
+                                        countItemWith($scope.first_cate[0]);
+                                        productList($scope.first_cate[0].sub_categories[0].id);
+
+                                        cateCacheCode.cate_session = json.data;
+                                        cateCacheCode.second_cate = $scope.first_cate[0];
+                                        cateCacheCode.product_id = $scope.first_cate[0].sub_categories[0].id;
+                                    }
 
                                 } else {
                                     console.log('获取商品分类失败');
@@ -180,6 +197,91 @@ angular.module('category.controller', ['category.service'])
                     countItemWith(cateCacheCode.second_cate);
                     $scope.productList = cateCacheCode.product_list;
                 }
+            }
+
+            //首页广告商品类别
+            function ad_category_product(cateId){
+
+                console.log('cateId: ' + cateId);
+                if(!cateId > 0){
+                    console.log('分类ID有误');
+                    return;
+                }
+                CategoryFty.getProductListService(cateId,pageNumber,pageSize,orderBy)
+                    .then(function(json){
+                        if(json.status_code == 0){
+
+                            angular.forEach($scope.first_cate, function(first, first_k){
+                                angular.forEach(first.sub_categories, function(second, second_k){
+                                    if(second.name == json.data.name){
+                                        $scope.indexFirstCate = first_k;
+                                        $scope.indexSecondCate = second_k;
+                                    }
+                                })
+                            });
+
+                            $scope.second_cate = $scope.first_cate[$scope.indexFirstCate].sub_categories;
+                            countWith($scope.first_cate);
+                            countItemWith($scope.first_cate[$scope.indexFirstCate]);
+
+                            cateCacheCode.index_first = $scope.indexFirstCate;
+                            cateCacheCode.index_second = $scope.indexSecondCate;
+                            cateCacheCode.cate_session = json.data;
+                            cateCacheCode.second_cate =$scope.first_cate[$scope.indexFirstCate];
+                            cateCacheCode.product_id = $scope.first_cate[$scope.indexFirstCate].sub_categories[$scope.indexSecondCate].id;
+
+                            if (pageNumber == 1) {
+                                $scope.productList = json.data;
+                                console.log('productList: ' + angular.toJson($scope.productList.name));
+
+                                //console.log('productList: '+ angular.toJson($scope.productList));
+                                if ($scope.productList.products.length >= 10) {
+                                    $scope.load_more_btn_show = true;
+                                    loading = false;
+                                    cateCacheCode.loading = false;
+                                    cateCacheCode.load_more_btn_show = true;
+                                } else {
+                                    $scope.load_more_btn_show = false;
+                                    loading = true;
+                                    cateCacheCode.loading = true;
+                                    cateCacheCode.load_more_btn_show = false
+                                }
+                                cateCacheCode.product_list = json.data;
+                            } else if (pageNumber > 1) {
+                                var new_code = json.data.products;
+                                //console.log('$scope.productList: ' + angular.toJson($scope.productList));
+                                //console.log('new_code: ' + new_code.length);
+                                if (new_code.length > 0) {
+                                    loading = false;
+                                    cateCacheCode.loading = false;
+                                    angular.forEach(new_code, function (v, k) {
+                                        //console.log('new_code_list: ' + angular.toJson(v));
+                                        $scope.productList.products.push(v);
+                                    });
+                                    if(new_code.length < 20){
+                                        loading = true;
+                                        $scope.load_more_btn_show = false;
+                                        cateCacheCode.loading = true;
+                                        cateCacheCode.load_more_btn_show = false;
+                                        //$.toast("已加载全部的商品");
+                                    }
+                                } else if (new_code.length == 0) {
+                                    loading = true;
+                                    cateCacheCode.loading = true;
+                                    $scope.load_more_btn_show = false;
+                                    cateCacheCode.load_more_btn_show = false;
+                                    //$.toast("暂无更多的分类商品信息");
+                                }
+                            }
+
+                        }else{
+                            $scope.productList = null;
+                            console.log('获取商品列表失败：' + angular.toJson(json));
+                        }
+                    }, function(error){
+                        console.log('获取商品列表失败：' + angular.toJson(error));
+                    })
+
             }
 
 
@@ -251,7 +353,11 @@ angular.module('category.controller', ['category.service'])
                 $scope.indexSecondCate = e;
                 $scope.productList = item.products;
                 //console.log(angular.toJson(item));
-                productList(item.id);
+                if(categoryId > 0){
+                    ad_category_product(item.id)
+                }else{
+                    productList(item.id);
+                }
                 cateCacheCode.product_id = item.id;
                 cateCacheCode.index_second = e;
             };
@@ -343,7 +449,7 @@ angular.module('category.controller', ['category.service'])
 
                         }else{
                             $scope.productList = null;
-                            console.log('获取商品列表失败：' + angular.toJson(error));
+                            console.log('获取商品列表失败：' + angular.toJson(json));
                         }
                     }, function(error){
                         console.log('获取商品列表失败：' + angular.toJson(error));
@@ -367,7 +473,11 @@ angular.module('category.controller', ['category.service'])
                 cateCacheCode.loading = true;
                 setTimeout(function() {
                     pageNumber += 1;
-                    productList(cateCacheCode.product_id,pageNumber,pageSize,orderBy);
+                    if(categoryId>0){
+                        ad_category_product(categoryId)
+                    }else{
+                        productList(cateCacheCode.product_id);
+                    }
                     loading = false;
                     cateCacheCode.loading = false;
                 }, 500);   //模拟延迟
