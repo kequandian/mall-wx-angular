@@ -356,6 +356,9 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 })
             });
 
+            //禁止获取焦点
+            document.getElementById('city-picker').blur();
+
             //FEATURE: point
             $scope.point_rate = PointRate.rate;
             //$scope.onPaymentTypeChange = function(){
