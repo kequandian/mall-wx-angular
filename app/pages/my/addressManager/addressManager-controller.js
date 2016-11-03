@@ -13,9 +13,6 @@ angular.module('addressManager.controller', ['addressManager.service'])
             //       })
             //   });
 
-            //禁止获取焦点
-            document.getElementById('city-picker').blur();
-
             //自动关闭pcd控件
             var scope1 = $rootScope;
             scope1.$watch('closePCD',function(nValue, oValue){
@@ -430,6 +427,12 @@ angular.module('addressManager.controller', ['addressManager.service'])
                     };
 
                 }($);
+            }
+
+            //点击PCD
+            $scope.click_pck = function(){
+                //禁止获取焦点
+                document.getElementById('city-picker').blur();
             }
 
         }]);
