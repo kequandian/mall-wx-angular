@@ -135,8 +135,7 @@
     position: fixed;
     left: 0;
     right: 0;
-    bottom: 50px;
-    overflow:hidden;
+    bottom: 55px;
 }
 .cart-foot {
     /*margin-bottom: 55px;*/
