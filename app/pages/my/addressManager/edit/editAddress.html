@@ -15,7 +15,7 @@
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
                         <input type="hidden" ng-model="contact.id" ng-init="contact.id=editC.id">
-                        <input class="weui_input" type="text" placeholder="请输入姓名" ng-model="contact.contact_user"
+                        <input id="contact_user" class="weui_input" type="text" placeholder="请输入姓名" ng-model="contact.contact_user"
                                ng-init="contact.contact_user=editC.contact_user">
                     </div>
                 </div>
@@ -24,7 +24,7 @@
                         <label class="weui_label">手机号</label>
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <input class="weui_input" type="tel" placeholder="手机号码" ng-model="contact.phone"
+                        <input id="contact_phone" class="weui_input" type="tel" placeholder="手机号码" ng-model="contact.phone"
                                ng-init="contact.phone=editC.phone">
                     </div>
                 </div>
@@ -119,7 +119,7 @@
             <div class="weui_cells weui_cells_form">
                 <div class="weui_cell">
                     <div class="weui_cell_bd weui_cell_primary">
-                        <textarea class="weui_textarea settlement-font" placeholder="请输入详细地址信息" rows="2"
+                        <textarea id="contact_detail" class="weui_textarea settlement-font" placeholder="请输入详细地址信息" rows="2"
                                   ng-model="contact.detail" ng-init="contact.detail=editC.detail"></textarea>
                         <!--<div class="weui_textarea_counter"><span>0</span>/200</div>-->
                     </div>

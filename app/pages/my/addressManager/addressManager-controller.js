@@ -435,4 +435,49 @@ angular.module('addressManager.controller', ['addressManager.service'])
                 document.getElementById('city-picker').blur();
             }
 
+
+            //判断是否为苹果
+            var isIPHONE = navigator.userAgent.toUpperCase().indexOf('IPHONE')!= -1;
+
+            // 元素失去焦点隐藏iphone的软键盘
+            function objBlur(id,time){
+                if(typeof id != 'string') throw new Error('objBlur()参数错误');
+                var obj = document.getElementById(id),
+                    time = time || 300,
+                    docTouchend = function(event){
+                        if(event.target!= obj){
+                            setTimeout(function(){
+                                obj.blur();
+                                document.removeEventListener('touchend', docTouchend,false);
+                            },time);
+                        }
+                    };
+                if(obj){
+                    obj.addEventListener('focus', function(){
+                        document.addEventListener('touchend', docTouchend,false);
+                    },false);
+                }else{
+                    throw new Error('objBlur()没有找到元素');
+                }
+            }
+
+            //隐藏键盘
+            $scope.keyboard_hidden = function(){
+                var userInput = document.getElementById('contact_user');
+                userInput.blur();
+                var phoneInput = document.getElementById('contact_phone');
+                phoneInput.blur();
+                var contactInput = document.getElementById('contact_detail');
+                contactInput.blur();
+
+                //if(isIPHONE){
+                //    var input1 = new objBlur('contact_user');
+                //    input1=null;
+                //    var input2 = new objBlur('contact_phone');
+                //    input2=null;
+                //    var input3 = new objBlur('contact_detail');
+                //    input3=null;
+                //}
+            };
+
         }]);

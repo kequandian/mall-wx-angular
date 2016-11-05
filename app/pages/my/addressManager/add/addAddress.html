@@ -13,7 +13,7 @@
                         <label class="weui_label">收货人</label>
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <input class="weui_input" type="text" placeholder="请输入姓名" ng-model="contact.contact_user">
+                        <input id="contact_user" class="weui_input" type="text" placeholder="请输入姓名" ng-model="contact.contact_user">
                     </div>
                 </div>
                 <div class="weui_cell">
@@ -21,7 +21,7 @@
                         <label class="weui_label">手机号</label>
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <input class="weui_input" type="tel" placeholder="手机号码" ng-model="contact.phone">
+                        <input id="contact_phone" class="weui_input" type="tel" placeholder="手机号码" ng-model="contact.phone">
                     </div>
                 </div>
                 <div ng-if="false" class="weui_cell weui_cell_select weui_select_after">
@@ -98,7 +98,7 @@
             <div class="weui_cells weui_cells_form">
                 <div class="weui_cell">
                     <div class="weui_cell_bd weui_cell_primary">
-                        <textarea class="weui_textarea settlement-font" placeholder="请输入详细地址信息" rows="2"
+                        <textarea id="contact_detail" class="weui_textarea settlement-font" placeholder="请输入详细地址信息" rows="2"
                                   ng-model="contact.detail"></textarea>
                     </div>
                 </div>
