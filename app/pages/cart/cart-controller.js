@@ -941,8 +941,12 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             }
 
             if(isIPHONE){
-                var input = new objBlur('input');
-                input=null;
+                var input1 = new objBlur('s_contact_user');
+                input1=null;
+                var input2 = new objBlur('s_contact_phone');
+                input2=null;
+                var input3 = new objBlur('s_contact_detail');
+                input3=null;
             }
 
         }])
