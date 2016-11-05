@@ -429,12 +429,6 @@ angular.module('addressManager.controller', ['addressManager.service'])
                 }($);
             }
 
-            //点击PCD
-            $scope.click_pck = function(){
-                //禁止获取焦点
-                document.getElementById('city-picker').blur();
-            }
-
 
             //判断是否为苹果
             var isIPHONE = navigator.userAgent.toUpperCase().indexOf('IPHONE')!= -1;
@@ -463,6 +457,9 @@ angular.module('addressManager.controller', ['addressManager.service'])
 
             //隐藏键盘
             $scope.keyboard_hidden = function(){
+
+                document.getElementById('city-picker').blur();
+
                 var userInput = document.getElementById('contact_user');
                 userInput.blur();
                 var phoneInput = document.getElementById('contact_phone');
