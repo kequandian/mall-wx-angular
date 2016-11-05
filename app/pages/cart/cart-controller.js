@@ -910,11 +910,6 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             }
 
 
-            //隐藏键盘
-            $scope.keyboard_hidden = function(e){
-                e.keyboardControl = false;
-            }
-
             //判断是否为苹果
             var isIPHONE = navigator.userAgent.toUpperCase().indexOf('IPHONE')!= -1;
 
@@ -940,14 +935,25 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 }
             }
 
-            if(isIPHONE){
-                var input1 = new objBlur('s_contact_user');
-                input1=null;
-                var input2 = new objBlur('s_contact_phone');
-                input2=null;
-                var input3 = new objBlur('s_contact_detail');
-                input3=null;
-            }
+            //隐藏键盘
+            $scope.keyboard_hidden = function(){
+                var userInput = document.getElementById('s_contact_user');
+                userInput.blur();
+                var phoneInput = document.getElementById('s_contact_phone');
+                phoneInput.blur();
+                var contactInput = document.getElementById('s_contact_detail');
+                contactInput.blur();
+
+                if(isIPHONE){
+                    var input1 = new objBlur('s_contact_user');
+                    input1=null;
+                    var input2 = new objBlur('s_contact_phone');
+                    input2=null;
+                    var input3 = new objBlur('s_contact_detail');
+                    input3=null;
+                }
+            };
+
 
         }])
 
