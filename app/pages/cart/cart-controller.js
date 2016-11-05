@@ -909,6 +909,42 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 }($);
             }
 
+
+            //隐藏键盘
+            $scope.keyboard_hidden = function(e){
+                e.keyboardControl = false;
+            }
+
+            //判断是否为苹果
+            var isIPHONE = navigator.userAgent.toUpperCase().indexOf('IPHONE')!= -1;
+
+            // 元素失去焦点隐藏iphone的软键盘
+            function objBlur(id,time){
+                if(typeof id != 'string') throw new Error('objBlur()参数错误');
+                var obj = document.getElementById(id),
+                    time = time || 300,
+                    docTouchend = function(event){
+                        if(event.target!= obj){
+                            setTimeout(function(){
+                                obj.blur();
+                                document.removeEventListener('touchend', docTouchend,false);
+                            },time);
+                        }
+                    };
+                if(obj){
+                    obj.addEventListener('focus', function(){
+                        document.addEventListener('touchend', docTouchend,false);
+                    },false);
+                }else{
+                    throw new Error('objBlur()没有找到元素');
+                }
+            }
+
+            if(isIPHONE){
+                var input = new objBlur('input');
+                input=null;
+            }
+
         }])
 
 
