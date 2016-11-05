@@ -437,7 +437,7 @@ angular.module('addressManager.controller', ['addressManager.service'])
             function objBlur(id,time){
                 if(typeof id != 'string') throw new Error('objBlur()参数错误');
                 var obj = document.getElementById(id),
-                    time = time || 300,
+                    time = time || 500,
                     docTouchend = function(event){
                         if(event.target!= obj){
                             setTimeout(function(){
@@ -467,14 +467,14 @@ angular.module('addressManager.controller', ['addressManager.service'])
                 var contactInput = document.getElementById('contact_detail');
                 contactInput.blur();
 
-                //if(isIPHONE){
-                //    var input1 = new objBlur('contact_user');
-                //    input1=null;
-                //    var input2 = new objBlur('contact_phone');
-                //    input2=null;
-                //    var input3 = new objBlur('contact_detail');
-                //    input3=null;
-                //}
+                if(isIPHONE){
+                    var input1 = new objBlur('contact_user');
+                    input1=null;
+                    var input2 = new objBlur('contact_phone');
+                    input2=null;
+                    var input3 = new objBlur('contact_detail');
+                    input3=null;
+                }
             };
 
         }]);

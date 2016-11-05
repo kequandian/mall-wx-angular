@@ -917,7 +917,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             function objBlur(id,time){
                 if(typeof id != 'string') throw new Error('objBlur()参数错误');
                 var obj = document.getElementById(id),
-                    time = time || 300,
+                    time = time || 500,
                     docTouchend = function(event){
                         if(event.target!= obj){
                             setTimeout(function(){
@@ -944,14 +944,14 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 var contactInput = document.getElementById('s_contact_detail');
                 contactInput.blur();
 
-                //if(isIPHONE){
-                //    var input1 = new objBlur('s_contact_user');
-                //    input1=null;
-                //    var input2 = new objBlur('s_contact_phone');
-                //    input2=null;
-                //    var input3 = new objBlur('s_contact_detail');
-                //    input3=null;
-                //}
+                if(isIPHONE){
+                    var input1 = new objBlur('s_contact_user');
+                    input1=null;
+                    var input2 = new objBlur('s_contact_phone');
+                    input2=null;
+                    var input3 = new objBlur('s_contact_detail');
+                    input3=null;
+                }
             };
 
 
