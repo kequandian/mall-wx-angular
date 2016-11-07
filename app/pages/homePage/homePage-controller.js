@@ -452,33 +452,7 @@ angular.module('homePage.controller', ['homePage.service'])
             //cateCacheCode.loading=false;
             //cateCacheCode.load_more_btn_show= true;
 
-            var isIPHONE = navigator.userAgent.toUpperCase().indexOf('IPHONE')!= -1;
-
-            $scope.getTextLenght = function(index, product_name,max){
-
-                if (!product_name || product_name===undefined || product_name.length==0){
-                    return '十美优品';
-                }
-
-                var text_width = document.getElementById('grid_item_'+ index).offsetWidth;
-                alert('text_width: ' + text_width);
-                var p_n_length = product_name.length * 12;
-                var count = text_width / p_n_length;
-                if(!count >= 1){
-                    max = parseInt(max, 10);
-                    if (!max) return product_name;
-                    if (product_name.length <= max) return product_name;
-
-                    product_name = product_name.substr(0, max);
-                    var lastspace = product_name.lastIndexOf('');
-                    if (lastspace != -1) {
-                        product_name = product_name.substr(0, lastspace);
-                    }
-                    return product_name +  '…';
-                }
-                return product_name;
-            }
-
+            
         }])
 
 
