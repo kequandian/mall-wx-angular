@@ -453,6 +453,7 @@ angular.module('homePage.controller', ['homePage.service'])
             //cateCacheCode.load_more_btn_show= true;
 
             var isIPHONE = navigator.userAgent.toUpperCase().indexOf('IPHONE')!= -1;
+
             $scope.getTextLenght = function(index, product_name,max){
 
                 if (!product_name || product_name===undefined || product_name.length==0){
