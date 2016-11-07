@@ -460,6 +460,7 @@ angular.module('homePage.controller', ['homePage.service'])
                 }
 
                 var text_width = document.getElementById('grid_item_'+ index).offsetWidth;
+                alert('text_width: ' + text_width);
                 var p_n_length = product_name.length * 12;
                 var count = text_width / p_n_length;
                 if(!count >= 1){

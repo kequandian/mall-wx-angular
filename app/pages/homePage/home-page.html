@@ -125,12 +125,12 @@
                                     </div>
                                 </div>
                                 <!--product desc-->
-                                <div class="pro-item-desc">
+                                <div class="pro-item-desc" ng-click="getTextLenght($index, item.short_name, 6)">
                                     <div class="weui_grid_label home_grid_text"
                                          id="grid_item_{{$index}}"
                                             >
-                                        <span>{{getTextLenght($index, item.short_name, 6)}}</span>
-                                        <!--<span>{{item.short_name | defaultShortName}}</span>-->
+                                        <!--<span>{{getTextLenght($index, item.short_name, 6)}}</span>-->
+                                        <span>{{item.short_name | defaultShortName}}</span>
                                     </div>
                                     <div class="home_grid_footer_text">
                                         <div class="home_g_left c-left">{{item.price | currency:"￥"}}</div>
