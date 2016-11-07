@@ -20,7 +20,7 @@
             <ul style="{{second_ul}}">
                 <li ng-repeat="s_item in second_cate"
                     ng-click="gSecondIndex($index,s_item);"
-                    style="{{second_cate.length == 1 ? 'background-color:red; min-width: 70px;' : ''}}"
+                    style="{{second_cate.length == 1 ? 'min-width: 70px;' : ''}}"
                         >
                     <span ng-class="$index == indexSecondCate ? 'second-current custom_flat_primary':''">
                         {{s_item.name}}
