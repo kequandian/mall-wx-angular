@@ -452,7 +452,7 @@ angular.module('homePage.controller', ['homePage.service'])
             //cateCacheCode.loading=false;
             //cateCacheCode.load_more_btn_show= true;
 
-            
+
         }])
 
 
