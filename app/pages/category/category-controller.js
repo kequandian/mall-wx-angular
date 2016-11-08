@@ -32,7 +32,7 @@ angular.module('category.controller', ['category.service'])
             $scope.top_btn_show = true;
             var loading = cateCacheCode.loading;  //状态标记
             var pageNumber = 1;
-            var pageSize = 10;
+            var pageSize = 6;
             var orderBy = "&orderBy=price";
             $scope.load_more_btn_show = cateCacheCode.load_more_btn_show;
 
@@ -235,7 +235,7 @@ angular.module('category.controller', ['category.service'])
                                 console.log('productList: ' + angular.toJson($scope.productList.name));
 
                                 //console.log('productList: '+ angular.toJson($scope.productList));
-                                if ($scope.productList.products.length >= 10) {
+                                if ($scope.productList.products.length >= 6) {
                                     $scope.load_more_btn_show = true;
                                     loading = false;
                                     cateCacheCode.loading = false;
@@ -258,7 +258,7 @@ angular.module('category.controller', ['category.service'])
                                         //console.log('new_code_list: ' + angular.toJson(v));
                                         $scope.productList.products.push(v);
                                     });
-                                    if(new_code.length < 20){
+                                    if(new_code.length < 6){
                                         loading = true;
                                         $scope.load_more_btn_show = false;
                                         cateCacheCode.loading = true;
@@ -331,6 +331,7 @@ angular.module('category.controller', ['category.service'])
                 $scope.indexFirstCate = e;
                 $scope.second_cate = item.sub_categories;
                 $scope.indexSecondCate = 0;
+                pageNumber = 1;
                 countItemWith(item);
                 if(item.sub_categories.length > 0){
                     productList(item.sub_categories[0].id);
@@ -352,6 +353,7 @@ angular.module('category.controller', ['category.service'])
             $scope.gSecondIndex = function(e, item){
                 $scope.indexSecondCate = e;
                 $scope.productList = item.products;
+                pageNumber = 1;
                 //console.log(angular.toJson(item));
                 if(categoryId > 0){
                     ad_category_product(item.id)
@@ -407,8 +409,9 @@ angular.module('category.controller', ['category.service'])
                         if(json.status_code == 0){
                             if (pageNumber == 1) {
                                 $scope.productList = json.data;
-                                //console.log('productList: '+ angular.toJson($scope.productList));
-                                if ($scope.productList.products.length >= 10) {
+                                console.log('pageNumber = 1 ');
+                                console.log('productList: '+ angular.toJson($scope.productList));
+                                if ($scope.productList.products.length >= 6) {
                                     $scope.load_more_btn_show = true;
                                     loading = false;
                                     cateCacheCode.loading = false;
@@ -422,7 +425,8 @@ angular.module('category.controller', ['category.service'])
                                 cateCacheCode.product_list = json.data;
                             } else if (pageNumber > 1) {
                                 var new_code = json.data.products;
-                                //console.log('$scope.productList: ' + angular.toJson($scope.productList));
+                                console.log('pageNumber > 1 ');
+                                console.log('$scope.productList: ' + angular.toJson($scope.productList));
                                 //console.log('new_code: ' + new_code.length);
                                 if (new_code.length > 0) {
                                     loading = false;
@@ -431,7 +435,7 @@ angular.module('category.controller', ['category.service'])
                                         //console.log('new_code_list: ' + angular.toJson(v));
                                         $scope.productList.products.push(v);
                                     });
-                                    if(new_code.length < 20){
+                                    if(new_code.length < 6){
                                         loading = true;
                                         $scope.load_more_btn_show = false;
                                         cateCacheCode.loading = true;
@@ -463,8 +467,8 @@ angular.module('category.controller', ['category.service'])
             };
 
             //滚动加载
-            $("#category").infinite().on("infinite", function() {
-
+            $(".pro-content").infinite().on("infinite", function() {
+                console.log(1);
                 if(loading){
                     console.log('loading : ' + loading);
                     return;
@@ -474,8 +478,10 @@ angular.module('category.controller', ['category.service'])
                 setTimeout(function() {
                     pageNumber += 1;
                     if(categoryId>0){
+                        console.log(2);
                         ad_category_product(categoryId)
                     }else{
+                        console.log(3);
                         productList(cateCacheCode.product_id);
                     }
                     loading = false;
