@@ -232,7 +232,7 @@ angular.module('category.controller', ['category.service'])
 
                             if (pageNumber == 1) {
                                 $scope.productList = json.data;
-                                console.log('productList: ' + angular.toJson($scope.productList.name));
+                                //console.log('productList: ' + angular.toJson($scope.productList.name));
 
                                 //console.log('productList: '+ angular.toJson($scope.productList));
                                 if ($scope.productList.products.length >= 6) {
@@ -410,7 +410,7 @@ angular.module('category.controller', ['category.service'])
                             if (pageNumber == 1) {
                                 $scope.productList = json.data;
                                 console.log('pageNumber = 1 ');
-                                console.log('productList: '+ angular.toJson($scope.productList));
+                                //console.log('productList: '+ angular.toJson($scope.productList));
                                 if ($scope.productList.products.length >= 6) {
                                     $scope.load_more_btn_show = true;
                                     loading = false;
