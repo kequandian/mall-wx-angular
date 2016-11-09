@@ -63,18 +63,21 @@
         <div id="ad_area">
             <div class="ad-left">
                 <a ui-sref="{{ad_banner_1.target_url | formatDetailsLocation}}">
-                    <img ng-src="{{ad_banner_1.image != null ? ad_banner_1.image : 'img/home/img1.png'}}">
+                    <!--<img ng-src="{{ad_banner_1.image != null ? ad_banner_1.image : 'img/home/img1.png'}}">-->
+                    <img ng-src="{{ad_banner_1.image}}">
                 </a>
             </div>
             <div class="ad-right">
                 <div class="ad-right-top">
                     <a ng-href="{{ad_banner_2.target_url}}">
-                        <img ng-src="{{ad_banner_2.image != null ? ad_banner_2.image : 'img/home/img2.png'}}">
+                        <!--<img ng-src="{{ad_banner_2.image != null ? ad_banner_2.image : 'img/home/img2.png'}}">-->
+                        <img ng-src="{{ad_banner_2.image}}">
                     </a>
                 </div>
                 <div class="ad-right-bottom">
                     <a ng-href="{{ad_banner_3.target_url}}">
-                        <img ng-src="{{ad_banner_3.image != null ? ad_banner_3.image : 'img/home/img3.png'}}">
+                        <!--<img ng-src="{{ad_banner_3.image != null ? ad_banner_3.image : 'img/home/img3.png'}}">-->
+                        <img ng-src="{{ad_banner_3.image}}">
                     </a>
                 </div>
             </div>
