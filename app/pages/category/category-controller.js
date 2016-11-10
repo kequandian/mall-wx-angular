@@ -467,26 +467,29 @@ angular.module('category.controller', ['category.service'])
             };
 
             //滚动加载
-            $(".pro-content").infinite().on("infinite", function() {
-                console.log(1);
-                if(loading){
-                    console.log('loading : ' + loading);
-                    return;
-                }
-                loading = true;
-                cateCacheCode.loading = true;
-                setTimeout(function() {
-                    pageNumber += 1;
-                    if(categoryId>0){
-                        console.log(2);
-                        ad_category_product(categoryId)
-                    }else{
-                        console.log(3);
-                        productList(cateCacheCode.product_id);
-                    }
-                    loading = false;
-                    cateCacheCode.loading = false;
-                }, 500);   //模拟延迟
+            $ocLazyLoad.load('Jquery').then(function () {
+                $ocLazyLoad.load('JqueryWeUI').then(function () {
+                    $(".pro-content").infinite().on("infinite", function() {
+                        if(loading){
+                            console.log('loading : ' + loading);
+                            return;
+                        }
+                        loading = true;
+                        cateCacheCode.loading = true;
+                        setTimeout(function() {
+                            pageNumber += 1;
+                            if(categoryId>0){
+                                console.log(2);
+                                ad_category_product(categoryId)
+                            }else{
+                                console.log(3);
+                                productList(cateCacheCode.product_id);
+                            }
+                            loading = false;
+                            cateCacheCode.loading = false;
+                        }, 500);   //模拟延迟
+                    });
+                })
             });
 
             /*//加载更多
