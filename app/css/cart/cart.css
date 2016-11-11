@@ -20,7 +20,7 @@
     left: 0;
     right: 0;
     overflow:hidden;
-    z-index: 2;
+    z-index: 1;
 }
 
 #cart .coll-text-left{
@@ -46,16 +46,19 @@
 }
 /*end collection style*/
 
-
-
-/* cart header -----------*/
-.view-cart .header {
-    z-index: 10;
-    position: fixed;
+#cart .view-cart{
+    width: 100%;
+    height: auto;
+    position: absolute;
+    z-index: 0;
     right:0;
     left:0;
     -webkit-backface-visibility:hidden;
     backface-visibility:hidden
+}
+
+/* cart header -----------*/
+.view-cart .header {
 }
 .cart-header {
     border-style:solid;
@@ -135,6 +138,7 @@
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: 1;
 }
 .cart-foot {
     margin-bottom: 55px;
