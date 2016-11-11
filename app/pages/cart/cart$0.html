@@ -1,0 +1,112 @@
+<div id="cart">
+
+    <div class="coll-text" ng-hide="cart_info_hide">
+        <span class="coll-text-left" style="font-size: 14px;">最近一个月加入的商品</span>
+        <span class="coll-text-right" ng-click="edit_action()">{{edit_action_text}}</span>
+        <i class="edit-img" ng-click="edit_action()" ng-hide="edit_action_img"></i>
+    </div>
+
+    <div class="view-cart">
+        <!--<header class="header cart-header">-->
+            <!--<span class="cart-title">购物车</span>-->
+        <!--</header>-->
+
+        <div id="empty-cart-content" ng-hide="empty_cart_hide">
+            
+            <div class="empty-cart-img">
+                <img src="img/cart/cart-null.png">
+            </div>
+
+            <div class="empty-cart-text">
+                <span>购物车快饿瘪了T.T</span>
+                <div style="margin-top:5px;">主人快给我挑点宝贝吧</div>
+            </div>
+
+            <div class="empty-cart-button" ui-sref="home.homePage">
+                <span>去逛逛</span>
+            </div>
+        </div>
+        <div ng-hide="cart_info_hide" style="padding-top: 35px;">
+            <div class="view-container">
+
+                    <ul class="cart-list" ng-repeat="cart in carts">
+                        <li class="">
+
+                            <div class="" ng-hide="cart_item_price">
+                                <input class="cart-checkbox" type="checkbox" id="check{{cart.id}}"
+                                       ng-model="cart.$checked" ng-change="checkItem(cart)" ng-disabled="cart.stock_balance <= 0">
+                                <label class="ion-ios-checkmark cart-item-label" for="check{{cart.id}}"></label>
+                            </div>
+                            <div class="item-info">
+                                <a href="" class="item-image" ui-sref="details({productId:cart.product_id})">
+                                    <img ng-src="{{cart.cover | defaultCover}}">
+                                </a>
+                                <div class="">
+                                    <a  ui-sref="details({productId:cart.product_id})" ng-if="cart.product_specification_name != null">
+                                        <h4 class="item-title" style="{{check_stock_balance(cart.stock_balance)}}">{{cart.product_name | cutText:true:16:"..."}}</h4>
+                                        <div class="item-spec" style="{{check_stock_balance(cart.stock_balance)}}">规格：{{cart.product_specification_name}}</div>
+                                    </a>
+                                    <a  ui-sref="details({productId:cart.product_id})" ng-if="cart.product_specification_name == null">
+                                        <div class="item-title-2" style="{{check_stock_balance(cart.stock_balance)}}">{{cart.product_name}}</div>
+                                    </a>
+                                    <div class="item-info-bottom">
+
+                                        <div class="item-price-position" ng-hide="cart_item_price">
+                                            <span class="item-price" style="{{check_stock_balance(cart.stock_balance)}}">{{cart.price|currency:'￥'}}</span>
+                                            <span class="item-price" ng-if="cart.stock_balance <= 0">库存不足</span>
+                                            <span class="item-weight" ng-if="cart.stock_balance > 0 && cart.weight > 0">{{cart.weight / 1000 + "kg"}}</span>
+                                            <span class="ion-close" style="{{check_stock_balance(cart.stock_balance)}}">x {{ cart.quantity }}</span>
+                                        </div>
+
+                                        <div class="cart-quantity-form-position" ng-hide="cart_item_quantity">
+                                            <div class="cart-quantity-form">
+                                                <a href="javascript:void(0);" class="cart-quantity-decrement"
+                                                   ng-click="downQuantity(cart.product_id, cart.product_specification_id)">
+                                                    <span>-</span>
+                                                </a>
+                                                <input autocomplete="off" class="cart-quantity" ng-model="cart.quantity"
+                                                       type="text" ng-change="countChange(cart.product_id, cart.product_specification_id,cart.quantity)"
+                                                        >
+                                                <a href="javascript:void(0);" class="cart-quantity-increment"
+                                                   ng-click="upQuantity(cart.product_id, cart.product_specification_id)">
+                                                    <span>+</span>
+                                                </a>
+                                            </div>
+                                            <img class="ion-close" src="img/cart/close.png"
+                                                 ng-click="showDeleteConfirm(cart);$event.stopPropagation()"/>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="balance_is_null">
+
+                            </div>
+                        </li>
+                    </ul>
+
+            </div>
+        </div>
+    </div>
+
+    <footer id="foot" class="cart-foot" ng-show="empty_cart_hide">
+        <div class="footLeft">
+            <input class="cart-checkbox" type="checkbox" value="全不选" id="selectAll" ng-model="$allChecked" ng-change="checkAll()">
+            <label id="checkAll" class="ion-ios-checkmark active cart-item-label" for="selectAll"></label>
+            <div class="check-text">全选</div>
+            <div class="foot-info">
+                <div>
+                    <span style="float: left; font-size: 14px; margin-top: 2px;">合计:</span><strong style="display: inline;color:red; float: left;" ng-bind="totalToPay()|currency:'￥'"></strong>
+                </div>
+                <!--<span style="font-size: 12px;">不含运费</span>-->
+                <!--<span style="font-size: 12px;">运费:<span ng-bind="totalFreight()|currency:'￥'"></span></span>-->
+                <p ng-bind="checkedWeight() > 0 ? '毛重：'+ checkedWeight()/1000+'kg' : '毛重：' + checkedWeight()"></p>
+            </div>
+        </div>
+        <button class="footRight custom_flat_primary_medium" ng-click="goSettlement(totalToPay(),totalFreight())" ng-disabled="!someChecked()">
+            去结算
+        </button>
+    </footer>
+</div>

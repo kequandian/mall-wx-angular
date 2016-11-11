@@ -21,7 +21,7 @@
     right: 0;
     overflow:hidden;
     z-index: 1;
-    -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling:touch;
 }
 
 #cart .coll-text-left{
@@ -55,8 +55,7 @@
     right:0;
     left:0;
     -webkit-backface-visibility:hidden;
-    backface-visibility:hidden;
-    -webkit-overflow-scrolling: touch;
+    backface-visibility:hidden
 }
 
 /* cart header -----------*/
@@ -141,7 +140,7 @@
     right: 0;
     bottom: 0;
     z-index: 1;
-    -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling:touch;
 }
 .cart-foot {
     margin-bottom: 55px;
