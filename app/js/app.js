@@ -232,6 +232,10 @@
                         'pages/seller/seller-session-service.js',
                         {type: 'css', path: 'css/sellerPage/sellerApplying.css'}],
                     cache: false
+                },{
+                    name: 'JqueryPin',
+                    files: ['lib/jquery.pin/jquery.pin.min.js'],
+                    cache: true
                 }
 
                 ]

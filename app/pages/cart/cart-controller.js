@@ -15,10 +15,13 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
             $ocLazyLoad.load('Jquery').then(function () {
                 $ocLazyLoad.load('JqueryWeUI').then(function () {
-                    //console.log("homePage:jquery loaded");
-                    $(".cart-foot").pin({
-                        containerSelector: "#cart"
-                    });
+                    $ocLazyLoad.load('JqueryPin').then(function(){
+                        //console.log("homePage:jquery loaded");
+                        $(".cart-foot").pin();
+                        /*$(".cart-foot").pin({
+                         containerSelector: "#cart"
+                         });*/
+                    })
                 })
             });
 
