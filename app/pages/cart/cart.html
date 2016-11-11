@@ -91,7 +91,7 @@
         </div>
     </div>
 
-    <nav id="foot" class="cart-foot" ng-show="empty_cart_hide">
+    <footer id="foot" class="cart-foot" ng-show="empty_cart_hide">
         <div class="footLeft">
             <input class="cart-checkbox" type="checkbox" value="全不选" id="selectAll" ng-model="$allChecked" ng-change="checkAll()">
             <label id="checkAll" class="ion-ios-checkmark active cart-item-label" for="selectAll"></label>
@@ -108,5 +108,5 @@
         <button class="footRight custom_flat_primary_medium" ng-click="goSettlement(totalToPay(),totalFreight())" ng-disabled="!someChecked()">
             去结算
         </button>
-    </nav>
+    </footer>
 </div>
