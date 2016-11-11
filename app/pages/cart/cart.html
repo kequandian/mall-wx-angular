@@ -1,10 +1,10 @@
 <div id="cart">
 
-    <div class="coll-text" ng-hide="cart_info_hide">
+    <nav class="coll-text" ng-hide="cart_info_hide">
         <span class="coll-text-left" style="font-size: 14px;">最近一个月加入的商品</span>
         <span class="coll-text-right" ng-click="edit_action()">{{edit_action_text}}</span>
         <i class="edit-img" ng-click="edit_action()" ng-hide="edit_action_img"></i>
-    </div>
+    </nav>
 
     <div class="view-cart">
         <!--<header class="header cart-header">-->
@@ -91,7 +91,7 @@
         </div>
     </div>
 
-    <footer id="foot" class="cart-foot" ng-show="empty_cart_hide">
+    <nav id="foot" class="cart-foot" ng-show="empty_cart_hide">
         <div class="footLeft">
             <input class="cart-checkbox" type="checkbox" value="全不选" id="selectAll" ng-model="$allChecked" ng-change="checkAll()">
             <label id="checkAll" class="ion-ios-checkmark active cart-item-label" for="selectAll"></label>
@@ -108,5 +108,5 @@
         <button class="footRight custom_flat_primary_medium" ng-click="goSettlement(totalToPay(),totalFreight())" ng-disabled="!someChecked()">
             去结算
         </button>
-    </footer>
+    </nav>
 </div>
