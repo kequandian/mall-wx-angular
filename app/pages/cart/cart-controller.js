@@ -13,16 +13,15 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             //title
             document.title = "购物车";
 
-            $ocLazyLoad.load('Jquery').then(function () {
-                $ocLazyLoad.load('JqueryWeUI').then(function () {
-                    $ocLazyLoad.load('JqueryPin').then(function(){
-                        //console.log("homePage:jquery loaded");
-                        //$(".cart-foot").pin();
-                        $(".cart-foot").pin({
-                         containerSelector: "#cart"
-                         });
-                    })
-                })
+            $ocLazyLoad.load('JqueryPin').then(function(){
+                //console.log("homePage:jquery loaded");
+                //$(".cart-foot").pin();
+                $(".coll-text").pin({
+                    containerSelector: "#cart"
+                });
+                $("#foot").pin({
+                    containerSelector: "#cart"
+                });
             });
 
             $rootScope.tabsNumber = 4;
