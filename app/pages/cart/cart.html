@@ -22,10 +22,9 @@
                 <span>去逛逛</span>
             </div>
         </div>
-        <div ng-hide="cart_info_hide" style="padding-top: 35px;">
-            <div class="view-container">
+        <div class="view-container" ng-hide="cart_info_hide">
 
-                    <ul class="cart-list" ng-repeat="cart in carts">
+            <ul class="cart-list" ng-repeat="cart in carts">
                         <li class="">
 
                             <div class="" ng-hide="cart_item_price">
@@ -83,11 +82,10 @@
                         </li>
                     </ul>
 
-            </div>
         </div>
     </div>
 
-    <footer id="foot" class="cart-foot" ng-show="empty_cart_hide">
+    <footer id="foot" ng-show="empty_cart_hide">
         <div class="footLeft">
             <input class="cart-checkbox" type="checkbox" value="全不选" id="selectAll" ng-model="$allChecked" ng-change="checkAll()">
             <label id="checkAll" class="ion-ios-checkmark active cart-item-label" for="selectAll"></label>
