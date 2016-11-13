@@ -1,8 +1,8 @@
 <div id="sellerPage">
 
     <div class="seller-page-content">
-
-        <div class="my-page-head">
+        <div id="profile">
+            <div class="my-page-head">
             <div class="user-photo">
                 <img ng-src="{{userInfo.avatar != null ? userInfo.avatar : 'img/my/userPhoto.png'}}">
             </div>
@@ -43,11 +43,8 @@
                 </div>
             </div>
         </div>
-        <!--<div class="seller-profit">-->
-        <!--<div class="s-p-top">累计收益</div>-->
-        <!--<div class="s-p-center">0.00</div>-->
-        <!--<div class="s-p-bottom">不含未结算部分</div>-->
-        <!--</div>-->
+        </div>
+
         <div class="seller-profit">
             <div class="s-p-top">
                 <span style="font-size: 12px;">累计积分：</span>
@@ -69,100 +66,35 @@
             </div>
         </div>
 
-        <!--<ul class="seller-commissions">
-            <li class="seller-commission">
-                <div class="seller-commission-value li-border">
-                    <p class="commission-number">
-                        {{owner_balance.balance |currency:"￥"}}
-                    </p>
-                    <p class="commission-text">
-                        累计佣金
-                    </p>
-                </div>
-            </li>
-            <li class="seller-commission">
-                <div class="seller-commission-value li-border">
-                    <p class="commission-number">
-                        -
-                    </p>
-                    <p class="commission-text">
-                        5月订单
-                    </p>
-                </div>
-            </li>
-            <li class="seller-commission">
-                <div class="seller-commission-value">
-                    <p class="commission-number">
-                        -
-                    </p>
-                    <p class="commission-text">
-                        5月佣金
-                    </p>
-                </div>
-            </li>
-        </ul>-->
-
-        <!--<div class="seller-not-settled">-->
-        <!--<div class="s-n-name">未结算收益</div>-->
-        <!--<div class="s-n-arrow-price">0.00</div>-->
-        <!--<div class="s-n-arrow">-->
-        <!--</div>-->
-        <!--</div>-->
-        <div id="kqdGrids">
+        <div id="profile">
             <div class="weui_grids">
-                <a ui-sref="myTeam" class="weui_grid kqd_grid_4" data-id="button">
-                    <!--<a class="weui_grid kqd_grid_4" data-id="button">-->
-                    <div class="weui_grid_icon kqd_grid_img_large">
+                <a ui-sref="myTeam" class="weui_grid" data-id="button">
+                    <div class="weui_grid_icon custom_size_img_large">
                         <img src="img/sellerPage/team.png">
                     </div>
                     <p class="weui_grid_label">
                         我的朋友
                     </p>
                 </a>
-                <!--<a ui-sref="commission" class="weui_grid kqd_grid_4" data-id="cell">
-                    <div class="weui_grid_icon kqd_grid_img_large">
-                        <img src="img/sellerPage/money.png">
-                    </div>
-                    <p class="weui_grid_label">
-                        我的收入
-                    </p>
-                </a>-->
-                <a ui-sref="promotionOrder" class="weui_grid kqd_grid_4" data-id="toast">
-                    <div class="weui_grid_icon kqd_grid_img_large">
+                <a ui-sref="promotionOrder" class="weui_grid" data-id="toast">
+                    <div class="weui_grid_icon custom_size_img_large">
                         <img src="img/sellerPage/sellerOrder.png">
                     </div>
                     <p class="weui_grid_label">
                         积分订单
                     </p>
                 </a>
-                <a class="weui_grid kqd_grid_4" data-id="cell" ng-click="goToDistributionInfo()">
-                    <div class="weui_grid_icon kqd_grid_img_large">
+                <a class="weui_grid" data-id="cell" ng-click="goToDistributionInfo()">
+                    <div class="weui_grid_icon custom_size_img_large">
                         <img src="img/sellerPage/sellerinfo.png">
                     </div>
                     <p class="weui_grid_label">
                         我的信息
                     </p>
                 </a>
-                <!--<a ui-sref="myAgent" class="weui_grid kqd_grid_4" data-id="cell">
-                    <div class="weui_grid_icon kqd_grid_img_large">
-                        <img src="img/sellerPage/myseller.png">
-                    </div>
-                    <p class="weui_grid_label">
-                        代理佣金
-                    </p>
-                </a>
-                <a ui-sref="pianPage" class="weui_grid kqd_grid_4" data-id="button">
-                    <div class="weui_grid_icon kqd_grid_img_large">
-                        <img src="img/sellerPage/takeMoney.png">
-                    </div>
-                    <p class="weui_grid_label">
-                        提佣方案
-                    </p>
-                </a>-->
                 <bind-javascript javascript="{{qrcode_js}}">
-                    <!--<a class="weui_grid kqd_grid_4" data-id="cell" ng-click="initQrcode(userInfo.invitation_code)">-->
-                    <a class="weui_grid kqd_grid_4" data-id="cell" ng-click="initQrcode(userInfo.invitation_code)">
-                        <div class="weui_grid_icon kqd_grid_img_large">
+                    <a class="weui_grid" data-id="cell" ng-click="initQrcode(userInfo.invitation_code)">
+                        <div class="weui_grid_icon custom_size_img_large">
                             <img src="img/sellerPage/QRcode.png">
                         </div>
                         <p class="weui_grid_label">
@@ -170,61 +102,10 @@
                         </p>
                     </a>
                 </bind-javascript>
-                <!--<a ui-sref="marketing" class="weui_grid kqd_grid_4" data-id="toast">
-                    <div class="weui_grid_icon kqd_grid_img_large">
-                        <img src="img/sellerPage/paper.png">
-                    </div>
-                    <p class="weui_grid_label">
-                        推广海报
-                    </p>
-                </a>-->
-
 
             </div>
         </div>
-        <!--<div class="weui-row weui-no-gutter">-->
 
-        <!--<div class="weui-col-33 seller-box" style="border-right: 1px solid #cccccc" ui-sref="promotionOrder">-->
-        <!--<img src="">-->
-        <!--<div class="box-text">-->
-        <!--推广订单-->
-        <!--</div>-->
-        <!--<div class="box-footer-text">-->
-        <!--0个-->
-        <!--</div>-->
-        <!--</div>-->
-
-        <!--<div class="weui-col-33 seller-box" style="border-right: 1px solid #cccccc" ui-sref="myTeam">-->
-        <!--<img src="">-->
-        <!--<div class="box-text">-->
-        <!--我的团队-->
-        <!--</div>-->
-        <!--<div class="box-footer-text">-->
-        <!--0个-->
-        <!--</div>-->
-        <!--</div>-->
-
-        <!--<div class="weui-col-33 seller-box" ui-sref="marketing">-->
-        <!--<img src="">-->
-        <!--<div class="box-text">-->
-        <!--开始推广-->
-        <!--</div>-->
-        <!--<div class="box-footer-text">-->
-        <!--推广方式和说明-->
-        <!--</div>-->
-        <!--</div>-->
-
-        <!--<div class="weui-col-33 seller-box" style="border-right: 1px solid #cccccc" ui-sref="shopSettings">-->
-        <!--<img src="">-->
-        <!--<div class="box-text">-->
-        <!--店铺设置-->
-        <!--</div>-->
-        <!--<div class="box-footer-text">-->
-        <!--修改店铺信息-->
-        <!--</div>-->
-        <!--</div>-->
-
-        <!--</div>-->
     </div>
 </div>
 

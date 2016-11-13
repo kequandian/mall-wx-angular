@@ -283,3 +283,11 @@
 #goodsList .goods_g_right span{
   color:#9F9F9F;
 }
+
+
+/* goodsList tabs text color*/
+#goodsList .goods_bar_item_on{
+  height: 20px;
+  color:#734284;
+  border-bottom: 3px solid #734284;
+}
