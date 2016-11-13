@@ -198,8 +198,8 @@
 }
 
 
-/*quantity counter------------*/
-#cart .cart-quantity-form {
+/*---quantity counter---refer by detials---------*/
+.cart-quantity-form {
     /*position: relative;*/
     overflow: hidden;
     height: 28px;
@@ -207,7 +207,7 @@
     /*border: 1px solid #e7e7e7;*/
     float: left;
 }
-#cart .cart-quantity {
+.cart-quantity {
     /*position: absolute;*/
     /*left: 20px;*/
     /*top: 0;*/
@@ -221,17 +221,17 @@
     float: left;
     border-radius: 3px;
 }
-#cart .cart-quantity-decrement {
+.cart-quantity-decrement {
     float: left;
 }
-#cart .cart-quantity-increment {
+.cart-quantity-increment {
     float: right;
 }
-#cart .cart-quantity-form span{
+.cart-quantity-form span{
     color: #fff;
     /*font-size: 18px;*/
 }
-#cart .cart-quantity-form a{
+.cart-quantity-form a{
     border-radius: 5px;
     background-color: #6b6b6b;
     width: 28px;
@@ -299,8 +299,6 @@
     left: 0;
     right: 0;
     bottom: 55px;
-    /*spare for tabs*/
-    /*margin-bottom: 55px;*/
     z-index:100
 }
 #cart #foot .footLeft  {
