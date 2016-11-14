@@ -51,7 +51,9 @@
                 <div class="o-status-info">
                     <div class="o-status">订单状态：{{order_status(detailsInfo.status)}}</div>
                     <div class="o-number">订单号：{{detailsInfo.order_number}}</div>
-                    <div class="o-total">订单金额：{{total_price|currency:'￥'}}</div>
+                    <div class="o-total">
+                        {{cash_and_point_top(total_price, detailsInfo.point_exchange_rate, detailsInfo.payment_type)}}
+                    </div>
                 </div>
             </div>
 
@@ -65,7 +67,7 @@
                     </p>
                 </div>
                 <div class="o-i-right">
-                    <div class="o-i-right-span">{{proItem.price|currency:'￥'}}</div>
+                    <div class="o-i-right-span">{{cash_and_point_order_detail(proItem.price, detailsInfo.point_exchange_rate, detailsInfo.payment_type)}}</div>
                     <!--<s class="o-i-right-span" style="color:#9D9D9D;">{{proItem.price|currency:'￥'}}</s>-->
                     <div class="o-i-right-i">x{{proItem.quantity}}</div>
                 </div>
@@ -77,7 +79,10 @@
                 <!--<span>买家留言：</span>-->
             <!--</div>-->
             <div class="total-price">
-                <span class="total-price-i">共{{productCount}}件商品  合计：{{total_price|currency:'￥'}} (含运费){{detailsInfo.freight|currency:'￥'}}</span>
+                <span class="total-price-i">
+                    共{{productCount}}件商品  合计：{{cash_and_point_order_detail(total_price, detailsInfo.point_exchange_rate, detailsInfo.payment_type)}}
+                    (含运费){{cash_and_point_order_detail(detailsInfo.freight, detailsInfo.point_exchange_rate, detailsInfo.payment_type)}}
+                </span>
             </div>
         </div>
     </div>

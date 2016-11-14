@@ -65,7 +65,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $scope.orders = json.data;
-                            //alert(angular.toJson($scope.orders));
+                            //console.log(angular.toJson($scope.orders));
                             $scope.order_list = [];
                             //angular.forEach($scope.orders, function (v, k) {
                             //    if (v.status != "CANCELED_RETURN_PENDING" && v.status != "CANCELED_REFUND_PENDING" && v.status != "CLOSED_REFUNDED") {
@@ -130,6 +130,15 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             //订单状态
             $scope.order_list_status = function (orderStatus) {
                 return OrderCommon.OrderStatus(orderStatus);
+            };
+
+            //检查订单支付方式
+            $scope.cash_and_point = function(price, point, pay_type){
+                if(pay_type == 'POINT'){
+                    return (price * point) + '积分';
+                }else if(pay_type == 'WECHAT'){
+                }
+                return '￥' + price.toFixed(2);
             };
 
             //进入退款退货
@@ -320,6 +329,15 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                 return OrderCommon.OrderStatus(orderStatus);
             };
 
+            //检查订单支付方式
+            $scope.cash_and_point = function(price, point, pay_type){
+                if(pay_type == 'POINT'){
+                    return (price * point) + '积分';
+                }else if(pay_type == 'WECHAT'){
+                }
+                return '￥' + price.toFixed(2);
+            };
+
             //立即付款
             $scope.weixin_pay = function (order) {
                 if(order.payment_type == "POINT" && BalanceSession.balance >= order.totalPrice){
@@ -381,6 +399,15 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             //订单状态
             $scope.order_list_status = function (orderStatus) {
                 return OrderCommon.OrderStatus(orderStatus);
+            };
+
+            //检查订单支付方式
+            $scope.cash_and_point = function(price, point, pay_type){
+                if(pay_type == 'POINT'){
+                    return (price * point) + '积分';
+                }else if(pay_type == 'WECHAT'){
+                }
+                return '￥' + price.toFixed(2);
             };
 
             //进入退款退货
@@ -483,6 +510,15 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             //订单状态
             $scope.order_list_status = function (orderStatus) {
                 return OrderCommon.OrderStatus(orderStatus);
+            };
+
+            //检查订单支付方式
+            $scope.cash_and_point = function(price, point, pay_type){
+                if(pay_type == 'POINT'){
+                    return (price * point) + '积分';
+                }else if(pay_type == 'WECHAT'){
+                }
+                return '￥' + price.toFixed(2);
             };
 
 
@@ -599,6 +635,15 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             //订单状态
             $scope.order_list_status = function (orderStatus) {
                 return OrderCommon.OrderStatus(orderStatus);
+            };
+
+            //检查订单支付方式
+            $scope.cash_and_point = function(price, point, pay_type){
+                if(pay_type == 'POINT'){
+                    return (price * point) + '积分';
+                }else if(pay_type == 'WECHAT'){
+                }
+                return '￥' + price.toFixed(2);
             };
 
             //进入物流详情

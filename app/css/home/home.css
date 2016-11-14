@@ -27,24 +27,3 @@
     color: #734284;
 }
 
-.cart_count{
-    position:absolute;
-    /*bottom:10px;*/
-    top: 3px;
-    right: 0;
-    background-color:red;
-    min-width: 16px;
-    min-height: 12px;
-    line-height:12px;
-    /*padding: 1px 1px;*/
-    text-align:center;
-    color:#fff;
-    border-radius:10px; /*Բ��*/
-    font-weight:500;
-    font-size: xx-small;
-    font-family: 'Arial';
-    /*center offset 10px*/
-    /*left: 10px;*/
-    /*margin-left: 50%;*/
-    padding: 0 4px;
-}

@@ -34,12 +34,6 @@
   background-color: #dcdcdc;
 }
 
-/*#goodsList #content .goods_bar_item_on{
-  height: 20px;
-  color:#734284;
-  border-bottom: 3px solid #734284;
-}*/
-
 .arrow-status{
   width: 17px;
   height: 20px;
@@ -284,10 +278,10 @@
   color:#9F9F9F;
 }
 
-
-/* goodsList tabs text color*/
+/*
+/!* goodsList tabs text color*!/
 #goodsList .goods_bar_item_on{
   height: 20px;
   color:#734284;
   border-bottom: 3px solid #734284;
-}
+}*/

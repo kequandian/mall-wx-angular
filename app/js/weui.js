@@ -244,7 +244,7 @@ $(function () {
 
         //bar 点击事件
         .on('click', '.weui_navbar_item', function () {
-            $(this).addClass('goods_bar_item_on').siblings('.goods_bar_item_on').removeClass('goods_bar_item_on');
+            $(this).addClass('custom_tab_underline_active').siblings('.custom_tab_underline_active').removeClass('custom_tab_underline_active');
         })
         .on('click', '.weui_tabbar_item', function () {
             $(this).addClass('weui_bar_item_on').siblings('.weui_bar_item_on').removeClass('weui_bar_item_on');

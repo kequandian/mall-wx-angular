@@ -20,12 +20,12 @@
                 </span>
                 </div>
                 <div class="o-i-right">
-                    <span class="o-i-right-span">￥{{items.total_price}}</span>
+                    <span class="o-i-right-span">{{cash_and_point(items.total_price, items.point_exchange_rate, items.payment_type)}}</span>
                     <p class="o-i-right-i">x1</p>
                 </div>
             </div>
             <div class="item-detail-btn" style="border-bottom: 1px solid #cccccc">
-                <div class="order-item-price">总价：￥{{items.total_price}}</div>
+                <div class="order-item-price">总价：{{cash_and_point(items.total_price, items.point_exchange_rate, items.payment_type)}}</div>
             </div>
             <div class="item-detail-btn">
                 <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_primary item-btn-right"
