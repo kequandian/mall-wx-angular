@@ -29,10 +29,10 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
             function getPromotionOrders(start_date, end_date) {
                 PromotionOrderFty.promotionOrdersService(start_date, end_date)
                     .then(function (json) {
-                         console.log(angular.toJson(json));
+                         //console.log(angular.toJson(json));
                         if (json.status_code == 0) {
                             $scope.rewards = json.data;
-                            //console.log(angular.toJson($scope.rewards));
+                            //console.log('payment_type: ' + angular.toJson(json.data.order_item_rewards[0].payment_type));
 
                             var order_rewards = $scope.rewards.order_item_rewards;
                             $scope.rewards.orders = mergedOrderList(order_rewards);
@@ -63,6 +63,8 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
                         newItem.seller_reward = 0;
                         newItem.platform_reward = 0;
                         newItem.crown_reward = 0;
+                        newItem.payment_type = item.payment_type;
+                        newItem.point_exchange_rate = item.point_exchange_rate;
 
                         if (item.type == 'SELLER') {
                             newItem.seller_reward = item.reward;
