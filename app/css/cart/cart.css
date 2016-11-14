@@ -84,7 +84,7 @@
     overflow-x: hidden;
     overflow-y: scroll;
     position: relative;
-    height: auto;
+    height: 100%;
     z-index: 1;
     background-color: white;
 }
