@@ -6,11 +6,8 @@
         <i class="edit-img" ng-click="edit_action()" ng-hide="edit_action_img"></i>
     </div>
 
-    <div class="view-cart">
-        <!--<header class="header cart-header">-->
-            <!--<span class="cart-title">购物车</span>-->
-        <!--</header>-->
 
+    <div class="view-cart" >
         <div id="empty-cart-content" ng-hide="empty_cart_hide">
             
             <div class="empty-cart-img">
@@ -26,10 +23,10 @@
                 <span>去逛逛</span>
             </div>
         </div>
-        <div ng-hide="cart_info_hide">
-            <div class="view-container">
 
-                    <ul class="cart-list" ng-repeat="cart in carts">
+        <div class="view-container" ng-hide="cart_info_hide">
+
+            <ul class="cart-list" ng-repeat="cart in carts">
                         <li class="">
 
                             <div class="" ng-hide="cart_item_price">
@@ -87,11 +84,10 @@
                         </li>
                     </ul>
 
-            </div>
         </div>
     </div>
 
-    <div id="foot" class="cart-foot" ng-show="empty_cart_hide">
+    <footer id="foot" ng-show="empty_cart_hide">
         <div class="footLeft">
             <input class="cart-checkbox" type="checkbox" value="全不选" id="selectAll" ng-model="$allChecked" ng-change="checkAll()">
             <label id="checkAll" class="ion-ios-checkmark active cart-item-label" for="selectAll"></label>
@@ -108,5 +104,6 @@
         <button class="footRight custom_flat_primary_medium" ng-click="goSettlement(totalToPay(),totalFreight())" ng-disabled="!someChecked()">
             去结算
         </button>
+     </footer>
     </div>
 </div>

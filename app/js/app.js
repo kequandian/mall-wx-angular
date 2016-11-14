@@ -168,7 +168,7 @@
                         'pages/seller/seller-session-service.js',
                         {type: 'css', path: 'lib/custom/css/fiveStar.css'},
                         {type: 'css', path: 'lib/custom/css/levelProgress.css'},
-                        {type: 'css', path: 'css/my/my.css'},
+                        {type: 'css', path: 'css/my/profile.css'},
                         {type: 'css', path: 'css/sellerPage/sellerPage.css'}],
                     cache: false
                 }, {
@@ -189,7 +189,8 @@
                     files: [
                         'pages/my/my-controller.js',
                         'pages/my/my-service.js',
-                        {type: 'css', path: 'css/my/my.css'}],
+                        {type: 'css', path: 'css/my/my.css'},
+                        {type: 'css', path: 'css/my/profile.css'}],
                     cache: false
                 }, {
                     name: 'Feedback',
@@ -232,15 +233,11 @@
                         'pages/seller/seller-session-service.js',
                         {type: 'css', path: 'css/sellerPage/sellerApplying.css'}],
                     cache: false
-                },{
-                    name: 'JqueryPin',
-                    files: ['lib/jquery.pin/jquery.pin.min.js'],
-                    cache: true
                 }
 
                 ]
             });
-        }])
+        }]);
 
     myapp.run(['$ocLazyLoad', '$rootScope', function ($ocLazyLoad, $rootScope) {
 

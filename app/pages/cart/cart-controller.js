@@ -13,17 +13,6 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             //title
             document.title = "购物车";
 
-            $ocLazyLoad.load('JqueryPin').then(function(){
-                //console.log("homePage:jquery loaded");
-                //$(".cart-foot").pin();
-                $(".coll-text").pin({
-                    containerSelector: "#cart"
-                });
-                $("#foot").pin({
-                    containerSelector: "#cart"
-                });
-            });
-
             $rootScope.tabsNumber = 4;
             cateLeftIndex.cate_nav_index = 0;
             cateLeftIndex.goods_list_index = 0;

@@ -101,18 +101,8 @@ input::-webkit-inner-spin-button {
     height: 88px;
 }
 
-.kqd_grid_img_large {
+.custom_size_img_large {
     width: 48px;
     height: 48px;
 }
 
-.kqd_grid_4{
-    width: 25%;
-}
-
-/* goodsList tabs text color*/
-.goods_bar_item_on{
-    height: 20px;
-    color:#734284;
-    border-bottom: 3px solid #734284;
-}
