@@ -102,18 +102,18 @@
     border-top: 1px solid #d9d9d9;
 }
 
-#profile .weui_grid{
+#profile_grid .weui_grid{
     padding: 10px 10px;
     width: 25%;
 }
 
-#profile .weui_grids:before {
+#profile_grid .weui_grids:before {
     border-top: 0;
 }
-#profile .weui_grid:before {
+#profile_grid .weui_grid:before {
     border-right: 0;
 }
-#profile .weui_grid:after {
+#profile_grid .weui_grid:after {
     border-bottom: 0;
 }
 
