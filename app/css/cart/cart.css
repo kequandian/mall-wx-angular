@@ -298,7 +298,7 @@
     left: 0;
     right: 0;
     bottom: 55px;
-    z-index:100
+    z-index:1
 }
 #cart #foot .footLeft  {
     position: absolute;
