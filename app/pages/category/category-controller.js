@@ -32,8 +32,9 @@ angular.module('category.controller', ['category.service'])
             $scope.top_btn_show = true;
             var loading = cateCacheCode.loading;  //状态标记
             var pageNumber = 1;
-            var pageSize = 6;
-            var orderBy = "&orderBy=price";
+            var pageSize = 10;
+            //var orderBy = "&orderBy=price";
+            var orderBy = '';
             $scope.load_more_btn_show = cateCacheCode.load_more_btn_show;
 
             //首页广告商品分类ID
@@ -235,7 +236,7 @@ angular.module('category.controller', ['category.service'])
                                 //console.log('productList: ' + angular.toJson($scope.productList.name));
 
                                 //console.log('productList: '+ angular.toJson($scope.productList));
-                                if ($scope.productList.products.length >= 6) {
+                                if ($scope.productList.products.length >= 10) {
                                     $scope.load_more_btn_show = true;
                                     loading = false;
                                     cateCacheCode.loading = false;
@@ -258,7 +259,7 @@ angular.module('category.controller', ['category.service'])
                                         //console.log('new_code_list: ' + angular.toJson(v));
                                         $scope.productList.products.push(v);
                                     });
-                                    if(new_code.length < 6){
+                                    if(new_code.length < 10){
                                         loading = true;
                                         $scope.load_more_btn_show = false;
                                         cateCacheCode.loading = true;
@@ -411,7 +412,7 @@ angular.module('category.controller', ['category.service'])
                                 $scope.productList = json.data;
                                 console.log('pageNumber = 1 ');
                                 //console.log('productList: '+ angular.toJson($scope.productList));
-                                if ($scope.productList.products.length >= 6) {
+                                if ($scope.productList.products.length >= 10) {
                                     $scope.load_more_btn_show = true;
                                     loading = false;
                                     cateCacheCode.loading = false;
@@ -435,7 +436,7 @@ angular.module('category.controller', ['category.service'])
                                         //console.log('new_code_list: ' + angular.toJson(v));
                                         $scope.productList.products.push(v);
                                     });
-                                    if(new_code.length < 6){
+                                    if(new_code.length < 10){
                                         loading = true;
                                         $scope.load_more_btn_show = false;
                                         cateCacheCode.loading = true;
