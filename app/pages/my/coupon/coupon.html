@@ -1,42 +1,51 @@
 <div id="coupon">
 
-
     <div class="coupon-content">
 
         <nav id="nav">
             <div class="nav-warp">
                 <ul>
-                    <li ng-class="{active : currentId == title.id}" ng-repeat="title in coupon_titles" ng-click="clickme(title.id);couponsOrderBy(title.id)">{{title.name}}</li>
+                    <li ng-class="{active : currentId == title.id}"
+                        ng-repeat="title in coupon_titles"
+                        ng-click="clickme(title.id);couponsOrderBy(title.id)">
+                        <div class="ver_line" ng-if="title.hidden_line"></div>
+                        <span>{{title.name}}<i> ({{title.count}})</i></span>
+                    </li>
                 </ul>
             </div>
         </nav>
 
 
-        <!--<div class="pro" ng-repeat="item in coupon_list | filter : {status : orderByResult}" style="{{coupon_show}}">-->
         <div class="pro">
 
-            <div class="pro-warp">
-                <div class="pro-body">
-                    <!--<div class="pro-body-des">-->
-                    <div class="{{coupon_status_css}}">
-                        <div class="pro-body-des-text">
-                            <div class="item-input-inset" style="width: 100%; ">
-                                <div class="coupon-title-left">优惠券：</div>
-                                <div class="{{coupon_title_right}}">{{item.display_name}}</div>
+            <div class="pro-item" ng-repeat="cItem in coupons">
+                <div class="p-i-left">
+                    <div class="l-top">
+                        <div class="l-t-left">
+                            <span style="{{check_money(cItem.money)}}">{{cItem.money}}</span>
+                        </div>
+                        <div class="l-t-right">
+                            <div class="r-top">
+                                <span style="margin-left: 2px;">{{d_name(cItem.display_name)}}可用</span>
                             </div>
-                            <div class="item-input-inset item-icon-right" style="width: 100%;">
-                                <div class="{{coupon_price}}">￥{{item.money}}</div>
-                                <div class="coupon-price-shiyong">{{item.description}}</div>
-                                <!--<i id="arrow_color" class="icon ion-ios-arrow-right"></i>-->
-                            </div>
-                            <div style="width: 100%;height:1px;border-bottom:1px dashed #000;">
-                            </div>
-                            <div class="pwd_funtion">
-                                <i class="reset_pwd">详细信息</i>
-                                <i class="ret_pwd">{{item.valid_date}}</i>
+                            <div class="r-bottom">
+                                <span style="margin-left: 2px;">元{{type_name(cItem.display_name)}}</span>
                             </div>
                         </div>
                     </div>
+                    <div class="l-bottom">
+                        <span>CLICK TO RECEIVE COUPONS</span>
+                    </div>
+                </div>
+                <div class="p-i-right">
+
+                    <div class="r-top">
+                        <span>使用有效期 ></span>
+                    </div>
+                    <div class="r-bottom">
+                        <span>{{cut_time(cItem.created_date)}} - {{cut_time(cItem.valid_date)}}</span>
+                    </div>
+
                 </div>
             </div>
 

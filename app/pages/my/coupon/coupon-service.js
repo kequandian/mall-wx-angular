@@ -4,7 +4,7 @@ angular.module('coupon.service', [])
             // 获取商品类别数据
             couponsService: function () {
                 var deferred = $q.defer();
-                var url = GlobalVariable.SERVER_PATH + "/order";
+                var url = GlobalVariable.SERVER_PATH + "/coupon";
                 $http.get(url,{
                     headers: {
                         'Authorization': GlobalVariable.ACCESS_TOKEN

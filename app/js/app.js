@@ -33,7 +33,8 @@
         'withdraw.route',
         "express.route",
         "salesReturn.route",
-        'searchPage.route'
+        'searchPage.route',
+        'coupon.route'
 
     ]).config(["$urlRouterProvider", '$ocLazyLoadProvider','$locationProvider',
         function ($urlRouterProvider, $ocLazyLoadProvider,$locationProvider) {
@@ -232,6 +233,12 @@
                         'pages/seller/pages/sellerPage/sellerPage-service.js',
                         'pages/seller/seller-session-service.js',
                         {type: 'css', path: 'css/sellerPage/sellerApplying.css'}],
+                    cache: false
+                }, {
+                    name: 'Coupon',
+                    files: ['pages/my/coupon/coupon-controller.js',
+                        'pages/my/coupon/coupon-service.js',
+                        {type: 'css', path: 'css/coupon/coupon.css'}],
                     cache: false
                 }
 
