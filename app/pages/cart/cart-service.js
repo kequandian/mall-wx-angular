@@ -176,6 +176,23 @@ angular.module('cart.service', [])
                         return deferred.reject(data);
                     });
                 return deferred.promise;
+            },
+
+            //下单前计算优惠卷信息
+            countCouponService: function (products) {
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + "/coupon_calculation";
+                $http.post(url,products,{
+                    headers: {
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
+                })
+                    .success(function (data) {
+                        return deferred.resolve(data);
+                    }).error(function (data) {
+                        return deferred.reject(data);
+                    });
+                return deferred.promise;
             }
         };
     }]);

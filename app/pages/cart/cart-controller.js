@@ -332,8 +332,9 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
         }])
 
     .controller('SettlementController', ['$scope', '$state', '$stateParams', '$location', '$rootScope', 'AddressManagerFty', 'CartFty','BalanceSession',
-        'PointRate', '$ocLazyLoad','areasStatus','goodListParams', function ($scope, $state, $stateParams, $location, $rootScope, AddressManagerFty, CartFty,
-                                              BalanceSession, PointRate, $ocLazyLoad,areasStatus,goodListParams) {
+        'PointRate', '$ocLazyLoad','areasStatus','goodListParams',
+        function ($scope, $state, $stateParams, $location, $rootScope, AddressManagerFty, CartFty,BalanceSession, PointRate,
+                  $ocLazyLoad,areasStatus,goodListParams) {
 
             //title
             document.title = "结算";
@@ -353,11 +354,11 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             //$scope.onPaymentTypeChange = function(){
             //    console.log($scope.order.payment_type);
             //};
-
             $scope.pay = $rootScope.settle_product_totalToPay;
-
             $scope.show_address_status = 'add';
-            AllContacts();
+
+            AllContacts(); //获取地址信息
+
             function AllContacts() {
                 AddressManagerFty.getContacts().then(
                     function (result) {
@@ -396,15 +397,19 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             //$scope.settlementCarts = $stateParams.carts;
             $scope.settlementCarts = $rootScope.settle_product_code;
             $scope.settlementData = [];
-
+            $scope.product_list = [];
             //console.log("carts:"+$stateParams.carts);
             //console.log(angular.toJson($stateParams.carts))
 
             angular.forEach($scope.settlementCarts, function (data, index) {
                 $scope.settlementData[index] = ({
-                    "product_id": data.product_id,
-                    "quantity": data.quantity,
-                    "product_specification_id": data.product_specification_id
+                    product_id: data.product_id,
+                    quantity: data.quantity,
+                    product_specification_id: data.product_specification_id
+                });
+                $scope.product_list[index] = ({
+                    product_id: data.product_id,
+                    price: data.price
                 });
             });
             //console.log("$scope.productFrieghts:  " + angular.toJson($scope.productFrieghts));
@@ -419,7 +424,6 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             //var delta = null;
 
             function getFrieght(){
-
                 //console.log(angular.toJson($rootScope.settle_product_code));
                 //angular.forEach($stateParams.carts, function (data, index) {
                 angular.forEach($rootScope.settle_product_code, function (data, index) {
@@ -474,6 +478,44 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                         $.toast('获取运费失败', 'cancel');
                     })
             }
+
+            //下单前计算优惠信息
+            coupon();
+            function coupon(){
+                var products = $scope.product_list;
+                console.log("products: " + angular.toJson(products));
+                CartFty.countCouponService(products)
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            console.log("获取下单前计算优惠信息：" + angular.toJson(json));
+                            $scope.count_coupon = json.data;
+
+                        }else{
+                            $.toast('获取优惠卷信息失败', 'cancel');
+                            console.log('获取优惠卷信息失败：' + angular.toJson(json));
+                        }
+                    }, function(error){
+                        $.toast('获取优惠卷信息失败', 'cancel');
+                        console.log('获取优惠卷信息失败：' + angular.toJson(error));
+                    })
+            }
+
+            //show coupon list
+            $scope.show_list = {
+                isShow:false
+            };
+            $scope.toggle_coupon = function(show_list){
+                if(show_list.isShow === undefined){
+                    return;
+                }
+                show_list.isShow = !show_list.isShow;
+            };
+            $scope.show_coupon_list = function(show_list){
+                if(show_list.isShow === undefined){
+                    return;
+                }
+                return show_list.isShow;
+            };
 
             //进入10元区
             $scope.goToTenAreas = function(){
