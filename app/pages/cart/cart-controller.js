@@ -409,7 +409,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 });
                 $scope.product_list[index] = ({
                     product_id: data.product_id,
-                    price: data.price
+                    price: data.price * data.quantity
                 });
             });
             //console.log("$scope.productFrieghts:  " + angular.toJson($scope.productFrieghts));
@@ -490,6 +490,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                             console.log("获取下单前计算优惠信息：" + angular.toJson(json));
                             $scope.count_coupon = json.data;
                             $scope.coupon_item = json.data[0];
+                            console.log('$scope.coupon_item: ' + angular.toJson(json.data[0]))
                         }else{
                             $.toast('获取优惠卷信息失败', 'cancel');
                             console.log('获取优惠卷信息失败：' + angular.toJson(json));
@@ -522,6 +523,16 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 $scope.coupon_item = cItem;
             };
 
+            //获取优惠卷
+            $scope.c_checked = false;
+            $scope.get_coupon_item = function(isChecked){
+                if(isChecked){
+                    $scope.c_checked = isChecked;
+                }else{
+                    $scope.c_checked = false;
+                }
+            };
+
             //进入10元区
             $scope.goToTenAreas = function(){
 
@@ -552,6 +563,10 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                         $.toast('请先添加收货地址', 'cancel');
                     }
                     return;
+                }
+
+                if($scope.c_checked){
+                    $scope.order.coupon_id = $scope.coupon_item.coupon_id;
                 }
 
                 $scope.order.contact = $scope.currentContact;

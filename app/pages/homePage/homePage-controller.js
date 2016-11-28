@@ -442,16 +442,25 @@ angular.module('homePage.controller', ['homePage.service'])
                 $state.go('home.category',{cateId:-1});
             };
 
-            //default category params
-            //cateCacheCode.index_first=0;
-            //cateCacheCode.index_second=0;
-            //cateCacheCode.cate_session=null;
-            //cateCacheCode.second_cate=null;
-            //cateCacheCode.product_list=null;
-            //cateCacheCode.product_id=-1;
-            //cateCacheCode.loading=false;
-            //cateCacheCode.load_more_btn_show= true;
+            //红包
+            $scope.r_packet = true;
+            $scope.show_packet = false;
+            $scope.show_red_packet = function(){
+                document.getElementById('red-packet').style.display = 'block';
+            };
 
+            $scope.hide_bg = function(){
+                document.getElementById('red-packet').style.display = 'none';
+            };
+
+            $scope.get_red_packet = function(){
+                $scope.r_packet = false;
+                $scope.show_packet = true;
+            };
+
+            $scope.open_view = function(){
+
+            }
 
         }])
 

@@ -160,4 +160,22 @@
     <div ng-show="top_btn_show" class="topit" ng-class="{'dropdown':false}" ng-click="onTop()">
         <img src="img/top.png">
     </div>
+    <!--<div class="topit" ng-class="{'dropdown':false}" ng-click="show_red_packet()">
+        <img src="img/top.png">
+    </div>-->
+</div>
+
+<div id="red-packet">
+
+    <div class="r-p-content">
+        <div class="bg-img" style="background-image: url('img/home/red-packet.png');" ng-if="r_packet">
+            <i class="close-btn" ng-click="hide_bg()"></i>
+            <i class="get-btn" ng-click="get_red_packet()"></i>
+        </div>
+        <div class="bg-img" style="background-image: url('img/home/chick-to-view.png');" ng-if="show_packet">
+            <i class="close-btn" ng-click="hide_bg()"></i>
+            <i class="get-btn" ng-click="open_view()"></i>
+        </div>
+    </div>
+
 </div>

@@ -756,3 +756,51 @@ body, html {
     height: auto;
 }
 
+/* 红包 */
+#red-packet{
+    width: 100%;
+    height: 100%;
+    background-color:rgba(125,125,125,0.5);
+    position: absolute;
+    display: none;
+    z-index:1002;
+    top: 0;
+}
+
+#red-packet .r-p-content{
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+    margin-top: 40%;
+    background-color: white;
+    padding: 15px 15px 15px 10px;
+}
+
+#red-packet .r-p-content .bg-img{
+    width: 250px;
+    height: 250px;
+    background-size: 250px 250px;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+#red-packet .r-p-content .bg-img .close-btn{
+    width: 43px;
+    height: 43px;
+    position: absolute;
+    top: -4px;
+    right:-5px;
+    border-radius: 50%;
+}
+
+#red-packet .r-p-content .bg-img .get-btn{
+    margin: 0 auto;
+    width: 132px;
+    height: 43px;
+    position: absolute;
+    left: 58px;
+    bottom: 49px;
+}
+
+
+
