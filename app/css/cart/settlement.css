@@ -301,33 +301,33 @@
     border-bottom: 1px solid #E5E5E5;
     position: relative;
 }
-#settlement .coupon-item .coupon-checkbox{
-    visibility: hidden;
+#settlement .coupon-item .more-coupon{
+    width: 50px;
+    height: 100%;
+    position: relative;
+    padding-left: 5px;
     float: right;
 }
-#settlement .coupon-item .coupon-checked{
-    cursor: pointer;
+#settlement .coupon-item .more-coupon .arrow-up{
+    width: 18px;
+    height: 18px;
+    background-color: white;
     position: absolute;
-    width: 20px;
-    height: 20px;
-    top: 10px;
-    right: 13px;
-    background: #fff;
-    border:1px solid #ccc;
-    -moz-border-radius: 3px;      /* Gecko browsers */
-    -webkit-border-radius: 3px;   /* Webkit browsers */
-    border-radius:3px;            /* W3C syntax */
+    top: 13px;
+    right: 0;
+    border-radius: 50%;
+    border:1px solid #A95296;
 }
-#settlement .coupon-item .coupon-checked:after{
-    opacity: 0;
+#settlement .coupon-item .more-coupon .arrow-up i{
+    opacity: 1;
     content: '';
     position: absolute;
-    width: 11px;
-    height: 5px;
+    width: 7px;
+    height: 7px;
     background: transparent;
-    top: 5px;
-    left: 4px;
-    border: 2px solid #A95296;
+    top: 3px;
+    left: 5px;
+    border: 1px solid #A95296;
     border-top: none;
     border-right: none;
     -webkit-transform: rotate(-45deg);
@@ -336,20 +336,7 @@
     -ms-transform: rotate(-45deg);
     transform: rotate(-45deg);
 }
-#settlement .coupon-item .coupon-checked:hover::after{
-    opacity: 0;
-}
-#settlement .coupon-item .coupon-checkbox:checked + .coupon-checked:after{
-    opacity: 1;
-}
-#settlement .coupon-item .more-coupon{
-    width: 50px;
-    height: 100%;
-    margin-right: 50px;
-    position: relative;
-    padding-left: 5px;
-    float: right;
-}
+
 #settlement .coupon-item .more-coupon .arrow-down{
     width: 18px;
     height: 18px;
@@ -390,6 +377,7 @@
     padding: 5px 10px;
     border: 1px solid #c385b6;
     margin-bottom: 5px;
+    position: relative;
 }
 #settlement .coupon-list .c-item .c-i-left{
     width: 40px;
@@ -427,4 +415,48 @@
     height: 25px;
     line-height: 25px;
     font-size: 14px;
+}
+
+
+
+#settlement .c-item .coupon-checkbox{
+    visibility: hidden;
+    float: right;
+}
+#settlement .c-item .coupon-checked{
+    cursor: pointer;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 17px;
+    right: 13px;
+    background: #fff;
+    border:1px solid #ccc;
+    -moz-border-radius: 3px;      /* Gecko browsers */
+    -webkit-border-radius: 3px;   /* Webkit browsers */
+    border-radius:3px;            /* W3C syntax */
+}
+#settlement .c-item .coupon-checked:after{
+    opacity: 0;
+    content: '';
+    position: absolute;
+    width: 11px;
+    height: 5px;
+    background: transparent;
+    top: 5px;
+    left: 4px;
+    border: 2px solid #A95296;
+    border-top: none;
+    border-right: none;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+#settlement .c-item .coupon-checked:hover::after{
+    opacity: 0;
+}
+#settlement .c-item .coupon-checkbox:checked + .coupon-checked:after{
+    opacity: 1;
 }

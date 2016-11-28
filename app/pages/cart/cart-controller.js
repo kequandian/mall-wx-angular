@@ -490,6 +490,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                             console.log("获取下单前计算优惠信息：" + angular.toJson(json));
                             $scope.count_coupon = json.data;
                             $scope.coupon_item = json.data[0];
+                            $scope.count_coupon[0].$checked = true;
                             console.log('$scope.coupon_item: ' + angular.toJson(json.data[0]))
                         }else{
                             $.toast('获取优惠卷信息失败', 'cancel');
@@ -518,19 +519,22 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 return show_list.isShow;
             };
 
-            //选择优惠卷
-            $scope.chose_coupon = function(cItem){
-                $scope.coupon_item = cItem;
-            };
-
             //获取优惠卷
-            $scope.c_checked = false;
-            $scope.get_coupon_item = function(isChecked){
-                if(isChecked){
-                    $scope.c_checked = isChecked;
+            $scope.get_coupon_item = function(cItem){
+
+                if(cItem.$checked){
+                    $scope.c_checked = cItem.$checked;
+                    $scope.coupon_item = cItem;
+
+                    $scope.count_coupon.forEach(function(it){
+                        if(it.coupon_id != cItem.coupon_id){
+                            $('#coupon-check-' + it.coupon_id).attr('checked',false);
+                        }
+                    });
                 }else{
                     $scope.c_checked = false;
                 }
+
             };
 
             //进入10元区
@@ -565,8 +569,14 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     return;
                 }
 
-                if($scope.c_checked){
-                    $scope.order.coupon_id = $scope.coupon_item.coupon_id;
+                if($scope.c_checked == undefined){
+                    $scope.order.coupon_id = $scope.count_coupon[0].coupon_id;
+                }else{
+                    if($scope.c_checked){
+                        $scope.order.coupon_id = $scope.coupon_item.coupon_id;
+                    }else{
+                        delete $scope.order['coupon_id'];
+                    }
                 }
 
                 $scope.order.contact = $scope.currentContact;

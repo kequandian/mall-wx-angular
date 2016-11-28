@@ -268,18 +268,14 @@
                 <!--</div>-->
 
 
-                <div class="coupon-item" ng-if="count_coupon.length > 0">
-                <!--<div class="coupon-item">-->
+                <!--<div class="coupon-item" ng-if="count_coupon.length > 0">-->
+                <div class="coupon-item">
                     <span class="custom_text_primary">{{coupon_item.coupon_name}}</span>
-                    <input type="checkbox" class="coupon-checkbox" id="coupon-check"
-                           ng-model="coupon_checked"
-                           ng-change="get_coupon_item(coupon_checked)">
-                    <label class="coupon-checked" for="coupon-check"></label>
                     <!--<label name=""></label>-->
 
                     <div class="more-coupon" ng-click="toggle_coupon(show_list)">
                         <span class="custom_text_primary">更多</span>
-                        <div class="arrow-down">
+                        <div class="{{show_coupon_list(show_list) ? 'arrow-down' : 'arrow-up'}}">
                             <i></i>
                         </div>
                     </div>
@@ -288,7 +284,6 @@
                 <div class="coupon-list" ng-show="show_coupon_list(show_list)">
                     <div class="c-item"
                          ng-repeat="cItem in count_coupon"
-                         ng-click="chose_coupon(cItem)"
                             >
                     <!--<div class="c-item">-->
                         <!--<div class="c-i-left">-->
@@ -307,6 +302,13 @@
                                 <span>{{cItem.final_price | currency:'￥'}}</span>
                             </div>-->
                         </div>
+
+                        <input type="checkbox" class="coupon-checkbox" id="coupon-check-{{cItem.coupon_id}}"
+                               ng-model="cItem.$checked"
+                               ng-click="get_coupon_item(cItem)"
+                               name="coupon-check"
+                                >
+                        <label class="coupon-checked" for="coupon-check-{{cItem.coupon_id}}"></label>
                     </div>
                 </div>
 
