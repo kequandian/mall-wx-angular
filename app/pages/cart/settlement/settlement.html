@@ -284,22 +284,26 @@
                 </div>
 
                 <div class="coupon-list" ng-show="show_coupon_list(show_list)">
-                    <div class="c-item">
-                        <div class="c-i-left">
-                            <i>1</i>
-                        </div>
+                    <div class="c-item"
+                         ng-repeat="cItem in count_coupon"
+                         ng-click="chose_coupon(cItem)"
+                            >
+                    <!--<div class="c-item">-->
+                        <!--<div class="c-i-left">-->
+                            <!--<i>{{$index}}1</i>-->
+                        <!--</div>-->
                         <div class="c-i-right">
                             <div class="coupon-name">
-                                <span>全单8折</span>
+                                <span>{{cItem.coupon_name}}1234</span>
                             </div>
                             <div class="coupon-valid-date">
-                                <span>有效时间</span>
-                                <span>2016-11-30 11:11:11</span>
+                                <span>有效日期：</span>
+                                <span>{{cItem.valid_date}}1234</span>
                             </div>
-                            <div class="final-price">
+                            <!--<div class="final-price">
                                 <span>使用后价格为：</span>
-                                <span>￥50.00</span>
-                            </div>
+                                <span>{{cItem.final_price | currency:'￥'}}</span>
+                            </div>-->
                         </div>
                     </div>
                 </div>

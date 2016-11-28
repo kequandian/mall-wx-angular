@@ -489,7 +489,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                         if(json.status_code == 0){
                             console.log("获取下单前计算优惠信息：" + angular.toJson(json));
                             $scope.count_coupon = json.data;
-
+                            $scope.coupon_item = json.data[0];
                         }else{
                             $.toast('获取优惠卷信息失败', 'cancel');
                             console.log('获取优惠卷信息失败：' + angular.toJson(json));
@@ -515,6 +515,11 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     return;
                 }
                 return show_list.isShow;
+            };
+
+            //选择优惠卷
+            $scope.chose_coupon = function(cItem){
+                $scope.coupon_item = cItem;
             };
 
             //进入10元区
