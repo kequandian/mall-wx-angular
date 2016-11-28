@@ -339,6 +339,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             //title
             document.title = "结算";
             $scope.settlementCarts = [];
+            $scope.save_total_price = 0;
 
             $ocLazyLoad.load('Jquery').then(function () {
                 $ocLazyLoad.load('JqueryWeUI').then(function () {
@@ -374,6 +375,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                             $scope.currentContact = null;
                             $scope.product_frieght = null;
                             $scope.total_price = $scope.pay + $scope.product_frieght;
+                            $scope.save_total_price = $scope.total_price;
                         }
 
                         if ($scope.currentContact != null) {
@@ -466,9 +468,14 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                             $scope.freight = $stateParams.totalFreight;
                             if($scope.product_frieght > 0){
                                 $scope.total_price = $scope.pay + $scope.product_frieght;
+                                $scope.save_total_price = $scope.total_price;
                             }else{
                                 $scope.total_price = $scope.pay;
+                                $scope.save_total_price = $scope.total_price;
                             }
+
+                            //下单前计算优惠信息
+                            coupon();
                         }else{
                             console.log('error：' + angular.toJson(json));
                             $.toast('获取运费失败', 'cancel');
@@ -479,8 +486,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     })
             }
 
-            //下单前计算优惠信息
-            coupon();
+
             function coupon(){
                 var products = $scope.product_list;
                 console.log("products: " + angular.toJson(products));
@@ -489,9 +495,11 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                         if(json.status_code == 0){
                             console.log("获取下单前计算优惠信息：" + angular.toJson(json));
                             $scope.count_coupon = json.data;
-                            $scope.coupon_item = json.data[0];
-                            $scope.count_coupon[0].$checked = true;
-                            console.log('$scope.coupon_item: ' + angular.toJson(json.data[0]))
+                            if($scope.count_coupon.length > 0){
+                                $scope.c_name = json.data[0].coupon_name;
+                                $scope.count_coupon[0].$checked = true;
+                                $scope.total_price = $scope.count_coupon[0].final_price;
+                            }
                         }else{
                             $.toast('获取优惠卷信息失败', 'cancel');
                             console.log('获取优惠卷信息失败：' + angular.toJson(json));
@@ -525,7 +533,8 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 if(cItem.$checked){
                     $scope.c_checked = cItem.$checked;
                     $scope.coupon_item = cItem;
-
+                    $scope.c_name = cItem.coupon_name;
+                    $scope.total_price = cItem.final_price;
                     $scope.count_coupon.forEach(function(it){
                         if(it.coupon_id != cItem.coupon_id){
                             $('#coupon-check-' + it.coupon_id).attr('checked',false);
@@ -533,6 +542,8 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     });
                 }else{
                     $scope.c_checked = false;
+                    $scope.total_price = $scope.save_total_price;
+                    $scope.c_name = '不使用优惠卷';
                 }
 
             };
@@ -570,7 +581,9 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 }
 
                 if($scope.c_checked == undefined){
-                    $scope.order.coupon_id = $scope.count_coupon[0].coupon_id;
+                    if($scope.count_coupon > 0){
+                        $scope.order.coupon_id = $scope.count_coupon[0].coupon_id;
+                    }
                 }else{
                     if($scope.c_checked){
                         $scope.order.coupon_id = $scope.coupon_item.coupon_id;
