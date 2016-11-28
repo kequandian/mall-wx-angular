@@ -461,7 +461,6 @@ angular.module('homePage.controller', ['homePage.service'])
             $scope.open_view = function(){
 
             }
-
         }])
 
 
