@@ -1,6 +1,6 @@
 angular.module('coupon.controller', ['coupon.service'])
-    .controller('CouponController', ['$scope','$ocLazyLoad','$state','$location','$rootScope', 'CouponFty',
-        function($scope, $ocLazyLoad, $state, $location, $rootScope, CouponFty){
+    .controller('CouponController', ['$scope','$ocLazyLoad','$state','$rootScope', 'CouponFty',
+        function($scope, $ocLazyLoad, $state, $rootScope, CouponFty){
 
 
             //title
@@ -131,6 +131,7 @@ angular.module('coupon.controller', ['coupon.service'])
             //激活优惠卷
             $scope.activation_action = function(cItem){
                 var couponId = cItem.id;
+                console.log("couponId: " + couponId);
                 CouponFty.activationService(couponId)
                     .then(function(json){
                         if(json.status_code == 0 && json.message == 'activate.success'){
@@ -148,7 +149,7 @@ angular.module('coupon.controller', ['coupon.service'])
                             if(json.status_code == 1 && json.message == 'user.must.be.followed'){
                                 $.confirm('', '您还没关注公众号？', function () {
                                     if($rootScope.follow_url != null){
-                                        //$location.path($rootScope.follow_url);
+                                        window.location.href = $rootScope.follow_url;
                                     }else{
                                         $.toast('关注异常', 'cancel');
                                     }

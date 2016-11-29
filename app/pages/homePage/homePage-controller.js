@@ -78,9 +78,9 @@ angular.module('homePage.controller', ['homePage.service'])
     })
 
     .controller('HomePageController', ['$scope', '$rootScope', '$state', 'HomePageFty', 'areasStatus', 'goodListParams',
-        '$anchorScroll', '$ocLazyLoad','cateLeftIndex','$timeout','$location','PointRate','BalanceSession','cateCacheCode','sysAnn',
+        '$anchorScroll', '$ocLazyLoad','cateLeftIndex','$timeout','PointRate','BalanceSession','cateCacheCode','sysAnn',
         function ($scope, $rootScope, $state, HomePageFty, areasStatus, goodListParams, $anchorScroll, $ocLazyLoad,
-                  cateLeftIndex,$timeout,$location,PointRate,BalanceSession,cateCacheCode,sysAnn) {
+                  cateLeftIndex,$timeout,PointRate,BalanceSession,cateCacheCode,sysAnn) {
 
             document.title = "十美优品商城";
 
@@ -447,7 +447,6 @@ angular.module('homePage.controller', ['homePage.service'])
 
             $scope.hide_bg = function(){
                 document.getElementById('red-packet').style.display = 'none';
-                //$location.absUrl($rootScope.follow_url);
             };
 
             $scope.open_view = function(){
