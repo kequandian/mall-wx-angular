@@ -78,9 +78,9 @@ angular.module('homePage.controller', ['homePage.service'])
     })
 
     .controller('HomePageController', ['$scope', '$rootScope', '$state', 'HomePageFty', 'areasStatus', 'goodListParams',
-        '$anchorScroll', '$ocLazyLoad','cateLeftIndex','$timeout','PointRate','BalanceSession','cateCacheCode','sysAnn',
+        '$anchorScroll', '$ocLazyLoad','cateLeftIndex','$timeout','$location','PointRate','BalanceSession','cateCacheCode','sysAnn',
         function ($scope, $rootScope, $state, HomePageFty, areasStatus, goodListParams, $anchorScroll, $ocLazyLoad,
-                  cateLeftIndex,$timeout,PointRate,BalanceSession,cateCacheCode,sysAnn) {
+                  cateLeftIndex,$timeout,$location,PointRate,BalanceSession,cateCacheCode,sysAnn) {
 
             document.title = "十美优品商城";
 
@@ -104,6 +104,7 @@ angular.module('homePage.controller', ['homePage.service'])
             $scope.top_btn_show = false;
 
             $scope.followus = HomePageFty.getFollowusUrl();
+            $rootScope.follow_url = HomePageFty.getFollowusUrl();
 
             // cut off the fallback route from details
             /*cutoffFallback();
@@ -443,24 +444,45 @@ angular.module('homePage.controller', ['homePage.service'])
             };
 
             //红包
-            $scope.r_packet = true;
-            $scope.show_packet = false;
-            $scope.show_red_packet = function(){
-                document.getElementById('red-packet').style.display = 'block';
-            };
 
             $scope.hide_bg = function(){
                 document.getElementById('red-packet').style.display = 'none';
-            };
-
-            $scope.get_red_packet = function(){
-                $scope.r_packet = false;
-                $scope.show_packet = true;
+                //$location.absUrl($rootScope.follow_url);
             };
 
             $scope.open_view = function(){
+                $state.go('coupon');
+            };
+
+            //检查用户是否有未激活的优惠卷
+            if(!$rootScope.home_coupon_status){
+                couponNotify();
+            }
+            function couponNotify(){
+                HomePageFty.getCouponNotifyService()
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            console.log(angular.toJson(json));
+                            if(!json.data.show_red_packet){
+                                document.getElementById('red-packet').style.display = 'block';
+                                $scope.r_packet = true;
+                                $scope.show_packet = false;
+                            }else{
+                                $scope.r_packet = false;
+                                $scope.show_packet = true;
+                            }
+                            $rootScope.home_coupon_status = true;
+                        }else{
+                            console.log('获取未激活优惠卷信息失败：' + angular.toJson(json));
+                        }
+                    }, function(error){
+                        console.log('获取未激活优惠卷信息失败：' + angular.toJson(error));
+                    })
+
 
             }
+
+
         }])
 
 

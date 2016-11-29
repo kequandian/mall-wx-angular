@@ -581,7 +581,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 }
 
                 if($scope.c_checked == undefined){
-                    if($scope.count_coupon > 0){
+                    if($scope.count_coupon.length > 0){
                         $scope.order.coupon_id = $scope.count_coupon[0].coupon_id;
                     }
                 }else{

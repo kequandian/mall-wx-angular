@@ -263,6 +263,10 @@
         $rootScope.settle_product_code = null;
         $rootScope.settle_product_totalToPay = 0;
 
+        //首页优惠卷状态
+        $rootScope.home_coupon_status = false;
+        $rootScope.follow_url = null;
+
         /*//Do your $on in here, like this:
         $rootScope.$on("$locationChangeStart",function(event, next, current){
             console.log('$locationChangeStart')

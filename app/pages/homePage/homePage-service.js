@@ -75,6 +75,23 @@ angular.module('homePage.service', [])
                             return deferred.reject(data);
                         });
                     return deferred.promise;
+                },
+
+                // 检查该用户是否有未激活的优惠卷
+                getCouponNotifyService: function () {
+                    var deferred = $q.defer();
+                    var url = GlobalVariable.SERVER_PATH + "/coupon_notify";
+                    $http.get(url,{
+                        headers:{
+                            'Authorization': GlobalVariable.ACCESS_TOKEN
+                        }
+                    })
+                        .success(function (data) {
+                            return deferred.resolve(data);
+                        }).error(function (data) {
+                            return deferred.reject(data);
+                        });
+                    return deferred.promise;
                 }
             }
     }])

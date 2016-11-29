@@ -15,7 +15,6 @@
             </div>
         </nav>
 
-
         <div class="pro">
 
             <div class="pro-item" ng-repeat="cItem in coupons">
@@ -33,17 +32,34 @@
                             </div>
                         </div>
                     </div>
-                    <div class="l-bottom">
-                        <span>CLICK TO RECEIVE COUPONS</span>
-                    </div>
                 </div>
-                <div class="p-i-right">
+                <div class="p-i-right" ng-if="a_status">
 
                     <div class="r-top">
                         <span>使用有效期 ></span>
                     </div>
                     <div class="r-bottom">
                         <span>{{cut_time(cItem.created_date)}} - {{cut_time(cItem.valid_date)}}</span>
+                    </div>
+
+                </div>
+                <div class="p-i-right-non" ng-if="non_status">
+                <!--<div class="p-i-right-non">-->
+
+                    <div class="r-top-non">
+                        <span>有效期></span>
+                    </div>
+                    <div class="r-bottom-non">
+                        <span>{{cut_time(cItem.created_date)}} - {{cut_time(cItem.valid_date)}}</span>
+                    </div>
+
+                    <div class="non-btn">
+                        <a href="javascript:;"
+                           class="weui_btn weui_btn_mini weui_btn_primary"
+                           ng-click="activation_action(cItem)"
+                                >
+                            立即领取
+                        </a>
                     </div>
 
                 </div>
