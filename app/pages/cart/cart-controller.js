@@ -376,6 +376,8 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                             $scope.product_frieght = null;
                             $scope.total_price = $scope.pay + $scope.product_frieght;
                             $scope.save_total_price = $scope.total_price;
+                            //下单前计算优惠信息
+                            coupon();
                         }
 
                         if ($scope.currentContact != null) {
@@ -498,7 +500,11 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                             if($scope.count_coupon.length > 0){
                                 $scope.c_name = json.data[0].coupon_name;
                                 $scope.count_coupon[0].$checked = true;
-                                $scope.total_price = $scope.count_coupon[0].final_price;
+                                if($scope.product_frieght >= 0){
+                                    $scope.total_price = $scope.count_coupon[0].final_price + $scope.product_frieght;
+                                }else{
+                                    $scope.total_price = $scope.count_coupon[0].final_price;
+                                }
                             }
                         }else{
                             $.toast('获取优惠卷信息失败', 'cancel');
@@ -534,7 +540,12 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     $scope.c_checked = cItem.$checked;
                     $scope.coupon_item = cItem;
                     $scope.c_name = cItem.coupon_name;
-                    $scope.total_price = cItem.final_price;
+
+                    if($scope.product_frieght >= 0){
+                        $scope.total_price = cItem.final_price + $scope.product_frieght;
+                    }else{
+                        $scope.total_price = cItem.final_price;
+                    }
                     $scope.count_coupon.forEach(function(it){
                         if(it.coupon_id != cItem.coupon_id){
                             $('#coupon-check-' + it.coupon_id).attr('checked',false);

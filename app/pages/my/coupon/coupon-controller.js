@@ -26,7 +26,7 @@ angular.module('coupon.controller', ['coupon.service'])
                         if(json.status_code == 0){
                             $scope.coupons = json.data;
                             allList = json.data;
-                            //console.log(angular.toJson($scope.coupons));
+                            console.log(angular.toJson($scope.coupons));
 
                             angular.forEach(json.data, function(v, k){
                                 if(v.status == 'NON_ACTIVATION'){
@@ -143,8 +143,8 @@ angular.module('coupon.controller', ['coupon.service'])
                                     v.status = 'ACTIVATION';
                                 }
                             });
-                            $scope.couponsOrderBy(1);
                             $.toast('激活成功');
+                            $scope.couponsOrderBy(1);
                         }else{
                             if(json.status_code == 1 && json.message == 'user.must.be.followed'){
                                 $.confirm('', '您还没关注公众号？', function () {

@@ -466,9 +466,11 @@ angular.module('homePage.controller', ['homePage.service'])
                                 document.getElementById('red-packet').style.display = 'block';
                                 $scope.r_packet = true;
                                 $scope.show_packet = false;
-                            }else if(json.data.notify){
-                                $scope.r_packet = false;
-                                $scope.show_packet = true;
+                            }else{
+                                if(json.data.notify){
+                                    $scope.r_packet = false;
+                                    $scope.show_packet = true;
+                                }
                             }
                             $rootScope.home_coupon_status = true;
                         }else{
