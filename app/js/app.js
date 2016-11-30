@@ -266,6 +266,7 @@
         //首页优惠卷状态
         $rootScope.home_coupon_status = false;
         $rootScope.follow_url = null;
+        $rootScope.red_point_status = false;
 
         /*//Do your $on in here, like this:
         $rootScope.$on("$locationChangeStart",function(event, next, current){

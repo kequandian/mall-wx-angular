@@ -89,55 +89,61 @@
 }
 
 #coupon .pro-item .p-i-left{
-    width:55%;
+    width:100%;
     height:100%;
-    color: white;
-    /*background-color:#A75295;*/
-    background: -webkit-linear-gradient(top, #CD8EC0 0%, #CD8EC0 50%, #A75295 50%,#A75295 100%);
+    background-color:white;
     float: left;
 }
 #coupon .pro-item .p-i-left .l-top{
     width:100%;
     height: 45px;
     padding-top: 17px;
-    /*background-color: rgba(195,133,182,1);*/
+    position: relative;
 }
 #coupon .pro-item .p-i-left .l-t-left{
-    width: 45%;
+    width: 75px;
     height: 45px;
     line-height: 47px;
-    font-size: 50px;
+    font-size: 48px;
     text-align: right;
     float: left;
-    font-family: "Microsoft YaHei" ! important;
+    font-family: "Microsoft YaHei";
 }
 
 #coupon .pro-item .p-i-left .l-t-right{
-    width: 55%;
+    /*width: 55%;*/
     height: 45px;
     text-align: left;
-    float: left;
+    position: absolute;
+    left: 78px;
+    right: 85px;
 }
 #coupon .pro-item .p-i-left .l-t-right .r-top{
     width: 100%;
-    height: 12px;
-    font-size: 14px;
-    /* vertical-align: bottom; */
-    /*-webkit-transform: scale(0.95);*/
-    padding-top: 2px;
-    margin-bottom: 4px;
+    height: 30px;
+    line-height: 26px;
+    font-size: 22px;
+    /* margin-top: 9px; */
+    font-weight: bold;
+}
+#coupon .pro-item .p-i-left .l-t-right .r-top .r-top-des{
+    width: 100%;
+    height: 32px;
+    color: #D4A9CB;
+    font-size: 12px;
 }
 #coupon .pro-item .p-i-left .l-t-right .r-bottom{
-    width: 100%;
-    height: 20px;
-    font-size:20px;
+    /* width: 100%; */
+    height: 15px;
+    line-height: 15px;
+    font-size: 12px;
+    color: #999898;
 }
 
 #coupon .pro-item .p-i-right{
     width:45%;
     height:100%;
     color: #999898;
-    background-color:white;
     text-align: left;
     float: left;
 }
@@ -173,57 +179,26 @@
 }
 
 
-/* NON_ACTIVATION Î´¼¤»î*/
-#coupon .pro-item .p-i-right-non{
-    width:45%;
-    height:100%;
-    color: #999898;
-    background-color:white;
-    text-align: left;
-    float: left;
-}
-
-#coupon .pro-item .p-i-right-non .r-top-non{
-    width:100%;
-    height:50%;
-    background-color:white;
-    float: left;
-    position: relative;
-}
-
-#coupon .pro-item .p-i-right-non .r-top-non span{
+#coupon .pro-item .p-i-left .non-btn{
     position: absolute;
-    left: 4px;
-    bottom: 0;
-    font-size: 12px;
-    /*-webkit-transform: scale(0.95);*/
-}
-
-#coupon .pro-item .p-i-right-non .r-bottom-non{
-    width:100%;
-    height:50%;
-    background-color:white;
-    float: left;
-    position: relative;
-}
-
-#coupon .pro-item .p-i-right-non .r-bottom-non span{
-    position: absolute;
-    top: 0;
-    left: 5px;
-    font-size: 12px;
-}
-
-#coupon .pro-item .p-i-right-non .non-btn{
-    position: absolute;
-    top: 5px;
+    top: 25px;
     right: 2%;
     font-size: 12px;
 }
-#coupon .pro-item .p-i-right-non .non-btn .weui_btn.weui_btn_mini{
+#coupon .pro-item .p-i-left .non-btn .weui_btn.weui_btn_mini{
     line-height: 1.9;
     font-size: 12px;
-    padding: 1px 5px;
+    padding: 3px 10px;
+}
+
+#coupon .c-red-point{
+    position: absolute;
+    top: 8px;
+    right: calc(50% - 15px);
+    background-color: red;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
 }
 
 

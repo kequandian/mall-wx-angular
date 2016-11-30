@@ -10,6 +10,7 @@
                         ng-click="clickme(title.id);couponsOrderBy(title.id)">
                         <div class="ver_line" ng-if="title.hidden_line"></div>
                         <span>{{title.name}}<i> ({{title.count}})</i></span>
+                        <i class="c-red-point" ng-if="title.red_point"></i>
                     </li>
                 </ul>
             </div>
@@ -19,39 +20,26 @@
 
             <div class="pro-item" ng-repeat="cItem in coupons">
                 <div class="p-i-left">
+
                     <div class="l-top">
-                        <div class="l-t-left">
-                            <span style="{{check_money(cItem.money)}}">{{cItem.money}}</span>
+                        <div class="l-t-left custom_text_primary_medium">
+                            <span style="font-size: 20px;">￥</span><span style="{{check_money(cItem.money)}}">{{cItem.money}}</span>
                         </div>
                         <div class="l-t-right">
-                            <div class="r-top">
-                                <span style="margin-left: 2px;">{{d_name(cItem.display_name)}}可用</span>
-                            </div>
-                            <div class="r-bottom">
-                                <span style="margin-left: 2px;">元{{type_name(cItem.display_name)}}</span>
+                            <div>
+                                <div class="r-top custom_text_primary_medium">
+                                    <span style="float: left; margin-right: 4px;">代金劵</span>
+                                    <div class="r-top-des">
+                                        <span>满88元满88元满88元</span>
+                                    </div>
+                                </div>
+                                <div class="r-bottom">
+                                    <span>有效期至：</span><span>{{cut_time(cItem.valid_date)}}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="p-i-right" ng-if="a_status">
 
-                    <div class="r-top">
-                        <span>使用有效期 ></span>
-                    </div>
-                    <div class="r-bottom">
-                        <span>{{cut_time(cItem.created_date)}} - {{cut_time(cItem.valid_date)}}</span>
-                    </div>
-
-                </div>
-                <div class="p-i-right-non" ng-if="non_status">
-                <!--<div class="p-i-right-non">-->
-
-                    <div class="r-top-non">
-                        <span>有效期></span>
-                    </div>
-                    <div class="r-bottom-non">
-                        <span>{{cut_time(cItem.created_date)}} - {{cut_time(cItem.valid_date)}}</span>
-                    </div>
 
                     <div class="non-btn">
                         <a href="javascript:;"
@@ -60,6 +48,16 @@
                                 >
                             立即领取
                         </a>
+                    </div>
+
+                </div>
+                <div class="p-i-right" ng-if="a_status">
+
+                    <div class="r-top">
+                        <span>使用有效期 ></span>
+                    </div>
+                    <div class="r-bottom">
+                        <span>{{cut_time(cItem.created_date)}} - {{cut_time(cItem.valid_date)}}</span>
                     </div>
 
                 </div>

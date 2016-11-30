@@ -12,8 +12,8 @@ angular.module('coupon.controller', ['coupon.service'])
                 })
             });
 
-            $rootScope.redPoint = false;
-            $rootScope.isNewCoupon = false;
+            $rootScope.red_point_status = true;
+
             var non_activation = 0;
             var non_activation_list = [];
             var activation = 0;
@@ -60,23 +60,32 @@ angular.module('coupon.controller', ['coupon.service'])
                 id:'1',
                 name:'未领取',
                 hidden_line: false,
-                count:0
+                count:0,
+                red_point:false
             },{
                 id:'2',
                 name:'可使用',
                 hidden_line: true,
-                count:0
+                count:0,
+                red_point:false
             },{
                 id:'3',
                 name:'已使用',
                 hidden_line: true,
-                count:0
+                count:0,
+                red_point:false
             },{
                 id:'4',
                 name:'已失效',
                 hidden_line: true,
-                count:0
+                count:0,
+                red_point:false
             }];
+
+            //未激活优惠卷红点
+            if($rootScope.isNewCoupon){
+                $scope.coupon_titles[0].red_point = true;
+            }
 
             /*
              * nav 样式
@@ -122,9 +131,9 @@ angular.module('coupon.controller', ['coupon.service'])
             //判断价格添加边框
             $scope.check_money = function(money){
                 if(money < 10){
-                    return 'margin-right:10px';
+                    return 'margin-right:5px';
                 }else if(money > 10 && money < 100){
-                    return 'margin-right:15px';
+                    return 'margin-right:10px';
                 }else if(money.length >= 100){
                     return '';
                 }
@@ -168,14 +177,6 @@ angular.module('coupon.controller', ['coupon.service'])
             };
 
             //截取字符
-            $scope.d_name = function(name){
-                var dName = name.substr(0,name.indexOf('元')+1);
-                return dName
-            };
-            $scope.type_name = function(name){
-                var tName = name.substr(name.length - 3);
-                return tName
-            };
             $scope.cut_time = function(time){
                 var cTime = time.split(' ');
                 return cTime[0];

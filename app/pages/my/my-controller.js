@@ -6,6 +6,11 @@ angular.module('my.controller', ['my.service'])
             //title
             document.title = "个人中心";
 
+            if($rootScope.red_point_status){
+                $rootScope.redPoint = false;
+                $rootScope.isNewCoupon = false;
+            }
+
             $rootScope.tabsNumber = 5;
             cateLeftIndex.cate_nav_index = 0;
             cateLeftIndex.goods_list_index = 0;
