@@ -461,12 +461,12 @@ angular.module('homePage.controller', ['homePage.service'])
                 HomePageFty.getCouponNotifyService()
                     .then(function(json){
                         if(json.status_code == 0){
-                            console.log(angular.toJson(json));
-                            if(!json.data.show_red_packet){
+                            //console.log(angular.toJson(json));
+                            if(!json.data.is_user_followed){
                                 document.getElementById('red-packet').style.display = 'block';
                                 $scope.r_packet = true;
                                 $scope.show_packet = false;
-                            }else{
+                            }else if(json.data.notify){
                                 $scope.r_packet = false;
                                 $scope.show_packet = true;
                             }
