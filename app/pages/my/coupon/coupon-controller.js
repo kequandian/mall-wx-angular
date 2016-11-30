@@ -12,6 +12,8 @@ angular.module('coupon.controller', ['coupon.service'])
                 })
             });
 
+            $rootScope.redPoint = false;
+            $rootScope.isNewCoupon = false;
             var non_activation = 0;
             var non_activation_list = [];
             var activation = 0;

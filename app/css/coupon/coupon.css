@@ -109,7 +109,7 @@
     font-size: 50px;
     text-align: right;
     float: left;
-    font-family: fantasy;
+    font-family: "Microsoft YaHei" ! important;
 }
 
 #coupon .pro-item .p-i-left .l-t-right{

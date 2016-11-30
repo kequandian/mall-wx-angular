@@ -9,6 +9,12 @@ angular.module('my.controller', ['my.service'])
             $rootScope.tabsNumber = 5;
             cateLeftIndex.cate_nav_index = 0;
             cateLeftIndex.goods_list_index = 0;
+            $scope.is_new_coupon = false;
+
+            var scope = $rootScope;
+            scope.$watch('isNewCoupon', function (nValue, oValue) {
+                $scope.is_new_coupon = nValue;
+            });
 
             //用户信息
             getUserInfo();

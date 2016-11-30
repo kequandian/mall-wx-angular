@@ -471,6 +471,15 @@ angular.module('homePage.controller', ['homePage.service'])
                                 $scope.r_packet = false;
                                 $scope.show_packet = true;
                             }
+
+                            if(json.data.non_activation_coupons.length > 0){
+                                $rootScope.redPoint = true;
+                                $rootScope.isNewCoupon = true;
+                            }else{
+                                $rootScope.redPoint = false;
+                                $rootScope.isNewCoupon = false;
+                            }
+
                             $rootScope.home_coupon_status = true;
                         }else{
                             console.log('获取未激活优惠卷信息失败：' + angular.toJson(json));

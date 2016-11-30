@@ -17,6 +17,9 @@ angular.module('home.controller', ['home.service'])
             scope.$watch('cartCount', function (nValue, oValue) {
                 $scope.home_tabs[3].c_number = nValue;
             });
+            scope.$watch('redPoint', function (nValue, oValue) {
+                $scope.home_tabs[4].red_point = nValue;
+            });
 
             $scope.clickme = function (id) {
                 $scope.currentId = id;
@@ -28,35 +31,40 @@ angular.module('home.controller', ['home.service'])
                 'srefName': '.homePage',
                 'home_tab_icon': 'weui_tabbar_icon ion-app-biliya-tabs-home',
                 'c_count': null,
-                'c_number': 0
+                'c_number': 0,
+                'red_point':false
             }, {
                 'id': '2',
                 'name': '分类',
                 'srefName': '.category',
                 'home_tab_icon': 'weui_tabbar_icon ion-app-biliya-tabs-search',
                 'c_count': null,
-                'c_number': 0
+                'c_number': 0,
+                'red_point':false
             }, {
                 'id': '3',
                 'name': GlobalVariable.SELLER_SHIP=='YES' ? '积分中心' : '申请会员',
                 'srefName': GlobalVariable.SELLER_SHIP=='YES' ? '.sellerPage' : GlobalVariable.SELLER_SHIP=='NO' ?  '.becomeDistributor' : '.sellerApplying',
                 'home_tab_icon': 'weui_tabbar_icon ion-app-biliya-tabs-point',
                 'c_count': null,
-                'c_number': 0
+                'c_number': 0,
+                'red_point':false
             }, {
                 'id': '4',
                 'name': '购物车',
                 'srefName': '.cart',
                 'home_tab_icon': 'weui_tabbar_icon ion-app-biliya-tabs-cart',
                 'c_count': 'cart_count',
-                'c_number': 0
+                'c_number': 0,
+                'red_point':false
             }, {
                 'id': '5',
                 'name': '个人中心',
                 'srefName': '.my',
                 'home_tab_icon': 'weui_tabbar_icon ion-app-biliya-tabs-user',
                 'c_count': null,
-                'c_number': 0
+                'c_number': 0,
+                'red_point':false
             }];
 
 

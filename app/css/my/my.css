@@ -57,3 +57,13 @@
     font-size: 13px;
     margin-top: 0;
 }
+
+#my .c-red-point{
+    position: absolute;
+    top: 10px;
+    right: calc(50% - 32px);
+    background-color: red;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+}

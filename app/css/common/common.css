@@ -127,7 +127,7 @@ input::-webkit-inner-spin-button {
     /*padding: 1px 1px;*/
     text-align:center;
     color:#fff;
-    border-radius:10px; /*Բ��*/
+    border-radius:10px; /*半圆*/
     font-weight:500;
     font-size: xx-small;
     font-family: 'Arial';
@@ -135,4 +135,14 @@ input::-webkit-inner-spin-button {
     /*left: 10px;*/
     /*margin-left: 50%;*/
     padding: 0 4px;
+}
+
+.red_point{
+    position: absolute;
+    top: 6px;
+    right: calc(50% - 18px);
+    background-color: red;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
 }
