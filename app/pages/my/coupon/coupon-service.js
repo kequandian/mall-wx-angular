@@ -22,7 +22,9 @@ angular.module('coupon.service', [])
             activationService: function (id) {
                 var deferred = $q.defer();
                 var url = GlobalVariable.SERVER_PATH + "/coupon/" + id;
-                $http.put(url,{},{
+                $http.put(url,{
+                    "status": "ACTIVATION"
+                },{
                     headers: {
                         'Authorization': GlobalVariable.ACCESS_TOKEN
                     }

@@ -19,18 +19,26 @@
         <div class="pro">
 
             <div class="pro-item" ng-repeat="cItem in coupons">
-                <div class="p-i-left">
 
+                <div class="p-i-left-non" ng-if="non_status">
+                    {{coupon_type_checked(cItem.money, cItem.discount, cItem.type)}}
                     <div class="l-top">
                         <div class="l-t-left custom_text_primary_medium">
-                            <span style="font-size: 20px;">￥</span><span style="{{check_money(cItem.money)}}">{{cItem.money}}</span>
+                            <div ng-if="isMoney">
+                                <span style="font-size: 20px; ">￥</span><span>{{cItem.money}}</span>
+                            </div>
+                            <div ng-if="isDiscount">
+                                <span>{{cItem.discount}}</span><span style="font-size: 16px; font-weight: bold">折</span>
+                            </div>
                         </div>
                         <div class="l-t-right">
                             <div>
                                 <div class="r-top custom_text_primary_medium">
-                                    <span style="float: left; margin-right: 4px;">代金劵</span>
+                                    <div class="r-top-coupon-type">
+                                        <span>{{coupon_type}}</span>
+                                    </div>
                                     <div class="r-top-des">
-                                        <span>满88元满88元满88元</span>
+                                        <span>{{cItem.display_name}}</span>
                                     </div>
                                 </div>
                                 <div class="r-bottom">
@@ -39,28 +47,49 @@
                             </div>
                         </div>
                     </div>
-
-
                     <div class="non-btn">
                         <a href="javascript:;"
                            class="weui_btn weui_btn_mini weui_btn_primary"
                            ng-click="activation_action(cItem)"
                                 >
-                            立即领取
+                            <span>立即领取</span>
                         </a>
                     </div>
 
                 </div>
-                <div class="p-i-right" ng-if="a_status">
 
-                    <div class="r-top">
-                        <span>使用有效期 ></span>
-                    </div>
-                    <div class="r-bottom">
-                        <span>{{cut_time(cItem.created_date)}} - {{cut_time(cItem.valid_date)}}</span>
+
+                <div class="p-i-left" ng-if="a_status">
+                    {{coupon_type_checked(cItem.money, cItem.discount, cItem.type)}}
+                    <div class="l-top">
+                        <div class="l-t-right">
+                            <div class="r-top custom_text_primary_medium">
+                                <div class="r-top-coupon-type">
+                                    <span>{{coupon_type}}</span>
+                                </div>
+                                <div class="r-top-des">
+                                    <span>{{cItem.display_name}}</span>
+                                </div>
+                            </div>
+                            <div class="r-bottom">
+                                <span>有效期至：</span><span>{{cut_time(cItem.valid_date)}}</span>
+                            </div>
+                        </div>
+
+                        <div class="l-t-left custom_text_primary_medium">
+                            <div ng-if="isMoney">
+
+                                <span style="margin-right: 5px;"><span style="font-size: 20px;">￥</span>{{cItem.money}}</span>
+                            </div>
+                            <div ng-if="isDiscount">
+                                <span>{{cItem.discount}}</span><span style="font-size: 16px; font-weight: bold">折</span>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
+
+
             </div>
 
         </div>

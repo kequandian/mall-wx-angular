@@ -1,4 +1,5 @@
 angular.module('coupon.controller', ['coupon.service'])
+
     .controller('CouponController', ['$scope','$ocLazyLoad','$state','$rootScope', 'CouponFty',
         function($scope, $ocLazyLoad, $state, $rootScope, CouponFty){
 
@@ -29,7 +30,6 @@ angular.module('coupon.controller', ['coupon.service'])
                             $scope.coupons = json.data;
                             allList = json.data;
                             console.log(angular.toJson($scope.coupons));
-
                             angular.forEach(json.data, function(v, k){
                                 if(v.status == 'NON_ACTIVATION'){
                                     non_activation++;
@@ -128,16 +128,6 @@ angular.module('coupon.controller', ['coupon.service'])
                 $scope.coupons = typeList;
             };
 
-            //判断价格添加边框
-            $scope.check_money = function(money){
-                if(money < 10){
-                    return 'margin-right:5px';
-                }else if(money > 10 && money < 100){
-                    return 'margin-right:10px';
-                }else if(money.length >= 100){
-                    return '';
-                }
-            };
 
             //激活优惠卷
             $scope.activation_action = function(cItem){
@@ -145,7 +135,8 @@ angular.module('coupon.controller', ['coupon.service'])
                 console.log("couponId: " + couponId);
                 CouponFty.activationService(couponId)
                     .then(function(json){
-                        if(json.status_code == 0 && json.message == 'activate.success'){
+                        console.log(angular.toJson(json));
+                        if(json.status_code == 0 && json.data == 'activate.success'){
 
                             angular.forEach($scope.coupons,function(v, k){
                                 if(v.id == couponId){
@@ -167,8 +158,9 @@ angular.module('coupon.controller', ['coupon.service'])
                                 }, function () {
                                     //取消操作
                                 });
+                            }else{
+                                console.log('激活优惠卷失败：' + angular.toJson(json));
                             }
-                            console.log('激活优惠卷失败：' + angular.toJson(error));
                         }
                     }, function(error){
                         console.log('激活优惠卷失败：' + angular.toJson(error));
@@ -181,6 +173,33 @@ angular.module('coupon.controller', ['coupon.service'])
                 var cTime = time.split(' ');
                 return cTime[0];
             };
+
+
+            //判断优惠卷类型
+            /* begin */
+
+            $scope.coupon_type_checked = function(money, discount, type){
+
+                if(money > 0 && type == 'ORDER'){
+                    $scope.isMoney = true;
+                    $scope.isDiscount = false;
+                    $scope.coupon_type = '代金劵';
+                }
+
+                if(discount > 0 && type == 'ORDER'){
+                    $scope.isMoney = false;
+                    $scope.isDiscount = true;
+                    $scope.coupon_type = '打折卷';
+                }
+
+                if(type == 'PRODUCT'){
+                    $scope.isMoney = true;
+                    $scope.isDiscount = false;
+                    $scope.coupon_type = '专用卷';
+                }
+            };
+            /* end */
+
 
 
     }]);

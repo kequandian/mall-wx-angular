@@ -16,7 +16,7 @@
     width:100%;
     height:42px;
     overflow:hidden;
-    position:relative;
+    position:fixed;
     background-color: #fff;
     z-index: 3;
 }
@@ -72,6 +72,7 @@
 #coupon .pro{
     width:100%;
     overflow:hidden;
+    padding-top: 42px;
 }
 
 #coupon .null_position{
@@ -84,9 +85,81 @@
     height:80px;
     margin: 5px 5px 0 5px;
     background-color:white;
-    border: 1px solid #734284;
+    /*border: 1px solid #734284;*/
     position: relative;
 }
+
+#coupon .pro-item .p-i-left-non{
+    width:100%;
+    height:100%;
+    background-color:white;
+    float: left;
+}
+#coupon .pro-item .p-i-left-non .l-top{
+    width:100%;
+    height: 45px;
+    padding-top: 17px;
+}
+#coupon .pro-item .p-i-left-non .l-t-left{
+    width: 78px;
+    height: 45px;
+    line-height: 47px;
+    font-size: 48px;
+    text-align: center;
+    float: left;
+    font-family: "Microsoft YaHei";
+}
+
+#coupon .pro-item .p-i-left-non .l-t-right{
+    /*width: 55%;*/
+    height: 45px;
+    text-align: left;
+    position: absolute;
+    left: 80px;
+    right: 73px;
+}
+#coupon .pro-item .p-i-left-non .l-t-right .r-top{
+    /*width: 100%;*/
+    height: 35px;
+    line-height: 30px;
+    font-size: 22px;
+    font-weight: bold;
+}
+#coupon .pro-item .p-i-left-non .l-t-right .r-top .r-top-coupon-type{
+    width: 68px;
+    float: left;
+    margin-right: 4px;
+}
+
+#coupon .pro-item .p-i-left-non .l-t-right .r-top .r-top-des{
+    height: 35px;
+    line-height: 15px;
+    color: #D4A9CB;
+    font-size: 12px;
+    display: table-cell;
+    vertical-align: middle;
+}
+#coupon .pro-item .p-i-left-non .l-t-right .r-bottom{
+    /* width: 100%; */
+    height: 15px;
+    line-height: 15px;
+    font-size: 12px;
+    color: #999898;
+}
+
+#coupon .pro-item .p-i-left-non .non-btn{
+    position: absolute;
+    top: 25px;
+    right: 2%;
+    font-size: 12px;
+}
+#coupon .pro-item .p-i-left-non .non-btn .weui_btn.weui_btn_mini{
+    line-height: 1.9;
+    font-size: 12px;
+    padding: 3px 10px;
+}
+
+
 
 #coupon .pro-item .p-i-left{
     width:100%;
@@ -98,15 +171,14 @@
     width:100%;
     height: 45px;
     padding-top: 17px;
-    position: relative;
 }
 #coupon .pro-item .p-i-left .l-t-left{
-    width: 75px;
+    width: 78px;
     height: 45px;
     line-height: 47px;
     font-size: 48px;
-    text-align: right;
-    float: left;
+    text-align: center;
+    float: right;
     font-family: "Microsoft YaHei";
 }
 
@@ -115,22 +187,29 @@
     height: 45px;
     text-align: left;
     position: absolute;
-    left: 78px;
-    right: 85px;
+    left: 9px;
+    right: 90px;
 }
 #coupon .pro-item .p-i-left .l-t-right .r-top{
-    width: 100%;
-    height: 30px;
-    line-height: 26px;
+    /*width: 100%;*/
+    height: 35px;
+    line-height: 30px;
     font-size: 22px;
-    /* margin-top: 9px; */
     font-weight: bold;
 }
+#coupon .pro-item .p-i-left .l-t-right .r-top .r-top-coupon-type{
+    width: 68px;
+    float: left;
+    margin-right: 4px;
+}
+
 #coupon .pro-item .p-i-left .l-t-right .r-top .r-top-des{
-    width: 100%;
-    height: 32px;
+    height: 35px;
+    line-height: 15px;
     color: #D4A9CB;
     font-size: 12px;
+    display: table-cell;
+    vertical-align: middle;
 }
 #coupon .pro-item .p-i-left .l-t-right .r-bottom{
     /* width: 100%; */
@@ -140,56 +219,11 @@
     color: #999898;
 }
 
-#coupon .pro-item .p-i-right{
-    width:45%;
-    height:100%;
-    color: #999898;
-    text-align: left;
-    float: left;
-}
-
-#coupon .pro-item .p-i-right .r-top{
-    width:100%;
-    height:50%;
-    background-color:white;
-    float: left;
-    position: relative;
-}
-
-#coupon .pro-item .p-i-right .r-top span{
-    position: absolute;
-    left: 10px;
-    bottom: 0;
-    font-size: 14px;
-}
-
-#coupon .pro-item .p-i-right .r-bottom{
-    width:100%;
-    height:50%;
-    background-color:white;
-    float: left;
-    position: relative;
-}
-
-#coupon .pro-item .p-i-right .r-bottom span{
-    position: absolute;
-    top: 0;
-    left: 10px;
-    font-size: 13px;
-}
 
 
-#coupon .pro-item .p-i-left .non-btn{
-    position: absolute;
-    top: 25px;
-    right: 2%;
-    font-size: 12px;
-}
-#coupon .pro-item .p-i-left .non-btn .weui_btn.weui_btn_mini{
-    line-height: 1.9;
-    font-size: 12px;
-    padding: 3px 10px;
-}
+
+
+
 
 #coupon .c-red-point{
     position: absolute;
