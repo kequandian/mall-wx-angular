@@ -136,7 +136,7 @@ angular.module('coupon.controller', ['coupon.service'])
                 CouponFty.activationService(couponId)
                     .then(function(json){
                         console.log(angular.toJson(json));
-                        if(json.status_code == 0 && json.data == 'activate.success'){
+                        if(json.status_code == 0 && json.message == 'activate.success'){
 
                             angular.forEach($scope.coupons,function(v, k){
                                 if(v.id == couponId){
@@ -147,8 +147,7 @@ angular.module('coupon.controller', ['coupon.service'])
                             });
                             $.toast('激活成功');
                             $scope.couponsOrderBy(1);
-                        }else{
-                            if(json.status_code == 1 && json.message == 'user.must.be.followed'){
+                        }else if(json.status_code == 1 && json.message == 'user.must.be.followed'){
                                 $.confirm('', '您还没关注公众号？', function () {
                                     if($rootScope.follow_url != null){
                                         window.location.href = $rootScope.follow_url;
@@ -161,7 +160,6 @@ angular.module('coupon.controller', ['coupon.service'])
                             }else{
                                 console.log('激活优惠券失败：' + angular.toJson(json));
                             }
-                        }
                     }, function(error){
                         console.log('激活优惠券失败：' + angular.toJson(error));
                     })
