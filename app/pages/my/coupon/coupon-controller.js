@@ -5,7 +5,7 @@ angular.module('coupon.controller', ['coupon.service'])
 
 
             //title
-            document.title = "优惠卷";
+            document.title = "优惠券";
 
             $ocLazyLoad.load('Jquery').then(function () {
                 $ocLazyLoad.load('JqueryWeUI').then(function () {
@@ -48,10 +48,10 @@ angular.module('coupon.controller', ['coupon.service'])
                             $scope.coupon_titles[3].count = overdue;
                             $scope.coupons = non_activation_list;
                         }else{
-                            console.log('获取优惠卷失败：' + angular.toJson(json));
+                            console.log('获取优惠券失败：' + angular.toJson(json));
                         }
                     },function (error){
-                        console.log('获取优惠卷失败：' + angular.toJson(error));
+                        console.log('获取优惠券失败：' + angular.toJson(error));
                     })
             }
 
@@ -82,7 +82,7 @@ angular.module('coupon.controller', ['coupon.service'])
                 red_point:false
             }];
 
-            //未激活优惠卷红点
+            //未激活优惠券红点
             if($rootScope.isNewCoupon){
                 $scope.coupon_titles[0].red_point = true;
             }
@@ -129,7 +129,7 @@ angular.module('coupon.controller', ['coupon.service'])
             };
 
 
-            //激活优惠卷
+            //激活优惠券
             $scope.activation_action = function(cItem){
                 var couponId = cItem.id;
                 console.log("couponId: " + couponId);
@@ -159,11 +159,11 @@ angular.module('coupon.controller', ['coupon.service'])
                                     //取消操作
                                 });
                             }else{
-                                console.log('激活优惠卷失败：' + angular.toJson(json));
+                                console.log('激活优惠券失败：' + angular.toJson(json));
                             }
                         }
                     }, function(error){
-                        console.log('激活优惠卷失败：' + angular.toJson(error));
+                        console.log('激活优惠券失败：' + angular.toJson(error));
                     })
 
             };
@@ -175,31 +175,26 @@ angular.module('coupon.controller', ['coupon.service'])
             };
 
 
-            //判断优惠卷类型
-            /* begin */
-
+            //判断优惠券类型
             $scope.coupon_type_checked = function(money, discount, type){
 
                 if(money > 0 && type == 'ORDER'){
                     $scope.isMoney = true;
                     $scope.isDiscount = false;
-                    $scope.coupon_type = '代金劵';
+                    $scope.coupon_type = '代金券';
                 }
 
                 if(discount > 0 && type == 'ORDER'){
                     $scope.isMoney = false;
                     $scope.isDiscount = true;
-                    $scope.coupon_type = '打折卷';
+                    $scope.coupon_type = '打折券';
                 }
 
                 if(type == 'PRODUCT'){
                     $scope.isMoney = true;
                     $scope.isDiscount = false;
-                    $scope.coupon_type = '专用卷';
+                    $scope.coupon_type = '专用券';
                 }
             };
-            /* end */
-
-
 
     }]);
