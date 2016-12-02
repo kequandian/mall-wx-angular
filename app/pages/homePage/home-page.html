@@ -167,13 +167,16 @@
     <div class="r-p-content">
         <div class="bg-img" style="background-image: url('img/home/red-packet.png');" ng-if="r_packet">
             <i class="close-btn" ng-click="hide_bg()"></i>
-            <a href="{{followus}}">
+            <a href="{{followus}}" ng-click="hide_bg()">
                 <i class="get-btn"></i>
             </a>
         </div>
-        <div class="bg-img" style="background-image: url('img/home/chick-to-view.png');" ng-if="show_packet">
+        <div class="bg-img" style="background-image: url('img/home/get_coupon.png');" ng-if="show_packet">
             <i class="close-btn" ng-click="hide_bg()"></i>
             <i class="get-btn" ng-click="open_view()"></i>
+            <div class="get-c-text">
+                <span>恭喜您获得{{coupon_count}}张优惠券</span>
+            </div>
         </div>
     </div>
 

@@ -450,6 +450,7 @@ angular.module('homePage.controller', ['homePage.service'])
             };
 
             $scope.open_view = function(){
+                document.getElementById('red-packet').style.display = 'none';
                 $state.go('coupon');
             };
 
@@ -470,6 +471,7 @@ angular.module('homePage.controller', ['homePage.service'])
                                 document.getElementById('red-packet').style.display = 'block';
                                 $scope.r_packet = false;
                                 $scope.show_packet = true;
+                                $scope.coupon_count = json.data.coupon_count;
                             }
 
                             if(json.data.non_activation_coupons.length > 0){
