@@ -110,14 +110,17 @@ angular.module('coupon.controller', ['coupon.service'])
                     orderByResult = "ACTIVATION";//已激活
                     $scope.non_status = false;
                     $scope.a_status = true;
+                    $scope.coupon_titles[0].red_point = false;
                 }else if(result == 3){
                     orderByResult = "USED";//已过期
                     $scope.non_status = false;
                     $scope.a_status = true;
+                    $scope.coupon_titles[0].red_point = false;
                 }else if(result == 4){
                     orderByResult = "OVERDUE";//已使用
                     $scope.non_status = false;
                     $scope.a_status = true;
+                    $scope.coupon_titles[0].red_point = false;
                 }
                 var typeList = [];
                 angular.forEach(allList, function(v, k){
