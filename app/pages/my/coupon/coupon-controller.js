@@ -98,8 +98,8 @@ angular.module('coupon.controller', ['coupon.service'])
 
             //排序
             var orderByResult = '';
-            $scope.non_status = true;
-            $scope.a_status = false;
+            $scope.non_status = false;
+            $scope.a_status = true;
             $scope.couponsOrderBy = function(result){
                 //console.log(result);
                 if(result == 1){
