@@ -9,7 +9,7 @@
                         ng-repeat="title in coupon_titles"
                         ng-click="clickme(title.id);couponsOrderBy(title.id)">
                         <div class="ver_line" ng-if="title.hidden_line"></div>
-                        <span>{{title.name}}<i> ({{title.count}})</i></span>
+                        <span>{{title.name}}<i class="custom_text_primary_medium"> ({{title.count}})</i></span>
                         <i class="c-red-point" ng-if="title.red_point"></i>
                     </li>
                 </ul>
@@ -84,7 +84,7 @@
                                 <span style="margin-right: 5px;"><span style="font-size: 20px;">￥</span>{{cItem.money}}</span>
                             </div>
                             <div ng-if="isDiscount">
-                                <span>{{cItem.discount}}</span><span style="font-size: 16px; font-weight: bold">折</span>
+                                <span>{{cItem.discount/10}}</span><span style="font-size: 16px; font-weight: bold">折</span>
                             </div>
                         </div>
 

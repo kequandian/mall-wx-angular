@@ -38,10 +38,6 @@
     right:0;
 }
 
-#coupon .nav-warp i{
-    color:red;
-}
-
 #coupon .nav-warp ul{
     width:100%;
     height:42px;
@@ -103,7 +99,7 @@
     width: 78px;
     height: 45px;
     line-height: 47px;
-    font-size: 48px;
+    font-size: 40px;
     text-align: center;
     float: left;
     font-family: "Microsoft YaHei";
@@ -116,7 +112,7 @@
     text-align: left;
     position: absolute;
     left: 80px;
-    right: 73px;
+    right: 80px;
     padding: 17px 0;
     border-right: 2px dashed #efeff3;
 }
@@ -130,7 +126,7 @@
 #coupon .pro-item .p-i-left-non .l-t-right .r-top .r-top-coupon-type{
     width: 68px;
     float: left;
-    margin-right: 4px;
+    margin-right: 2px;
 }
 
 #coupon .pro-item .p-i-left-non .l-t-right .r-top .r-top-des{
@@ -151,14 +147,20 @@
 
 #coupon .pro-item .p-i-left-non .non-btn{
     position: absolute;
-    top: 25px;
-    right: 1.5%;
-    font-size: 12px;
+    width: 78px;
+    height: 45px;
+    line-height: 47px;
+    font-size: 48px;
+    text-align: center;
+    padding: 17px 0;
+    top: 0;
+    right: 0;
 }
 #coupon .pro-item .p-i-left-non .non-btn .weui_btn.weui_btn_mini{
     line-height: 1.9;
     font-size: 12px;
     padding: 3px 8px;
+    margin-top: 8px;
 }
 
 
@@ -177,7 +179,7 @@
     width: 78px;
     height: 45px;
     line-height: 47px;
-    font-size: 48px;
+    font-size: 40px;
     text-align: center;
     float: right;
     font-family: "Microsoft YaHei";
@@ -190,7 +192,7 @@
     text-align: left;
     position: absolute;
     left: 9px;
-    right: 73px;
+    right: 80px;
     padding: 17px 0;
     border-right: 2px dashed #efeff3;
 }
@@ -231,7 +233,7 @@
     background-color: #efeff3;
     /*background-color: #F36F40;*/
     position: absolute;
-    right: 69px;
+    right: 76px;
     top: -5px;
 }
 #coupon .pro-item .css-circular-bottom{
@@ -241,7 +243,7 @@
     background-color: #efeff3;
     /*background-color: #F36F40;*/
     position: absolute;
-    right: 69px;
+    right: 76px;
     bottom: -5px;
 }
 

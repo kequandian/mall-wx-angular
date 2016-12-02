@@ -16,7 +16,7 @@ angular.module('coupon.controller', ['coupon.service'])
             $rootScope.red_point_status = true;
 
             var non_activation = 0;
-            var non_activation_list = [];
+            var activation_list = [];
             var activation = 0;
             var used = 0;
             var overdue = 0;
@@ -29,24 +29,24 @@ angular.module('coupon.controller', ['coupon.service'])
                         if(json.status_code == 0){
                             $scope.coupons = json.data;
                             allList = json.data;
-                            console.log(angular.toJson($scope.coupons));
+                            //console.log(angular.toJson($scope.coupons));
                             angular.forEach(json.data, function(v, k){
                                 if(v.status == 'NON_ACTIVATION'){
                                     non_activation++;
-                                    non_activation_list.push(v);
                                 }else if(v.status == 'ACTIVATION'){
                                     activation++;
+                                    activation_list.push(v);
                                 }else if(v.status == 'USED'){
                                     used++;
                                 }else if(v.status == 'OVERDUE'){
                                     overdue++;
                                 }
                             });
-                            $scope.coupon_titles[0].count = non_activation;
-                            $scope.coupon_titles[1].count = activation;
+                            $scope.coupon_titles[0].count = activation;
+                            $scope.coupon_titles[1].count = non_activation;
                             $scope.coupon_titles[2].count = used;
                             $scope.coupon_titles[3].count = overdue;
-                            $scope.coupons = non_activation_list;
+                            $scope.coupons = activation_list;
                         }else{
                             console.log('获取优惠券失败：' + angular.toJson(json));
                         }
@@ -57,14 +57,14 @@ angular.module('coupon.controller', ['coupon.service'])
 
             //title li
             $scope.coupon_titles = [{
-                id:'1',
-                name:'未领取',
+                id:'2',
+                name:'可使用',
                 hidden_line: false,
                 count:0,
                 red_point:false
             },{
-                id:'2',
-                name:'可使用',
+                id:'1',
+                name:'未领取',
                 hidden_line: true,
                 count:0,
                 red_point:false
@@ -84,13 +84,13 @@ angular.module('coupon.controller', ['coupon.service'])
 
             //未激活优惠券红点
             if($rootScope.isNewCoupon){
-                $scope.coupon_titles[0].red_point = true;
+                $scope.coupon_titles[1].red_point = true;
             }
 
             /*
              * nav 样式
              * */
-            $scope.currentId = 1;
+            $scope.currentId = 2;
 
             $scope.clickme = function(id) {
                 $scope.currentId = id;
@@ -106,6 +106,7 @@ angular.module('coupon.controller', ['coupon.service'])
                     orderByResult = "NON_ACTIVATION";//未激活
                     $scope.non_status = true;
                     $scope.a_status = false;
+                    $scope.coupon_titles[0].red_point = false;
                 }else if(result == 2){
                     orderByResult = "ACTIVATION";//已激活
                     $scope.non_status = false;
