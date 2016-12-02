@@ -130,6 +130,7 @@ angular.module('coupon.controller', ['coupon.service'])
                     }
                 });
                 $scope.coupons = typeList;
+                $scope.coupons.substr()
             };
 
 
@@ -139,7 +140,7 @@ angular.module('coupon.controller', ['coupon.service'])
                 console.log("couponId: " + couponId);
                 CouponFty.activationService(couponId)
                     .then(function(json){
-                        console.log(angular.toJson(json));
+                        //console.log(angular.toJson(json));
                         if(json.status_code == 0 && json.message == 'activate.success'){
 
                             angular.forEach($scope.coupons,function(v, k){
