@@ -463,17 +463,43 @@ angular.module('homePage.controller', ['homePage.service'])
                     .then(function(json){
                         if(json.status_code == 0){
                             //console.log(angular.toJson(json));
-                            if(json.data.notify && json.data.is_user_followed){
-                                document.getElementById('red-packet').style.display = 'block';
-                                $scope.r_packet = true;
-                                $scope.show_packet = false;
-                            }
 
-                            if(json.data.notify && !json.data.is_user_followed){
+                            if(json.data.notify){
                                 document.getElementById('red-packet').style.display = 'block';
-                                $scope.r_packet = false;
-                                $scope.show_packet = true;
-                                $scope.coupon_count = json.data.coupon_count;
+                                if(json.data.is_user_followed && json.data.new_user){
+                                    //新用户已关注
+                                    $scope.is_new_user = true;
+                                    $scope.is_follow = false;
+
+                                    $scope.new_user_follew_yes = true;
+                                    $scope.new_user_follew_no = false;
+
+                                }else if(!json.data.is_user_followed && json.data.new_user){
+                                    //新用户未关注
+                                    $scope.is_new_user = true;
+                                    $scope.is_follow = false;
+
+                                    $scope.new_user_follew_yes = false;
+                                    $scope.new_user_follew_no = true;
+
+                                }else if(json.data.is_user_followed && !json.data.new_user){
+                                    //用户已关注
+                                    $scope.is_new_user = false;
+                                    $scope.is_follow = true;
+
+                                    $scope.user_follow_yes = true;
+                                    $scope.user_follow_no = false;
+
+                                }else if(!json.data.is_user_followed && !json.data.new_user){
+                                    //用户未关注
+                                    $scope.is_new_user = false;
+                                    $scope.is_follow = true;
+
+                                    $scope.user_follow_yes = false;
+                                    $scope.user_follow_no = true;
+
+                                }
+
                             }
 
                             if(json.data.non_activation_coupons.length > 0){
