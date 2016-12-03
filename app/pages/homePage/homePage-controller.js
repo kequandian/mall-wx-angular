@@ -490,6 +490,8 @@ angular.module('homePage.controller', ['homePage.service'])
                                     $scope.user_follow_yes = true;
                                     $scope.user_follow_no = false;
 
+                                    $scope.coupon_count = json.data.non_activation_coupons.length;
+
                                 }else if(!json.data.is_user_followed && !json.data.new_user){
                                     //用户未关注
                                     $scope.is_new_user = false;
@@ -497,6 +499,8 @@ angular.module('homePage.controller', ['homePage.service'])
 
                                     $scope.user_follow_yes = false;
                                     $scope.user_follow_no = true;
+
+                                    $scope.coupon_count = json.data.non_activation_coupons.length;
 
                                 }
 

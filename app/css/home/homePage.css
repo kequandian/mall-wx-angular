@@ -818,14 +818,14 @@ i{
 }
 
 #red-packet .r-p-content .bg-img .get-btn .r-p-btn-arrow{
-    width: 14px;
-    height: 14px;
+    width: 15px;
+    height: 15px;
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    background-image: url('../../img/home/coupon-btn-arrow.png');
+    background-image: url('img/home/coupon-btn-arrow.png');
     border-radius: 50%;
     position: absolute;
-    top: 12px;
+    top: 10px;
 }
 
 #red-packet .r-p-content .bg-img .get-c-text{
