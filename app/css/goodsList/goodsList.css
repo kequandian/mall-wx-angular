@@ -231,17 +231,25 @@
   margin-top: 3px;
 }
 
-#goodsList .area-product .pro-item-margin{
+#goodsList .product_item .pro-item-margin{
   /*margin: 5px 5px 5px 5px;*/
+  position: relative;
+}
+
+#goodsList .product_item .pro-item-margin .feature_position{
+  position:absolute;
+  right: 10px;
+  bottom: 5px;
+}
+
+#goodsList .product_item .pro-item-margin .feature_position img{
+  width: 75px;
+  height: auto;
 }
 
 #goodsList .home_grid_img {
   width: 100%;
   height: auto;
-}
-
-#goodsList .area-product .pro-item-desc{
-  height: 60px;
 }
 
 #goodsList .home_grid_text {
