@@ -462,7 +462,7 @@ angular.module('homePage.controller', ['homePage.service'])
                 HomePageFty.getCouponNotifyService()
                     .then(function(json){
                         if(json.status_code == 0){
-                            //console.log(angular.toJson(json));
+                            console.log(angular.toJson(json));
 
                             if(json.data.notify){
                                 document.getElementById('red-packet').style.display = 'block';
@@ -490,7 +490,7 @@ angular.module('homePage.controller', ['homePage.service'])
                                     $scope.user_follow_yes = true;
                                     $scope.user_follow_no = false;
 
-                                    $scope.coupon_count = json.data.non_activation_coupons.length;
+                                    $scope.coupon_count = json.data.coupon_count;
 
                                 }else if(!json.data.is_user_followed && !json.data.new_user){
                                     //用户未关注
