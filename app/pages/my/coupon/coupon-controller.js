@@ -13,8 +13,6 @@ angular.module('coupon.controller', ['coupon.service'])
                 })
             });
 
-            $rootScope.red_point_status = true;
-
             var non_activation = 0;
             var activation_list = [];
             var activation = 0;
@@ -106,22 +104,20 @@ angular.module('coupon.controller', ['coupon.service'])
                     orderByResult = "NON_ACTIVATION";//未激活
                     $scope.non_status = true;
                     $scope.a_status = false;
-                    $scope.coupon_titles[0].red_point = false;
+                    $scope.coupon_titles[1].red_point = false;
+                    $rootScope.red_point_status = true;
                 }else if(result == 2){
                     orderByResult = "ACTIVATION";//已激活
                     $scope.non_status = false;
                     $scope.a_status = true;
-                    $scope.coupon_titles[0].red_point = false;
                 }else if(result == 3){
                     orderByResult = "USED";//已过期
                     $scope.non_status = false;
                     $scope.a_status = true;
-                    $scope.coupon_titles[0].red_point = false;
                 }else if(result == 4){
                     orderByResult = "OVERDUE";//已使用
                     $scope.non_status = false;
                     $scope.a_status = true;
-                    $scope.coupon_titles[0].red_point = false;
                 }
                 var typeList = [];
                 angular.forEach(allList, function(v, k){
@@ -130,7 +126,6 @@ angular.module('coupon.controller', ['coupon.service'])
                     }
                 });
                 $scope.coupons = typeList;
-                $scope.coupons.substr()
             };
 
 
