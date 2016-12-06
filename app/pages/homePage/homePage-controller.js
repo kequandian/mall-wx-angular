@@ -500,13 +500,13 @@ angular.module('homePage.controller', ['homePage.service'])
                                     $scope.user_follow_yes = false;
                                     $scope.user_follow_no = true;
 
-                                    $scope.coupon_count = json.data.non_activation_coupons.length;
+                                    $scope.coupon_count = json.data.coupon_count;
 
                                 }
 
                             }
 
-                            if(json.data.non_activation_coupons.length > 0){
+                            if(json.data.has_unread_coupon){
                                 $rootScope.redPoint = true;
                                 $rootScope.isNewCoupon = true;
                             }else{
