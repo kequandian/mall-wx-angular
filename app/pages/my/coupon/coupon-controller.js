@@ -13,6 +13,9 @@ angular.module('coupon.controller', ['coupon.service'])
                 })
             });
 
+            //隐藏红点
+            $rootScope.red_point_status = true;
+
             var non_activation = 0;
             var activation_list = [];
             var activation = 0;
@@ -81,9 +84,9 @@ angular.module('coupon.controller', ['coupon.service'])
             }];
 
             //未激活优惠券红点
-            if($rootScope.isNewCoupon){
-                $scope.coupon_titles[1].red_point = true;
-            }
+            //if($rootScope.isNewCoupon){
+            //    $scope.coupon_titles[1].red_point = true;
+            //}
 
             /*
              * nav 样式
