@@ -1,7 +1,7 @@
 angular.module('home.controller', ['home.service'])
     .controller('HomeController', ['$scope', '$state', '$rootScope', '$timeout', 'SimpleCartFty','GlobalVariable',
-        'ConfigFty','PointRate','MinWithdraw','goodListParams',
-        function ($scope, $state, $rootScope, $timeout, SimpleCartFty, GlobalVariable,ConfigFty,PointRate, MinWithdraw,goodListParams) {
+        'ConfigFty','PointRate','MinWithdraw','goodListParams','AutoSelectCoupon',
+        function ($scope, $state, $rootScope, $timeout, SimpleCartFty, GlobalVariable,ConfigFty,PointRate, MinWithdraw,goodListParams,AutoSelectCoupon) {
 
             //获取全局设置
             getGlobalConfigs();
@@ -77,8 +77,9 @@ angular.module('home.controller', ['home.service'])
 
                             PointRate.rate = data.point_exchange_rate.value;
                             MinWithdraw.value = data.drawing_condition.value;
+                            AutoSelectCoupon.is_auto = data.auto_select_coupon.value;
 
-                            //console.log("rate?"+PointRate.rate);
+                            //console.log("is_auto = "+ angular.toJson(data.auto_select_coupon));
 
                             //TODO, other configs
                         }

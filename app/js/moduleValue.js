@@ -61,5 +61,10 @@ angular.module('moduleValueJs',[])
         content:null
     })
 
+    //自动选取优惠券
+    .value('AutoSelectCoupon',{
+        is_auto:false
+    })
+
 
 ;

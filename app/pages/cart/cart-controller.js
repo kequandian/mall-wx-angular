@@ -332,9 +332,9 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
         }])
 
     .controller('SettlementController', ['$scope', '$state', '$stateParams', '$location', '$rootScope', 'AddressManagerFty', 'CartFty','BalanceSession',
-        'PointRate', '$ocLazyLoad','areasStatus','goodListParams',
+        'PointRate', '$ocLazyLoad','areasStatus','goodListParams','AutoSelectCoupon',
         function ($scope, $state, $stateParams, $location, $rootScope, AddressManagerFty, CartFty,BalanceSession, PointRate,
-                  $ocLazyLoad,areasStatus,goodListParams) {
+                  $ocLazyLoad,areasStatus,goodListParams,AutoSelectCoupon) {
 
             //title
             document.title = "结算";
@@ -498,13 +498,19 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                             console.log("获取下单前计算优惠信息：" + angular.toJson(json));
                             $scope.count_coupon = json.data;
                             if($scope.count_coupon.length > 0){
-                                $scope.c_name = json.data[0].coupon_name;
-                                $scope.count_coupon[0].$checked = true;
-                                if($scope.product_frieght >= 0){
-                                    $scope.total_price = $scope.count_coupon[0].final_price + $scope.product_frieght;
+
+                                if(AutoSelectCoupon.is_auto){
+                                    $scope.c_name = json.data[0].coupon_name;
+                                    $scope.count_coupon[0].$checked = true;
+                                    if($scope.product_frieght >= 0){
+                                        $scope.total_price = $scope.count_coupon[0].final_price + $scope.product_frieght;
+                                    }else{
+                                        $scope.total_price = $scope.count_coupon[0].final_price;
+                                    }
                                 }else{
-                                    $scope.total_price = $scope.count_coupon[0].final_price;
+                                    $scope.c_name = '请选择优惠券';
                                 }
+
                             }
                         }else{
                             $.toast('获取优惠卷信息失败', 'cancel');
@@ -554,7 +560,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 }else{
                     $scope.c_checked = false;
                     $scope.total_price = $scope.save_total_price;
-                    $scope.c_name = '不使用优惠卷';
+                    $scope.c_name = '请选择优惠券';
                 }
 
             };

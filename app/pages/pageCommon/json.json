@@ -1,29 +1,41 @@
 {
   "status_code": 0,
-  "data": {
-    "is_user_followed": true,
-    "notify": false,
-    "new_user": false,
-    "coupon_count": 0,
-    "coupon_value": 0,
-    "non_activation_coupons": [
-      {
-        "created_date": "2016-12-01 10:52:05",
-        "status": "NON_ACTIVATION",
-        "attribute": "{}",
-        "code": "2c3f17c8-8e3d-411f-a8f0-b5188fa499a5",
-        "type": "ORDER",
-        "cond": "\r\n<rule-set name=\"getFinalPrice\" >\r\n    <mvel-rule id=\"step1\" multipleTimes=\"false\" exclusive=\"true\" valid=\"true\">\r\n        <condition><![CDATA[totalPrice>=100]]></condition>\r\n        <action><![CDATA[finalPrice=totalPrice-5]]></action>\r\n    </mvel-rule>\r\n</rule-set>\r\n",
-        "discount": 0,
-        "id": 81,
-        "display_name": "满100元减5元代金券",
-        "description": "满100元减5元代金券",
-        "name": "满100元减5元代金券",
-        "money": 5,
-        "valid_date": "2016-12-11 10:52:05",
-        "user_id": 2,
-        "auto_give": 0
-      }
-    ]
-  }
+  "data": [
+    {
+      "coupon_money": 5,
+      "final_price": 277.3,
+      "coupon_id": 20,
+      "coupon_discount": 0,
+      "coupon_type": "ORDER",
+      "valid_date": "2016-12-08 10:46:13",
+      "coupon_name": "满100元减5元代金券"
+    },
+    {
+      "coupon_money": 5,
+      "final_price": 277.3,
+      "coupon_id": 29,
+      "coupon_discount": 0,
+      "coupon_type": "ORDER",
+      "valid_date": "2016-12-09 17:35:46",
+      "coupon_name": "满100元减5元代金券"
+    },
+    {
+      "coupon_money": 0,
+      "final_price": 248.42,
+      "coupon_id": 92,
+      "coupon_discount": 88,
+      "coupon_type": "ORDER",
+      "valid_date": "2016-12-11 14:28:36",
+      "coupon_name": "满100元打88折折扣券"
+    },
+    {
+      "coupon_money": 0,
+      "final_price": 248.42,
+      "coupon_id": 95,
+      "coupon_discount": 88,
+      "coupon_type": "ORDER",
+      "valid_date": "2016-12-11 17:05:08",
+      "coupon_name": "满100元打88折折扣券"
+    }
+  ]
 }
