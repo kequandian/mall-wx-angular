@@ -75,11 +75,11 @@ angular.module('home.controller', ['home.service'])
                         if (json.status_code == 0) {
                             var data = json.data;
 
-                            PointRate.rate = data.point_exchange_rate.value;
-                            MinWithdraw.value = data.drawing_condition.value;
-                            AutoSelectCoupon.is_auto = data.auto_select_coupon.value;
+                            PointRate.rate = data.point_exchange_rate;
+                            MinWithdraw.value = data.drawing_condition;
+                            AutoSelectCoupon.is_auto = data.auto_select_coupon;
 
-                            //console.log("is_auto = "+ angular.toJson(data.auto_select_coupon));
+                            //console.log("point_exchange_rate = "+ angular.toJson(data.point_exchange_rate));
 
                             //TODO, other configs
                         }
