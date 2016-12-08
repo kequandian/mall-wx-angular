@@ -1,5 +1,21 @@
 [
   {
+    "created_date": "2016-12-07 18:51:42",
+    "weight": 0,
+    "product_id": 46,
+    "product_name": "拉芳沐浴露正品男士女士香水沐浴露滋润保湿美白补水",
+    "product_specification_name": null,
+    "stock_balance": 993,
+    "bulk": 0,
+    "fare_id": 1,
+    "id": 431,
+    "cover": "http://images.10mup.com/20160722152946756-01Ehubti.jpg",
+    "price": 39.9,
+    "user_id": 2,
+    "quantity": 5,
+    "product_specification_id": null
+  },
+  {
     "created_date": "2016-12-08 10:02:49",
     "weight": 450,
     "product_id": 54,
@@ -13,8 +29,7 @@
     "price": 39.9,
     "user_id": 2,
     "quantity": 1,
-    "product_specification_id": null,
-    "$checked": true
+    "product_specification_id": null
   },
   {
     "created_date": "2016-12-08 10:02:58",
@@ -30,8 +45,7 @@
     "price": 22.9,
     "user_id": 2,
     "quantity": 1,
-    "product_specification_id": null,
-    "$checked": true
+    "product_specification_id": null
   },
   {
     "created_date": "2016-12-08 14:35:04",
@@ -47,8 +61,7 @@
     "price": 49.9,
     "user_id": 2,
     "quantity": 1,
-    "product_specification_id": null,
-    "$checked": true
+    "product_specification_id": null
   },
   {
     "created_date": "2016-12-08 14:35:10",
@@ -64,7 +77,6 @@
     "price": 49.8,
     "user_id": 2,
     "quantity": 1,
-    "product_specification_id": null,
-    "$checked": true
+    "product_specification_id": null
   }
 ]

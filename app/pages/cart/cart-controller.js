@@ -71,12 +71,16 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                         if (value.product_id == id) {
                             if (value.quantity > 1) {
                                 value.quantity--;
+                            }else{
+                                value.quantity = 1;
                             }
                         }
                     } else if (product_spec_id > 0) {
                         if (value.product_id == id && value.product_specification_id == product_spec_id) {
                             if (value.quantity > 1) {
                                 value.quantity--;
+                            }else{
+                                value.quantity = 1;
                             }
                         }
                     }
@@ -89,17 +93,17 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     if (product_spec_id == null) {
                         if (value.product_id == id) {
                             value.quantity++;
-                            //if (value.quantity > value.stock_balance) {
-                            //    value.quantity = value.stock_balance;
-                            //}
+                            if (value.quantity > value.stock_balance) {
+                                value.quantity = value.stock_balance;
+                            }
                         }
                     } else if (product_spec_id > 0) {
                         //console.log(value.quantity)
                         if (value.product_id == id && value.product_specification_id == product_spec_id) {
                             value.quantity++;
-                            //if (value.quantity > value.stock_balance) {
-                            //    value.quantity = value.stock_balance;
-                            //}
+                            if (value.quantity > value.stock_balance) {
+                                value.quantity = value.stock_balance;
+                            }
                         }
                         //console.log(value.quantity)
                     }
@@ -110,6 +114,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
             //检查数量
             $scope.countChange = function(id, product_spec_id, quantity){
+
                 if(!checkNumber(quantity) && quantity.length > 0){
                     $.toast('请输入数字', 'cancel');
                     angular.forEach($scope.carts, function(v, k){
@@ -140,21 +145,23 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                         }
                     });
                 }
-                //angular.forEach($scope.carts, function(v, k){
-                //    if (product_spec_id == null) {
-                //        if (v.product_id == id) {
-                //            if(v.quantity === "" || v.quantity ===undefined || v.quantity == 0 || v.quantity < 0){
-                //                v.quantity = 1;
-                //            }
-                //        }
-                //    } else if (product_spec_id > 0) {
-                //        if (v.product_id == id && v.product_specification_id == product_spec_id) {
-                //            if(v.quantity === "" || v.quantity ===undefined || v.quantity == 0 || v.quantity < 0){
-                //                v.quantity = 1;
-                //            }
-                //        }
-                //    }
-                //})
+                angular.forEach($scope.carts, function(v, k){
+                    if (product_spec_id == null) {
+                        if (v.product_id == id) {
+                            if (v.stock_balance < quantity) {
+                                v.quantity = v.stock_balance;
+                            }
+                        }
+                    } else if (product_spec_id > 0) {
+                        //console.log(value.quantity)
+                        if (v.product_id == id && v.product_specification_id == product_spec_id) {
+                            if (v.stock_balance < quantity) {
+                                v.quantity = v.stock_balance;
+                            }
+                        }
+                        //console.log(value.quantity)
+                    }
+                })
             };
 
             //验证数字
@@ -287,11 +294,8 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     $scope.cart_item_price = true;
                     $scope.cart_item_quantity = false;
                     $scope.edit_action_img = true;
+                    $scope.footer_hide = true;
                 } else if ($scope.edit_action_text == "完成") {
-                    $scope.edit_action_text = "编辑";
-                    $scope.cart_item_price = false;
-                    $scope.cart_item_quantity = true;
-                    $scope.edit_action_img = false;
                     editProductCount();
                 }
             };
@@ -300,7 +304,11 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             function editProductCount() {
 
                 var products = [];
+                var countIsNull = 0;
                 angular.forEach($scope.carts, function (v, k) {
+                    if(!v.quantity > 0){
+                        countIsNull++;
+                    }
                     var productItem = {};
                     productItem.product_id = v.product_id;
                     productItem.quantity = parseInt(v.quantity);
@@ -308,7 +316,18 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     products.push(productItem);
                 });
 
-                //console.log(angular.toJson(products));
+                if(countIsNull > 0){
+                    $.toast('请输入商品数量','cancel');
+                    return;
+                }else{
+                    $scope.edit_action_text = "编辑";
+                    $scope.cart_item_price = false;
+                    $scope.cart_item_quantity = true;
+                    $scope.edit_action_img = false;
+                    $scope.footer_hide = false;
+                }
+
+                //console.log(angular.toJson($scope.carts));
 
                 CartFty.editCountService(products)
                     .then(function (json) {

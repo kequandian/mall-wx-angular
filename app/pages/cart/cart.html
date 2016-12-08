@@ -87,7 +87,7 @@
         </div>
     </div>
 
-    <footer id="foot" ng-show="empty_cart_hide">
+    <footer id="foot" ng-show="empty_cart_hide" ng-hide="footer_hide">
         <div class="footLeft">
             <input class="cart-checkbox" type="checkbox" value="全不选" id="selectAll" ng-model="$allChecked" ng-change="checkAll()">
             <label id="checkAll" class="ion-ios-checkmark active cart-item-label" for="selectAll"></label>
