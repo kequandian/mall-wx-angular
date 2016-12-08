@@ -304,6 +304,8 @@ angular.module('details.controller', ['details.service'])
                 var product_specification_id = null;
                 var int_quantity = parseInt(quantity);
 
+                console.log(int_quantity);
+
                 if ($scope.product_property_value != null) {
                     product_specification_id = $scope.product_property_value.id;
                 }
@@ -387,7 +389,6 @@ angular.module('details.controller', ['details.service'])
                             });
                         });
 
-
                     }, function (error) {
                         $.toast("添加失败", "cancel");
                         console.log("添加失败：" + angular.toJson(error));
@@ -397,7 +398,6 @@ angular.module('details.controller', ['details.service'])
             //立即购买
             $scope.checkedCarts = [];
             $scope.buy_immediately = function (item, quantity, product_property, product_specification_id) {
-                //console.log("product.item?" + angular.toJson(item));
 
                 if(!quantity > 0){
                     $.toast('请输入商品数量','cancel');
@@ -431,7 +431,7 @@ angular.module('details.controller', ['details.service'])
 
                 //console.log("item::" + angular.toJson(item));
                 p_item.product_id = item.id;
-                p_item.quantity = $scope.q_count;
+                p_item.quantity = quantity;
                 p_item.product_name = item.name;
                 p_item.fare_id = item.fare_id;
                 p_item.cover = item.cover;

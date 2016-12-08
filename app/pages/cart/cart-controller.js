@@ -266,8 +266,27 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 //$scope.checkedCarts.push(pay);
                 //$scope.checkedCarts.push(freight);
 
-                console.log("$scope.checkedCarts: " + angular.toJson($scope.checkedCarts))
+                var checkedItems = $scope.checkedCarts;
 
+                var overflowCount = 0;
+                var overflow_products = [];
+                angular.forEach(checkedItems, function(v, k){
+                    if(v.quantity > v.stock_balance){
+                        overflowCount++;
+                        overflow_products.push(v);
+                    }
+                });
+
+                if(overflowCount > 0){
+                    //var textString = '';
+                    //angular.forEach(overflow_products, function(v, k){
+                    //    textString += (v.product_name+ ' 库存不足（库存：' + v.stock_balance + '）' + '<br/>')
+                    //});
+                    $.alert(overflow_products[0].product_name + ' 库存不足（库存：' + overflow_products[0].stock_balance + '）' );
+                    return;
+                }
+
+                //console.log("$scope.checkedCarts: " + angular.toJson($scope.checkedCarts))
 
                 $rootScope.settle_product_code = $scope.checkedCarts;
                 $rootScope.settle_product_totalToPay = pay;
@@ -634,7 +653,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 $scope.productFrieghts.province = $scope.order.contact.province;
                 $scope.productFrieghts.city = $scope.order.contact.city;
 
-                console.log('$scope.order: '+ angular.toJson($scope.order.order_items));
+                //console.log('$scope.order: '+ angular.toJson($scope.order.order_items));
 
                 //FEATURE: point
                 // - check balance
