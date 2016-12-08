@@ -85,7 +85,7 @@ angular.module('details.controller', ['details.service'])
                             if($scope.details_stock_balance > 0){
                                 $scope.b_status_btn = true;
                             }else{
-                                $scope.b_status_btn = true;
+                                $scope.b_status_btn = false;
                             }
 
                             if ($scope.details.covers.length > 0) {
@@ -235,13 +235,17 @@ angular.module('details.controller', ['details.service'])
                     $scope.q_count = 1;
                 }
             };
-            $scope.upQ = function () {
+            $scope.upQ = function (details) {
                 $scope.q_count++;
-                //if ($scope.q_count < 99) {
-                //    $scope.q_count++;
-                //} else {
-                //    $scope.q_count = 99;
-                //}
+                if($scope.product_property_value!=null){
+                    if($scope.q_count > $scope.product_property_value.stock_balance){
+                        $scope.q_count = $scope.product_property_value.stock_balance;
+                    }
+                }else{
+                    if($scope.q_count > details.stock_balance){
+                        $scope.q_count = details.stock_balance;
+                    }
+                }
             };
 
             //检查数量
@@ -305,11 +309,11 @@ angular.module('details.controller', ['details.service'])
                 }
 
                 if ($scope.details.specifications.length > 0 && product_specification_id == null) {
-                    $.toast('请选择商品规格');
+                    $.toast('请选择商品规格','cancel');
                     return;
                 }
                 if ($scope.details.specifications.length > 0 && $scope.product_property_value.stock_balance == 0) {
-                    $.toast('此商品暂无库存');
+                    $.toast('此商品暂无库存','cancel');
                     return;
                 }
 

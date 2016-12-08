@@ -259,7 +259,8 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 //$scope.checkedCarts.push(pay);
                 //$scope.checkedCarts.push(freight);
 
-                //console.log("pay: " + pay)
+                console.log("$scope.checkedCarts: " + angular.toJson($scope.checkedCarts))
+
 
                 $rootScope.settle_product_code = $scope.checkedCarts;
                 $rootScope.settle_product_totalToPay = pay;
@@ -614,7 +615,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 $scope.productFrieghts.province = $scope.order.contact.province;
                 $scope.productFrieghts.city = $scope.order.contact.city;
 
-                console.log('$scope.order: '+ angular.toJson($scope.order));
+                console.log('$scope.order: '+ angular.toJson($scope.order.order_items));
 
                 //FEATURE: point
                 // - check balance

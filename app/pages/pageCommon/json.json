@@ -1,41 +1,70 @@
-{
-  "status_code": 0,
-  "data": [
-    {
-      "coupon_money": 5,
-      "final_price": 277.3,
-      "coupon_id": 20,
-      "coupon_discount": 0,
-      "coupon_type": "ORDER",
-      "valid_date": "2016-12-08 10:46:13",
-      "coupon_name": "满100元减5元代金券"
-    },
-    {
-      "coupon_money": 5,
-      "final_price": 277.3,
-      "coupon_id": 29,
-      "coupon_discount": 0,
-      "coupon_type": "ORDER",
-      "valid_date": "2016-12-09 17:35:46",
-      "coupon_name": "满100元减5元代金券"
-    },
-    {
-      "coupon_money": 0,
-      "final_price": 248.42,
-      "coupon_id": 92,
-      "coupon_discount": 88,
-      "coupon_type": "ORDER",
-      "valid_date": "2016-12-11 14:28:36",
-      "coupon_name": "满100元打88折折扣券"
-    },
-    {
-      "coupon_money": 0,
-      "final_price": 248.42,
-      "coupon_id": 95,
-      "coupon_discount": 88,
-      "coupon_type": "ORDER",
-      "valid_date": "2016-12-11 17:05:08",
-      "coupon_name": "满100元打88折折扣券"
-    }
-  ]
-}
+[
+  {
+    "created_date": "2016-12-08 10:02:49",
+    "weight": 450,
+    "product_id": 54,
+    "product_name": "拉芳新品邂逅香氛沐浴露550ml",
+    "product_specification_name": null,
+    "stock_balance": 993,
+    "bulk": 0,
+    "fare_id": 1,
+    "id": 432,
+    "cover": "http://o9ixtumvv.bkt.clouddn.com/20161018165116814-MoyMVgI8.jpg",
+    "price": 39.9,
+    "user_id": 2,
+    "quantity": 1,
+    "product_specification_id": null,
+    "$checked": true
+  },
+  {
+    "created_date": "2016-12-08 10:02:58",
+    "weight": 0,
+    "product_id": 45,
+    "product_name": "拉芳LAFcoco香型发膜免蒸倒膜焗油膏护发素修护毛躁护理",
+    "product_specification_name": null,
+    "stock_balance": 979,
+    "bulk": 0,
+    "fare_id": 1,
+    "id": 433,
+    "cover": "http://o9ixtumvv.bkt.clouddn.com/20161027151753030-qcBlOdyW.jpg",
+    "price": 22.9,
+    "user_id": 2,
+    "quantity": 1,
+    "product_specification_id": null,
+    "$checked": true
+  },
+  {
+    "created_date": "2016-12-08 14:35:04",
+    "weight": 0,
+    "product_id": 48,
+    "product_name": "拉芳无硅油洗发水正品男士深层清洁控油止痒洗发露女士柔软顺滑",
+    "product_specification_name": null,
+    "stock_balance": 1000,
+    "bulk": 0,
+    "fare_id": 1,
+    "id": 437,
+    "cover": "http://o9ixtumvv.bkt.clouddn.com/20161027150123426-LbG1e3D6.jpg",
+    "price": 49.9,
+    "user_id": 2,
+    "quantity": 1,
+    "product_specification_id": null,
+    "$checked": true
+  },
+  {
+    "created_date": "2016-12-08 14:35:10",
+    "weight": 0,
+    "product_id": 58,
+    "product_name": "天然植物精华宝宝洗衣液2.5L【全国包邮（甘肃、宁夏、新疆、西藏、青海、内蒙古除外）】",
+    "product_specification_name": null,
+    "stock_balance": 999,
+    "bulk": 0,
+    "fare_id": 1,
+    "id": 438,
+    "cover": "http://o9ixtumvv.bkt.clouddn.com/20161018145522251-Ei9yHGQs.jpg",
+    "price": 49.8,
+    "user_id": 2,
+    "quantity": 1,
+    "product_specification_id": null,
+    "$checked": true
+  }
+]
