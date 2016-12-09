@@ -26,7 +26,6 @@
             function refundList() {
                 RefundFty.refundService()
                     .then(function (json) {
-                        //alert(angular.toJson(json));
                         if (json.status_code == 0) {
                             $scope.refund_orders = json.data;
                             //console.log(json.data)
@@ -35,7 +34,7 @@
                                     $scope.refunds.push(v);
                                 }
                             });
-
+                            //console.log(angular.toJson($scope.refunds));
                             if ($scope.refunds.length > 0) {
                                 $scope.refund_all_null = true;
                                 $scope.refund_all_show = false;
@@ -50,6 +49,23 @@
                     }, function (error) {
                         $.toast("获取订单信息失败", "cancel")
                     })
+            }
+
+            //订单交易类型
+            $scope.pay_type = function(item){
+
+                var pay_type = item.payment_type;
+                var total_price = item.total_price;
+                var point = item.point_exchange_rate;
+
+                if(pay_type == 'WECHAT'){
+                    $scope.sales_return_type_text = '退款金额: ￥' + total_price.toFixed(2);
+                    $scope.pay_type_text = '交易金额: ￥' + total_price.toFixed(2);
+                }else if(pay_type == 'POINT'){
+                    $scope.sales_return_type_text = '退款积分: ' + ((total_price*point).toFixed(0));
+                    $scope.pay_type_text = '交易积分: ' + ((total_price*point).toFixed(0));
+                }
+
             }
 
         }]);

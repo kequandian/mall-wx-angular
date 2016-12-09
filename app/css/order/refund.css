@@ -60,6 +60,7 @@
 }
 
 #refund .o-r-i-center{
+    width: calc(100% - 70px);
     height: 71px;
     text-align: left;
     line-height: 23px;
