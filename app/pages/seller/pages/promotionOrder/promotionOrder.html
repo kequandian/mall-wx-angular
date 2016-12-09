@@ -51,7 +51,7 @@
                         订单状态：{{item.state|OrderState}}
                     </div>
                     <div class="p-order-type">
-                        {{item.payment_type == 'POINT' ?  '订单积分：' + ((item.settled_price|NotNull)*item.point_exchange_rate) + '积分' : '订单金额：' + (item.settled_price|NotNull|currency:"￥")}}
+                        {{item.payment_type == 'POINT' ?  '订单积分：' + (((item.settled_price|NotNull)*item.point_exchange_rate)| number:0) + '积分' : '订单金额：' + (item.settled_price|NotNull|currency:"￥")}}
                     </div>
                     <div class="p-order-price">
                         所攒积分：
