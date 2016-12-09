@@ -34,10 +34,10 @@
                 </div>
             </div>-->
 
-            <!--退货金额-->
+            <!--退货金额  returnType.key=='REFUND' ? '退款金额' : '退货金额'-->
             <div class="weui_cell bg mon">
                 <div class="weui_cell_bd weui_cell_primary">
-                    <p>{{returnType.key=='REFUND' ? '退款金额' : '退货金额'}} : <span class="returnMon">{{total_price | currency:'￥'}}</span></p>
+                    <p>{{return_type_text}} : <span class="returnMon">{{total_price}}</span></p>
                 </div>
             </div>
             <!--<p class="explain">（最多29.90元，含发货邮费0.00元）</p>-->

@@ -142,7 +142,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             };
 
             //进入退款退货
-            $scope.goToSalesReturn = function (o_number, total_price, s_r_status) {
+            $scope.goToSalesReturn = function (item, s_r_status) {
 
                 $ocLazyLoad.load('Jquery').then(function () {
                     $ocLazyLoad.load('JqueryWeUI').then(function () {
@@ -151,9 +151,11 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                         if (s_r_status == 3) {
                             $.confirm('', '确认要退款吗？', function () {
                                 $state.go('salesReturn', {
-                                    orderNumber: o_number,
-                                    totalPrice: total_price,
-                                    SalesReturnStatus: s_r_status
+                                    orderNumber: item.order_number,
+                                    totalPrice: item.total_price,
+                                    SalesReturnStatus: s_r_status,
+                                    paymentType:item.payment_type,
+                                    point:item.point_exchange_rate
                                 });
                             }, function () {
                                 //取消操作
@@ -161,9 +163,11 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                         } else if (s_r_status == 1) {
                             $.confirm('', '确认要退货？', function () {
                                 $state.go('salesReturn', {
-                                    orderNumber: o_number,
-                                    totalPrice: total_price,
-                                    SalesReturnStatus: s_r_status
+                                    orderNumber: item.order_number,
+                                    totalPrice: item.total_price,
+                                    SalesReturnStatus: s_r_status,
+                                    paymentType:item.payment_type,
+                                    point:item.point_exchange_rate
                                 });
                             }, function () {
                                 //取消操作
@@ -183,7 +187,6 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
 
             //立即付款
             $scope.weixin_pay = function (order) {
-
                 if(order.payment_type == "POINT" && BalanceSession.balance >= order.totalPrice){
                     window.location.href = '/app/payment/ppay/' + order.order_number;//积分
                 }else if(order.payment_type == "WECHAT"){
@@ -411,7 +414,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             };
 
             //进入退款退货
-            $scope.goToSalesReturn = function (o_number, total_price, s_r_status) {
+            $scope.goToSalesReturn = function (item, s_r_status) {
                 if (s_r_status == 3) {
 
                     $ocLazyLoad.load('Jquery').then(function () {
@@ -420,9 +423,11 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                             /*function start*/
                             $.confirm('', '确认要退款吗？', function () {
                                 $state.go('salesReturn', {
-                                    orderNumber: o_number,
-                                    totalPrice: total_price,
-                                    SalesReturnStatus: s_r_status
+                                    orderNumber: item.order_number,
+                                    totalPrice: item.total_price,
+                                    SalesReturnStatus: s_r_status,
+                                    paymentType:item.payment_type,
+                                    point:item.point_exchange_rate
                                 });
                             }, function () {
                                 //取消操作
@@ -523,7 +528,8 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
 
 
             //进入退款退货
-            $scope.goToSalesReturn = function (o_number, total_price, s_r_status) {
+            $scope.goToSalesReturn = function (item, s_r_status) {
+
                 if (s_r_status == 1) {
 
                     $ocLazyLoad.load('Jquery').then(function () {
@@ -532,9 +538,11 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                             /*function start*/
                             $.confirm('', '确认要退货吗？', function () {
                                 $state.go('salesReturn', {
-                                    orderNumber: o_number,
-                                    totalPrice: total_price,
-                                    SalesReturnStatus: s_r_status
+                                    orderNumber: item.order_number,
+                                    totalPrice: item.total_price,
+                                    SalesReturnStatus: s_r_status,
+                                    paymentType:item.payment_type,
+                                    point:item.point_exchange_rate
                                 });
                             }, function () {
                                 //取消操作

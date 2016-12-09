@@ -18,9 +18,11 @@ angular.module("salesReturn.route", [])
                 }]
             },
             params:{
-                'orderNumber':null,
-                'totalPrice':null,
-                'SalesReturnStatus':0
+                orderNumber:null,
+                totalPrice:null,
+                SalesReturnStatus:0,
+                paymentType:null,
+                point:0
             }
         })
     }]);

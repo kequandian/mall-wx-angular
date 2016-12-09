@@ -479,7 +479,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     })
                 });
 
-                console.log('$scope.productFrieghts：' + angular.toJson($scope.productFrieghts));
+                //console.log('$scope.productFrieghts：' + angular.toJson($scope.productFrieghts));
 
                 CartFty.frieghtService($scope.productFrieghts)
                     .then(function(json){
@@ -505,7 +505,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                             //}
 
                             //$scope.pay = $stateParams.totalToPay;
-                            console.log("$stateParams.totalToPay:" + $scope.pay);
+                            //console.log("$stateParams.totalToPay:" + $scope.pay);
                             $scope.freight = $stateParams.totalFreight;
                             if($scope.product_frieght > 0){
                                 $scope.total_price = $scope.pay + $scope.product_frieght;
@@ -653,7 +653,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 $scope.productFrieghts.province = $scope.order.contact.province;
                 $scope.productFrieghts.city = $scope.order.contact.city;
 
-                //console.log('$scope.order: '+ angular.toJson($scope.order.order_items));
+                //console.log('$scope.order: '+ angular.toJson($scope.order));
 
                 //FEATURE: point
                 // - check balance

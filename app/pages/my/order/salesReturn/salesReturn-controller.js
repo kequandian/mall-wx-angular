@@ -72,14 +72,41 @@ angular.module("salesReturn.controller", ["salesReturn.service"])
 
 
             //退货金额
-            $scope.total_price = $stateParams.totalPrice;
-            var s_r_status = $stateParams.SalesReturnStatus;
-            if (s_r_status == 1) {
-                $scope.returnType.key = 'RETURN';
-            } else if (s_r_status == 2) {
-                $scope.returnType.key = 'EXCHANGE';
-            } else if (s_r_status == 3) {
-                $scope.returnType.key = 'REFUND';
+            initSalesReturnInfo();
+            function initSalesReturnInfo(){
+                var totalPrice = $stateParams.totalPrice;
+                var point = $stateParams.point;
+                var s_r_status = $stateParams.SalesReturnStatus;
+                var payType = $stateParams.paymentType;
+
+                if(payType == 'WECHAT'){
+                    $scope.total_price = '￥' + totalPrice.toFixed(2);
+                }else if(payType == 'POINT'){
+                    $scope.total_price = (totalPrice * point).toFixed(0);
+                }else{
+                    console.log('订单paymentType不正确: ' + $stateParams.paymentType);
+                }
+
+                // WECHAT
+                if (s_r_status == 1 && payType == 'WECHAT') {
+                    $scope.returnType.key = 'RETURN';
+                    $scope.return_type_text = '退货金额';
+                } else if (s_r_status == 2 && payType == 'WECHAT') {
+                    $scope.returnType.key = 'EXCHANGE';
+                } else if (s_r_status == 3 && payType == 'WECHAT') {
+                    $scope.returnType.key = 'REFUND';
+                    $scope.return_type_text = '退款金额';
+                }
+                //POINT
+                if (s_r_status == 1 && payType == 'POINT') {
+                    $scope.returnType.key = 'RETURN';
+                    $scope.return_type_text = '退货积分';
+                } else if (s_r_status == 2 && payType == 'POINT') {
+                    $scope.returnType.key = 'EXCHANGE';
+                } else if (s_r_status == 3 && payType == 'POINT') {
+                    $scope.returnType.key = 'REFUND';
+                    $scope.return_type_text = '退款积分';
+                }
             }
 
 
