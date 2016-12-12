@@ -255,6 +255,10 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             //去结算
             $scope.checkedCarts = [];
             $scope.goSettlement = function (pay, freight) {
+
+                var overflowCount = 0;
+                var overflow_products = [];
+
                 if (typeof $scope.carts === "undefined") {
                     return;
                 }
@@ -268,8 +272,6 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
                 var checkedItems = $scope.checkedCarts;
 
-                var overflowCount = 0;
-                var overflow_products = [];
                 angular.forEach(checkedItems, function(v, k){
                     if(v.quantity > v.stock_balance){
                         overflowCount++;
@@ -283,6 +285,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     //    textString += (v.product_name+ ' 库存不足（库存：' + v.stock_balance + '）' + '<br/>')
                     //});
                     $.alert(overflow_products[0].product_name + ' 库存不足（库存：' + overflow_products[0].stock_balance + '）' );
+                    $scope.checkedCarts = [];
                     return;
                 }
 
