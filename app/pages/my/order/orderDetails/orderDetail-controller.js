@@ -24,7 +24,10 @@ angular.module('orderDetails.controller', ['orderDetails.service',
                                 t_price += v.final_price;
                             });
                             $scope.productCount = count;
-                            $scope.total_price = t_price + $scope.detailsInfo.freight;
+                            //$scope.total_price = t_price + $scope.detailsInfo.freight;
+
+                            //console.log("t_price: " + t_price);
+                            //console.log("freight: " + $scope.detailsInfo.freight);
 
                             $scope.order_address = "";
                             if ($scope.detailsInfo.province != null) {
