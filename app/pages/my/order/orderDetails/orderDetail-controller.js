@@ -100,7 +100,7 @@ angular.module('orderDetails.controller', ['orderDetails.service',
             //检查订单支付方式--订单金额
             $scope.cash_and_point_top = function(price, point, pay_type){
                 if(pay_type == 'POINT'){
-                    return '订单积分：' + (price * point) + '积分';
+                    return '订单积分：' + ((price * point).toFixed(0)) + '积分';
                 }else if(pay_type == 'WECHAT'){
                 }
                 return '订单金额：' + '￥' + price.toFixed(2);
@@ -109,7 +109,7 @@ angular.module('orderDetails.controller', ['orderDetails.service',
             //检查订单支付方式
             $scope.cash_and_point_order_detail = function(price, point, pay_type){
                 if(pay_type == 'POINT'){
-                    return (price * point) + '积分';
+                    return ((price * point).toFixed(0)) + '积分';
                 }else if(pay_type == 'WECHAT'){
                 }
                 return '￥' + price.toFixed(2);
