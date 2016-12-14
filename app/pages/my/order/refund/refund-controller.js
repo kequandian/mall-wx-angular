@@ -18,11 +18,13 @@
 
             document.title = '退款/售后';
 
-            refundList();
+            //refundList();
+            refundOrderList();
             $scope.refund_all_null = true;
             $scope.refund_all_show = true;
 
             $scope.refunds = [];
+            /!* begin *!/
             function refundList() {
                 RefundFty.refundService()
                     .then(function (json) {
@@ -50,20 +52,64 @@
                         $.toast("获取订单信息失败", "cancel")
                     })
             }
+            /!* end *!/
+
+            //获取退货退款订单信息
+            function refundOrderList(){
+                RefundFty.refundOrderService()
+                    .then(function (json) {
+                        if (json.status_code == 0) {
+                            $scope.refund_orders = json.data;
+                            console.log(angular.toJson(json.data));
+                            if ($scope.refund_orders.length > 0) {
+                                $scope.refund_all_null = true;
+                                $scope.refund_all_show = false;
+                            } else {
+                                $scope.refund_all_null = false;
+                                $scope.refund_all_show = true;
+                            }
+
+                        } else {
+                            $.toast("获取订单信息失败", "cancel")
+                        }
+                    }, function (error) {
+                        $.toast("获取订单信息失败", "cancel")
+                    })
+            }
 
             //订单交易类型
             $scope.pay_type = function(item){
 
                 var pay_type = item.payment_type;
-                var total_price = item.total_price;
+                var total_price = item.total_price;//总金额
                 var point = item.point_exchange_rate;
+                var refund_fee = item.order_customer_service.refund_fee; //退货金额
 
                 if(pay_type == 'WECHAT'){
-                    $scope.sales_return_type_text = '退款金额: ￥' + total_price.toFixed(2);
-                    $scope.pay_type_text = '交易金额: ￥' + total_price.toFixed(2);
+                    if(refund_fee != null){
+                        $scope.sales_return_type_text = '退款金额: ￥' + refund_fee.toFixed(2);
+                    }else{
+                        $scope.sales_return_type_text = '退款金额: ￥0';
+                    }
+
+                    if(total_price != null){
+                        $scope.pay_type_text = '交易金额: ￥' + total_price.toFixed(2);
+                    }else{
+                        $scope.pay_type_text = '交易金额: ￥0';
+                    }
                 }else if(pay_type == 'POINT'){
-                    $scope.sales_return_type_text = '退款积分: ' + ((total_price*point).toFixed(0));
-                    $scope.pay_type_text = '交易积分: ' + ((total_price*point).toFixed(0));
+
+                    if(refund_fee != null){
+                        $scope.sales_return_type_text = '退款积分: ' + ((refund_fee*point).toFixed(0));
+                    }else{
+                        $scope.sales_return_type_text = '退款积分: 0';
+                    }
+
+                    if(total_price != null){
+                        $scope.pay_type_text = '交易积分: ' + ((total_price*point).toFixed(0));
+                    }else{
+                        $scope.pay_type_text = '交易积分: 0';
+                    }
                 }
 
             }

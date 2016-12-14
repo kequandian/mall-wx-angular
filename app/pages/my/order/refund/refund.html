@@ -3,7 +3,7 @@
     <div class="refund-hide-span" ng-hide="refund_all_null">
         <span >没有订单信息</span>
     </div>
-    <div class="refund-item" ng-repeat="item in refunds" ng-hide="refund_all_show">
+    <div class="refund-item" ng-repeat="item in refund_orders" ng-hide="refund_all_show">
         <div class="item-refund-order-number">
             订单号：{{item.order_number}}
             <span class="custom_text_primary_medium">{{item.status|refundStatus}}</span>
