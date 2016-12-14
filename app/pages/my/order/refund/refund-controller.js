@@ -60,7 +60,7 @@
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $scope.refund_orders = json.data;
-                            console.log(angular.toJson(json.data));
+                            //console.log(angular.toJson(json.data));
                             if ($scope.refund_orders.length > 0) {
                                 $scope.refund_all_null = true;
                                 $scope.refund_all_show = false;
