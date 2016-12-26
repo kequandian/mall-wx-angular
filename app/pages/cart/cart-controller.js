@@ -406,6 +406,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 AddressManagerFty.getContacts().then(
                     function (result) {
                         $scope.contacts = result.data;
+                        AddressInfo.address_count = result.data.length;
                         angular.forEach($scope.contacts, function (data, index) {
                             if (data.is_default == 1) {
                                 $scope.currentContact = data;
@@ -817,6 +818,11 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             //新增收货地址
             $scope.contact = {};
             $scope.settl_create_address = function () {
+
+                if($scope.contacts.length == 6){
+                    $.toast('收货地址已达到上限', 'cancel');
+                    return;
+                }
 
                 var pcd = document.getElementById('city-picker');
                 $scope.pcd = pcd.value;

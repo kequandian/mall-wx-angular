@@ -1,7 +1,7 @@
 angular.module('addressManager.controller', ['addressManager.service'])
 
     .controller('AddressManagerController', ['$scope', '$state', '$stateParams', '$rootScope', 'AddressManagerFty',
-        '$ocLazyLoad', function ($scope, $state, $stateParams,$rootScope, AddressManagerFty, $ocLazyLoad) {
+        '$ocLazyLoad','AddressInfo', function ($scope, $state, $stateParams,$rootScope, AddressManagerFty, $ocLazyLoad,AddressInfo) {
             var pcd;
 
             AllContacts();
@@ -43,6 +43,7 @@ angular.module('addressManager.controller', ['addressManager.service'])
                 AddressManagerFty.getContacts().then(
                     function (result) {
                         $scope.contacts = result.data;
+                        AddressInfo.address_count = result.data.length;
                         //alert(angular.toJson($scope.contacts));
                         angular.forEach($scope.contacts, function (data, index) {
                             if (data.is_default == 1) {
@@ -74,6 +75,12 @@ angular.module('addressManager.controller', ['addressManager.service'])
 
             //提交添加地址
             $scope.addContactSubmit = function () {
+
+                if(AddressInfo.address_count == 6){
+
+                    $.toast('收货地址已达到上限', 'cancel');
+                    return;
+                }
 
                 var pcd_1 = document.getElementById('city-picker');
                 $scope.pcd = pcd_1.value;
@@ -188,6 +195,11 @@ angular.module('addressManager.controller', ['addressManager.service'])
 
             //添加地址
             $scope.addAddress = function () {
+
+                if($scope.contacts.length == 6){
+                    $.toast('收货地址已达到上限', 'cancel');
+                    return;
+                }
 
                 //title
                 document.title = "新增地址";
