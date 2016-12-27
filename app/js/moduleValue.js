@@ -66,11 +66,6 @@ angular.module('moduleValueJs',[])
         is_auto:false
     })
 
-    //地址
-    .value('AddressInfo',{
-        address_count:0
-    })
-
 
 
 ;

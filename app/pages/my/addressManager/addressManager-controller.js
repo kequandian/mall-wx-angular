@@ -1,7 +1,7 @@
 angular.module('addressManager.controller', ['addressManager.service'])
 
     .controller('AddressManagerController', ['$scope', '$state', '$stateParams', '$rootScope', 'AddressManagerFty',
-        '$ocLazyLoad','AddressInfo', function ($scope, $state, $stateParams,$rootScope, AddressManagerFty, $ocLazyLoad,AddressInfo) {
+        '$ocLazyLoad', function ($scope, $state, $stateParams,$rootScope, AddressManagerFty, $ocLazyLoad) {
             var pcd;
 
             AllContacts();
@@ -43,7 +43,6 @@ angular.module('addressManager.controller', ['addressManager.service'])
                 AddressManagerFty.getContacts().then(
                     function (result) {
                         $scope.contacts = result.data;
-                        AddressInfo.address_count = result.data.length;
                         //alert(angular.toJson($scope.contacts));
                         angular.forEach($scope.contacts, function (data, index) {
                             if (data.is_default == 1) {
