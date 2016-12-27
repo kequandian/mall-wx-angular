@@ -77,16 +77,21 @@
                         <div class="weui_actionsheet_menu">
                             <div class="weui_panel">
                                 <div class="weui_panel_hd">选择收货地址 <span id="c_address_action" class="custom_text_primary">添加地址</span></div>
-                                <div class="weui_panel_bd" ng-repeat="contact in contacts">
-                                    <div class="weui_media_box weui_media_text">
-                                        <div class="selectContact" ng-click="changeContact(contact)">
-                                            <h4 class="weui_media_desc">{{contact.contact_user}} {{contact.phone}}</h4>
-                                            <p class="weui_media_desc">
-                                                {{contact.province}}{{contact.city}}{{contact.district}}
-                                                {{contact.street}}{{contact.street_number}} {{contact.detail}}
-                                            </p>
+
+                                <div style="height: 82%; overflow-x: hidden; overflow-y: scroll;">
+
+                                    <div class="weui_panel_bd" ng-repeat="contact in contacts">
+                                        <div class="weui_media_box weui_media_text">
+                                            <div class="selectContact" ng-click="changeContact(contact)">
+                                                <h4 class="weui_media_desc">{{contact.contact_user}} {{contact.phone}}</h4>
+                                                <p class="weui_media_desc">
+                                                    {{contact.province}}{{contact.city}}{{contact.district}}
+                                                    {{contact.street}}{{contact.street_number}} {{contact.detail}}
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                             <div class="weui_actionsheet_action">

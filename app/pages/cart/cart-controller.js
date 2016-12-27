@@ -374,9 +374,9 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
         }])
 
     .controller('SettlementController', ['$scope', '$state', '$stateParams', '$location', '$rootScope', 'AddressManagerFty', 'CartFty','BalanceSession',
-        'PointRate', '$ocLazyLoad','areasStatus','goodListParams','AutoSelectCoupon',
+        'PointRate', '$ocLazyLoad','areasStatus','goodListParams','AutoSelectCoupon','AddressInfo',
         function ($scope, $state, $stateParams, $location, $rootScope, AddressManagerFty, CartFty,BalanceSession, PointRate,
-                  $ocLazyLoad,areasStatus,goodListParams,AutoSelectCoupon) {
+                  $ocLazyLoad,areasStatus,goodListParams,AutoSelectCoupon,AddressInfo) {
 
             //title
             document.title = "结算";
