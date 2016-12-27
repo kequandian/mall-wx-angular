@@ -195,11 +195,6 @@ angular.module('addressManager.controller', ['addressManager.service'])
             //添加地址
             $scope.addAddress = function () {
 
-                if($scope.contacts.length == 6){
-                    $.toast('收货地址已达到上限', 'cancel');
-                    return;
-                }
-
                 //title
                 document.title = "新增地址";
 
