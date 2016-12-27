@@ -75,12 +75,6 @@ angular.module('addressManager.controller', ['addressManager.service'])
             //提交添加地址
             $scope.addContactSubmit = function () {
 
-                if(AddressInfo.address_count == 6){
-
-                    $.toast('收货地址已达到上限', 'cancel');
-                    return;
-                }
-
                 var pcd_1 = document.getElementById('city-picker');
                 $scope.pcd = pcd_1.value;
 
