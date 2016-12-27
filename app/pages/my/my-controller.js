@@ -6,6 +6,12 @@ angular.module('my.controller', ['my.service'])
             //title
             document.title = "个人中心";
 
+            $ocLazyLoad.load('Jquery').then(function () {
+                $ocLazyLoad.load('JqueryWeUI').then(function () {
+                    //console.log("myPage:jquery loaded");
+                })
+            });
+
             if($rootScope.red_point_status){
                 $rootScope.redPoint = false;
                 $rootScope.isNewCoupon = false;
