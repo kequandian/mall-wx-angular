@@ -1,0 +1,43 @@
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+<title>arrow</title>
+    <link href="ionicons/ionicons.min.css" rel="stylesheet" type="text/css" />
+<style>
+
+    .checkbox_demo{
+        display: none;
+    }
+
+    .checkbox_demo + label:before{
+        color: #cccccc;
+        content: "\f3fe";
+    }
+
+    .checkbox_demo:checked + label:before{
+        color: #A95296;
+        content: "\f3ff";
+    }
+
+    .check_box_label{
+        display: inline-block;
+        width: 50px;
+        text-align: center;
+        font-size: 45px;
+        cursor: pointer;
+    }
+
+</style>
+</head>
+
+<body>
+
+    <input class="checkbox_demo" type="checkbox" id="check_box">
+    <label class="ion-ios-checkmark check_box_label" for="check_box"></label>
+
+</body>
+
+</html> 
