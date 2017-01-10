@@ -103,6 +103,14 @@
                     </a>
                 </bind-javascript>
 
+                <a class="weui_grid" data-id="offline" ng-click="off_line_shop(is_agent)">
+                    <div class="weui_grid_icon custom_size_img_large">
+                        <img src="{{is_agent ? 'img/sellerPage/off-line-shop-img.png':'img/sellerPage/apply-seller-img.png'}}">
+                    </div>
+                    <p class="weui_grid_label">
+                        {{is_agent ? '线下门店':'代理申请'}}
+                    </p>
+                </a>
             </div>
         </div>
 

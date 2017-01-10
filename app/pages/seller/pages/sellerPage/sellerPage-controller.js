@@ -175,15 +175,15 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                 $state.go('distributionInfo');
             };
 
-            //default category params
-            //cateCacheCode.index_first=0;
-            //cateCacheCode.index_second=0;
-            //cateCacheCode.cate_session=null;
-            //cateCacheCode.second_cate=null;
-            //cateCacheCode.product_list=null;
-            //cateCacheCode.product_id=-1;
-            //cateCacheCode.loading=false;
-            //cateCacheCode.load_more_btn_show= true;
+            //线下门店
+            $scope.is_agent = true;
+            $scope.off_line_shop = function(isAgent){
+                if(isAgent){
+                    $state.go('offLineShop');
+                }else{
+                    //$state.go('offLineShop');
+                }
+            }
 
         }])
 

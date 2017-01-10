@@ -34,7 +34,8 @@
         "express.route",
         "salesReturn.route",
         'searchPage.route',
-        'coupon.route'
+        'coupon.route',
+        'offLineShop.route'
 
     ]).config(["$urlRouterProvider", '$ocLazyLoadProvider','$locationProvider',
         function ($urlRouterProvider, $ocLazyLoadProvider,$locationProvider) {
@@ -239,6 +240,30 @@
                     files: ['pages/my/coupon/coupon-controller.js',
                         'pages/my/coupon/coupon-service.js',
                         {type: 'css', path: 'css/coupon/coupon.css'}],
+                    cache: false
+                }, {
+                    name: 'OffLine',
+                    files: ['pages/seller/pages/offLineShop/offLineShop-controller.js',
+                        'pages/seller/pages/offLineShop/offLineShop-service.js',
+                        {type: 'css', path: 'css/sellerPage/offlineSeller/offLineShop.css'}],
+                    cache: false
+                }, {
+                    name: 'SellerTeam',
+                    files: ['pages/seller/pages/offLineShop/seller/offLineShopSeller-controller.js',
+                        'pages/seller/pages/offLineShop/seller/offLineShopSeller-service.js',
+                        {type: 'css', path: 'css/sellerPage/offlineSeller/sellerTeam.css'}],
+                    cache: false
+                }, {
+                    name: 'SellerAuthorization',
+                    files: ['pages/seller/pages/offLineShop/seller/offLineShopSeller-controller.js',
+                        'pages/seller/pages/offLineShop/seller/offLineShopSeller-service.js',
+                        {type: 'css', path: 'css/sellerPage/offlineSeller/sellerAuthorization.css'}],
+                    cache: false
+                }, {
+                    name: 'MyRecommend',
+                    files: ['pages/seller/pages/offLineShop/seller/offLineShopSeller-controller.js',
+                        'pages/seller/pages/offLineShop/seller/offLineShopSeller-service.js',
+                        {type: 'css', path: 'css/sellerPage/offlineSeller/myRecommend.css'}],
                     cache: false
                 }
 
