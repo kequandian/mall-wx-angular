@@ -1,4 +1,5 @@
-@charset "UTF-8";/*!
+@charset "UTF-8";
+/*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
   https://twitter.com/benjsperry  https://twitter.com/ionicframework
@@ -8,4 +9,64 @@
   Material Design Icons: https://github.com/google/material-design-icons
   used under CC BY http://creativecommons.org/licenses/by/4.0/
   Modified icons to fit ionicon’s grid from original.
-*/@font-face{font-family:"Ionicons";src:url("fonts/ionicons.eot?v=2.0.1");src:url("fonts/ionicons.eot?v=2.0.1#iefix") format("embedded-opentype"),url("fonts/ionicons.ttf?v=2.0.1") format("truetype"),url("fonts/ionicons.woff?v=2.0.1") format("woff"),url("fonts/ionicons.svg?v=2.0.1#Ionicons") format("svg");font-weight:normal;font-style:normal}.ion,.ionicons,.ion-app-biliya-tabs-cart:before,.ion-app-biliya-tabs-chat:before,.ion-app-biliya-tabs-home:before,.ion-app-biliya-tabs-point:before,.ion-app-biliya-tabs-search:before,.ion-app-biliya-tabs-user:before,.ion-ios-checkmark:before,.ion-ios-checkmark-empty:before,.ion-ios-checkmark-outline:before{display:inline-block;font-family:"Ionicons";speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;text-rendering:auto;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.ion-app-biliya-tabs-cart:before{content:"\f13c"}.ion-app-biliya-tabs-chat:before{content:"\f14e"}.ion-app-biliya-tabs-home:before{content:"\f146"}.ion-app-biliya-tabs-point:before{content:"\f14c"}.ion-app-biliya-tabs-search:before{content:"\f138"}.ion-app-biliya-tabs-user:before{content:"\f13b"}.ion-ios-checkmark:before{content:"\f3ff"}.ion-ios-checkmark-empty:before{content:"\f3fd"}.ion-ios-checkmark-outline:before{content:"\f3fe"}
+*/
+@font-face {
+    font-family: "Ionicons";
+    src: url("fonts/ionicons.eot?v=2.0.1");
+    src: url("fonts/ionicons.eot?v=2.0.1#iefix") format("embedded-opentype"),
+         url("fonts/ionicons.ttf?v=2.0.1") format("truetype"),
+         url("fonts/ionicons.woff?v=2.0.1") format("woff"),
+         url("fonts/ionicons.svg?v=2.0.1#Ionicons") format("svg");
+    font-weight: normal;
+    font-style: normal
+}
+
+.ion, .ionicons, .ion-app-biliya-tabs-cart:before, .ion-app-biliya-tabs-chat:before, .ion-app-biliya-tabs-home:before, .ion-app-biliya-tabs-point:before, .ion-app-biliya-tabs-search:before, .ion-app-biliya-tabs-user:before, .ion-ios-checkmark:before, .ion-ios-checkmark-empty:before, .ion-ios-checkmark-outline:before {
+    display: inline-block;
+    font-family: "Ionicons";
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-rendering: auto;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.ion-app-biliya-tabs-cart:before {
+    content: "\f13c"
+}
+
+.ion-app-biliya-tabs-chat:before {
+    content: "\f14e"
+}
+
+.ion-app-biliya-tabs-home:before {
+    content: "\f146"
+}
+
+.ion-app-biliya-tabs-point:before {
+    content: "\f14c"
+}
+
+.ion-app-biliya-tabs-search:before {
+    content: "\f138"
+}
+
+.ion-app-biliya-tabs-user:before {
+    content: "\f13b"
+}
+
+.ion-ios-checkmark:before {
+    content: "\f3ff"
+}
+
+.ion-ios-checkmark-empty:before {
+    content: "\f3fd"
+}
+
+.ion-ios-checkmark-outline:before {
+    content: "\f3fe"
+}
