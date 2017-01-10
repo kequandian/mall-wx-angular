@@ -1,0 +1,59 @@
+<div id="myRecommend">
+    <div id="promotionOrder">
+
+        <div class="my-recommend-content">
+
+            <div class="item-stable custom_titlebar_primary">
+
+                <select class="weui_select year" ng-options="i.key as i.value for i in yearDefault" ng-model="year"
+                        ng-init="year=thisYear" ng-change="onSelectedYear()">
+                </select>
+                线下皇冠商进货明细
+                <select class="weui_select mon" ng-options="i.key as i.value for i in monDefault" ng-model="mon"
+                        ng-init="mon=thisMon" ng-change="postOrder()">
+                </select>
+
+            </div>
+            <div class="item-accordion" >
+                <div class="order-item-text">
+
+                    <div class="orders-count">
+                        <p>累计总进货：<span class="pro-red">￥20000.0</span></p>
+
+                        <p>本月总进货：<span class="pro-red">￥16000.0</span></p>
+                    </div>
+                    <div class="orders-count">
+                        <p>累计总提成：<span class="pro-black">￥16000.0</span></p>
+
+                        <p>本月提成比例：<span class="pro-black">￥16000.0</span></p>
+                    </div>
+                    <div class="orders-count">
+                        <p>已提金额：<span class="pro-black">￥1000.0</span></p>
+
+                        <p>本月总提成：<span class="pro-black">￥600.0</span></p>
+                    </div>
+                    <div class="orders-count">
+                        <p>可提金额：<span class="pro-black">￥600.0</span></p>
+                    </div>
+                </div>
+
+                <div class="order-list">
+
+                    <div class="order-list-item">
+                        <div class="p-order-type">用户昵称：</div>
+                        <div class="orders-count">
+                            <p>本月进货：<span class="pro-black">￥6000.0</span></p>
+                            <p>累计进货：<span class="pro-black">￥18000.0</span></p>
+                        </div>
+                        <div class="orders-count">
+                            <p>本月提成：<span class="pro-black">￥9000.0</span></p>
+                            <p>累计提成：<span class="pro-black">￥6000.0</span></p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+<div id="sellerAuthorization">
+
+    <form ng-submit="">
+        <!-- 基本信息 -->
+        <div class="weui_cells weui_cells_form settlement-font">
+            <div class="weui_cell">
+                <div class="weui_cell_hd">
+                    <label class="weui_label">ID号：</label>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="text" placeholder="ID号" ng-disabled="true" ng-model="userInfo.name">
+                </div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd">
+                    <label class="weui_label">姓名：</label>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="text" placeholder="姓名" ng-model="userInfo.real_name">
+                </div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd">
+                    <label class="weui_label">手机：</label>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="tel" placeholder="手机" ng-model="userInfo.phone" ng-init="">
+                </div>
+            </div>
+
+            <div style="width: 100%; padding: 6px 12px; font-size: 12px;" class="custom_text_primary">
+
+                <div>申请经销商要求</div>
+                <div>我的朋友"满 50 人 (暂定)，均可免费申请经销商"</div>
+
+            </div>
+
+
+        </div>
+
+        <div class="custom_weui_btn_border">
+            <input type="submit" class="weui_btn weui_btn_primary" value="经销商授权">
+        </div>
+
+    </form>
+</div>
