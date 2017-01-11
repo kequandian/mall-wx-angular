@@ -181,7 +181,7 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                 if(isAgent){
                     $state.go('offLineShop');
                 }else{
-                    //$state.go('offLineShop');
+                    $state.go('sellerAuthorization',{isAgent:isAgent});
                 }
             }
 

@@ -29,7 +29,10 @@ angular.module('offLineShop.route',[])
                 loadData: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load('SellerAuthorization');
                 }]
-            }
+            },
+                params:{
+                    isAgent:null
+                }
         })
             .state('myRecommend', {
             url:'/myRecommend',

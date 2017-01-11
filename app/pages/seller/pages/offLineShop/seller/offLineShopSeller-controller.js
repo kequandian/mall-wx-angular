@@ -16,12 +16,25 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
     /*
      * 经销团队
      * */
-    .controller('SellerAuthorizationController', ['$scope', 'SellerTeamFty',
-        function ($scope, SellerTeamFty) {
+    .controller('SellerAuthorizationController', ['$scope','$stateParams', 'SellerTeamFty',
+        function ($scope,$stateParams, SellerTeamFty) {
 
             //title
             document.title = "经销授权";
 
+            var isAgent = $stateParams.isAgent;
+            console.log(isAgent);
+            if(isAgent != null){
+
+                if(isAgent){
+                    $scope.is_agent = isAgent;
+                    $scope.action_text = '经销商授权';
+                }else{
+                    $scope.is_agent = isAgent;
+                    $scope.action_text = '提交申请';
+                }
+
+            }
 
 
         }])

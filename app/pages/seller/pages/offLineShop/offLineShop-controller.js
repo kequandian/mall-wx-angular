@@ -14,7 +14,7 @@ angular.module('offLineShop.controller', ['offLineShop.service'])
             };
 
             $scope.seller_authorization_action = function(){
-                $state.go('sellerAuthorization');
+                $state.go('sellerAuthorization',{isAgent:true});
             };
 
             $scope.my_recommend_actopm = function(){

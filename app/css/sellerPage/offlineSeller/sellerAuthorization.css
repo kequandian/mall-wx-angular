@@ -8,11 +8,17 @@
 }
 
 #sellerAuthorization .weui_cells .weui_label{
-    width: 80px;
+    width: 55px;
     font-size: 14px;
     text-align: right;
 }
 
 #sellerAuthorization .weui_cells .weui_input{
     font-size: 14px;
+}
+
+#sellerAuthorization .tips_txt{
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 12px;
 }

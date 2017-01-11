@@ -28,18 +28,22 @@
                 </div>
             </div>
 
-            <div style="width: 100%; padding: 6px 12px; font-size: 12px;" class="custom_text_primary">
-
+            <div class="tips_txt custom_text_primary" ng-if="is_agent">
                 <div>申请经销商要求</div>
                 <div>我的朋友"满 50 人 (暂定)，均可免费申请经销商"</div>
+            </div>
 
+            <div class="tips_txt custom_text_primary" ng-if="!is_agent">
+                <div>申请皇冠代理商要求：</div>
+                <div>1.认可公司经营理念</div>
+                <div>2.首次全款进货￥3000元(推广期优惠价), 限线下碧丽雅系列产品</div>
             </div>
 
 
         </div>
 
         <div class="custom_weui_btn_border">
-            <input type="submit" class="weui_btn weui_btn_primary" value="经销商授权">
+            <input type="submit" class="weui_btn weui_btn_primary" value="{{action_text}}">
         </div>
 
     </form>
