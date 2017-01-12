@@ -9,6 +9,17 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
             //title
             document.title = "经销团队";
 
+            function myTeam(){
+                SellerTeamFty.getOffLineSellerShopService()
+                    .then(function (json) {
+                        if (json.status_code == 0) {
+                            console.log(angular.toJson(json.data));
+                        }
+                    }, function (error) {
+                        $.toast('获取信息失败', 'cancel');
+                    })
+            }
+
 
 
         }])
@@ -22,8 +33,12 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
             //title
             document.title = "经销授权";
 
+            //获取个人信息
+            getUserInfo();
+
             var isAgent = $stateParams.isAgent;
-            console.log(isAgent);
+            var sellerType;
+
             if(isAgent != null){
 
                 if(isAgent){
@@ -32,8 +47,60 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 }else{
                     $scope.is_agent = isAgent;
                     $scope.action_text = '提交申请';
+
+                    var real_name = $scope.userInfo.real_name;
+                    var phone = $scope.userInfo.phone;
+
+                    if(!angular.isString(real_name) || real_name.length==0){
+                        $.toast('姓名不能为空', 'cancel');
+                        return
+                    }
+                    if(!angular.isString(phone) || phone==0){
+                        $.toast('手机号不能为空', 'cancel');
+                        return
+                    }else if(!checkPhone($scope.userInfo.phone)){
+                        $.toast('手机号码无效', 'cancel');
+                        return
+                    }
+                    sellerType = 'CROWN';
+                    submint_action(real_name,phone,sellerType);
                 }
 
+            }
+
+            function getUserInfo() {
+
+                SellerTeamFty.myInfoService()
+                    .then(function (json) {
+                        if (json.status_code == 0) {
+                            $scope.userInfo = json.data;
+                            //console.log(angular.toJson(json.data));
+                        }
+                    }, function (error) {
+                        $.toast('获取信息失败', 'cancel');
+                    })
+            }
+
+            function submint_action(real_name,phone,sellerType){
+
+                SellerTeamFty.submitAction()
+                    .then(function(json){
+                        if(json.status_code == 0){
+
+                        }else{
+                            $.toast('申请失败', 'cancel');
+                            console.log(angular.toJson(json));
+                        }
+                    },function(error){
+                        $.toast('申请失败', 'cancel');
+                        console.log(angular.toJson(error));
+                    })
+
+            }
+
+            function checkPhone(str){
+                var isphone = /^((\+|0)86)?\d{11}$/.test(str);
+                return isphone;
             }
 
 

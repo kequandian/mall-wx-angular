@@ -95,6 +95,18 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                                 $scope.owner_balance.level_percent = getLevelPercent();
                             }
 
+                            if(!json.data.is_physical){
+                                $scope.is_physical = true;
+                            }else{
+                                $scope.is_physical = false;
+                            }
+
+                            if(json.data.is_partner && json.data.is_physical){
+                                $scope.is_agent = true;
+                            }else{
+                                $scope.is_agent = false;
+                            }
+
                             /// save session
                             BalanceSession.balance = $scope.owner_balance.balance;
                         }
@@ -176,7 +188,6 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
             };
 
             //线下门店
-            $scope.is_agent = true;
             $scope.off_line_shop = function(isAgent){
                 if(isAgent){
                     $state.go('offLineShop');
