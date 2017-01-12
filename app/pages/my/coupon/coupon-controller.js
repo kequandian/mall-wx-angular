@@ -178,7 +178,8 @@ angular.module('coupon.controller', ['coupon.service'])
                 }
                 couponStatus = status;
                 $scope.coupons = null;
-                getCoupons(status, 1, 10);
+                pageNumber = 1;
+                getCoupons(status, pageNumber, 10);
 
             };
 
