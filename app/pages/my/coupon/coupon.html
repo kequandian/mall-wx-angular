@@ -7,7 +7,7 @@
                 <ul>
                     <li ng-class="{active : currentId == title.id}"
                         ng-repeat="title in coupon_titles"
-                        ng-click="clickme(title.id);couponsOrderBy(title.id)">
+                        ng-click="clickme(title.id);couponsOrderBy(title.id, title.status)">
                         <div class="ver_line" ng-if="title.hidden_line"></div>
                         <span>{{title.name}}<i class="custom_text_primary_medium"> ({{title.count}})</i></span>
                         <i class="c-red-point" ng-if="title.red_point"></i>
@@ -16,7 +16,7 @@
             </div>
         </nav>
 
-        <div class="pro">
+        <div scrolly class="pro" id="pro_content_top" style="{{!height_ctrl ? 'height:auto;':''}}">
 
             <div class="pro-item" ng-repeat="cItem in coupons">
 
@@ -97,9 +97,13 @@
 
             </div>
 
+            <div class="weui_grid load-more-product" ng-show="load_more_btn_show">
+                <div class="load-more-button">拼命加载中……</div>
+            </div>
+
         </div>
 
-    </div>
+    </divscrolly>
 
 
 </div>

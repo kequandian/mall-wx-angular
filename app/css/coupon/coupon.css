@@ -1,6 +1,6 @@
 #coupon{
     /*background-color: #F8F8F8;*/
-    min-height: 100%;
+    height: 100%;
     font-family: "";
 }
 
@@ -9,7 +9,6 @@
 /*}*/
 
 #coupon .coupon-content{
-
 }
 
 #coupon #nav{
@@ -63,11 +62,11 @@
 }
 
 
-
-
 #coupon .pro{
     width:100%;
-    overflow:hidden;
+    height: 100%;
+    overflow-x:hidden;
+    overflow-y:scroll;
     padding-top: 42px;
 }
 
@@ -258,6 +257,36 @@
     width: 5px;
     height: 5px;
     border-radius: 50%;
+}
+
+#coupon .weui_grid{
+    padding: 0;
+}
+
+#coupon .load-more-product {
+    width: 100%;
+}
+
+#coupon .load-more-product .load-more-button {
+    /*left: 21%;*/
+    /*right: 21%;*/
+    font-family: \000031;
+    padding: 1px 0;
+    /*border: 1px solid #989898;*/
+    font-size: 14px;
+    color: #BFBFBF;
+    border-radius: 5px;
+    text-align: center;
+    bottom: 7px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+#coupon .load-more-product .load-more-button:active {
+    background-color: #cccccc;
+    color: white;
 }
 
 

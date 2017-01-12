@@ -378,7 +378,6 @@ angular.module('category.controller', ['category.service'])
                 }else{
                     $scope.first_ul = '';
                 }
-                //return count;
             }
 
             //second nav
@@ -388,7 +387,6 @@ angular.module('category.controller', ['category.service'])
                 if(content.sub_categories.length > 0){
                     angular.forEach(content.sub_categories,function(v, k){
                         li_width = li_width + (v.name.length * 15 + 20) + 3;
-                        //console.log(v.name)
                     });
                     //var count = content.sub_categories.length * 105 + 5;
                     //count = "width:" + count + "px;";
@@ -427,13 +425,11 @@ angular.module('category.controller', ['category.service'])
                             } else if (pageNumber > 1) {
                                 var new_code = json.data.products;
                                 console.log('pageNumber > 1 ');
-                                console.log('$scope.productList: ' + angular.toJson($scope.productList));
-                                //console.log('new_code: ' + new_code.length);
+                                //console.log('$scope.productList: ' + angular.toJson($scope.productList));
                                 if (new_code.length > 0) {
                                     loading = false;
                                     cateCacheCode.loading = false;
                                     angular.forEach(new_code, function (v, k) {
-                                        //console.log('new_code_list: ' + angular.toJson(v));
                                         $scope.productList.products.push(v);
                                     });
                                     if(new_code.length < 10){
