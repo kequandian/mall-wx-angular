@@ -183,6 +183,7 @@ angular.module('coupon.controller', ['coupon.service'])
                 couponStatus = status;
                 $scope.coupons = null;
                 pageNumber = 1;
+                $scope.load_more_btn_show = false;
                 getCoupons(status, pageNumber, 10);
 
             };
