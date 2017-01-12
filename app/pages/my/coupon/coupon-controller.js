@@ -102,9 +102,13 @@ angular.module('coupon.controller', ['coupon.service'])
                             }
 
                         }else{
+                            loading = true;
+                            $scope.load_more_btn_show = false;
                             console.log('获取优惠券失败：' + angular.toJson(json));
                         }
                     },function (error){
+                        loading = true;
+                        $scope.load_more_btn_show = false;
                         console.log('获取优惠券失败：' + angular.toJson(error));
                     })
             }
