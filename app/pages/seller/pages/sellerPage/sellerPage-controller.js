@@ -32,8 +32,8 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
     })
 
     .controller('SellerPageController', ['$scope', '$state', '$rootScope', 'SellerPageFty', 'BalanceSession', 'UserInfo', 'DWStatus',
-        'withdrawBalance', 'cateLeftIndex','PointRate','cateCacheCode',
-        function ($scope, $state, $rootScope, SellerPageFty, BalanceSession, UserInfo, DWStatus, withdrawBalance, cateLeftIndex, PointRate, cateCacheCode) {
+        'withdrawBalance', 'cateLeftIndex','PointRate','GlobalVariable',
+        function ($scope, $state, $rootScope, SellerPageFty, BalanceSession, UserInfo, DWStatus, withdrawBalance, cateLeftIndex, PointRate,GlobalVariable) {
 
             //title
             document.title = "积分中心";
@@ -95,17 +95,13 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                                 $scope.owner_balance.level_percent = getLevelPercent();
                             }
 
-                            if(!json.data.is_physical){
-                                $scope.is_physical = true;
-                            }else{
-                                $scope.is_physical = false;
+                            /*if(json.data.is_physical && json.data.is_partner && GlobalVariable.CAN_APPLY_CROWN){
+                                $scope.is_physical = 1;
                             }
 
-                            if(json.data.is_partner && json.data.is_physical){
-                                $scope.is_agent = true;
-                            }else{
-                                $scope.is_agent = false;
-                            }
+                            if(json.data.is_crown && json.data.is_physical){
+                                $scope.is_physical = 2;
+                            }*/
 
                             /// save session
                             BalanceSession.balance = $scope.owner_balance.balance;
@@ -188,11 +184,12 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
             };
 
             //线下门店
-            $scope.off_line_shop = function(isAgent){
-                if(isAgent){
+            $scope.is_physical = 0;
+            $scope.off_line_shop = function(is_physical){
+                if(is_physical == 2){
                     $state.go('offLineShop');
-                }else{
-                    $state.go('sellerAuthorization',{isAgent:isAgent});
+                }else if(is_physical == 1){
+                    $state.go('sellerAuthorization',{isAgent:false});
                 }
             }
 

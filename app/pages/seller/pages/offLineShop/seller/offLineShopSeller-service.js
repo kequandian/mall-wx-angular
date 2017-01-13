@@ -1,12 +1,10 @@
 angular.module('sellerTeam.service', [])
     .factory('SellerTeamFty', ['$http','$q','GlobalVariable', function($http,$q,GlobalVariable) {
         return{
-            // 获取线下门店
-            getOffLineSellerShopService: function () {
+            // 获取线下团队
+            getOffLineSellerTeamsService: function () {
                 var deferred = $q.defer();
-
-                var url = GlobalVariable.SERVER_PATH + "/order_item_reward";
-
+                var url = GlobalVariable.SERVER_PATH + "/physical_seller";
                 $http.get(url,{
                     headers:{
                         'Authorization': GlobalVariable.ACCESS_TOKEN
@@ -38,10 +36,14 @@ angular.module('sellerTeam.service', [])
             },
 
             // 成为线下代理
-            submitAction: function () {
+            submitAction: function (real_name,phone,sellerType) {
                 var deferred = $q.defer();
-                var url = GlobalVariable.SERVER_PATH + "/profile";
-                $http.get(url,{
+                var url = GlobalVariable.SERVER_PATH + "/physical_seller";
+                $http.post(url,{
+                    real_name:real_name,
+                    phone:phone,
+                    type:sellerType
+                },{
                     headers:{
                         'Authorization': GlobalVariable.ACCESS_TOKEN
                     }

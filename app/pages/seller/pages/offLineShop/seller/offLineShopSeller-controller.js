@@ -8,19 +8,20 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
             //title
             document.title = "经销团队";
-
+            myTeam();
             function myTeam(){
-                SellerTeamFty.getOffLineSellerShopService()
+                SellerTeamFty.getOffLineSellerTeamsService()
                     .then(function (json) {
                         if (json.status_code == 0) {
+                            console.log(angular.toJson(json.data));
+                        }else{
                             console.log(angular.toJson(json.data));
                         }
                     }, function (error) {
                         $.toast('获取信息失败', 'cancel');
+                        console.log(angular.toJson(error));
                     })
             }
-
-
 
         }])
 
@@ -83,7 +84,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
             function submint_action(real_name,phone,sellerType){
 
-                SellerTeamFty.submitAction()
+                SellerTeamFty.submitAction(real_name,phone,sellerType)
                     .then(function(json){
                         if(json.status_code == 0){
 

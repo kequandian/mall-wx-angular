@@ -23,7 +23,7 @@
                             <span ng-if="owner_balance.is_agent==0 && owner_balance.is_partner==0 && owner_balance.is_seller">会员</span>
                             <!--<span class="five-star-parent" ng-if="owner_balance.is_agent==0 && owner_balance.is_partner">-->
 
-                            <span class="shop-icon">
+                            <span class="shop-icon" ng-if="owner_balance.is_physical">
                                 <img src="img/sellerPage/shop-status-icon.png">
                             </span>
 
@@ -107,12 +107,21 @@
                     </a>
                 </bind-javascript>
 
-                <a class="weui_grid" data-id="offline" ng-click="off_line_shop(is_agent)" ng-if="is_physical">
+                <a class="weui_grid" data-id="offline" ng-click="off_line_shop(is_physical)" ng-if="is_physical == 1">
                     <div class="weui_grid_icon custom_size_img_large">
-                        <img src="{{is_agent ? 'img/sellerPage/off-line-shop-img.png':'img/sellerPage/apply-seller-img.png'}}">
+                        <img src="img/sellerPage/apply-seller-img.png">
                     </div>
                     <p class="weui_grid_label">
-                        {{is_agent ? '线下门店':'代理申请'}}
+                        代理申请
+                    </p>
+                </a>
+
+                <a class="weui_grid" data-id="offline" ng-click="off_line_shop(is_physical)" ng-if="is_physical == 2">
+                    <div class="weui_grid_icon custom_size_img_large">
+                        <img src="img/sellerPage/off-line-shop-img.png">
+                    </div>
+                    <p class="weui_grid_label">
+                        线下门店
                     </p>
                 </a>
             </div>
