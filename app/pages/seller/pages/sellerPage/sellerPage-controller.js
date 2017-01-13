@@ -184,7 +184,7 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
             };
 
             //线下门店
-            $scope.is_physical = 2;
+            $scope.is_physical = 0;
             $scope.off_line_shop = function(is_physical){
                 if(is_physical == 2){
                     $state.go('offLineShop');
