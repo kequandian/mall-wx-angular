@@ -1,6 +1,6 @@
 <div id="sellerAuthorization">
 
-    <form ng-submit="">
+    <form ng-submit="apply_action(userInfo.uid,userInfo.real_name,userInfo.phone)">
         <!-- 基本信息 -->
         <div class="weui_cells weui_cells_form settlement-font">
             <div class="weui_cell">
@@ -8,7 +8,7 @@
                     <label class="weui_label">ID号：</label>
                 </div>
                 <div class="weui_cell_bd weui_cell_primary">
-                    <input class="weui_input" type="text" placeholder="ID号" ng-disabled="true" ng-model="userInfo.uid">
+                    <input class="weui_input" type="text" placeholder="ID号" ng-disabled="!is_agent" ng-model="userInfo.uid">
                 </div>
             </div>
             <div class="weui_cell">

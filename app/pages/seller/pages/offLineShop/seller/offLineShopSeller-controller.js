@@ -28,43 +28,24 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
     /*
      * 经销团队
      * */
-    .controller('SellerAuthorizationController', ['$scope','$stateParams', 'SellerTeamFty',
-        function ($scope,$stateParams, SellerTeamFty) {
+    .controller('SellerAuthorizationController', ['$scope','$state','$stateParams', 'SellerTeamFty',
+        function ($scope,$state,$stateParams, SellerTeamFty) {
 
             //title
             document.title = "经销授权";
-
-            //获取个人信息
-            getUserInfo();
 
             var isAgent = $stateParams.isAgent;
             var sellerType;
 
             if(isAgent != null){
-
                 if(isAgent){
                     $scope.is_agent = isAgent;
                     $scope.action_text = '经销商授权';
                 }else{
                     $scope.is_agent = isAgent;
                     $scope.action_text = '提交申请';
-
-                    var real_name = $scope.userInfo.real_name;
-                    var phone = $scope.userInfo.phone;
-
-                    if(!angular.isString(real_name) || real_name.length==0){
-                        $.toast('姓名不能为空', 'cancel');
-                        return
-                    }
-                    if(!angular.isString(phone) || phone==0){
-                        $.toast('手机号不能为空', 'cancel');
-                        return
-                    }else if(!checkPhone($scope.userInfo.phone)){
-                        $.toast('手机号码无效', 'cancel');
-                        return
-                    }
-                    sellerType = 'CROWN';
-                    submint_action(real_name,phone,sellerType);
+                    //获取个人信息
+                    getUserInfo();
                 }
 
             }
@@ -82,12 +63,62 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     })
             }
 
-            function submint_action(real_name,phone,sellerType){
+            $scope.apply_action = function(uid, real_name, phone){
 
-                SellerTeamFty.submitAction(real_name,phone,sellerType)
+                sellerType = 'CROWN';
+
+                if(!angular.isString(real_name) || real_name.length==0){
+                    $.toast('姓名不能为空', 'cancel');
+                    return;
+                }
+                if(!angular.isString(phone) || phone==0){
+                    $.toast('手机号不能为空', 'cancel');
+                    return;
+                }else if(!checkPhone($scope.userInfo.phone)){
+                    $.toast('手机号码无效', 'cancel');
+                    return;
+                }
+
+                if($scope.is_agent){
+
+                    if(uid === undefined || uid == null || uid.length == 0){
+                        $.toast('uid不能为空', 'cancel');
+                        return;
+                    }
+                    authorize(uid,real_name,phone);
+                }else{
+                    apply(real_name,phone,sellerType);
+                }
+
+            };
+
+            //为线下授权
+            function authorize(uid,real_name,phone){
+                SellerTeamFty.authorizeService(uid,real_name,phone)
                     .then(function(json){
                         if(json.status_code == 0){
+                            console.log(angular.toJson(json.data));
+                            $state.go('offLineShop');
+                        }else{
+                            if(json.status_code == 1 && json.message == "user.is.not.crownship"){
+                                $.toast('授权失败,该用户不是皇冠级别', 'cancel');
+                            }else{
+                                $.toast('授权失败', 'cancel');
+                            }
+                            console.log(angular.toJson(json));
+                        }
+                    },function(error){
+                        $.toast('授权失败', 'cancel');
+                        console.log(angular.toJson(error));
+                    })
+            }
 
+            //申请成为线下代理
+            function apply(real_name,phone,sellerType){
+                SellerTeamFty.applyService(real_name,phone,sellerType)
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            $state.go('offLineShop');
                         }else{
                             $.toast('申请失败', 'cancel');
                             console.log(angular.toJson(json));
@@ -96,7 +127,6 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                         $.toast('申请失败', 'cancel');
                         console.log(angular.toJson(error));
                     })
-
             }
 
             function checkPhone(str){

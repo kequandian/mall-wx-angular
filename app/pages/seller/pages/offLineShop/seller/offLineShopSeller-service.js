@@ -36,13 +36,34 @@ angular.module('sellerTeam.service', [])
             },
 
             // 成为线下代理
-            submitAction: function (real_name,phone,sellerType) {
+            applyService: function (real_name,phone,sellerType) {
                 var deferred = $q.defer();
-                var url = GlobalVariable.SERVER_PATH + "/physical_seller";
+                var url = GlobalVariable.SERVER_PATH + "/seller";
                 $http.post(url,{
                     real_name:real_name,
                     phone:phone,
                     type:sellerType
+                },{
+                    headers:{
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
+                })
+                    .success(function (data) {
+                        return deferred.resolve(data);
+                    }).error(function (data) {
+                        return deferred.reject(data);
+                    });
+                return deferred.promise;
+            },
+
+            // 授权
+            authorizeService: function (uid,real_name,phone) {
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + "/physical_seller";
+                $http.post(url,{
+                    uid:uid,
+                    real_name:real_name,
+                    phone:phone
                 },{
                     headers:{
                         'Authorization': GlobalVariable.ACCESS_TOKEN

@@ -1,21 +1,12 @@
 {
-  "is_agent": true,
-  "is_seller": true,
-  "balance": 9999513.88,
-  "next_partner_level": {
-    "id": 4,
-    "level": 4,
-    "headcount_quota": 3,
-    "name": "四星经销商"
-  },
-  "is_crown": false,
-  "total_reward": 43.59,
-  "is_partner": true,
-  "partner_pool_count": 0,
-  "partner_level": {
-    "id": 3,
-    "level": 3,
-    "headcount_quota": 2,
-    "name": "三星经销商"
-  }
+  "uid": "U00000002",
+  "created_date": "2017-01-13 17:39:47",
+  "id": 4,
+  "user_name": "jingfei",
+  "parent": null,
+  "children": [],
+  "children_count": 0,
+  "seller_id": 2,
+  "avatar": null,
+  "parent_id": null
 }
