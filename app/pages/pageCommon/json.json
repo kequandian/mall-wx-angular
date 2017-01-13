@@ -1,10 +1,21 @@
 {
-  "status_code": 0,
-  "data": {
-    "ACTIVATION": 0,
-    "coupons": [],
-    "NON_ACTIVATION": 0,
-    "OVERDUE": 6,
-    "USED": 1
+  "is_agent": true,
+  "is_seller": true,
+  "balance": 9999513.88,
+  "next_partner_level": {
+    "id": 4,
+    "level": 4,
+    "headcount_quota": 3,
+    "name": "四星经销商"
+  },
+  "is_crown": false,
+  "total_reward": 43.59,
+  "is_partner": true,
+  "partner_pool_count": 0,
+  "partner_level": {
+    "id": 3,
+    "level": 3,
+    "headcount_quota": 2,
+    "name": "三星经销商"
   }
 }

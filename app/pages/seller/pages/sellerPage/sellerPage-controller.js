@@ -85,7 +85,7 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $scope.owner_balance = json.data;
-                            //console.log(angular.toJson($scope.owner_balance));
+                            console.log(angular.toJson($scope.owner_balance));
 
                             $scope.owner_balance.is_member = $scope.owner_balance.is_agent
                                 || $scope.owner_balance.is_partner
@@ -184,7 +184,7 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
             };
 
             //线下门店
-            $scope.is_physical = 0;
+            $scope.is_physical = 2;
             $scope.off_line_shop = function(is_physical){
                 if(is_physical == 2){
                     $state.go('offLineShop');

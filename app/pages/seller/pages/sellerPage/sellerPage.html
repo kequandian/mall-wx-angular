@@ -19,8 +19,8 @@
                         <p class="user-lv-text">
                             <span ng-if="owner_balance.is_member">级别: &nbsp;</span>
                             <span ng-if="owner_balance.is_agent">经销商</span>
-                            <span ng-if="owner_balance.is_agent==0 && owner_balance.is_partner">经销商</span>
-                            <span ng-if="owner_balance.is_agent==0 && owner_balance.is_partner==0 && owner_balance.is_seller">会员</span>
+                            <span ng-if="owner_balance.is_agent && owner_balance.is_partner">&nbsp;代理商</span>
+                            <span ng-if="owner_balance.is_agent && owner_balance.is_partner && owner_balance.is_seller">&nbsp;会员</span>
                             <!--<span class="five-star-parent" ng-if="owner_balance.is_agent==0 && owner_balance.is_partner">-->
 
                             <span class="shop-icon" ng-if="owner_balance.is_physical">
