@@ -58,6 +58,15 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                         if (json.status_code == 0) {
                             $scope.userInfo = json.data;
                             //console.log(angular.toJson(json.data));
+                            if(!json.data.phone != null){
+                                var tips_text = '您还没有设置手机号码，请到“积分中心→我的信息”进行设置';
+                                /*$.confirm(tips_text, function() {
+                                    //$state.go('distributionInfo');
+                                }, function() {
+                                    //点击取消后的回调函数
+                                });*/
+                                $.alert(tips_text, "提示");
+                            }
                         }
                     }, function (error) {
                         $.toast('获取信息失败', 'cancel');
