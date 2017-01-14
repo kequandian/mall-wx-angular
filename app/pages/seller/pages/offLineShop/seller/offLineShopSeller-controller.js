@@ -13,6 +13,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 SellerTeamFty.getOffLineSellerTeamsService()
                     .then(function (json) {
                         if (json.status_code == 0) {
+                            $scope.my_team = json.data;
                             console.log(angular.toJson(json.data));
                         }else{
                             console.log(angular.toJson(json.data));
@@ -97,7 +98,6 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 SellerTeamFty.authorizeService(uid,real_name,phone)
                     .then(function(json){
                         if(json.status_code == 0){
-                            console.log(angular.toJson(json.data));
                             $state.go('offLineShop');
                         }else{
                             if(json.status_code == 1 && json.message == "user.is.not.crownship"){

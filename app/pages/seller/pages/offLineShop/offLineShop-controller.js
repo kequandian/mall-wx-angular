@@ -18,7 +18,7 @@ angular.module('offLineShop.controller', ['offLineShop.service'])
             };
 
             $scope.my_recommend_actopm = function(){
-                $state.go('myRecommend');
+                //$state.go('myRecommend');
             }
 
         }]);
