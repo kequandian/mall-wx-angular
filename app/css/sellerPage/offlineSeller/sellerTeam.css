@@ -28,6 +28,7 @@
     position: absolute;
     font-size: 14px;
     left:40px;
+    color: #89898a;
 }
 
 #sellerTeam #nav .content-item .team-count{
@@ -94,6 +95,7 @@
     word-break:keep-all;
     overflow:hidden;
     text-overflow:ellipsis;
+    color: #A95296;
 }
 #sellerTeam .sellerTeam-content .item-right div{
     height: 23px;

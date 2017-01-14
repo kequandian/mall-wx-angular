@@ -1,5 +1,5 @@
 #offLineShop{
-
+    background-color: #F0F0F0;
 }
 
 #offLineShop .off-line-content{
@@ -13,6 +13,7 @@
     line-height: 42px;
     position: relative;
     border-bottom: 1px solid #cccccc;
+    background-color: white;
 }
 
 #offLineShop .off-line-content .content-item img{

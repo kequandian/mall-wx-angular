@@ -3,10 +3,10 @@
     <nav id="nav">
 
         <div class="content-item" ng-click="seller_team_action()">
-            <img src="img/sellerPage/offLineShop/seller-team-img.png">
+            <img src="img/sellerPage/offLineShop/seller-team-member-img.png">
             <span class="title-name">团队朋友</span>
             <div class="team-count">
-                <span class="custom_flat_primary_medium">{{my_team.children.length}}</span>
+                <span class="custom_flat_primary_medium">{{my_team.children.length > 0 ? my_team.children.length + ' 人' : '0 人'}}</span>
             </div>
         </div>
 
@@ -24,7 +24,7 @@
                     <!--<div class="item-comcerned weui_btn_primary">已关注</div>-->
                 </div>
                 <div>ID:{{item.uid}}</div>
-                <div style="font-size: 14px;">关注时间：{{item.created_date}}</div>
+                <div style="font-size: 14px;">加入时间：{{item.created_date}}</div>
             </div>
         </div>
 

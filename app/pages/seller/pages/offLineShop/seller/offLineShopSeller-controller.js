@@ -98,6 +98,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 SellerTeamFty.authorizeService(uid,real_name,phone)
                     .then(function(json){
                         if(json.status_code == 0){
+                            $.toast('申请已提交,请等待审核');
                             $state.go('offLineShop');
                         }else{
                             if(json.status_code == 1 && json.message == "user.is.not.crownship"){
@@ -118,7 +119,8 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 SellerTeamFty.applyService(real_name,phone,sellerType)
                     .then(function(json){
                         if(json.status_code == 0){
-                            $state.go('offLineShop');
+                            $.toast('申请已提交,请等待审核');
+                            $state.go('sellerPage');
                         }else{
                             $.toast('申请失败', 'cancel');
                             console.log(angular.toJson(json));
