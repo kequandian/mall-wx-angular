@@ -110,9 +110,13 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                             $.toast('申请已提交,请等待审核');
                             $state.go('offLineShop');
                         }else{
-                            if(json.status_code == 1 && json.message == "user.is.not.crownship"){
+                            if(json.message == "user.is.not.crownship"){
                                 $.toast('授权失败,该用户不是皇冠级别', 'cancel');
-                            }else{
+                            }else if(json.message == "invalid.real_name"){
+                                $.toast('授权失败,真实姓名与被授权人个人信息上的不一致', 'cancel');
+                            }else if(json.message == "invalid.phone"){
+                                $.toast('授权失败,手机号码与被授权人个人信息上的不一致', 'cancel');
+                            }else {
                                 $.toast('授权失败', 'cancel');
                             }
                             console.log(angular.toJson(json));
