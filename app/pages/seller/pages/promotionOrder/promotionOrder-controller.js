@@ -15,6 +15,8 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
 
             $scope.monDefault = getDefaultMons();
 
+            console.log("123: " + $scope.monDefault);
+
             $scope.thisYear = new Date().getYear() + 1900;
             $scope.thisMon = new Date().getMonth();
             $scope.year = $scope.thisYear;
@@ -29,7 +31,6 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
             function getPromotionOrders(start_date, end_date) {
                 PromotionOrderFty.promotionOrdersService(start_date, end_date)
                     .then(function (json) {
-                         //console.log(angular.toJson(json));
                         if (json.status_code == 0) {
                             $scope.rewards = json.data;
                             //console.log('payment_type: ' + angular.toJson(json.data.order_item_rewards[0].payment_type));
@@ -42,6 +43,7 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
                         }
                     }, function (error) {
                         $.toast('获取分销订单失败', 'cancel');
+                        console.log(angular.toJson(error));
                     })
 
             };
@@ -213,13 +215,39 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
                 var regDate = registered ? fixIOSDate(UserInfo.register_date) : new Date();
                 var regMonth = regDate.getMonth();
 
-                for (var m = regMonth; m <= curMon; m++) {
-                    var mm = m + 1;
-                    if (mm < 10) {
-                        mm = '0' + mm;
+                console.log(regMonth);
+                console.log(curMon);
+
+                if(curMon >= regMonth){
+                    for (var m = regMonth; m <= curMon; m++) {
+                        var mm = m + 1;
+                        if (mm < 10) {
+                            mm = '0' + mm;
+                        }
+                        mons.push({key: m, value: mm + "月"})
                     }
-                    mons.push({key: m, value: mm + "月"})
+                }else{
+                    // curMon <  regMonth 属于跨年问题
+                    for (var m = regMonth; m <= 11; m++) {
+                        var mm = m + 1;
+                        if (mm < 10) {
+                            mm = '0' + mm;
+                        }
+                        mons.push({key: m, value: mm + "月"})
+                    }
+
+                    for (var m = 0; m <= curMon; m++) {
+                        var mm = m + 1;
+                        if (mm < 10) {
+                            mm = '0' + mm;
+                        }
+                        mons.push({key: m, value: mm + "月"})
+                    }
+
                 }
+
+
+
 
                 return mons;
             }
