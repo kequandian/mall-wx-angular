@@ -155,8 +155,8 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
     /*
      * 我的推荐
      * */
-    .controller('MyRecommendController', ['$scope', 'SellerTeamFty','UserInfo',
-        function ($scope, SellerTeamFty, UserInfo) {
+    .controller('MyRecommendController', ['$scope','$filter', 'SellerTeamFty','UserInfo',
+        function ($scope,$filter, SellerTeamFty, UserInfo) {
 
             //title
             document.title = "我的推荐";
@@ -170,6 +170,8 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
             $scope.thisMon = new Date().getMonth();
             $scope.year = $scope.thisYear;
             $scope.mon = $scope.thisMon;
+
+            getPurchaseSummary($scope.year, $scope.mon);
 
             /// fix IOS date format issue
             function fixIOSDate(date_string){
@@ -223,12 +225,33 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 var regDate = registered ? fixIOSDate(UserInfo.register_date) : new Date();
                 var regMonth = regDate.getMonth();
 
-                for (var m = regMonth; m <= curMon; m++) {
-                    var mm = m + 1;
-                    if (mm < 10) {
-                        mm = '0' + mm;
+                if(curMon > regMonth){
+                    for (var m = regMonth; m <= curMon; m++) {
+                        var mm = m + 1;
+                        if (mm < 10) {
+                            mm = '0' + mm;
+                        }
+                        mons.push({key: m, value: mm + "月"})
                     }
-                    mons.push({key: m, value: mm + "月"})
+                }else{
+                    // curMon <  regMonth 属于跨年问题
+                    if(selectedYear == curYear){
+                        for (var m1 = 0; m1 <= curMon; m1++) {
+                            var mm1 = m1 + 1;
+                            if (mm1 < 10) {
+                                mm1 = '0' + mm1;
+                            }
+                            mons.push({key: m1, value: mm1 + "月"})
+                        }
+                    }else if(selectedYear < curYear){
+                        for (var m2 = regMonth; m2 <= 11; m2++) {
+                            var mm2 = m2 + 1;
+                            if (mm2 < 10) {
+                                mm2 = '0' + mm2;
+                            }
+                            mons.push({key: m2, value: mm2 + "月"})
+                        }
+                    }
                 }
 
                 return mons;
@@ -269,8 +292,8 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 var end_date = $filter('date')(d_end_date, 'yyyy-MM-dd');
 
                 //console.log("start-date?"+start_date+",end-date?"+end_date);
-                getPromotionOrders(start_date, end_date);
-            }
+                getPurchaseSummary(start_date, end_date);
+            };
 
             $scope.onSelectedYear = function () {
                 /// set curMon
@@ -288,6 +311,30 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                         $scope.mon = firstMon;
                     }
                 }
+            };
+
+            function getPurchaseSummary(year,month){
+
+                var select_date = new Date(year, month);
+                var select_dtae_format = $filter('date')(select_date,'yyyy-MM');
+
+                console.log("select_dtae_format: " + select_dtae_format);
+
+                SellerTeamFty.getPurchaseSummaryService(select_dtae_format)
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            //console.log(angular.toJson(json));
+                            $scope.pirchase_summary = json.data;
+                        }else{
+                            $.toast('获取信息失败','cancel');
+                            console.log(angular.toJson(json));
+                        }
+
+                    },function(error){
+                        $.toast('获取信息失败','cancel');
+                        console.log(angular.toJson(error));
+                    })
+
             }
 
         }])

@@ -15,8 +15,6 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
 
             $scope.monDefault = getDefaultMons();
 
-            console.log("123: " + $scope.monDefault);
-
             $scope.thisYear = new Date().getYear() + 1900;
             $scope.thisMon = new Date().getMonth();
             $scope.year = $scope.thisYear;
@@ -33,7 +31,7 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $scope.rewards = json.data;
-                            //console.log('payment_type: ' + angular.toJson(json.data.order_item_rewards[0].payment_type));
+                            console.log(angular.toJson(json.data));
 
                             var order_rewards = $scope.rewards.order_item_rewards;
                             $scope.rewards.orders = mergedOrderList(order_rewards);
@@ -167,9 +165,9 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
                 if(isNaN(reg_date)){
                     var date_s = date_string.replace(/\-/g, '/');
                     date_s = date_s.substr(0, 10);
-
                     reg_date = new Date(date_s);
                 }
+                console.log("reg_date: " + reg_date);
 
                 return reg_date;
             }
@@ -215,10 +213,7 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
                 var regDate = registered ? fixIOSDate(UserInfo.register_date) : new Date();
                 var regMonth = regDate.getMonth();
 
-                console.log(regMonth);
-                console.log(curMon);
-
-                if(curMon >= regMonth){
+                if(curMon > regMonth){
                     for (var m = regMonth; m <= curMon; m++) {
                         var mm = m + 1;
                         if (mm < 10) {
@@ -228,26 +223,25 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
                     }
                 }else{
                     // curMon <  regMonth 属于跨年问题
-                    for (var m = regMonth; m <= 11; m++) {
-                        var mm = m + 1;
-                        if (mm < 10) {
-                            mm = '0' + mm;
+                    if(selectedYear == curYear){
+                        for (var m1 = 0; m1 <= curMon; m1++) {
+                            var mm1 = m1 + 1;
+                            if (mm1 < 10) {
+                                mm1 = '0' + mm1;
+                            }
+                            mons.push({key: m1, value: mm1 + "月"})
                         }
-                        mons.push({key: m, value: mm + "月"})
-                    }
-
-                    for (var m = 0; m <= curMon; m++) {
-                        var mm = m + 1;
-                        if (mm < 10) {
-                            mm = '0' + mm;
+                    }else if(selectedYear < curYear){
+                        for (var m2 = regMonth; m2 <= 11; m2++) {
+                            var mm2 = m2 + 1;
+                            if (mm2 < 10) {
+                                mm2 = '0' + mm2;
+                            }
+                            mons.push({key: m2, value: mm2 + "月"})
                         }
-                        mons.push({key: m, value: mm + "月"})
                     }
 
                 }
-
-
-
 
                 return mons;
             }

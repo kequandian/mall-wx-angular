@@ -18,36 +18,36 @@
                 <div class="order-item-text">
 
                     <div class="orders-count">
-                        <p>累计总进货：<span class="pro-red">￥20000.0</span></p>
+                        <p>累计总进货：<span class="pro-red">{{"￥" + (pirchase_summary.total_amount | number:1)}}</span></p>
 
-                        <p>本月总进货：<span class="pro-red">￥16000.0</span></p>
+                        <p>本月总进货：<span class="pro-red">{{"￥" + (pirchase_summary.monthly_amount | number:1)}}</span></p>
                     </div>
                     <div class="orders-count">
-                        <p>累计总提成：<span class="pro-black">￥16000.0</span></p>
+                        <p>累计总提成：<span class="pro-black">{{"￥" + (pirchase_summary.total_settled_amount | number:1)}}</span></p>
 
-                        <p>本月提成比例：<span class="pro-black">￥16000.0</span></p>
+                        <p>本月提成比例：<span class="pro-black">{{"￥" + (pirchase_summary.monthly_settlement_proportion | number:1)}}</span></p>
                     </div>
                     <div class="orders-count">
-                        <p>已提金额：<span class="pro-black">￥1000.0</span></p>
+                        <p>已提金额：<span class="pro-black">{{"￥" + (pirchase_summary.withdrawn_amount | number:1)}}</span></p>
 
-                        <p>本月总提成：<span class="pro-black">￥600.0</span></p>
+                        <p>本月总提成：<span class="pro-black">{{"￥" + (pirchase_summary.total_settled_amount | number:1)}}</span></p>
                     </div>
                     <div class="orders-count">
-                        <p>可提金额：<span class="pro-black">￥600.0</span></p>
+                        <p>可提金额：<span class="pro-black">{{"￥" + (pirchase_summary.withdrawable_amount | number:1)}}</span></p>
                     </div>
                 </div>
 
                 <div class="order-list">
 
-                    <div class="order-list-item">
-                        <div class="p-order-type">用户昵称：</div>
+                    <div class="order-list-item" ng-repeat="item in pirchase_summary">
+                        <div class="p-order-type">用户昵称：{{item.user_name}}</div>
                         <div class="orders-count">
-                            <p>本月进货：<span class="pro-black">￥6000.0</span></p>
-                            <p>累计进货：<span class="pro-black">￥18000.0</span></p>
+                            <p>本月进货：<span class="pro-black">{{"￥" + (item.monthly_amount | number:1)}}</span></p>
+                            <p>累计进货：<span class="pro-black">{{"￥" + (item.total_settled_amount | number:1)}}</span></p>
                         </div>
                         <div class="orders-count">
-                            <p>本月提成：<span class="pro-black">￥9000.0</span></p>
-                            <p>累计提成：<span class="pro-black">￥6000.0</span></p>
+                            <p>本月提成：<span class="pro-black">{{"￥" + (item.monthly_settled_amount | number:1)}}</span></p>
+                            <p>累计提成：<span class="pro-black">{{"￥" + (item.total_amount | number:1)}}</span></p>
                         </div>
                     </div>
 
