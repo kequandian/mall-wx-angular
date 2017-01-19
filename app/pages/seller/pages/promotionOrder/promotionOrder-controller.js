@@ -135,15 +135,13 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
                 var start_date = $filter('date')(d_start_date, 'yyyy-MM-dd');
                 var end_date = $filter('date')(d_end_date, 'yyyy-MM-dd');
 
-                //console.log("start-date?"+start_date+",end-date?"+end_date);
                 getPromotionOrders(start_date, end_date);
-            }
+            };
 
             $scope.onSelectedYear = function () {
                 /// set curMon
                 $scope.monDefault = getDefaultMons();
                 var year = $scope.year;
-                var mon = $scope.mon;
 
                 //console.log("selectedYea?"+$scope.year+",selectedMon?"+$scope.mon);
                 if ($scope.year == $scope.thisYear) {
@@ -160,6 +158,7 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
                         $scope.mon = firstMon;
                     }
                 }
+                var mon = $scope.mon;
 
                 var d_start_date = new Date(year, mon, 1);
                 var _end_date = new Date(year, mon + 1, 1);
@@ -168,8 +167,9 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
                 // format date
                 var start_date = $filter('date')(d_start_date, 'yyyy-MM-dd');
                 var end_date = $filter('date')(d_end_date, 'yyyy-MM-dd');
+
                 getPromotionOrders(start_date, end_date);
-            }
+            };
 
             /// fix IOS date format issue
             function fixIOSDate(date_string){

@@ -301,8 +301,11 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 var start_date = $filter('date')(d_start_date, 'yyyy-MM-dd');
                 var end_date = $filter('date')(d_end_date, 'yyyy-MM-dd');
 
-                //console.log("start-date?"+start_date+",end-date?"+end_date);
-                getPurchaseSummary(start_date, end_date);
+
+                console.log("year: " + year);
+                console.log("mon: " + mon);
+
+                getPurchaseSummary(year, mon);
             };
 
             $scope.onSelectedYear = function () {
@@ -311,7 +314,6 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 var year = $scope.year;
                 //var mon = $scope.mon;
 
-                //console.log("selectedYea?"+$scope.year+",selectedMon?"+$scope.mon);
                 if ($scope.year == $scope.thisYear) {
                     var curMon = new Date().getMonth();
                     if ($scope.mon > curMon) {
@@ -324,7 +326,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     }
                 }
                 var mon = $scope.mon;
-                // format date
+                
                 getPurchaseSummary(year, mon);
             };
 
