@@ -1,14 +1,17 @@
-{
-  "status_code": 0,
-  "data": {
-    "is_agent": true,
-    "is_seller": true,
-    "order_item_rewards": [],
-    "pending_reward": 0,
-    "is_partner": true,
-    "pending_order_count": 0,
-    "settled_order_count": 0,
-    "settled_reward": 0,
-    "total_order_count": 0
+[
+  {
+    "monthly_settled_amount": 0, // 本月提成
+    "total_amount": 3000, //累计进货
+    "id": 3,
+    "uid": "U011612071832290001",
+    "total_settled_amount": 0, //累计提成
+    "user_name": "德",
+    "settled": 0,
+    "settlement_proportion": 2,
+    "monthly_amount": 3000, //本月进货
+    "seller_id": 269,
+    "avatar": "http://wx.qlogo.cn/mmopen/YxXbvKewslicc4IUmEjJFWGrnCXddcPxxYGO7mqIBgElIVDhgc8swL34wLfaxVCNzX8I0AspfGQcVonB7MeVdLFulJGHiaEwDY/0",
+    "statistic_month": "2017-01-01"
   }
+]}
 }

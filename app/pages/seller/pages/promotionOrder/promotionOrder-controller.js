@@ -142,19 +142,33 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
             $scope.onSelectedYear = function () {
                 /// set curMon
                 $scope.monDefault = getDefaultMons();
+                var year = $scope.year;
+                var mon = $scope.mon;
 
                 //console.log("selectedYea?"+$scope.year+",selectedMon?"+$scope.mon);
                 if ($scope.year == $scope.thisYear) {
+
                     var curMon = new Date().getMonth();
+
                     if ($scope.mon > curMon) {
                         $scope.mon = curMon;
                     }
                 }else{
-                    var firstMon = $scope.monDefault[0];
+                    var firstMon = $scope.monDefault[0].key;
+
                     if($scope.mon < firstMon){
                         $scope.mon = firstMon;
                     }
                 }
+
+                var d_start_date = new Date(year, mon, 1);
+                var _end_date = new Date(year, mon + 1, 1);
+                var d_end_date = new Date(_end_date - 1);
+
+                // format date
+                var start_date = $filter('date')(d_start_date, 'yyyy-MM-dd');
+                var end_date = $filter('date')(d_end_date, 'yyyy-MM-dd');
+                getPromotionOrders(start_date, end_date);
             }
 
             /// fix IOS date format issue
@@ -205,42 +219,53 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
                 var curMon = now.getMonth();
                 var selectedYear = $scope.year ? $scope.year : curYear;
 
-                if (curYear != selectedYear) {
-                    return defaultMons;
-                }
+                //if (curYear != selectedYear) {
+                //    return defaultMons;
+                //}
 
                 var registered = !(UserInfo.register_date === undefined || UserInfo.register_date == null || UserInfo.register_date.length == 0);
                 var regDate = registered ? fixIOSDate(UserInfo.register_date) : new Date();
                 var regMonth = regDate.getMonth();
+                var regYear = regDate.getYear() + 1900;
 
-                if(curMon > regMonth){
-                    for (var m = regMonth; m <= curMon; m++) {
-                        var mm = m + 1;
-                        if (mm < 10) {
-                            mm = '0' + mm;
+                if(selectedYear == regYear){
+
+                    if(curYear == regYear){
+                        for (var m = regMonth; m <= curMon; m++) {
+                            var mm = m + 1;
+                            if (mm < 10) {
+                                mm = '0' + mm;
+                            }
+                            mons.push({key: m, value: mm + "月"})
                         }
-                        mons.push({key: m, value: mm + "月"})
-                    }
-                }else{
-                    // curMon <  regMonth 属于跨年问题
-                    if(selectedYear == curYear){
-                        for (var m1 = 0; m1 <= curMon; m1++) {
+                    }else if(curYear > regYear){
+                        for (var m1 = regMonth; m1 <= 11; m1++) {
                             var mm1 = m1 + 1;
                             if (mm1 < 10) {
                                 mm1 = '0' + mm1;
                             }
                             mons.push({key: m1, value: mm1 + "月"})
                         }
-                    }else if(selectedYear < curYear){
-                        for (var m2 = regMonth; m2 <= 11; m2++) {
-                            var mm2 = m2 + 1;
-                            if (mm2 < 10) {
-                                mm2 = '0' + mm2;
-                            }
-                            mons.push({key: m2, value: mm2 + "月"})
-                        }
                     }
 
+                }else if(selectedYear == curYear){
+
+                    for (var m2 = 0; m2 <= curMon; m2++) {
+                        var mm2 = m2 + 1;
+                        if (mm2 < 10) {
+                            mm2 = '0' + mm2;
+                        }
+                        mons.push({key: m2, value: mm2 + "月"})
+                    }
+
+                }else{
+                    for (var m3 = 0; m3 <= 11; m3++) {
+                        var mm3 = m3 + 1;
+                        if (mm3 < 10) {
+                            mm3 = '0' + mm3;
+                        }
+                        mons.push({key: m3, value: mm3 + "月"})
+                    }
                 }
 
                 return mons;

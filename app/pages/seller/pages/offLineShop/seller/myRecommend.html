@@ -25,7 +25,9 @@
                     <div class="orders-count">
                         <p>累计总提成：<span class="pro-black">{{"￥" + (pirchase_summary.total_settled_amount | number:1)}}</span></p>
 
-                        <p>本月提成比例：<span class="pro-black">{{"￥" + (pirchase_summary.monthly_settlement_proportion | number:1)}}</span></p>
+                        <p>本月提成比例：<span class="pro-black">
+                            {{pirchase_summary.monthly_settlement_proportion > 0 ?  pirchase_summary.monthly_settlement_proportion + "%" : 0}}
+                        </span></p>
                     </div>
                     <div class="orders-count">
                         <p>已提金额：<span class="pro-black">{{"￥" + (pirchase_summary.withdrawn_amount | number:1)}}</span></p>
@@ -39,15 +41,15 @@
 
                 <div class="order-list">
 
-                    <div class="order-list-item" ng-repeat="item in pirchase_summary">
+                    <div class="order-list-item" ng-repeat="item in pirchase_summary.my_recommended_sellers">
                         <div class="p-order-type">用户昵称：{{item.user_name}}</div>
                         <div class="orders-count">
                             <p>本月进货：<span class="pro-black">{{"￥" + (item.monthly_amount | number:1)}}</span></p>
-                            <p>累计进货：<span class="pro-black">{{"￥" + (item.total_settled_amount | number:1)}}</span></p>
+                            <p>累计进货：<span class="pro-black">{{"￥" + (item.total_amount | number:1)}}</span></p>
                         </div>
                         <div class="orders-count">
                             <p>本月提成：<span class="pro-black">{{"￥" + (item.monthly_settled_amount | number:1)}}</span></p>
-                            <p>累计提成：<span class="pro-black">{{"￥" + (item.total_amount | number:1)}}</span></p>
+                            <p>累计提成：<span class="pro-black">{{"￥" + (item.total_settled_amount | number:1)}}</span></p>
                         </div>
                     </div>
 

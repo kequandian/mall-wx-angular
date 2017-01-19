@@ -173,22 +173,11 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
             getPurchaseSummary($scope.year, $scope.mon);
 
-            /// fix IOS date format issue
-            function fixIOSDate(date_string){
-
-                var reg_date = new Date(date_string);
-
-                if(isNaN(reg_date)){
-                    var date_s = date_string.replace(/\-/g, '/');
-                    date_s = date_s.substr(0, 10);
-
-                    reg_date = new Date(date_s);
-                }
-
-                return reg_date;
-            }
-
             function getDefaultYears() {
+                //var years = [
+                //    {key: 2015, value: "2015年"},
+                //    {key: 2016, value: "2016年"}
+                //];
 
                 var years = [];
 
@@ -217,40 +206,52 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 var curMon = now.getMonth();
                 var selectedYear = $scope.year ? $scope.year : curYear;
 
-                if (curYear != selectedYear) {
-                    return defaultMons;
-                }
+                //if (curYear != selectedYear) {
+                //    return defaultMons;
+                //}
 
                 var registered = !(UserInfo.register_date === undefined || UserInfo.register_date == null || UserInfo.register_date.length == 0);
                 var regDate = registered ? fixIOSDate(UserInfo.register_date) : new Date();
                 var regMonth = regDate.getMonth();
+                var regYear = regDate.getYear() + 1900;
 
-                if(curMon > regMonth){
-                    for (var m = regMonth; m <= curMon; m++) {
-                        var mm = m + 1;
-                        if (mm < 10) {
-                            mm = '0' + mm;
+                if(selectedYear == regYear){
+
+                    if(curYear == regYear){
+                        for (var m = regMonth; m <= curMon; m++) {
+                            var mm = m + 1;
+                            if (mm < 10) {
+                                mm = '0' + mm;
+                            }
+                            mons.push({key: m, value: mm + "月"})
                         }
-                        mons.push({key: m, value: mm + "月"})
-                    }
-                }else{
-                    // curMon <  regMonth 属于跨年问题
-                    if(selectedYear == curYear){
-                        for (var m1 = 0; m1 <= curMon; m1++) {
+                    }else if(curYear > regYear){
+                        for (var m1 = regMonth; m1 <= 11; m1++) {
                             var mm1 = m1 + 1;
                             if (mm1 < 10) {
                                 mm1 = '0' + mm1;
                             }
                             mons.push({key: m1, value: mm1 + "月"})
                         }
-                    }else if(selectedYear < curYear){
-                        for (var m2 = regMonth; m2 <= 11; m2++) {
-                            var mm2 = m2 + 1;
-                            if (mm2 < 10) {
-                                mm2 = '0' + mm2;
-                            }
-                            mons.push({key: m2, value: mm2 + "月"})
+                    }
+
+                }else if(selectedYear == curYear){
+
+                    for (var m2 = 0; m2 <= curMon; m2++) {
+                        var mm2 = m2 + 1;
+                        if (mm2 < 10) {
+                            mm2 = '0' + mm2;
                         }
+                        mons.push({key: m2, value: mm2 + "月"})
+                    }
+
+                }else{
+                    for (var m3 = 0; m3 <= 11; m3++) {
+                        var mm3 = m3 + 1;
+                        if (mm3 < 10) {
+                            mm3 = '0' + mm3;
+                        }
+                        mons.push({key: m3, value: mm3 + "月"})
                     }
                 }
 
@@ -272,16 +273,25 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 {key: 11, value: "12月"}
             ];
 
+            /// fix IOS date format issue
+            function fixIOSDate(date_string){
+
+                var reg_date = new Date(date_string);
+
+                if(isNaN(reg_date)){
+                    var date_s = date_string.replace(/\-/g, '/');
+                    date_s = date_s.substr(0, 10);
+
+                    reg_date = new Date(date_s);
+                }
+
+                return reg_date;
+            }
+
             // 查询销售订单数据
             $scope.postOrder = function () {
                 var year = $scope.year;
                 var mon = $scope.mon;
-
-                //if (mon < 10) {
-                //    mon = '0' + mon;
-                //}
-                //var start_date = year + "-" + mon + "-" + "01";
-                //var end_date = year + "-" + mon + "-" + "30";
 
                 var d_start_date = new Date(year, mon, 1);
                 var _end_date = new Date(year, mon + 1, 1);
@@ -298,6 +308,8 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
             $scope.onSelectedYear = function () {
                 /// set curMon
                 $scope.monDefault = getDefaultMons();
+                var year = $scope.year;
+                //var mon = $scope.mon;
 
                 //console.log("selectedYea?"+$scope.year+",selectedMon?"+$scope.mon);
                 if ($scope.year == $scope.thisYear) {
@@ -306,11 +318,14 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                         $scope.mon = curMon;
                     }
                 }else{
-                    var firstMon = $scope.monDefault[0];
+                    var firstMon = $scope.monDefault[0].key;
                     if($scope.mon < firstMon){
                         $scope.mon = firstMon;
                     }
                 }
+                var mon = $scope.mon;
+                // format date
+                getPurchaseSummary(year, mon);
             };
 
             function getPurchaseSummary(year,month){
@@ -323,7 +338,8 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 SellerTeamFty.getPurchaseSummaryService(select_dtae_format)
                     .then(function(json){
                         if(json.status_code == 0){
-                            //console.log(angular.toJson(json));
+                            console.log(angular.toJson(json));
+                            console.log("json count: " + json.data.my_recommended_sellers.length);
                             $scope.pirchase_summary = json.data;
                         }else{
                             $.toast('获取信息失败','cancel');
