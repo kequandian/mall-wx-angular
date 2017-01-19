@@ -110,6 +110,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                             $.toast('申请已提交,请等待审核');
                             $state.go('offLineShop');
                         }else{
+                            $.toast.prototype.defaults.duration = 2500;
                             if(json.message == "user.is.not.crownship"){
                                 $.toast('授权失败,该用户不是皇冠级别', 'cancel');
                             }else if(json.message == "invalid.real_name"){
@@ -326,7 +327,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     }
                 }
                 var mon = $scope.mon;
-                
+
                 getPurchaseSummary(year, mon);
             };
 

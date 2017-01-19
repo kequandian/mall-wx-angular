@@ -127,6 +127,22 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                 return 0;
             }
 
+            $scope.lv_text = function(is_seller, is_agent, is_partner){
+                if(is_agent){
+                    $scope.lv_name = '代理商';
+                    return true;
+                }
+                if(is_partner){
+                    $scope.lv_name = '经销商';
+                    return true;
+                }
+                if(is_seller){
+                    $scope.lv_name = '销售商';
+                    return true;
+                }
+                return false;
+            };
+
 
             //推广二维码
             $scope.initQrcode = function (q_r_code) {

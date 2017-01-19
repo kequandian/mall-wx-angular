@@ -18,9 +18,10 @@
                     <div oc-lazy-load="FiveStar">
                         <p class="user-lv-text">
                             <span ng-if="owner_balance.is_member">级别: &nbsp;</span>
-                            <span ng-if="owner_balance.is_seller">销售商&nbsp;</span>
-                            <span ng-if="owner_balance.is_agent">代理商&nbsp;</span>
-                            <span ng-if="owner_balance.is_partner">经销商</span>
+                            <!--<span ng-if="owner_balance.is_seller">销售商&nbsp;</span>-->
+                            <!--<span ng-if="owner_balance.is_agent">代理商&nbsp;</span>-->
+                            <!--<span ng-if="owner_balance.is_partner">经销商</span>-->
+                            <span ng-if="lv_text(owner_balance.is_seller,owner_balance.is_agent,owner_balance.is_partner)">{{lv_name}}</span>
                             <!--<span class="five-star-parent" ng-if="owner_balance.is_agent==0 && owner_balance.is_partner">-->
 
                             <span class="shop-icon" ng-if="owner_balance.is_physical">
