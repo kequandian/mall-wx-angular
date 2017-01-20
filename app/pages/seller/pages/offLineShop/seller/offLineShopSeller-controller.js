@@ -111,8 +111,8 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                             $state.go('offLineShop');
                         }else{
                             $.toast.prototype.defaults.duration = 2500;
-                            if(json.message == "user.is.not.crownship"){
-                                $.toast('授权失败,该用户不是皇冠级别', 'cancel');
+                            if (json.message == 'user.already.crownship') {
+                                $.toast('授权失败,该用户已经是皇冠级别', 'cancel');
                             }else if(json.message == "invalid.real_name"){
                                 $.toast('授权失败,真实姓名与被授权人个人信息上的不一致', 'cancel');
                             }else if(json.message == "invalid.phone"){
