@@ -137,7 +137,7 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                     return true;
                 }
                 if(is_seller){
-                    $scope.lv_name = '销售商';
+                    $scope.lv_name = '会员';
                     return true;
                 }
                 return false;
