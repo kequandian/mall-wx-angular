@@ -36,6 +36,7 @@
     text-align:center;
     line-height:41px;
     /*border-left:1px solid #dcdcdc;*/
+    list-style-type : none;
 }
 
 #orders .orders-hide-span{
