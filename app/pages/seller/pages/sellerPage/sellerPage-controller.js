@@ -95,13 +95,13 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                                 $scope.owner_balance.level_percent = getLevelPercent();
                             }
 
-                            if(json.data.is_physical && json.data.is_partner && GlobalVariable.CAN_APPLY_CROWN){
-                                $scope.is_physical = 1;
-                            }
-
-                            if(json.data.is_crown && json.data.is_physical){
-                                $scope.is_physical = 2;
-                            }
+                            //if(json.data.is_physical && json.data.is_partner && GlobalVariable.CAN_APPLY_CROWN){
+                            //    $scope.is_physical = 1;
+                            //}
+                            //
+                            //if(json.data.is_crown && json.data.is_physical){
+                            //    $scope.is_physical = 2;
+                            //}
 
                             /// save session
                             BalanceSession.balance = $scope.owner_balance.balance;
@@ -200,7 +200,7 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
             };
 
             //线下门店
-            //$scope.is_physical = 1;
+            $scope.is_physical = 1;
             $scope.off_line_shop = function(is_physical){
                 if(is_physical == 2){
                     $state.go('offLineShop');
