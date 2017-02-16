@@ -42,14 +42,26 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 if(isAgent){
                     $scope.is_agent = isAgent;
                     $scope.action_text = '经销商授权';
+                    $scope.init_placeholder_id = "要与被授权人的UID一致";
+                    $scope.init_placeholder_name = "要与被授权人个人信息的姓名一致";
+                    $scope.init_placeholder_phone = "要与被授权人个人信息的手机号一致";
                 }else{
                     $scope.is_agent = isAgent;
                     $scope.action_text = '提交申请';
+                    $scope.init_placeholder_id = "要与个人信息的ID号一致";
+                    $scope.init_placeholder_name = "要与个人信息的姓名一致";
+                    $scope.init_placeholder_phone = "要与个人信息的手机号一致";
                     //获取个人信息
                     getUserInfo();
                 }
 
             }
+
+            $scope.init_placeholder = function(isAgent){
+                if(isAgent){
+
+                }
+            };
 
             function getUserInfo() {
 
@@ -115,6 +127,8 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                                 $.toast('授权失败,该用户已经是皇冠级别', 'cancel');
                             }else if(json.message == "invalid.real_name"){
                                 $.toast('授权失败,真实姓名与被授权人个人信息上的不一致', 'cancel');
+                            }else if(json.message == "real_name.is.empty"){
+                                $.toast('被授权人未填写个人信息，请到“积分中心，我的信息”填写后再授权', 'cancel');
                             }else if(json.message == "invalid.phone"){
                                 $.toast('授权失败,手机号码与被授权人个人信息上的不一致', 'cancel');
                             }else {
@@ -336,13 +350,13 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 var select_date = new Date(year, month);
                 var select_dtae_format = $filter('date')(select_date,'yyyy-MM');
 
-                console.log("select_dtae_format: " + select_dtae_format);
+                //console.log("select_dtae_format: " + select_dtae_format);
 
                 SellerTeamFty.getPurchaseSummaryService(select_dtae_format)
                     .then(function(json){
                         if(json.status_code == 0){
-                            console.log(angular.toJson(json));
-                            console.log("json count: " + json.data.my_recommended_sellers.length);
+                            //console.log(angular.toJson(json));
+                            //console.log("json count: " + json.data.my_recommended_sellers.length);
                             $scope.pirchase_summary = json.data;
                         }else{
                             $.toast('获取信息失败','cancel');

@@ -4,6 +4,19 @@
     overflow: hidden;
 }
 
+#sellerAuthorization ::-webkit-input-placeholder { /* WebKit browsers */
+    font-size:12px;
+}
+#sellerAuthorization :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    font-size:12px;
+}
+#sellerAuthorization ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    font-size:12px;
+}
+#sellerAuthorization :-ms-input-placeholder { /* Internet Explorer 10+ */
+    font-size:12px;
+}
+
 #sellerAuthorization .weui_cells{
     margin-top: 0;
 }
