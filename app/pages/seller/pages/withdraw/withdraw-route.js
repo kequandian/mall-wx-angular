@@ -13,5 +13,14 @@ angular.module('withdraw.route', [/*'withdraw.controller'*/])
                     return $ocLazyLoad.load('Withdraw');
                 }]
             }
+        }).state('exchangeRecord', {
+            url: '/exchangeRecord',
+            templateUrl: 'pages/seller/pages/withdraw/exchangeRecord/exchangeRecord.html',
+            controller: 'ExchangeRecordController',
+            resolve: {
+                loadData: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load('Withdraw');
+                }]
+            }
         })
     }]);

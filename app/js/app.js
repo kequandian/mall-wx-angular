@@ -115,7 +115,9 @@
                     files: ['pages/seller/pages/withdraw/withdraw-controller.js',
                         'pages/seller/pages/withdraw/withdraw-service.js',
                         'pages/seller/seller-session-service.js',
-                        {type: 'css', path: 'css/sellerPage/withdraw.css'}],
+                        {type: 'css', path: 'css/sellerPage/withdraw.css'},
+                        {type: 'css', path: 'css/sellerPage/exchangeRecord.css'}
+                    ],
                     cache: false
                 }, {
                     name: 'Distribution',

@@ -1,0 +1,35 @@
+<div id="exchangeRecord">
+
+    <div id="promotionOrder">
+
+        <div class="my-recommend-content">
+
+            <div class="item-stable custom_titlebar_primary">
+
+                <select class="weui_select year" ng-options="i.key as i.value for i in yearDefault" ng-model="year"
+                        ng-init="year=thisYear" ng-change="onSelectedYear()">
+                </select>
+                记录明细
+                <select class="weui_select mon" ng-options="i.key as i.value for i in monDefault" ng-model="mon"
+                        ng-init="mon=thisMon" ng-change="postOrder()">
+                </select>
+
+            </div>
+
+            <div class="record-list">
+
+                <div class="list-item" >
+                    <div class="l-item-left">
+                        <p>微信支付</p>
+                        <p>2017.02.26</p>
+                    </div>
+                    <div class="l-item-right">
+                        <span>提现金额:￥200</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

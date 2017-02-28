@@ -55,10 +55,37 @@
     left: 3px;
 }
 
-#withdraw .user-info-body img{
-    position: absolute;
-    width:18px;
-    height:18px;
-    opacity:0.5;
-    top: 25px;
+/*#withdraw .user-info-body img{*/
+    /*position: absolute;*/
+    /*width:18px;*/
+    /*height:18px;*/
+    /*opacity:0.5;*/
+    /*top: 25px;*/
+/*}*/
+
+#withdraw .user-info-body .exchange_record{
+    width: 100%;
+    height: 20px;
+    line-height: 36px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    margin-top: 14px;
+}
+#withdraw .user-info-body .exchange_record img{
+    width: 20px;
+    height: 20px;
+    margin-left: 22px;
+    margin-right: 6px;
+}
+#withdraw .user-info-body .exchange_record span{
+    left: 21px;
+}
+#withdraw .user-info-body .exchange_record i{
+    width: 16px;
+    height: 16px;
+    background-size: 8px 16px;
+    background-repeat: no-repeat;
+    background-image: url(../../img/sellerPage/offLineShop/arrow.png);
+    margin-left: 6px;
 }
