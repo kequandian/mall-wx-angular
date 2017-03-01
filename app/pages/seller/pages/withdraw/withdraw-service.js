@@ -60,6 +60,23 @@ angular.module('withdraw.service', [])
                     return deferred.reject(data);
                 });
                 return deferred.promise;
+            },
+
+            // 获取提现记录
+            getExchangeRecordService: function (startTime,endTime) {
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + "/reward_cash?start_date=" + startTime + "&end_date=" + endTime;
+                $http.get(url,{
+                    headers:{
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
+                })
+                    .success(function (data) {
+                        return deferred.resolve(data);
+                    }).error(function (data) {
+                    return deferred.reject(data);
+                });
+                return deferred.promise;
             }
         }
     }]);

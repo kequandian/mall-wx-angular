@@ -7,24 +7,30 @@
             <div class="item-stable custom_titlebar_primary">
 
                 <select class="weui_select year" ng-options="i.key as i.value for i in yearDefault" ng-model="year"
-                        ng-init="year=thisYear" ng-change="onSelectedYear()">
+                        ng-init="year=thisYear" ng-change="selectedYearAction()">
                 </select>
                 记录明细
                 <select class="weui_select mon" ng-options="i.key as i.value for i in monDefault" ng-model="mon"
-                        ng-init="mon=thisMon" ng-change="postOrder()">
+                        ng-init="mon=thisMon" ng-change="getExchangeRecordAction()">
                 </select>
 
             </div>
 
             <div class="record-list">
 
-                <div class="list-item" >
+                <div class="list-item" ng-repeat="item in exchange_record_list">
                     <div class="l-item-left">
-                        <p>微信支付</p>
-                        <p>2017.02.26</p>
+                        <p style="margin-top: 2px;">{{pay_status(item.account_type)}}</p>
+                        <p>{{apply_time(item.apply_time)}}</p>
                     </div>
                     <div class="l-item-right">
-                        <span>提现金额:￥200</span>
+                        <div class="amount-money">
+                            <p>{{'￥' + item.cash}}</p>
+                        </div>
+                        <div class="amount-text">
+                            <p style="padding-top: 4px; color: #000000;">提现金额</p>
+                            <p style="font-size: 10px; ">{{apply_status(item.status)}}</p>
+                        </div>
                     </div>
                 </div>
 

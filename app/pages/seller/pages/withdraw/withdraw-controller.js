@@ -150,8 +150,8 @@ angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
 
 
     //提现记录controller
-    .controller('ExchangeRecordController',['$scope','$state','UserInfo',
-        function ($scope, $state,UserInfo) {
+    .controller('ExchangeRecordController',['$scope','$state','$filter','UserInfo','withdrawFty',
+        function ($scope, $state,$filter,UserInfo,withdrawFty) {
 
             document.title = "记录明细";
 
@@ -165,6 +165,7 @@ angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
             $scope.year = $scope.thisYear;
             $scope.mon = $scope.thisMon;
 
+            getExchangeRecordInfo($scope.year, $scope.mon);
 
             function getDefaultYears() {
 
@@ -263,7 +264,7 @@ angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
             }
 
 
-            $scope.onSelectedYear = function () {
+            $scope.selectedYearAction = function () {
                 /// set curMon
                 $scope.monDefault = getDefaultMons();
                 var year = $scope.year;
@@ -282,12 +283,26 @@ angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
                 }
                 var mon = $scope.mon;
 
+                getExchangeRecordInfo(year, mon);
             };
 
             // 查询提现记录
-            $scope.getExchangeRecordList = function () {
+            $scope.getExchangeRecordAction = function () {
                 var year = $scope.year;
                 var mon = $scope.mon;
+
+                /*var d_start_date = new Date(year, mon, 1);
+                var _end_date = new Date(year, mon + 1, 1);
+                var d_end_date = new Date(_end_date - 1);
+
+                // format date
+                var start_date = $filter('date')(d_start_date, 'yyyy-MM-dd');
+                var end_date = $filter('date')(d_end_date, 'yyyy-MM-dd');*/
+
+                getExchangeRecordInfo(year, mon);
+            };
+
+            function getExchangeRecordInfo(year, mon){
 
                 var d_start_date = new Date(year, mon, 1);
                 var _end_date = new Date(year, mon + 1, 1);
@@ -297,13 +312,45 @@ angular.module('withdraw.controller', ['withdraw.service', 'seller.session'])
                 var start_date = $filter('date')(d_start_date, 'yyyy-MM-dd');
                 var end_date = $filter('date')(d_end_date, 'yyyy-MM-dd');
 
+                withdrawFty.getExchangeRecordService(start_date,end_date)
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            $scope.exchange_record_list = json.data;
+                            console.log(angular.toJson(json))
+                        }else{
+                            $.toast('获取记录失败', 'cancel');
+                            console.log('获取记录失败: ' + angular.toJson(json));
+                        }
+                    }, function(error){
+                        $.toast('获取记录失败', 'cancel');
+                        console.log('获取记录失败: ' + angular.toJson(error));
+                    })
+            }
 
-                console.log("year: " + year);
-                console.log("mon: " + mon);
 
-
+            //支付方式
+            $scope.pay_status = function(status){
+                if(status == 'WECHAT'){
+                    return '微信支付';
+                }
             };
+            //支付方式
+            $scope.apply_time = function(time){
+                var initTime = time.split(' ');
+                return initTime[0];
+            };
+            //申请状态
+            $scope.apply_status = function(status){
 
-
+                if(status == 'APPLYING'){
+                    return '申请中';
+                }else if(status == 'REJECTED'){
+                    return '被拒绝';
+                }else if(status == 'HANDLING'){
+                    return '处理中';
+                }else if(status == 'COMPLETED'){
+                    return '已完成';
+                }
+            };
 
     }]);

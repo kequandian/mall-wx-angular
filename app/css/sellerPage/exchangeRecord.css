@@ -30,17 +30,37 @@
 
 #exchangeRecord .list-item .l-item-left{
     width: 50%;
-    height: 100%;
+    font-size: 13px;
     float: left;
 }
-#exchangeRecord .list-item .l-item_l-right{
+#exchangeRecord .list-item .l-item-left p{
+    height: 21px;
+}
+#exchangeRecord .list-item .l-item-right{
     width: 50%;
-    height: 45px;
-    line-height: 45px;
+    text-align: right;
+    color: #5D696B;
+    font-size: 13px;
     float: left;
 }
-#exchangeRecord .list-item .l-item_l-right span{
-    align-content: right;
+
+#exchangeRecord .list-item .l-item-right .amount-text{
+    font-size: 13px;
+    margin-right: 3px;
+    float: right;
+}
+#exchangeRecord .list-item .l-item-right .amount-text p{
+    height: 21px;
+    text-align: left;
+}
+#exchangeRecord .list-item .l-item-right .amount-money {
+    width: 65px;
+    float: right;
+}
+#exchangeRecord .list-item .l-item-right .amount-money p{
+    height: 21px;
+    color: #B70203;
+    font-size: 16px;
 }
 
 
