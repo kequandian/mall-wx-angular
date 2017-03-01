@@ -29,14 +29,15 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
     /*
      * 经销团队
      * */
-    .controller('SellerAuthorizationController', ['$scope','$state','$stateParams', 'SellerTeamFty',
-        function ($scope,$state,$stateParams, SellerTeamFty) {
+    .controller('SellerAuthorizationController', ['$scope','$state','$stateParams','$timeout', 'SellerTeamFty',
+        function ($scope,$state,$stateParams,$timeout, SellerTeamFty) {
 
             //title
             document.title = "经销授权";
 
             var isAgent = $stateParams.isAgent;
             var sellerType;
+            var show_tips = document.getElementById('show_tips');
 
             if(isAgent != null){
                 if(isAgent){
@@ -89,6 +90,10 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
                 sellerType = 'CROWN';
 
+                if(!angular.isString(uid) || uid.length==0){
+                    $.toast('ID不能为空', 'cancel');
+                    return;
+                }
                 if(!angular.isString(real_name) || real_name.length==0){
                     $.toast('姓名不能为空', 'cancel');
                     return;
@@ -122,15 +127,15 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                             $.toast('申请已提交,请等待审核');
                             $state.go('offLineShop');
                         }else{
-                            $.toast.prototype.defaults.duration = 2500;
+                            $.toast.prototype.defaults.duration = 2000;
                             if (json.message == 'user.already.crownship') {
-                                $.toast('授权失败,该用户已经是皇冠级别', 'cancel');
+                                showTips("授权失败,该用户已经是皇冠级别");
                             }else if(json.message == "invalid.real_name"){
-                                $.toast('授权失败,真实姓名与被授权人个人信息上的不一致', 'cancel');
+                                showTips("授权失败,真实姓名与被授权人个人信息上的不一致");
                             }else if(json.message == "real_name.is.empty"){
-                                $.toast('被授权人未填写个人信息，请到“积分中心，我的信息”填写后再授权', 'cancel');
+                                showTips("被授权人未填写个人信息，请到“积分中心，我的信息”填写后再授权");
                             }else if(json.message == "invalid.phone"){
-                                $.toast('授权失败,手机号码与被授权人个人信息上的不一致', 'cancel');
+                                showTips("授权失败,手机号码与被授权人个人信息上的不一致");
                             }else {
                                 $.toast('授权失败', 'cancel');
                             }
@@ -162,6 +167,15 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
             function checkPhone(str){
                 var isphone = /^((\+|0)86)?\d{11}$/.test(str);
                 return isphone;
+            }
+
+            //show tips
+            function showTips(content){
+                show_tips.style.display = 'block';
+                $scope.tips_text = content;
+                $timeout(function () {
+                    show_tips.style.display = 'none';
+                }, 2500);
             }
 
 
