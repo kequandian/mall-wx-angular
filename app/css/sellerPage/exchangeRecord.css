@@ -14,8 +14,12 @@
     text-align: center;
 }
 
-#exchangeRecord .record-list{
-    background-color: white;
+#exchangeRecord .record-list .exchange_record_null{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #0D3349;
 }
 
 
@@ -26,6 +30,7 @@
     color: #5D696B;
     font-size: 13px;
     border-bottom: 1px solid #cccccc;
+    background-color: white;
 }
 
 #exchangeRecord .list-item .l-item-left{

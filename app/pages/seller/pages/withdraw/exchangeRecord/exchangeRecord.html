@@ -18,7 +18,9 @@
 
             <div class="record-list">
 
-                <div class="list-item" ng-repeat="item in exchange_record_list">
+                <div class="exchange_record_null" ng-if="exchange_record_list.length == 0">没有提现记录</div>
+
+                <div class="list-item" ng-repeat="item in exchange_record_list" ng-if="exchange_record_list.length > 0">
                     <div class="l-item-left">
                         <p style="margin-top: 2px;">{{pay_status(item.account_type)}}</p>
                         <p>{{apply_time(item.apply_time)}}</p>
