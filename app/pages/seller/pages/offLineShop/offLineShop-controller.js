@@ -17,8 +17,16 @@ angular.module('offLineShop.controller', ['offLineShop.service'])
                 $state.go('sellerAuthorization',{isAgent:true});
             };
 
-            $scope.my_recommend_actopm = function(){
+            $scope.my_recommend_action = function(){
                 $state.go('myRecommend');
-            }
+            };
+
+            $scope.withdraw_apply_action = function(){
+                $state.go('withdrawApply');
+            };
+
+            $scope.offLine_exchange_record_action = function(){
+                $state.go('offLineExchangeRecord');
+            };
 
         }]);

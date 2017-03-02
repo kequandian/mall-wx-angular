@@ -44,4 +44,24 @@ angular.module('offLineShop.route',[])
                 }]
             }
         })
+            .state('withdrawApply', {
+            url:'/withdrawApply',
+            templateUrl: 'pages/seller/pages/offLineShop/seller/withdrawApply.html',
+            controller:'WithdrawApplyController',
+            resolve: {
+                loadData: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load('SellerAuthorization');
+                }]
+            }
+        })
+            .state('offLineExchangeRecord', {
+            url:'/offLineExchangeRecord',
+            templateUrl: 'pages/seller/pages/offLineShop/seller/offLineExchangeRecord.html',
+            controller:'OffLineExchangeRecordController',
+            resolve: {
+                loadData: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load('OffLineExchangeRecord');
+                }]
+            }
+        })
     }]);

@@ -387,4 +387,288 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
         }])
 
 
+     /*
+     * 提现申请
+     * */
+    .controller('WithdrawApplyController', ['$scope','$state', 'SellerTeamFty',
+        function ($scope,$state, SellerTeamFty) {
+
+            //title
+            document.title = "提现申请";
+
+            $scope.accountInfo={};
+
+            $scope.withdraw_apply_action = function(accountInfo){
+
+
+                console.log(angular.toJson(accountInfo));
+
+                if(validate_date(accountInfo)){
+                    console.log("验证通过");
+                    return;
+                    SellerTeamFty.postWidthApplyService(accountInfo)
+                        .then(function(json){
+
+                            if(json.status_code == 0){
+                                $.toast('提现申请成功');
+                                $state.go('offLineShop')
+                            }else{
+                                $.toast('提现申请失败','cancel');
+                            }
+
+                        }, function(error){
+                            $.toast('提现申请失败','cancel');
+                            console.log(angular.toJson(error));
+                        })
+                }
+
+
+            };
+
+            function validate_date(accountInfo){
+
+                var accountName = accountInfo.account_name;
+                var accountNumber = accountInfo.account_number;
+                var bankName = accountInfo.bank_name;
+                var amount = accountInfo.amount;
+
+                if(!angular.isString(accountName) || accountName.length==0){
+                    $.toast('姓名不能为空', 'cancel');
+                    return false;
+                }
+                if(!angular.isNumber(accountNumber) || accountNumber.length==0){
+                    $.toast('卡号不能为空', 'cancel');
+                    return false;
+                }
+
+                var valiCardnumber = /^\d{16,20}$/;
+
+                if(!valiCardnumber.test(accountNumber)){
+                    $.toast('请输入正确的卡号', 'cancel');
+                    return false;
+                }
+
+                if(!angular.isString(bankName) || bankName.length==0){
+                    $.toast('开户行不能为空', 'cancel');
+                    return false;
+                }
+                if(!angular.isString(amount) || amount.length==0){
+                    $.toast('金额不能为空', 'cancel');
+                    return false;
+                }
+                var v_monye = /^[1-9]+[0-9]*]*$/;
+
+                if(!v_monye.test(amount) || !(amount%100 == 0)){
+                    $.toast('金额为100的倍数', 'cancel');
+                    return false;
+                }
+
+                return true;
+            }
+
+        }])
+
+    /*
+     * 提现记录
+     * */
+    .controller('OffLineExchangeRecordController', ['$scope','$state','$filter','UserInfo','SellerTeamFty',
+        function ($scope, $state,$filter,UserInfo,SellerTeamFty) {
+
+        document.title = "提现记录";
+
+        console.log(angular.toJson(UserInfo));
+
+        // 年月
+        $scope.yearDefault = getDefaultYears();
+
+        $scope.monDefault = getDefaultMons();
+
+        $scope.thisYear = new Date().getYear() + 1900;
+        $scope.thisMon = new Date().getMonth();
+        $scope.year = $scope.thisYear;
+        $scope.mon = $scope.thisMon;
+
+        getExchangeRecordInfo($scope.year, $scope.mon);
+
+        function getDefaultYears() {
+
+            var years = [];
+
+            var registered = !(UserInfo.register_date === undefined || UserInfo.register_date == null || UserInfo.register_date.length == 0);
+            var curYear = new Date().getYear() + 1900;
+            var regDate = registered ? fixIOSDate(UserInfo.register_date) : new Date();
+            var regYear = regDate.getYear() + 1900;
+
+            if(isNaN(regDate)) {
+                years.push({key: 1900, value: UserInfo.register_date});
+                years.push({key: curYear, value: curYear + '年'});
+            }
+
+            for (var y = regYear; y <= curYear; y++) {
+                years.push({key: y, value: y + '年'})
+            }
+
+            return years;
+        }
+
+        function getDefaultMons() {
+            var mons = [];
+
+            var now = new Date();
+            var curYear = now.getYear() + 1900;
+            var curMon = now.getMonth();
+            var selectedYear = $scope.year ? $scope.year : curYear;
+
+            //if (curYear != selectedYear) {
+            //    return defaultMons;
+            //}
+
+            var registered = !(UserInfo.register_date === undefined || UserInfo.register_date == null || UserInfo.register_date.length == 0);
+            var regDate = registered ? fixIOSDate(UserInfo.register_date) : new Date();
+            var regMonth = regDate.getMonth();
+            var regYear = regDate.getYear() + 1900;
+
+            if(selectedYear == regYear){
+
+                if(curYear == regYear){
+                    for (var m = regMonth; m <= curMon; m++) {
+                        var mm = m + 1;
+                        if (mm < 10) {
+                            mm = '0' + mm;
+                        }
+                        mons.push({key: m, value: mm + "月"})
+                    }
+                }else if(curYear > regYear){
+                    for (var m1 = regMonth; m1 <= 11; m1++) {
+                        var mm1 = m1 + 1;
+                        if (mm1 < 10) {
+                            mm1 = '0' + mm1;
+                        }
+                        mons.push({key: m1, value: mm1 + "月"})
+                    }
+                }
+
+            }else if(selectedYear == curYear){
+
+                for (var m2 = 0; m2 <= curMon; m2++) {
+                    var mm2 = m2 + 1;
+                    if (mm2 < 10) {
+                        mm2 = '0' + mm2;
+                    }
+                    mons.push({key: m2, value: mm2 + "月"})
+                }
+
+            }else{
+                for (var m3 = 0; m3 <= 11; m3++) {
+                    var mm3 = m3 + 1;
+                    if (mm3 < 10) {
+                        mm3 = '0' + mm3;
+                    }
+                    mons.push({key: m3, value: mm3 + "月"})
+                }
+            }
+
+            return mons;
+        }
+
+        /// fix IOS date format issue
+        function fixIOSDate(date_string){
+
+            var reg_date = new Date(date_string);
+
+            if(isNaN(reg_date)){
+                var date_s = date_string.replace(/\-/g, '/');
+                date_s = date_s.substr(0, 10);
+
+                reg_date = new Date(date_s);
+            }
+
+            return reg_date;
+        }
+
+
+        $scope.selectedYearAction = function () {
+            /// set curMon
+            $scope.monDefault = getDefaultMons();
+            var year = $scope.year;
+            //var mon = $scope.mon;
+
+            if ($scope.year == $scope.thisYear) {
+                var curMon = new Date().getMonth();
+                if ($scope.mon > curMon) {
+                    $scope.mon = curMon;
+                }
+            }else{
+                var firstMon = $scope.monDefault[0].key;
+                if($scope.mon < firstMon){
+                    $scope.mon = firstMon;
+                }
+            }
+            var mon = $scope.mon;
+
+            getExchangeRecordInfo(year, mon);
+        };
+
+        // 查询提现记录
+        $scope.getExchangeRecordAction = function () {
+            var year = $scope.year;
+            var mon = $scope.mon;
+
+            getExchangeRecordInfo(year, mon);
+        };
+
+        function getExchangeRecordInfo(year, mon){
+
+            var d_start_date = new Date(year, mon, 1);
+            var _end_date = new Date(year, mon + 1, 1);
+            var d_end_date = new Date(_end_date - 1);
+
+            // format date
+            var start_date = $filter('date')(d_start_date, 'yyyy-MM-dd');
+            var end_date = $filter('date')(d_end_date, 'yyyy-MM-dd');
+
+            /*SellerTeamFty.getExchangeRecordService(start_date,end_date)
+                .then(function(json){
+                    if(json.status_code == 0){
+                        $scope.exchange_record_list = json.data;
+                        console.log(angular.toJson(json))
+                    }else{
+                        $.toast('获取记录失败', 'cancel');
+                        console.log('获取记录失败: ' + angular.toJson(json));
+                    }
+                }, function(error){
+                    $.toast('获取记录失败', 'cancel');
+                    console.log('获取记录失败: ' + angular.toJson(error));
+                })*/
+        }
+
+
+        //支付方式
+        $scope.pay_status = function(status){
+            if(status == 'WECHAT'){
+                return '微信支付';
+            }
+        };
+        //支付方式
+        $scope.apply_time = function(time){
+            var initTime = time.split(' ');
+            return initTime[0];
+        };
+        //申请状态
+        $scope.apply_status = function(status){
+
+            if(status == 'APPLYING'){
+                return '申请中';
+            }else if(status == 'REJECTED'){
+                return '被拒绝';
+            }else if(status == 'HANDLING'){
+                return '处理中';
+            }else if(status == 'COMPLETED'){
+                return '已完成';
+            }
+        };
+
+    }])
+
+
 ;

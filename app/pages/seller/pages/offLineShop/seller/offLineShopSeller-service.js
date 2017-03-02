@@ -92,6 +92,25 @@ angular.module('sellerTeam.service', [])
                         return deferred.reject(data);
                     });
                 return deferred.promise;
+            },
+
+            // 提交提现申请
+            postWidthApplyService: function (accountInfo) {
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + "/physical_purchase_summary?month=" + select_date;
+                $http.get(url,{
+
+                },{
+                    headers:{
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
+                })
+                    .success(function (data) {
+                        return deferred.resolve(data);
+                    }).error(function (data) {
+                        return deferred.reject(data);
+                    });
+                return deferred.promise;
             }
         }
     }]);

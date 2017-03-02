@@ -267,6 +267,13 @@
                         'pages/seller/pages/offLineShop/seller/offLineShopSeller-service.js',
                         {type: 'css', path: 'css/sellerPage/offlineSeller/myRecommend.css'}],
                     cache: false
+                }, {
+                    name: 'OffLineExchangeRecord',
+                    files: ['pages/seller/pages/offLineShop/seller/offLineShopSeller-controller.js',
+                        'pages/seller/pages/offLineShop/seller/offLineShopSeller-service.js',
+                        {type: 'css', path: 'css/sellerPage/offlineSeller/offLineExchangeRecord.css'},
+                        {type: 'css', path: 'css/sellerPage/exchangeRecord.css'}],
+                    cache: false
                 }
 
                 ]
