@@ -175,7 +175,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 $scope.tips_text = content;
                 $timeout(function () {
                     show_tips.style.display = 'none';
-                }, 2500);
+                }, 4000);
             }
 
 
