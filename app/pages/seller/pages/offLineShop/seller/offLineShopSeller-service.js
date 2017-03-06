@@ -97,10 +97,30 @@ angular.module('sellerTeam.service', [])
             // 提交提现申请
             postWidthApplyService: function (accountInfo) {
                 var deferred = $q.defer();
-                var url = GlobalVariable.SERVER_PATH + "/physical_purchase_summary?month=" + select_date;
-                $http.get(url,{
-
+                var url = GlobalVariable.SERVER_PATH + "/physical_withdraw";
+                $http.post(url,{
+                    bank_name:accountInfo.bank_name,
+                    account_name:accountInfo.account_name,
+                    account_number:accountInfo.account_number,
+                    amount:accountInfo.amount
                 },{
+                    headers:{
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
+                })
+                    .success(function (data) {
+                        return deferred.resolve(data);
+                    }).error(function (data) {
+                        return deferred.reject(data);
+                    });
+                return deferred.promise;
+            },
+
+            // 获取提现记录
+            getExchangeRecordService: function (startTime,endTime) {
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + "/physical_withdraw?status=APPLYING&start_date=" + startTime + "&end_date=" + endTime;
+                $http.get(url,{
                     headers:{
                         'Authorization': GlobalVariable.ACCESS_TOKEN
                     }

@@ -25,7 +25,7 @@
 
 #exchangeRecord .list-item{
     height: 45px;
-    padding:7px 10px 7px 10px;
+    padding:7px 9px 7px 9px;
     background-color: white;
     color: #5D696B;
     font-size: 13px;
@@ -34,7 +34,7 @@
 }
 
 #exchangeRecord .list-item .l-item-left{
-    width: 50%;
+    width: 55%;
     font-size: 13px;
     float: left;
 }
@@ -42,7 +42,7 @@
     height: 21px;
 }
 #exchangeRecord .list-item .l-item-right{
-    width: 50%;
+    width: 45%;
     text-align: right;
     color: #5D696B;
     font-size: 13px;
@@ -66,6 +66,7 @@
     height: 21px;
     color: #B70203;
     font-size: 16px;
+    text-align: left;
 }
 
 

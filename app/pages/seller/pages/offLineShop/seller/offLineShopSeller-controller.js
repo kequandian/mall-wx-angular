@@ -58,12 +58,6 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
             }
 
-            $scope.init_placeholder = function(isAgent){
-                if(isAgent){
-
-                }
-            };
-
             function getUserInfo() {
 
                 SellerTeamFty.myInfoService()
@@ -400,12 +394,12 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
             $scope.withdraw_apply_action = function(accountInfo){
 
-
-                console.log(angular.toJson(accountInfo));
-
                 if(validate_date(accountInfo)){
-                    console.log("验证通过");
-                    return;
+
+                    accountInfo.amount = parseFloat(accountInfo.amount);
+
+                    console.log(angular.toJson(accountInfo));
+
                     SellerTeamFty.postWidthApplyService(accountInfo)
                         .then(function(json){
 
@@ -436,12 +430,12 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     $.toast('姓名不能为空', 'cancel');
                     return false;
                 }
-                if(!angular.isNumber(accountNumber) || accountNumber.length==0){
+                if(!angular.isString(accountNumber) || accountNumber.length==0){
                     $.toast('卡号不能为空', 'cancel');
                     return false;
                 }
 
-                var valiCardnumber = /^\d{16,20}$/;
+                var valiCardnumber = /^(\d{16}|\d{19})$/;
 
                 if(!valiCardnumber.test(accountNumber)){
                     $.toast('请输入正确的卡号', 'cancel');
@@ -456,13 +450,18 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     $.toast('金额不能为空', 'cancel');
                     return false;
                 }
-                var v_monye = /^[1-9]+[0-9]*]*$/;
+                //var v_monye = /^[1-9]+[0-9]*]*$/; //正整数
+                var v_monye = /^\d+(?=\.{0,1}\d+$|$)/; //正数
 
-                if(!v_monye.test(amount) || !(amount%100 == 0)){
-                    $.toast('金额为100的倍数', 'cancel');
+                //if(!v_monye.test(amount) || !(amount%100 == 0)){
+                //    $.toast('金额为100的倍数', 'cancel');
+                //    return false;
+                //}
+
+                if(!v_monye.test(amount)){
+                    $.toast('金额应为正数', 'cancel');
                     return false;
                 }
-
                 return true;
             }
 
@@ -627,7 +626,10 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
             var start_date = $filter('date')(d_start_date, 'yyyy-MM-dd');
             var end_date = $filter('date')(d_end_date, 'yyyy-MM-dd');
 
-            /*SellerTeamFty.getExchangeRecordService(start_date,end_date)
+            console.log(start_date);
+            console.log(end_date);
+
+            SellerTeamFty.getExchangeRecordService(start_date,end_date)
                 .then(function(json){
                     if(json.status_code == 0){
                         $scope.exchange_record_list = json.data;
@@ -639,7 +641,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 }, function(error){
                     $.toast('获取记录失败', 'cancel');
                     console.log('获取记录失败: ' + angular.toJson(error));
-                })*/
+                })
         }
 
 
@@ -649,7 +651,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 return '微信支付';
             }
         };
-        //支付方式
+        //时间截取
         $scope.apply_time = function(time){
             var initTime = time.split(' ');
             return initTime[0];
