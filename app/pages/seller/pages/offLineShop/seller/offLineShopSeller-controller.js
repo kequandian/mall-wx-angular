@@ -626,14 +626,11 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
             var start_date = $filter('date')(d_start_date, 'yyyy-MM-dd');
             var end_date = $filter('date')(d_end_date, 'yyyy-MM-dd');
 
-            console.log(start_date);
-            console.log(end_date);
-
             SellerTeamFty.getExchangeRecordService(start_date,end_date)
                 .then(function(json){
                     if(json.status_code == 0){
                         $scope.exchange_record_list = json.data;
-                        console.log(angular.toJson(json))
+                        //console.log(angular.toJson(json))
                     }else{
                         $.toast('获取记录失败', 'cancel');
                         console.log('获取记录失败: ' + angular.toJson(json));
