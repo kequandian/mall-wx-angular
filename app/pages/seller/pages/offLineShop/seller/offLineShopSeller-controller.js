@@ -400,6 +400,8 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
                     console.log(angular.toJson(accountInfo));
 
+                    return;
+
                     SellerTeamFty.postWidthApplyService(accountInfo)
                         .then(function(json){
 
@@ -415,8 +417,6 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                             console.log(angular.toJson(error));
                         })
                 }
-
-
             };
 
             function validate_date(accountInfo){
@@ -424,7 +424,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 var accountName = accountInfo.account_name;
                 var accountNumber = accountInfo.account_number;
                 var bankName = accountInfo.bank_name;
-                var amount = accountInfo.amount;
+                var amount = parseFloat(accountInfo.amount);
 
                 if(!angular.isString(accountName) || accountName.length==0){
                     $.toast('姓名不能为空', 'cancel');
@@ -446,20 +446,19 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     $.toast('开户行不能为空', 'cancel');
                     return false;
                 }
-                if(!angular.isString(amount) || amount.length==0){
+                if(!angular.isNumber(amount) || amount.length==0){
                     $.toast('金额不能为空', 'cancel');
                     return false;
                 }
-                //var v_monye = /^[1-9]+[0-9]*]*$/; //正整数
                 var v_monye = /^\d+(?=\.{0,1}\d+$|$)/; //正数
-
-                //if(!v_monye.test(amount) || !(amount%100 == 0)){
-                //    $.toast('金额为100的倍数', 'cancel');
-                //    return false;
-                //}
 
                 if(!v_monye.test(amount)){
                     $.toast('金额应为正数', 'cancel');
+                    return false;
+                }
+
+                if(!amount > 0){
+                    $.toast('金额应大于零', 'cancel');
                     return false;
                 }
                 return true;
