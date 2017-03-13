@@ -49,8 +49,9 @@ angular.module("express.controller", ["express.service","orderDetails.service"])
             var p_count = $stateParams.productCount;
             $scope.express_number = $stateParams.expressNumber;
             $scope.express_company = $stateParams.expressCompany;
-            console.log($scope.express_number);
-            console.log($scope.express_company);
+            console.log("订单号：" + o_number);
+            console.log("物流公司：" + $scope.express_number);
+            console.log("运单号：" + $scope.express_company);
 
             if(p_img != null && p_count != null){
                 $scope.product_img = p_img;

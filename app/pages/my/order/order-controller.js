@@ -181,8 +181,20 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             };
 
             //进入物流详情
-            $scope.goToExpress_all = function (number) {
-                $state.go('express', {orderNumber: number, productImg: null, productCount: null});
+            $scope.goToExpress_all = function (item) {
+
+                var count = 0;
+                angular.forEach(item.order_items, function (v, k) {
+                    count += v.quantity;
+                });
+
+                $state.go('express', {
+                    orderNumber: item.order_number,
+                    productImg: item.cover,
+                    productCount: count,
+                    expressNumber:item.express_number,
+                    expressCompany:item.express_company
+                });
             };
 
             //立即付款
@@ -556,9 +568,20 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             };
 
             //进入物流详情
-            $scope.goToExpress_delivered = function (o_number) {
-                console.log('go express');
-                $state.go('express', {orderNumber: o_number, productImg: null, productCount: null});
+            $scope.goToExpress_delivered = function (item) {
+
+                var count = 0;
+                angular.forEach(item.order_items, function (v, k) {
+                    count += v.quantity;
+                });
+
+                $state.go('express', {
+                    orderNumber: item.order_number,
+                    productImg: item.cover,
+                    productCount: count,
+                    expressNumber:item.express_number,
+                    expressCompany:item.express_company
+                });
             };
 
             //确认订单
@@ -655,8 +678,19 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             };
 
             //进入物流详情
-            $scope.goToExpress_finish = function (number) {
-                $state.go('express', {orderNumber: number, productImg: null, productCount: null});
+            $scope.goToExpress_finish = function (item) {
+                var count = 0;
+                angular.forEach(item.order_items, function (v, k) {
+                    count += v.quantity;
+                });
+
+                $state.go('express', {
+                    orderNumber: item.order_number,
+                    productImg: item.cover,
+                    productCount: count,
+                    expressNumber:item.express_number,
+                    expressCompany:item.express_company
+                });
             };
 
         }])

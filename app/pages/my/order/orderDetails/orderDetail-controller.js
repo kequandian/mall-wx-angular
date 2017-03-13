@@ -198,21 +198,18 @@ angular.module('orderDetails.controller', ['orderDetails.service',
 
             //进入物流详情
             $scope.goToExpress = function (item) {
-                var o_number = item.order_number;
                 var p_img = item.order_items[0].cover;
-                var express_number = item.express_number;
-                var express_company = item.express_company;
                 var count = 0;
                 angular.forEach(item.order_items, function (v, k) {
                     count += v.quantity;
                 });
 
                 $state.go('express', {
-                    orderNumber: o_number,
+                    orderNumber: item.order_number,
                     productImg: p_img,
                     productCount: count,
-                    expressNumber:express_number,
-                    expressCompany:express_company
+                    expressNumber:item.express_number,
+                    expressCompany:item.express_company
                 });
             };
 
