@@ -1,17 +1,42 @@
-[
-  {
-    "monthly_settled_amount": 0, // 本月提成
-    "total_amount": 3000, //累计进货
-    "id": 3,
-    "uid": "U011612071832290001",
-    "total_settled_amount": 0, //累计提成
-    "user_name": "德",
-    "settled": 0,
-    "settlement_proportion": 2,
-    "monthly_amount": 3000, //本月进货
-    "seller_id": 269,
-    "avatar": "http://wx.qlogo.cn/mmopen/YxXbvKewslicc4IUmEjJFWGrnCXddcPxxYGO7mqIBgElIVDhgc8swL34wLfaxVCNzX8I0AspfGQcVonB7MeVdLFulJGHiaEwDY/0",
-    "statistic_month": "2017-01-01"
-  }
-]}
+{
+  "detail": "232号",
+  "phone": "12365987652",
+  "is_deliver_reminder": 0,
+  "contact_user": "zhang",
+  "remark": null,
+  "invoice": 0,
+  "street": null,
+  "trade_number": "test_trade_num",
+  "express_number": "70534709279246",
+  "deal_date": null,
+  "express_company": "百世快递",
+  "city": "沈阳",
+  "id": 688,
+  "cover": "http://o9ixtumvv.bkt.clouddn.com/20161018165116814-MoyMVgI8.jpg",
+  "confirm_date": "2017-03-13 10:47:58",
+  "description": "拉芳新品邂逅香氛沐浴露550ml x 1. ",
+  "province": "辽宁",
+  "user_id": 2,
+  "coupon_info": null,
+  "express_code": "baishiwuliu",
+  "district": "沈河区",
+  "deliver_date": "2017-03-13 10:48:37",
+  "delivered_date": null,
+  "created_date": "2017-03-13 10:47:14",
+  "order_number": "1703131047145862",
+  "zip": null,
+  "point_exchange_rate": 100,
+  "status": "DELIVERING",
+  "invoice_title": null,
+  "receiving_time": null,
+  "deliver_order_number": null,
+  "total_price": 46.9,
+  "previous_status": null,
+  "user_name": "jingfei",
+  "is_deleted": 0,
+  "settled": 0,
+  "freight": 7,
+  "pay_date": "2017-03-13 10:47:58",
+  "payment_type": "WECHAT",
+  "isDelivered": false
 }

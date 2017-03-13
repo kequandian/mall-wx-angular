@@ -184,9 +184,13 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             $scope.goToExpress_all = function (item) {
 
                 var count = 0;
-                angular.forEach(item.order_items, function (v, k) {
-                    count += v.quantity;
-                });
+                if(item.order_items != null){
+                    angular.forEach(item.order_items, function (v, k) {
+                        count += v.quantity;
+                    });
+                }else{
+                    count = -1;
+                }
 
                 $state.go('express', {
                     orderNumber: item.order_number,
@@ -571,9 +575,14 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             $scope.goToExpress_delivered = function (item) {
 
                 var count = 0;
-                angular.forEach(item.order_items, function (v, k) {
-                    count += v.quantity;
-                });
+
+                if(item.order_items != null){
+                    angular.forEach(item.order_items, function (v, k) {
+                        count += v.quantity;
+                    });
+                }else{
+                    count = -1;
+                }
 
                 $state.go('express', {
                     orderNumber: item.order_number,
@@ -680,10 +689,13 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             //进入物流详情
             $scope.goToExpress_finish = function (item) {
                 var count = 0;
-                angular.forEach(item.order_items, function (v, k) {
-                    count += v.quantity;
-                });
-
+                if(item.order_items != null){
+                    angular.forEach(item.order_items, function (v, k) {
+                        count += v.quantity;
+                    });
+                }else{
+                    count = -1;
+                }
                 $state.go('express', {
                     orderNumber: item.order_number,
                     productImg: item.cover,
