@@ -47,6 +47,10 @@ angular.module("express.controller", ["express.service","orderDetails.service"])
             var o_number = $stateParams.orderNumber;
             var p_img = $stateParams.productImg;
             var p_count = $stateParams.productCount;
+            $scope.express_number = $stateParams.expressNumber;
+            $scope.express_company = $stateParams.expressCompany;
+            console.log($scope.express_number);
+            console.log($scope.express_company);
 
             if(p_img != null && p_count != null){
                 $scope.product_img = p_img;

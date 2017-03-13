@@ -398,10 +398,6 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
                     accountInfo.amount = parseFloat(accountInfo.amount);
 
-                    console.log(angular.toJson(accountInfo));
-
-                    return;
-
                     SellerTeamFty.postWidthApplyService(accountInfo)
                         .then(function(json){
 

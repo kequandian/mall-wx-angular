@@ -13,7 +13,7 @@ angular.module('orderDetails.controller', ['orderDetails.service',
 
                 OrderDetailsFty.orderDetailsService(orderNumber)
                     .then(function (json) {
-                        console.log(angular.toJson(json));
+                        //console.log(angular.toJson(json));
                         if (json.status_code == 0) {
                             $scope.detailsInfo = json.data;
                             var count = 0;
@@ -200,13 +200,21 @@ angular.module('orderDetails.controller', ['orderDetails.service',
             $scope.goToExpress = function (item) {
                 var o_number = item.order_number;
                 var p_img = item.order_items[0].cover;
+                var express_number = item.express_number;
+                var express_company = item.express_company;
                 var count = 0;
                 angular.forEach(item.order_items, function (v, k) {
                     count += v.quantity;
                 });
 
-                $state.go('express', {orderNumber: o_number, productImg: p_img, productCount: count});
-            }
+                $state.go('express', {
+                    orderNumber: o_number,
+                    productImg: p_img,
+                    productCount: count,
+                    expressNumber:express_number,
+                    expressCompany:express_company
+                });
+            };
 
             //立即付款
             $scope.weixin_pay = function (order) {

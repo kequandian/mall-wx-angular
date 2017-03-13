@@ -19,9 +19,9 @@
         </div>
         <div class="info">
             <h4  class="custom_text_primary">物流状态 <span>{{expressInfo.state|expressStatus}}</span></h4>
-            <p>承运公司: {{expressInfo.company}}</p>
-            <p>运单编号: {{expressInfo.nu != null ? expressInfo.nu : '-'}}</p>
-            <p>官方电话: <span class="tel">{{expressInfo.comcontact}}</span> </p>
+            <p>承运公司: {{express_company}}</p>
+            <p>运单编号: {{express_number != null ? express_number : '-'}}</p>
+            <p>官方电话: <span class="tel">{{expressInfo.comcontact != null ? expressInfo.comcontact : '-'}}</span> </p>
         </div>
 
     </div>

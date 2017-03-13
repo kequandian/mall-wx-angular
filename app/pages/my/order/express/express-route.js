@@ -18,9 +18,11 @@ angular.module("express.route", [/*"express.controller"*/])
                 }]
             },
             params:{
-                'orderNumber':null,
-                'productImg':null,
-                'productCount':null
+                orderNumber:null,
+                productImg:null,
+                productCount:null,
+                expressNumber:null,
+                expressCompany:null
             }
         })
     }]);
