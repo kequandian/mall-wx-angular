@@ -22,6 +22,7 @@ angular.module('category.service', [])
             getProductListService: function (cateId,pageNumber,pageSize,orderBy) {
                 var deferred = $q.defer();
                 var url = GlobalVariable.SERVER_PATH + "/product_category/" + cateId + "?pageNumber=" + pageNumber + "&pageSize=" + pageSize + orderBy;
+                console.log(url)
                 $http.get(url)
                     .success(function (data) {
                         return deferred.resolve(data);

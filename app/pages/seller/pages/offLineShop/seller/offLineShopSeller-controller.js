@@ -130,6 +130,8 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                                 showTips("被授权人未填写个人信息，请到“积分中心，我的信息”填写后再授权");
                             }else if(json.message == "invalid.phone"){
                                 showTips("授权失败,手机号码与被授权人个人信息上的不一致");
+                            }else if(json.message == "apply.already.exist"){
+                                showTips("您已提交授权，无需再提交");
                             }else {
                                 $.toast('授权失败', 'cancel');
                             }

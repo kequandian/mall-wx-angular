@@ -281,7 +281,6 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                                 $state.go('home.sellerPage', {}, {reload: true});
                             }
 
-
                             $.toast('提交成功');
                         } else {
                             $.toast('提交失败请与客服联系', 'cancel');
