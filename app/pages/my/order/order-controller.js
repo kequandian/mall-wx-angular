@@ -9,11 +9,17 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             }
         };
     })
-    .controller('OrderController', ['$scope', '$state', '$rootScope',
-        function ($scope, $state, $rootScope) {
+    .controller('OrderController', ['$scope', '$state', '$rootScope','$ocLazyLoad',
+        function ($scope, $state, $rootScope,$ocLazyLoad) {
 
             //title
             document.title = "我的订单";
+
+            $ocLazyLoad.load('Jquery').then(function () {
+                $ocLazyLoad.load('JqueryWeUI').then(function () {
+                    //console.log("order:jquery loaded");
+                })
+            });
 
             //nav 样式
             var scope = $rootScope;
@@ -51,6 +57,12 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
     /* 全部订单 */
     .controller('allController', ['$scope', '$state', '$rootScope', '$timeout', 'OrderFty', 'OrderCommon', 'BalanceSession',
         '$ocLazyLoad', function ($scope, $state, $rootScope, $timeout, OrderFty, OrderCommon, BalanceSession, $ocLazyLoad) {
+
+            $ocLazyLoad.load('Jquery').then(function () {
+                $ocLazyLoad.load('JqueryWeUI').then(function () {
+                    //console.log("order:jquery loaded");
+                })
+            });
 
             $rootScope.orderTabsIndex = 1;
 
