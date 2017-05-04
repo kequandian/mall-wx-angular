@@ -85,6 +85,29 @@
 
     </div>
 
+    <!--拼团商品-->
+    <div class="fight-groups" ng-if="false">
+        <img src="{{rec_product[0].cover}}" class="fight-groups-ad-img" ng-click="goToFightGroups(false)">
+        <div class="fight-groups-info">
+            <div class="f-g-info-price">
+                <span>$25.00</span>
+                <span class="group-count">已团购xx件</span>
+            </div>
+            <div class="f-g-info-img-group">
+                <div class="user-imgs">
+                    <div class="imgs-photo">
+                        <img src="" class="user_img1"/>
+                    </div>
+                    <div class="imgs-photo">
+                        <img src="" class="user_img2"/>
+                    </div>
+                </div>
+            </div>
+            <div class="f-g-info-btn weui_btn_primary" ng-click="goToFightGroups(true)">去开团 ></div>
+        </div>
+
+    </div>
+
     <!-- 产品列表 -->
     <div class="s-size-area">
 

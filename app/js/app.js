@@ -108,7 +108,8 @@
                     name: 'Category',
                     files: ['pages/category/category-controller.js',
                         'pages/category/category-service.js',
-                        {type: 'css', path: 'css/category/category.css'}],
+                        {type: 'css', path: 'css/category/category.css'},
+                        {type: 'css', path: 'css/category/fightGroups.css'}],
                     cache: false
                 }, {
                     name: 'Withdraw',
@@ -300,6 +301,9 @@
         $rootScope.home_coupon_status = false;
         $rootScope.follow_url = null;
         $rootScope.red_point_status = false;
+
+        //拼团状态
+        $rootScope.fightGroupsStatus = false;
 
         /*//Do your $on in here, like this:
         $rootScope.$on("$locationChangeStart",function(event, next, current){

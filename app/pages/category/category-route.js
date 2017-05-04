@@ -2,7 +2,7 @@ angular.module('category.route', [])
     .config(['$stateProvider', function($stateProvider) {
         $stateProvider.state('home.category', {
             url: '/category/:categoryId',
-            templateUrl: 'pages/category/category.html',
+            templateUrl:  'pages/category/category.html',
             controller:'CategoryController',
             resolve: {
                 loadData: ['$ocLazyLoad', function ($ocLazyLoad) {

@@ -28,6 +28,11 @@ angular.module('category.controller', ['category.service'])
 
             $rootScope.tabsNumber = 2;
             //$rootScope.jqueryLoaded = false;
+            if($rootScope.fightGroupsStatus){
+                $scope.isFightGroups = true;
+            }else{
+                $scope.isFightGroups = false;
+            }
 
             $scope.top_btn_show = true;
             var loading = cateCacheCode.loading;  //状态标记

@@ -525,6 +525,12 @@ angular.module('homePage.controller', ['homePage.service'])
 
             }
 
+            //拼团
+            $scope.goToFightGroups = function(status){
+                $rootScope.fightGroupsStatus = status;
+                $state.go('home.category',{cateId:-1});
+            }
+
 
         }])
 

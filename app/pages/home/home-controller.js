@@ -20,6 +20,14 @@ angular.module('home.controller', ['home.service'])
             scope.$watch('redPoint', function (nValue, oValue) {
                 $scope.home_tabs[4].red_point = nValue;
             });
+            scope.$watch('fightGroupsStatus', function (nValue, oValue) {
+                console.log('拼团新值：' + nValue + "-------" + '旧值：' + oValue);
+                if(nValue){
+                    $scope.home_tabs[1].name = "搜索";
+                }else{
+                    $scope.home_tabs[1].name = "分类";
+                }
+            });
 
             $scope.clickme = function (id) {
                 $scope.currentId = id;

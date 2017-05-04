@@ -1,4 +1,4 @@
-<div id="category">
+<div id="category" ng-if="!isFightGroups">
 
     <!-- 头部logo -->
     <nav class="nav">
@@ -75,3 +75,7 @@
         <!--<img src="img/top.png">-->
     <!--</div>-->
 <!--</div>-->
+
+<div id="fightGroups" ng-if="isFightGroups">
+    <div>this is a fight groups</div>
+</div>
