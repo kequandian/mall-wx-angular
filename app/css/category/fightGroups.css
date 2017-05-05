@@ -1,5 +1,104 @@
 #fightGroups{
     width: 100%;
     height: 100%;
-    background-color: #528CE0;
+    overflow-x:hidden;
+    overflow-y: scroll;
+    /*overflow: hidden;*/
+    background-color: #efeff3;
+}
+
+#fightGroups .dividing_line{
+    width: 100%;
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
+    text-align: center;
+    color:#959393;
+}
+
+#fightGroups .pro-content{
+    width: 100%;
+    height:100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    /*margin-bottom: 42px;*/
+    padding-bottom: 8px;
+}
+
+#fightGroups .pro-content .product-item{
+    width: 50%;
+    height: auto;
+    padding-top: 4px;
+}
+
+#fightGroups .pro-content .product-item:nth-child(odd){
+    float: left;
+    box-sizing: border-box;
+    padding-right: 2px;
+    padding-left: 4px;
+    background-color: #efeff3;
+}
+
+#fightGroups .pro-content .product-item:nth-child(even){
+    float: left;
+    box-sizing: border-box;
+    padding-left: 2px;
+    padding-right: 4px;
+    background-color: #efeff3;
+}
+
+#fightGroups .pro-content .product-item .product-img{
+    width: 100%;
+    height: auto;
+    position:relative;
+}
+
+#fightGroups .pro-content .product-item .product-img img{
+    width: 100%;
+    height: auto;
+}
+
+#fightGroups .pro-content .product-item .product-img div{
+    position:absolute;
+    right: 10px;
+    bottom: 5px;
+}
+
+#fightGroups .pro-content .product-item .product-img div img{
+    width: 75px;
+    height: auto;
+}
+
+#fightGroups .pro-content .product-item .product-name{
+    width: 100%;
+    height: auto;
+    line-height: 24px;
+    font-size: 14px;
+    text-align: center;
+    background-color: white;
+}
+
+
+#fightGroups .pro-content .product-item .p-content{
+    line-height: 32px;
+    font-size: 14px;
+    background-color: white;
+    display: flex;
+    padding: 0 7px 0 7px;
+}
+
+#fightGroups .pro-content .product-item .product-price{
+    color:red;
+    text-align: left;
+    flex: 1;
+    justify-content: flex-start;
+}
+
+#fightGroups .pro-content .product-item .product-buy-count{
+    color:#A8A8A8;
+    text-align: right;
+    flex: 1;
+    justify-content: flex-end;
+    font-size: 12px;
 }

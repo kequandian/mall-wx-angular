@@ -199,11 +199,11 @@
     padding: 0;
 }
 
-#category .load-more-product {
+.load-more-product {
     width: 100%;
 }
 
-#category .load-more-product .load-more-button {
+.load-more-product .load-more-button {
     /*left: 21%;*/
     /*right: 21%;*/
     font-family: \000031;
@@ -220,7 +220,7 @@
     margin-right: 25px;
 }
 
-#category .load-more-product .load-more-button:active {
+.load-more-product .load-more-button:active {
     background-color: #cccccc;
     color: white;
 }

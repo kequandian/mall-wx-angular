@@ -17,6 +17,13 @@ angular.module('details.controller', ['details.service'])
                 //console.log('新值：' + nValue + "-------" + '旧值：' + oValue);
             });
 
+            //拼团状态
+            if($rootScope.fightGroupsStatus){
+
+            }else{
+
+            }
+
             $scope.point_rate = PointRate.rate;
             var product_id = $stateParams.productId;
 
