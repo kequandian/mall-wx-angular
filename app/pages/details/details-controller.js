@@ -19,9 +19,9 @@ angular.module('details.controller', ['details.service'])
 
             //拼团状态
             if($rootScope.fightGroupsStatus){
-
+                $scope.isFightGroups = true;
             }else{
-
+                $scope.isFightGroups = false;
             }
 
             $scope.point_rate = PointRate.rate;
@@ -292,15 +292,23 @@ angular.module('details.controller', ['details.service'])
             }
 
             //购买状态
-            $scope.buy_status = function (number, b_status) {
+            $scope.buy_status = function (number, b_status,isFightGroups) {
+
                 if(!b_status){
                     $.toast('该商品暂无库存', 'cancel');
                     return;
                 }
+
+                if(isFightGroups){
+                    number = 3;
+                }
+
                 if (number == 1) {
                     $scope.b_status = "cart";
                 } else if (number == 2) {
                     $scope.b_status = "buy";
+                }else if(number == 3){
+                    $scope.b_status = "fightGroup";
                 }
             };
 
@@ -359,6 +367,8 @@ angular.module('details.controller', ['details.service'])
                     } else {
                         $.toast('此商品暂无库存');
                     }
+                }else if(b_status == "fightGroup"){
+                    console.log("拼团");
                 }
             }
 

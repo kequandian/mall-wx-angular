@@ -744,4 +744,94 @@
 }
 
 
+/*begin*/
+#details .cut-line{
+    width: 100%;
+    height: 5px;
+    background-color: #e3e3e3;
+}
+
+#details .open-group{
+    width: 100%;
+    height: auto;
+    background-color: white;
+    padding-top: 5px;
+    padding-bottom: 8px;
+}
+
+#details .open-group .open-group-title{
+    height: 32px;
+    line-height: 32px;
+    padding-left: 10px;
+    font-size: 14px;
+    color: #757575;
+}
+
+#details .open-group .open-group-item{
+    margin-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    display: flex;
+}
+
+#details .open-group .open-group-item .user-cover{
+    width: 50px;
+    height: 50px;
+    background-color: #007aff;
+    border-radius: 50%;
+    margin-right: 10px;
+    flex: none;
+}
+
+#details .open-group .open-group-item .user-info{
+    flex: 1;
+}
+
+#details .open-group .open-group-item .user-info .info-content{
+    display: flex;
+    flex-direction: column;
+    color: #757575;
+}
+
+#details .open-group .open-group-item .user-info .info-content .user-name{
+    flex: 1;
+    font-size: 13px;
+    padding-top: 5px;
+}
+#details .open-group .open-group-item .user-info .info-content .user-fight-group-info{
+    flex: 1;
+    font-size: 13px;
+    padding-top: 1px;
+}
+#details .open-group .open-group-item .go-join-btn{
+    flex: none;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 10px 0 10px;
+    font-size: 16px;
+    border-radius: 7px;
+    margin-top: 7px;
+}
+/*end*/
+
+#details .alone-buy{
+    width: 100%;
+    height: 100%;
+    font-size: 13px;
+    text-align: center;
+}
+#details .alone-buy .span-top{
+    width: 100%;
+    height: 25px;
+    line-height: 32px;
+    font-size: 16px;
+}
+#details .alone-buy .span-bottom{
+    width: 100%;
+    height: 25px;
+    line-height: 25px;
+}
+
+
 

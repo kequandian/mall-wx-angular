@@ -32,6 +32,7 @@ angular.module('category.controller', ['category.service'])
                 $scope.isFightGroups = true;
             }else{
                 $scope.isFightGroups = false;
+                //detailsInfo();
             }
 
             $scope.top_btn_show = true;
@@ -154,9 +155,7 @@ angular.module('category.controller', ['category.service'])
                                         cateCacheCode.second_cate =$scope.first_cate[$scope.indexFirstCate];
                                         //console.log('cateCacheCode.second_cate: ' + angular.toJson($scope.first_cate[cateCacheCode.index_first]));
                                         cateCacheCode.product_id = $scope.first_cate[$scope.indexFirstCate].sub_categories[$scope.indexSecondCate].id;
-
                                     }
-
 
                                 } else {
                                     console.log('获取商品分类失败');

@@ -10,7 +10,7 @@ angular.module('category.route', [])
                 }]
             },
             params:{
-                categoryId:null
+                categoryId:null,
             }
         })
     }]);
