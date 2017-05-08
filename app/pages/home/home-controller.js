@@ -22,10 +22,14 @@ angular.module('home.controller', ['home.service'])
             });
             scope.$watch('fightGroupsStatus', function (nValue, oValue) {
                 console.log('拼团新值：' + nValue + "-------" + '旧值：' + oValue);
-                if(nValue){
-                    $scope.home_tabs[1].name = "搜索";
-                }else{
+                if(nValue == 'yes'){
+                    console.log('yes：' + nValue);
+                    $scope.home_tabs[1].name = '搜索';
+                    $scope.home_tabs[1].srefName = '.category({categoryId:-1,fightGroupsStatus:"yes"})';
+                }else if(nValue == 'no'){
+                    console.log('no：' + nValue);
                     $scope.home_tabs[1].name = "分类";
+                    $scope.home_tabs[1].srefName = '.category({categoryId:-1,fightGroupsStatus:"no"})';
                 }
             });
 
@@ -44,7 +48,7 @@ angular.module('home.controller', ['home.service'])
             }, {
                 'id': '2',
                 'name': '分类',
-                'srefName': '.category',
+                'srefName': '',
                 'home_tab_icon': 'weui_tabbar_icon ion-app-biliya-tabs-search',
                 'c_count': null,
                 'c_number': 0,

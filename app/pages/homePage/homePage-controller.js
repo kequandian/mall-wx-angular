@@ -440,7 +440,7 @@ angular.module('homePage.controller', ['homePage.service'])
                 cateCacheCode.loading=false;
                 cateCacheCode.load_more_btn_show= true;
                 //console.log(angular.toJson(item))
-                $state.go('home.category',{cateId:-1});
+                $state.go('home.category',{categoryId:-1,fightGroupsStatus:'no'});
             };
 
             //红包
@@ -526,9 +526,9 @@ angular.module('homePage.controller', ['homePage.service'])
             }
 
             //拼团
-            $scope.goToFightGroups = function(status){
-                $rootScope.fightGroupsStatus = status;
-                $state.go('home.category',{cateId:-1});
+            $scope.goToFightGroups = function(productId,status){
+                console.log("status: " + status);
+                $state.go('details',{productId:productId, detailsFightGroupsStatus:status});
             }
 
 

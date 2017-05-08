@@ -34,9 +34,9 @@
                                 <label class="ion-ios-checkmark cart-item-label" for="check{{cart.id}}"></label>
                             </div>
                             <div class="item-info">
-                                <a href="" class="item-image" ui-sref="details({productId:cart.product_id})">
+                                <div class="item-image" ng-click="goToDetails(cart.product_id)">
                                     <img ng-src="{{cart.cover | defaultCover}}">
-                                </a>
+                                </div>
                                 <div class="">
                                     <a  ui-sref="details({productId:cart.product_id})" ng-if="cart.product_specification_name != null">
                                         <h4 class="item-title" style="{{check_stock_balance(cart.stock_balance)}}">{{cart.product_name | cutText:true:16:"..."}}</h4>

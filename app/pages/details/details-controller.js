@@ -18,10 +18,13 @@ angular.module('details.controller', ['details.service'])
             });
 
             //拼团状态
-            if($rootScope.fightGroupsStatus){
+            var detailsFightGroupsStatus = $stateParams.detailsFightGroupsStatus;
+            if(detailsFightGroupsStatus == 'yes'){
                 $scope.isFightGroups = true;
-            }else{
+                $rootScope.fightGroupsStatus = 'yes';
+            }else if(detailsFightGroupsStatus == 'no'){
                 $scope.isFightGroups = false;
+                $rootScope.fightGroupsStatus = 'no';
             }
 
             $scope.point_rate = PointRate.rate;
@@ -29,10 +32,10 @@ angular.module('details.controller', ['details.service'])
 
 
             //修改url地址，用于分享
-            appendFallback(product_id);
+            appendFallback(product_id,detailsFightGroupsStatus);
 
 
-            function appendFallback(product_id){
+            function appendFallback(product_id, f_g_status){
                 if ( window.location.href.indexOf('fb_redirect=true') >=0 ) {
                     return false;
                 }
@@ -42,23 +45,26 @@ angular.module('details.controller', ['details.service'])
                     var params = window.location.href.split('?');
                     var longParam = params[1];
                     var param = longParam.split('#')[0];
-
                     /// already has fallback
                     if(param.indexOf('fallback=details-')>=0){
                         param = param.replace(/fallback=details\-\d+/,  'fallback=details-'+product_id);
-                        //console.log("param>> "+param);
+                        if(param.indexOf('&fgStatus-') >= 0){
+                            param = param.replace(/&fgStatus\-\w+/, '&fgStatus-' + f_g_status);
+                        }
+                        console.log("param>>> "+param);
                     }else{
                         param = param + '&fallback=details-' + product_id;
-                        //console.log("param> "+param);
+                        console.log("param> "+param);
                     }
 
                     /// append details
                     ///
-                    newurl = '?' + param + '#/details/' + product_id;
-                    //console.log("newurl>>> "+newurl);
+                    newurl = '?' + param + '#/details/' + product_id + '/' + f_g_status;
+                    console.log("newurl>>> "+newurl);
                 }else{
-                    newurl = '?fallback=details-'+ product_id +'#/details/' + product_id;
-                    //console.log("newurl> "+newurl);
+                    //newurl = '?fallback=details-'+ product_id +'#/details/' + product_id + '/' + f_g_status;
+                    newurl = '?fallback=details-'+ product_id +'&fgStatus-'+ f_g_status +'#/details/' + product_id + '/' + f_g_status;
+                    console.log("newurl> "+newurl);
                 }
 
 

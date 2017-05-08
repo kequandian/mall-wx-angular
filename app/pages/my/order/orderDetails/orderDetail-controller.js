@@ -1,9 +1,9 @@
 angular.module('orderDetails.controller', ['orderDetails.service',
     "express.service", 'order.common', 'my.order.service'])
 
-    .controller('OrderDetailsController', ['$scope', '$state', '$stateParams', 'OrderDetailsFty', 'ExpressInfo',
+    .controller('OrderDetailsController', ['$scope', '$state','$rootScope', '$stateParams', 'OrderDetailsFty', 'ExpressInfo',
         'OrderCommon','OrderFty', '$ocLazyLoad','BalanceSession',
-        function ($scope, $state, $stateParams, OrderDetailsFty, ExpressInfo, OrderCommon,OrderFty, $ocLazyLoad,BalanceSession) {
+        function ($scope, $state,$rootScope, $stateParams, OrderDetailsFty, ExpressInfo, OrderCommon,OrderFty, $ocLazyLoad,BalanceSession) {
 
             var loaded = false;
             orderDetails();
@@ -259,5 +259,12 @@ angular.module('orderDetails.controller', ['orderDetails.service',
                 });
                 /*end lazy*/
             };
+
+            //进入商品详情页
+            $scope.goToDetails = function(productId){
+                var f_g_status = $rootScope.fightGroupsStatus;
+                console.log('f_g_status: ' + f_g_status);
+                $state.go('details',{productId:productId, detailsFightGroupsStatus:f_g_status});
+            }
 
         }]);

@@ -28,9 +28,13 @@ angular.module('category.controller', ['category.service'])
 
             $rootScope.tabsNumber = 2;
             //$rootScope.jqueryLoaded = false;
-            if($rootScope.fightGroupsStatus){
+            var fightGroupsStatus = $stateParams.fightGroupsStatus;
+            console.log('fightGroupsStatus:  ' + fightGroupsStatus);
+            if(fightGroupsStatus == 'yes'){
+                $rootScope.fightGroupsStatus = 'yes';
                 $scope.isFightGroups = true;
-            }else{
+            }else if(fightGroupsStatus == 'no'){
+                $rootScope.fightGroupsStatus = 'no';
                 $scope.isFightGroups = false;
                 //detailsInfo();
             }
@@ -97,7 +101,6 @@ angular.module('category.controller', ['category.service'])
 
                 if(!loaded) {
                     if(cateCacheCode.cate_session == -1){
-                        console.log(12345);
                         if(cateCacheCode.product_list == null){
                             console.log('推荐商品分类信息有误');
                             return;
@@ -462,9 +465,9 @@ angular.module('category.controller', ['category.service'])
             }
 
             //推荐商品
-            $scope.cateGoToDetails = function (item) {
+            $scope.cateGoToDetails = function (item, status) {
                 //console.log(angular.toJson(item));
-                $state.go('details',{productId:item.id})
+                $state.go('details',{productId:item.id, detailsFightGroupsStatus:status})
             };
 
             //滚动加载

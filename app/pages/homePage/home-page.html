@@ -62,9 +62,12 @@
         <!-- 导航专区 -->
         <div id="ad_area">
             <div class="ad-left">
-                <a ui-sref="{{ad_banner_1.target_url | formatDetailsLocation}}">
-                    <!--<img ng-src="{{ad_banner_1.image != null ? ad_banner_1.image : 'img/home/img1.png'}}">-->
+                <!--<a ui-sref="{{ad_banner_1.target_url | formatDetailsLocation}}">
+                    &lt;!&ndash;<img ng-src="{{ad_banner_1.image != null ? ad_banner_1.image : 'img/home/img1.png'}}">&ndash;&gt;
                     <img ng-src="{{ad_banner_1.image}}">
+                </a>-->
+                <a ui-sref="home.category({categoryId:-1,fightGroupsStatus:'yes'})">
+                    <img src="img/home/fight-group-ad.png">
                 </a>
             </div>
             <div class="ad-right">
@@ -86,8 +89,8 @@
     </div>
 
     <!--拼团商品-->
-    <div class="fight-groups" ng-if="false">
-        <img src="img/category/fightGroup/fight_group_img.jpg" class="fight-groups-ad-img" ng-click="goToFightGroups(false)">
+    <div class="fight-groups">
+        <img src="img/category/fightGroup/fight_group_img.jpg" class="fight-groups-ad-img" ng-click="goToFightGroups(54,'yes')">
         <div class="fight-groups-info">
             <div class="f-g-info-price">
                 <span>$25.00</span>
@@ -103,7 +106,7 @@
                     </div>
                 </div>
             </div>
-            <div class="f-g-info-btn weui_btn_primary" ng-click="goToFightGroups(true)">去开团 ></div>
+            <div class="f-g-info-btn weui_btn_primary" ng-click="goToFightGroups(54,'yes')">去开团 ></div>
         </div>
 
     </div>

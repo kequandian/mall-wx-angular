@@ -57,7 +57,7 @@
                 </div>
             </div>
 
-            <div class="item-order-info" ng-repeat="proItem in detailsInfo.order_items"  ui-sref="details({productId:proItem.product_id})" >
+            <div class="item-order-info" ng-repeat="proItem in detailsInfo.order_items" ng-click="goToDetails(proItem.product_id)">
                 <div class="o-i-left">
                     <img ng-src="{{proItem.cover}}">
                 </div>

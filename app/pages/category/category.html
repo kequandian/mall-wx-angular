@@ -46,7 +46,7 @@
     <div class="pro-content" id="pro-height" oc-lazy-load="SquareImg">
         <div class="product-item"
              ng-repeat="item in productList.products"
-             ng-click="cateGoToDetails(item)"
+             ng-click="cateGoToDetails(item, 'no')"
                 >
             <div class="product-img">
                 <img square-img src="{{item.cover | defaultCover}}">
@@ -106,7 +106,7 @@
     <div class="pro-content" id="fig-height" oc-lazy-load="SquareImg">
         <div class="product-item"
              ng-repeat="item in productList.products"
-             ng-click="cateGoToDetails(item)"
+             ng-click="cateGoToDetails(item,'yes')"
                 >
             <div class="product-img">
                 <img square-img src="{{item.cover | defaultCover}}">
