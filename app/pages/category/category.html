@@ -63,7 +63,7 @@
             </div>
         </div>
 
-        <div class="weui_grid load-more-product" ng-show="load_more_btn_show">
+        <div class="weui_grid load-more-product" ng-if="!isFightGroups" ng-show="load_more_btn_show">
             <div class="load-more-button">拼命加载中……</div>
         </div>
     </div>
@@ -76,7 +76,7 @@
     <!--</div>-->
 <!--</div>-->
 
-<div id="fightGroups" ng-if="isFightGroups">
+<div id="fightGroups" class="fightGroups" ng-if="isFightGroups">
 
     <div class="fight-groups">
         <img src="img/category/fightGroup/fight_group_img.jpg" class="fight-groups-ad-img">
@@ -115,7 +115,7 @@
                 </div>
             </div>
             <div class="product-name">
-                <!--{{item.name | cutText:true:20:'...'}}-->
+                &lt;!&ndash;{{item.name | cutText:true:20:'...'}}&ndash;&gt;
                 {{item.short_name | defaultShortName}}
             </div>
             <div class="p-content">
@@ -128,7 +128,7 @@
             </div>
         </div>
 
-        <div class="weui_grid load-more-product" ng-show="load_more_btn_show">
+        <div class="weui_grid load-more-product" ng-if="isFightGroups" ng-show="load_more_btn_show">
             <div class="load-more-button">拼命加载中……</div>
         </div>
     </div>

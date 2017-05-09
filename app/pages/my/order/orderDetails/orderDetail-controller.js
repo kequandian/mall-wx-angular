@@ -262,7 +262,8 @@ angular.module('orderDetails.controller', ['orderDetails.service',
 
             //进入商品详情页
             $scope.goToDetails = function(productId){
-                var f_g_status = $rootScope.fightGroupsStatus;
+                //var f_g_status = $rootScope.fightGroupsStatus;
+                var f_g_status = 'no';
                 console.log('f_g_status: ' + f_g_status);
                 $state.go('details',{productId:productId, detailsFightGroupsStatus:f_g_status});
             }

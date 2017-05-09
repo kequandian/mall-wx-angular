@@ -28,17 +28,6 @@ angular.module('category.controller', ['category.service'])
 
             $rootScope.tabsNumber = 2;
             //$rootScope.jqueryLoaded = false;
-            var fightGroupsStatus = $stateParams.fightGroupsStatus;
-            console.log('fightGroupsStatus:  ' + fightGroupsStatus);
-            if(fightGroupsStatus == 'yes'){
-                $rootScope.fightGroupsStatus = 'yes';
-                $scope.isFightGroups = true;
-            }else if(fightGroupsStatus == 'no'){
-                $rootScope.fightGroupsStatus = 'no';
-                $scope.isFightGroups = false;
-                //detailsInfo();
-            }
-
             $scope.top_btn_show = true;
             var loading = cateCacheCode.loading;  //状态标记
             var pageNumber = 1;
@@ -46,6 +35,19 @@ angular.module('category.controller', ['category.service'])
             //var orderBy = "&orderBy=price";
             var orderBy = '';
             $scope.load_more_btn_show = cateCacheCode.load_more_btn_show;
+
+            //拼团
+            var fightGroupsStatus = $stateParams.fightGroupsStatus;
+            console.log('fightGroupsStatus:  ' + fightGroupsStatus);
+            if(fightGroupsStatus == 'yes'){
+                $rootScope.fightGroupsStatus = 'yes';
+                $scope.isFightGroups = true;
+                getFightGroupsInfo()
+            }else if(fightGroupsStatus == 'no'){
+                $rootScope.fightGroupsStatus = 'no';
+                $scope.isFightGroups = false;
+                detailsInfo();
+            }
 
             //首页广告商品分类ID
             var categoryId = $stateParams.categoryId;
@@ -83,7 +85,6 @@ angular.module('category.controller', ['category.service'])
 
             };*/
 
-            detailsInfo();
 
             function detailsInfo() {
                 var loaded = false;
@@ -405,7 +406,6 @@ angular.module('category.controller', ['category.service'])
 
             //products
             function productList(cateId){
-
                 if(!cateId > 0){
                     console.log('分类ID有误');
                     return;
@@ -473,26 +473,50 @@ angular.module('category.controller', ['category.service'])
             //滚动加载
             $ocLazyLoad.load('Jquery').then(function () {
                 $ocLazyLoad.load('JqueryWeUI').then(function () {
-                    $(".pro-content").infinite().on("infinite", function() {
-                        if(loading){
+
+                    if(fightGroupsStatus == 'yes'){
+                       /* console.log('loading : ' + loading);
+                        $("#fightGroups").infinite().on("infinite", function() {
                             console.log('loading : ' + loading);
-                            return;
-                        }
-                        loading = true;
-                        cateCacheCode.loading = true;
-                        setTimeout(function() {
-                            pageNumber += 1;
-                            if(categoryId>0){
-                                console.log(2);
-                                ad_category_product(categoryId)
-                            }else{
-                                console.log(3);
-                                productList(cateCacheCode.product_id);
+                            if(loading){
+                                console.log('loading : ' + loading);
+                                return;
                             }
-                            loading = false;
-                            cateCacheCode.loading = false;
-                        }, 500);   //模拟延迟
-                    });
+                            loading = true;
+                            setTimeout(function() {
+                                pageNumber += 1;
+                                if(categoryId>0){
+                                    console.log(2);
+                                }else{
+                                    console.log(3);
+                                }
+                                loading = false;
+                            }, 500);   //模拟延迟
+                        });*/
+                    }else if(fightGroupsStatus == 'no'){
+                        $(".pro-content").infinite().on("infinite", function() {
+                            console.log('loading : ' + loading);
+                            if(loading){
+                                console.log('loading : ' + loading);
+                                return;
+                            }
+                            loading = true;
+                            cateCacheCode.loading = true;
+                            setTimeout(function() {
+                                pageNumber += 1;
+                                if(categoryId>0){
+                                    console.log(2);
+                                    ad_category_product(categoryId)
+                                }else{
+                                    console.log(3);
+                                    productList(cateCacheCode.product_id);
+                                }
+                                loading = false;
+                                cateCacheCode.loading = false;
+                            }, 500);   //模拟延迟
+                        });
+                    }
+
                 })
             });
 
@@ -568,5 +592,36 @@ angular.module('category.controller', ['category.service'])
                     $rootScope.scrolls.yOffset = 0;
                 }
             });*/
+
+
+            //获取拼团商品信息
+            function getFightGroupsInfo(){
+                var cateId = 36;
+                //var pageNumber = 1;
+                pageSize = 4;
+                //var orderBy = '';
+                console.log(cateId);
+                console.log(pageNumber);
+                console.log(pageSize);
+                console.log(orderBy);
+                CategoryFty.getProductListService(cateId,pageNumber,pageSize,orderBy)
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            $scope.productList = json.data;
+                            if($scope.productList.products.length >= 4){
+                                $scope.load_more_btn_show = true;
+                                loading = false;
+                            } else {
+                                $scope.load_more_btn_show = false;
+                                loading = true;
+                            }
+                            console.log(angular.toJson(json.data))
+                        }else{
+                            console.log(angular.toJson(json))
+                        }
+                    }, function(error){
+                        console.log(angular.toJson(error))
+                    })
+            }
 
         }]);
