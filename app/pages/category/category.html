@@ -105,25 +105,24 @@
 
     <div class="pro-content" id="fig-height" oc-lazy-load="SquareImg">
         <div class="product-item"
-             ng-repeat="item in productList.products"
-             ng-click="cateGoToDetails(item,'yes')"
+             ng-repeat="fightGroupsItem in fightGroupsList.list"
+             ng-click="cateGoToDetails(fightGroupsItem,'yes')"
                 >
             <div class="product-img">
-                <img square-img src="{{item.cover | defaultCover}}">
-                <div ng-if="item.stock_balance == 0">
+                <img square-img src="{{fightGroupsItem.cover | defaultCover}}">
+                <!--<div ng-if="fightGroupsItem.stock_balance == 0">
                     <img src="img/category/feature.png">
-                </div>
+                </div>-->
             </div>
             <div class="product-name">
-                &lt;!&ndash;{{item.name | cutText:true:20:'...'}}&ndash;&gt;
-                {{item.short_name | defaultShortName}}
+                {{fightGroupsItem.marketing_name | defaultShortName}}
             </div>
             <div class="p-content">
                 <div class="product-price">
-                    {{item.price | currency:'￥'}}
+                    {{fightGroupsItem.price | currency:'￥'}}
                 </div>
                 <div class="product-buy-count">
-                    已团购xx件
+                    已团购{{fightGroupsItem.sale}}件
                 </div>
             </div>
         </div>

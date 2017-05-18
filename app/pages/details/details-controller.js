@@ -17,23 +17,24 @@ angular.module('details.controller', ['details.service'])
                 //console.log('新值：' + nValue + "-------" + '旧值：' + oValue);
             });
 
+
+            $scope.point_rate = PointRate.rate;
+            var product_id = $stateParams.productId;
             //拼团状态
             var detailsFightGroupsStatus = $stateParams.detailsFightGroupsStatus;
             if(detailsFightGroupsStatus == 'yes'){
                 $scope.isFightGroups = true;
                 $rootScope.fightGroupsStatus = 'yes';
+                getFightGroupsDetails(product_id);
             }else if(detailsFightGroupsStatus == 'no'){
                 $scope.isFightGroups = false;
                 $rootScope.fightGroupsStatus = 'no';
+                //商品详情
+                detailsInfo();
             }
-
-            $scope.point_rate = PointRate.rate;
-            var product_id = $stateParams.productId;
-
 
             //修改url地址，用于分享
             appendFallback(product_id,detailsFightGroupsStatus);
-
 
             function appendFallback(product_id, f_g_status){
                 if ( window.location.href.indexOf('fb_redirect=true') >=0 ) {
@@ -80,9 +81,6 @@ angular.module('details.controller', ['details.service'])
                 }
             }
 
-
-            //商品详情
-            detailsInfo();
 
             $scope.properties_list = [];
             function detailsInfo() {
@@ -167,6 +165,7 @@ angular.module('details.controller', ['details.service'])
                     })
             }
 
+            //获取快递公司
             function expressInfo(){
                 DetailsFty.expressSerivce()
                     .then(function(json){
@@ -299,68 +298,101 @@ angular.module('details.controller', ['details.service'])
 
             //购买状态
             $scope.buy_status = function (number, b_status,isFightGroups) {
-
                 if(!b_status){
                     $.toast('该商品暂无库存', 'cancel');
                     return;
                 }
 
                 if(isFightGroups){
-                    number = 3;
+                    number = 2;
                 }
 
                 if (number == 1) {
                     $scope.b_status = "cart";
+                    $scope.is_fight_groups = isFightGroups;
                 } else if (number == 2) {
                     $scope.b_status = "buy";
-                }else if(number == 3){
-                    $scope.b_status = "fightGroup";
+                    $scope.is_fight_groups = isFightGroups;
                 }
             };
 
             //确认购买option
-            $scope.buy_product_option = function (productInfo, productId, quantity) {
+            $scope.buy_product_option = function (productInfo, productId, quantity, isFightGroups) {
 
                 var product_property = null;
                 var product_specification_id = null;
                 var int_quantity = parseInt(quantity);
-
                 console.log(int_quantity);
 
-                if ($scope.product_property_value != null) {
-                    product_specification_id = $scope.product_property_value.id;
+                //是否拼团
+                if(!isFightGroups){
+
+                    if ($scope.product_property_value != null) {
+                        product_specification_id = $scope.product_property_value.id;
+                    }
+
+                    if ($scope.details.specifications.length > 0 && product_specification_id == null) {
+                        $.toast('请选择商品规格','cancel');
+                        return;
+                    }
+                    if ($scope.details.specifications.length > 0 && $scope.product_property_value.stock_balance == 0) {
+                        $.toast('此商品暂无库存','cancel');
+                        return;
+                    }
+                    if($scope.details.purchase_strategy != null){
+                        DetailsFty.check_buy_count(productId, quantity)
+                            .then(function(json){
+                                console.log("限购信息：" + angular.toJson(json));
+                                if(json.status_code == 0){
+                                    buy_option(productInfo,productId, int_quantity,product_property,product_specification_id);
+                                }else{
+                                    $.alert(json.message);
+                                    console.log("获取限购信息失败：" + angular.toJson(json))
+                                }
+                            }, function(error){
+                                console.log("获取限购信息失败：" + angular.toJson(error))
+                            });
+                    }else if($scope.details.purchase_strategy == null){
+                        buy_option(productInfo, productId, int_quantity,product_property,product_specification_id);
+                    }
+
+                }else{
+
+                    console.log('$scope.details: '+angular.toJson($scope.details.specifications));
+                    if ($scope.product_property_value != null) {
+                        product_specification_id = $scope.product_property_value.id;
+                    }
+
+                    if ($scope.details.specifications.length > 0 && product_specification_id == null) {
+                        $.toast('请选择商品规格','cancel');
+                        return;
+                    }
+                    if ($scope.details.specifications.length > 0 && $scope.product_property_value.stock_balance == 0) {
+                        $.toast('此商品暂无库存','cancel');
+                        return;
+                    }
+
+                    //console.log('productInfo: '+angular.toJson(productInfo));
+                    console.log('$scope.product_property_value: '+angular.toJson($scope.product_property_value));
+                    console.log('productId: '+productId);
+                    console.log('int_quantity: '+int_quantity);
+                    console.log('product_property: '+product_property);
+                    console.log('product_specification_id: '+product_specification_id);
+                    //buy_option(productInfo,productId, int_quantity,product_property,product_specification_id);
+
                 }
 
-                if ($scope.details.specifications.length > 0 && product_specification_id == null) {
-                    $.toast('请选择商品规格','cancel');
-                    return;
-                }
-                if ($scope.details.specifications.length > 0 && $scope.product_property_value.stock_balance == 0) {
-                    $.toast('此商品暂无库存','cancel');
-                    return;
-                }
 
-                if($scope.details.purchase_strategy != null){
-                    DetailsFty.check_buy_count(productId, quantity)
-                        .then(function(json){
-                            console.log("限购信息：" + angular.toJson(json));
-                            if(json.status_code == 0){
-                                buy_option(productInfo,productId, int_quantity,product_property,product_specification_id);
-                            }else{
-                                $.alert(json.message);
-                                console.log("获取限购信息失败：" + angular.toJson(json))
-                            }
-                        }, function(error){
-                            console.log("获取限购信息失败：" + angular.toJson(error))
-                        });
-                }else if($scope.details.purchase_strategy == null){
-                    buy_option(productInfo, productId, int_quantity,product_property,product_specification_id);
-                }
+
+
+
             };
 
             //选择方式
             function buy_option(productInfo,productId, int_quantity,product_property,product_specification_id){
                 var b_status = $scope.b_status;
+                var isFightGroups = $scope.is_fight_groups;
+                console.log("b_status: " + b_status);
                 if (b_status == "cart") {
                     if (productInfo.stock_balance > 0) {
                         $scope.addProductToCart(productId, int_quantity, product_property, product_specification_id);
@@ -369,7 +401,7 @@ angular.module('details.controller', ['details.service'])
                     }
                 } else if (b_status == "buy") {
                     if (productInfo.stock_balance > 0) {
-                        $scope.buy_immediately(productInfo, int_quantity, product_property, product_specification_id);
+                        $scope.buy_immediately(productInfo, int_quantity, product_property, product_specification_id,isFightGroups);
                     } else {
                         $.toast('此商品暂无库存');
                     }
@@ -420,7 +452,9 @@ angular.module('details.controller', ['details.service'])
 
             //立即购买
             $scope.checkedCarts = [];
-            $scope.buy_immediately = function (item, quantity, product_property, product_specification_id) {
+            $scope.buy_immediately = function (item, quantity, product_property, product_specification_id, isFightGroups) {
+
+                console.log(angular.toJson(item));
 
                 if(!quantity > 0){
                     $.toast('请输入商品数量','cancel');
@@ -429,6 +463,18 @@ angular.module('details.controller', ['details.service'])
 
                 var p_info = [];
                 var p_item = {
+                    product_id:null,
+                    product_name:null,
+                    quantity:null,
+                    cover:null,
+                    product_specification_id:null,
+                    product_specification_name:null,
+                    stock_balance:null,
+                    fare_id:null,
+                    weight:0,
+                    bulk:0
+                };
+                var p_fight_groups_item = {
                     product_id:null,
                     product_name:null,
                     quantity:null,
@@ -529,6 +575,31 @@ angular.module('details.controller', ['details.service'])
                 }else{
                     return 'height: 35px; border-top: 1px solid #ECECEC;'
                 }
+            };
+
+            //拼团商品详情
+            function getFightGroupsDetails(id){
+                DetailsFty.getFightGroupsDetailsService(id)
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            $scope.details = json.data.product;
+                            $scope.details.description = json.data.description;
+                            if($scope.details.stock_balance > 0){
+                                $scope.b_status_btn = true;
+                            }else{
+                                $scope.b_status_btn = false;
+                            }
+                            expressInfo();
+                            //console.log(angular.toJson(json));
+                        }else{
+                            $.toast('获取拼团商品详情失败','cancel');
+                            console.log("获取拼团商品详情失败:" + angular.toJson(json));
+                        }
+                    }, function(error){
+                        $.toast('获取拼团商品详情失败','cancel');
+                        console.log("获取拼团商品详情失败:" + angular.toJson(error));
+                    })
             }
+
         }])
 ;

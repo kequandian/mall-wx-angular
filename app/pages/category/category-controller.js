@@ -470,12 +470,66 @@ angular.module('category.controller', ['category.service'])
                 $state.go('details',{productId:item.id, detailsFightGroupsStatus:status})
             };
 
+
+            //获取拼团商品信息
+            function getFightGroupsInfo(){
+                var cateId = 36;
+                //var pageNumber = 1;
+                //var orderBy = '';
+                console.log(cateId);
+                console.log(pageNumber);
+                console.log(pageSize);
+                console.log(orderBy);
+                CategoryFty.getFightGroupsService(cateId,pageNumber,pageSize,orderBy)
+                    .then(function(json){
+                        if(json.status_code == 0){
+
+                            if(pageNumber == 1){
+                                $scope.fightGroupsList = json.data;
+                                if($scope.fightGroupsList.list.length >= 4){
+                                    $scope.load_more_btn_show = true;
+                                    loading = false;
+                                } else {
+                                    $scope.load_more_btn_show = false;
+                                    loading = true;
+                                }
+                                //console.log(angular.toJson(json.data))
+                            }else if(pageNumber > 1){
+                                var new_fight_groups_code = json.data.list;
+                                console.log('pageNumber > 1 ');
+                                //console.log('$scope.productList: ' + angular.toJson($scope.productList));
+                                if (new_fight_groups_code.length > 0) {
+                                    loading = false;
+                                    angular.forEach(new_fight_groups_code, function (v, k) {
+                                        $scope.fightGroupsList.list.push(v);
+                                    });
+                                    if(new_fight_groups_code.length < 10){
+                                        loading = true;
+                                        $scope.load_more_btn_show = false;
+                                        //$.toast("已加载全部的商品");
+                                    }
+                                } else if (new_fight_groups_code.length == 0) {
+                                    loading = true;
+                                    $scope.load_more_btn_show = false;
+                                    //$.toast("暂无更多的分类商品信息");
+                                }
+                            }
+
+                        }else{
+                            console.log(angular.toJson(json))
+                        }
+                    }, function(error){
+                        console.log(angular.toJson(error))
+                    })
+            }
+
+
             //滚动加载
             $ocLazyLoad.load('Jquery').then(function () {
                 $ocLazyLoad.load('JqueryWeUI').then(function () {
 
                     if(fightGroupsStatus == 'yes'){
-                       /* console.log('loading : ' + loading);
+                        console.log('loading : ' + loading);
                         $("#fightGroups").infinite().on("infinite", function() {
                             console.log('loading : ' + loading);
                             if(loading){
@@ -485,14 +539,10 @@ angular.module('category.controller', ['category.service'])
                             loading = true;
                             setTimeout(function() {
                                 pageNumber += 1;
-                                if(categoryId>0){
-                                    console.log(2);
-                                }else{
-                                    console.log(3);
-                                }
+                                getFightGroupsInfo();
                                 loading = false;
                             }, 500);   //模拟延迟
-                        });*/
+                        });
                     }else if(fightGroupsStatus == 'no'){
                         $(".pro-content").infinite().on("infinite", function() {
                             console.log('loading : ' + loading);
@@ -593,35 +643,5 @@ angular.module('category.controller', ['category.service'])
                 }
             });*/
 
-
-            //获取拼团商品信息
-            function getFightGroupsInfo(){
-                var cateId = 36;
-                //var pageNumber = 1;
-                pageSize = 4;
-                //var orderBy = '';
-                console.log(cateId);
-                console.log(pageNumber);
-                console.log(pageSize);
-                console.log(orderBy);
-                CategoryFty.getProductListService(cateId,pageNumber,pageSize,orderBy)
-                    .then(function(json){
-                        if(json.status_code == 0){
-                            $scope.productList = json.data;
-                            if($scope.productList.products.length >= 4){
-                                $scope.load_more_btn_show = true;
-                                loading = false;
-                            } else {
-                                $scope.load_more_btn_show = false;
-                                loading = true;
-                            }
-                            console.log(angular.toJson(json.data))
-                        }else{
-                            console.log(angular.toJson(json))
-                        }
-                    }, function(error){
-                        console.log(angular.toJson(error))
-                    })
-            }
 
         }]);

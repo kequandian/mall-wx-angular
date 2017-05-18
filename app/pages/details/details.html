@@ -218,7 +218,7 @@
                     <span ng-if="!isFightGroups">加入购物车</span>
                     <div class="alone-buy" ng-if="isFightGroups">
                         <div class="span-top">
-                            <span>￥18</span>
+                            <span>{{details.price | currency:'￥'}}</span>
                         </div>
                         <div class="span-bottom">
                             <span>单独购买</span>
@@ -290,7 +290,7 @@
                 </div>
                 <div class="weui_actionsheet_action">
                     <div class="weui_actionsheet_cell weui_btn_primary" id="action_sheet_cancel"
-                         ng-click="buy_product_option(details, details.id, q_count)">确定
+                         ng-click="buy_product_option(details, details.id, q_count,isFightGroups)">确定
                     </div>
                 </div>
             </div>

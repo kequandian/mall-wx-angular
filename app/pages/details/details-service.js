@@ -117,6 +117,23 @@ angular.module('details.service', [])
                         return deferred.reject(data);
                     });
                 return deferred.promise;
+            },
+
+            //获取拼团商品详情
+            getFightGroupsDetailsService: function (id) {
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + "/piece_group_purchase/" + id;
+                $http.get(url,{
+                    headers:{
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
+                })
+                    .success(function (data) {
+                        return deferred.resolve(data);
+                    }).error(function (data) {
+                        return deferred.reject(data);
+                    });
+                return deferred.promise;
             }
         }
     }]);
