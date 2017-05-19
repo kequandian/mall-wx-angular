@@ -201,19 +201,19 @@
 
         <div class="detail-footer-right">
             <div class="item-button">
-                <div class="details_buy_css custom_flat_primary_medium" ng-click="buy_status(2,b_status_btn,isFightGroups)" ng-class="b_status_btn ? 'product_info':''">
+                <div class="details_buy_css custom_flat_primary_medium" ng-click="buy_status(2,b_status_btn,isFightGroups,0)" ng-class="b_status_btn ? 'product_info':''">
                     <!--<div class="details_buy_css product_info" ng-click="buy_immediately(details)">-->
                     <span ng-if="!isFightGroups">立即购买</span>
                     <div class="alone-buy" ng-if="isFightGroups">
                         <div class="span-top">
-                            <span>￥9.9</span>
+                            <span>{{fightGroupsdetails.price | currency:'￥'}}</span>
                         </div>
                         <div class="span-bottom">
                             <span>一键开团</span>
                         </div>
                     </div>
                 </div>
-                <div class="details_cart_css custom_flat_primary_light" ng-click="buy_status(1,b_status_btn,isFightGroups)" ng-class="b_status_btn ? 'product_info':''">
+                <div class="details_cart_css custom_flat_primary_light" ng-click="buy_status(1,b_status_btn,isFightGroups,1)" ng-class="b_status_btn ? 'product_info':''">
                     <!--<div class="details_cart_css product_info" ng-click="addProductToCart(details.id)">-->
                     <span ng-if="!isFightGroups">加入购物车</span>
                     <div class="alone-buy" ng-if="isFightGroups">
@@ -290,7 +290,7 @@
                 </div>
                 <div class="weui_actionsheet_action">
                     <div class="weui_actionsheet_cell weui_btn_primary" id="action_sheet_cancel"
-                         ng-click="buy_product_option(details, details.id, q_count,isFightGroups)">确定
+                         ng-click="buy_product_option(details, details.id, q_count)">确定
                     </div>
                 </div>
             </div>

@@ -17,9 +17,9 @@ angular.module('details.service', [])
                 return deferred.promise;
             },
 
-            productRebateService:function(productId){
+            productRebateService:function(productId,marketingType,marketingId){
                 var deferred = $q.defer();
-                var url = GlobalVariable.SERVER_PATH + "/product_settlement?id=" + productId;
+                var url = GlobalVariable.SERVER_PATH + "/product_settlement?id=" + productId + "&marketingType=" + marketingType + "&marketingId=" + marketingId;
                 $http.get(url,{
                     headers: {
                         'Authorization': GlobalVariable.ACCESS_TOKEN

@@ -20,11 +20,14 @@ angular.module('details.controller', ['details.service'])
 
             $scope.point_rate = PointRate.rate;
             var product_id = $stateParams.productId;
+            var marketingType = null;
+            var marketingId = null;
             //拼团状态
             var detailsFightGroupsStatus = $stateParams.detailsFightGroupsStatus;
             if(detailsFightGroupsStatus == 'yes'){
                 $scope.isFightGroups = true;
                 $rootScope.fightGroupsStatus = 'yes';
+                marketingType = 'PIECE-GROUP'
                 getFightGroupsDetails(product_id);
             }else if(detailsFightGroupsStatus == 'no'){
                 $scope.isFightGroups = false;
@@ -123,7 +126,7 @@ angular.module('details.controller', ['details.service'])
                             }
 
                             //获取商品返利
-                            getProductRabate(product_id);
+                            getProductRabate(product_id,marketingType,marketingId);
                             //获取默认快递公司
                             if($rootScope.default_express == null){
                                 expressInfo();
@@ -195,12 +198,12 @@ angular.module('details.controller', ['details.service'])
                     })
             }
 
-            function getProductRabate(product_id){
-                DetailsFty.productRebateService(product_id)
+            function getProductRabate(product_id,marketingType,marketingId){
+                DetailsFty.productRebateService(product_id,marketingType,marketingId)
                     .then(function(json){
                         if(json.status_code == 0){
                             $scope.product_rebate = json.data;
-                            //console.log("获取商品返利信息: "  + angular.toJson(json.data));
+                            console.log("获取商品返利信息: "  + angular.toJson(json.data));
                         }else{
                             console.log("获取商品返利信息失败：" + angular.toJson(json));
                         }
@@ -297,7 +300,7 @@ angular.module('details.controller', ['details.service'])
             }
 
             //购买状态
-            $scope.buy_status = function (number, b_status,isFightGroups) {
+            $scope.buy_status = function (number, b_status,isFightGroups,isOriginalPrice) {
                 if(!b_status){
                     $.toast('该商品暂无库存', 'cancel');
                     return;
@@ -306,6 +309,8 @@ angular.module('details.controller', ['details.service'])
                 if(isFightGroups){
                     number = 2;
                 }
+                console.log("number: " + number);
+                console.log("isFightGroups: " + isFightGroups);
 
                 if (number == 1) {
                     $scope.b_status = "cart";
@@ -313,19 +318,22 @@ angular.module('details.controller', ['details.service'])
                 } else if (number == 2) {
                     $scope.b_status = "buy";
                     $scope.is_fight_groups = isFightGroups;
+                    $scope.is_original_price = isOriginalPrice;
                 }
             };
 
             //确认购买option
-            $scope.buy_product_option = function (productInfo, productId, quantity, isFightGroups) {
+            $scope.buy_product_option = function (productInfo, productId, quantity) {
 
                 var product_property = null;
                 var product_specification_id = null;
                 var int_quantity = parseInt(quantity);
+                var isFightGroups = $scope.is_fight_groups;
                 console.log(int_quantity);
+                console.log("isFightGroups: " + isFightGroups);
 
                 //是否拼团
-                if(!isFightGroups){
+                //if(!isFightGroups){
 
                     if ($scope.product_property_value != null) {
                         product_specification_id = $scope.product_property_value.id;
@@ -356,7 +364,7 @@ angular.module('details.controller', ['details.service'])
                         buy_option(productInfo, productId, int_quantity,product_property,product_specification_id);
                     }
 
-                }else{
+                /*}else{
 
                     console.log('$scope.details: '+angular.toJson($scope.details.specifications));
                     if ($scope.product_property_value != null) {
@@ -381,7 +389,7 @@ angular.module('details.controller', ['details.service'])
                     //buy_option(productInfo,productId, int_quantity,product_property,product_specification_id);
 
                 }
-
+*/
 
 
 
@@ -405,8 +413,6 @@ angular.module('details.controller', ['details.service'])
                     } else {
                         $.toast('此商品暂无库存');
                     }
-                }else if(b_status == "fightGroup"){
-                    console.log("拼团");
                 }
             }
 
@@ -454,7 +460,9 @@ angular.module('details.controller', ['details.service'])
             $scope.checkedCarts = [];
             $scope.buy_immediately = function (item, quantity, product_property, product_specification_id, isFightGroups) {
 
-                console.log(angular.toJson(item));
+                console.log("1234567");
+                console.log("isFightGroups: " + isFightGroups);
+                //console.log(angular.toJson(item));
 
                 if(!quantity > 0){
                     $.toast('请输入商品数量','cancel');
@@ -463,18 +471,6 @@ angular.module('details.controller', ['details.service'])
 
                 var p_info = [];
                 var p_item = {
-                    product_id:null,
-                    product_name:null,
-                    quantity:null,
-                    cover:null,
-                    product_specification_id:null,
-                    product_specification_name:null,
-                    stock_balance:null,
-                    fare_id:null,
-                    weight:0,
-                    bulk:0
-                };
-                var p_fight_groups_item = {
                     product_id:null,
                     product_name:null,
                     quantity:null,
@@ -515,22 +511,37 @@ angular.module('details.controller', ['details.service'])
                 p_item.product_specification_id = product_specification_id;
                 $scope.checkedCarts.push(item);
 
+                if(isFightGroups && $scope.is_original_price == 0){
+                    console.log("一键开团");
+                    p_item.marketing = "PIECE-GROUP";
+                    p_item.marketing_id = $scope.fightGroupsdetails.id;
+                    p_item.price = $scope.fightGroupsdetails.price;
+                }
+
                 p_info.push(p_item);
 
-                $rootScope.settle_product_code = p_info;
-                $rootScope.settle_product_totalToPay = item.price * quantity;
+                console.log(angular.toJson(p_info));
+
                 //console.log(angular.toJson(p_item));
 
-                var newUrl = '#/cart-settlement';
-                var title = '结算';
-                var c_state = history.state;
-                window.history.pushState(c_state, title, newUrl);
+                if(isFightGroups && $scope.is_original_price == 0){
+                    console.log("拼团成功");
+                }else{
 
-                $state.go('cart-settlement', {
-                    carts: $scope.checkedCarts,
-                    totalToPay: item.price * quantity,
-                    totalFreight: item.freight
-                });
+                    $rootScope.settle_product_code = p_info;
+                    $rootScope.settle_product_totalToPay = item.price * quantity;
+
+                    var newUrl = '#/cart-settlement';
+                    var title = '结算';
+                    var c_state = history.state;
+                    window.history.pushState(c_state, title, newUrl);
+
+                    $state.go('cart-settlement', {
+                        carts: $scope.checkedCarts,
+                        totalToPay: item.price * quantity,
+                        totalFreight: item.freight
+                    });
+                }
             };
 
             //添加收藏
@@ -579,17 +590,14 @@ angular.module('details.controller', ['details.service'])
 
             //拼团商品详情
             function getFightGroupsDetails(id){
+
                 DetailsFty.getFightGroupsDetailsService(id)
                     .then(function(json){
                         if(json.status_code == 0){
-                            $scope.details = json.data.product;
-                            $scope.details.description = json.data.description;
-                            if($scope.details.stock_balance > 0){
-                                $scope.b_status_btn = true;
-                            }else{
-                                $scope.b_status_btn = false;
-                            }
-                            expressInfo();
+                            $scope.fightGroupsdetails = json.data;
+                            marketingId = json.data.id;
+                            product_id = json.data.product_id;
+                            detailsInfo();
                             //console.log(angular.toJson(json));
                         }else{
                             $.toast('获取拼团商品详情失败','cancel');

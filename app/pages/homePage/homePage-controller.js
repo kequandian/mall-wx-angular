@@ -63,8 +63,9 @@ angular.module('homePage.controller', ['homePage.service'])
 
             var n = value.lastIndexOf('/');
             var id = value.substr(n + 1, value.length);
+            var status = 'no';
 
-            return 'details({productId:' + id + '})';
+            return 'details({productId:' + id + ',detailsFightGroupsStatus:' + status +'})';
         }
     })    
     //默认分类广告图片
