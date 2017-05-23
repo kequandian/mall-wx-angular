@@ -102,6 +102,7 @@
         <!--<div class="open-group">-->
             <div class="open-group-title">小伙伴在开团</div>
             <div class="open-group-item" ng-repeat="masterItem in fightGroupsdetails.promoted_masters">
+            <!--<div class="open-group-item">-->
                 <img src="" class="user-cover">
                 <div class="user-info">
                     <div class="info-content">
@@ -109,7 +110,7 @@
                         <span class="user-fight-group-info">还差1人，剩余{{masterItem.end_time}}</span>
                     </div>
                 </div>
-                <div class="go-join-btn weui_btn_primary">
+                <div class="go-join-btn weui_btn_primary product_info" ng-click="join_team(masterItem)">
                     <span>去参团</span>
                 </div>
             </div>

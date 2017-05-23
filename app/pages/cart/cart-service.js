@@ -161,7 +161,7 @@ angular.module('cart.service', [])
                 return deferred.promise;
             },
 
-            //修改商品数量
+            //获取运费
             frieghtService: function (fare_item) {
                 var deferred = $q.defer();
                 var url = GlobalVariable.SERVER_PATH + "/product_carriage";

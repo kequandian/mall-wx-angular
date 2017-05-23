@@ -391,6 +391,10 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             $scope.settlementCarts = [];
             $scope.save_total_price = 0;
 
+            //提交订单
+            $scope.order = {};
+            $scope.order.payment_type = "WECHAT";
+
             $ocLazyLoad.load('Jquery').then(function () {
                 $ocLazyLoad.load('JqueryWeUI').then(function () {
                     console.log('settlement:jquery loaded');
@@ -452,8 +456,12 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             $scope.settlementCarts = $rootScope.settle_product_code;
             $scope.settlementData = [];
             $scope.product_list = [];
+
+            //拼团支付方式
+            fightGroupsPayStatus();
+
             //console.log("carts:"+$stateParams.carts);
-            //console.log(angular.toJson($stateParams.carts))
+            console.log("settlementCarts: " + angular.toJson($scope.settlementCarts))
 
             angular.forEach($scope.settlementCarts, function (data, index) {
                 $scope.settlementData[index] = ({
@@ -468,6 +476,54 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             });
             //console.log("$scope.productFrieghts:  " + angular.toJson($scope.productFrieghts));
 
+            //拼团--支付方式
+            function fightGroupsPayStatus(){
+                $scope.isSimplePayStatus = true;
+                $scope.f_wechat_pay_status = false;
+                $scope.f_point_pay_status = false;
+                $scope.f_g_status_d = false;
+                //$scope.f_alipay_pay_status = false;
+                var settlementCarts = $scope.settlementCarts[0];
+
+                if(settlementCarts != null){
+                    if(settlementCarts.marketing_id > 0){
+                        console.log("拼团支付");
+                        console.log("payment_type: " + settlementCarts.fightGroupData.payment_type);
+                        $scope.isSimplePayStatus = false;
+                        if(settlementCarts.fightGroupData.payment_type != null){
+                            var pay_type = settlementCarts.fightGroupData.payment_type;
+                            if(pay_type.indexOf('|') != -1){
+                                $scope.isSimplePayStatus = true;
+                                $scope.order.payment_type = "WECHAT";
+                            }else{
+                                if(pay_type == 'WECHAT'){
+                                    $scope.order.payment_type = "WECHAT";
+                                    $scope.f_wechat_pay_status = true;
+                                    $scope.f_point_pay_status = false;
+                                }
+                                if(pay_type == 'POINT'){
+                                    $scope.order.payment_type = "POINT";
+                                    $scope.f_wechat_pay_status = false;
+                                    $scope.f_point_pay_status = true;
+                                }
+                            }
+                        }else{
+                            $scope.isSimplePayStatus = true;
+                        }
+
+                        //var payStatus = settlementCarts.fightGroupData.payment_type.spilt('|')
+                        //if(payStatus != null){
+                        //    console.log("payStatus.length:" + payStatus.length);
+                        //    console.log("payStatus:" + payStatus);
+                        //}
+
+                    }else{
+                        $scope.isSimplePayStatus = true;
+                    }
+                }
+
+            }
+
 
             //获取运费信息
             $scope.productFrieghts = {
@@ -480,7 +536,8 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             function getFrieght(){
                 //console.log(angular.toJson($rootScope.settle_product_code));
                 //angular.forEach($stateParams.carts, function (data, index) {
-                angular.forEach($rootScope.settle_product_code, function (data, index) {
+                var settle_product_code = $rootScope.settle_product_code;
+                angular.forEach(settle_product_code, function (data, index) {
                     $scope.productFrieghts.data[index] = ({
                         fare_id: data.fare_id,
                         price: data.price,
@@ -497,27 +554,26 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                         if(json.status_code == 0){
                             console.log(angular.toJson(json));
 
-                            var carriage = json.data.carriage;
-                            //delta = json.data.delta;
-                            $scope.product_frieght = carriage;
-                            $scope.product_message = json.data.message;
+                            if(settle_product_code[0].marketing_id > 0){
+                                console.log('开团邮费');
+                                if(settle_product_code[0].fightGroupData.free_shipping == 0){
+                                    console.log('包邮');
+                                    $scope.product_frieght = 0;
+                                    $scope.product_message = null;
+                                }else if(settle_product_code[0].fightGroupData.free_shipping == 1){
+                                    console.log('按普通邮费计算');
+                                    //delta = json.data.delta;
+                                    $scope.product_frieght = json.data.carriage;
+                                    $scope.product_message = json.data.message;
+                                }
 
-                            //if(delta != null){
-                            //    if(delta < 0){
-                            //        $scope.delta_count = delta;
-                            //        var deltaStr = delta + "" ;
-                            //        deltaStr = deltaStr.substr(1,deltaStr.length -1);
-                            //        console.log("包邮差额：" + deltaStr);
-                            //        $scope.deltaCount = deltaStr;
-                            //    }
-                            //}else{
-                            //    $.toast('获取运费异常', 'cancel');
-                            //    return;
-                            //}
+                            }else{
+                                console.log('普通邮费');
+                                $scope.product_frieght = json.data.carriage;
+                                $scope.product_message = json.data.message;
+                            }
 
-                            //$scope.pay = $stateParams.totalToPay;
-                            //console.log("$stateParams.totalToPay:" + $scope.pay);
-                            $scope.freight = $stateParams.totalFreight;
+                            //$scope.freight = $stateParams.totalFreight;
                             if($scope.product_frieght > 0){
                                 $scope.total_price = $scope.pay + $scope.product_frieght;
                                 $scope.save_total_price = $scope.total_price;
@@ -528,6 +584,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
                             //下单前计算优惠信息
                             coupon();
+
                         }else{
                             console.log('error：' + angular.toJson(json));
                             $.toast('获取运费失败', 'cancel');
@@ -630,10 +687,6 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             };
 
             //提交订单
-            $scope.order = {};
-
-            $scope.order.payment_type = "WECHAT";
-
             $scope.addOrderSubmit = function () {
 
                 //console.log('addOrderSubmit:'+$scope.order);
@@ -664,8 +717,6 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 $scope.productFrieghts.province = $scope.order.contact.province;
                 $scope.productFrieghts.city = $scope.order.contact.city;
 
-                //console.log('$scope.order: '+ angular.toJson($scope.order));
-
                 //FEATURE: point
                 // - check balance
                 if($scope.order.payment_type == "POINT" && BalanceSession.balance < $scope.total_price){
@@ -673,6 +724,13 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     $scope.order.payment_type = "WECHAT";
                 }else {
                     //console.log('ok')
+                    if($scope.settlementCarts[0].marketing_id > 0){
+                        $scope.order.marketing = $scope.settlementCarts[0].marketing;
+                        $scope.order.marketing_id = $scope.settlementCarts[0].marketing_id;
+                    }
+                    //console.log("$scope.order: " + angular.toJson($scope.order));
+                    //return;
+
                     CartFty.addOrder($scope.order).then(
                         function (result) {
                             if(result.status_code == 0){

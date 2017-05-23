@@ -309,8 +309,8 @@ angular.module('details.controller', ['details.service'])
                 if(isFightGroups){
                     number = 2;
                 }
-                console.log("number: " + number);
-                console.log("isFightGroups: " + isFightGroups);
+                //console.log("number: " + number);
+                //console.log("isFightGroups: " + isFightGroups);
 
                 if (number == 1) {
                     $scope.b_status = "cart";
@@ -319,6 +319,7 @@ angular.module('details.controller', ['details.service'])
                     $scope.b_status = "buy";
                     $scope.is_fight_groups = isFightGroups;
                     $scope.is_original_price = isOriginalPrice;
+                    console.log('isOriginalPrice: ' + isOriginalPrice);
                 }
             };
 
@@ -460,7 +461,6 @@ angular.module('details.controller', ['details.service'])
             $scope.checkedCarts = [];
             $scope.buy_immediately = function (item, quantity, product_property, product_specification_id, isFightGroups) {
 
-                console.log("1234567");
                 console.log("isFightGroups: " + isFightGroups);
                 //console.log(angular.toJson(item));
 
@@ -480,7 +480,8 @@ angular.module('details.controller', ['details.service'])
                     stock_balance:null,
                     fare_id:null,
                     weight:0,
-                    bulk:0
+                    bulk:0,
+                    fightGroupData:{}
                 };
                 var buy_price = 0;
                 if (item.specifications.length > 0) {
@@ -516,17 +517,24 @@ angular.module('details.controller', ['details.service'])
                     p_item.marketing = "PIECE-GROUP";
                     p_item.marketing_id = $scope.fightGroupsdetails.id;
                     p_item.price = $scope.fightGroupsdetails.price;
+                    p_item.fightGroupData.free_shipping = $scope.fightGroupsdetails.free_shipping;
+                    p_item.fightGroupData.payment_type = $scope.fightGroupsdetails.payment_type;
+                    //p_item.fightGroupData.payment_type = 'WECHAT';
+                    //p_item.fightGroupData.payment_type = 'WECHAT|POINT';
                 }
 
                 p_info.push(p_item);
 
+                //console.log("$scope.fightGroupsdetails: " + angular.toJson($scope.fightGroupsdetails));
                 //console.log(angular.toJson(p_info));
+                //return;
 
                 var newUrl = '';
                 var title = '';
                 var c_state = history.state;
                 if(isFightGroups && $scope.is_original_price == 0){
                     console.log("拼团购买");
+                    //console.log(angular.toJson(p_info));
                     $rootScope.settle_product_code = p_info;
                     $rootScope.settle_product_totalToPay = $scope.fightGroupsdetails.price * quantity;
 
@@ -542,10 +550,11 @@ angular.module('details.controller', ['details.service'])
 
                 }else{
 
+                    console.log("普通购买");
+                    //console.log(angular.toJson(p_info));
                     $rootScope.settle_product_code = p_info;
                     $rootScope.settle_product_totalToPay = item.price * quantity;
 
-                    console.log("普通购买");
                     //console.log(angular.toJson(p_info));
                     //return;
 
@@ -624,6 +633,13 @@ angular.module('details.controller', ['details.service'])
                         $.toast('获取拼团商品详情失败','cancel');
                         console.log("获取拼团商品详情失败:" + angular.toJson(error));
                     })
+            }
+
+            //参团
+            $scope.join_team = function(masterItem){
+                $scope.b_status = "buy";
+                $scope.is_fight_groups = true;
+                $scope.is_original_price = 1;
             }
 
         }])
