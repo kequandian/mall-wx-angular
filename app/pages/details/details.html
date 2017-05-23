@@ -98,15 +98,15 @@
         </div>
 
         <!--拼团列表-->
-        <!--<div class="open-group" ng-if="isFightGroups">-->
-        <div class="open-group">
+        <div class="open-group" ng-if="fightGroupsdetails.promoted_masters != null">
+        <!--<div class="open-group">-->
             <div class="open-group-title">小伙伴在开团</div>
-            <div class="open-group-item">
+            <div class="open-group-item" ng-repeat="masterItem in fightGroupsdetails.promoted_masters">
                 <img src="" class="user-cover">
                 <div class="user-info">
                     <div class="info-content">
-                        <span class="user-name">美满人生</span>
-                        <span class="user-fight-group-info">还差1人，剩余23:59:59</span>
+                        <span class="user-name">{{masterItem.name}}</span>
+                        <span class="user-fight-group-info">还差1人，剩余{{masterItem.end_time}}</span>
                     </div>
                 </div>
                 <div class="go-join-btn weui_btn_primary">

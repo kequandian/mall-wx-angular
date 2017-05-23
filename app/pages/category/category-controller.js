@@ -476,13 +476,30 @@ angular.module('category.controller', ['category.service'])
                 var cateId = 36;
                 //var pageNumber = 1;
                 //var orderBy = '';
-                console.log(cateId);
-                console.log(pageNumber);
-                console.log(pageSize);
-                console.log(orderBy);
                 CategoryFty.getFightGroupsService(cateId,pageNumber,pageSize,orderBy)
                     .then(function(json){
                         if(json.status_code == 0){
+
+                            //console.log(angular.toJson(json.data));
+                            if(json.data.promoted_master != null){
+                                $scope.promotedMaster = json.data.promoted_master;
+                                $scope.promotedMaster.isMaster = true;
+                            }else{
+                                if(json.data.list !=null && json.data.list.length > 0){
+
+                                    var fightGroupList = json.data.list;
+                                    var num = Math.random();
+                                    num = Math.floor(num * fightGroupList.length);
+
+                                    angular.forEach(fightGroupList, function(value, index){
+                                        if(num == index){
+                                            $scope.promotedMaster = value;
+                                        }
+                                    });
+                                    $scope.promotedMaster.isMaster = false;
+                                    console.log(angular.toJson($scope.promotedMaster));
+                                }
+                            }
 
                             if(pageNumber == 1){
                                 $scope.fightGroupsList = json.data;
@@ -493,7 +510,6 @@ angular.module('category.controller', ['category.service'])
                                     $scope.load_more_btn_show = false;
                                     loading = true;
                                 }
-                                //console.log(angular.toJson(json.data))
                             }else if(pageNumber > 1){
                                 var new_fight_groups_code = json.data.list;
                                 console.log('pageNumber > 1 ');
@@ -522,6 +538,17 @@ angular.module('category.controller', ['category.service'])
                         console.log(angular.toJson(error))
                     })
             }
+
+            //拼团
+            $scope.cateGoToFightGroups = function(productId,status,isMaster){
+
+                if(isMaster){
+
+                }else{
+                    console.log("status: " + status);
+                    $state.go('details',{productId:productId, detailsFightGroupsStatus:status});
+                }
+            };
 
 
             //滚动加载

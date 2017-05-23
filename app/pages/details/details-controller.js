@@ -520,20 +520,37 @@ angular.module('details.controller', ['details.service'])
 
                 p_info.push(p_item);
 
-                console.log(angular.toJson(p_info));
+                //console.log(angular.toJson(p_info));
 
-                //console.log(angular.toJson(p_item));
-
+                var newUrl = '';
+                var title = '';
+                var c_state = history.state;
                 if(isFightGroups && $scope.is_original_price == 0){
-                    console.log("拼团成功");
+                    console.log("拼团购买");
+                    $rootScope.settle_product_code = p_info;
+                    $rootScope.settle_product_totalToPay = $scope.fightGroupsdetails.price * quantity;
+
+                    newUrl = '#/cart-settlement';
+                    title = '结算';
+                    window.history.pushState(c_state, title, newUrl);
+
+                    $state.go('cart-settlement', {
+                        carts: $scope.checkedCarts,
+                        totalToPay: $scope.fightGroupsdetails.price * quantity,
+                        totalFreight: item.freight
+                    });
+
                 }else{
 
                     $rootScope.settle_product_code = p_info;
                     $rootScope.settle_product_totalToPay = item.price * quantity;
 
-                    var newUrl = '#/cart-settlement';
-                    var title = '结算';
-                    var c_state = history.state;
+                    console.log("普通购买");
+                    //console.log(angular.toJson(p_info));
+                    //return;
+
+                    newUrl = '#/cart-settlement';
+                    title = '结算';
                     window.history.pushState(c_state, title, newUrl);
 
                     $state.go('cart-settlement', {

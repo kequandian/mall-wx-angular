@@ -62,13 +62,14 @@
         <!-- 导航专区 -->
         <div id="ad_area">
             <div class="ad-left">
-                <!--<a ui-sref="{{ad_banner_1.target_url | formatDetailsLocation}}">
-                    &lt;!&ndash;<img ng-src="{{ad_banner_1.image != null ? ad_banner_1.image : 'img/home/img1.png'}}">&ndash;&gt;
+                <a href="{{ad_banner_1.target_url}}">
+                <!--<a ui-sref="{{ad_banner_1.target_url | formatDetailsLocation}}">-->
+                    <!--<img ng-src="{{ad_banner_1.image != null ? ad_banner_1.image : 'img/home/img1.png'}}">-->
                     <img ng-src="{{ad_banner_1.image}}">
-                </a>-->
-                <a ui-sref="home.category({categoryId:-1,fightGroupsStatus:'yes'})">
-                    <img src="img/home/fight-group-ad.png">
                 </a>
+                <!--<a ui-sref="home.category({categoryId:-1,fightGroupsStatus:'yes'})">-->
+                    <!--<img src="img/home/fight-group-ad.png">-->
+                <!--</a>-->
             </div>
             <div class="ad-right">
                 <div class="ad-right-top">
@@ -89,24 +90,24 @@
     </div>
 
     <!--拼团商品-->
-    <div class="fight-groups">
-        <img src="img/category/fightGroup/fight_group_img.jpg" class="fight-groups-ad-img" ng-click="goToFightGroups(54,'yes')">
+    <div class="fight-groups" ng-if="promotedMaster != null">
+        <img src="{{promotedMaster.cover}}" class="fight-groups-ad-img" ng-click="homeGoToFightGroups(promotedMaster.id,'yes',promotedMaster.isMaster)">
         <div class="fight-groups-info">
             <div class="f-g-info-price">
-                <span>$25.00</span>
-                <span class="group-count">已团购xx件</span>
+                <span>{{promotedMaster.price | currency:'￥'}}</span>
+                <span class="group-count">已团购{{promotedMaster.sale > 0 ? promotedMaster.sale : 0}}件</span>
             </div>
-            <div class="f-g-info-img-group">
+            <div class="f-g-info-img-group" ng-if="promotedMaster.isMaster">
                 <div class="user-imgs">
                     <div class="imgs-photo">
-                        <img src="" class="user_img1"/>
+                        <img src="{{promotedMaster.user_avatar}}" class="user_img1"/>
                     </div>
                     <div class="imgs-photo">
                         <img src="" class="user_img2"/>
                     </div>
                 </div>
             </div>
-            <div class="f-g-info-btn weui_btn_primary" ng-click="goToFightGroups(54,'yes')">去开团 ></div>
+            <div class="f-g-info-btn weui_btn_primary" ng-click="homeGoToFightGroups(promotedMaster.id,'yes',promotedMaster.isMaster)">{{promotedMaster.isMaster ? '去参团 >':'去开团 >'}}</div>
         </div>
 
     </div>

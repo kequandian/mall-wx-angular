@@ -155,6 +155,8 @@ angular.module('homePage.controller', ['homePage.service'])
             getBalance();
             //获取公告
             getSystemAnnouncement();
+            //获取拼团信息
+            getFightGroupsInfo();
 
             //获取推荐商品
             if ($rootScope.rec_session.rec_product.length == 0) {
@@ -527,9 +529,51 @@ angular.module('homePage.controller', ['homePage.service'])
             }
 
             //拼团
-            $scope.goToFightGroups = function(productId,status){
-                console.log("status: " + status);
-                $state.go('details',{productId:productId, detailsFightGroupsStatus:status});
+            $scope.homeGoToFightGroups = function(productId,status,isMaster){
+
+                if(isMaster){
+
+                }else{
+                    console.log("status: " + status);
+                    $state.go('details',{productId:productId, detailsFightGroupsStatus:status});
+                }
+            };
+
+
+            //获取拼团商品信息
+            function getFightGroupsInfo(){
+                //var pageNumber = 1;
+                //var orderBy = '';
+                HomePageFty.getHomeFightGroupsService()
+                    .then(function(json){
+                        if(json.status_code == 0){
+
+                            if(json.data.promoted_master != null){
+                                $scope.promotedMaster = json.data.promoted_master;
+                                $scope.promotedMaster.isMaster = true;
+                            }else{
+                                if(json.data.list !=null && json.data.list.length > 0){
+
+                                    var fightGroupList = json.data.list;
+                                    var num = Math.random();
+                                    num = Math.floor(num * fightGroupList.length);
+
+                                    angular.forEach(fightGroupList, function(value, index){
+                                        if(num == index){
+                                            $scope.promotedMaster = value;
+                                        }
+                                    });
+                                    $scope.promotedMaster.isMaster = false;
+                                    console.log(angular.toJson($scope.promotedMaster));
+                                }
+                            }
+
+                        }else{
+                            console.log(angular.toJson(json))
+                        }
+                    }, function(error){
+                        console.log(angular.toJson(error))
+                    })
             }
 
 
