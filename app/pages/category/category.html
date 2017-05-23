@@ -79,23 +79,23 @@
 <div id="fightGroups" class="fightGroups" ng-if="isFightGroups">
 
     <div class="fight-groups" ng-if="promotedMaster != null">
-        <img src="{{promotedMaster.cover}}" class="fight-groups-ad-img" ng-click="cateGoToFightGroups(promotedMaster.id,'yes',promotedMaster.isMaster)">
+        <img src="{{promotedMaster.cover}}" class="fight-groups-ad-img" ng-click="cateGoToFightGroups(promotedMaster.id,'yes')">
         <div class="fight-groups-info">
             <div class="f-g-info-price">
                 <span>{{promotedMaster.price | currency:'￥'}}</span>
                 <span class="group-count">已团购{{promotedMaster.sale > 0 ? promotedMaster.sale : 0}}件</span>
             </div>
-            <div class="f-g-info-img-group" ng-if="promotedMaster.isMaster">
+            <div class="f-g-info-img-group" ng-if="promotedMaster.promoted_master != null">
                 <div class="user-imgs">
                     <div class="imgs-photo">
-                        <img src="{{promotedMaster.user_avatar}}" class="user_img1"/>
+                        <img src="{{promotedMaster.promoted_master.user_avatar}}" class="user_img1"/>
                     </div>
                     <div class="imgs-photo">
                         <img src="" class="user_img2"/>
                     </div>
                 </div>
             </div>
-            <div class="f-g-info-btn weui_btn_primary" ng-click="cateGoToFightGroups(promotedMaster.id,'yes',promotedMaster.isMaster)">{{promotedMaster.isMaster ? '去参团 >':'去开团 >'}}</div>
+            <div class="f-g-info-btn weui_btn_primary" ng-click="cateGoToFightGroups(promotedMaster.id,'yes')">去开团 ></div>
         </div>
     </div>
 

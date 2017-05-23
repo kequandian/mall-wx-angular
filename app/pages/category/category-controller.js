@@ -483,7 +483,6 @@ angular.module('category.controller', ['category.service'])
                             //console.log(angular.toJson(json.data));
                             if(json.data.promoted_master != null){
                                 $scope.promotedMaster = json.data.promoted_master;
-                                $scope.promotedMaster.isMaster = true;
                             }else{
                                 if(json.data.list !=null && json.data.list.length > 0){
 
@@ -496,8 +495,7 @@ angular.module('category.controller', ['category.service'])
                                             $scope.promotedMaster = value;
                                         }
                                     });
-                                    $scope.promotedMaster.isMaster = false;
-                                    console.log(angular.toJson($scope.promotedMaster));
+                                    $scope.promotedMaster.promoted_master = null;
                                 }
                             }
 
@@ -540,14 +538,9 @@ angular.module('category.controller', ['category.service'])
             }
 
             //拼团
-            $scope.cateGoToFightGroups = function(productId,status,isMaster){
-
-                if(isMaster){
-
-                }else{
-                    console.log("status: " + status);
-                    $state.go('details',{productId:productId, detailsFightGroupsStatus:status});
-                }
+            $scope.cateGoToFightGroups = function(productId,status){
+                console.log("status: " + status);
+                $state.go('details',{productId:productId, detailsFightGroupsStatus:status});
             };
 
 

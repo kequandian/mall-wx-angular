@@ -529,14 +529,9 @@ angular.module('homePage.controller', ['homePage.service'])
             }
 
             //拼团
-            $scope.homeGoToFightGroups = function(productId,status,isMaster){
-
-                if(isMaster){
-
-                }else{
-                    console.log("status: " + status);
-                    $state.go('details',{productId:productId, detailsFightGroupsStatus:status});
-                }
+            $scope.homeGoToFightGroups = function(productId,status){
+                console.log("status: " + status);
+                $state.go('details',{productId:productId, detailsFightGroupsStatus:status});
             };
 
 
@@ -550,7 +545,6 @@ angular.module('homePage.controller', ['homePage.service'])
 
                             if(json.data.promoted_master != null){
                                 $scope.promotedMaster = json.data.promoted_master;
-                                $scope.promotedMaster.isMaster = true;
                             }else{
                                 if(json.data.list !=null && json.data.list.length > 0){
 
@@ -563,13 +557,12 @@ angular.module('homePage.controller', ['homePage.service'])
                                             $scope.promotedMaster = value;
                                         }
                                     });
-                                    $scope.promotedMaster.isMaster = false;
-                                    console.log(angular.toJson($scope.promotedMaster));
+                                    $scope.promotedMaster.promoted_master = null;
                                 }
                             }
 
                         }else{
-                            console.log(angular.toJson(json))
+                            console.log("获取拼团商品信息: " + angular.toJson(json));
                         }
                     }, function(error){
                         console.log(angular.toJson(error))
