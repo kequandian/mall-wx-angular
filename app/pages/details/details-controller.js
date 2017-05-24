@@ -620,11 +620,11 @@ angular.module('details.controller', ['details.service'])
                 DetailsFty.getFightGroupsDetailsService(id)
                     .then(function(json){
                         if(json.status_code == 0){
+                            console.log(angular.toJson(json));
                             $scope.fightGroupsdetails = json.data;
                             marketingId = json.data.id;
                             product_id = json.data.product_id;
                             detailsInfo();
-                            //console.log(angular.toJson(json));
                         }else{
                             $.toast('获取拼团商品详情失败','cancel');
                             console.log("获取拼团商品详情失败:" + angular.toJson(json));
