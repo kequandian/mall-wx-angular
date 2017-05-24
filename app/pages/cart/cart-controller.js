@@ -729,7 +729,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                         $scope.order.marketing_id = $scope.settlementCarts[0].marketing_id;
                     }
 
-                    console.log("orderInfo: " + angular.toJson($scope.order));
+                    //console.log("orderInfo: " + angular.toJson($scope.order));
                     //return;
 
                     CartFty.addOrder($scope.order).then(

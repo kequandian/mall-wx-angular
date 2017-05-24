@@ -1,26 +1,13 @@
 {
-  "payment_type": "WECHAT",
-  "order_items": [
-    {
-      "product_id": 54,
-      "quantity": 1,
-      "product_specification_id": null
-    }
-  ],
-  "contact": {
-    "id": 224,
-    "zip": null,
-    "detail": "1020号",
-    "phone": "13698523698",
-    "contact_user": "jiehua",
-    "street": null,
-    "province": "北京",
-    "is_default": 1,
-    "street_number": null,
-    "user_id": 336,
-    "district": "东城区",
-    "city": "北京"
-  },
-  "marketing": "PIECE-GROUP-JOINT",
-  "marketing_id": 1
+  "id": 7,
+  "user_name": "jingfei",
+  "paid_members_count": 1,
+  "status": "OPENING",
+  "end_time": "2017-05-24 17:29:26",
+  "members_count": 1,
+  "promoted": 1,
+  "start_time": "2017-05-24 16:29:26",
+  "user_id": 2,
+  "piece_group_purchase_id": 1,
+  "user_avatar": null
 }

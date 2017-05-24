@@ -524,7 +524,7 @@ angular.module('details.controller', ['details.service'])
                     //p_item.fightGroupData.payment_type = 'WECHAT|POINT';
                     if(marketingStatus == 'PIECE-GROUP-JOINT'){
                         console.log("参团");
-                        p_item.marketing_id = $scope.master_item.piece_group_purchase_id;
+                        p_item.marketing_id = $scope.master_item.id;
                     }else{
                         console.log("开团");
                         p_item.marketing_id = $scope.fightGroupsdetails.id;
@@ -691,6 +691,7 @@ angular.module('details.controller', ['details.service'])
                 $scope.is_original_price = 0;
                 $scope.master_item = masterItem;
                 marketingStatus = 'PIECE-GROUP-JOINT';
+                console.log(angular.toJson(masterItem))
             }
 
         }])

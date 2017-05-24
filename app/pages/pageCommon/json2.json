@@ -1,26 +1,13 @@
 {
-  "payment_type": "WECHAT",
-  "order_items": [
-    {
-      "product_id": 54,
-      "quantity": 1,
-      "product_specification_id": null
-    }
-  ],
-  "contact": {
-    "id": 222,
-    "zip": null,
-    "detail": "123号",
-    "phone": "12563256698",
-    "contact_user": "huang",
-    "street": null,
-    "province": "河北",
-    "is_default": 1,
-    "street_number": null,
-    "user_id": 2,
-    "district": "长安区",
-    "city": "石家庄"
-  },
-  "marketing": "PIECE-GROUP",
-  "marketing_id": 1
+  "id": 8,
+  "user_name": "jingfei",
+  "paid_members_count": 1,
+  "status": "OPENING",
+  "end_time": "2017-05-26 19:32:33",
+  "members_count": 3,
+  "promoted": 1,
+  "start_time": "2017-05-24 17:32:33",
+  "user_id": 2,
+  "piece_group_purchase_id": 10,
+  "user_avatar": null
 }

@@ -400,13 +400,13 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                     .then(function (json) {
                         if (json.status_code == 0) {
                             var orders = json.data;
-                            //alert(angular.toJson($scope.orders));
                             $scope.payedList = [];//待发货
                             angular.forEach(orders, function (v, k) {
                                 if (v.status == "CONFIRMED_DELIVER_PENDING") {
                                     $scope.payedList.push(v);
                                 }
                             });
+                            //console.log(angular.toJson($scope.payedList))
                         } else {
                             $.toast('读取订单信息失败');
                         }
