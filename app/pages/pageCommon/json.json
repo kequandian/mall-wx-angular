@@ -8,7 +8,7 @@
     "min_participator_count": 2,
     "price": 30,
     "suggested_price": 39.9,
-    "sale": 0,
+    "sale": 2,
     "coupon_usage": 1,
     "cover": "http://o9ixtumvv.bkt.clouddn.com/20170517115046384-U5v13AtM.jpg",
     "duration": 3600,
@@ -19,11 +19,11 @@
     "product": {
       "partner_level_zone": 2,
       "weight": 450,
-      "stock_balance": 988,
+      "stock_balance": 987,
       "fare_id": 1,
       "id": 54,
       "cover": "http://o9ixtumvv.bkt.clouddn.com/20161018165116814-MoyMVgI8.jpg",
-      "sales": 12,
+      "sales": 13,
       "promoted": 1,
       "name": "拉芳新品邂逅香氛沐浴露550ml",
       "created_date": "2016-07-13 12:41:33",
@@ -50,8 +50,22 @@
       "freight": 0,
       "store_location": null,
       "sort_order": 81,
-      "view_count": 647
+      "view_count": 666
     },
-    "promoted_masters": []
+    "promoted_masters": [
+      {
+        "id": 6,
+        "user_name": "jingfei",
+        "paid_members_count": 1,
+        "status": "OPENING",
+        "end_time": "2017-05-24 11:25:09",
+        "members_count": 1,
+        "promoted": 1,
+        "start_time": "2017-05-24 10:25:09",
+        "user_id": 2,
+        "piece_group_purchase_id": 1,
+        "user_avatar": null
+      }
+    ]
   }
 }

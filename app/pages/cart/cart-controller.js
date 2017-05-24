@@ -461,7 +461,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             fightGroupsPayStatus();
 
             //console.log("carts:"+$stateParams.carts);
-            console.log("settlementCarts: " + angular.toJson($scope.settlementCarts))
+            //console.log("settlementCarts: " + angular.toJson($scope.settlementCarts))
 
             angular.forEach($scope.settlementCarts, function (data, index) {
                 $scope.settlementData[index] = ({
@@ -728,7 +728,8 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                         $scope.order.marketing = $scope.settlementCarts[0].marketing;
                         $scope.order.marketing_id = $scope.settlementCarts[0].marketing_id;
                     }
-                    //console.log("$scope.order: " + angular.toJson($scope.order));
+
+                    console.log("orderInfo: " + angular.toJson($scope.order));
                     //return;
 
                     CartFty.addOrder($scope.order).then(

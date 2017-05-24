@@ -22,12 +22,13 @@ angular.module('details.controller', ['details.service'])
             var product_id = $stateParams.productId;
             var marketingType = null;
             var marketingId = null;
+            var marketingStatus = null;
             //拼团状态
             var detailsFightGroupsStatus = $stateParams.detailsFightGroupsStatus;
             if(detailsFightGroupsStatus == 'yes'){
                 $scope.isFightGroups = true;
                 $rootScope.fightGroupsStatus = 'yes';
-                marketingType = 'PIECE-GROUP'
+                marketingType = 'PIECE-GROUP';
                 getFightGroupsDetails(product_id);
             }else if(detailsFightGroupsStatus == 'no'){
                 $scope.isFightGroups = false;
@@ -307,6 +308,7 @@ angular.module('details.controller', ['details.service'])
                 }
 
                 if(isFightGroups){
+                    marketingStatus = 'PIECE-GROUP';
                     number = 2;
                 }
                 //console.log("number: " + number);
@@ -461,6 +463,7 @@ angular.module('details.controller', ['details.service'])
             $scope.checkedCarts = [];
             $scope.buy_immediately = function (item, quantity, product_property, product_specification_id, isFightGroups) {
 
+                console.log("123456");
                 console.log("isFightGroups: " + isFightGroups);
                 //console.log(angular.toJson(item));
 
@@ -513,14 +516,19 @@ angular.module('details.controller', ['details.service'])
                 $scope.checkedCarts.push(item);
 
                 if(isFightGroups && $scope.is_original_price == 0){
-                    console.log("一键开团");
-                    p_item.marketing = "PIECE-GROUP";
-                    p_item.marketing_id = $scope.fightGroupsdetails.id;
+                    p_item.marketing = marketingStatus;
                     p_item.price = $scope.fightGroupsdetails.price;
                     p_item.fightGroupData.free_shipping = $scope.fightGroupsdetails.free_shipping;
                     p_item.fightGroupData.payment_type = $scope.fightGroupsdetails.payment_type;
                     //p_item.fightGroupData.payment_type = 'WECHAT';
                     //p_item.fightGroupData.payment_type = 'WECHAT|POINT';
+                    if(marketingStatus == 'PIECE-GROUP-JOINT'){
+                        console.log("参团");
+                        p_item.marketing_id = $scope.master_item.piece_group_purchase_id;
+                    }else{
+                        console.log("开团");
+                        p_item.marketing_id = $scope.fightGroupsdetails.id;
+                    }
                 }
 
                 p_info.push(p_item);
@@ -620,7 +628,7 @@ angular.module('details.controller', ['details.service'])
                 DetailsFty.getFightGroupsDetailsService(id)
                     .then(function(json){
                         if(json.status_code == 0){
-                            console.log(angular.toJson(json));
+                            //console.log(angular.toJson(json));
                             $scope.fightGroupsdetails = json.data;
                             marketingId = json.data.id;
                             product_id = json.data.product_id;
@@ -639,7 +647,9 @@ angular.module('details.controller', ['details.service'])
             $scope.join_team = function(masterItem){
                 $scope.b_status = "buy";
                 $scope.is_fight_groups = true;
-                $scope.is_original_price = 1;
+                $scope.is_original_price = 0;
+                $scope.master_item = masterItem;
+                marketingStatus = 'PIECE-GROUP-JOINT';
             }
 
         }])

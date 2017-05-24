@@ -8,19 +8,19 @@
     }
   ],
   "contact": {
-    "id": 224,
+    "id": 222,
     "zip": null,
-    "detail": "1020号",
-    "phone": "13698523698",
-    "contact_user": "jiehua",
+    "detail": "123号",
+    "phone": "12563256698",
+    "contact_user": "huang",
     "street": null,
-    "province": "北京",
+    "province": "河北",
     "is_default": 1,
     "street_number": null,
-    "user_id": 336,
-    "district": "东城区",
-    "city": "北京"
+    "user_id": 2,
+    "district": "长安区",
+    "city": "石家庄"
   },
-  "marketing": "PIECE-GROUP-JOINT",
+  "marketing": "PIECE-GROUP",
   "marketing_id": 1
 }
