@@ -17,9 +17,18 @@ angular.module('details.service', [])
                 return deferred.promise;
             },
 
+            //ÉÌÆ··µÀû
             productRebateService:function(productId,marketingType,marketingId){
+
                 var deferred = $q.defer();
-                var url = GlobalVariable.SERVER_PATH + "/product_settlement?id=" + productId + "&marketingType=" + marketingType + "&marketingId=" + marketingId;
+                var url = null;
+
+                if(marketingType != null && marketingId != null){
+                    url = GlobalVariable.SERVER_PATH + "/product_settlement?id=" + productId + "&marketingType=" + marketingType + "&marketingId=" + marketingId;
+                }else{
+                    url = GlobalVariable.SERVER_PATH + "/product_settlement?id=" + productId;
+                }
+
                 $http.get(url,{
                     headers: {
                         'Authorization': GlobalVariable.ACCESS_TOKEN

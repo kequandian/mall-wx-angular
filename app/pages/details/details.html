@@ -36,15 +36,15 @@
                 {{details.name}}
             </div>
             <div class="product-price">
-                <span style="margin-right:2px">{{details.price|currency:"￥"}}</span>
-                <span class="point">/ {{ (details.price*point_rate) | number:0}}积分</span>
+
+                <span style="margin-right:2px">{{isFightGroupsPrice(details.price,fightGroupsdetails.price,isFightGroups) |currency:"￥"}}</span>
+                <span class="point">/ {{ isFightGroupsPrice(details.price,fightGroupsdetails.price,isFightGroups) | number:0}}积分</span>
 
                 <span class="rebate" ng-if="product_rebate > 0">
                     <span class="product-rebate-small">送</span>
                     <span class="product-rebate">{{(product_rebate*point_rate) | number:0}}</span>
                     <span  class="product-rebate-small">积分</span>
                 </span>
-
 
                 <div class="product-price-market"><span>市场价：</span><s>{{details.suggested_price | currency:'￥'}}</s>
                     <span class="freight_if" ng-if="details.weight > 0">毛重：{{details.weight/1000}}kg</span>

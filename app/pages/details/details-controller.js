@@ -649,8 +649,11 @@ angular.module('details.controller', ['details.service'])
                             });
                             $scope.promoted_masters = promoted_masters;
 
+                            //console.log(angular.toJson($scope.fightGroupsdetails));
+
                             //商品详情信息
                             detailsInfo();
+
                         }else{
                             $.toast('获取拼团商品详情失败','cancel');
                             console.log("获取拼团商品详情失败:" + angular.toJson(json));
@@ -665,12 +668,12 @@ angular.module('details.controller', ['details.service'])
             $scope.count_time = function(startTime, endTime){
                 var start = Date.parse(new Date());
                 var end = Date.parse(new Date(endTime));
-                var date3 = end - start;  //时间差的毫秒数
+                var newDate = end - start;  //时间差的毫秒数
 
-                if(date3 > 0){
+                if(newDate > 0){
                     //计算出相差天数
-                    var days = Math.floor(date3/(24*3600*1000));
-                    var leave1 = date3%(24*3600*1000);    //计算天数后剩余的毫秒数
+                    var days = Math.floor(newDate/(24*3600*1000));
+                    var leave1 = newDate%(24*3600*1000);    //计算天数后剩余的毫秒数
                     var hours = Math.floor(leave1/(3600*1000)); //计算相差分钟数
                     var leave2 = leave1%(3600*1000);        //计算小时数后剩余的毫秒数
                     var minutes = Math.floor(leave2/(60*1000)); //计算相差秒数
@@ -692,6 +695,15 @@ angular.module('details.controller', ['details.service'])
                 $scope.master_item = masterItem;
                 marketingStatus = 'PIECE-GROUP-JOINT';
                 console.log(angular.toJson(masterItem))
+            }
+
+            //显示拼团 / 普通商品价格
+            $scope.isFightGroupsPrice = function(detailsPrice, fightGroupsPrice, isFightGroups){
+                if(isFightGroups){
+                    return fightGroupsPrice;
+                }else{
+                    return detailsPrice;
+                }
             }
 
         }])
