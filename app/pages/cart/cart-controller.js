@@ -552,15 +552,15 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 CartFty.frieghtService($scope.productFrieghts)
                     .then(function(json){
                         if(json.status_code == 0){
-                            console.log(angular.toJson(json));
+                            console.log("获取的邮费信息" + angular.toJson(json));
 
                             if(settle_product_code[0].marketing_id > 0){
                                 console.log('开团邮费');
-                                if(settle_product_code[0].fightGroupData.free_shipping == 0){
+                                if(settle_product_code[0].fightGroupData.free_shipping == 1){
                                     console.log('包邮');
                                     $scope.product_frieght = 0;
                                     $scope.product_message = null;
-                                }else if(settle_product_code[0].fightGroupData.free_shipping == 1){
+                                }else if(settle_product_code[0].fightGroupData.free_shipping == 0){
                                     console.log('按普通邮费计算');
                                     //delta = json.data.delta;
                                     $scope.product_frieght = json.data.carriage;
