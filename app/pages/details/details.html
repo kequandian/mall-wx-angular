@@ -107,10 +107,10 @@
                 <div class="user-info">
                     <div class="info-content">
                         <span class="user-name">{{masterItem.user_name}}</span>
-                        <span class="user-fight-group-info">还差1人，剩余 {{count_time(masterItem.start_time, masterItem.end_time)}}</span>
+                        <span class="user-fight-group-info">{{count_member(masterItem.min_participator_count,masterItem.paid_members_count)}}剩余 {{count_time(masterItem.start_time, masterItem.end_time)}}</span>
                     </div>
                 </div>
-                <div class="go-join-btn weui_btn_primary product_info" ng-click="join_team(masterItem)">
+                <div class="go-join-btn weui_btn_primary" ng-class="isMaster(master_user_id, masterItem.user_id)" ng-click="join_team(masterItem)">
                     <span>去参团</span>
                 </div>
             </div>

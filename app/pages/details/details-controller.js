@@ -29,6 +29,8 @@ angular.module('details.controller', ['details.service'])
                 $scope.isFightGroups = true;
                 $rootScope.fightGroupsStatus = 'yes';
                 marketingType = 'PIECE-GROUP';
+                //获取个人信息
+                getUserInfo();
                 getFightGroupsDetails(product_id);
             }else if(detailsFightGroupsStatus == 'no'){
                 $scope.isFightGroups = false;
@@ -36,7 +38,6 @@ angular.module('details.controller', ['details.service'])
                 //商品详情
                 detailsInfo();
             }
-
             //修改url地址，用于分享
             appendFallback(product_id,detailsFightGroupsStatus);
 
@@ -85,7 +86,22 @@ angular.module('details.controller', ['details.service'])
                 }
             }
 
+            //获取个人信息数据
+            function getUserInfo(){
+                DetailsFty.detailsUserInfoService()
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            $scope.master_user_id = json.data.id;
+                        }else{
+                            console.log('获取个人信息失败');
+                        }
+                    }, function(error){
+                        console.log('获取个人信息失败');
+                    })
+            }
 
+
+            //获取商品详情信息
             $scope.properties_list = [];
             function detailsInfo() {
                 DetailsFty.detailsService(product_id)
@@ -664,6 +680,18 @@ angular.module('details.controller', ['details.service'])
                     })
             }
 
+            //计算剩余人数
+            $scope.count_member = function(minParticipatorCount, paidMembersCount){
+
+                var count = minParticipatorCount - paidMembersCount;
+
+                if(count > 0){
+                    return '还差'+ count + '人, ';
+                }else{
+                    return '';
+                }
+            };
+
             //计算剩余时间
             $scope.count_time = function(startTime, endTime){
                 var start = Date.parse(new Date());
@@ -687,15 +715,30 @@ angular.module('details.controller', ['details.service'])
 
             };
 
+            //判断是否是团长
+            $scope.isMaster = function(masterUserId, masterItemId){
+                if(masterUserId == masterItemId){
+                    return ''
+                }else{
+                    return 'product_info';
+                }
+            };
+
             //参团
             $scope.join_team = function(masterItem){
-                $scope.b_status = "buy";
-                $scope.is_fight_groups = true;
-                $scope.is_original_price = 0;
-                $scope.master_item = masterItem;
-                marketingStatus = 'PIECE-GROUP-JOINT';
-                console.log(angular.toJson(masterItem))
-            }
+
+                if($scope.master_user_id == masterItem.user_id){
+                    $.toast('不能参加自己建的团','cancel');
+                }else{
+                    $scope.b_status = "buy";
+                    $scope.is_fight_groups = true;
+                    $scope.is_original_price = 0;
+                    $scope.master_item = masterItem;
+                    marketingStatus = 'PIECE-GROUP-JOINT';
+                    console.log(angular.toJson(masterItem))
+                }
+
+            };
 
             //显示拼团 / 普通商品价格
             $scope.isFightGroupsPrice = function(detailsPrice, fightGroupsPrice, isFightGroups){
