@@ -663,5 +663,11 @@ angular.module('category.controller', ['category.service'])
                 }
             });*/
 
+            //拼团优惠券
+            //关闭按钮
+            $scope.f_g_hide_bg = function(){
+                document.getElementById('red-packet').style.display = 'none';
+            }
+
 
         }]);

@@ -101,3 +101,26 @@
     justify-content: flex-end;
     font-size: 12px;
 }
+
+
+/*拼团优惠券*/
+#red-packet .r-p-content .bg-img .f-g-coupon-title{
+    color:white;
+    font-size: 14px;
+}
+#red-packet .r-p-content .bg-img .f-g-coupon-title i{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    border-radius: 50%;
+    background-size: 40px 40px;
+    background-repeat: no-repeat;
+}
+#red-packet .r-p-content .bg-img .f-g-coupon-content{
+    background-color: white;
+    position: absolute;
+    top: 40px;
+    left: 8px;
+    right: 8px;
+    bottom: 13px;
+}
