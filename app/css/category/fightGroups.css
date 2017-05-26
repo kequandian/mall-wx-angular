@@ -154,8 +154,32 @@
     overflow-y: scroll;
 }
 #red-packet .r-p-content .bg-img .f-g-coupon-content .coupon-item{
-    width: 100%;
     height: 50px;
-    background-color: #00A2E8;
-    margin-bottom: 10px;
+    position: relative;
+    border-bottom: 1px solid #cccccc;
+}
+#red-packet .r-p-content .bg-img .f-g-coupon-content .coupon-item .c-item-img{
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+#red-packet .r-p-content .bg-img .f-g-coupon-content .coupon-item .c-item-text{
+    font-size: 12px;
+    text-align: left;
+    position: absolute;
+    left: 48px;
+    top: 8px;
+    right: 60px;
+}
+#red-packet .r-p-content .bg-img .f-g-coupon-content .coupon-item .c-item-btn{
+    width: 50px;
+    height: 32px;
+    line-height: 32px;
+    position: absolute;
+    right: 5px;
+    top: 12px;
+    border-radius: 5px;
+    font-size: 10px;
 }
