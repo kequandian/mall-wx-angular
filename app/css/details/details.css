@@ -781,12 +781,12 @@
     border-radius: 50%;
     margin-right: 8px;
     margin-top: 5px;
-    -webkit-flex: none;
+    /*-webkit-flex: none;*/
     flex: none;
 }
 
 #details .open-group .open-group-item .user-info{
-    -webkit-flex: 1;
+    /*-webkit-flex: 1;*/
     flex: 1;
 }
 
@@ -797,19 +797,19 @@
 }
 
 #details .open-group .open-group-item .user-info .info-content .user-name{
-    -webkit-flex: 1;
+    /*-webkit-flex: 1;*/
     flex: 1;
     font-size: 13px;
     padding-top: 5px;
 }
 #details .open-group .open-group-item .user-info .info-content .user-fight-group-info{
-    -webkit-flex: 1;
+    /*-webkit-flex: 1;*/
     flex: 1;
     font-size: 13px;
     padding-top: 1px;
 }
 #details .open-group .open-group-item .go-join-btn{
-    -webkit-flex: none;
+    /*-webkit-flex: none;*/
     flex: none;
     height: 36px;
     line-height: 36px;

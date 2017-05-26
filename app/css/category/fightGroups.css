@@ -104,23 +104,58 @@
 
 
 /*拼团优惠券*/
+#red-packet .r-p-content {
+    height: 290px;
+    margin-top: 35%;
+}
+#red-packet .r-p-content .bg-img {
+    height: 290px;
+}
+#red-packet .r-p-content .bg-img .close-btn {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: -15px;
+    right: -5px;
+    border-radius: 50%;
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+}
+
 #red-packet .r-p-content .bg-img .f-g-coupon-title{
+    width: 100%;
     color:white;
     font-size: 14px;
+    padding-top: 8px;
+}
+#red-packet .r-p-content .bg-img .f-g-coupon-title .title-body{
+    margin: 0 auto;
+    width:200px;
+    position: relative;
+    padding-left: 25px;
 }
 #red-packet .r-p-content .bg-img .f-g-coupon-title i{
-    width: 40px;
-    height: 40px;
+    width: 22px;
+    height: 22px;
     position: absolute;
     border-radius: 50%;
-    background-size: 40px 40px;
+    background-size: 22px 22px;
     background-repeat: no-repeat;
+    left: 25px;
 }
 #red-packet .r-p-content .bg-img .f-g-coupon-content{
     background-color: white;
     position: absolute;
-    top: 40px;
+    top: 45px;
     left: 8px;
     right: 8px;
     bottom: 13px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+#red-packet .r-p-content .bg-img .f-g-coupon-content .coupon-item{
+    width: 100%;
+    height: 50px;
+    background-color: #00A2E8;
+    margin-bottom: 10px;
 }
