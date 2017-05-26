@@ -35,7 +35,8 @@
         "salesReturn.route",
         'searchPage.route',
         'coupon.route',
-        'offLineShop.route'
+        'offLineShop.route',
+        'pieceGroup.route'
 
     ]).config(["$urlRouterProvider", '$ocLazyLoadProvider','$locationProvider',
         function ($urlRouterProvider, $ocLazyLoadProvider,$locationProvider) {
@@ -273,6 +274,14 @@
                     files: ['pages/seller/pages/offLineShop/seller/offLineShopSeller-controller.js',
                         'pages/seller/pages/offLineShop/seller/offLineShopSeller-service.js',
                         {type: 'css', path: 'css/sellerPage/exchangeRecord.css'}],
+                    cache: false
+                }, {
+                    name: 'PieceGroup',
+                    files: [
+                        'pages/details/pieceGroup/pieceGroup-controller.js',
+                        'pages/details/pieceGroup/pieceGroup-service.js',
+                        {type: 'css', path: 'css/cart/cart.css'},
+                        {type: 'css', path: 'css/details/details.css'}],
                     cache: false
                 }
 

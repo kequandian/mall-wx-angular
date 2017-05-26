@@ -145,69 +145,19 @@
             <div class="f-g-coupon-title">
                 <div class="title-body">
                     <i style="background-image: url('img/category/fightGroup/f-g-coupon-title-img.png')"></i>
-                    <span>您有1张优惠券即将过期</span>
+                    <span>您有{{activation_coupons.length}}张优惠券即将过期</span>
                 </div>
             </div>
 
             <div class="f-g-coupon-content">
 
-                <div class="coupon-item">
+                <div class="coupon-item" ng-repeat="couponItem in activation_coupons">
                     <img src="img/category/fightGroup/f-g-coupon-item.png" class="c-item-img"/>
                     <div class="c-item-text">
-                        <div class="custom_text_primary_medium">团长免费开团</div>
+                        <div class="custom_text_primary_medium">{{couponItem.name}}</div>
                         <div style="color: #A8A8A8;">到期时间: 2017-05-26</div>
                     </div>
-                    <div class="c-item-btn weui_btn_primary">
-                        免费开团
-                    </div>
-                </div>
-                <div class="coupon-item">
-                    <img src="img/category/fightGroup/f-g-coupon-item.png" class="c-item-img"/>
-                    <div class="c-item-text">
-                        <div class="custom_text_primary_medium">团长免费开团</div>
-                        <div style="color: #A8A8A8;">到期时间: 2017-05-26</div>
-                    </div>
-                    <div class="c-item-btn weui_btn_primary">
-                        免费开团
-                    </div>
-                </div>
-                <div class="coupon-item">
-                    <img src="img/category/fightGroup/f-g-coupon-item.png" class="c-item-img"/>
-                    <div class="c-item-text">
-                        <div class="custom_text_primary_medium">团长免费开团</div>
-                        <div style="color: #A8A8A8;">到期时间: 2017-05-26</div>
-                    </div>
-                    <div class="c-item-btn weui_btn_primary">
-                        免费开团
-                    </div>
-                </div>
-                <div class="coupon-item">
-                    <img src="img/category/fightGroup/f-g-coupon-item.png" class="c-item-img"/>
-                    <div class="c-item-text">
-                        <div class="custom_text_primary_medium">团长免费开团</div>
-                        <div style="color: #A8A8A8;">到期时间: 2017-05-26</div>
-                    </div>
-                    <div class="c-item-btn weui_btn_primary">
-                        免费开团
-                    </div>
-                </div>
-                <div class="coupon-item">
-                    <img src="img/category/fightGroup/f-g-coupon-item.png" class="c-item-img"/>
-                    <div class="c-item-text">
-                        <div class="custom_text_primary_medium">团长免费开团</div>
-                        <div style="color: #A8A8A8;">到期时间: 2017-05-26</div>
-                    </div>
-                    <div class="c-item-btn weui_btn_primary">
-                        免费开团
-                    </div>
-                </div>
-                <div class="coupon-item">
-                    <img src="img/category/fightGroup/f-g-coupon-item.png" class="c-item-img"/>
-                    <div class="c-item-text">
-                        <div class="custom_text_primary_medium">团长免费开团</div>
-                        <div style="color: #A8A8A8;">到期时间: 2017-05-26</div>
-                    </div>
-                    <div class="c-item-btn weui_btn_primary">
+                    <div class="c-item-btn weui_btn_primary" ng-click="goToPieceGroup(couponItem)">
                         免费开团
                     </div>
                 </div>

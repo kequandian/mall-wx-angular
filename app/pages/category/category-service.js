@@ -33,10 +33,26 @@ angular.module('category.service', [])
             },
 
             // 获取拼团信息
-            getFightGroupsService: function (cateId,pageNumber,pageSize,orderBy) {
+            getFightGroupsService: function (pageNumber,pageSize,orderBy) {
                 var deferred = $q.defer();
                 var url = GlobalVariable.SERVER_PATH + "/piece_group_purchase?pageNumber=" + pageNumber + "&pageSize=" + pageSize + orderBy;
-                console.log("拼团：" + url)
+                $http.get(url,{
+                    headers: {
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
+                })
+                    .success(function (data) {
+                        return deferred.resolve(data);
+                    }).error(function (data) {
+                        return deferred.reject(data);
+                    });
+                return deferred.promise;
+            },
+
+            // 获取拼团优惠券信息
+            getPieceGroupCouponService: function () {
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + "/coupon_notify";
                 $http.get(url,{
                     headers: {
                         'Authorization': GlobalVariable.ACCESS_TOKEN

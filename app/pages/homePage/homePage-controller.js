@@ -447,7 +447,6 @@ angular.module('homePage.controller', ['homePage.service'])
             };
 
             //红包
-
             $scope.hide_bg = function(){
                 document.getElementById('red-packet').style.display = 'none';
             };
@@ -457,7 +456,7 @@ angular.module('homePage.controller', ['homePage.service'])
                 $state.go('coupon');
             };
 
-            //检查用户是否有未激活的优惠卷
+            //检查用户是否有未激活的优惠券
             if(!$rootScope.home_coupon_status){
                 couponNotify();
             }

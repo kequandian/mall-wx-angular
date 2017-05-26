@@ -42,7 +42,10 @@ angular.module('category.controller', ['category.service'])
             if(fightGroupsStatus == 'yes'){
                 $rootScope.fightGroupsStatus = 'yes';
                 $scope.isFightGroups = true;
-                getFightGroupsInfo()
+                //拼团列表
+                getPieceGroupsInfo();
+                //拼团优惠券
+                getPieceGroupCoupon();
             }else if(fightGroupsStatus == 'no'){
                 $rootScope.fightGroupsStatus = 'no';
                 $scope.isFightGroups = false;
@@ -472,11 +475,8 @@ angular.module('category.controller', ['category.service'])
 
 
             //获取拼团商品信息
-            function getFightGroupsInfo(){
-                var cateId = 36;
-                //var pageNumber = 1;
-                //var orderBy = '';
-                CategoryFty.getFightGroupsService(cateId,pageNumber,pageSize,orderBy)
+            function getPieceGroupsInfo(){
+                CategoryFty.getFightGroupsService(pageNumber,pageSize,orderBy)
                     .then(function(json){
                         if(json.status_code == 0){
 
@@ -533,7 +533,7 @@ angular.module('category.controller', ['category.service'])
                             console.log(angular.toJson(json))
                         }
                     }, function(error){
-                        console.log(angular.toJson(error))
+                        console.log("获取拼团信息失败" + angular.toJson(error))
                     })
             }
 
@@ -541,6 +541,7 @@ angular.module('category.controller', ['category.service'])
             $scope.cateGoToFightGroups = function(productId,status){
                 console.log("status: " + status);
                 $state.go('details',{productId:productId, detailsFightGroupsStatus:status});
+                //$state.go('pieceGroup',{pieceGroupId:productId, detailsFightGroupsStatus:status});
             };
 
 
@@ -667,6 +668,45 @@ angular.module('category.controller', ['category.service'])
             //关闭按钮
             $scope.f_g_hide_bg = function(){
                 document.getElementById('red-packet').style.display = 'none';
+            };
+
+            //获取拼团优惠券信息
+            function getPieceGroupCoupon(){
+
+                var couponList = [];
+
+                CategoryFty.getPieceGroupCouponService()
+                    .then(function(json){
+
+                        if(json.status_code == 0){
+
+                            //console.log(angular.toJson(json));
+                            if(json.data.notify){
+                                if(json.data.activation_coupons != null && json.data.activation_coupons.length > 0){
+
+                                    angular.forEach(json.data.activation_coupons, function (v, k) {
+                                       if(v.type == '' && v.status ==''){
+                                           couponList.push(v);
+                                       }
+                                    });
+                                    if(couponList.length > 0){
+                                        $scope.activation_coupons = couponList;
+                                    }
+                                    document.getElementById('red-packet').style.display = 'block';
+                                }
+                            }
+
+                        }else{
+                            console.log('获取拼团优惠券信息失败：' + angular.toJson(json))
+                        }
+                    }, function(error){
+                       console.log('获取拼团优惠券信息失败：' + angular.toJson(error))
+                    });
+            }
+
+            //优惠开团
+            $scope.goToPieceGroup = function(item){
+
             }
 
 
