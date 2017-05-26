@@ -106,8 +106,8 @@
                 <img src="{{masterItem.user_avatar != null ? masterItem.user_avatar:'img/my/userPhoto.png'}}" class="user-cover">
                 <div class="user-info">
                     <div class="info-content">
-                        <span class="user-name">{{masterItem.user_name}}</span>
-                        <span class="user-fight-group-info">{{count_member(masterItem.min_participator_count,masterItem.paid_members_count)}}剩余 {{count_time(masterItem.start_time, masterItem.end_time)}}</span>
+                        <div class="user-name">{{masterItem.user_name}}</div>
+                        <div class="user-fight-group-info">{{count_member(masterItem.min_participator_count,masterItem.paid_members_count)}}剩余 {{count_time(masterItem.start_time, masterItem.end_time)}}</div>
                     </div>
                 </div>
                 <div class="go-join-btn weui_btn_primary" ng-class="isMaster(master_user_id, masterItem.user_id)" ng-click="join_team(masterItem)">

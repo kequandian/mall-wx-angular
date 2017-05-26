@@ -768,55 +768,51 @@
 }
 
 #details .open-group .open-group-item{
+    height: 50px;
     margin-top: 5px;
     padding-left: 10px;
     padding-right: 10px;
     /*padding-bottom: 5px;*/
-    display: flex;
+    position: relative;
 }
 
 #details .open-group .open-group-item .user-cover{
     width: 43px;
     height: 43px;
     border-radius: 50%;
-    margin-right: 8px;
     margin-top: 5px;
-    /*-webkit-flex: none;*/
-    flex: none;
+    position: absolute;
+    left: 12px;
 }
 
 #details .open-group .open-group-item .user-info{
-    /*-webkit-flex: 1;*/
-    flex: 1;
+    position: absolute;
+    left: 65px;
+    right: 83px;
 }
 
 #details .open-group .open-group-item .user-info .info-content{
-    display: flex;
     flex-direction: column;
     color: #757575;
 }
 
 #details .open-group .open-group-item .user-info .info-content .user-name{
-    /*-webkit-flex: 1;*/
-    flex: 1;
     font-size: 13px;
     padding-top: 5px;
 }
 #details .open-group .open-group-item .user-info .info-content .user-fight-group-info{
-    /*-webkit-flex: 1;*/
-    flex: 1;
     font-size: 13px;
     padding-top: 1px;
 }
 #details .open-group .open-group-item .go-join-btn{
-    /*-webkit-flex: none;*/
-    flex: none;
     height: 36px;
     line-height: 36px;
     padding: 0 10px 0 10px;
     font-size: 16px;
     border-radius: 7px;
     margin-top: 8px;
+    position: absolute;
+    right: 12px;
 }
 /*end*/
 

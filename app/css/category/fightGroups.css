@@ -163,14 +163,14 @@
     height: 32px;
     position: absolute;
     left: 10px;
-    top: 10px;
+    top: 8px;
 }
 #red-packet .r-p-content .bg-img .f-g-coupon-content .coupon-item .c-item-text{
     font-size: 12px;
     text-align: left;
     position: absolute;
     left: 48px;
-    top: 8px;
+    top: 6px;
     right: 60px;
 }
 #red-packet .r-p-content .bg-img .f-g-coupon-content .coupon-item .c-item-btn{
@@ -179,7 +179,7 @@
     line-height: 32px;
     position: absolute;
     right: 5px;
-    top: 12px;
+    top: 9px;
     border-radius: 5px;
     font-size: 10px;
 }
