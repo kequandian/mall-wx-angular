@@ -165,7 +165,7 @@ angular.module('pieceGroup.service', [])
                 return deferred.promise;
             },
 
-            // 获取分销个人信息数据
+            // 获取个人信息数据
             detailsUserInfoService: function () {
                 var deferred = $q.defer();
                 var url = GlobalVariable.SERVER_PATH + "/profile";

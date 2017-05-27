@@ -5,7 +5,7 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
 
             $ocLazyLoad.load('Jquery').then(function () {
                 $ocLazyLoad.load('JqueryWeUI').then(function () {
-                    //console.log("homePage:jquery loaded");
+                    console.log("pieceGroup:jquery loaded");
                 })
             });
             //title
@@ -52,24 +52,24 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                     var longParam = params[1];
                     var param = longParam.split('#')[0];
                     /// already has fallback
-                    if(param.indexOf('fallback=details-')>=0){
-                        param = param.replace(/fallback=details\-\d+/,  'fallback=details-'+product_id);
+                    if(param.indexOf('fallback=pieceGroup-')>=0){
+                        param = param.replace(/fallback=details\-\d+/,  'fallback=pieceGroup-'+product_id);
                         if(param.indexOf('&fgStatus-') >= 0){
                             param = param.replace(/&fgStatus\-\w+/, '&fgStatus-' + f_g_status);
                         }
                         console.log("param>>> "+param);
                     }else{
-                        param = param + '&fallback=details-' + product_id;
+                        param = param + '&fallback=pieceGroup-' + product_id;
                         console.log("param> "+param);
                     }
 
                     /// append details
                     ///
-                    newurl = '?' + param + '#/details/' + product_id + '/' + f_g_status;
+                    newurl = '?' + param + '#/pieceGroup/' + product_id + '/' + f_g_status;
                     console.log("newurl>>> "+newurl);
                 }else{
                     //newurl = '?fallback=details-'+ product_id +'#/details/' + product_id + '/' + f_g_status;
-                    newurl = '?fallback=details-'+ product_id +'&fgStatus-'+ f_g_status +'#/details/' + product_id + '/' + f_g_status;
+                    newurl = '?fallback=pieceGroup-'+ product_id +'&fgStatus-'+ f_g_status +'#/pieceGroup/' + product_id + '/' + f_g_status;
                     console.log("newurl> "+newurl);
                 }
 
