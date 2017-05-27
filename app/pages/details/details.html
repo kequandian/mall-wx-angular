@@ -37,8 +37,8 @@
             </div>
             <div class="product-price">
 
-                <span style="margin-right:2px">{{isFightGroupsPrice(details.price,fightGroupsdetails.price,isFightGroups) |currency:"￥"}}</span>
-                <span class="point">/ {{ isFightGroupsPrice(details.price,fightGroupsdetails.price,isFightGroups) | number:0}}积分</span>
+                <span style="margin-right:2px">{{details.price |currency:"￥"}}</span>
+                <span class="point">/ {{(details.price*point_rate) | number:0}}积分</span>
 
                 <span class="rebate" ng-if="product_rebate > 0">
                     <span class="product-rebate-small">送</span>

@@ -312,7 +312,7 @@
         $rootScope.red_point_status = false;
 
         //拼团状态
-        $rootScope.fightGroupsStatus = 'no';
+        $rootScope.isMasterStatus = false;
 
         /*//Do your $on in here, like this:
         $rootScope.$on("$locationChangeStart",function(event, next, current){

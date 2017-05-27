@@ -41,7 +41,9 @@ angular.module('details.controller', ['details.service'])
                     var longParam = params[1];
                     var param = longParam.split('#')[0];
                     /// already has fallback
-                    if(param.indexOf('fallback=details-')>=0){
+                    if(param.indexOf('fallback=pieceGroup-')>=0){
+                        param = 'fallback=details-' + product_id;
+                    }else if(param.indexOf('fallback=details-')>=0){
                         param = param.replace(/fallback=details\-\d+/,  'fallback=details-'+product_id);
                         console.log("param>>> "+param);
                     }else{
@@ -57,7 +59,6 @@ angular.module('details.controller', ['details.service'])
                     newurl = '?fallback=details-'+ product_id +'#/details/' + product_id;
                     console.log("newurl> "+newurl);
                 }
-
 
                 if(longParam != newurl) {
                     //prevents browser from storing history with each change:
@@ -307,6 +308,8 @@ angular.module('details.controller', ['details.service'])
                 var product_property = null;
                 var product_specification_id = null;
                 var int_quantity = parseInt(quantity);
+                var isFightGroups = $scope.is_fight_groups;
+                console.log(int_quantity);
 
                 if ($scope.product_property_value != null) {
                     product_specification_id = $scope.product_property_value.id;
@@ -323,7 +326,7 @@ angular.module('details.controller', ['details.service'])
                 if($scope.details.purchase_strategy != null){
                     DetailsFty.check_buy_count(productId, quantity)
                         .then(function(json){
-                            //console.log("限购信息：" + angular.toJson(json));
+                            console.log("限购信息：" + angular.toJson(json));
                             if(json.status_code == 0){
                                 buy_option(productInfo,productId, int_quantity,product_property,product_specification_id);
                             }else{
@@ -401,6 +404,8 @@ angular.module('details.controller', ['details.service'])
             //立即购买
             $scope.checkedCarts = [];
             $scope.buy_immediately = function (item, quantity, product_property, product_specification_id) {
+
+                //console.log(angular.toJson(item));
 
                 if(!quantity > 0){
                     $.toast('请输入商品数量','cancel');

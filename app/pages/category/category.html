@@ -76,6 +76,7 @@
     <!--</div>-->
 <!--</div>-->
 
+<!--拼团信息-->
 <div id="fightGroups" class="fightGroups" ng-if="isFightGroups">
 
     <div class="fight-groups" ng-if="promotedMaster != null">
@@ -106,7 +107,7 @@
     <div class="pro-content" id="fig-height" oc-lazy-load="SquareImg">
         <div class="product-item"
              ng-repeat="fightGroupsItem in fightGroupsList.list"
-             ng-click="cateGoToDetails(fightGroupsItem,'yes')"
+             ng-click="cateGoToDetails(fightGroupsItem)"
                 >
             <div class="product-img">
                 <img square-img src="{{fightGroupsItem.cover | defaultCover}}">
@@ -135,7 +136,7 @@
 
 </div>
 
-<!--拼团信息-->
+<!--拼团优惠券信息-->
 <div id="red-packet">
 
     <div class="r-p-content">

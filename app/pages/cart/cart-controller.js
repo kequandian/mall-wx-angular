@@ -374,9 +374,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             //进入商品详情
             $scope.goToDetails = function(productId){
                 //var f_g_status = $rootScope.fightGroupsStatus;
-                var f_g_status = 'no';
-                console.log('f_g_status: ' + f_g_status);
-                $state.go('details',{productId:productId, detailsFightGroupsStatus:f_g_status});
+                $state.go('details',{productId:productId});
             }
 
         }])

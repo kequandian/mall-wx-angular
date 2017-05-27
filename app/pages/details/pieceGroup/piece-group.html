@@ -26,8 +26,8 @@
             </div>
             <div class="product-price">
 
-                <span style="margin-right:2px">{{isFightGroupsPrice(details.price,fightGroupsdetails.price,isFightGroups) |currency:"￥"}}</span>
-                <span class="point">/ {{ isFightGroupsPrice(details.price,fightGroupsdetails.price,isFightGroups) | number:0}}积分</span>
+                <span style="margin-right:2px">{{fightGroupsdetails.price |currency:"￥"}}</span>
+                <span class="point">/ {{(fightGroupsdetails.price*point_rate) | number:0}}积分</span>
 
                 <span class="rebate" ng-if="product_rebate > 0">
                     <span class="product-rebate-small">送</span>
@@ -87,7 +87,7 @@
         </div>
 
         <!--拼团列表-->
-        <div class="open-group" ng-if="promoted_masters != null">
+        <div class="open-group" ng-if="promoted_masters.length > 0">
         <!--<div class="open-group">-->
             <div class="open-group-title">小伙伴在开团</div>
             <div class="open-group-item" ng-repeat="masterItem in promoted_masters">
@@ -190,9 +190,8 @@
 
         <div class="detail-footer-right">
             <div class="item-button">
-                <div class="details_buy_css custom_flat_primary_medium" ng-click="buy_status(2,b_status_btn,isFightGroups,0)" ng-class="b_status_btn ? 'product_info':''">
+                <div class="details_buy_css custom_flat_primary_medium" ng-click="piece_group_buy_status(b_status_btn,true,0)" ng-class="b_status_btn ? 'product_info':''">
                     <!--<div class="details_buy_css product_info" ng-click="buy_immediately(details)">-->
-                    <span ng-if="!isFightGroups">立即购买</span>
                     <div class="alone-buy" ng-if="isFightGroups">
                         <div class="span-top">
                             <span>{{fightGroupsdetails.price | currency:'￥'}}</span>
@@ -202,9 +201,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="details_cart_css custom_flat_primary_light" ng-click="buy_status(1,b_status_btn,isFightGroups,1)" ng-class="b_status_btn ? 'product_info':''">
+                <div class="details_cart_css custom_flat_primary_light" ng-click="piece_group_buy_status(b_status_btn,false,1)" ng-class="b_status_btn ? 'product_info':''">
                     <!--<div class="details_cart_css product_info" ng-click="addProductToCart(details.id)">-->
-                    <span ng-if="!isFightGroups">加入购物车</span>
                     <div class="alone-buy" ng-if="isFightGroups">
                         <div class="span-top">
                             <span>{{details.price | currency:'￥'}}</span>

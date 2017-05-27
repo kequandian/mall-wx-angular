@@ -468,10 +468,9 @@ angular.module('category.controller', ['category.service'])
             }
 
             //推荐商品
-            $scope.cateGoToDetails = function (item, status) {
+            $scope.cateGoToDetails = function (item) {
                 //console.log(angular.toJson(item));
-                //$state.go('details',{productId:item.id, detailsFightGroupsStatus:status});
-                $state.go('pieceGroup',{pieceGroupId:item.id, detailsFightGroupsStatus:status});
+                $state.go('pieceGroup',{pieceGroupId:item.id, masterId:20});
             };
 
 
