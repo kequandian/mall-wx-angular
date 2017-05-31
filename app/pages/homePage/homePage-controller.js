@@ -63,9 +63,8 @@ angular.module('homePage.controller', ['homePage.service'])
 
             var n = value.lastIndexOf('/');
             var id = value.substr(n + 1, value.length);
-            var status = 'no';
 
-            return 'details({productId:' + id + ',detailsFightGroupsStatus:' + status +'})';
+            return 'details({productId:' + id + '})';
         }
     })    
     //默认分类广告图片
@@ -157,6 +156,8 @@ angular.module('homePage.controller', ['homePage.service'])
             getSystemAnnouncement();
             //获取拼团信息
             getFightGroupsInfo();
+            //获取个人信息
+            getUserInfo();
 
             //获取推荐商品
             if ($rootScope.rec_session.rec_product.length == 0) {
@@ -443,7 +444,7 @@ angular.module('homePage.controller', ['homePage.service'])
                 cateCacheCode.loading=false;
                 cateCacheCode.load_more_btn_show= true;
                 //console.log(angular.toJson(item))
-                $state.go('home.category',{categoryId:-1,fightGroupsStatus:'no'});
+                $state.go('home.category',{categoryId:-1,categoryType:'default'});
             };
 
             //红包
@@ -528,9 +529,16 @@ angular.module('homePage.controller', ['homePage.service'])
             }
 
             //拼团
-            $scope.homeGoToFightGroups = function(productId,status){
-                console.log("status: " + status);
-                $state.go('details',{productId:productId, detailsFightGroupsStatus:status});
+            $scope.homeGoToFightGroups = function(item){
+                //console.log("item: " + item.id);
+                //console.log("masterId: " + masterId);
+                if(item.isMasterOrder){
+                    console.log("Master Order");
+                    $state.go('pieceGroup',{pieceGroupId:item.piece_group_purchase_id, masterId:item.id});
+                }else{
+                    console.log("Piece Product");
+                    $state.go('pieceGroup',{pieceGroupId:item.id, masterId:0});
+                }
             };
 
 
@@ -541,9 +549,10 @@ angular.module('homePage.controller', ['homePage.service'])
                 HomePageFty.getHomeFightGroupsService()
                     .then(function(json){
                         if(json.status_code == 0){
-
+                            //console.log("获取拼团商品信息:" + angular.toJson(json));
                             if(json.data.promoted_master != null){
                                 $scope.promotedMaster = json.data.promoted_master;
+                                $scope.promotedMaster.isMasterOrder = true;
                             }else{
                                 if(json.data.list !=null && json.data.list.length > 0){
 
@@ -557,6 +566,7 @@ angular.module('homePage.controller', ['homePage.service'])
                                         }
                                     });
                                     $scope.promotedMaster.promoted_master = null;
+                                    $scope.promotedMaster.isMasterOrder = false;
                                 }
                             }
 
@@ -565,6 +575,20 @@ angular.module('homePage.controller', ['homePage.service'])
                         }
                     }, function(error){
                         console.log(angular.toJson(error))
+                    })
+            }
+
+            //获取个人信息数据
+            function getUserInfo(){
+                HomePageFty.homePageGetUserInfoService()
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            $rootScope.master_id = json.data.id;
+                        }else{
+                            console.log('获取个人信息失败：', angular.toJson(json));
+                        }
+                    }, function(error){
+                        console.log('获取个人信息失败：', angular.toJson(error));
                     })
             }
 

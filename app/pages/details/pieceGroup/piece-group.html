@@ -188,11 +188,12 @@
             </div>
         </div>
 
-        <div class="detail-footer-right">
+        <!--拼团-->
+        <div class="detail-footer-right" ng-if="!isMasterOpen">
             <div class="item-button">
                 <div class="details_buy_css custom_flat_primary_medium" ng-click="piece_group_buy_status(b_status_btn,true,0)" ng-class="b_status_btn ? 'product_info':''">
                     <!--<div class="details_buy_css product_info" ng-click="buy_immediately(details)">-->
-                    <div class="alone-buy" ng-if="isFightGroups">
+                    <div class="alone-buy">
                         <div class="span-top">
                             <span>{{fightGroupsdetails.price | currency:'￥'}}</span>
                         </div>
@@ -203,12 +204,31 @@
                 </div>
                 <div class="details_cart_css custom_flat_primary_light" ng-click="piece_group_buy_status(b_status_btn,false,1)" ng-class="b_status_btn ? 'product_info':''">
                     <!--<div class="details_cart_css product_info" ng-click="addProductToCart(details.id)">-->
-                    <div class="alone-buy" ng-if="isFightGroups">
+                    <div class="alone-buy">
                         <div class="span-top">
                             <span>{{details.price | currency:'￥'}}</span>
                         </div>
                         <div class="span-bottom">
                             <span>单独购买</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--参与拼团-->
+        <div class="detail-footer-right" ng-if="isMasterOpen">
+            <div class="item-button">
+                <div class="details_buy_css custom_flat_primary_medium" ng-click="join_piece_group_buy_status(b_status_btn,false)" ng-class="(b_status_btn && master_id>0) ? 'product_info':''">
+                    <div class="alone-buy">
+                        <div class="span-bottom span-bottom-line-height">
+                            <span>立即参团</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="details_cart_css custom_flat_primary_light" ng-click="join_piece_group_buy_status(b_status_btn,true)" ng-class="b_status_btn ? 'product_info':''">
+                    <div class="alone-buy">
+                        <div class="span-bottom span-bottom-line-height">
+                            <span>一键开团</span>
                         </div>
                     </div>
                 </div>

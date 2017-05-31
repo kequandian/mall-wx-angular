@@ -1,28 +1,21 @@
-{
-  "status_code": 0,
-  "data": {
-    "uid": "U00000002",
-    "birthday": "2016-07-11",
-    "sex": 0,
-    "phone": "13669856698",
-    "status": "NORMAL",
-    "last_login_date": "2017-05-08 16:18:39",
-    "token_expired_date": "2017-06-07 16:18:39",
-    "avatar": null,
-    "followed": 0,
-    "id": 2,
-    "inviter_name": null,
-    "follow_time": null,
-    "invitation_code": "a9e09f7c83add984db626d14502039d8",
-    "details": null,
-    "weixin": "jingfei",
-    "email": null,
-    "register_date": "2016-04-22 10:29:49",
-    "invitation_qrcode_url": "http://o9ixtumvv.bkt.clouddn.com/FuG3kqdvTnpuH0A6glpjRpuWqcz5",
-    "real_name": "jingfei",
-    "login_name": "jingfei",
-    "name": "jingfei",
-    "inviter_id": null,
-    "invitation_qrcode": "http://www.kequandian.net/app/app?invite_code=a9e09f7c83add984db626d14502039d8a9e09f7c83add984db626d14502039d8"
+[
+  {
+    "product_id": 39,
+    "product_name": "天然植物精华洗衣皂液1.25L补充装【全国包邮（甘肃、宁夏、新疆、西藏、青海、内蒙古除外）】",
+    "quantity": 1,
+    "cover": "http://images.10mup.com/20160722162325884-OctWEBdB.jpg",
+    "product_specification_id": null,
+    "product_specification_name": null,
+    "stock_balance": 993,
+    "fare_id": 2,
+    "weight": 0,
+    "bulk": 0,
+    "fightGroupData": {
+      "free_shipping": 1,
+      "payment_type": "WECHAT"
+    },
+    "price": 6,
+    "marketing": "PIECE-GROUP",
+    "marketing_id": 9
   }
-}
+]

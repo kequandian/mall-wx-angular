@@ -373,7 +373,6 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
             //进入商品详情
             $scope.goToDetails = function(productId){
-                //var f_g_status = $rootScope.fightGroupsStatus;
                 $state.go('details',{productId:productId});
             }
 
@@ -724,10 +723,13 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     //console.log('ok')
                     if($scope.settlementCarts[0].marketing_id > 0){
                         $scope.order.marketing = $scope.settlementCarts[0].marketing;
-                        $scope.order.marketing_id = $scope.settlementCarts[0].marketing_id;
+                        //$scope.order.marketing_id = $scope.settlementCarts[0].marketing_id;
+                        angular.forEach($scope.settlementCarts, function(value, index){
+                            $scope.order.order_items[index].marketing_id = value.marketing_id;
+                        });
                     }
 
-                    //console.log("orderInfo: " + angular.toJson($scope.order));
+                    console.log("orderInfo: " + angular.toJson($scope.order));
                     //return;
 
                     CartFty.addOrder($scope.order).then(

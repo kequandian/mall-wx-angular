@@ -1,4 +1,4 @@
-<div id="category" ng-if="!isFightGroups">
+<div id="category" ng-if="!isPieceGroups">
 
     <!-- 头部logo -->
     <nav class="nav">
@@ -46,7 +46,7 @@
     <div class="pro-content" id="pro-height" oc-lazy-load="SquareImg">
         <div class="product-item"
              ng-repeat="item in productList.products"
-             ng-click="cateGoToDetails(item, 'no')"
+             ng-click="cateGoToDetails(item)"
                 >
             <div class="product-img">
                 <img square-img src="{{item.cover | defaultCover}}">
@@ -63,7 +63,7 @@
             </div>
         </div>
 
-        <div class="weui_grid load-more-product" ng-if="!isFightGroups" ng-show="load_more_btn_show">
+        <div class="weui_grid load-more-product" ng-if="!isPieceGroups" ng-show="load_more_btn_show">
             <div class="load-more-button">拼命加载中……</div>
         </div>
     </div>
@@ -77,10 +77,10 @@
 <!--</div>-->
 
 <!--拼团信息-->
-<div id="fightGroups" class="fightGroups" ng-if="isFightGroups">
+<div id="fightGroups" class="fightGroups" ng-if="isPieceGroups">
 
     <div class="fight-groups" ng-if="promotedMaster != null">
-        <img src="{{promotedMaster.cover}}" class="fight-groups-ad-img" ng-click="cateGoToFightGroups(promotedMaster.id,'yes')">
+        <img src="{{promotedMaster.cover}}" class="fight-groups-ad-img" ng-click="cateGoToFightGroups(promotedMaster)">
         <div class="fight-groups-info">
             <div class="f-g-info-price">
                 <span>{{promotedMaster.price | currency:'￥'}}</span>
@@ -96,7 +96,7 @@
                     </div>
                 </div>
             </div>
-            <div class="f-g-info-btn weui_btn_primary" ng-click="cateGoToFightGroups(promotedMaster.id,'yes')">去开团 ></div>
+            <div class="f-g-info-btn weui_btn_primary" ng-click="cateGoToFightGroups(promotedMaster)">去开团 ></div>
         </div>
     </div>
 
@@ -106,29 +106,29 @@
 
     <div class="pro-content" id="fig-height" oc-lazy-load="SquareImg">
         <div class="product-item"
-             ng-repeat="fightGroupsItem in fightGroupsList.list"
-             ng-click="cateGoToDetails(fightGroupsItem)"
+             ng-repeat="pieceGroupsItem in fightGroupsList.list"
+             ng-click="cateGoToDetails(pieceGroupsItem)"
                 >
             <div class="product-img">
-                <img square-img src="{{fightGroupsItem.cover | defaultCover}}">
+                <img square-img src="{{pieceGroupsItem.cover | defaultCover}}">
                 <!--<div ng-if="fightGroupsItem.stock_balance == 0">
                     <img src="img/category/feature.png">
                 </div>-->
             </div>
             <div class="product-name">
-                {{fightGroupsItem.marketing_name | defaultShortName}}
+                {{pieceGroupsItem.marketing_name | defaultShortName}}
             </div>
             <div class="p-content">
                 <div class="product-price">
-                    {{fightGroupsItem.price | currency:'￥'}}
+                    {{pieceGroupsItem.price | currency:'￥'}}
                 </div>
                 <div class="product-buy-count">
-                    已团购{{fightGroupsItem.sale}}件
+                    已团购{{pieceGroupsItem.sale}}件
                 </div>
             </div>
         </div>
 
-        <div class="weui_grid load-more-product" ng-if="isFightGroups" ng-show="load_more_btn_show">
+        <div class="weui_grid load-more-product" ng-if="isPieceGroups" ng-show="load_more_btn_show">
             <div class="load-more-button">拼命加载中……</div>
         </div>
     </div>

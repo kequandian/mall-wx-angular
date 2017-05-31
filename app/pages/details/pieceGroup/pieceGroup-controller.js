@@ -20,15 +20,25 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
             $scope.point_rate = PointRate.rate;
             var product_id = $stateParams.pieceGroupId;
             var master_id = $stateParams.masterId;
+            $scope.master_id = $stateParams.masterId;
+
+            $scope.master_user_id = $rootScope.master_id;
+
+            console.log("product_id> " + product_id);
+            console.log("master_id> " + master_id);
+            console.log("master_user_id> " + $scope.master_user_id);
+
+            if(master_id > 0){
+                $scope.isMasterOpen = true;
+            }else{
+                $scope.isMasterOpen = false;
+            }
+
             var marketingType = null;
             var marketingId = null;
             var marketingStatus = null;
 
-            $scope.isFightGroups = true;
-            $rootScope.fightGroupsStatus = 'yes';
             marketingType = 'PIECE-GROUP';
-            //获取个人信息
-            getUserInfo();
             getFightGroupsDetails(product_id);
 
             //修改url地址，用于分享
@@ -72,25 +82,10 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                         currentState = {title: document.title, url: newurl};
                     }
 
-                    console.log("newurl<< "+newurl);
+                    //console.log("newurl<< "+newurl);
                     window.history.pushState(currentState, document.title, newurl);
                 }
             }
-
-            //获取个人信息数据
-            function getUserInfo(){
-                PieceGroupFty.detailsUserInfoService()
-                    .then(function(json){
-                        if(json.status_code == 0){
-                            $scope.master_user_id = json.data.id;
-                        }else{
-                            console.log('获取个人信息失败');
-                        }
-                    }, function(error){
-                        console.log('获取个人信息失败');
-                    })
-            }
-
 
             //获取商品详情信息
             $scope.properties_list = [];
@@ -290,8 +285,9 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                 return isNumber;
             }
 
-            //购买状态
+            //拼团
             $scope.piece_group_buy_status = function (b_status,isOpenPieceGroups,isOriginalPrice) {
+
                 if(!b_status){
                     $.toast('该商品暂无库存', 'cancel');
                     return;
@@ -300,11 +296,31 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                 if(isOpenPieceGroups){
                     marketingStatus = 'PIECE-GROUP';
                 }
-                //console.log("number: " + number);
 
-                $scope.b_status = "buy";
                 $scope.is_original_price = isOriginalPrice;
                 console.log('isOriginalPrice: ' + isOriginalPrice);
+
+            };
+
+            //参与某团长拼团
+            $scope.join_piece_group_buy_status = function (b_status,isOpenPieceGroups) {
+
+                if(!b_status){
+                    $.toast('该商品暂无库存', 'cancel');
+                    return;
+                }
+
+                if(master_id > 0){
+                    if(isOpenPieceGroups){
+                        marketingStatus = 'PIECE-GROUP';
+                    }else{
+                        marketingStatus = 'PIECE-GROUP-JOINT';
+                    }
+                }else{
+                    console.log('团长ID获取异常');
+                }
+
+                $scope.is_original_price = 0;
 
             };
 
@@ -418,22 +434,28 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                     p_item.fightGroupData.payment_type = $scope.fightGroupsdetails.payment_type;
                     if(marketingStatus == 'PIECE-GROUP-JOINT'){
                         console.log("参团");
-                        p_item.marketing_id = $scope.master_item.id;
+                        if(master_id > 0){
+                            p_item.marketing_id = parseInt(master_id);
+                        }else{
+                            p_item.marketing_id = $scope.master_item.id;
+                        }
                     }else{
                         console.log("开团");
                         p_item.marketing_id = $scope.fightGroupsdetails.id;
                     }
+                }else{
+                    console.log("普通购买");
                 }
                 p_info.push(p_item);
 
                 //console.log("$scope.fightGroupsdetails: " + angular.toJson($scope.fightGroupsdetails));
-                //console.log(angular.toJson(p_info));
+                console.log(angular.toJson(p_info));
                 //return;
 
                 var newUrl = '';
                 var title = '';
                 var c_state = history.state;
-                if(isOpenPieceGroups && $scope.is_original_price == 0){
+                if($scope.is_original_price == 0){
                     console.log("拼团购买");
                     //console.log(angular.toJson(p_info));
                     $rootScope.settle_product_code = p_info;
@@ -593,8 +615,8 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
             };
 
             //判断是否是团长
-            $scope.isMaster = function(masterUserId, masterItemId){
-                if(masterUserId == masterItemId){
+            $scope.isMaster = function(masterId, masterItemId){
+                if(masterId == masterItemId){
                     return ''
                 }else{
                     return 'product_info';
@@ -607,7 +629,6 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                 if($scope.master_user_id == masterItem.user_id){
                     $.toast('不能参加自己建的团','cancel');
                 }else{
-                    $scope.b_status = "buy";
                     $scope.is_original_price = 0;
                     $scope.master_item = masterItem;
                     marketingStatus = 'PIECE-GROUP-JOINT';

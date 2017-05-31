@@ -311,8 +311,8 @@
         $rootScope.follow_url = null;
         $rootScope.red_point_status = false;
 
-        //拼团状态
-        $rootScope.isMasterStatus = false;
+        //拼团团长id
+        $rootScope.master_id = 0;
 
         /*//Do your $on in here, like this:
         $rootScope.$on("$locationChangeStart",function(event, next, current){

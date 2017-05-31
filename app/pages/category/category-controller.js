@@ -37,18 +37,17 @@ angular.module('category.controller', ['category.service'])
             $scope.load_more_btn_show = cateCacheCode.load_more_btn_show;
 
             //拼团
-            var fightGroupsStatus = $stateParams.fightGroupsStatus;
-            console.log('fightGroupsStatus:  ' + fightGroupsStatus);
-            if(fightGroupsStatus == 'yes'){
-                $rootScope.fightGroupsStatus = 'yes';
-                $scope.isFightGroups = true;
+            var categoryType = $stateParams.categoryType;
+            var masterId = $rootScope.master_id;
+            console.log('categoryType:  ' + categoryType);
+            if(categoryType == 'pieceGroup'){
+                $scope.isPieceGroups = true;
                 //拼团列表
                 getPieceGroupsInfo();
                 //拼团优惠券
                 getPieceGroupCoupon();
-            }else if(fightGroupsStatus == 'no'){
-                $rootScope.fightGroupsStatus = 'no';
-                $scope.isFightGroups = false;
+            }else{
+                $scope.isPieceGroups = false;
                 detailsInfo();
             }
 
@@ -470,7 +469,11 @@ angular.module('category.controller', ['category.service'])
             //推荐商品
             $scope.cateGoToDetails = function (item) {
                 //console.log(angular.toJson(item));
-                $state.go('pieceGroup',{pieceGroupId:item.id, masterId:20});
+                if(categoryType == 'pieceGroup'){
+                    $state.go('pieceGroup',{pieceGroupId:item.id, masterId:0});
+                }else{
+                    $state.go('details',{productId:item.id});
+                }
             };
 
 
@@ -483,6 +486,7 @@ angular.module('category.controller', ['category.service'])
                             //console.log(angular.toJson(json.data));
                             if(json.data.promoted_master != null){
                                 $scope.promotedMaster = json.data.promoted_master;
+                                $scope.promotedMaster.isMasterOrder = true;
                             }else{
                                 if(json.data.list !=null && json.data.list.length > 0){
 
@@ -496,6 +500,7 @@ angular.module('category.controller', ['category.service'])
                                         }
                                     });
                                     $scope.promotedMaster.promoted_master = null;
+                                    $scope.promotedMaster.isMasterOrder = false;
                                 }
                             }
 
@@ -538,10 +543,14 @@ angular.module('category.controller', ['category.service'])
             }
 
             //拼团
-            $scope.cateGoToFightGroups = function(productId,status){
-                console.log("status: " + status);
-                $state.go('details',{productId:productId, detailsFightGroupsStatus:status});
-                //$state.go('pieceGroup',{pieceGroupId:productId, detailsFightGroupsStatus:status});
+            $scope.cateGoToFightGroups = function(item){
+                if(item.isMasterOrder){
+                    console.log("Master Order");
+                    $state.go('pieceGroup',{pieceGroupId:item.piece_group_purchase_id, masterId:item.id});
+                }else{
+                    console.log("Piece Product");
+                    $state.go('pieceGroup',{pieceGroupId:item.id, masterId:0});
+                }
             };
 
 
@@ -549,7 +558,7 @@ angular.module('category.controller', ['category.service'])
             $ocLazyLoad.load('Jquery').then(function () {
                 $ocLazyLoad.load('JqueryWeUI').then(function () {
 
-                    if(fightGroupsStatus == 'yes'){
+                    if(categoryType == 'default'){
                         console.log('loading : ' + loading);
                         $("#fightGroups").infinite().on("infinite", function() {
                             console.log('loading : ' + loading);
@@ -564,7 +573,7 @@ angular.module('category.controller', ['category.service'])
                                 loading = false;
                             }, 500);   //模拟延迟
                         });
-                    }else if(fightGroupsStatus == 'no'){
+                    }else if(categoryType == 'pieceGroup'){
                         $(".pro-content").infinite().on("infinite", function() {
                             console.log('loading : ' + loading);
                             if(loading){

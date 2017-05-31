@@ -1,13 +1,26 @@
 {
-  "id": 7,
-  "user_name": "jingfei",
-  "paid_members_count": 1,
-  "status": "OPENING",
-  "end_time": "2017-05-24 17:29:26",
-  "members_count": 1,
-  "promoted": 1,
-  "start_time": "2017-05-24 16:29:26",
-  "user_id": 2,
-  "piece_group_purchase_id": 1,
-  "user_avatar": null
+  "payment_type": "WECHAT",
+  "order_items": [
+    {
+      "product_id": 62,
+      "quantity": 1,
+      "product_specification_id": null,
+      "marketing_id": 21
+    }
+  ],
+  "contact": {
+    "id": 222,
+    "zip": null,
+    "detail": "123号",
+    "phone": "12563256698",
+    "contact_user": "huang",
+    "street": null,
+    "province": "河北",
+    "is_default": 1,
+    "street_number": null,
+    "user_id": 2,
+    "district": "长安区",
+    "city": "石家庄"
+  },
+  "marketing": "PIECE-GROUP-JOINT"
 }

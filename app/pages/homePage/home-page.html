@@ -67,19 +67,16 @@
                     <!--<img ng-src="{{ad_banner_1.image != null ? ad_banner_1.image : 'img/home/img1.png'}}">-->
                     <img ng-src="{{ad_banner_1.image}}">
                 </a>
-                <!--<a ui-sref="home.category({categoryId:-1,fightGroupsStatus:'yes'})">-->
-                    <!--<img src="img/home/fight-group-ad.png">-->
-                <!--</a>-->
             </div>
             <div class="ad-right">
                 <div class="ad-right-top">
-                    <a ng-href="{{ad_banner_2.target_url + '/no'}}">
+                    <a ng-href="{{ad_banner_2.target_url + '/default'}}">
                         <!--<img ng-src="{{ad_banner_2.image != null ? ad_banner_2.image : 'img/home/img2.png'}}">-->
                         <img ng-src="{{ad_banner_2.image}}">
                     </a>
                 </div>
                 <div class="ad-right-bottom">
-                    <a ng-href="{{ad_banner_3.target_url + '/no'}}">
+                    <a ng-href="{{ad_banner_3.target_url + '/default'}}">
                         <!--<img ng-src="{{ad_banner_3.image != null ? ad_banner_3.image : 'img/home/img3.png'}}">-->
                         <img ng-src="{{ad_banner_3.image}}">
                     </a>
@@ -96,7 +93,7 @@
 
     <!--拼团商品-->
     <div class="fight-groups" ng-if="promotedMaster != null" style="margin-top: 8px;">
-        <img src="{{promotedMaster.cover}}" class="fight-groups-ad-img" ng-click="homeGoToFightGroups(promotedMaster.id,'yes')">
+        <img src="{{promotedMaster.cover}}" class="fight-groups-ad-img" ng-click="homeGoToFightGroups(promotedMaster)">
         <div class="fight-groups-info">
             <div class="f-g-info-price">
                 <span>{{promotedMaster.price | currency:'￥'}}</span>
@@ -112,7 +109,7 @@
                     </div>
                 </div>
             </div>
-            <div class="f-g-info-btn weui_btn_primary" ng-click="homeGoToFightGroups(promotedMaster.id,'yes')">去开团 ></div>
+            <div class="f-g-info-btn weui_btn_primary" ng-click="homeGoToFightGroups(promotedMaster)">去开团 ></div>
         </div>
 
     </div>
@@ -147,7 +144,7 @@
             <div oc-lazy-load="SquareImg" class="area-product">
                 <div id="homeProductGrids">
                     <div class="weui_grids">
-                        <a ui-sref="details({productId:item.id,detailsFightGroupsStatus:'no'})" class="weui_grid product_item"
+                        <a ui-sref="details({productId:item.id})" class="weui_grid product_item"
                            ng-repeat="item in productItem.products"
                            ng-click=""
                                 >
