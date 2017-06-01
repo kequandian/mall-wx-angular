@@ -20,7 +20,7 @@
             <ul style="{{second_ul}}">
                 <li ng-repeat="s_item in second_cate"
                     ng-click="gSecondIndex($index,s_item);"
-                    style="{{second_cate.length == 1 ? 'min-width: 70px;' : ''}}"
+                    style="{{(second_cate.length == 1) ? 'min-width: 70px;' : ''}}"
                         >
                     <span ng-class="$index == indexSecondCate ? 'second-current custom_flat_primary':''">
                         {{s_item.name}}
@@ -80,23 +80,62 @@
 <div id="fightGroups" class="fightGroups" ng-if="isPieceGroups">
 
     <div class="fight-groups" ng-if="promotedMaster != null">
-        <img src="{{promotedMaster.cover}}" class="fight-groups-ad-img" ng-click="cateGoToFightGroups(promotedMaster)">
-        <div class="fight-groups-info">
-            <div class="f-g-info-price">
-                <span>{{promotedMaster.price | currency:'￥'}}</span>
-                <span class="group-count">已团购{{promotedMaster.sale > 0 ? promotedMaster.sale : 0}}件</span>
+        <div class="piece-group-proudct-info">
+            <img src="{{promotedMaster.cover}}" class="piece-groups-ad-img" ng-click="cateGoToFightGroups(promotedMaster)">
+            <div class="piece-groups-ad-text">
+
+                <div class="marketing-name">
+                    <span>{{promotedMaster.marketing_name}}</span>
+                </div>
+                <div class="sale-count">
+                    <span>{{promotedMaster.min_participator_count}}人团 已团购{{promotedMaster.sale}}件</span>
+                </div>
+                <div class="sale-price">
+                    <span style="color: #F15353; font-size: 16px;">{{promotedMaster.price | currency:'￥'}}</span><span>/{{promotedMaster.price * point_rate}}积分</span>
+                </div>
+                <div class="sale-save-money">
+                    <span>拼团省{{promotedMaster.suggested_price - promotedMaster.price}}元</span>
+                </div>
+
             </div>
-            <div class="f-g-info-img-group" ng-if="promotedMaster.promoted_master != null">
-                <div class="user-imgs">
-                    <div class="imgs-photo">
-                        <img src="{{promotedMaster.promoted_master.user_avatar}}" class="user_img1"/>
-                    </div>
-                    <div class="imgs-photo">
-                        <img src="" class="user_img2"/>
-                    </div>
+        </div>
+
+        <div class="cate-piece-group-promise">
+            <div class="piece-group-promise-div">
+                <div class="d-p-d-right">
+                    <!--<img src="img/details/details-promise.png">-->
+                    <label class="ion-ios-checkmark custom_text_primary_medium"></label>
+                    <span>正品保证</span>
+                </div>
+                <div class="d-p-d-center">
+                    <!--<img src="img/details/details-promise.png">-->
+                    <label class="ion-ios-checkmark custom_text_primary_medium"></label>
+                    <span>全场包邮</span>
+                </div>
+                <div class="d-p-d-left">
+                    <!--<img src="img/details/details-promise.png">-->
+                    <label class="ion-ios-checkmark custom_text_primary_medium"></label>
+                    <span>7天退换</span>
+                </div>
+                <div class="d-p-d-last">
+                    <!--<img src="img/details/details-promise.png">-->
+                    <label class="ion-ios-checkmark custom_text_primary_medium"></label>
+                    <span>假一赔十</span>
                 </div>
             </div>
-            <div class="f-g-info-btn weui_btn_primary" ng-click="cateGoToFightGroups(promotedMaster)">去开团 ></div>
+        </div>
+
+        <div class="f-g-info-img-group" ng-if="promotedMaster.promoted_master.user_avatar != null">
+            <div class="user-imgs">
+                <div class="imgs-photo">
+                    <img src="{{promotedMaster.promoted_master.user_avatar}}" class="user_img1"/>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="fight-groups-info">
+            <div class="f-g-info-btn weui_btn_primary" ng-click="cateGoToFightGroups(promotedMaster)">去参团 ></div>
         </div>
     </div>
 

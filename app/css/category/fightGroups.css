@@ -7,6 +7,154 @@
     background-color: #efeff3;
 }
 
+#fightGroups .fight-groups {
+    width: 100%;
+    height: auto;
+    background-color: white;
+}
+#fightGroups .fight-groups .piece-group-proudct-info{
+    width: 100%;
+    height: 150px;
+    padding: 6px 6px ;
+}
+
+#fightGroups .fight-groups .piece-groups-ad-img{
+    width: 40%;
+    height: 100%;
+    float: left;
+}
+
+#fightGroups .fight-groups .piece-groups-ad-text{
+    width: 60%;
+    height: 100%;
+    float: left;
+}
+
+#fightGroups .fight-groups .piece-groups-ad-text .marketing-name{
+    word-break:break-all;
+    font-size: 14px;
+    padding: 10px 12px 5px 5px;
+}
+
+#fightGroups .fight-groups .piece-groups-ad-text .sale-count{
+    font-size: 12px;
+    color: #A8A8A8;
+    padding-left: 5px;
+}
+
+#fightGroups .fight-groups .piece-groups-ad-text .sale-price{
+    font-size: 12px;
+    padding-left: 5px;
+}
+
+
+#fightGroups .fight-groups .piece-groups-ad-text .sale-save-money{
+    font-size: 12px;
+    color: #A8A8A8;
+    padding-left: 5px;
+}
+
+#fightGroups .fight-groups .cate-piece-group-promise{
+    width: 100%;
+    height: 35px;
+    text-align: center;
+    position: relative;
+}
+
+#fightGroups .fight-groups .piece-group-promise-div{
+    width:100%;
+    height: 40px;
+    font-size: 12px;
+    color: #9D9D9D;
+}
+
+
+#fightGroups .fight-groups .piece-group-promise-div label{
+    font-size: 20px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#fightGroups .fight-groups .piece-group-promise-div span{
+    margin-left: 2px;
+}
+
+#fightGroups .fight-groups .d-p-d-right{
+    width:25%;
+    line-height: 32px;
+    text-align: center;
+    float: left;
+}
+
+#fightGroups .fight-groups .d-p-d-center{
+    width:25%;
+    line-height: 32px;
+    text-align: center;
+    float: left;
+}
+
+#fightGroups .fight-groups .d-p-d-left{
+    width:25%;
+    line-height: 32px;
+    text-align: center;
+    float: left;
+}
+
+
+#fightGroups .fight-groups .d-p-d-last{
+    width:25%;
+    line-height: 32px;
+    text-align: center;
+    float: left;
+}
+
+
+#fightGroups .fight-groups .f-g-info-img-group{
+    width: 100%;
+    height: 30px;
+    /* padding: 0 5px 0 5px; */
+}
+
+#fightGroups .fight-groups .f-g-info-img-group .user-imgs{
+    width: 100%;
+    height: 30px;
+    background-color: #FFEB8A;
+}
+
+
+#fightGroups .fight-groups .f-g-info-img-group .user-imgs .imgs-photo{
+    background-color: white;
+    text-align: center;
+}
+
+#fightGroups .fight-groups .f-g-info-img-group .user-imgs .imgs-photo .user_img1{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #F15353;
+}
+
+#fightGroups .fight-groups .fight-groups-info{
+    height: 32px;
+    padding: 5px 10px 10px 10px;
+    position: relative;
+}
+
+#fightGroups .fight-groups .fight-groups-info .f-g-info-btn{
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
+    text-align: center;
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    right: 10px;
+    padding-left: 16px;
+    padding-right: 10px;
+    border-radius: 5px;
+}
+
+
 #fightGroups .dividing_line{
     width: 100%;
     height: 32px;

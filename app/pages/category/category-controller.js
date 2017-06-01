@@ -20,8 +20,8 @@ angular.module('category.controller', ['category.service'])
         }
     })
     .controller('CategoryController', ['$scope', '$state', '$rootScope','$stateParams', 'CategoryFty','goodListParams',
-        '$ocLazyLoad','cateLeftIndex','cateCacheCode',
-        function ($scope, $state,$rootScope,$stateParams, CategoryFty,goodListParams, $ocLazyLoad, cateLeftIndex,cateCacheCode) {
+        '$ocLazyLoad','cateLeftIndex','cateCacheCode','PointRate',
+        function ($scope, $state,$rootScope,$stateParams, CategoryFty,goodListParams, $ocLazyLoad, cateLeftIndex,cateCacheCode,PointRate) {
 
             //title
             document.title = "商品分类";
@@ -35,6 +35,9 @@ angular.module('category.controller', ['category.service'])
             //var orderBy = "&orderBy=price";
             var orderBy = '';
             $scope.load_more_btn_show = cateCacheCode.load_more_btn_show;
+
+            //积分
+            $scope.point_rate = PointRate.rate;
 
             //拼团
             var categoryType = $stateParams.categoryType;
@@ -487,7 +490,7 @@ angular.module('category.controller', ['category.service'])
                             if(json.data.promoted_master != null){
                                 $scope.promotedMaster = json.data.promoted_master;
                                 $scope.promotedMaster.isMasterOrder = true;
-                            }else{
+                            }/*else{
                                 if(json.data.list !=null && json.data.list.length > 0){
 
                                     var fightGroupList = json.data.list;
@@ -502,7 +505,7 @@ angular.module('category.controller', ['category.service'])
                                     $scope.promotedMaster.promoted_master = null;
                                     $scope.promotedMaster.isMasterOrder = false;
                                 }
-                            }
+                            }*/
 
                             if(pageNumber == 1){
                                 $scope.fightGroupsList = json.data;
@@ -544,22 +547,23 @@ angular.module('category.controller', ['category.service'])
 
             //拼团
             $scope.cateGoToFightGroups = function(item){
-                if(item.isMasterOrder){
+                /*if(item.isMasterOrder){
                     console.log("Master Order");
                     $state.go('piecegroup',{pieceGroupId:item.piece_group_purchase_id, masterId:item.id});
                 }else{
                     console.log("Piece Product");
                     $state.go('piecegroup',{pieceGroupId:item.id, masterId:0});
-                }
+                }*/
+                $state.go('piecegroup',{pieceGroupId:item.piece_group_purchase_id, masterId:item.id});
             };
 
 
             //滚动加载
             $ocLazyLoad.load('Jquery').then(function () {
                 $ocLazyLoad.load('JqueryWeUI').then(function () {
-
-                    if(categoryType == 'default'){
-                        console.log('loading : ' + loading);
+                    console.log('loading : ' + loading);
+                    if(categoryType == 'pieceGroup'){
+                        console.log('pieceGrouploading : ' + loading);
                         $("#fightGroups").infinite().on("infinite", function() {
                             console.log('loading : ' + loading);
                             if(loading){
@@ -569,11 +573,12 @@ angular.module('category.controller', ['category.service'])
                             loading = true;
                             setTimeout(function() {
                                 pageNumber += 1;
-                                getFightGroupsInfo();
+                                getPieceGroupsInfo();
                                 loading = false;
                             }, 500);   //模拟延迟
                         });
-                    }else if(categoryType == 'pieceGroup'){
+                    }else if(categoryType == 'default'){
+                        console.log('defaultloading : ' + loading);
                         $(".pro-content").infinite().on("infinite", function() {
                             console.log('loading : ' + loading);
                             if(loading){

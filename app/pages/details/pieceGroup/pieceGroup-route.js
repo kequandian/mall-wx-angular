@@ -1,4 +1,4 @@
-angular.module('pieceGroup.route', [])
+angular.module('pieceGroup.route', ['bsSwitch'])
     .config(['$stateProvider', function($stateProvider) {
         $stateProvider.state('piecegroup', {
             url: '/piecegroup/:pieceGroupId/:masterId',
