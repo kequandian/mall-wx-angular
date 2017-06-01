@@ -56,22 +56,22 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                     var param = longParam.split('#')[0];
                     /// already has fallback
                     if(param.indexOf('fallback=details-')>=0){
-                        param = 'fallback=pieceGroup-' + pieceGroupId + '-' + masterId;
-                    }else if(param.indexOf('fallback=pieceGroup-')>=0){
-                        param = param.replace(/fallback=pieceGroup\-\d+\-\d+/,  'fallback=pieceGroup-'+pieceGroupId + '-'+masterId);
+                        param = 'fallback=piecegroup-' + pieceGroupId + '-' + masterId;
+                    }else if(param.indexOf('fallback=piecegroup-')>=0){
+                        param = param.replace(/fallback=pieceGroup\-\d+\-\d+/,  'fallback=piecegroup-'+pieceGroupId + '-'+masterId);
                         console.log("param>>> "+param);
                     }else{
-                        param = param + '&fallback=pieceGroup-' + pieceGroupId + '-' + masterId;
+                        param = param + '&fallback=piecegroup-' + pieceGroupId + '-' + masterId;
                         console.log("param> "+param);
                     }
 
                     /// append details
                     ///
-                    newurl = '?' + param + '#/pieceGroup/' + pieceGroupId + '/' + masterId;
+                    newurl = '?' + param + '#/piecegroup/' + pieceGroupId + '/' + masterId;
                     console.log("newurl>>> "+newurl);
                 }else{
 
-                    newurl = '?fallback=pieceGroup-'+ pieceGroupId +'-'+ masterId +'#/pieceGroup/' + pieceGroupId + '/' + masterId;
+                    newurl = '?fallback=piecegroup-'+ pieceGroupId +'-'+ masterId +'#/piecegroup/' + pieceGroupId + '/' + masterId;
                     console.log("newurl> "+newurl);
                 }
 

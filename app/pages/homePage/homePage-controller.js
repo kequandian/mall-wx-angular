@@ -534,10 +534,10 @@ angular.module('homePage.controller', ['homePage.service'])
                 //console.log("masterId: " + masterId);
                 if(item.isMasterOrder){
                     console.log("Master Order");
-                    $state.go('pieceGroup',{pieceGroupId:item.piece_group_purchase_id, masterId:item.id});
+                    $state.go('piecegroup',{pieceGroupId:item.piece_group_purchase_id, masterId:item.id});
                 }else{
                     console.log("Piece Product");
-                    $state.go('pieceGroup',{pieceGroupId:item.id, masterId:0});
+                    $state.go('piecegroup',{pieceGroupId:item.id, masterId:0});
                 }
             };
 

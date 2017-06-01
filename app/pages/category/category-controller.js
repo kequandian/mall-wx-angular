@@ -470,7 +470,7 @@ angular.module('category.controller', ['category.service'])
             $scope.cateGoToDetails = function (item) {
                 //console.log(angular.toJson(item));
                 if(categoryType == 'pieceGroup'){
-                    $state.go('pieceGroup',{pieceGroupId:item.id, masterId:0});
+                    $state.go('piecegroup',{pieceGroupId:item.id, masterId:0});
                 }else{
                     $state.go('details',{productId:item.id});
                 }
@@ -546,10 +546,10 @@ angular.module('category.controller', ['category.service'])
             $scope.cateGoToFightGroups = function(item){
                 if(item.isMasterOrder){
                     console.log("Master Order");
-                    $state.go('pieceGroup',{pieceGroupId:item.piece_group_purchase_id, masterId:item.id});
+                    $state.go('piecegroup',{pieceGroupId:item.piece_group_purchase_id, masterId:item.id});
                 }else{
                     console.log("Piece Product");
-                    $state.go('pieceGroup',{pieceGroupId:item.id, masterId:0});
+                    $state.go('piecegroup',{pieceGroupId:item.id, masterId:0});
                 }
             };
 
@@ -689,7 +689,7 @@ angular.module('category.controller', ['category.service'])
 
                         if(json.status_code == 0){
 
-                            console.log(angular.toJson(json));
+                            //console.log(angular.toJson(json));
                             if(json.data.notify){
                                 if(json.data.activation_coupons != null && json.data.activation_coupons.length > 0){
 

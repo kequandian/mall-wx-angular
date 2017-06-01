@@ -41,7 +41,7 @@ angular.module('details.controller', ['details.service'])
                     var longParam = params[1];
                     var param = longParam.split('#')[0];
                     /// already has fallback
-                    if(param.indexOf('fallback=pieceGroup-')>=0){
+                    if(param.indexOf('fallback=piecegroup-')>=0){
                         param = 'fallback=details-' + product_id;
                     }else if(param.indexOf('fallback=details-')>=0){
                         param = param.replace(/fallback=details\-\d+/,  'fallback=details-'+product_id);

@@ -1,7 +1,7 @@
 angular.module('pieceGroup.route', [])
     .config(['$stateProvider', function($stateProvider) {
-        $stateProvider.state('pieceGroup', {
-            url: '/pieceGroup/:pieceGroupId/:masterId',
+        $stateProvider.state('piecegroup', {
+            url: '/piecegroup/:pieceGroupId/:masterId',
             templateUrl: 'pages/details/pieceGroup/piece-group.html',
             controller:'PieceGroupController',
             resolve: {
