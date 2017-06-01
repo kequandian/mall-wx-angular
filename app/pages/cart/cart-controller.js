@@ -387,6 +387,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             document.title = "结算";
             $scope.settlementCarts = [];
             $scope.save_total_price = 0;
+            var pieceGroupCouponId = $rootScope.pieceGroupCouponId;
 
             //提交订单
             $scope.order = {};
@@ -738,6 +739,10 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                         angular.forEach($scope.settlementCarts, function(value, index){
                             $scope.order.order_items[index].marketing_id = value.marketing_id;
                         });
+                    }
+
+                    if(pieceGroupCouponId > 0){
+                        $scope.order.coupon_id = pieceGroupCouponId;
                     }
 
                     console.log("orderInfo: " + angular.toJson($scope.order));

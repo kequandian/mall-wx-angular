@@ -196,7 +196,7 @@
                     <div class="c-item-text">
                         <div class="custom_text_primary_medium">{{couponItem.name}}</div>
                         <!--<div style="color: #A8A8A8;">到期时间: 2017-05-26</div>-->
-                        <div style="color: #A8A8A8;">到期时间: {{couponItem.valid_date}}</div>
+                        <div style="color: #A8A8A8;">到期时间: {{pieceGroupCouponDate(couponItem.valid_date)}}</div>
                     </div>
                     <div class="c-item-btn weui_btn_primary" ng-click="goToPieceGroup(couponItem)">
                         免费开团

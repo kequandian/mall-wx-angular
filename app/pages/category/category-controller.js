@@ -718,9 +718,16 @@ angular.module('category.controller', ['category.service'])
                     });
             }
 
+            //优惠券时间格式化
+            $scope.pieceGroupCouponDate = function(time){
+                var newTime = time.split(' ');
+                return newTime[0];
+            };
+
             //优惠开团
             $scope.goToPieceGroup = function(item){
-
+                $rootScope.pieceGroupCouponId = item.id;
+                $state.go('pieceGroupGoodsList');
             }
 
 

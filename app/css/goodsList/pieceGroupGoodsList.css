@@ -1,0 +1,80 @@
+#priceGroupGoods{
+    width: 100%;
+    height: 100%;
+    overflow-x:hidden;
+    overflow-y: scroll;
+    background-color: #efeff3;
+}
+
+#priceGroupGoods .title-content{
+    width: 100%;
+}
+
+#priceGroupGoods .title-content .title-item{
+    height: 38px;
+    line-height: 38px;
+    color: white;
+    font-size: 13px;
+    padding: 0 5px;
+}
+
+
+
+#priceGroupGoods .p-g-goods-content{
+}
+
+#priceGroupGoods .p-g-goods-item{
+    height: 100px;
+    background-color: white;
+    border-bottom: 1px solid #cccccc;
+    padding-right: 5px;
+    position: relative;
+}
+
+#priceGroupGoods .p-g-goods-item img{
+    width: 70px;
+    height: 70px;
+    /*background-color: #007aff;*/
+    margin-top: 15px;
+    margin-left: 10px;
+    position: absolute;
+}
+
+#priceGroupGoods .p-g-goods-item .coll-item-info{
+    width: auto;
+    padding-top: 10px;
+    height: 100px;
+    margin-left: 88px;
+}
+
+#priceGroupGoods .p-g-goods-item .coll-item-info div{
+    line-height: 20px;
+    font-size: 13px;
+}
+
+#priceGroupGoods .p-g-goods-item .coll-item-info .product-name{
+    word-wrap: break-word;
+    word-break: normal;
+}
+
+#priceGroupGoods .p-g-goods-item .coll-item-info .piece-group-price{
+    color: #959595;
+    font-size: 10px;
+}
+
+#priceGroupGoods .p-g-goods-item .coll-item-info .default-price{
+    color: #F15353;
+    font-size: 16px;
+}
+
+#priceGroupGoods .p-g-goods-item .coll-item-info .open-team-btn{    width: 65px;
+    height: 30px;
+    line-height: 30px;
+    color: white;
+    position: absolute;
+    right: 12px;
+    bottom: 7px;
+    text-align: center;
+    font-size: 13px;
+    border-radius: 6px;
+}

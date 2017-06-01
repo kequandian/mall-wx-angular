@@ -1,26 +1,18 @@
 {
-  "payment_type": "WECHAT",
-  "order_items": [
-    {
-      "product_id": 62,
-      "quantity": 1,
-      "product_specification_id": null,
-      "marketing_id": 21
-    }
-  ],
-  "contact": {
-    "id": 222,
-    "zip": null,
-    "detail": "123号",
-    "phone": "12563256698",
-    "contact_user": "huang",
-    "street": null,
-    "province": "河北",
-    "is_default": 1,
-    "street_number": null,
-    "user_id": 2,
-    "district": "长安区",
-    "city": "石家庄"
-  },
-  "marketing": "PIECE-GROUP-JOINT"
+  "created_date": "2017-05-31 18:23:11",
+  "status": "ACTIVATION",
+  "attribute": "{\"source\":\"SYSTEM\"}",
+  "code": "50ed2b66-3af4-412b-87f6-6d5e4f4fe205",
+  "type": "MARKETING_PIECE_GROUP",
+  "cond": "\r\n<rule-set name=\"getFinalPrice\" >\r\n    <mvel-rule id=\"step1\" multipleTimes=\"false\" exclusive=\"true\" valid=\"true\">\r\n        <condition><![CDATA[\"MARKETING_PIECE_GROUP\".equals(type)]]></condition>\r\n        <action><![CDATA[finalPrice=0.0]]></action>\r\n    </mvel-rule>\r\n</rule-set>\r\n",
+  "discount": 0,
+  "id": 482,
+  "display_name": "拼团活动免单券",
+  "last_modified_date": "2017-05-31 18:23:11",
+  "description": null,
+  "name": "拼团活动免单券",
+  "money": 0,
+  "valid_date": "2017-06-03 18:23:11",
+  "user_id": 2,
+  "auto_give": 0
 }

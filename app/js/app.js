@@ -36,7 +36,8 @@
         'searchPage.route',
         'coupon.route',
         'offLineShop.route',
-        'pieceGroup.route'
+        'pieceGroup.route',
+        'pieceGroupGoodsList.route'
 
     ]).config(["$urlRouterProvider", '$ocLazyLoadProvider','$locationProvider',
         function ($urlRouterProvider, $ocLazyLoadProvider,$locationProvider) {
@@ -283,6 +284,13 @@
                         {type: 'css', path: 'css/cart/cart.css'},
                         {type: 'css', path: 'css/details/details.css'}],
                     cache: false
+                }, {
+                    name: 'PieceGroupGoodsList',
+                    files: [
+                        'pages/goodsList/pieceGroupGoodsList/pieceGroupGoodsList-controller.js',
+                        'pages/goodsList/pieceGroupGoodsList/pieceGroupGoodsList-service.js',
+                        {type: 'css', path: 'css/goodsList/pieceGroupGoodsList.css'}],
+                    cache: false
                 }
 
                 ]
@@ -313,6 +321,7 @@
 
         //拼团团长id
         $rootScope.master_id = 0;
+        $rootScope.pieceGroupCouponId = 0;
 
         /*//Do your $on in here, like this:
         $rootScope.$on("$locationChangeStart",function(event, next, current){

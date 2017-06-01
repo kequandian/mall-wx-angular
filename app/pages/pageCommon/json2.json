@@ -1,22 +1,18 @@
-[
-  {
-    "product_id": 39,
-    "product_name": "天然植物精华洗衣皂液1.25L补充装【全国包邮（甘肃、宁夏、新疆、西藏、青海、内蒙古除外）】",
-    "quantity": 1,
-    "cover": "http://images.10mup.com/20160722162325884-OctWEBdB.jpg",
-    "product_specification_id": null,
-    "product_specification_name": null,
-    "stock_balance": 992,
-    "fare_id": 2,
-    "weight": 0,
-    "bulk": 0,
-    "fightGroupData": {
-      "free_shipping": 1,
-      "payment_type": "WECHAT",
-      "coupon_usage": 0
-    },
-    "price": 6,
-    "marketing": "PIECE-GROUP",
-    "marketing_id": 9
-  }
-]
+{
+  "coupon_strategy_service_name": "RandomCouponGiveStrategy",
+  "product_id": 62,
+  "marketing_name": "活动10",
+  "status": "ONSELL",
+  "free_shipping": 1,
+  "suggested_price": 10000,
+  "sale": 11,
+  "id": 10,
+  "min_participator_count": 2,
+  "duration": 180000,
+  "cover": "http://o9ixtumvv.bkt.clouddn.com/20170518171212319-5Cuf4fyr.jpg",
+  "price": 0.1,
+  "coupon_usage": 0,
+  "master_free": 1,
+  "description": null,
+  "payment_type": "WECHAT|POINT"
+}

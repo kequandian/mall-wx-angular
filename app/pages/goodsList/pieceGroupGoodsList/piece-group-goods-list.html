@@ -1,0 +1,34 @@
+<div id="priceGroupGoods">
+
+    <div class="title-content custom_titlebar_primary">
+        <div class="title-item">
+            <span>· 你成功领取1张团长免单券</span><span style="font-size: 10px">(有效期至2017-05-06)</span>
+        </div>
+        <div class="title-item">
+            <span>· 请选择一个商品免费开团, 成团后收货</span>
+        </div>
+    </div>
+    <div class="p-g-goods-content">
+
+        <div class="p-g-goods-item" ng-repeat="item in pieceGroupGoodsList">
+            <img ng-src="{{item.cover}}">
+            <div class="coll-item-info">
+                <div class="product-name">
+                    <span>{{item.marketing_name}}</span>
+                </div>
+                <div class="piece-group-price">
+                    <s>拼团价：{{item.price|currency:"￥"}}</s>
+                </div>
+                <div class="default-price">
+                    <span>￥0</span>
+                </div>
+
+                <div class="open-team-btn weui_btn_primary" ng-click="goToOpenGroup(item)">
+                    <span>免费开团</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

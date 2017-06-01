@@ -20,6 +20,7 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
             $scope.point_rate = PointRate.rate;
             var product_id = $stateParams.pieceGroupId;
             var master_id = $stateParams.masterId;
+            var pieceGroupCouponId = $rootScope.pieceGroupCouponId;
             $scope.master_id = $stateParams.masterId;
 
             $scope.master_user_id = $rootScope.master_id;
@@ -429,10 +430,15 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
 
                 if($scope.is_original_price == 0){
                     p_item.marketing = marketingStatus;
-                    p_item.price = $scope.fightGroupsdetails.price;
                     p_item.fightGroupData.free_shipping = $scope.fightGroupsdetails.free_shipping;
                     p_item.fightGroupData.payment_type = $scope.fightGroupsdetails.payment_type;
                     p_item.fightGroupData.coupon_usage = $scope.fightGroupsdetails.coupon_usage;
+                    if(pieceGroupCouponId > 0){
+                        p_item.fightGroupData.coupon_id = pieceGroupCouponId;
+                        p_item.price = 0;
+                    }else{
+                        p_item.price = $scope.fightGroupsdetails.price;
+                    }
                     if(marketingStatus == 'PIECE-GROUP-JOINT'){
                         console.log("参团");
                         if(master_id > 0){
@@ -462,7 +468,7 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                     console.log("拼团购买");
                     //console.log(angular.toJson(p_info));
                     $rootScope.settle_product_code = p_info;
-                    $rootScope.settle_product_totalToPay = $scope.fightGroupsdetails.price * quantity;
+                    $rootScope.settle_product_totalToPay = pieceGroupCouponId > 0 ? 0 : $scope.fightGroupsdetails.price * quantity;
 
                     newUrl = '#/cart-settlement';
                     title = '结算';
@@ -470,7 +476,7 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
 
                     $state.go('cart-settlement', {
                         carts: $scope.checkedCarts,
-                        totalToPay: $scope.fightGroupsdetails.price * quantity,
+                        totalToPay: pieceGroupCouponId > 0 ? 0 : $scope.fightGroupsdetails.price * quantity,
                         totalFreight: item.freight
                     });
 
@@ -581,6 +587,15 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                         console.log("获取拼团商品详情失败:" + angular.toJson(error));
                     })
             }
+
+            //是否免费开团
+            $scope.isPieceGroupCoupon = function(pieceGroupPrice){
+              if(pieceGroupCouponId > 0){
+                  return 0;
+              }else{
+                  return pieceGroupPrice;
+              }
+            };
 
             //计算剩余人数
             $scope.count_member = function(minParticipatorCount, paidMembersCount){

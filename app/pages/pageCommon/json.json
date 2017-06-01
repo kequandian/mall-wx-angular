@@ -1,49 +1,23 @@
-{
-  "status_code": 0,
-  "data": {
-    "has_unread_coupon": true,
-    "activation_coupons": [
-      {
-        "created_date": "2017-05-31 18:23:11",
-        "status": "ACTIVATION",
-        "attribute": "{\"source\":\"SYSTEM\"}",
-        "code": "50ed2b66-3af4-412b-87f6-6d5e4f4fe205",
-        "type": "MARKETING_PIECE_GROUP",
-        "cond": "\r\n<rule-set name=\"getFinalPrice\" >\r\n    <mvel-rule id=\"step1\" multipleTimes=\"false\" exclusive=\"true\" valid=\"true\">\r\n        <condition><![CDATA[\"MARKETING_PIECE_GROUP\".equals(type)]]></condition>\r\n        <action><![CDATA[finalPrice=0.0]]></action>\r\n    </mvel-rule>\r\n</rule-set>\r\n",
-        "discount": 0,
-        "id": 482,
-        "display_name": "拼团活动免单券",
-        "last_modified_date": "2017-05-31 18:23:11",
-        "description": null,
-        "name": "拼团活动免单券",
-        "money": 0,
-        "valid_date": "2017-06-03 18:23:11",
-        "user_id": 2,
-        "auto_give": 0
-      },
-      {
-        "created_date": "2017-05-31 18:23:15",
-        "status": "ACTIVATION",
-        "attribute": "{\"source\":\"SYSTEM\"}",
-        "code": "ffd083cc-34c5-4ec4-994b-7f5c2264fad0",
-        "type": "ORDER",
-        "cond": "\r\n<rule-set name=\"getFinalPrice\" >\r\n    <mvel-rule id=\"step1\" multipleTimes=\"false\" exclusive=\"true\" valid=\"true\">\r\n        <condition><![CDATA[totalPrice>=100]]></condition>\r\n        <action><![CDATA[finalPrice=totalPrice-5]]></action>\r\n    </mvel-rule>\r\n</rule-set>\r\n",
-        "discount": 0,
-        "id": 483,
-        "display_name": "满100元减5元代金券",
-        "last_modified_date": "2017-05-31 18:23:15",
-        "description": "满100元减5元代金券",
-        "name": "满100元减5元代金券",
-        "money": 5,
-        "valid_date": "2017-06-10 18:23:15",
-        "user_id": 2,
-        "auto_give": 0
-      }
-    ],
-    "is_user_followed": true,
-    "notify": false,
-    "new_user": false,
-    "coupon_count": 1,
-    "coupon_value": 5
+[
+  {
+    "product_id": 62,
+    "product_name": "羊奶手工精油香皂控油去黑头保湿洁面皂补水保湿沐浴皂洗脸【全国包邮（甘肃、宁夏、新疆、西藏、青海、内蒙古除外）】",
+    "quantity": 1,
+    "cover": "http://images.10mup.com/20160722170823828-7RpvQrNB.jpg",
+    "product_specification_id": null,
+    "product_specification_name": null,
+    "stock_balance": 988,
+    "fare_id": 1,
+    "weight": 0,
+    "bulk": 0,
+    "fightGroupData": {
+      "free_shipping": 1,
+      "payment_type": "WECHAT|POINT",
+      "coupon_usage": 0,
+      "coupon_id":1
+    },
+    "price": 0.1,
+    "marketing": "PIECE-GROUP-JOINT",
+    "marketing_id": 31
   }
-}
+]
