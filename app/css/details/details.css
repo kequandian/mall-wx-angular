@@ -753,7 +753,7 @@
 
 #details .open-group{
     width: 100%;
-    height: auto;
+    /*height: auto;*/
     background-color: white;
     padding-top: 5px;
     padding-bottom: 8px;
