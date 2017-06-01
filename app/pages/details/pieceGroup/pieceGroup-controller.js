@@ -432,6 +432,7 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                     p_item.price = $scope.fightGroupsdetails.price;
                     p_item.fightGroupData.free_shipping = $scope.fightGroupsdetails.free_shipping;
                     p_item.fightGroupData.payment_type = $scope.fightGroupsdetails.payment_type;
+                    p_item.fightGroupData.coupon_usage = $scope.fightGroupsdetails.coupon_usage;
                     if(marketingStatus == 'PIECE-GROUP-JOINT'){
                         console.log("参团");
                         if(master_id > 0){
@@ -449,6 +450,8 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                 p_info.push(p_item);
 
                 //console.log("$scope.fightGroupsdetails: " + angular.toJson($scope.fightGroupsdetails));
+                console.log("单前用户id: " + $rootScope.master_id);
+                console.log("活动id: " +  $scope.fightGroupsdetails.id);
                 console.log(angular.toJson(p_info));
                 //return;
 

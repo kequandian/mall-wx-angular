@@ -465,7 +465,7 @@ angular.module('homePage.controller', ['homePage.service'])
                 HomePageFty.getCouponNotifyService()
                     .then(function(json){
                         if(json.status_code == 0){
-                            console.log(angular.toJson(json));
+                            //console.log(angular.toJson(json));
 
                             if(json.data.notify){
                                 document.getElementById('red-packet').style.display = 'block';

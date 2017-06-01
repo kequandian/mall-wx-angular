@@ -689,12 +689,12 @@ angular.module('category.controller', ['category.service'])
 
                         if(json.status_code == 0){
 
-                            //console.log(angular.toJson(json));
+                            console.log(angular.toJson(json));
                             if(json.data.notify){
                                 if(json.data.activation_coupons != null && json.data.activation_coupons.length > 0){
 
                                     angular.forEach(json.data.activation_coupons, function (v, k) {
-                                       if(v.type == '' && v.status ==''){
+                                       if(v.type == 'MARKETING_PIECE_GROUP' && v.status =='ACTIVATION'){
                                            couponList.push(v);
                                        }
                                     });

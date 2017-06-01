@@ -453,6 +453,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             $scope.settlementCarts = $rootScope.settle_product_code;
             $scope.settlementData = [];
             $scope.product_list = [];
+            var settle_product_code = $scope.settlementCarts;
 
             //拼团支付方式
             fightGroupsPayStatus();
@@ -533,7 +534,6 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             function getFrieght(){
                 //console.log(angular.toJson($rootScope.settle_product_code));
                 //angular.forEach($stateParams.carts, function (data, index) {
-                var settle_product_code = $rootScope.settle_product_code;
                 angular.forEach(settle_product_code, function (data, index) {
                     $scope.productFrieghts.data[index] = ({
                         fare_id: data.fare_id,
@@ -600,7 +600,18 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     .then(function(json){
                         if(json.status_code == 0){
                             console.log("获取下单前计算优惠信息：" + angular.toJson(json));
-                            $scope.count_coupon = json.data;
+
+                            if(settle_product_code.marketing_id > 0){
+                                if(settle_product_code.fightGroupData.coupon_usage == 0){
+                                    $scope.count_coupon = null;
+                                }else if(settle_product_code.fightGroupData.coupon_usage == 1){
+
+                                }else{
+
+                                }
+                            }else{
+                                $scope.count_coupon = json.data;
+                            }
                             if($scope.count_coupon.length > 0){
 
                                 if(AutoSelectCoupon.is_auto){

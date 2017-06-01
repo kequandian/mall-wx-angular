@@ -6,13 +6,14 @@
     "cover": "http://images.10mup.com/20160722162325884-OctWEBdB.jpg",
     "product_specification_id": null,
     "product_specification_name": null,
-    "stock_balance": 993,
+    "stock_balance": 992,
     "fare_id": 2,
     "weight": 0,
     "bulk": 0,
     "fightGroupData": {
       "free_shipping": 1,
-      "payment_type": "WECHAT"
+      "payment_type": "WECHAT",
+      "coupon_usage": 0
     },
     "price": 6,
     "marketing": "PIECE-GROUP",
