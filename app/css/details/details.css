@@ -758,6 +758,13 @@
     padding-top: 5px;
     padding-bottom: 8px;
 }
+#details .open-group:after{
+    content:"";
+    visibility:hidden;
+    display:block;
+    height:0;
+    clear:both;
+}
 
 #details .open-group .open-group-title{
     height: 32px;
