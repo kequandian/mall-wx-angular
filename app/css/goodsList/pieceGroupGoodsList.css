@@ -67,7 +67,8 @@
     font-size: 16px;
 }
 
-#priceGroupGoods .p-g-goods-item .coll-item-info .open-team-btn{    width: 65px;
+#priceGroupGoods .p-g-goods-item .coll-item-info .open-team-btn{
+    width: 65px;
     height: 30px;
     line-height: 30px;
     color: white;
@@ -77,4 +78,11 @@
     text-align: center;
     font-size: 13px;
     border-radius: 6px;
+}
+
+#priceGroupGoods .product-list-null{
+    width: 100%;
+    color:#959595;
+    text-align: center;
+    padding-top: 50px;
 }

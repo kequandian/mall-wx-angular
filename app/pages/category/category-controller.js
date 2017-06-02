@@ -472,6 +472,7 @@ angular.module('category.controller', ['category.service'])
             //推荐商品
             $scope.cateGoToDetails = function (item) {
                 //console.log(angular.toJson(item));
+                $rootScope.pieceGroupCouponItem.id = 0;
                 if(categoryType == 'pieceGroup'){
                     $state.go('piecegroup',{pieceGroupId:item.id, masterId:0});
                 }else{
@@ -554,6 +555,7 @@ angular.module('category.controller', ['category.service'])
                     console.log("Piece Product");
                     $state.go('piecegroup',{pieceGroupId:item.id, masterId:0});
                 }*/
+                $rootScope.pieceGroupCouponItem.id = 0;
                 $state.go('piecegroup',{pieceGroupId:item.piece_group_purchase_id, masterId:item.id});
             };
 
@@ -695,19 +697,17 @@ angular.module('category.controller', ['category.service'])
                         if(json.status_code == 0){
 
                             //console.log(angular.toJson(json));
-                            if(json.data.notify){
-                                if(json.data.activation_coupons != null && json.data.activation_coupons.length > 0){
+                            if(json.data.activation_coupons != null && json.data.activation_coupons.length > 0){
 
-                                    angular.forEach(json.data.activation_coupons, function (v, k) {
-                                       if(v.type == 'MARKETING_PIECE_GROUP' && v.status =='ACTIVATION'){
-                                           couponList.push(v);
-                                       }
-                                    });
-                                    if(couponList.length > 0){
-                                        $scope.activation_coupons = couponList;
-                                    }
-                                    document.getElementById('red-packet').style.display = 'block';
+                                angular.forEach(json.data.activation_coupons, function (v, k) {
+                                   if(v.type == 'MARKETING_PIECE_GROUP' && v.status =='ACTIVATION'){
+                                       couponList.push(v);
+                                   }
+                                });
+                                if(couponList.length > 0){
+                                    $scope.activation_coupons = couponList;
                                 }
+                                document.getElementById('red-packet').style.display = 'block';
                             }
 
                         }else{
@@ -726,7 +726,7 @@ angular.module('category.controller', ['category.service'])
 
             //优惠开团
             $scope.goToPieceGroup = function(item){
-                $rootScope.pieceGroupCouponId = item.id;
+                $rootScope.pieceGroupCouponItem = item;
                 $state.go('pieceGroupGoodsList');
             }
 

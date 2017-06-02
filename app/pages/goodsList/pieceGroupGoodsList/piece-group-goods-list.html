@@ -1,14 +1,14 @@
 <div id="priceGroupGoods">
 
-    <div class="title-content custom_titlebar_primary">
+    <div class="title-content custom_titlebar_primary" ng-if="pieceGroupGoodsList.length > 0">
         <div class="title-item">
-            <span>· 你成功领取1张团长免单券</span><span style="font-size: 10px">(有效期至2017-05-06)</span>
+            <span>· 你成功领取1张团长免单券</span><span style="font-size: 10px">(有效期至{{dateConvert(coupon_item.valid_date)}})</span>
         </div>
         <div class="title-item">
             <span>· 请选择一个商品免费开团, 成团后收货</span>
         </div>
     </div>
-    <div class="p-g-goods-content">
+    <div class="p-g-goods-content" ng-if="pieceGroupGoodsList.length > 0">
 
         <div class="p-g-goods-item" ng-repeat="item in pieceGroupGoodsList">
             <img ng-src="{{item.cover}}">
@@ -29,6 +29,10 @@
             </div>
         </div>
 
+    </div>
+
+    <div class="product-list-null"  ng-if="!pieceGroupGoodsList.length > 0">
+        <span>暂无免单商品信息</span>
     </div>
 
 </div>

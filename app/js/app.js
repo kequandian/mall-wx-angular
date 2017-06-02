@@ -321,7 +321,8 @@
 
         //拼团团长id
         $rootScope.master_id = 0;
-        $rootScope.pieceGroupCouponId = 0;
+        $rootScope.pieceGroupCouponItem = [];
+        $rootScope.pieceGroupCouponItem.id = 0;
 
         /*//Do your $on in here, like this:
         $rootScope.$on("$locationChangeStart",function(event, next, current){

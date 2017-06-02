@@ -532,6 +532,7 @@ angular.module('homePage.controller', ['homePage.service'])
             $scope.homeGoToFightGroups = function(item){
                 //console.log("item: " + item.id);
                 //console.log("masterId: " + masterId);
+                $rootScope.pieceGroupCouponItem.id = 0;
                 if(item.isMasterOrder){
                     console.log("Master Order");
                     $state.go('piecegroup',{pieceGroupId:item.piece_group_purchase_id, masterId:item.id});

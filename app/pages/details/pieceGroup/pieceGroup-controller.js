@@ -20,7 +20,7 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
             $scope.point_rate = PointRate.rate;
             var product_id = $stateParams.pieceGroupId;
             var master_id = $stateParams.masterId;
-            var pieceGroupCouponId = $rootScope.pieceGroupCouponId;
+            var pieceGroupCouponItem = $rootScope.pieceGroupCouponItem;
             $scope.master_id = $stateParams.masterId;
 
             $scope.master_user_id = $rootScope.master_id;
@@ -433,8 +433,8 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                     p_item.fightGroupData.free_shipping = $scope.fightGroupsdetails.free_shipping;
                     p_item.fightGroupData.payment_type = $scope.fightGroupsdetails.payment_type;
                     p_item.fightGroupData.coupon_usage = $scope.fightGroupsdetails.coupon_usage;
-                    if(pieceGroupCouponId > 0){
-                        p_item.fightGroupData.coupon_id = pieceGroupCouponId;
+                    if(pieceGroupCouponItem.id > 0){
+                        p_item.fightGroupData.coupon_id = pieceGroupCouponItem.id;
                         p_item.price = 0;
                     }else{
                         p_item.price = $scope.fightGroupsdetails.price;
@@ -468,7 +468,7 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                     console.log("拼团购买");
                     //console.log(angular.toJson(p_info));
                     $rootScope.settle_product_code = p_info;
-                    $rootScope.settle_product_totalToPay = pieceGroupCouponId > 0 ? 0 : $scope.fightGroupsdetails.price * quantity;
+                    $rootScope.settle_product_totalToPay = pieceGroupCouponItem.id > 0 ? 0 : $scope.fightGroupsdetails.price * quantity;
 
                     newUrl = '#/cart-settlement';
                     title = '结算';
@@ -476,7 +476,7 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
 
                     $state.go('cart-settlement', {
                         carts: $scope.checkedCarts,
-                        totalToPay: pieceGroupCouponId > 0 ? 0 : $scope.fightGroupsdetails.price * quantity,
+                        totalToPay: pieceGroupCouponItem.id > 0 ? 0 : $scope.fightGroupsdetails.price * quantity,
                         totalFreight: item.freight
                     });
 
@@ -590,7 +590,7 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
 
             //是否免费开团
             $scope.isPieceGroupCoupon = function(pieceGroupPrice){
-              if(pieceGroupCouponId > 0){
+              if(pieceGroupCouponItem.id > 0){
                   return 0;
               }else{
                   return pieceGroupPrice;
