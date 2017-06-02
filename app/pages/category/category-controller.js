@@ -706,14 +706,19 @@ angular.module('category.controller', ['category.service'])
                                 });
                                 if(couponList.length > 0){
                                     $scope.activation_coupons = couponList;
+                                    document.getElementById('red-packet').style.display = 'block';
+                                }else{
+                                    document.getElementById('red-packet').style.display = 'none';
                                 }
-                                document.getElementById('red-packet').style.display = 'block';
+                            }else{
                             }
 
                         }else{
+                            document.getElementById('red-packet').style.display = 'none';
                             console.log('获取拼团优惠券信息失败：' + angular.toJson(json))
                         }
                     }, function(error){
+                        document.getElementById('red-packet').style.display = 'none';
                        console.log('获取拼团优惠券信息失败：' + angular.toJson(error))
                     });
             }
