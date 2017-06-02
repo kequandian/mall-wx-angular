@@ -711,6 +711,7 @@ angular.module('category.controller', ['category.service'])
                                     document.getElementById('red-packet').style.display = 'none';
                                 }
                             }else{
+                                document.getElementById('red-packet').style.display = 'none';
                             }
 
                         }else{
