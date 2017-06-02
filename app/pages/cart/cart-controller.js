@@ -786,7 +786,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     }
 
                     console.log("orderInfo: " + angular.toJson($scope.order));
-                    return;
+                    //return;
 
                     CartFty.addOrder($scope.order).then(
                         function (result) {
