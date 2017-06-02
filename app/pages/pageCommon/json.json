@@ -1,23 +1,27 @@
-[
-  {
-    "product_id": 62,
-    "product_name": "羊奶手工精油香皂控油去黑头保湿洁面皂补水保湿沐浴皂洗脸【全国包邮（甘肃、宁夏、新疆、西藏、青海、内蒙古除外）】",
-    "quantity": 1,
-    "cover": "http://images.10mup.com/20160722170823828-7RpvQrNB.jpg",
-    "product_specification_id": null,
-    "product_specification_name": null,
-    "stock_balance": 988,
-    "fare_id": 1,
-    "weight": 0,
-    "bulk": 0,
-    "fightGroupData": {
-      "free_shipping": 1,
-      "payment_type": "WECHAT|POINT",
-      "coupon_usage": 0,
-      "coupon_id":1
-    },
-    "price": 0.1,
-    "marketing": "PIECE-GROUP-JOINT",
-    "marketing_id": 31
-  }
-]
+{
+  "payment_type": "WECHAT",
+  "order_items": [
+    {
+      "product_id": 40,
+      "quantity": 1,
+      "product_specification_id": null,
+      "marketing_id": 8
+    }
+  ],
+  "contact": {
+    "id": 222,
+    "zip": null,
+    "detail": "123号",
+    "phone": "12563256698",
+    "contact_user": "huang",
+    "street": null,
+    "province": "河北",
+    "is_default": 1,
+    "street_number": null,
+    "user_id": 2,
+    "district": "长安区",
+    "city": "石家庄"
+  },
+  "marketing": "PIECE-GROUP",
+  "coupon_id": 482
+}

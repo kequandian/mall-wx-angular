@@ -433,11 +433,9 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                     p_item.fightGroupData.free_shipping = $scope.fightGroupsdetails.free_shipping;
                     p_item.fightGroupData.payment_type = $scope.fightGroupsdetails.payment_type;
                     p_item.fightGroupData.coupon_usage = $scope.fightGroupsdetails.coupon_usage;
+                    p_item.price = $scope.fightGroupsdetails.price;
                     if(pieceGroupCouponItem.id > 0){
                         p_item.fightGroupData.coupon_id = pieceGroupCouponItem.id;
-                        p_item.price = 0;
-                    }else{
-                        p_item.price = $scope.fightGroupsdetails.price;
                     }
                     if(marketingStatus == 'PIECE-GROUP-JOINT'){
                         console.log("参团");
@@ -468,15 +466,19 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                     console.log("拼团购买");
                     //console.log(angular.toJson(p_info));
                     $rootScope.settle_product_code = p_info;
-                    $rootScope.settle_product_totalToPay = pieceGroupCouponItem.id > 0 ? 0 : $scope.fightGroupsdetails.price * quantity;
+                    //$rootScope.settle_product_totalToPay = pieceGroupCouponItem.id > 0 ? 0 : $scope.fightGroupsdetails.price * quantity;
+                    $rootScope.settle_product_totalToPay = $scope.fightGroupsdetails.price * quantity;
 
                     newUrl = '#/cart-settlement';
                     title = '结算';
                     window.history.pushState(c_state, title, newUrl);
 
+                    /*
+                    * totalToPay: pieceGroupCouponItem.id > 0 ? 0 : $scope.fightGroupsdetails.price * quantity,
+                    * */
                     $state.go('cart-settlement', {
                         carts: $scope.checkedCarts,
-                        totalToPay: pieceGroupCouponItem.id > 0 ? 0 : $scope.fightGroupsdetails.price * quantity,
+                        totalToPay: $scope.fightGroupsdetails.price * quantity,
                         totalFreight: item.freight
                     });
 

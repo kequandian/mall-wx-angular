@@ -273,12 +273,12 @@
                 <!--</div>-->
 
 
-                <div class="coupon-item" ng-if="count_coupon != null && count_coupon.length > 0">
+                <div class="coupon-item" ng-if="count_coupon != null">
                 <!--<div class="coupon-item">-->
                     <span class="custom_text_primary">{{c_name}}</span>
                     <!--<label name=""></label>-->
 
-                    <div class="more-coupon" ng-click="toggle_coupon(show_list)">
+                    <div class="more-coupon" ng-click="toggle_coupon(show_list)" ng-if="count_coupon != null && count_coupon.length > 0">
                         <span class="custom_text_primary">更多</span>
                         <div class="{{show_coupon_list(show_list) ? 'arrow-down' : 'arrow-up'}}">
                             <i></i>
@@ -286,7 +286,7 @@
                     </div>
                 </div>
 
-                <div class="coupon-list" ng-show="show_coupon_list(show_list)">
+                <div class="coupon-list" ng-show="show_coupon_list(show_list)" ng-if="count_coupon != null && count_coupon.length > 0">
                     <div class="c-item"
                          ng-repeat="cItem in count_coupon"
                             >

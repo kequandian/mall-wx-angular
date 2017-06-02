@@ -604,33 +604,50 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                             console.log("获取下单前计算优惠信息：" + angular.toJson(json));
 
                             if(settle_product_code[0].marketing_id > 0){
+                                if(pieceGroupCouponItem.id > 0){
+                                    var p_d_coupon_item = null;
+                                    angular.forEach(json.data, function(value, index){
+                                        if(pieceGroupCouponItem.id == value.coupon_id){
+                                            p_d_coupon_item = value;
+                                        }
+                                    });
 
-                                if(settle_product_code[0].marketing == 'PIECE-GROUP-JOINT'){
-                                    console.log(1);
-                                    $scope.count_coupon = null;
+                                    if(p_d_coupon_item != null){
+                                        $scope.count_coupon = p_d_coupon_item;
+                                        $scope.c_name = $scope.count_coupon.coupon_name;
+                                        $scope.total_price = $scope.count_coupon.final_price + $scope.product_frieght;
+                                    }
+
                                 }else{
-                                    if(settle_product_code[0].fightGroupData.coupon_usage == 0){
-                                        console.log(2);
-                                        $scope.count_coupon = null;
-                                    }else if(settle_product_code[0].fightGroupData.coupon_usage == 1){
-                                        console.log(3);
-                                        angular.forEach(json.data, function(value, index){
-                                            if(value.coupon_type == 'MARKETING_PIECE_GROUP'){
-                                                p_g_coupon_list.push(value);
-                                            }
-                                        });
-                                        $scope.count_coupon = p_g_coupon_list;
 
-                                    }else if(settle_product_code[0].fightGroupData.coupon_usage == 2){
-                                        console.log(4);
-                                        angular.forEach(json.data, function(value, index){
-                                            if(value.coupon_type != 'MARKETING_PIECE_GROUP'){
-                                                p_g_coupon_list.push(value);
-                                            }
-                                        });
-                                        $scope.count_coupon = p_g_coupon_list;
+                                    if(settle_product_code[0].marketing == 'PIECE-GROUP-JOINT'){
+                                        console.log(1);
+                                        $scope.count_coupon = null;
+                                    }else{
+                                        if(settle_product_code[0].fightGroupData.coupon_usage == 0){
+                                            console.log(2);
+                                            $scope.count_coupon = null;
+                                        }else if(settle_product_code[0].fightGroupData.coupon_usage == 1){
+                                            console.log(3);
+                                            angular.forEach(json.data, function(value, index){
+                                                if(value.coupon_type == 'MARKETING_PIECE_GROUP'){
+                                                    p_g_coupon_list.push(value);
+                                                }
+                                            });
+                                            $scope.count_coupon = p_g_coupon_list;
+
+                                        }else if(settle_product_code[0].fightGroupData.coupon_usage == 2){
+                                            console.log(4);
+                                            angular.forEach(json.data, function(value, index){
+                                                if(value.coupon_type != 'MARKETING_PIECE_GROUP'){
+                                                    p_g_coupon_list.push(value);
+                                                }
+                                            });
+                                            $scope.count_coupon = p_g_coupon_list;
+                                        }
                                     }
                                 }
+
                                 //console.log("$scope.count_coupon: " + angular.toJson($scope.count_coupon));
                             }else{
                                 console.log(5);
@@ -769,7 +786,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     }
 
                     console.log("orderInfo: " + angular.toJson($scope.order));
-                    //return;
+                    return;
 
                     CartFty.addOrder($scope.order).then(
                         function (result) {
