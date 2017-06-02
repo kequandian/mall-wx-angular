@@ -581,7 +581,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                             }
 
                             //下单前计算优惠信息
-                            //coupon();
+                            coupon();
 
                         }else{
                             console.log('error：' + angular.toJson(json));
@@ -604,7 +604,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                             console.log("获取下单前计算优惠信息：" + angular.toJson(json));
 
                             console.log('settle_product_code.marketing_id: ' + settle_product_code.marketing_id);
-                            if(settle_product_code[0].marketing_id > 0){
+                            /*if(settle_product_code[0].marketing_id > 0){
 
                                 if(settle_product_code[0].marketing == 'PIECE-GROUP-JOINT'){
                                     console.log(1);
@@ -636,7 +636,9 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                             }else{
                                 console.log(5);
                                 $scope.count_coupon = json.data;
-                            }
+                            }*/
+
+                            $scope.count_coupon = [];
                             if($scope.count_coupon.length > 0){
 
                                 if(AutoSelectCoupon.is_auto){
