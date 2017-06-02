@@ -277,6 +277,12 @@
                         {type: 'css', path: 'css/sellerPage/exchangeRecord.css'}],
                     cache: false
                 }, {
+                    name: 'SettlementRecord',
+                    files: ['pages/seller/pages/offLineShop/seller/offLineShopSeller-controller.js',
+                        'pages/seller/pages/offLineShop/seller/offLineShopSeller-service.js',
+                        {type: 'css', path: 'css/sellerPage/settlementRecord.css'}],
+                    cache: false
+                }, {
                     name: 'PieceGroup',
                     files: [
                         'pages/details/pieceGroup/pieceGroup-controller.js',

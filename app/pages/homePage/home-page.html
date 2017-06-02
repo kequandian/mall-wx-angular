@@ -94,6 +94,11 @@
     <!--拼团商品-->
     <div class="fight-groups" ng-if="promotedMaster != null" style="margin-top: 8px;">
         <img src="{{promotedMaster.cover}}" class="fight-groups-ad-img" ng-click="homeGoToFightGroups(promotedMaster)">
+
+        <div class="f-g-info-name">
+            <span>{{promotedMaster.marketing_name}}</span>
+        </div>
+
         <div class="fight-groups-info">
             <div class="f-g-info-price">
                 <span>{{promotedMaster.price | currency:'￥'}}</span>

@@ -29,4 +29,8 @@ angular.module('offLineShop.controller', ['offLineShop.service'])
                 $state.go('offLineExchangeRecord');
             };
 
+            $scope.settlement_record_action = function(){
+
+            };
+
         }]);

@@ -510,7 +510,7 @@ angular.module('category.controller', ['category.service'])
 
                             if(pageNumber == 1){
                                 $scope.fightGroupsList = json.data;
-                                if($scope.fightGroupsList.list.length >= 4){
+                                if($scope.fightGroupsList.list.length >= 10){
                                     $scope.load_more_btn_show = true;
                                     loading = false;
                                 } else {

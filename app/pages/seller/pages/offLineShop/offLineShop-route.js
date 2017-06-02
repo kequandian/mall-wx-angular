@@ -64,4 +64,14 @@ angular.module('offLineShop.route',[])
                 }]
             }
         })
+            .state('settlementRecord', {
+            url:'/settlementRecord',
+            templateUrl: 'pages/seller/pages/offLineShop/seller/settlementRecord.html',
+            controller:'SettlementRecordController',
+            resolve: {
+                loadData: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load('SettlementRecord');
+                }]
+            }
+        })
     }]);

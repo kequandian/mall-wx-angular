@@ -209,6 +209,11 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                 }
             }
 
+            //商品批发
+            $scope.wholesale = function(){
+
+            }
+
         }])
 
 
