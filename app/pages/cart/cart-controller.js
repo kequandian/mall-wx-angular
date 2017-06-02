@@ -603,8 +603,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                         if(json.status_code == 0){
                             console.log("获取下单前计算优惠信息：" + angular.toJson(json));
 
-                            console.log('settle_product_code.marketing_id: ' + settle_product_code.marketing_id);
-                            /*if(settle_product_code[0].marketing_id > 0){
+                            if(settle_product_code[0].marketing_id > 0){
 
                                 if(settle_product_code[0].marketing == 'PIECE-GROUP-JOINT'){
                                     console.log(1);
@@ -616,7 +615,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                                     }else if(settle_product_code[0].fightGroupData.coupon_usage == 1){
                                         console.log(3);
                                         angular.forEach(json.data, function(value, index){
-                                            if(value.coupontype == 'MARKETING_PIECE_GROUP'){
+                                            if(value.coupon_type == 'MARKETING_PIECE_GROUP'){
                                                 p_g_coupon_list.push(value);
                                             }
                                         });
@@ -625,28 +624,25 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                                     }else if(settle_product_code[0].fightGroupData.coupon_usage == 2){
                                         console.log(4);
                                         angular.forEach(json.data, function(value, index){
-                                            if(value.coupontype != 'MARKETING_PIECE_GROUP'){
+                                            if(value.coupon_type != 'MARKETING_PIECE_GROUP'){
                                                 p_g_coupon_list.push(value);
                                             }
                                         });
                                         $scope.count_coupon = p_g_coupon_list;
                                     }
                                 }
-                                console.log("$scope.count_coupon: " + angular.toJson($scope.count_coupon));
+                                //console.log("$scope.count_coupon: " + angular.toJson($scope.count_coupon));
                             }else{
                                 console.log(5);
                                 $scope.count_coupon = json.data;
-                            }*/
+                            }
 
-                            $scope.count_coupon = [];
-                            if($scope.count_coupon.length > 0){
-
+                            if($scope.count_coupon != null && $scope.count_coupon.length > 0){
                                 if(AutoSelectCoupon.is_auto){
-                                    $scope.c_name = json.data[0].coupon_name;
+                                    $scope.c_name = $scope.count_coupon[0].coupon_name;
                                     $scope.count_coupon[0].$checked = true;
                                     if($scope.product_frieght >= 0){
                                         $scope.total_price = $scope.count_coupon[0].final_price + $scope.product_frieght;
-                                        console.log('total_price111: ' + $scope.total_price);
                                     }else{
                                         $scope.total_price = $scope.count_coupon[0].final_price;
                                     }
@@ -737,7 +733,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 }
 
                 if($scope.c_checked == undefined){
-                    if($scope.count_coupon.length > 0){
+                    if($scope.count_coupon != null && $scope.count_coupon.length > 0){
                         $scope.order.coupon_id = $scope.count_coupon[0].coupon_id;
                     }
                 }else{
@@ -773,7 +769,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     }
 
                     console.log("orderInfo: " + angular.toJson($scope.order));
-                    //return;
+                    return;
 
                     CartFty.addOrder($scope.order).then(
                         function (result) {
