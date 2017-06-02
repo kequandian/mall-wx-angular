@@ -4,7 +4,7 @@ angular.module('pieceGroupGoodsList.service', [])
             // 获取免单商品列表数据
             pieceGroupGoodsListService: function () {
                 var deferred = $q.defer();
-                var url = GlobalVariable.SERVER_PATH + "/piece_group_purchase??masterFree=1";
+                var url = GlobalVariable.SERVER_PATH + "/piece_group_purchase?masterFree=1";
                 $http.get(url,{
                     headers:{
                         'Authorization': GlobalVariable.ACCESS_TOKEN
