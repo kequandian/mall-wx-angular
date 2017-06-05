@@ -75,9 +75,14 @@
     position: relative;
 }
 #orders .item-order-number span{
-    right: 10px;
+    right: 0;
     /*color: #734284;*/
     position: absolute;
+}
+
+#orders .item-order-number .piece-group-text{
+    margin-right: 65px;
+    color: #4EAD00;
 }
 
 #orders .item-order-info{
