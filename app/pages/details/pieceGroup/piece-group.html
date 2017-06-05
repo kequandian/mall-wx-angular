@@ -21,6 +21,11 @@
 
         <!-- 商品内容 -->
         <div class="product-content">
+
+            <!--<div class="piece-group-min-count custom_text_primary_medium">
+                <span>已团{{fightGroupsdetails.sale}}件 · {{fightGroupsdetails.min_participator_count}}人团</span>
+            </div>-->
+
             <div class="product-title">
                 {{details.name}}
             </div>
@@ -38,6 +43,7 @@
                     <span class="freight_if" ng-if="details.weight > 0">毛重：{{details.weight/1000}}kg</span>
                     <span class="freight_if" ng-if="!details.weight > 0">{{fare_info.name}}</span>
                     <span class="point" style="font-size: 13px;"> 省{{(details.suggested_price - fightGroupsdetails.price) | currency:''}}元</span>
+                    <span style="position: absolute; top: 5px; right: 0; color: #A95296;">已团{{fightGroupsdetails.sale}}件 · {{fightGroupsdetails.min_participator_count}}人团</span>
                 </div>
             </div>
 
@@ -86,12 +92,15 @@
             </div>
         </div>
 
+        <div class="cut-line"></div>
+
+
         <!--拼团列表-->
         <div class="open-group" ng-if="promoted_masters.length > 0">
-        <!--<div class="open-group">-->
+            <!--<div class="open-group">-->
             <div class="open-group-title">小伙伴在开团</div>
             <div class="open-group-item" ng-repeat="masterItem in promoted_masters">
-            <!--<div class="open-group-item">-->
+                <!--<div class="open-group-item">-->
                 <img src="{{masterItem.user_avatar != null ? masterItem.user_avatar:'img/my/userPhoto.png'}}" class="user-cover">
                 <div class="user-info">
                     <div class="info-content">
@@ -103,7 +112,6 @@
                     <span>去参团</span>
                 </div>
             </div>
-
         </div>
 
         <div class="cut-line"></div>
