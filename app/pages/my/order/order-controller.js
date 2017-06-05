@@ -40,6 +40,10 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                 'name': '待付款',
                 'srefName': '.pay'
             }, {
+                'id': '6',
+                'name': '待成团',
+                'srefName': ''
+            }, {
                 'id': '3',
                 'name': '待发货',
                 'srefName': '.payed'
