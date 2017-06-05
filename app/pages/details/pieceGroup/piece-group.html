@@ -94,11 +94,11 @@
 
         <!--拼团列表-->
         <!--<div class="cut-line" ng-if="promoted_masters != null"></div>-->
-        <div class="open-group">
+        <div class="open-group" ng-if="true">
             <!--<div class="open-group">-->
             <div class="open-group-title">小伙伴在开团</div>
-            <!--<div class="open-group-item" ng-repeat="masterItem in promoted_masters">
-                &lt;!&ndash;<div class="open-group-item">&ndash;&gt;
+            <div class="open-group-item" ng-repeat="masterItem in promoted_masters">
+                <!--<div class="open-group-item">-->
                 <img src="{{masterItem.user_avatar != null ? masterItem.user_avatar:'img/my/userPhoto.png'}}" class="user-cover">
                 <div class="user-info">
                     <div class="info-content">
@@ -109,13 +109,19 @@
                 <div class="go-join-btn weui_btn_primary" ng-class="isMaster(master_user_id, masterItem.user_id)" ng-click="join_team(masterItem)">
                     <span>去参团</span>
                 </div>
-            </div>-->
+            </div>
         </div>
 
         <div class="cut-line"></div>
 
         <!-- 商品详情 -->
         <div class="product-info">
+
+            <div class="pictures-title">
+                <img src="img/details/product-imgs-icon.png">
+                <span>商品信息</span>
+            </div>
+
 
             <div class="pictures-title">
                 <img src="img/details/product-imgs-icon.png">
