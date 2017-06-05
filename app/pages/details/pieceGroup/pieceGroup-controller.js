@@ -581,7 +581,12 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                                     promoted_masters.push(v);
                                 }
                             });
-                            $scope.promoted_masters = promoted_masters;
+
+                            if(promoted_masters.length > 0){
+                                $scope.promoted_masters = promoted_masters;
+                            }else{
+                                $scope.promoted_masters = null;
+                            }
 
                             //console.log(angular.toJson($scope.fightGroupsdetails));
 
