@@ -571,10 +571,10 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                             $scope.fightGroupsdetails = json.data;
                             marketingId = json.data.id;
                             product_id = json.data.product_id;
+                            start = Date.parse(new Date());
 
                             //判断拼团订单时候超时
                             angular.forEach(json.data.promoted_masters, function(v, k){
-                                start = Date.parse(new Date());
                                 end = Date.parse(new Date(v.end_time));
                                 newTimeStamp = end - start;  //时间差的毫秒数
                                 if(newTimeStamp > 0){
