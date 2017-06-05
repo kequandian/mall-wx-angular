@@ -575,10 +575,13 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
 
                             //判断拼团订单时候超时
                             angular.forEach(json.data.promoted_masters, function(v, k){
-                                end = Date.parse(new Date(v.end_time.replace(/-/g, "/")));
-                                newTimeStamp = end - start;  //时间差的毫秒数
-                                if(newTimeStamp > 0){
-                                    promoted_masters.push(v);
+
+                                if(k <= 2){
+                                    end = Date.parse(new Date(v.end_time.replace(/-/g, "/")));
+                                    newTimeStamp = end - start;  //时间差的毫秒数
+                                    if(newTimeStamp > 0){
+                                        promoted_masters.push(v);
+                                    }
                                 }
                             });
 
