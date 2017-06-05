@@ -63,4 +63,14 @@ angular.module('my.order.route', [/*'my.order.controller'*/])
                 }]
             }
         })
+        .state('order.pendingmass', {
+            url: "/pendingmass",
+            templateUrl: "pages/my/order/tabs/pending-mass.html",
+            controller:'PendingMassController',
+            resolve: {
+                loadData: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load('Order');
+                }]
+            }
+        })
 });

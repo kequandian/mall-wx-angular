@@ -42,7 +42,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             }, {
                 'id': '6',
                 'name': '待成团',
-                'srefName': ''
+                'srefName': '.pendingmass'
             }, {
                 'id': '3',
                 'name': '待发货',
@@ -681,6 +681,79 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                         } else {
                             $scope.finishIsNull = false;
                             $scope.finishShow = true;
+                        }
+                        $timeout(function () {
+                            //$.hideLoading();
+                        }, 1000);
+                    })
+            }
+
+            //订单状态
+            $scope.order_list_status = function (orderStatus) {
+                return OrderCommon.OrderStatus(orderStatus);
+            };
+
+            //检查订单支付方式
+            $scope.cash_and_point = function(price, point, pay_type){
+                if(pay_type == 'POINT'){
+                    return ((price * point).toFixed(0)) + '积分';
+                }else if(pay_type == 'WECHAT'){
+                }
+                return '￥' + price.toFixed(2);
+            };
+
+            //进入物流详情
+            $scope.goToExpress_finish = function (item) {
+                var count = 0;
+                if(item.order_items != null){
+                    angular.forEach(item.order_items, function (v, k) {
+                        count += v.quantity;
+                    });
+                }else{
+                    count = -1;
+                }
+                $state.go('express', {
+                    orderNumber: item.order_number,
+                    productImg: item.cover,
+                    productCount: count,
+                    expressNumber:item.express_number,
+                    expressCompany:item.express_company
+                });
+            };
+
+        }])
+
+
+    /* 待成团 */
+    .controller('PendingMassController', ['$scope', '$state', '$rootScope', '$timeout', 'OrderFty', 'OrderCommon',
+        function ($scope, $state, $rootScope, $timeout, OrderFty, OrderCommon) {
+
+            $rootScope.orderTabsIndex = 6;
+            //$.showLoading("正在加载...");
+
+            $scope.pendingMassIsNull = true;
+            $scope.pendingMassShow = true;
+
+            pendingMassOrders();
+            function pendingMassOrders() {
+                OrderFty.pendingMassOrderService()
+                    .then(function (json) {
+                        if (json.status_code == 0) {
+                            //console.log(angular.toJson($scope.orders));
+                            $scope.pendingMassList = json.data;
+                        } else {
+                            $.toast('读取订单信息失败');
+                        }
+                    }, function (error) {
+                        console.log(error);
+                    })
+                    .finally(function () {
+                        if ($scope.pendingMassList.length > 0) {
+                            $scope.pendingMassIsNull = true;
+                            $scope.pendingMassShow = false;
+                        } else {
+                            $scope.pendingMassIsNull = false;
+                            $scope.pendingMassShow = true;
                         }
                         $timeout(function () {
                             //$.hideLoading();

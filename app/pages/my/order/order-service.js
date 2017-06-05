@@ -66,6 +66,23 @@ angular.module('my.order.service', [])
                         return deferred.reject(data);
                     });
                 return deferred.promise;
+            },
+
+            //获取待成团信息
+            pendingMassOrderService: function () {
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + "/my_piece_group_purchase?status=OPENING";
+                $http.delete(url, {
+                    headers: {
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
+                })
+                    .success(function (data) {
+                        return deferred.resolve(data);
+                    }).error(function (data) {
+                        return deferred.reject(data);
+                    });
+                return deferred.promise;
             }
         };
     }]);
