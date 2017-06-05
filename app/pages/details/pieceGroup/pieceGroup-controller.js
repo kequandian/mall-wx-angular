@@ -627,7 +627,7 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
             //计算剩余时间
             $scope.count_time = function(startTime, endTime){
                 var start = Date.parse(new Date());
-                var end = Date.parse(new Date(endTime));
+                var end = Date.parse(new Date(endTime.replace(/-/g, "/")));
                 var newDate = end - start;  //时间差的毫秒数
 
                 if(newDate > 0){
