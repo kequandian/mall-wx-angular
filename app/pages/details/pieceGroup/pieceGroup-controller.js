@@ -573,6 +573,8 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                             product_id = json.data.product_id;
                             start = Date.parse(new Date());
 
+                            $scope.scope_start = start;
+
                             //判断拼团订单时候超时
                             angular.forEach(json.data.promoted_masters, function(v, k){
                                 end = Date.parse(new Date(v.end_time));
