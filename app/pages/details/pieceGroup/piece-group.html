@@ -34,10 +34,10 @@
                     <span class="product-rebate">{{(product_rebate*point_rate) | number:0}}</span>
                     <span  class="product-rebate-small">积分</span>
                 </span>
-
                 <div class="product-price-market"><span>市场价：</span><s>{{details.suggested_price | currency:'￥'}}</s>
                     <span class="freight_if" ng-if="details.weight > 0">毛重：{{details.weight/1000}}kg</span>
                     <span class="freight_if" ng-if="!details.weight > 0">{{fare_info.name}}</span>
+                    <span class="point" style="font-size: 13px;"> 省{{(details.suggested_price - fightGroupsdetails.price) | currency:''}}元</span>
                 </div>
             </div>
 
@@ -59,10 +59,10 @@
                     <span>默认配送：{{default_express}}</span>
                 </div>
 
-                <div class="product_tips custom_text_primary_medium" ng-if="fare_info.title != null && fare_info.content != null">
+                <!--<div class="product_tips custom_text_primary_medium" ng-if="fare_info.title != null && fare_info.content != null">
                     <span class="p1">{{"【"+fare_info.title+"】"}}</span>
                     <span class="p2">{{fare_info.content}}</span>
-                </div>
+                </div>-->
             </div>
         </div>
 
@@ -96,7 +96,7 @@
                 <div class="user-info">
                     <div class="info-content">
                         <div class="user-name">{{masterItem.user_name}}</div>
-                        <div class="user-fight-group-info">{{count_member(masterItem.min_participator_count,masterItem.paid_members_count)}}剩余 {{count_time(masterItem.start_time, masterItem.end_time)}}</div>
+                        <div class="user-fight-group-info">{{count_member(fightGroupsdetails.min_participator_count,masterItem.paid_members_count)}}剩余 {{count_time(masterItem.start_time, masterItem.end_time)}}</div>
                     </div>
                 </div>
                 <div class="go-join-btn weui_btn_primary" ng-class="isMaster(master_user_id, masterItem.user_id)" ng-click="join_team(masterItem)">
@@ -138,23 +138,6 @@
 
         <div class="detail-footer-left">
 
-            <!--<div class="footer-home">-->
-            <!--<div class="f-h-top">-->
-            <!--<img src="img/details/aliwawa-img.png">-->
-            <!--</div>-->
-            <!--<div class="f-h-bottom">-->
-            <!--客服-->
-            <!--</div>-->
-            <!--</div>-->
-
-            <!-- <div class="footer-cart" ui-sref="home.cart">
-                 <div class="f-c-top ion-app-biliya-tabs-cart">
-                 </div>
-                 <div class="f-c-bottom">
-                     购物车
-                 </div>
-             </div>-->
-
             <div class="footer-collection" ui-sref="home.cart" ng-click="goToCart()">
                 <div class="f-h-top">
                     <!--<img src="img/details/cart-img.png">-->
@@ -189,7 +172,8 @@
         </div>
 
         <!--拼团-->
-        <div class="detail-footer-right" ng-if="!isMasterOpen">
+        <!--<div class="detail-footer-right" ng-if="!isMasterOpen">-->
+        <div class="detail-footer-right">
             <div class="item-button">
                 <div class="details_buy_css custom_flat_primary_medium" ng-click="piece_group_buy_status(b_status_btn,true,0)" ng-class="b_status_btn ? 'product_info':''">
                     <!--<div class="details_buy_css product_info" ng-click="buy_immediately(details)">-->
@@ -216,7 +200,8 @@
             </div>
         </div>
         <!--参与拼团-->
-        <div class="detail-footer-right" ng-if="isMasterOpen">
+        <!--<div class="detail-footer-right" ng-if="isMasterOpen">-->
+        <div class="detail-footer-right" ng-if="false">
             <div class="item-button">
                 <div class="details_buy_css custom_flat_primary_medium" ng-click="join_piece_group_buy_status(b_status_btn,false)" ng-class="(b_status_btn && master_id>0) ? 'product_info':''">
                     <div class="alone-buy">

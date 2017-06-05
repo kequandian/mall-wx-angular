@@ -59,21 +59,21 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                     if(param.indexOf('fallback=details-')>=0){
                         param = 'fallback=piecegroup-' + pieceGroupId + '-' + masterId;
                     }else if(param.indexOf('fallback=piecegroup-')>=0){
-                        param = param.replace(/fallback=pieceGroup\-\d+\-\d+/,  'fallback=piecegroup-'+pieceGroupId + '-'+masterId);
-                        console.log("param>>> "+param);
+                        param = param.replace(/fallback=piecegroup\-\d+\-\d+/,  'fallback=piecegroup-'+pieceGroupId + '-'+masterId);
+                        //console.log("param>>> "+param);
                     }else{
                         param = param + '&fallback=piecegroup-' + pieceGroupId + '-' + masterId;
-                        console.log("param> "+param);
+                        //console.log("param> "+param);
                     }
 
                     /// append details
                     ///
                     newurl = '?' + param + '#/piecegroup/' + pieceGroupId + '/' + masterId;
-                    console.log("newurl>>> "+newurl);
+                    //console.log("newurl>>> "+newurl);
                 }else{
 
                     newurl = '?fallback=piecegroup-'+ pieceGroupId +'-'+ masterId +'#/piecegroup/' + pieceGroupId + '/' + masterId;
-                    console.log("newurl> "+newurl);
+                    //console.log("newurl> "+newurl);
                 }
 
                 if(longParam != newurl) {
@@ -144,17 +144,25 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                                 $scope.kf_qq = $rootScope.kf_qq;
                             }
 
-                            //运费
-                            $scope.fare_info = $scope.details.fare_template;
+                            if($scope.fightGroupsdetails.free_shipping == 1){
+                                var fare_info = {
+                                    is_incl_postage:0
+                                };
+                                fare_info.is_incl_postage = 1;
+                                $scope.fare_info = fare_info;
+                            }else{
+                                //运费
+                                $scope.fare_info = $scope.details.fare_template;
 
-                            //console.log("fare_info  ?   " + angular.toJson($scope.fare_info));
-                            $scope.fare_info.is_excl_postage = ($scope.fare_info.is_incl_postage==0 && $scope.fare_info.is_incl_postage_by_if==0);
+                                //console.log("fare_info  ?   " + angular.toJson($scope.fare_info));
+                                $scope.fare_info.is_excl_postage = ($scope.fare_info.is_incl_postage==0 && $scope.fare_info.is_incl_postage_by_if==0);
 
-                            angular.forEach($scope.fare_info.carry_modes, function(item){
-                                if(item.is_default){
-                                    $scope.fare_info.default_amount = item.first_amount;
-                                }
-                            })
+                                angular.forEach($scope.fare_info.carry_modes, function(item){
+                                    if(item.is_default){
+                                        $scope.fare_info.default_amount = item.first_amount;
+                                    }
+                                })
+                            }
 
                         } else {
                             if(json.message == 'product.is.offsell'){

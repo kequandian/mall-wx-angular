@@ -535,7 +535,8 @@ angular.module('homePage.controller', ['homePage.service'])
                 $rootScope.pieceGroupCouponItem.id = 0;
                 if(item.isMasterOrder){
                     console.log("Master Order");
-                    $state.go('piecegroup',{pieceGroupId:item.piece_group_purchase_id, masterId:item.id});
+                    //$state.go('piecegroup',{pieceGroupId:item.piece_group_purchase_id, masterId:item.id});
+                    $state.go('piecegroup',{pieceGroupId:item.piece_group_purchase_id, masterId:0});
                 }else{
                     console.log("Piece Product");
                     $state.go('piecegroup',{pieceGroupId:item.id, masterId:0});
