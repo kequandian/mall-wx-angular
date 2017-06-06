@@ -772,7 +772,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             };
 
             //检查订单支付方式
-            $scope.cash_and_point = function(item, pay_type){
+            $scope.cash_and_point = function(item){
 
                 var point = PointRate.rate;
                 if(item.payment_type == 'POINT'){
