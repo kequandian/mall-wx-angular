@@ -1,15 +1,24 @@
 <div id="wholesale">
     <!-- 地区设置 -->
-    <div class="default-content" ng-if="true">
+    <div class="default-content" ng-if="is_crown">
 
-        <div class="select-btn">
-            <div class="btn-ok-text">确认</div>
-            <div class="btn-check-text">查看商品</div>
+        <div class="select-pcd">
+            <div class="select-pcd-text">请选择配送区域</div>
+        </div>
+
+        <div class="select-btn" ng-click="goToWholesalwGoodsList()">
+            <div class="btn-ok-text custom_text_primary">确认</div>
+            <div class="btn-check-text custom_text_primary">查看商品</div>
         </div>
 
     </div>
 
     <!-- 是否皇冠经销商 -->
-    <div class="partner-content" ng-if="false">
+    <div class="partner-content" ng-if="!is_crown">
+
+        <div class="is-not-crown">
+
+        </div>
+
     </div>
 </div>

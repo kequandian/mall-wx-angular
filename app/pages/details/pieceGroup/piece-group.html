@@ -42,7 +42,7 @@
                 <div class="product-price-market"><span>市场价：</span><s>{{details.suggested_price | currency:'￥'}}</s>
                     <!--<span class="freight_if" ng-if="details.weight > 0">毛重：{{details.weight/1000}}kg</span>-->
                     <span class="freight_if" ng-if="!details.weight > 0">{{fare_info.name}}</span>
-                    <span class="point" style="font-size: 13px;"> 省{{(details.suggested_price - fightGroupsdetails.price) | currency:''}}元</span>
+                    <span class="point" style="font-size: 13px;"> 省{{(details.suggested_price - fightGroupsdetails.price) | number:2}}元</span>
                     <span style="position: absolute; top: 5px; right: 0; color: #A95296;">已团{{fightGroupsdetails.sale}}件 · {{fightGroupsdetails.min_participator_count}}人团</span>
                 </div>
             </div>

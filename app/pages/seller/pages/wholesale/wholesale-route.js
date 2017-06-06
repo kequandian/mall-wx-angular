@@ -1,7 +1,7 @@
 angular.module('wholesale.route', [])
     .config(['$stateProvider', function($stateProvider) {
         $stateProvider.state('wholesale', {
-            url:'/wholesale',
+            url:'/wholesale/:isCrown',
             templateUrl: 'pages/seller/pages/wholesale/wholesale.html',
             controller:'WholesaleController',
             resolve: {

@@ -210,8 +210,8 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
             };
 
             //商品批发
-            $scope.wholesale = function(){
-                $state.go('wholesale');
+            $scope.wholesale = function(isCrown){
+                $state.go('wholesale',{isCrown: isCrown});
             }
 
         }])

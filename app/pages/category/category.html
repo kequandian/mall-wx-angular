@@ -94,7 +94,7 @@
                     <span style="color: #F15353; font-size: 16px;">{{promotedMaster.price | currency:'￥'}}</span><span>/{{promotedMaster.price * point_rate}}积分</span>
                 </div>
                 <div class="sale-save-money">
-                    <span>拼团省{{promotedMaster.suggested_price - promotedMaster.price}}元</span>
+                    <span>拼团省{{(promotedMaster.suggested_price - promotedMaster.price) | number:2}}元</span>
                 </div>
 
             </div>
