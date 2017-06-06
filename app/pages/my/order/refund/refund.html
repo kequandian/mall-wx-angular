@@ -6,6 +6,7 @@
     <div class="refund-item" ng-repeat="item in refund_orders" ng-hide="refund_all_show">
         <div class="item-refund-order-number">
             订单号：{{item.order_number}}
+            <span class="item-refund-piece-group-text" ng-if="item.marketing_id != null">【拼团】</span>
             <span class="custom_text_primary_medium">{{item.status|refundStatus}}</span>
         </div>
         <div class="item-refund-order-info">

@@ -38,6 +38,10 @@
     /*color: red;*/
     position: absolute;
 }
+#refund .item-refund-order-number .item-refund-piece-group-text{
+    margin-right: 50px;
+    color: #4EAD00;
+}
 
 #refund .item-refund-order-info{
     height: 71px;
