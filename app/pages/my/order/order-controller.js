@@ -739,8 +739,8 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                 OrderFty.pendingMassOrderService()
                     .then(function (json) {
                         if (json.status_code == 0) {
-                            //console.log(angular.toJson($scope.orders));
-                            $scope.pendingMassList = json.data;
+                            //console.log(angular.toJson(json));
+                            $scope.pendingMassList = json.data.list;
                         } else {
                             $.toast('读取订单信息失败');
                         }
@@ -769,27 +769,26 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                 if(count > 0){
                     return '拼团中,差' + count + '人';
                 }
-                return '已满足成团';
+                return '已成团';
             };
 
             //检查订单支付方式
-            $scope.cash_and_point = function(price, pay_type){
+            $scope.cash_and_point = function(item, pay_type){
 
                 var point = PointRate.rate;
-
-                if(pay_type == 'POINT'){
-                    return ((price * point).toFixed(0)) + '积分';
-                }else if(pay_type == 'WECHAT'){
+                if(item.payment_type == 'POINT'){
+                    return ((item.price * point).toFixed(0)) + '积分';
+                }else if(item.payment_type == 'WECHAT'){
                 }
-                return '￥' + price.toFixed(2);
+                return '￥' + (item.price.toFixed(2));
             };
 
-            //进入物流详情
+            //邀请好友拼团
             $scope.inviting_friends = function (item) {
                 if(item.payment_type == 'WECHAT'){
-                    window.location.href = '/app/payment/wpay/' + $scope.order_number;
+                    window.location.href = '/app/payment/wpay/' + item.order_number;
                 }else if(item.payment_type == 'POINT'){
-                    window.location.href = '/app/payment/ppay/' + $scope.order_number;
+                    window.location.href = '/app/payment/ppay/' + item.order_number;
                 }
             };
 

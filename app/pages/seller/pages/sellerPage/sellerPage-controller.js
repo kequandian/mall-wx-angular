@@ -207,11 +207,11 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                 }else if(is_physical == 1){
                     $state.go('sellerAuthorization',{isAgent:false});
                 }
-            }
+            };
 
             //商品批发
             $scope.wholesale = function(){
-
+                $state.go('wholesale');
             }
 
         }])

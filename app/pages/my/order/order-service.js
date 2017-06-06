@@ -72,7 +72,7 @@ angular.module('my.order.service', [])
             pendingMassOrderService: function () {
                 var deferred = $q.defer();
                 var url = GlobalVariable.SERVER_PATH + "/my_piece_group_purchase?status=OPENING";
-                $http.delete(url, {
+                $http.get(url, {
                     headers: {
                         'Authorization': GlobalVariable.ACCESS_TOKEN
                     }

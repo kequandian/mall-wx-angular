@@ -37,7 +37,8 @@
         'coupon.route',
         'offLineShop.route',
         'pieceGroup.route',
-        'pieceGroupGoodsList.route'
+        'pieceGroupGoodsList.route',
+        'wholesale.route'
 
     ]).config(["$urlRouterProvider", '$ocLazyLoadProvider','$locationProvider',
         function ($urlRouterProvider, $ocLazyLoadProvider,$locationProvider) {
@@ -296,6 +297,13 @@
                         'pages/goodsList/pieceGroupGoodsList/pieceGroupGoodsList-controller.js',
                         'pages/goodsList/pieceGroupGoodsList/pieceGroupGoodsList-service.js',
                         {type: 'css', path: 'css/goodsList/pieceGroupGoodsList.css'}],
+                    cache: false
+                }, {
+                    name: 'Wholesale',
+                    files: [
+                        'pages/seller/pages/wholesale/wholesale-controller.js',
+                        'pages/seller/pages/wholesale/wholesale-service.js',
+                        {type: 'css', path: 'css/sellerPage/wholesale/wholesale.css'}],
                     cache: false
                 }
 

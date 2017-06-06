@@ -10,7 +10,7 @@
                 订单号：{{item.order_number}}
                 <span class="custom_text_primary">{{piece_group_count(item.status)}}</span>
             </div>
-            <div class="item-order-info" ui-sref="orderDetails({orderNumber:item.order_number})">
+            <div class="item-order-info">
                 <div class="o-i-left">
                     <img ng-src="{{item.cover}}">
                 </div>
@@ -20,16 +20,17 @@
                 </span>
                 </div>
                 <div class="o-i-right">
-                    <span class="o-i-right-span">{{cash_and_point(item.price, item.payment_type)}}</span>
-                    <p class="o-i-right-i">x1</p>
+                    <span class="o-i-right-span">{{cash_and_point(item)}}</span>
+                    <span class="o-i-right-span" style="color: #757575; font-size: 12px;"><s>{{item.suggested_price}}</s></span>
+                    <!--<p class="o-i-right-i">x1</p>-->
                 </div>
             </div>
             <div class="item-detail-btn" style="border-bottom: 1px solid #cccccc">
-                <div class="order-item-price">总价：{{cash_and_point(item.price, item.payment_type)}}</div>
+                <div class="order-item-price">合计：{{cash_and_point(item)}}</div>
             </div>
             <div class="item-detail-btn">
                 <!--weui_btn_default-->
-                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right" style="margin-right: 5px;"
+                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_primary item-btn-right" style="width: 118px; margin-right: 5px;"
                    ng-click="inviting_friends(item)">
                     邀请好友拼团
                 </a>
