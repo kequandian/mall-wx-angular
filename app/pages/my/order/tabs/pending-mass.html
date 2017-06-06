@@ -8,8 +8,7 @@
         <div class="order-item" ng-repeat="item in pendingMassList" ng-hide="pendingMassShow">
             <div class="item-order-number">
                 订单号：{{item.order_number}}
-                <span class="piece-group-text" ng-if="item.marketing_id != null">【拼团】</span>
-                <span class="custom_text_primary">{{order_list_status(item.status)}}</span>
+                <span class="custom_text_primary">{{piece_group_count(item.status)}}</span>
             </div>
             <div class="item-order-info" ui-sref="orderDetails({orderNumber:item.order_number})">
                 <div class="o-i-left">
@@ -17,26 +16,22 @@
                 </div>
                 <div class="o-i-center">
                 <span>
-                 {{item.description |  cutText:true:35:'...'}}
+                 {{item.marketing_name |  cutText:true:35:'...'}}
                 </span>
                 </div>
                 <div class="o-i-right">
-                    <span class="o-i-right-span">{{cash_and_point(item.total_price, item.point_exchange_rate, item.payment_type)}}</span>
+                    <span class="o-i-right-span">{{cash_and_point(item.price, item.payment_type)}}</span>
                     <p class="o-i-right-i">x1</p>
                 </div>
             </div>
             <div class="item-detail-btn" style="border-bottom: 1px solid #cccccc">
-                <div class="order-item-price">总价：{{cash_and_point(item.total_price, item.point_exchange_rate, item.payment_type)}}</div>
+                <div class="order-item-price">总价：{{cash_and_point(item.price, item.payment_type)}}</div>
             </div>
             <div class="item-detail-btn">
-                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_primary item-btn-right" style="margin-right: 5px;"
-                        ng-click="deliverReminder(item.order_number)">
-                    提醒发货
-                </a>
                 <!--weui_btn_default-->
                 <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right" style="margin-right: 5px;"
-                   ng-click="goToSalesReturn(item, 3)">
-                    申请退款
+                   ng-click="inviting_friends(item)">
+                    邀请好友拼团
                 </a>
             </div>
         </div>

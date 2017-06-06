@@ -725,8 +725,8 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
 
 
     /* 待成团 */
-    .controller('PendingMassController', ['$scope', '$state', '$rootScope', '$timeout', 'OrderFty', 'OrderCommon',
-        function ($scope, $state, $rootScope, $timeout, OrderFty, OrderCommon) {
+    .controller('PendingMassController', ['$scope', '$state', '$rootScope', '$timeout', 'OrderFty','PointRate',
+        function ($scope, $state, $rootScope, $timeout, OrderFty,PointRate) {
 
             $rootScope.orderTabsIndex = 6;
             //$.showLoading("正在加载...");
@@ -762,12 +762,21 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             }
 
             //订单状态
-            $scope.order_list_status = function (orderStatus) {
-                return OrderCommon.OrderStatus(orderStatus);
+            $scope.piece_group_count = function (minNumber, payNumber) {
+
+                var count = minNumber - payNumber;
+
+                if(count > 0){
+                    return '拼团中,差' + count + '人';
+                }
+                return '已满足成团';
             };
 
             //检查订单支付方式
-            $scope.cash_and_point = function(price, point, pay_type){
+            $scope.cash_and_point = function(price, pay_type){
+
+                var point = PointRate.rate;
+
                 if(pay_type == 'POINT'){
                     return ((price * point).toFixed(0)) + '积分';
                 }else if(pay_type == 'WECHAT'){
@@ -776,22 +785,12 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             };
 
             //进入物流详情
-            $scope.goToExpress_finish = function (item) {
-                var count = 0;
-                if(item.order_items != null){
-                    angular.forEach(item.order_items, function (v, k) {
-                        count += v.quantity;
-                    });
-                }else{
-                    count = -1;
+            $scope.inviting_friends = function (item) {
+                if(item.payment_type == 'WECHAT'){
+                    window.location.href = '/app/payment/wpay/' + $scope.order_number;
+                }else if(item.payment_type == 'POINT'){
+                    window.location.href = '/app/payment/ppay/' + $scope.order_number;
                 }
-                $state.go('express', {
-                    orderNumber: item.order_number,
-                    productImg: item.cover,
-                    productCount: count,
-                    expressNumber:item.express_number,
-                    expressCompany:item.express_company
-                });
             };
 
         }])
