@@ -755,21 +755,20 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                             $scope.pendingMassIsNull = false;
                             $scope.pendingMassShow = true;
                         }
-                        $timeout(function () {
-                            //$.hideLoading();
-                        }, 1000);
                     })
             }
 
             //订单状态
-            $scope.piece_group_count = function (minNumber, payNumber) {
+            $scope.piece_group_count = function (item) {
 
-                var count = minNumber - payNumber;
+                var count = item.min_participator_count - item.paid_members_count;
 
                 if(count > 0){
                     return '拼团中,差' + count + '人';
+                }else if(count <= 0){
+                    return '已成团';
                 }
-                return '已成团';
+                return '';
             };
 
             //检查订单支付方式
