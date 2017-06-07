@@ -1,0 +1,280 @@
+<div id="wholesaleDetails">
+
+    <div class="content">
+
+        <!-- 商品图片 -->
+        <div oc-lazy-load="SquareImg"  class="product-img">
+            <div ng-if="details.covers.length>0">
+                <bs-switch data-type="slider" data-ratio="1">
+                    <bs-switch-content>
+                        <bs-switch-panel ng-repeat="itemImg in details.covers">
+                            <img square-img alt="" ng-src="{{itemImg.url}}"/>
+                        </bs-switch-panel>
+                    </bs-switch-content>
+                    <bs-switch-nav class="ui-switch-nav"></bs-switch-nav>
+                </bs-switch>
+            </div>
+            <!--</div>-->
+            <!--<img ng-src="{{details.cover}}">-->
+
+        </div>
+
+        <!-- 商品内容 -->
+        <div class="product-content">
+            <div class="product-title">
+                {{details.name}}
+            </div>
+            <div class="product-price">
+
+                <span style="margin-right:2px">{{details.price |currency:"￥"}}</span>
+                <span class="point">/ {{(details.price*point_rate) | number:0}}积分</span>
+
+                <!--<span class="rebate" ng-if="product_rebate > 0">
+                    <span class="product-rebate-small">送</span>
+                    <span class="product-rebate">{{(product_rebate*point_rate) | number:0}}</span>
+                    <span  class="product-rebate-small">积分</span>
+                </span>-->
+
+                <span class="rebate">
+                    <span class="product-retail-small">线下建议零售价:</span>
+                    <span class="product-retail">22</span>
+                    <span class="product-retail-small">元/瓶</span>
+                </span>
+
+                <div class="product-price-market"><span>市场价：</span><s>{{details.suggested_price | currency:'￥'}}</s>
+                    <span class="freight_if" ng-if="details.weight > 0">毛重：{{details.weight/1000}}kg</span>
+                    <span class="freight_if" ng-if="!details.weight > 0">{{fare_info.name}}</span>
+                </div>
+            </div>
+
+            <div class="product-freight" style="{{fare_info_title(fare_info.title,fare_info.content)}}">
+                <div class="product-f-left">
+                    <!--<img src="img/details/price-icon.png"/>-->
+                    <span ng-if="fare_info.is_incl_postage == 1">运费:包邮</span>
+                    <span ng-if="fare_info.is_incl_postage_by_if == 1">运费:
+                        <!--<span ng-if="fare_info.carry_modes.region != null">地区{{fare_info.carry_modes.region}}</span>-->
+                        {{fare_info.default_amount | currency:"￥"}}
+                    </span>
+                    <span ng-if="fare_info.is_excl_postage">运费:
+                        {{fare_info.default_amount | currency:"￥"}}
+                    </span>
+                </div>
+                <div class="product-f-right">
+                    <!--<span>销量：{{details.sales}}件</span>-->
+                    <img src="img/details/distribution-icon.png"/>
+                    <span>默认配送：{{default_express}}</span>
+                </div>
+
+                <!--<div class="product_tips custom_text_primary_medium" ng-if="fare_info.title != null && fare_info.content != null">
+                    <span class="p1">{{"【"+fare_info.title+"】"}}</span>
+                    <span class="p2">{{fare_info.content}}</span>
+                </div>-->
+
+                <div class="select-pcd custom_titlebar_primary">
+                    <span>配送至:</span>
+                    <input id="city-picker" type="text" placeholder="广州市 萝岗区 暹岗村" class="select-pcd-input custom_titlebar_primary" style="color: white;"
+                           ng-model="pcd" ng-readonly="true" ng-click="keyboard_hidden()">
+                    <div class="select-pcd-ps">
+                        <span>(此商品暂不支持在当前区域配送)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="details-promise">
+            <div class="details-promise-div">
+                <div class="d-p-d-right">
+                    <!--<img src="img/details/details-promise.png">-->
+                    <label class="ion-ios-checkmark custom_text_primary_medium"></label>
+                    <span>正品保证</span>
+                </div>
+                <div class="d-p-d-center">
+                    <!--<img src="img/details/details-promise.png">-->
+                    <label class="ion-ios-checkmark custom_text_primary_medium"></label>
+                    <span>支持7天退货</span>
+                </div>
+                <div class="d-p-d-left">
+                    <!--<img src="img/details/details-promise.png">-->
+                    <label class="ion-ios-checkmark custom_text_primary_medium"></label>
+                    <span>假一赔十</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="cut-line"></div>
+
+        <!-- 商品详情 -->
+        <div class="product-info">
+
+            <div class="pictures-title">
+                <img src="img/details/product-imgs-icon.png">
+                <span>商品信息</span>
+            </div>
+
+            <div class="product-img-list" ng-bind-html="details.description | to_trusted">
+                <!--<img ng-src="{{imgs.url}}" ng-repeat="imgs in details.images">-->
+                <!--{{details.description}}-->
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- 底部 -->
+    <div id="content-footer" ng-if="false">
+        <div class="content-footer-div">
+            <div class="c-f-d-right" ng-click="goHome()">店铺主页</div>
+            <div class="c-f-d-center">会员中心</div>
+            <div class="c-f-d-left">推客申请</div>
+        </div>
+    </div>
+
+    <div class="footer">
+
+        <div class="detail-footer-left">
+
+            <!--<div class="footer-home">-->
+            <!--<div class="f-h-top">-->
+            <!--<img src="img/details/aliwawa-img.png">-->
+            <!--</div>-->
+            <!--<div class="f-h-bottom">-->
+            <!--客服-->
+            <!--</div>-->
+            <!--</div>-->
+
+            <!-- <div class="footer-cart" ui-sref="home.cart">
+                 <div class="f-c-top ion-app-biliya-tabs-cart">
+                 </div>
+                 <div class="f-c-bottom">
+                     购物车
+                 </div>
+             </div>-->
+
+            <div class="footer-collection" ui-sref="home.cart" ng-click="goToCart()">
+                <div class="f-h-top">
+                    <!--<img src="img/details/cart-img.png">-->
+                    <label class="ion-app-biliya-tabs-cart"></label>
+                </div>
+                <!--<i class="weui_tabbar_icon ion-app-biliya-tabs-cart"></i>-->
+                <!--<i ng-if="d_cart_count > 0" class="cart_count">{{d_cart_count > 99 ? "99+": d_cart_count}}</i>-->
+                <i ng-if="d_cart_count > 0" class="cart_count">{{d_cart_count + "kg"}}</i>
+                <div class="f-h-bottom">
+                    &nbsp;&nbsp;购物车
+                </div>
+            </div>
+
+            <a class="footer-cart" target="_blank"  href="http://wpa.qq.com/msgrd?v=3&uin={{kf_qq}}&site=qq&menu=yes">
+                <div class="f-h-top">
+                    <!--<img src="img/details/chat.png">-->
+                    <label class="ion-app-biliya-tabs-chat custom_text_primary_medium"></label>
+                </div>
+                <div class="f-h-bottom">
+                    <span class="custom_text_primary_medium">客服咨询</span>
+                </div>
+            </a>
+
+            <div ng-if="false" class="footer-collection" ng-click="addProductToCollection(details.id)">
+                <div class="f-h-top">
+                    <img src="img/details/star-collection.png">
+                </div>
+                <div class="f-h-bottom">
+                    收藏
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-footer-right">
+            <div class="item-button">
+                <div class="details_buy_css custom_flat_primary_medium" ng-click="buy_status(2,b_status_btn)" ng-class="b_status_btn ? 'product_info':''">
+                    <!--<div class="details_buy_css product_info" ng-click="buy_immediately(details)">-->
+                    <span>立即购买</span>
+
+                </div>
+                <div class="details_cart_css custom_flat_primary_light" ng-click="buy_status(1,b_status_btn)" ng-class="b_status_btn ? 'product_info':''">
+                    <!--<div class="details_cart_css product_info" ng-click="addProductToCart(details.id)">-->
+                    <span>加入购物车</span>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 商品属性-->
+    <div id="show_details_wrap">
+        <div class="weui_mask_transition" id="details_mask"></div>
+        <div class="weui_actionsheet" id="weui_actionsheet">
+            <div class="weui_actionsheet_menu">
+                <div class="weui_panel">
+                    <!--<div class="weui_panel_hd">选择收货地址</div>-->
+                    <div class="weui_panel_bd">
+                        <div class="weui_media_box weui_media_text">
+
+                            <div oc-lazy-load="SquareImg" class="select_contact detail_content_title">
+                                <img square-img ng-src="{{details_content_sheet_img}}">
+
+                                <div class="weui_media_desc" ng-if="!details.specifications.length > 0">
+                                    {{details.name | cutText:true:32:"..."}}
+                                    <div style="padding-left: 0; margin-top: 6px;">库存：{{details_stock_balance != null ? details_stock_balance : 0}}</div>
+                                </div>
+                                <div class="weui_media_desc spec_info" ng-if="details.specifications.length > 0">
+                                    <div>￥{{spec_item_price != null ? spec_item_price : details_price}}</div>
+                                    <div>库存：{{spec_item_stock_balance != null ? spec_item_stock_balance : details_stock_balance}}</div>
+                                    <!--<div>已选：{{spec_item_name != null ? spec_item_name : '规格分类'}}</div>-->
+                                    <div ng-if="spec_item_name != null">已选：{{spec_item_name}}</div>
+                                </div>
+
+                            </div>
+                            <div ng-if="details.specifications.length > 0" style="font-size: 14px; padding: 5px 0 0 0;">商品规格</div>
+                            <ul class="weui_media_info detail_content_checkbox">
+                                <li class="weui_media_info_meta click_radio"
+                                    ng-repeat="specItem in details.specifications">
+                                    <input class="detail_input_radio detail_is_checked" id="pro_id_{{$index}}"
+                                           type="radio" value="" name="radio"
+                                           ng-click="get_input_value(specItem)">
+                                    <label class="detail_label_radio" for="pro_id_{{$index}}"
+                                           name="pro_id_{{$index}}">{{specItem.name}}</label>
+                                </li>
+                                <input id="property_hidden" type="hidden" value="{{product_property_value.name}}">
+                                <input id="propertis_null" type="hidden" value="{{details.specifications.length}}">
+                                <input id="product_stock_balance" type="hidden" value="{{spec_item_stock_balance}}">
+                                <input id="details_stock_balance" type="hidden" value="{{details_stock_balance}}">
+                            </ul>
+
+                            <div class="details-quantity-position">
+                                <div class="cart-quantity-form">
+                                    <a href="javascript:void(0);" class="cart-quantity-decrement" ng-click="downQ()">
+                                        <span>-</span>
+                                    </a>
+                                    <input autocomplete="off" class="cart-quantity detail_product_count" ng-model="q_count" type="text"
+                                           ng-change="countChange(details)"
+                                            >
+                                    <a href="javascript:void(0);" class="cart-quantity-increment" ng-click="upQ(details)">
+                                        <span>+</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="weui_actionsheet_action">
+                    <div class="weui_actionsheet_cell weui_btn_primary" id="action_sheet_cancel"
+                         ng-click="buy_product_option(details, details.id, q_count)">确定
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a ng-if="false" class="call-service" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={{kf_qq}}&site=qq&menu=yes">
+        <img src="img/details/customer-service.png">
+    </a>
+
+    <a class="go-home" href="#/home/homePage">
+        <img src="img/home.png">
+    </a>
+    <a class="my-collection" ng-click="addProductToCollection(details.id)">
+        <img src="img/details/details-collection.png">
+    </a>
+</div>

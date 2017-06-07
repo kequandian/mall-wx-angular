@@ -1,18 +1,30 @@
-{
-  "coupon_strategy_service_name": "RandomCouponGiveStrategy",
-  "product_id": 62,
-  "marketing_name": "»î¶¯10",
-  "status": "ONSELL",
-  "free_shipping": 1,
-  "suggested_price": 10000,
-  "sale": 11,
-  "id": 10,
-  "min_participator_count": 2,
-  "duration": 180000,
-  "cover": "http://o9ixtumvv.bkt.clouddn.com/20170518171212319-5Cuf4fyr.jpg",
-  "price": 0.1,
-  "coupon_usage": 0,
-  "master_free": 1,
-  "description": null,
-  "payment_type": "WECHAT|POINT"
-}
+[
+  {
+    "id": 50,
+    "user_name": "jiehua",
+    "paid_members_count": 2,
+    "status": "OPENING",
+    "end_time": "2017-06-07 16:05:50",
+    "members_count": 4,
+    "promoted": 1,
+    "start_time": "2017-06-05 14:05:50",
+    "user_id": 336,
+    "piece_group_purchase_id": 10,
+    "user_avatar": null,
+    "member_status": "PAID"
+  },
+  {
+    "id": 51,
+    "user_name": "Jacky.D.H",
+    "paid_members_count": 1,
+    "status": "OPENING",
+    "end_time": "2017-06-08 14:49:31",
+    "members_count": 1,
+    "promoted": 1,
+    "start_time": "2017-06-06 12:49:31",
+    "user_id": 302,
+    "piece_group_purchase_id": 10,
+    "user_avatar": "http://wx.qlogo.cn/mmopen/ajNVdqHZLLDT5Rrib4etIEBz5I2Jt2Sc0WJhW5mIjLa58cHFbhrdL3MJsswRmPr2NWn0xJiciaMKc0pQMUatic7lPg/0",
+    "member_status": "PAID"
+  }
+]

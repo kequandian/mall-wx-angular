@@ -1,6 +1,7 @@
 #wholesale{
     width: 100%;
     height: 100%;
+    overflow-x: hidden;
 }
 /* 地区选择 */
 #wholesale .default-content{
@@ -17,11 +18,18 @@
     top: 35px;
 }
 #wholesale .default-content .select-pcd .select-pcd-text{
-    width: 100%;
     height: 32px;
     line-height: 32px;
     font-size: 14px;
     color: white;
+    padding-left: 10px;
+}
+#wholesale .default-content .select-pcd .select-pcd-input{
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
+    margin: 5px 10px;
+    background-color: white;
 }
 
 #wholesale .default-content .select-btn{
@@ -59,14 +67,54 @@
     height: 100%;
 }
 #wholesale .partner-content .is-not-crown{
-    margin:0 auto;
-    width: 200px;
-    height: 150px;
-    background-size: 200px 150px;
+    margin: 0 auto;
+    width: 248px;
+    height: 153px;
+    background-size: 248px 153px;
     background-image: url("../../../img/sellerPage/wholesale/is-crown-img.png");
     position: absolute;
     top: 35px;
     left: 50%;
-    margin-left: -100px; /*要居中的div的宽度的一半*/
+    margin-left: -124px; /*要居中的div的宽度的一半*/
     text-align: center;
+}
+#wholesale .partner-content .is-not-crown .crown-text{
+    margin: 0 auto;
+    width: 236px;
+    height: 160px;
+    line-height: 25px;
+    padding: 15px;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 15px;
+    color: white;
+    padding-top: 12px;
+}
+#wholesale .partner-content .is-not-crown .crown-btns{
+    margin: 0 auto;
+    width: 100%;
+    height: 50px;
+}
+#wholesale .partner-content .is-not-crown .crown-btns .apply-btn{
+    width: 95px;
+    height: 32px;
+    line-height: 32px;
+    font-size: 13px;
+    float: left;
+    background-color: white;
+    border-radius: 6px;
+    margin-top: 15px;
+    margin-left: 8px;
+}
+#wholesale .partner-content .is-not-crown .crown-btns .cencal-btn{
+    width: 95px;
+    height: 32px;
+    line-height: 32px;
+    font-size: 13px;
+    float: left;
+    color: white;
+    background-color: #606060;
+    border-radius: 6px;
+    margin-top: 15px;
+    margin-left: 9px;
 }

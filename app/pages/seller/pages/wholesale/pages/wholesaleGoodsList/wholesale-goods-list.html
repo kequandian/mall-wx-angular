@@ -1,3 +1,40 @@
-<div id="wholesaleGoodsList">
-sdfsdfe
+<div id="wholesaleGoodsList" ng-class="wGoodsList.length > 0 ? 'padding-bottom: 45px;':''">
+    <nav class="nav">
+        <!-- first nav -->
+        <div class="first-nav">
+            <ul style="{{first_ul}}">
+                <li ng-repeat="f_item in first_cate_nav"
+                    ng-click="gFirstIndex($index,f_item);">
+                    <span ng-class="$index == indexFirstCate ? 'first-current custom_text_primary':''">
+                        {{f_item.name}}
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="pro-content" id="pro-height" oc-lazy-load="SquareImg" ng-class="wGoodsList.length > 0 ? 'height: 100%;':''">
+        <div class="product-item"
+             ng-repeat="item in wGoodsList"
+             ng-click="cateGoToWholesaleDetails(item)"
+                >
+            <div class="product-img">
+                <img square-img src="{{item.cover | defaultWholesaleCover}}">
+                <div ng-if="item.stock_balance == 0">
+                    <img src="img/category/feature.png">
+                </div>
+            </div>
+            <div class="product-name">
+                <!--{{item.name | cutText:true:20:'...'}}-->
+                {{item.marketing_name | defaultShortName}}
+            </div>
+            <div class="product-price">
+                {{item.trade_price | currency:'￥'}}
+            </div>
+        </div>
+
+        <!--<div class="weui_grid load-more-product" ng-if="!isPieceGroups" ng-show="load_more_btn_show">-->
+            <!--<div class="load-more-button">拼命加载中……</div>-->
+        <!--</div>-->
+    </div>
 </div>

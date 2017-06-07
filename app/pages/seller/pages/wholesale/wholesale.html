@@ -4,6 +4,7 @@
 
         <div class="select-pcd">
             <div class="select-pcd-text">请选择配送区域</div>
+            <div class="select-pcd-input"></div>
         </div>
 
         <div class="select-btn" ng-click="goToWholesalwGoodsList()">
@@ -17,6 +18,24 @@
     <div class="partner-content" ng-if="!is_crown">
 
         <div class="is-not-crown">
+
+            <div class="crown-text">
+                <span>"您还不是皇冠经销商无权查看,请先申请皇冠经销商"</span>
+
+                <div class="crown-btns">
+                    <div class="apply-btn custom_text_primary" ng-click="crownApplyAction()">
+                        <span>皇冠申请 >></span>
+                    </div>
+                    <div class="cencal-btn" ng-click="crownApplyCancelAction()">
+                        <span>暂不申请 >></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="crown-text" ng-if="false">
+                <span>"您还不是皇冠经销商无权查看,请与您的推荐人某某联系授权"</span>
+            </div>
+
 
         </div>
 
