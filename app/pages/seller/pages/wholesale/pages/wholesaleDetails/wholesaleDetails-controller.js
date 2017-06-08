@@ -558,11 +558,16 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                     var dis_class = document.getElementsByClassName('weui-picker-modal');
                     console.log(dis_class.length);
                     if(dis_class.length == 0){
-                        console.log("停止");
                         clearInterval(interval);
+                        producePriceChange()
                     }
                 }, 1000);
             };
+
+            //变更价格
+            function producePriceChange(){
+                console.log("变更价格");
+            }
 
 
 
