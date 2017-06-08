@@ -1,138 +1,22 @@
-{
-  "status_code": 0,
-  "data": {
-    "totalRow": 2,
-    "totalPage": 1,
-    "pageNumber": 1,
-    "pageSize": 30,
-    "firstPage": true,
-    "lastPage": true,
-    "list": [
-      {
-        "product": {
-          "partner_level_zone": 2,
-          "weight": 0,
-          "stock_balance": 1000,
-          "fare_id": 2,
-          "id": 35,
-          "cover": "http://o9ixtumvv.bkt.clouddn.com/20161018145500095-PZ025b4M.jpg",
-          "sales": 42,
-          "promoted": 1,
-          "name": "亮白增艳护理洗衣液2.5L【全国包邮（甘肃、宁夏、新疆、西藏、青海、内蒙古除外）】",
-          "created_date": "2016-07-13 11:07:16",
-          "cost_price": 22.04,
-          "status": "ONSELL",
-          "free_shipping": 1,
-          "brand_id": null,
-          "category_id": 58,
-          "suggested_price": 38.8,
-          "barcode": null,
-          "short_name": "亮白护理洗衣液",
-          "bulk": 0,
-          "specifications": [
-            {
-              "id": 12,
-              "weight": 0,
-              "price": 38.8,
-              "cost_price": 22.04,
-              "product_id": 35,
-              "name": "薰衣草",
-              "suggested_price": 38.8,
-              "bulk": 0,
-              "stock_balance": 974
-            },
-            {
-              "id": 13,
-              "weight": 0,
-              "price": 38.8,
-              "cost_price": 22.04,
-              "product_id": 35,
-              "name": "法国香薰",
-              "suggested_price": 38.8,
-              "bulk": 0,
-              "stock_balance": 986
-            },
-            {
-              "id": 14,
-              "weight": 0,
-              "price": 38.8,
-              "cost_price": 22.04,
-              "product_id": 35,
-              "name": "自然清香",
-              "suggested_price": 38.8,
-              "bulk": 0,
-              "stock_balance": 998
-            }
-          ],
-          "unit": "2.5L*1瓶",
-          "last_modified_date": "2016-10-27 14:46:38",
-          "price": 38.8,
-          "covers": [
-            "http://o9ixtumvv.bkt.clouddn.com/20161018145500095-PZ025b4M.jpg",
-            "http://images.10mup.com/20160722155600220-lf05QNAi.jpg",
-            "http://images.10mup.com/20160713110715438-dxnZow1X.jpg"
-          ],
-          "freight": 0,
-          "store_location": null,
-          "sort_order": 22,
-          "view_count": 603
-        },
-        "suggested_retail_price": 40,
-        "id": 3,
-        "cover": "http://o9ixtumvv.bkt.clouddn.com/20170606175348065-gXdiZyea.png",
-        "product_id": 35,
-        "status": "INIT",
-        "marketing_name": "批发1",
-        "description": null,
-        "category_id": 2,
-        "trade_price": 30,
-        "sale": 0
-      },
-      {
-        "product": {
-          "partner_level_zone": 2,
-          "weight": 717,
-          "stock_balance": 987,
-          "fare_id": 1,
-          "id": 85,
-          "cover": "http://o9ixtumvv.bkt.clouddn.com/20161027143355732-VFN0L9yd.jpg",
-          "sales": 13,
-          "promoted": 1,
-          "name": "力士LUX爽肤闪亮冰爽沐浴乳护肤滋润720ml",
-          "created_date": "2016-10-27 14:13:54",
-          "cost_price": 39.9,
-          "status": "ONSELL",
-          "free_shipping": 0,
-          "brand_id": null,
-          "category_id": 36,
-          "suggested_price": 39.9,
-          "barcode": null,
-          "short_name": "闪亮冰爽沐浴乳",
-          "bulk": null,
-          "specifications": [],
-          "unit": "80",
-          "last_modified_date": "2016-10-27 14:33:56",
-          "price": 39.9,
-          "covers": [
-            "http://o9ixtumvv.bkt.clouddn.com/20161027143355732-VFN0L9yd.jpg"
-          ],
-          "freight": 0,
-          "store_location": null,
-          "sort_order": 83,
-          "view_count": 205
-        },
-        "suggested_retail_price": 40,
-        "id": 2,
-        "cover": "http://o9ixtumvv.bkt.clouddn.com/20170605122348113-hl0fVx3E.png",
-        "product_id": 85,
-        "status": "ONSELL",
-        "marketing_name": "力士LUX爽肤闪亮",
-        "description": null,
-        "category_id": 2,
-        "trade_price": 33,
-        "sale": 0
-      }
-    ],
-    "wholesaleRegion": null
+[
+  {
+    "product_id": 62,
+    "product_name": "羊奶手工精油香皂控油去黑头保湿洁面皂补水保湿沐浴皂洗脸【全国包邮（甘肃、宁夏、新疆、西藏、青海、内蒙古除外）】",
+    "quantity": 1,
+    "cover": "http://images.10mup.com/20160722170823828-7RpvQrNB.jpg",
+    "product_specification_id": null,
+    "product_specification_name": null,
+    "stock_balance": 974,
+    "fare_id": 1,
+    "weight": 0,
+    "bulk": 0,
+    "fightGroupData": {
+      "free_shipping": 1,
+      "payment_type": "WECHAT|POINT",
+      "coupon_usage": 1
+    },
+    "price": 0.1,
+    "marketing": "PIECE-GROUP",
+    "marketing_id": 10
   }
-}
+]

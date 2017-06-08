@@ -124,7 +124,7 @@ angular.module('wholesaleDetails.service', [])
 
             getWholesaleDetailsSerivce: function (wholesaleId) {
                 var deferred = $q.defer();
-                var url = GlobalVariable.SERVER_PATH + "/wholesale/id" + wholesaleId;
+                var url = GlobalVariable.SERVER_PATH + "/wholesale/" + wholesaleId;
                 $http.get(url,{
                     headers:{
                         'Authorization': GlobalVariable.ACCESS_TOKEN

@@ -78,8 +78,9 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                 WholesaleDetailsFty.getWholesaleDetailsSerivce(wholesaleId)
                     .then(function(json){
                         if(json.status_code == 0){
+                            $scope.wholesale_info = json.data;
                             product_id = json.data.product_id;
-                            console.log("商品批发详情: " + angular.toJson(json));
+                            //console.log("商品批发详情: " + angular.toJson(json));
                         }else{
                             console.log("获取商品批发详情失败: " + angular.toJson(json));
                         }
@@ -98,7 +99,7 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $scope.details = json.data;
-                            console.log(angular.toJson(json.data));
+                            //console.log(angular.toJson(json.data));
 
                             $scope.details_stock_balance = $scope.details.stock_balance;
                             $scope.details_price = $scope.details.price;
@@ -150,7 +151,8 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                             //运费
                             $scope.fare_info = $scope.details.fare_template;
 
-                            //console.log("fare_info  ?   " + angular.toJson($scope.fare_info));
+                            //console.log("运费信息：" + angular.toJson($scope.fare_info))
+
                             $scope.fare_info.is_excl_postage = ($scope.fare_info.is_incl_postage==0 && $scope.fare_info.is_incl_postage_by_if==0);
 
                             angular.forEach($scope.fare_info.carry_modes, function(item){
@@ -443,7 +445,8 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                     fare_id:null,
                     weight:0,
                     bulk:0,
-                    fightGroupData:{}
+                    fightGroupData:{},
+
                 };
                 var buy_price = 0;
                 if (item.specifications.length > 0) {
@@ -479,8 +482,8 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                 $rootScope.settle_product_code = p_info;
                 $rootScope.settle_product_totalToPay = item.price * quantity;
 
-                //console.log(angular.toJson(p_info));
-                //return;
+                console.log(angular.toJson(p_info));
+                return;
 
                 var newUrl = '#/cart-settlement';
                 var title = '结算';

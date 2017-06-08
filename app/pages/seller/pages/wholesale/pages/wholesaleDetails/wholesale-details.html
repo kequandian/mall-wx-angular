@@ -37,7 +37,7 @@
 
                 <span class="rebate">
                     <span class="product-retail-small">线下建议零售价:</span>
-                    <span class="product-retail">22</span>
+                    <span class="product-retail">{{wholesale_info.suggested_retail_price}}</span>
                     <span class="product-retail-small">元/瓶</span>
                 </span>
 
@@ -72,7 +72,7 @@
 
                 <div class="select-pcd custom_titlebar_primary">
                     <span>配送至:</span>
-                    <input id="city-picker" type="text" placeholder="广州市 萝岗区 暹岗村" class="select-pcd-input custom_titlebar_primary" style="color: white;"
+                    <input id="city-picker" type="text" placeholder="广东省 广州市 白云区" class="select-pcd-input custom_titlebar_primary" style="color: white;"
                            ng-model="pcd" ng-readonly="true" ng-click="keyboard_hidden()">
                     <div class="select-pcd-ps">
                         <span>(此商品暂不支持在当前区域配送)</span>

@@ -1,30 +1,16 @@
 [
   {
-    "id": 50,
-    "user_name": "jiehua",
-    "paid_members_count": 2,
-    "status": "OPENING",
-    "end_time": "2017-06-07 16:05:50",
-    "members_count": 4,
-    "promoted": 1,
-    "start_time": "2017-06-05 14:05:50",
-    "user_id": 336,
-    "piece_group_purchase_id": 10,
-    "user_avatar": null,
-    "member_status": "PAID"
-  },
-  {
-    "id": 51,
-    "user_name": "Jacky.D.H",
-    "paid_members_count": 1,
-    "status": "OPENING",
-    "end_time": "2017-06-08 14:49:31",
-    "members_count": 1,
-    "promoted": 1,
-    "start_time": "2017-06-06 12:49:31",
-    "user_id": 302,
-    "piece_group_purchase_id": 10,
-    "user_avatar": "http://wx.qlogo.cn/mmopen/ajNVdqHZLLDT5Rrib4etIEBz5I2Jt2Sc0WJhW5mIjLa58cHFbhrdL3MJsswRmPr2NWn0xJiciaMKc0pQMUatic7lPg/0",
-    "member_status": "PAID"
+    "product_id": 62,
+    "product_name": "羊奶手工精油香皂控油去黑头保湿洁面皂补水保湿沐浴皂洗脸【全国包邮（甘肃、宁夏、新疆、西藏、青海、内蒙古除外）】",
+    "quantity": 1,
+    "cover": "http://images.10mup.com/20160722170823828-7RpvQrNB.jpg",
+    "product_specification_id": null,
+    "product_specification_name": null,
+    "stock_balance": 974,
+    "fare_id": 1,
+    "weight": 0,
+    "bulk": 0,
+    "fightGroupData": {},
+    "price": 29.8
   }
 ]

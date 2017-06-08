@@ -3,6 +3,26 @@
     height: 100%;
     overflow-x: hidden;
 }
+
+
+#wholesale ::-webkit-input-placeholder { /* WebKit browsers */
+    color: #cccccc;
+    font-size: 13px;
+}
+#wholesale :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #cccccc;
+    font-size: 13px;
+}
+#wholesale ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #cccccc;
+    font-size: 13px;
+}
+#wholesale :-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #cccccc;
+    font-size: 13px;
+}
+
+
 /* 地区选择 */
 #wholesale .default-content{
     width: 100%;
@@ -25,11 +45,12 @@
     padding-left: 10px;
 }
 #wholesale .default-content .select-pcd .select-pcd-input{
-    height: 32px;
-    line-height: 32px;
-    font-size: 14px;
-    margin: 5px 10px;
-    background-color: white;
+    width: 100%;
+    height: 33px;
+    font-size: 13px;
+    color: #000;
+    border: none;
+    padding: 0 10px;
 }
 
 #wholesale .default-content .select-btn{
