@@ -17,13 +17,17 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                 //console.log('新值：' + nValue + "-------" + '旧值：' + oValue);
             });
 
-
             $scope.point_rate = PointRate.rate;
             var wholesaleId = $stateParams.wholesaleId;
             var product_id = 0;
             var province = WholesalePCDCode.province;
             var city = WholesalePCDCode.city;
             var district = WholesalePCDCode.district;
+            var pcd = null;
+
+            if(province != null && city != null && district != null){
+                $scope.pcd = province + ' ' + city + ' ' + district;
+            }
 
             //获取商品批发详情
             getWholesaleDetails();
@@ -91,6 +95,8 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                     }).finally(function(){
                         //商品详情
                         detailsInfo();
+                        //获取省市区
+                        AllPCD();
                     })
             }
 
@@ -535,13 +541,29 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                 $state.go('home.cart');
             };
 
+            //温馨提示文本
             $scope.fare_info_title = function(title, content){
-                if(title != null && content != null){
-                    return 'height: 83px; border-top: 1px solid #ECECEC;'
-                }else{
-                    return 'height: 35px; border-top: 1px solid #ECECEC;'
-                }
+                //if(title != null && content != null){
+                //    return 'height: 83px; border-top: 1px solid #ECECEC;'
+                //}else{
+                //    return 'height: 35px; border-top: 1px solid #ECECEC;'
+                //}
+                return 'height: 75px; border-top: 1px solid #ECECEC;'
             };
+
+            //pcd-信息
+            $scope.pcd_change = function(pcd){
+                //var pcd_change = document.getElementById('city-picker');
+                var interval = setInterval(function(){
+                    var dis_class = document.getElementsByClassName('weui-picker-modal');
+                    console.log(dis_class.length);
+                    if(dis_class.length == 0){
+                        console.log("停止");
+                        clearInterval(interval);
+                    }
+                }, 1000);
+            };
+
 
 
             //判断是否为苹果
@@ -590,6 +612,172 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                     input3=null;
                 }
             };
+
+
+            /*
+             * 获取省市区
+             * */
+            function AllPCD() {
+                WholesaleDetailsFty.getPCDService()
+                    .then(function (result) {
+                        //$scope.provinces = result.data;
+                        if(result.status_code == 0){
+                            pcd = result.data;
+                            showPCD();
+                        }else{
+                            console.log('获取省市区失败：' + angular.toJson(result));
+                        }
+                    }, function (error) {
+                        console.log('获取省市区失败：' + angular.toJson(error));
+                    })
+            }
+
+            function showPCD() {
+                // jshint ignore: start
+                +function ($) {
+
+                    $.rawCitiesData = pcd;
+                    //console.log(pcd);
+
+                }($);
+                // jshint ignore: end
+
+                /* global $:true */
+                /* jshint unused:false*/
+
+                +function ($) {
+                    "use strict";
+
+                    var defaults;
+
+                    $.fn.cityPicker = function (params) {
+                        params = $.extend({}, defaults, params);
+                        return this.each(function () {
+
+                            var format = function (data) {
+                                var result = [];
+                                for (var i = 0; i < data.length; i++) {
+                                    var d = data[i];
+                                    if (d.name === "请选择") continue;
+                                    result.push(d.name);
+                                }
+                                if (result.length) return result;
+                                return [""];
+                            };
+
+                            var area_list = function (data) {
+                                if (!data.area_list) return [""];
+                                return format(data.area_list);
+                            };
+
+                            var getCities = function (d) {
+                                for (var i = 0; i < raw.length; i++) {
+                                    if (raw[i].name === d) return area_list(raw[i]);
+                                }
+                                return [""];
+                            };
+
+                            var getDistricts = function (p, c) {
+                                for (var i = 0; i < raw.length; i++) {
+                                    if (raw[i].name === p) {
+                                        for (var j = 0; j < raw[i].area_list.length; j++) {
+                                            if (raw[i].area_list[j].name === c) {
+                                                return area_list(raw[i].area_list[j]);
+                                            }
+                                        }
+                                    }
+                                }
+                                return [""];
+                            };
+
+                            var raw = $.rawCitiesData;
+                            var provinces = raw.map(function (d) {
+                                return d.name;
+                            });
+                            var initCities = area_list(raw[0]);
+                            var initDistricts = area_list(raw[0].area_list[0]);
+
+                            var currentProvince = provinces[0];
+                            var currentCity = initCities[0];
+                            var currentDistrict = initDistricts[0];
+
+                            var cols = [
+                                {
+                                    values: provinces,
+                                    cssClass: "col-province"
+                                },
+                                {
+                                    values: initCities,
+                                    cssClass: "col-city"
+                                }
+                            ];
+
+                            if (params.showDistrict) cols.push({
+                                values: initDistricts,
+                                cssClass: "col-district"
+                            });
+
+                            var config = {
+
+                                cssClass: "city-picker",
+                                rotateEffect: false,  //为了性能
+
+                                onChange: function (picker, values, displayValues) {
+                                    var newProvince = picker.cols[0].value;
+                                    var newCity;
+                                    if (newProvince !== currentProvince) {
+                                        var newCities = getCities(newProvince);
+                                        newCity = newCities[0];
+                                        var newDistricts = getDistricts(newProvince, newCity);
+                                        picker.cols[1].replaceValues(newCities);
+                                        if (params.showDistrict) picker.cols[2].replaceValues(newDistricts);
+                                        currentProvince = newProvince;
+                                        currentCity = newCity;
+                                        picker.updateValue();
+                                        return;
+                                    }
+                                    if (params.showDistrict) {
+                                        newCity = picker.cols[1].value;
+                                        if (newCity !== currentCity) {
+                                            picker.cols[2].replaceValues(getDistricts(newProvince, newCity));
+                                            currentCity = newCity;
+                                            picker.updateValue();
+                                        }
+                                    }
+                                },
+
+                                cols: cols
+                            };
+
+                            if (!this) return;
+                            var p = $.extend(config, params);
+                            //计算value
+                            var val = $(this).val();
+                            if (val) {
+                                p.value = val.split(" ");
+                                if (p.value[0]) {
+                                    currentProvince = p.value[0];
+                                    p.cols[1].values = getCities(p.value[0]);
+                                }
+
+                                if (p.value[1]) {
+                                    currentCity = p.value[1];
+                                    params.showDistrict && (p.cols[2].values = getDistricts(p.value[0], p.value[1]));
+                                } else {
+                                    currentDistrict = p.value[2];
+                                    params.showDistrict && (p.cols[2].values = getDistricts(p.value[0], p.cols[1].values[0]));
+                                }
+                            }
+                            $(this).picker(p);
+                        });
+                    };
+
+                    defaults = $.fn.cityPicker.prototype.defaults = {
+                        showDistrict: true //是否显示地区选择
+                    };
+
+                }($);
+            }
 
         }])
 ;

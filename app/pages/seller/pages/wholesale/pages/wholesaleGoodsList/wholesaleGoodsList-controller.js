@@ -21,21 +21,29 @@ angular.module('wholesaleGoodsList.controller', ['wholesaleGoodsList.service'])
             //初始化
             initCode();
             function initCode(){
-                //getNavInfo();
-                getWholesaleGoodsList(1);
+                getNavInfo();
+                //getWholesaleGoodsList(1);
             }
 
             function getNavInfo(){
                 WholesaleGoodsListFty.getNavService()
                     .then(function(json){
                         if(json.status_code == 0){
-                            $scope.navList = json.data.list;
+                            $scope.nav_list = json.data;
                             console.log("导航信息：" + angular.toJson(json));
                         }else{
                             console.log("获取导航信息失败：" + angular.toJson(json));
                         }
                     }, function(error) {
                         console.log("获取导航信息失败：" + angular.toJson(error));
+                    }).finally(function(){
+                        if($scope.nav_list != null && $scope.nav_list.length > 0){
+                            if(wCateCache.codeItem == null){
+                                getWholesaleGoodsList($scope.nav_list[0].id);
+                            }else{
+                                getWholesaleGoodsList(wCateCache.codeItem.id);
+                            }
+                        }
                     })
             }
 
@@ -56,32 +64,18 @@ angular.module('wholesaleGoodsList.controller', ['wholesaleGoodsList.service'])
 
             }
 
-            $scope.first_cate_nav = [{
-                name:'text'
-            },{
-                name:'text1'
-            },{
-                name:'text2'
-            }];
+            $scope.indexNavCate = wCateCache.index_first;
 
-            $scope.indexFirstCate = wCateCache.index_first;
+            $scope.wNavIndex = function(e, item){
+                $scope.indexNavCate = e;
 
-            $scope.gFirstIndex = function(e, item){
-                $scope.indexFirstCate = e;
-                //$scope.second_cate = item.sub_categories;
-                $scope.indexSecondCate = 0;
-                //pageNumber = 1;
-                //if(item.sub_categories.length > 0){
-                //    productList(item.sub_categories[0].id);
-                //    wCateCache.product_id = item.sub_categories[0].id;
-                //}else{
-                //    productList(item.id);
-                //    wCateCache.product_id = item.id;
-                //}
+                if(item != null){
+                    getWholesaleGoodsList(item.id);
+                }else{
+                    console.log('item is null');
+                }
                 wCateCache.index_first = e;
-                wCateCache.second_cate = item;
-                wCateCache.index_second = 0;
-
+                wCateCache.codeItem = item;
                 //console.log(angular.toJson(item));
             };
 

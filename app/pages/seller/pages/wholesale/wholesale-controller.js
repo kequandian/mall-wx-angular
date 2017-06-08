@@ -58,11 +58,17 @@ angular.module('wholesale.controller', ['wholesale.service'])
                     return;
                 }
 
-                var pce_list = pcd.value.split(' ');
-                WholesalePCDCode.province = pce_list[0];
-                WholesalePCDCode.city = pce_list[1];
-                WholesalePCDCode.district = pce_list[2];
+                var pcd_body = {};
+                var pcd_list = pcd.value.split(' ');
+                WholesalePCDCode.province = pcd_list[0];
+                WholesalePCDCode.city = pcd_list[1];
+                WholesalePCDCode.district = pcd_list[2];
 
+                //pcd_body.province = pcd_list[0];
+                //pcd_body.city = pcd_list[1];
+                //pcd_body.district = pcd_list[2];
+                //console.log('pcdBody：' + angular.toJson(pcd_body));
+                //saveWholesaleRegion(pcd_body);
                 $state.go('wholesaleGoodsList');
             };
 
@@ -74,6 +80,70 @@ angular.module('wholesale.controller', ['wholesale.service'])
             //取消按钮
             $scope.crownApplyCancelAction = function(){
                 $state.go('home.sellerPage');
+            };
+
+            //保存配送地址
+            function saveWholesaleRegion(pcdBody){
+                WholesaleFty.saveWholesaleRegionService(pcdBody)
+                    .then(function (json) {
+                        //$scope.provinces = result.data;
+                        if(json.status_code == 0){
+                            console.log('保存成功：' + angular.toJson(json));
+                            $state.go('wholesaleGoodsList');
+                        }else{
+                            console.log('保存配送地址失败：' + angular.toJson(json));
+                        }
+                    }, function (error) {
+                        console.log('保存配送地址失败：' + angular.toJson(error));
+                    })
+            }
+
+
+            //判断是否为苹果
+            var isIPHONE = navigator.userAgent.toUpperCase().indexOf('IPHONE')!= -1;
+
+            // 元素失去焦点隐藏iphone的软键盘
+            function objBlur(id,time){
+                if(typeof id != 'string') throw new Error('objBlur()参数错误');
+                var obj = document.getElementById(id),
+                    time = time || 500,
+                    docTouchend = function(event){
+                        if(event.target!= obj){
+                            setTimeout(function(){
+                                obj.blur();
+                                document.removeEventListener('touchend', docTouchend,false);
+                            },time);
+                        }
+                    };
+                if(obj){
+                    obj.addEventListener('focus', function(){
+                        document.addEventListener('touchend', docTouchend,false);
+                    },false);
+                }else{
+                    throw new Error('objBlur()没有找到元素');
+                }
+            }
+
+            //隐藏键盘
+            $scope.keyboard_hidden = function(){
+
+                document.getElementById('city-picker').blur();
+
+                var userInput = document.getElementById('contact_user');
+                userInput.blur();
+                var phoneInput = document.getElementById('contact_phone');
+                phoneInput.blur();
+                var contactInput = document.getElementById('contact_detail');
+                contactInput.blur();
+
+                if(isIPHONE){
+                    var input1 = new objBlur('contact_user');
+                    input1=null;
+                    var input2 = new objBlur('contact_phone');
+                    input2=null;
+                    var input3 = new objBlur('contact_detail');
+                    input3=null;
+                }
             };
 
             /*

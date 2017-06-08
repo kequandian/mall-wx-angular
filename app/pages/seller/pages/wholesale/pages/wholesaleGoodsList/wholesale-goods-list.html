@@ -3,10 +3,10 @@
         <!-- first nav -->
         <div class="first-nav">
             <ul style="{{first_ul}}">
-                <li ng-repeat="f_item in first_cate_nav"
-                    ng-click="gFirstIndex($index,f_item);">
-                    <span ng-class="$index == indexFirstCate ? 'first-current custom_text_primary':''">
-                        {{f_item.name}}
+                <li ng-repeat="nav_item in nav_list"
+                    ng-click="wNavIndex($index,nav_item);">
+                    <span ng-class="$index == indexNavCate ? 'first-current custom_text_primary':''">
+                        {{nav_item.name}}
                     </span>
                 </li>
             </ul>

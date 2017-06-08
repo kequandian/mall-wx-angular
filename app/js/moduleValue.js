@@ -75,7 +75,8 @@ angular.module('moduleValueJs',[])
         product_list:null,
         product_id:-1,
         loading:false,
-        load_more_btn_show: true
+        load_more_btn_show: true,
+        codeItem:null
     })
 
     //商品批发

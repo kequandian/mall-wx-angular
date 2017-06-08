@@ -70,10 +70,10 @@
                     <span class="p2">{{fare_info.content}}</span>
                 </div>-->
 
-                <div class="select-pcd custom_titlebar_primary">
+                <div class="select-pcd custom_titlebar_primary" id="wholesale_pcd">
                     <span>配送至:</span>
                     <input id="city-picker" type="text" placeholder="广东省 广州市 白云区" class="select-pcd-input custom_titlebar_primary" style="color: white;"
-                           ng-model="pcd" ng-readonly="true" ng-click="keyboard_hidden()">
+                           ng-model="pcd" ng-readonly="true" ng-click="pcd_change();keyboard_hidden();">
                     <div class="select-pcd-ps">
                         <span>(此商品暂不支持在当前区域配送)</span>
                     </div>
