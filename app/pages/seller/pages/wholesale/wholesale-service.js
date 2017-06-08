@@ -16,6 +16,26 @@ angular.module('wholesale.service', [])
                         return deferred.reject(data);
                     });
                 return deferred.promise;
+            },
+
+            //获取省市区
+            getPCDService: function () {
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + '/pcd?all=true';
+                $http({
+                    method: 'GET',
+                    url: url,
+                    headers: {
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
+                })
+                    .success(function (data) {
+                        deferred.resolve(data);
+                    })
+                    .error(function (data) {
+                        deferred.reject(data);
+                    });
+                return deferred.promise;
             }
         }
     }]);

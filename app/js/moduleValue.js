@@ -78,5 +78,12 @@ angular.module('moduleValueJs',[])
         load_more_btn_show: true
     })
 
+    //商品批发
+    .value('WholesalePCDCode',{
+        province:null,
+        city:null,
+        district:null
+    })
+
 
 ;

@@ -8,6 +8,9 @@ angular.module('wholesaleGoodsList.route', [])
                 loadData: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load('WholesaleGoodsList');
                 }]
+            },
+            params:{
+                wholesalePCD:null
             }
         })
     }]);

@@ -7,11 +7,17 @@ angular.module('wholesaleGoodsList.controller', ['wholesaleGoodsList.service'])
             return input;
         }
     })
-        .controller('WholesaleGoodsListController', ['$scope','$state', 'WholesaleGoodsListFty','wCateCache',
-        function($scope,$state, WholesaleGoodsListFty,wCateCache){
+        .controller('WholesaleGoodsListController', ['$scope','$state','$stateParams','$rootScope', 'WholesaleGoodsListFty','wCateCache',
+        function($scope,$state,$stateParams,$rootScope, WholesaleGoodsListFty,wCateCache){
 
             document.title = '商品批发';
 
+            //自动关闭省市区弹出框
+            var scope1 = $rootScope;
+            scope1.$watch('closePCD',function(nValue, oValue){
+                $('.close-picker').click();
+                $('#city-picker').click();
+            });
             //初始化
             initCode();
             function initCode(){

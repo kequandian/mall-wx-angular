@@ -49,6 +49,13 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
             //分销余额
             getOwnerBalance();
 
+            //自动关闭pcd控件
+            var scope1 = $rootScope;
+            scope1.$watch('closePCD',function(nValue, oValue){
+                $('.close-picker').click();
+                $('#city-picker').click();
+            });
+
             function getUserInfo() {
                 var loaded = false;
                 if ($rootScope.profile_session) {

@@ -1,7 +1,7 @@
 angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
 
-        .controller('WholesaleDetailsController', ['$scope', '$state', '$stateParams', '$rootScope', 'WholesaleDetailsFty', 'PointRate', '$ocLazyLoad',
-        function ($scope, $state, $stateParams, $rootScope, WholesaleDetailsFty, PointRate, $ocLazyLoad) {
+        .controller('WholesaleDetailsController', ['$scope', '$state', '$stateParams', '$rootScope', 'WholesaleDetailsFty', 'PointRate','WholesalePCDCode', '$ocLazyLoad',
+        function ($scope, $state, $stateParams, $rootScope, WholesaleDetailsFty, PointRate,WholesalePCDCode, $ocLazyLoad) {
 
             $ocLazyLoad.load('Jquery').then(function () {
                 $ocLazyLoad.load('JqueryWeUI').then(function () {
@@ -21,7 +21,9 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
             $scope.point_rate = PointRate.rate;
             var wholesaleId = $stateParams.wholesaleId;
             var product_id = 0;
-            //var product_id = $stateParams.productId;
+            var province = WholesalePCDCode.province;
+            var city = WholesalePCDCode.city;
+            var district = WholesalePCDCode.district;
 
             //获取商品批发详情
             getWholesaleDetails();
