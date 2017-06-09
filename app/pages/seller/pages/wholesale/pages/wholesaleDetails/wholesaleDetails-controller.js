@@ -567,7 +567,9 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
 
             //变更价格
             $scope.pcd_change_price = null;
+            $scope.is_distribution_area = false;
             function producePriceChange(){
+                console.log("变更价格");
                 if(wholesaleInfo == null){
                     console.log("wholesaleInfo is null");
                     return;
@@ -575,8 +577,11 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                 var pcd_change = document.getElementById('city-picker');
                 if(pcd_change.value === undefined || pcd_change.value == null || pcd_change.value == ''){
                     $scope.pcd_change_price = null;
+                    $scope.is_distribution_area = false;
                 }else{
-                    wholesaleInfo.pricings
+                    var input_province = pcd_change.split(' ')[0];
+                    console.log(input_province)
+
                 }
             }
 
