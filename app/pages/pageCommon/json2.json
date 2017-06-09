@@ -1,15 +1,24 @@
 {
   "status_code": 0,
-  "data": [
-    {
-      "id": 2,
-      "name": "个人护理",
-      "sort_order": 100
-    },
-    {
+  "data": {
+    "categories": [
+      {
+        "id": 2,
+        "name": "个人护理",
+        "sort_order": 100
+      },
+      {
+        "id": 1,
+        "name": "织物洗涤",
+        "sort_order": 100
+      }
+    ],
+    "wholesaleRegion": {
       "id": 1,
-      "name": "织物洗涤",
-      "sort_order": 100
+      "province": "广东",
+      "user_id": 2,
+      "district": "越秀区",
+      "city": "广州"
     }
-  ]
+  }
 }

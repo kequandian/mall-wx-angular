@@ -355,6 +355,9 @@
         $rootScope.pieceGroupCouponItem = [];
         $rootScope.pieceGroupCouponItem.id = 0;
 
+        //批发详情地区变更价格
+        $rootScope.pcdChangePrice = -1;
+
         /*//Do your $on in here, like this:
         $rootScope.$on("$locationChangeStart",function(event, next, current){
             console.log('$locationChangeStart')

@@ -21,6 +21,8 @@ angular.module('wholesaleGoodsList.controller', ['wholesaleGoodsList.service'])
             //初始化
             initCode();
             function initCode(){
+                console.log("商品批发");
+                wCateCache.isPcs = 0;
                 getNavInfo();
                 //getWholesaleGoodsList(1);
             }
@@ -37,9 +39,9 @@ angular.module('wholesaleGoodsList.controller', ['wholesaleGoodsList.service'])
                     }, function(error) {
                         console.log("获取导航信息失败：" + angular.toJson(error));
                     }).finally(function(){
-                        if($scope.nav_list != null && $scope.nav_list.length > 0){
+                        if($scope.nav_list.categories != null && $scope.nav_list.categories.length > 0){
                             if(wCateCache.codeItem == null){
-                                getWholesaleGoodsList($scope.nav_list[0].id);
+                                getWholesaleGoodsList($scope.nav_list.categories[0].id);
                             }else{
                                 getWholesaleGoodsList(wCateCache.codeItem.id);
                             }
@@ -58,8 +60,6 @@ angular.module('wholesaleGoodsList.controller', ['wholesaleGoodsList.service'])
                         }
                     }, function(error) {
                         console.log("获取商品批发列表失败：" + angular.toJson(error));
-                    }).finally(function(){
-
                     })
 
             }
@@ -76,7 +76,7 @@ angular.module('wholesaleGoodsList.controller', ['wholesaleGoodsList.service'])
                 }
                 wCateCache.index_first = e;
                 wCateCache.codeItem = item;
-                //console.log(angular.toJson(item));
+                console.log(angular.toJson(item));
             };
 
             //进入批发详情

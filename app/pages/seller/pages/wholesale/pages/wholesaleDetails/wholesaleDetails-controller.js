@@ -1,7 +1,8 @@
 angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
 
-        .controller('WholesaleDetailsController', ['$scope', '$state', '$stateParams', '$rootScope', 'WholesaleDetailsFty', 'PointRate','WholesalePCDCode', '$ocLazyLoad',
-        function ($scope, $state, $stateParams, $rootScope, WholesaleDetailsFty, PointRate,WholesalePCDCode, $ocLazyLoad) {
+        .controller('WholesaleDetailsController', ['$scope', '$state', '$stateParams', '$rootScope', 'WholesaleDetailsFty',
+        'PointRate','WholesalePCDCode', '$ocLazyLoad','$interval',
+        function ($scope, $state, $stateParams, $rootScope, WholesaleDetailsFty, PointRate,WholesalePCDCode, $ocLazyLoad,$interval) {
 
             $ocLazyLoad.load('Jquery').then(function () {
                 $ocLazyLoad.load('JqueryWeUI').then(function () {
@@ -24,7 +25,8 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
             var city = WholesalePCDCode.city;
             var district = WholesalePCDCode.district;
             var pcd = null;
-            var wholesaleInfo = null;
+            $scope.pcd_change_price = 0;
+            $scope.cannot_deliver = false;
 
             if(province != null && city != null && district != null){
                 $scope.pcd = province + ' ' + city + ' ' + district;
@@ -86,7 +88,6 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                     .then(function(json){
                         if(json.status_code == 0){
                             $scope.wholesale_info = json.data;
-                            wholesaleInfo = json.data;
                             product_id = json.data.product_id;
                             //console.log("商品批发详情: " + angular.toJson(json));
                         }else{
@@ -95,6 +96,8 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                     }, function(error){
                         console.log("获取商品批发详情失败: " + angular.toJson(error));
                     }).finally(function(){
+                        //变更价格
+                        producePriceChange($scope.wholesale_info)
                         //商品详情
                         detailsInfo();
                         //获取省市区
@@ -456,6 +459,7 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                     weight:0,
                     bulk:0,
                     fightGroupData:{},
+                    wholesaleData:{}
 
                 };
                 var buy_price = 0;
@@ -479,9 +483,14 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                 p_item.weight = item.weight;
                 p_item.bulk = item.bulk;
 
+                //批发状态
+                p_item.marketing = 'WHOLESALE';
+                p_item.wholesaleData.marketing_id = $scope.wholesale_info.id;
+
+                //如果规格为空
                 if(product_specification_id == null){
                     p_item.stock_balance = item.stock_balance;
-                    p_item.price = item.price;
+                    p_item.price = $scope.pcd_change_price;
                 }
 
                 p_item.product_specification_id = product_specification_id;
@@ -553,22 +562,31 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                 return 'height: 75px; border-top: 1px solid #ECECEC;'
             };
 
+
+
+            var interval = setInterval(function(){
+                $scope.submitForm = function(ee){
+                    alert(ee)
+                }
+            }, 1000);
+
             //更改pcd变更价格
             $scope.pcd_change = function(){
-                var interval = setInterval(function(){
+
+                var interval = $interval(function(){
                     var dis_class = document.getElementsByClassName('weui-picker-modal');
                     console.log(dis_class.length);
                     if(dis_class.length == 0){
-                        clearInterval(interval);
-                        producePriceChange()
+                        producePriceChange($scope.wholesale_info);
+                        $interval.cancel(interval);
                     }
                 }, 1000);
             };
 
             //变更价格
-            $scope.pcd_change_price = null;
-            $scope.is_distribution_area = false;
-            function producePriceChange(){
+            function producePriceChange(wholesaleInfo){
+
+                $scope.pcd_change_price = 0;
                 console.log("变更价格");
                 if(wholesaleInfo == null){
                     console.log("wholesaleInfo is null");
@@ -576,11 +594,61 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                 }
                 var pcd_change = document.getElementById('city-picker');
                 if(pcd_change.value === undefined || pcd_change.value == null || pcd_change.value == ''){
-                    $scope.pcd_change_price = null;
-                    $scope.is_distribution_area = false;
+                    console.log("获取省市区input值失败");
+                    $scope.pcd_change_price = 0;
                 }else{
-                    var input_province = pcd_change.split(' ')[0];
-                    console.log(input_province)
+                    console.log("处理中");
+                    var input_pcd = pcd_change.value.replace(/[ ]/g, "-");
+                    var region_null = null;
+                    var change_item = null;
+                    angular.forEach(wholesaleInfo.pricings, function(value, index){
+
+                        if(value.region == null){
+                            region_null = value;
+                        }else if(value.region.indexOf('|') >= 0){
+                            var region_list = value.region.split('|');
+                            angular.forEach(region_list, function(v,k){
+                                if(input_pcd.indexOf(v) != -1){
+                                    change_item = value;
+                                }
+                            })
+                        }else{
+                            if(input_pcd.indexOf(value.region) != -1){
+                                change_item = value;
+                            }
+                        }
+
+                    });
+
+                    if(change_item == null){
+                        change_item = region_null;
+                    }
+
+                    //console.log(angular.toJson(change_item))
+
+                    if(change_item.is_default == 1){
+
+                        if(change_item.enabled == 1){
+                            $scope.cannot_deliver = false;
+                            $scope.pcd_change_price = change_item.price;
+                        }else if(change_item.enabled == 0){
+                            $scope.cannot_deliver = true;
+                            $scope.pcd_change_price = $scope.wholesale_info.trade_price;
+                        }
+
+                    }else if(change_item.is_default == 0){
+
+                        if(change_item.enabled == 1){
+                            $scope.cannot_deliver = false;
+                            $scope.pcd_change_price = change_item.price;
+                        }else if(change_item.enabled == 0){
+                            $scope.cannot_deliver = true;
+                            $scope.pcd_change_price = $scope.wholesale_info.trade_price;
+                        }
+                        //$rootScope.pcdChangePrice = change_item.price;
+                    }
+                    //$scope.pcd_change_price = $rootScope.pcdChangePrice;
+                    console.log('变更完成: ' + $scope.pcd_change_price)
 
                 }
             }

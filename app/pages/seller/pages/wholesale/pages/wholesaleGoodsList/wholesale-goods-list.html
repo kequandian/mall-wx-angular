@@ -3,7 +3,7 @@
         <!-- first nav -->
         <div class="first-nav">
             <ul style="{{first_ul}}">
-                <li ng-repeat="nav_item in nav_list"
+                <li ng-repeat="nav_item in nav_list.categories"
                     ng-click="wNavIndex($index,nav_item);">
                     <span ng-class="$index == indexNavCate ? 'first-current custom_text_primary':''">
                         {{nav_item.name}}

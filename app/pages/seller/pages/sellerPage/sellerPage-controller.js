@@ -32,8 +32,9 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
     })
 
     .controller('SellerPageController', ['$scope', '$state', '$rootScope', 'SellerPageFty', 'BalanceSession', 'UserInfo', 'DWStatus',
-        'withdrawBalance', 'cateLeftIndex','PointRate','GlobalVariable',
-        function ($scope, $state, $rootScope, SellerPageFty, BalanceSession, UserInfo, DWStatus, withdrawBalance, cateLeftIndex, PointRate,GlobalVariable) {
+        'withdrawBalance', 'cateLeftIndex','PointRate','GlobalVariable','wCateCache',
+        function ($scope, $state, $rootScope, SellerPageFty, BalanceSession, UserInfo, DWStatus, withdrawBalance, cateLeftIndex,
+                  PointRate,GlobalVariable,wCateCache) {
 
             //title
             document.title = "积分中心";
@@ -218,6 +219,7 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
 
             //商品批发
             $scope.wholesale = function(isCrown){
+                wCateCache.isPcs = -1;
                 $state.go('wholesale',{isCrown: isCrown});
             }
 

@@ -119,22 +119,29 @@
 
 #wholesaleDetails .product-price-market{
     position: relative;
+    height: 26px;
+    line-height: 26px;
 }
 
 #wholesaleDetails .product-price-market span{
     font-size: 12px;
-    height: 26px;
-    line-height: 26px;
     color:#7D7D7D;
+    float: left;
+}
+#wholesaleDetails .product-price-market s{
+    font-size: 12px;
+    float: left;
+    margin-top: 4px;
 }
 
 #wholesaleDetails .product-price-market .freight_if{
-    font-size: 14px;
+    font-size: 12px;
     height: 28px;
-    line-height: 28px;
+    line-height: 33px;
     /*color:#F15353;*/
     color:#7D7D7D;
     margin-left: 10px;
+    float: left;
 }
 
 #wholesaleDetails .product-price s{

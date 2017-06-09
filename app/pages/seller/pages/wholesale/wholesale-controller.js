@@ -1,7 +1,7 @@
 angular.module('wholesale.controller', ['wholesale.service'])
 
-        .controller('WholesaleController', ['$scope','$state','$stateParams', 'WholesaleFty','WholesalePCDCode',
-        function($scope,$state,$stateParams, WholesaleFty,WholesalePCDCode){
+        .controller('WholesaleController', ['$scope','$state','$stateParams', 'WholesaleFty','WholesalePCDCode','wCateCache',
+        function($scope,$state,$stateParams, WholesaleFty,WholesalePCDCode,wCateCache){
 
             document.title = '商品批发';
             var isCrown = null;
@@ -38,7 +38,12 @@ angular.module('wholesale.controller', ['wholesale.service'])
                                 WholesalePCDCode.province = wholesaleRegion.province;
                                 WholesalePCDCode.city = wholesaleRegion.city;
                                 WholesalePCDCode.district = wholesaleRegion.district;
-                                $state.go('wholesaleGoodsList');
+                                console.log('wCateCache.isPcs > ' + wCateCache.isPcs);
+                                if(wCateCache.isPcs == 0){
+                                    $state.go('home.sellerPage');
+                                }else if(wCateCache.isPcs == -1){
+                                    $state.go('wholesaleGoodsList');
+                                }
                             }else{
                                 //获取省市区
                                 AllPCD();
@@ -67,7 +72,7 @@ angular.module('wholesale.controller', ['wholesale.service'])
                 pcd_body.province = pcd_list[0];
                 pcd_body.city = pcd_list[1];
                 pcd_body.district = pcd_list[2];
-                console.log('pcdBody：' + angular.toJson(pcd_body));
+                //console.log('pcdBody：' + angular.toJson(pcd_body));
                 saveWholesaleRegion(pcd_body);
                 //$state.go('wholesaleGoodsList');
             };
