@@ -24,7 +24,7 @@ angular.module('wholesale.controller', ['wholesale.service'])
                     .then(function(json){
                         if(json.status_code == 0){
                             wholesaleInfo = json.data;
-                            //console.log("商品批发信息：" + angular.toJson(json));
+                            //console.log("商品批发分类：" + angular.toJson(json));
                         }else{
                             console.log("获取商品批发信息失败：" + angular.toJson(json));
                         }
@@ -64,12 +64,12 @@ angular.module('wholesale.controller', ['wholesale.service'])
                 WholesalePCDCode.city = pcd_list[1];
                 WholesalePCDCode.district = pcd_list[2];
 
-                //pcd_body.province = pcd_list[0];
-                //pcd_body.city = pcd_list[1];
-                //pcd_body.district = pcd_list[2];
-                //console.log('pcdBody：' + angular.toJson(pcd_body));
-                //saveWholesaleRegion(pcd_body);
-                $state.go('wholesaleGoodsList');
+                pcd_body.province = pcd_list[0];
+                pcd_body.city = pcd_list[1];
+                pcd_body.district = pcd_list[2];
+                console.log('pcdBody：' + angular.toJson(pcd_body));
+                saveWholesaleRegion(pcd_body);
+                //$state.go('wholesaleGoodsList');
             };
 
             //申请皇冠按钮

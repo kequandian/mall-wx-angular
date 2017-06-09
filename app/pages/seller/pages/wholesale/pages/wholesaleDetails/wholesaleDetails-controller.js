@@ -24,6 +24,7 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
             var city = WholesalePCDCode.city;
             var district = WholesalePCDCode.district;
             var pcd = null;
+            var wholesaleInfo = null;
 
             if(province != null && city != null && district != null){
                 $scope.pcd = province + ' ' + city + ' ' + district;
@@ -85,6 +86,7 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                     .then(function(json){
                         if(json.status_code == 0){
                             $scope.wholesale_info = json.data;
+                            wholesaleInfo = json.data;
                             product_id = json.data.product_id;
                             //console.log("商品批发详情: " + angular.toJson(json));
                         }else{
@@ -551,9 +553,8 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                 return 'height: 75px; border-top: 1px solid #ECECEC;'
             };
 
-            //pcd-信息
-            $scope.pcd_change = function(pcd){
-                //var pcd_change = document.getElementById('city-picker');
+            //更改pcd变更价格
+            $scope.pcd_change = function(){
                 var interval = setInterval(function(){
                     var dis_class = document.getElementsByClassName('weui-picker-modal');
                     console.log(dis_class.length);
@@ -565,8 +566,18 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
             };
 
             //变更价格
+            $scope.pcd_change_price = null;
             function producePriceChange(){
-                console.log("变更价格");
+                if(wholesaleInfo == null){
+                    console.log("wholesaleInfo is null");
+                    return;
+                }
+                var pcd_change = document.getElementById('city-picker');
+                if(pcd_change.value === undefined || pcd_change.value == null || pcd_change.value == ''){
+                    $scope.pcd_change_price = null;
+                }else{
+                    wholesaleInfo.pricings
+                }
             }
 
 
