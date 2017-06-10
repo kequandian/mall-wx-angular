@@ -405,7 +405,8 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                     fare_id:null,
                     weight:0,
                     bulk:0,
-                    fightGroupData:{}
+                    fightGroupData:{},
+                    wholesaleData:{}
                 };
                 var buy_price = 0;
                 if (item.specifications.length > 0) {

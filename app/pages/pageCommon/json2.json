@@ -1,24 +1,44 @@
 {
-  "status_code": 0,
-  "data": {
-    "categories": [
-      {
-        "id": 2,
-        "name": "个人护理",
-        "sort_order": 100
-      },
-      {
-        "id": 1,
-        "name": "织物洗涤",
-        "sort_order": 100
-      }
-    ],
-    "wholesaleRegion": {
-      "id": 1,
-      "province": "广东",
-      "user_id": 2,
-      "district": "越秀区",
-      "city": "广州"
-    }
-  }
+  "detail": "1122号",
+  "phone": "15236985236",
+  "is_deliver_reminder": 0,
+  "contact_user": "huang",
+  "remark": null,
+  "invoice": 0,
+  "street": null,
+  "trade_number": null,
+  "express_number": null,
+  "deal_date": null,
+  "express_company": null,
+  "city": "石家庄",
+  "id": 871,
+  "cover": "http://images.10mup.com/20160722170823828-7RpvQrNB.jpg",
+  "confirm_date": null,
+  "description": "羊奶手工精油香皂控油去黑头保湿洁面皂补水保湿沐浴皂洗脸【全国包邮（甘肃、宁夏、新疆、西藏、青海、内蒙古除外）】 x 1. ",
+  "province": "河北",
+  "user_id": 2,
+  "coupon_info": null,
+  "express_code": null,
+  "district": "长安区",
+  "deliver_date": null,
+  "delivered_date": null,
+  "created_date": "2017-06-10 17:44:34",
+  "order_number": "1706101744346402",
+  "zip": null,
+  "point_exchange_rate": 100,
+  "marketing": "PIECE-GROUP",
+  "status": "CREATED_PAY_PENDING",
+  "invoice_title": null,
+  "marketing_description": "活动10",
+  "receiving_time": null,
+  "deliver_order_number": null,
+  "total_price": 0.1,
+  "previous_status": null,
+  "user_name": "jingfei",
+  "is_deleted": 0,
+  "marketing_id": 59,
+  "settled": 0,
+  "freight": 0,
+  "pay_date": null,
+  "payment_type": "WECHAT"
 }

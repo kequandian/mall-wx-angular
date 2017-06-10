@@ -187,7 +187,8 @@
 
 /* settlement 结算页 */
 #settlement{
-
+    position: relative;
+    z-index: 0;
 }
 
 #settlement .view-container {

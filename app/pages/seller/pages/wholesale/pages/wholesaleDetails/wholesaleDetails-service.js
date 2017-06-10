@@ -140,22 +140,40 @@ angular.module('wholesaleDetails.service', [])
 
             //获取省市区
             getPCDService: function () {
-            var deferred = $q.defer();
-            var url = GlobalVariable.SERVER_PATH + '/pcd?all=true';
-            $http({
-                method: 'GET',
-                url: url,
-                headers: {
-                    'Authorization': GlobalVariable.ACCESS_TOKEN
-                }
-            })
-                .success(function (data) {
-                    deferred.resolve(data);
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + '/pcd?all=true';
+                $http({
+                    method: 'GET',
+                    url: url,
+                    headers: {
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
                 })
-                .error(function (data) {
-                    deferred.reject(data);
-                });
-            return deferred.promise;
-        }
+                    .success(function (data) {
+                        deferred.resolve(data);
+                    })
+                    .error(function (data) {
+                        deferred.reject(data);
+                    });
+                return deferred.promise;
+            },
+
+            //保存配送地
+            saveRegionService: function (body) {
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + '/wholesale_region';
+                $http.post(url,body,{
+                    headers: {
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
+                })
+                    .success(function (data) {
+                        deferred.resolve(data);
+                    })
+                    .error(function (data) {
+                        deferred.reject(data);
+                    });
+                return deferred.promise;
+            }
         }
     }]);

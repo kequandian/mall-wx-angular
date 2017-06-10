@@ -8,7 +8,7 @@
         <div class="order-item" ng-repeat="items in deliveredList" ng-hide="deliveredShow">
             <div class="item-order-number">
                 订单号：{{items.order_number}}
-                <span class="piece-group-text" ng-if="items.marketing_id != null">【拼团】</span>
+                <span class="piece-group-text" ng-if="marketing_status_del(items.marketing)">{{marketing_text}}</span>
                 <span class="custom_text_primary">{{order_list_status(items.status)}}</span>
             </div>
             <div class="item-order-info" ui-sref="orderDetails({orderNumber:items.order_number})">

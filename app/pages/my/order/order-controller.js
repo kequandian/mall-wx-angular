@@ -148,6 +148,20 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                 return OrderCommon.OrderStatus(orderStatus);
             };
 
+            //订单销售类型
+            $scope.marketing_status_all = function(status){
+                if(status == null){
+                    $scope.marketing_text = null;
+                    return false;
+                }else if(status == 'PIECE-GROUP'){
+                    $scope.marketing_text = '【拼团】';
+                    return true;
+                }else if(status == 'WHOLESALE'){
+                    $scope.marketing_text = '【批发】';
+                    return true;
+                }
+            };
+
             //检查订单支付方式
             $scope.cash_and_point = function(price, point, pay_type){
                 if(pay_type == 'POINT'){
@@ -219,6 +233,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
 
             //立即付款
             $scope.weixin_pay = function (order) {
+
                 if(order.payment_type == "POINT" && BalanceSession.balance >= order.totalPrice){
                     window.location.href = '/app/payment/ppay/' + order.order_number;//积分
                 }else if(order.payment_type == "WECHAT"){
@@ -339,6 +354,7 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                                     $scope.payList.push(v);
                                 }
                             });
+                            //console.log('待付款： ' + angular.toJson($scope.payList));
                         } else {
                             $.toast('读取订单信息失败');
                         }
@@ -362,6 +378,20 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             //订单状态
             $scope.order_list_status = function (orderStatus) {
                 return OrderCommon.OrderStatus(orderStatus);
+            };
+
+            //订单销售类型
+            $scope.marketing_status_pay = function(status){
+                if(status == null){
+                    $scope.marketing_text = null;
+                    return false;
+                }else if(status == 'PIECE-GROUP'){
+                    $scope.marketing_text = '【拼团】';
+                    return true;
+                }else if(status == 'WHOLESALE'){
+                    $scope.marketing_text = '【批发】';
+                    return true;
+                }
             };
 
             //检查订单支付方式
@@ -434,6 +464,20 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             //订单状态
             $scope.order_list_status = function (orderStatus) {
                 return OrderCommon.OrderStatus(orderStatus);
+            };
+
+            //订单销售类型
+            $scope.marketing_status_payed = function(status){
+                if(status == null){
+                    $scope.marketing_text = null;
+                    return false;
+                }else if(status == 'PIECE-GROUP'){
+                    $scope.marketing_text = '【拼团】';
+                    return true;
+                }else if(status == 'WHOLESALE'){
+                    $scope.marketing_text = '【批发】';
+                    return true;
+                }
             };
 
             //检查订单支付方式
@@ -547,6 +591,20 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             //订单状态
             $scope.order_list_status = function (orderStatus) {
                 return OrderCommon.OrderStatus(orderStatus);
+            };
+
+            //订单销售类型
+            $scope.marketing_status_del = function(status){
+                if(status == null){
+                    $scope.marketing_text = null;
+                    return false;
+                }else if(status == 'PIECE-GROUP'){
+                    $scope.marketing_text = '【拼团】';
+                    return true;
+                }else if(status == 'WHOLESALE'){
+                    $scope.marketing_text = '【批发】';
+                    return true;
+                }
             };
 
             //检查订单支付方式
@@ -693,6 +751,20 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                 return OrderCommon.OrderStatus(orderStatus);
             };
 
+            //订单销售类型
+            $scope.marketing_status_fin = function(status){
+                if(status == null){
+                    $scope.marketing_text = null;
+                    return false;
+                }else if(status == 'PIECE-GROUP'){
+                    $scope.marketing_text = '【拼团】';
+                    return true;
+                }else if(status == 'WHOLESALE'){
+                    $scope.marketing_text = '【批发】';
+                    return true;
+                }
+            };
+
             //检查订单支付方式
             $scope.cash_and_point = function(price, point, pay_type){
                 if(pay_type == 'POINT'){
@@ -725,8 +797,8 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
 
 
     /* 待成团 */
-    .controller('PendingMassController', ['$scope', '$state', '$rootScope', '$timeout', 'OrderFty','PointRate',
-        function ($scope, $state, $rootScope, $timeout, OrderFty,PointRate) {
+    .controller('PendingMassController', ['$scope', '$state', '$rootScope', '$timeout', 'OrderFty','PointRate','BalanceSession',
+        function ($scope, $state, $rootScope, $timeout, OrderFty,PointRate,BalanceSession) {
 
             $rootScope.orderTabsIndex = 6;
             //$.showLoading("正在加载...");
@@ -784,10 +856,13 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
 
             //邀请好友拼团
             $scope.inviting_friends = function (item) {
-                if(item.payment_type == 'WECHAT'){
-                    window.location.href = '/app/payment/wpay/' + item.order_number;
-                }else if(item.payment_type == 'POINT'){
-                    window.location.href = '/app/payment/ppay/' + item.order_number;
+
+                if(item.payment_type == "POINT" && BalanceSession.balance >= item.totalPrice){
+                    window.location.href = '/app/payment/ppay/' + item.order_number;//积分
+                }else if(item.payment_type == "WECHAT"){
+                    window.location.href = '/app/payment/wpay/' + item.order_number; //微信
+                }else{
+                    window.location.href = '/app/payment/wpay/' + item.order_number; //微信
                 }
             };
 

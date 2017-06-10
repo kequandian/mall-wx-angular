@@ -114,4 +114,18 @@
 
             }
 
+            //订单销售类型
+            $scope.marketing_status_refund = function(status){
+                if(status == null){
+                    $scope.marketing_text = null;
+                    return false;
+                }else if(status == 'PIECE-GROUP'){
+                    $scope.marketing_text = '【拼团】';
+                    return true;
+                }else if(status == 'WHOLESALE'){
+                    $scope.marketing_text = '【批发】';
+                    return true;
+                }
+            };
+
         }]);
