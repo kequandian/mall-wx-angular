@@ -440,7 +440,12 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                         if ($scope.currentContact != null) {
                             $scope.productFrieghts.province = $scope.currentContact.province;
                             $scope.productFrieghts.city = $scope.currentContact.city;
-                            getFrieght();
+
+                            if(JSON.stringify(settle_product_code[0].wholesaleData)=="{}"){
+                                getFrieght();
+                            }else{
+                                $scope.product_frieght = 0;
+                            }
                         }
 
                         if ($scope.contacts.length > 0) {
@@ -965,7 +970,12 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 //console.log($scope.currentContact);
                 $scope.productFrieghts.province = $scope.currentContact.province;
                 $scope.productFrieghts.city = $scope.currentContact.city;
-                getFrieght();
+
+                if(JSON.stringify(settle_product_code[0].wholesaleData)=="{}"){
+                    getFrieght();
+                }else{
+                    $scope.product_frieght = 0;
+                }
             };
 
             //显示发票抬头

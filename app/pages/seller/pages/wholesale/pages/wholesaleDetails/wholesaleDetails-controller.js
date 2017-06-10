@@ -402,6 +402,10 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                     $.toast('请输入商品数量','cancel');
                     return;
                 }
+                if($scope.cannot_deliver){
+                    $.toast('该地区不支持配送服务','cancel');
+                    return;
+                }
 
                 WholesaleDetailsFty.addProToCatService(productId, quantity, product_property, product_specification_id)
                     .then(function (json) {
@@ -499,7 +503,12 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
 
                 //console.log(angular.toJson(p_info));
                 //保存配送地信息
-                saveRegion(item,quantity,p_info);
+
+                if($scope.cannot_deliver){
+                    $.toast('该地区不支持配送服务','cancel');
+                }else{
+                    saveRegion(item,quantity,p_info);
+                }
 
             };
 
@@ -585,13 +594,6 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                 return 'height: 75px; border-top: 1px solid #ECECEC;'
             };
 
-
-
-            var interval = setInterval(function(){
-                $scope.submitForm = function(ee){
-                    alert(ee)
-                }
-            }, 1000);
 
             //更改pcd变更价格
             $scope.pcd_change = function(){
