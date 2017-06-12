@@ -74,4 +74,32 @@ angular.module('offLineShop.route',[])
                 }]
             }
         })
+
+            /*
+            * 经销授权nav
+            * */
+            .state('authorizationPage', {
+            url:'/authorizationPage',
+            templateUrl: 'pages/seller/pages/offLineShop/seller/sellerAuthorization/authorizationPage.html',
+            controller:'AuthorizationPageController',
+            resolve: {
+                loadData: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load('OffLine');
+                }]
+            }
+        })
+
+            /*
+             * 皇冠经销授权
+             * */
+            .state('crownSellerAuthentication', {
+                url:'/crownSellerAuthentication/:levelStatus',
+                templateUrl: 'pages/seller/pages/offLineShop/seller/sellerAuthorization/crownSellerAuthentication.html',
+                controller:'CrownSellerAuthenticationController',
+                resolve: {
+                    loadData: ['$ocLazyLoad', function ($ocLazyLoad) {
+                        return $ocLazyLoad.load('SellerAuthorization');
+                    }]
+                }
+            })
     }]);

@@ -14,7 +14,8 @@ angular.module('offLineShop.controller', ['offLineShop.service'])
             };
 
             $scope.seller_authorization_action = function(){
-                $state.go('sellerAuthorization',{isAgent:true});
+                //$state.go('sellerAuthorization',{isAgent:true});
+                $state.go('authorizationPage');
             };
 
             $scope.my_recommend_action = function(){
@@ -33,4 +34,28 @@ angular.module('offLineShop.controller', ['offLineShop.service'])
 
             };
 
-        }]);
+        }])
+
+
+
+    /*
+     * 经销授权nav
+     * */
+    .controller('AuthorizationPageController', ['$scope','$state','$filter','OffLineShopFty',
+        function ($scope, $state,$filter,OffLineShopFty) {
+
+            document.title = "经销授权";
+
+            //进入皇冠经销授权页
+            $scope.crown_seller_authorization_action = function(){
+                $state.go('crownSellerAuthentication', {levelStatus: true});
+            };
+
+            //进入星级经销授权页
+            $scope.star_seller_authorization_action = function(){
+                $state.go('crownSellerAuthentication', {levelStatus: false});
+            };
+
+
+        }])
+;

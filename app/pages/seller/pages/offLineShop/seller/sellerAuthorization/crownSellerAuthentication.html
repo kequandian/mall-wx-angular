@@ -1,0 +1,57 @@
+<div id="sellerAuthorization">
+
+    <form ng-submit="apply_action(userInfo.uid,userInfo.real_name,userInfo.phone)">
+        <!-- 基本信息 -->
+        <div class="weui_cells weui_cells_form settlement-font">
+            <div class="weui_cell">
+                <div class="weui_cell_hd">
+                    <label class="weui_label">ID号：</label>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="text" placeholder="{{init_placeholder_id}}" ng-disabled="!is_agent" ng-model="userInfo.uid">
+                </div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd">
+                    <label class="weui_label">姓名：</label>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="text" placeholder="{{init_placeholder_name}}" ng-model="userInfo.real_name">
+                </div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd">
+                    <label class="weui_label">手机：</label>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="tel" placeholder="{{init_placeholder_phone}}" ng-model="userInfo.phone" ng-init="">
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="tips_txt custom_text_primary" ng-if="is_agent">
+            <div>申请经销商要求</div>
+            <div>我的朋友"满 50 人 (暂定)，均可免费申请经销商"</div>
+        </div>
+
+        <div class="tips_txt custom_text_primary" ng-if="!is_agent">
+            <div>申请皇冠代理商要求：</div>
+            <div>1.认可公司经营理念</div>
+            <div>2.首次全款进货￥3000元(推广期优惠价), 限线下碧丽雅系列产品</div>
+        </div>
+
+        <div class="custom_weui_btn_border">
+            <input type="submit" class="weui_btn weui_btn_primary" value="{{action_text}}">
+        </div>
+
+    </form>
+</div>
+
+<!--提示窗口-->
+<div id="show_tips">
+    <div class="tips_content">
+        <span>{{tips_text}}</span>
+    </div>
+</div>

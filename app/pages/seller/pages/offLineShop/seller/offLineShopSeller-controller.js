@@ -27,7 +27,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
         }])
 
     /*
-     * 经销团队
+     * 经销授权
      * */
     .controller('SellerAuthorizationController', ['$scope','$state','$stateParams','$timeout', 'SellerTeamFty',
         function ($scope,$state,$stateParams,$timeout, SellerTeamFty) {
@@ -865,6 +865,135 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 return '已完成';
             }
         };
+
+    }])
+
+    /*
+     * 皇冠经销商授权
+     * */
+    .controller('CrownSellerAuthenticationController', ['$scope','$state','$stateParams','$timeout', 'SellerTeamFty',
+        function ($scope,$state,$stateParams,$timeout, SellerTeamFty) {
+
+
+            var levelStatus = $stateParams.levelStatus;
+            console.log('levelStatus: ' +　levelStatus);
+            var sellerType;
+            var show_tips = document.getElementById('show_tips');
+
+            $scope.action_text = '提交授权申请';
+            $scope.init_placeholder_id = "要与被授权人的UID一致";
+            $scope.init_placeholder_name = "要与被授权人个人信息的姓名一致";
+            $scope.init_placeholder_phone = "要与被授权人个人信息的手机号一致";
+
+            if(levelStatus != null){
+                console.log("zzz: " + levelStatus);
+                if(levelStatus == 'true'){
+                    console.log(1);
+                    document.title = "线下皇冠经销商授权";
+                    console.log("线下皇冠经销商授权");
+                    $scope.is_agent = levelStatus;
+                }else if(levelStatus == 'false'){
+                    console.log(2);
+                    document.title = "线下星级经销商授权";
+                    console.log("线下星级经销商授权");
+                    $scope.is_agent = levelStatus;
+                }
+
+            }
+
+            $scope.apply_action = function(uid, real_name, phone){
+
+                sellerType = 'CROWN';
+
+                if(!angular.isString(uid) || uid.length==0){
+                    $.toast('ID不能为空', 'cancel');
+                    return;
+                }
+                if(!angular.isString(real_name) || real_name.length==0){
+                    $.toast('姓名不能为空', 'cancel');
+                    return;
+                }
+                if(!angular.isString(phone) || phone==0){
+                    $.toast('手机号不能为空', 'cancel');
+                    return;
+                }else if(!checkPhone($scope.userInfo.phone)){
+                    $.toast('手机号码无效', 'cancel');
+                    return;
+                }
+
+                if(uid === undefined || uid == null || uid.length == 0){
+                    $.toast('uid不能为空', 'cancel');
+                    return;
+                }
+
+                if($scope.is_agent){
+                    crownSeller(uid,real_name,phone);
+                }else{
+                    starSeller(real_name,phone,sellerType);
+                }
+
+            };
+
+            //皇冠经销申请
+            function crownSeller(uid,real_name,phone){
+                SellerTeamFty.authorizeService(uid,real_name,phone)
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            $.toast('申请已提交,请等待审核');
+                            $state.go('offLineShop');
+                        }else{
+                            $.toast.prototype.defaults.duration = 2000;
+                            if (json.message == 'user.already.crownship') {
+                                showTips("授权失败,该用户已经是皇冠级别");
+                            }else if(json.message == "invalid.real_name"){
+                                showTips("授权失败,真实姓名与被授权人个人信息上的不一致");
+                            }else if(json.message == "real_name.is.empty"){
+                                showTips("被授权人未填写个人信息，请到“积分中心，我的信息”填写后再授权");
+                            }else if(json.message == "invalid.phone"){
+                                showTips("授权失败,手机号码与被授权人个人信息上的不一致");
+                            }else if(json.message == "apply.already.exist"){
+                                showTips("您已提交授权，无需再提交");
+                            }else {
+                                $.toast('授权失败', 'cancel');
+                            }
+                            console.log(angular.toJson(json));
+                        }
+                    },function(error){
+                        $.toast('授权失败', 'cancel');
+                        console.log(angular.toJson(error));
+                    })
+            }
+
+            //星级经销申请
+            function starSeller(real_name,phone,sellerType){
+                SellerTeamFty.applyService(real_name,phone,sellerType)
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            $.toast('申请已提交,请等待审核');
+                            $state.go('sellerPage');
+                        }else{
+                            $.toast('申请失败', 'cancel');
+                            console.log(angular.toJson(json));
+                        }
+                    },function(error){
+                        $.toast('申请失败', 'cancel');
+                        console.log(angular.toJson(error));
+                    })
+            }
+
+            function checkPhone(str){
+                var isphone = /^((\+|0)86)?\d{11}$/.test(str);
+                return isphone;
+            }
+
+            //show tips
+            function showTips(content){
+                show_tips.style.display = 'block';
+                $scope.tips_text = content;
+                $timeout(function () {
+                    show_tips.style.display = 'none';
+                }, 4000);
+            }
 
     }])
 
