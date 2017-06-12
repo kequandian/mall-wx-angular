@@ -501,19 +501,19 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
 
                 p_info.push(p_item);
 
-                //console.log(angular.toJson(p_info));
+                console.log('p_info: ' + angular.toJson(p_info));
+                //return;
                 //保存配送地信息
-
                 if($scope.cannot_deliver){
                     $.toast('该地区不支持配送服务','cancel');
                 }else{
-                    saveRegion(item,quantity,p_info);
+                    saveRegion(item.freight,quantity,p_info);
                 }
 
             };
 
             //保存配送地信息
-            function saveRegion(item,quantity,p_info){
+            function saveRegion(freight,quantity,p_info){
 
                 if(JSON.stringify(region_body) == '{}'){
                     $.toast('配送地数据异常', 'cancel');
@@ -525,7 +525,7 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                         if(json.status_code == 0){
 
                             $rootScope.settle_product_code = p_info;
-                            $rootScope.settle_product_totalToPay = item.price * quantity;
+                            $rootScope.settle_product_totalToPay = p_info[0].price * p_info[0].quantity;
 
                             var newUrl = '#/cart-settlement';
                             var title = '结算';
@@ -534,8 +534,8 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
 
                             $state.go('cart-settlement', {
                                 carts: $scope.checkedCarts,
-                                totalToPay: item.price * quantity,
-                                totalFreight: item.freight
+                                totalToPay: p_info[0].price * p_info[0].quantity,
+                                totalFreight: freight
                             });
 
                         }else{

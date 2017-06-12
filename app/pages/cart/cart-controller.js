@@ -427,7 +427,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                         if ($scope.currentContact == null) {
                             $scope.currentContact = null;
                             $scope.product_frieght = null;
-                            $scope.total_price = $scope.pay + $scope.product_frieght;
+                            $scope.total_price = $scope.pay;
                             $scope.save_total_price = $scope.total_price;
                             //下单前计算优惠信息
                             if(JSON.stringify(settle_product_code[0].wholesaleData)=="{}"){
@@ -445,6 +445,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                                 getFrieght();
                             }else{
                                 $scope.product_frieght = 0;
+                                $scope.total_price = $scope.pay;
                             }
                         }
 
@@ -495,7 +496,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 var settlementCarts = $scope.settlementCarts[0];
                 //console.log("拼团--支付方式" + angular.toJson(settlementCarts));
                 if(settlementCarts != null){
-                    if(settlementCarts.fightGroupData != null && settlementCarts.fightGroupData != ''){
+                    if(JSON.stringify(settlementCarts.fightGroupData) != '{}'){
                         console.log("拼团支付");
                         console.log("payment_type: " + settlementCarts.fightGroupData.payment_type);
                         $scope.isSimplePayStatus = false;
