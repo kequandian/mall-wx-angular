@@ -1,7 +1,7 @@
 angular.module('wholesale.service', [])
     .factory('WholesaleFty', ['$http', '$q','GlobalVariable', function($http,$q,GlobalVariable) {
         return{
-            // 获取批发商品
+            // 获取商品批发类别
             getWholesaleInfoService: function () {
                 var deferred = $q.defer();
                 var url = GlobalVariable.SERVER_PATH + "/wholesale_category";

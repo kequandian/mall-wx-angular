@@ -32,7 +32,7 @@ angular.module('wholesaleGoodsList.controller', ['wholesaleGoodsList.service'])
                     .then(function(json){
                         if(json.status_code == 0){
                             $scope.nav_list = json.data;
-                            console.log("导航信息：" + angular.toJson(json));
+                            //console.log("导航信息：" + angular.toJson(json));
                         }else{
                             console.log("获取导航信息失败：" + angular.toJson(json));
                         }
@@ -76,7 +76,7 @@ angular.module('wholesaleGoodsList.controller', ['wholesaleGoodsList.service'])
                 }
                 wCateCache.index_first = e;
                 wCateCache.codeItem = item;
-                console.log(angular.toJson(item));
+                //console.log(angular.toJson(item));
             };
 
             //进入批发详情

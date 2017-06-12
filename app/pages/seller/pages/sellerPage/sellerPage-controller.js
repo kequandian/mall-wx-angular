@@ -32,9 +32,9 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
     })
 
     .controller('SellerPageController', ['$scope', '$state', '$rootScope', 'SellerPageFty', 'BalanceSession', 'UserInfo', 'DWStatus',
-        'withdrawBalance', 'cateLeftIndex','PointRate','GlobalVariable','wCateCache',
+        'withdrawBalance', 'cateLeftIndex','PointRate','GlobalVariable','wCateCache','WholesalePCDCode',
         function ($scope, $state, $rootScope, SellerPageFty, BalanceSession, UserInfo, DWStatus, withdrawBalance, cateLeftIndex,
-                  PointRate,GlobalVariable,wCateCache) {
+                  PointRate,GlobalVariable,wCateCache,WholesalePCDCode) {
 
             //title
             document.title = "积分中心";
@@ -218,10 +218,38 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
             };
 
             //商品批发
-            $scope.wholesale = function(isCrown){
+            $scope.wholesale = function(isCrown,crownShip){
+                console.log(isCrown);
+                //console.log(crownShip);
+                //return;
                 wCateCache.isPcs = -1;
-                $state.go('wholesale',{isCrown: isCrown});
-            }
+
+                SellerPageFty.getWholesaleService()
+                    .then(function (json) {
+                        if (json.status_code == 0) {
+
+                            var wholesaleInfo = json.data;
+                            if(wholesaleInfo != null){
+                                if(wholesaleInfo.wholesaleRegion != null){
+                                    var wholesaleRegion = wholesaleInfo.wholesaleRegion;
+                                    WholesalePCDCode.province = wholesaleRegion.province;
+                                    WholesalePCDCode.city = wholesaleRegion.city;
+                                    WholesalePCDCode.district = wholesaleRegion.district;
+                                    console.log('wCateCache.isPcs > ' + wCateCache.isPcs);
+                                    $state.go('wholesaleGoodsList');
+                                }else{
+                                    $state.go('wholesale',{isCrown: isCrown});
+                                }
+                            }else{
+                                console.log('wholesaleRegion is null: ' + angular.toJson(json));
+                            }
+                        }else{
+                            console.log('获取商品批发信息失败: ' + angular.toJson(json));
+                        }
+                    }, function (error) {
+                        console.log('获取商品批发信息失败: ' + angular.toJson(error));
+                    })
+            };
 
         }])
 

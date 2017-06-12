@@ -7,14 +7,21 @@ angular.module('wholesale.controller', ['wholesale.service'])
             var isCrown = null;
             var wholesaleInfo = null;
             var pcd = null;
+
             initCode();
             function initCode(){
-                isCrown = $stateParams.isCrown;
-                if(isCrown != null && isCrown){
-                    $scope.is_crown = true;
-                    getWholesaleInfo();
-                }else{
-                    $scope.is_crown = false;
+                if(wCateCache.isPcs == 0){
+                    $state.go('home.sellerPage');
+                }else if(wCateCache.isPcs == -1){
+                    isCrown = $stateParams.isCrown;
+                    if(isCrown != null && isCrown){
+                        $scope.is_crown = true;
+                        //获取省市区
+                        AllPCD();
+                        //getWholesaleInfo();
+                    }else{
+                        $scope.is_crown = false;
+                    }
                 }
             }
 
@@ -24,7 +31,19 @@ angular.module('wholesale.controller', ['wholesale.service'])
                     .then(function(json){
                         if(json.status_code == 0){
                             wholesaleInfo = json.data;
-                            //console.log("商品批发分类：" + angular.toJson(json));
+                            console.log("商品批发分类：" + angular.toJson(json));
+
+                            if(wholesaleInfo != null){
+                                if(wholesaleInfo.wholesaleRegion != null){
+                                    var wholesaleRegion = wholesaleInfo.wholesaleRegion;
+                                    WholesalePCDCode.province = wholesaleRegion.province;
+                                    WholesalePCDCode.city = wholesaleRegion.city;
+                                    WholesalePCDCode.district = wholesaleRegion.district;
+                                    console.log('wCateCache.isPcs > ' + wCateCache.isPcs);
+                                    $state.go('wholesaleGoodsList');
+                                }else{
+                                }
+                            }
                         }else{
                             console.log("获取商品批发信息失败：" + angular.toJson(json));
                         }
@@ -32,29 +51,12 @@ angular.module('wholesale.controller', ['wholesale.service'])
                         console.log("获取商品批发信息失败：" + angular.toJson(error));
                     }).finally(function(){
                         console.log("finally");
-                        if(wholesaleInfo != null){
-                            if(wholesaleInfo.wholesaleRegion != null){
-                                var wholesaleRegion = wholesaleInfo.wholesaleRegion;
-                                WholesalePCDCode.province = wholesaleRegion.province;
-                                WholesalePCDCode.city = wholesaleRegion.city;
-                                WholesalePCDCode.district = wholesaleRegion.district;
-                                console.log('wCateCache.isPcs > ' + wCateCache.isPcs);
-                                if(wCateCache.isPcs == 0){
-                                    $state.go('home.sellerPage');
-                                }else if(wCateCache.isPcs == -1){
-                                    $state.go('wholesaleGoodsList');
-                                }
-                            }else{
-                                //获取省市区
-                                AllPCD();
-                            }
-                        }
                     })
 
             }
 
             //进入商品批发列表
-            $scope.goToWholesalwGoodsList = function(){
+            $scope.goToWholesaleGoodsList = function(){
 
                 var pcd = document.getElementById('city-picker');
 
@@ -72,8 +74,8 @@ angular.module('wholesale.controller', ['wholesale.service'])
                 pcd_body.province = pcd_list[0];
                 pcd_body.city = pcd_list[1];
                 pcd_body.district = pcd_list[2];
-                //console.log('pcdBody：' + angular.toJson(pcd_body));
-                saveWholesaleRegion(pcd_body);
+                console.log('pcdBody：' + angular.toJson(pcd_body));
+                //saveWholesaleRegion(pcd_body);
                 //$state.go('wholesaleGoodsList');
             };
 
