@@ -407,7 +407,22 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                     return;
                 }
 
-                WholesaleDetailsFty.addProToCatService(productId, quantity, product_property, product_specification_id)
+                //批发状态
+                var body = [];
+                var item = {};
+                var marketing_status = 'WHOLESALE';
+                var marketing_id = $scope.wholesale_info.id;
+
+                item.product_id = productId;
+                item.quantity = quantity;
+                item.product_specification_id = product_specification_id;
+                item.marketing_id = marketing_id;
+                item.marketing = marketing_status;
+                body.push(item);
+
+                console.log('body: ' + angular.toJson(body));
+
+                WholesaleDetailsFty.addProToCatService(body)
                     .then(function (json) {
 
                         $ocLazyLoad.load('Jquery').then(function () {

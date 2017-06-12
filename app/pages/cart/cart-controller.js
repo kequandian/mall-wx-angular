@@ -26,7 +26,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     function (result) {
                         if (result.status_code == 0) {
                             $scope.carts = result.data;
-                            //console.log(angular.toJson(result.data[0]));
+                            console.log(angular.toJson(result.data));
                             if ($scope.carts.length > 0) {
 
                                 var c_count = 0;
@@ -297,7 +297,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
                 console.log('购物车: ' + $scope.checkedCarts.length);
                 console.log('购物车: ' + angular.toJson($scope.checkedCarts));
-                //return;
+                return;
 
                 var newUrl = '#/cart-settlement';
                 var title = '购物车';

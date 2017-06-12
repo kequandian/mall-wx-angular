@@ -369,7 +369,15 @@ angular.module('details.controller', ['details.service'])
                     return;
                 }
 
-                DetailsFty.addProToCatService(productId, quantity, product_property, product_specification_id)
+                var body = [];
+                var item = {};
+                item.product_id = productId;
+                item.quantity = quantity;
+                item.product_specification_id = product_specification_id;
+
+                body.push(item);
+
+                DetailsFty.addProToCatService(body)
                     .then(function (json) {
 
                         $ocLazyLoad.load('Jquery').then(function () {
