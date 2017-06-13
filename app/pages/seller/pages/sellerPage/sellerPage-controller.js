@@ -221,9 +221,8 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
             $scope.wholesale = function(isCrown,crownShip){
                 console.log(isCrown);
                 //console.log(crownShip);
-                //return;
-                wCateCache.isPcs = -1;
 
+                wCateCache.isPcs = -1;
                 SellerPageFty.getWholesaleService()
                     .then(function (json) {
                         if (json.status_code == 0) {

@@ -674,7 +674,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
         document.title = "结算记录";
 
-        console.log(angular.toJson(UserInfo));
+        console.log('UserInfo: ' + angular.toJson(UserInfo));
 
         // 年月
         $scope.yearDefault = getDefaultYears();
@@ -686,7 +686,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
         $scope.year = $scope.thisYear;
         $scope.mon = $scope.thisMon;
 
-        getExchangeRecordInfo($scope.year, $scope.mon);
+        //getSettlementRecordInfo($scope.year, $scope.mon);
 
         function getDefaultYears() {
 
@@ -804,7 +804,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
             }
             var mon = $scope.mon;
 
-            getExchangeRecordInfo(year, mon);
+            //getSettlementRecordInfo(year, mon);
         };
 
         // 查询提现记录
@@ -812,10 +812,10 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
             var year = $scope.year;
             var mon = $scope.mon;
 
-            getExchangeRecordInfo(year, mon);
+            //getSettlementRecordInfo(year, mon);
         };
 
-        function getExchangeRecordInfo(year, mon){
+        function getSettlementRecordInfo(year, mon){
 
             var d_start_date = new Date(year, mon, 1);
             var _end_date = new Date(year, mon + 1, 1);
@@ -828,7 +828,6 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
             SellerTeamFty.getExchangeRecordService(start_date,end_date)
                 .then(function(json){
                     if(json.status_code == 0){
-                        $scope.exchange_record_list = json.data;
                         //console.log(angular.toJson(json))
                     }else{
                         $.toast('获取记录失败', 'cancel');
@@ -891,12 +890,12 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     console.log(1);
                     document.title = "线下皇冠经销商授权";
                     console.log("线下皇冠经销商授权");
-                    $scope.is_agent = levelStatus;
+                    $scope.is_crown = levelStatus;
                 }else if(levelStatus == 'false'){
                     console.log(2);
                     document.title = "线下星级经销商授权";
                     console.log("线下星级经销商授权");
-                    $scope.is_agent = levelStatus;
+                    $scope.is_star = levelStatus;
                 }
 
             }

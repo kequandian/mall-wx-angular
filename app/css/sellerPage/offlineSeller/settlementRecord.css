@@ -1,3 +1,123 @@
 #settlementRecord{
-    
+    background-color: #F0F0F0;
+    min-height: 100%;
+}
+
+#settlementRecord .my-recommend-content{
+}
+
+#settlementRecord .item-stable{
+    height: 44px;
+    line-height: 44px;
+    color:white;
+    /*background-color: #C50303;*/
+    text-align: center;
+}
+
+#settlementRecord .item-accordion{
+    background-color: white;
+    padding-top: 6px;
+    /*padding: 5px;*/
+}
+
+
+#settlementRecord .order-item-text{
+    font-size: 12px;
+    height: 105px;
+    line-height: 24px;
+    color:#5D696B;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #cccccc;
+}
+
+#settlementRecord .orders-count{
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+#settlementRecord .orders-count p{
+    width: 50%;
+    float: left;
+}
+
+#settlementRecord .order-list-item{
+    height: 70px;
+    padding:7px;
+    background-color: #E9EDEE;
+    color: #5D696B;
+    font-size: 13px;
+    border-bottom: 1px solid #cccccc;
+}
+
+
+
+/*color*/
+.pro-black{
+    color: #3A3A3A;
+}
+.pro-red{
+    color: #C50303;
+}
+
+#settlementRecord .weui_select{
+    width: 30%;
+    color:#fff;
+}
+
+#settlementRecord .year{
+    position: absolute;
+    left:0px;
+    direction: ltr;
+    width: 25%;
+}
+
+#settlementRecord .mon{
+    position: absolute;
+    right:10px;
+    direction: rtl;
+    width: 25%;
+}
+
+#settlementRecord  option{
+    color: #000;
+}
+
+
+#settlementRecord .my-recommend-content .record-content{
+    width: 100%;
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+#settlementRecord .my-recommend-content .record-content .settlement_record_null{
+    width: 100%;
+    height: 80px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#settlementRecord .my-recommend-content .record-content .list-item{
+    width: 100%;
+    height: 65px;
+    background-color: white;
+    border-bottom: 1px solid #cccccc;
+}
+
+#settlementRecord .my-recommend-content .record-content .list-item .item-left{
+    width: 90px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 12px;
+}
+
+#settlementRecord .my-recommend-content .record-content .list-item .item-right{
+    width: 100%;
+    height: 35px;
+    line-height: 23px;
+    font-size: 13px;
+    text-align: center;
 }

@@ -18,24 +18,24 @@
                 <div class="order-item-text">
 
                     <div class="orders-count">
-                        <p>累计总进货：<span class="pro-red">{{"￥" + (pirchase_summary.total_amount | number:1)}}</span></p>
+                        <p>累计总进货：<span class="pro-red">{{'￥' + (pirchase_summary.total_amount > 0 ? (pirchase_summary.total_amount | number:1) : 0)}}</span></p>
 
-                        <p>本月总进货：<span class="pro-red">{{"￥" + (pirchase_summary.monthly_amount | number:1)}}</span></p>
+                        <p>本月总进货：<span class="pro-red">{{"￥" + (pirchase_summary.monthly_amount > 0 ? (pirchase_summary.monthly_amount | number:1) : 0)}}</span></p>
                     </div>
                     <div class="orders-count">
-                        <p>累计总提成：<span class="pro-black">{{"￥" + (pirchase_summary.total_settled_amount | number:1)}}</span></p>
+                        <p>累计总提成：<span class="pro-black">{{"￥" + (pirchase_summary.total_settled_amount > 0 ? (pirchase_summary.total_settled_amount | number:1) : 0)}}</span></p>
 
                         <p>本月提成比例：<span class="pro-black">
                             {{pirchase_summary.monthly_settlement_proportion > 0 ?  pirchase_summary.monthly_settlement_proportion + "%" : 0}}
                         </span></p>
                     </div>
                     <div class="orders-count">
-                        <p>已提金额：<span class="pro-black">{{"￥" + (pirchase_summary.withdrawn_amount | number:1)}}</span></p>
+                        <p>已提金额：<span class="pro-black">{{"￥" + (pirchase_summary.withdrawn_amount > 0 ? (pirchase_summary.withdrawn_amount | number:1) : 0)}}</span></p>
 
-                        <p>本月总提成：<span class="pro-black">{{"￥" + (pirchase_summary.monthly_settled_amount | number:1)}}</span></p>
+                        <p>本月总提成：<span class="pro-black">{{"￥" + (pirchase_summary.monthly_settled_amount > 0 ? (pirchase_summary.monthly_settled_amount | number:1) : 0)}}</span></p>
                     </div>
                     <div class="orders-count">
-                        <p>可提金额：<span class="pro-black">{{"￥" + (pirchase_summary.withdrawable_amount | number:1)}}</span></p>
+                        <p>可提金额：<span class="pro-black">{{"￥" + (pirchase_summary.withdrawable_amount > 0 ? (pirchase_summary.withdrawable_amount | number:1) : 0)}}</span></p>
                     </div>
                 </div>
 

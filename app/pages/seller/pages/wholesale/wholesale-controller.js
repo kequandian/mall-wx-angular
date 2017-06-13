@@ -14,12 +14,12 @@ angular.module('wholesale.controller', ['wholesale.service'])
                     $state.go('home.sellerPage');
                 }else if(wCateCache.isPcs == -1){
                     isCrown = $stateParams.isCrown;
-                    if(isCrown != null && isCrown){
+                    if(isCrown != null && isCrown == 'true'){
                         $scope.is_crown = true;
                         //获取省市区
                         AllPCD();
                         //getWholesaleInfo();
-                    }else{
+                    }else if(isCrown != null && isCrown == 'false'){
                         $scope.is_crown = false;
                     }
                 }

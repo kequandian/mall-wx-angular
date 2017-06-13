@@ -283,7 +283,7 @@
                     name: 'SettlementRecord',
                     files: ['pages/seller/pages/offLineShop/seller/offLineShopSeller-controller.js',
                         'pages/seller/pages/offLineShop/seller/offLineShopSeller-service.js',
-                        {type: 'css', path: 'css/sellerPage/settlementRecord.css'}],
+                        {type: 'css', path: 'css/sellerPage/offlineSeller/settlementRecord.css'}],
                     cache: false
                 }, {
                     name: 'PieceGroup',

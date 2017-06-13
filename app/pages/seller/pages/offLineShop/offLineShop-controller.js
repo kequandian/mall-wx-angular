@@ -31,7 +31,7 @@ angular.module('offLineShop.controller', ['offLineShop.service'])
             };
 
             $scope.settlement_record_action = function(){
-
+                $state.go('settlementRecord');
             };
 
         }])
