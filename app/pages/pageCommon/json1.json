@@ -1,9 +1,21 @@
 [
   {
-    "product_id": 58,
+    "created_date": "2017-06-09 16:13:07",
+    "weight": 300,
+    "product_id": 86,
+    "marketing": null,
+    "product_name": "∂‡∑“„Â‘°»È…Ó≤„”™»Û1kg+«ÂÕ∏ÀÆ»Û„Â‘°“∫300g",
+    "product_specification_name": null,
+    "stock_balance": 990,
+    "bulk": null,
+    "fare_id": 1,
+    "id": 552,
+    "cover": "http://o9ixtumvv.bkt.clouddn.com/20161027142109202-vYuLGrE8.jpg",
+    "price": 46.8,
+    "marketing_id": null,
+    "user_id": 2,
     "quantity": 1,
     "product_specification_id": null,
-    "marketing_id": 1,
-    "marketing": "WHOLESALE"
+    "$checked": true
   }
 ]

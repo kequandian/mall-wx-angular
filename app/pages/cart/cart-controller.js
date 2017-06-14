@@ -26,7 +26,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     function (result) {
                         if (result.status_code == 0) {
                             $scope.carts = result.data;
-                            console.log(angular.toJson(result.data));
+                            //console.log('购物车信息：' + angular.toJson(result.data));
                             if ($scope.carts.length > 0) {
 
                                 var c_count = 0;
@@ -272,7 +272,6 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 //$scope.checkedCarts.push(freight);
 
                 var checkedItems = $scope.checkedCarts;
-
                 angular.forEach(checkedItems, function(v, k){
                     if(v.quantity > v.stock_balance){
                         overflowCount++;
@@ -290,14 +289,38 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     return;
                 }
 
-                //console.log("$scope.checkedCarts: " + angular.toJson($scope.checkedCarts))
+                //处理是否是批发商品
+                var marketing = 'WHOLESALE';
+                var newItem = {};
+                var isNormal = 0;
+                var isWholesale = 0;
+                var newCartItems = [];
+                angular.forEach(checkedItems, function(v, k){
+                    if(v.marketing == null && v.marketing_id == null){
+                        isNormal++;
+                        newCartItems.push(v);
+                    }else if(v.marketing != null && v.marketing_id != null){
+                        isWholesale++;
+                        newItem = v;
+                        newItem.wholesaleData={};
+                        newItem.wholesaleData.marketing = marketing;
+                        newItem.wholesaleData.marketing_id = v.marketing_id;
+                        newCartItems.push(newItem);
+                    }
+                });
+
+                console.log('isNormal: ' + isNormal);
+                console.log('isWholesale: ' + isWholesale);
+                if(isNormal > 0 && isWholesale > 0){
+                    $.toast('只能购买同一类型的商品','cancel');
+                    return;
+                }
+                console.log('购物车: ' + newCartItems.length);
+                console.log('购物车: ' + angular.toJson(newCartItems));
+                return;
 
                 $rootScope.settle_product_code = $scope.checkedCarts;
                 $rootScope.settle_product_totalToPay = pay;
-
-                console.log('购物车: ' + $scope.checkedCarts.length);
-                console.log('购物车: ' + angular.toJson($scope.checkedCarts));
-                return;
 
                 var newUrl = '#/cart-settlement';
                 var title = '购物车';

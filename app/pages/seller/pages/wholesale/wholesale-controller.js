@@ -75,7 +75,7 @@ angular.module('wholesale.controller', ['wholesale.service'])
                 pcd_body.city = pcd_list[1];
                 pcd_body.district = pcd_list[2];
                 console.log('pcdBody：' + angular.toJson(pcd_body));
-                //saveWholesaleRegion(pcd_body);
+                saveWholesaleRegion(pcd_body);
                 //$state.go('wholesaleGoodsList');
             };
 
