@@ -7,8 +7,9 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             return input;
         }
     })
-    .controller('CartController', ['$scope', '$state', '$rootScope', 'CartFty',
-        '$ocLazyLoad','cateLeftIndex','cateCacheCode', function ($scope, $state, $rootScope, CartFty, $ocLazyLoad,cateLeftIndex,cateCacheCode) {
+    .controller('CartController', ['$scope', '$state', '$rootScope', 'CartFty','$ocLazyLoad','cateLeftIndex',
+        'cateCacheCode',
+        function ($scope, $state, $rootScope, CartFty, $ocLazyLoad,cateLeftIndex,cateCacheCode) {
 
             //title
             document.title = "购物车";
@@ -441,6 +442,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
             AllContacts(); //获取地址信息
 
+            //获取地址信息
             function AllContacts() {
                 AddressManagerFty.getContacts().then(
                     function (result) {
@@ -498,16 +500,20 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
             //拼团支付方式
             var settlementCarts = $scope.settlementCarts[0];
-            if(settlementCarts.fightGroupData == undefined){
+            if(settlementCarts.fightGroupData == undefined ||
+                JSON.stringify(settlementCarts.fightGroupData) == '{}'){
                 $scope.isSimplePayStatus = true;
-                console.log("不含有拼团信息");
             }else{
-                console.log("含有拼团信息: " + angular.toJson(settlementCarts.fightGroupData));
+                //console.log("含有拼团信息: " + angular.toJson(settlementCarts.fightGroupData));
                 fightGroupsPayStatus();
             }
 
-            //console.log("carts:"+$stateParams.carts);
-            //console.log("settlementCarts: " + angular.toJson($scope.settlementCarts))
+            //获取批发配送地
+            if(settlementCarts.wholesaleData == undefined ||
+                JSON.stringify(settlementCarts.wholesaleData) == '{}'){
+            }else{
+                getWholesalePCD();
+            }
 
             angular.forEach($scope.settlementCarts, function (data, index) {
                 $scope.settlementData[index] = ({
@@ -567,6 +573,21 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 }
             }
 
+            //获取批发配送地
+            function getWholesalePCD(){
+                CartFty.getWholesalePCDService()
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            WholesalePCDCode.province = json.data.wholesaleRegion.province;
+                            WholesalePCDCode.city = json.data.wholesaleRegion.city;
+                            WholesalePCDCode.district = json.data.wholesaleRegion.district;
+                        }else{
+                            console.log('获取批发配送地信息失败: ' + angular.toJson(json));
+                        }
+                    }, function(error){
+                        console.log('获取批发配送地信息失败: ' + angular.toJson(error));
+                    })
+            }
 
             //获取运费信息
             $scope.productFrieghts = {
