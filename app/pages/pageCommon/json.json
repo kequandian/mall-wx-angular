@@ -1,74 +1,75 @@
-[
-  {
-    "created_date": "2017-06-09 16:12:43",
-    "weight": 0,
-    "product_id": 35,
-    "marketing": null,
-    "product_name": "亮白增艳护理洗衣液2.5L【全国包邮（甘肃、宁夏、新疆、西藏、青海、内蒙古除外）】",
-    "product_specification_name": "法国香薰",
-    "stock_balance": 986,
-    "bulk": 0,
-    "fare_id": 2,
-    "id": 551,
-    "cover": "http://o9ixtumvv.bkt.clouddn.com/20161018145500095-PZ025b4M.jpg",
-    "price": 38.8,
-    "marketing_id": null,
-    "user_id": 2,
-    "quantity": 1,
-    "product_specification_id": 13
-  },
-  {
-    "created_date": "2017-06-09 16:13:07",
-    "weight": 300,
-    "product_id": 86,
-    "marketing": null,
-    "product_name": "多芬沐浴乳深层营润1kg+清透水润沐浴液300g",
-    "product_specification_name": null,
-    "stock_balance": 990,
-    "bulk": null,
-    "fare_id": 1,
-    "id": 552,
-    "cover": "http://o9ixtumvv.bkt.clouddn.com/20161027142109202-vYuLGrE8.jpg",
-    "price": 46.8,
-    "marketing_id": null,
-    "user_id": 2,
-    "quantity": 1,
-    "product_specification_id": null
-  },
-  {
-    "created_date": "2017-06-12 17:43:18",
-    "weight": 717,
-    "product_id": 85,
-    "marketing": null,
-    "product_name": "力士LUX爽肤闪亮冰爽沐浴乳护肤滋润720ml",
-    "product_specification_name": null,
-    "stock_balance": 39282,
-    "bulk": null,
-    "fare_id": 1,
-    "id": 558,
-    "cover": "http://o9ixtumvv.bkt.clouddn.com/20161027143355732-VFN0L9yd.jpg",
-    "price": 39.9,
-    "marketing_id": null,
-    "user_id": 2,
-    "quantity": 4,
-    "product_specification_id": null
-  },
-  {
-    "created_date": "2017-06-12 18:18:41",
-    "weight": 0,
-    "product_id": 58,
-    "marketing": null,
-    "product_name": "天然植物精华宝宝洗衣液2.5L【全国包邮（甘肃、宁夏、新疆、西藏、青海、内蒙古除外）】",
-    "product_specification_name": null,
-    "stock_balance": 99396,
-    "bulk": 0,
-    "fare_id": 1,
-    "id": 561,
-    "cover": "http://o9ixtumvv.bkt.clouddn.com/20161018145522251-Ei9yHGQs.jpg",
-    "price": 49.8,
-    "marketing_id": null,
-    "user_id": 2,
-    "quantity": 1,
-    "product_specification_id": null
-  }
-]
+{
+  "status_code": 0,
+  "data": [
+    {
+      "monthly_settled_amount": 0,
+      "id": 7,
+      "transferred_amount": 0,
+      "transferred": 0,
+      "settlement_proportion": 2,
+      "monthly_amount": 20000,
+      "seller_id": 2,
+      "statistic_month": "2016-12-01"
+    },
+    {
+      "monthly_settled_amount": 60,
+      "id": 2,
+      "transferred_amount": 0,
+      "transferred": 0,
+      "settlement_proportion": 2,
+      "monthly_amount": 1200,
+      "seller_id": 2,
+      "statistic_month": "2017-01-01"
+    },
+    {
+      "monthly_settled_amount": 0,
+      "id": 11,
+      "transferred_amount": 0,
+      "transferred": 0,
+      "settlement_proportion": 0,
+      "monthly_amount": 0,
+      "seller_id": 2,
+      "statistic_month": "2017-02-01"
+    },
+    {
+      "monthly_settled_amount": 0,
+      "id": 16,
+      "transferred_amount": 0,
+      "transferred": 0,
+      "settlement_proportion": 0,
+      "monthly_amount": 0,
+      "seller_id": 2,
+      "statistic_month": "2017-03-01"
+    },
+    {
+      "monthly_settled_amount": 0,
+      "id": 19,
+      "transferred_amount": 0,
+      "transferred": 0,
+      "settlement_proportion": 0,
+      "monthly_amount": 0,
+      "seller_id": 2,
+      "statistic_month": "2017-04-01"
+    },
+    {
+      "monthly_settled_amount": 0,
+      "id": 25,
+      "transferred_amount": 0,
+      "transferred": 0,
+      "settlement_proportion": 0,
+      "monthly_amount": 0,
+      "seller_id": 2,
+      "statistic_month": "2017-05-01"
+    },
+    {
+      "monthly_settled_amount": 0,
+      "id": 38,
+      "transferred_amount": 0,
+      "transferred": 0,
+      "settlement_proportion": 0,
+      "monthly_amount": 0,
+      "seller_id": 2,
+      "statistic_month": "2017-06-01"
+    }
+  ]
+}

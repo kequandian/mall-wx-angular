@@ -672,198 +672,218 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
     .controller('SettlementRecordController', ['$scope','$state','$filter','UserInfo','SellerTeamFty',
         function ($scope, $state,$filter,UserInfo,SellerTeamFty) {
 
-        document.title = "结算记录";
+            document.title = "结算明细";
 
-        console.log('UserInfo: ' + angular.toJson(UserInfo));
+            console.log('UserInfo: ' + angular.toJson(UserInfo));
 
-        // 年月
-        $scope.yearDefault = getDefaultYears();
+            // 年月
+            $scope.yearDefault = getDefaultYears();
 
-        $scope.monDefault = getDefaultMons();
-
-        $scope.thisYear = new Date().getYear() + 1900;
-        $scope.thisMon = new Date().getMonth();
-        $scope.year = $scope.thisYear;
-        $scope.mon = $scope.thisMon;
-
-        //getSettlementRecordInfo($scope.year, $scope.mon);
-
-        function getDefaultYears() {
-
-            var years = [];
-
-            var registered = !(UserInfo.register_date === undefined || UserInfo.register_date == null || UserInfo.register_date.length == 0);
-            var curYear = new Date().getYear() + 1900;
-            var regDate = registered ? fixIOSDate(UserInfo.register_date) : new Date();
-            var regYear = regDate.getYear() + 1900;
-
-            if(isNaN(regDate)) {
-                years.push({key: 1900, value: UserInfo.register_date});
-                years.push({key: curYear, value: curYear + '年'});
-            }
-
-            for (var y = regYear; y <= curYear; y++) {
-                years.push({key: y, value: y + '年'})
-            }
-
-            return years;
-        }
-
-        function getDefaultMons() {
-            var mons = [];
-
-            var now = new Date();
-            var curYear = now.getYear() + 1900;
-            var curMon = now.getMonth();
-            var selectedYear = $scope.year ? $scope.year : curYear;
-
-            //if (curYear != selectedYear) {
-            //    return defaultMons;
-            //}
-
-            var registered = !(UserInfo.register_date === undefined || UserInfo.register_date == null || UserInfo.register_date.length == 0);
-            var regDate = registered ? fixIOSDate(UserInfo.register_date) : new Date();
-            var regMonth = regDate.getMonth();
-            var regYear = regDate.getYear() + 1900;
-
-            if(selectedYear == regYear){
-
-                if(curYear == regYear){
-                    for (var m = regMonth; m <= curMon; m++) {
-                        var mm = m + 1;
-                        if (mm < 10) {
-                            mm = '0' + mm;
-                        }
-                        mons.push({key: m, value: mm + "月"})
-                    }
-                }else if(curYear > regYear){
-                    for (var m1 = regMonth; m1 <= 11; m1++) {
-                        var mm1 = m1 + 1;
-                        if (mm1 < 10) {
-                            mm1 = '0' + mm1;
-                        }
-                        mons.push({key: m1, value: mm1 + "月"})
-                    }
-                }
-
-            }else if(selectedYear == curYear){
-
-                for (var m2 = 0; m2 <= curMon; m2++) {
-                    var mm2 = m2 + 1;
-                    if (mm2 < 10) {
-                        mm2 = '0' + mm2;
-                    }
-                    mons.push({key: m2, value: mm2 + "月"})
-                }
-
-            }else{
-                for (var m3 = 0; m3 <= 11; m3++) {
-                    var mm3 = m3 + 1;
-                    if (mm3 < 10) {
-                        mm3 = '0' + mm3;
-                    }
-                    mons.push({key: m3, value: mm3 + "月"})
-                }
-            }
-
-            return mons;
-        }
-
-        /// fix IOS date format issue
-        function fixIOSDate(date_string){
-
-            var reg_date = new Date(date_string);
-
-            if(isNaN(reg_date)){
-                var date_s = date_string.replace(/\-/g, '/');
-                date_s = date_s.substr(0, 10);
-
-                reg_date = new Date(date_s);
-            }
-
-            return reg_date;
-        }
-
-
-        $scope.selectedYearAction = function () {
-            /// set curMon
             $scope.monDefault = getDefaultMons();
-            var year = $scope.year;
-            //var mon = $scope.mon;
 
-            if ($scope.year == $scope.thisYear) {
-                var curMon = new Date().getMonth();
-                if ($scope.mon > curMon) {
-                    $scope.mon = curMon;
+            $scope.thisYear = new Date().getYear() + 1900;
+            $scope.thisMon = new Date().getMonth();
+            $scope.year = $scope.thisYear;
+            $scope.mon = $scope.thisMon;
+
+            getSettlementRecordInfo(null, null);
+            //getSettlementRecordInfo($scope.year, $scope.mon);
+
+            function getDefaultYears() {
+
+                var years = [];
+
+                var registered = !(UserInfo.register_date === undefined || UserInfo.register_date == null || UserInfo.register_date.length == 0);
+                var curYear = new Date().getYear() + 1900;
+                var regDate = registered ? fixIOSDate(UserInfo.register_date) : new Date();
+                var regYear = regDate.getYear() + 1900;
+
+                if(isNaN(regDate)) {
+                    years.push({key: 1900, value: UserInfo.register_date});
+                    years.push({key: curYear, value: curYear + '年'});
                 }
-            }else{
-                var firstMon = $scope.monDefault[0].key;
-                if($scope.mon < firstMon){
-                    $scope.mon = firstMon;
+
+                for (var y = regYear; y <= curYear; y++) {
+                    years.push({key: y, value: y + '年'})
                 }
+
+                return years;
             }
-            var mon = $scope.mon;
 
-            //getSettlementRecordInfo(year, mon);
-        };
+            function getDefaultMons() {
+                var mons = [];
 
-        // 查询提现记录
-        $scope.getExchangeRecordAction = function () {
-            var year = $scope.year;
-            var mon = $scope.mon;
+                var now = new Date();
+                var curYear = now.getYear() + 1900;
+                var curMon = now.getMonth();
+                var selectedYear = $scope.year ? $scope.year : curYear;
 
-            //getSettlementRecordInfo(year, mon);
-        };
+                //if (curYear != selectedYear) {
+                //    return defaultMons;
+                //}
 
-        function getSettlementRecordInfo(year, mon){
+                var registered = !(UserInfo.register_date === undefined || UserInfo.register_date == null || UserInfo.register_date.length == 0);
+                var regDate = registered ? fixIOSDate(UserInfo.register_date) : new Date();
+                var regMonth = regDate.getMonth();
+                var regYear = regDate.getYear() + 1900;
 
-            var d_start_date = new Date(year, mon, 1);
-            var _end_date = new Date(year, mon + 1, 1);
-            var d_end_date = new Date(_end_date - 1);
+                if(selectedYear == regYear){
 
-            // format date
-            var start_date = $filter('date')(d_start_date, 'yyyy-MM-dd');
-            var end_date = $filter('date')(d_end_date, 'yyyy-MM-dd');
-
-            SellerTeamFty.getExchangeRecordService(start_date,end_date)
-                .then(function(json){
-                    if(json.status_code == 0){
-                        //console.log(angular.toJson(json))
-                    }else{
-                        $.toast('获取记录失败', 'cancel');
-                        console.log('获取记录失败: ' + angular.toJson(json));
+                    if(curYear == regYear){
+                        for (var m = regMonth; m <= curMon; m++) {
+                            var mm = m + 1;
+                            if (mm < 10) {
+                                mm = '0' + mm;
+                            }
+                            mons.push({key: m, value: mm + "月"})
+                        }
+                    }else if(curYear > regYear){
+                        for (var m1 = regMonth; m1 <= 11; m1++) {
+                            var mm1 = m1 + 1;
+                            if (mm1 < 10) {
+                                mm1 = '0' + mm1;
+                            }
+                            mons.push({key: m1, value: mm1 + "月"})
+                        }
                     }
-                }, function(error){
-                    $.toast('获取记录失败', 'cancel');
-                    console.log('获取记录失败: ' + angular.toJson(error));
-                })
-        }
 
+                }else if(selectedYear == curYear){
 
-        //支付方式
-        $scope.pay_status = function(status){
-            if(status == 'WECHAT'){
-                return '微信支付';
+                    for (var m2 = 0; m2 <= curMon; m2++) {
+                        var mm2 = m2 + 1;
+                        if (mm2 < 10) {
+                            mm2 = '0' + mm2;
+                        }
+                        mons.push({key: m2, value: mm2 + "月"})
+                    }
+
+                }else{
+                    for (var m3 = 0; m3 <= 11; m3++) {
+                        var mm3 = m3 + 1;
+                        if (mm3 < 10) {
+                            mm3 = '0' + mm3;
+                        }
+                        mons.push({key: m3, value: mm3 + "月"})
+                    }
+                }
+
+                return mons;
             }
-        };
-        //时间截取
-        $scope.apply_time = function(time){
-            var initTime = time.split(' ');
-            return initTime[0];
-        };
-        //申请状态
-        $scope.apply_status = function(status){
 
-            if(status == 'APPLYING'){
-                return '申请中';
-            }else if(status == 'REJECTED'){
-                return '被拒绝';
-            }else if(status == 'HANDLING'){
-                return '处理中';
-            }else if(status == 'COMPLETED'){
-                return '已完成';
+            /// fix IOS date format issue
+            function fixIOSDate(date_string){
+
+                var reg_date = new Date(date_string);
+
+                if(isNaN(reg_date)){
+                    var date_s = date_string.replace(/\-/g, '/');
+                    date_s = date_s.substr(0, 10);
+
+                    reg_date = new Date(date_s);
+                }
+
+                return reg_date;
             }
-        };
+
+
+            $scope.selectedYearAction = function () {
+                /// set curMon
+                $scope.monDefault = getDefaultMons();
+                var year = $scope.year;
+                //var mon = $scope.mon;
+
+                if ($scope.year == $scope.thisYear) {
+                    var curMon = new Date().getMonth();
+                    if ($scope.mon > curMon) {
+                        $scope.mon = curMon;
+                    }
+                }else{
+                    var firstMon = $scope.monDefault[0].key;
+                    if($scope.mon < firstMon){
+                        $scope.mon = firstMon;
+                    }
+                }
+                var mon = $scope.mon;
+
+                //getSettlementRecordInfo(year, mon);
+            };
+
+            // 查询提现记录
+            $scope.getExchangeRecordAction = function () {
+                var year = $scope.year;
+                var mon = $scope.mon;
+
+                //getSettlementRecordInfo(year, mon);
+            };
+
+            function getSettlementRecordInfo(year, mon){
+
+                /*var d_start_date = new Date(year, mon, 1);
+                var _end_date = new Date(year, mon + 1, 1);
+                var d_end_date = new Date(_end_date - 1);
+
+                // format date
+                var start_date = $filter('date')(d_start_date, 'yyyy-MM-dd');
+                var end_date = $filter('date')(d_end_date, 'yyyy-MM-dd');*/
+
+                SellerTeamFty.getSettlementRecordService()
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            $scope.settlement_record_list = json.data;
+                            //console.log(angular.toJson(json))
+                        }else{
+                            console.log('获取结算明细失败: ' + angular.toJson(json));
+                        }
+                    }, function(error){
+                        console.log('获取结算明细失败: ' + angular.toJson(error));
+                    })
+            }
+
+
+            //支付方式
+            $scope.pay_status = function(status){
+                if(status == 'WECHAT'){
+                    return '微信支付';
+                }
+            };
+
+            //时间截取
+            $scope.apply_time = function(time){
+                var initTime = time.split(' ');
+                return initTime[0];
+            };
+
+            //申请状态
+            $scope.apply_status = function(status){
+
+                if(status == 'APPLYING'){
+                    return '申请中';
+                }else if(status == 'REJECTED'){
+                    return '被拒绝';
+                }else if(status == 'HANDLING'){
+                    return '处理中';
+                }else if(status == 'COMPLETED'){
+                    return '已完成';
+                }
+            };
+
+            //时间格式转换
+            $scope.convert_date = function(time){
+                if(time != null){
+                    var time_stamp = new Date(time.replace(/-/g, "/"));
+                    var year = time_stamp.getFullYear();
+                    var month = (time_stamp.getMonth()+1);
+                    var day = time_stamp.getDate();
+                    if(month < 10){
+                        month = '0' + month;
+                    }
+                    if(day < 10){
+                        day = '0' + day;
+                    }
+                    return year + '年' + month + '月份'
+                }
+            }
+
 
     }])
 

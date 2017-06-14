@@ -131,6 +131,23 @@ angular.module('sellerTeam.service', [])
                         return deferred.reject(data);
                     });
                 return deferred.promise;
+            },
+
+            // 获取提现记录
+            getSettlementRecordService: function (startTime,endTime) {
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + "/physical_purchase_summary";
+                $http.get(url,{
+                    headers:{
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
+                })
+                    .success(function (data) {
+                        return deferred.resolve(data);
+                    }).error(function (data) {
+                        return deferred.reject(data);
+                    });
+                return deferred.promise;
             }
         }
     }]);

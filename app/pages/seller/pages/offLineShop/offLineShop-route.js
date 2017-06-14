@@ -64,6 +64,10 @@ angular.module('offLineShop.route',[])
                 }]
             }
         })
+
+            /*
+             * 结算明细
+             * */
             .state('settlementRecord', {
             url:'/settlementRecord',
             templateUrl: 'pages/seller/pages/offLineShop/seller/settlementRecord.html',
