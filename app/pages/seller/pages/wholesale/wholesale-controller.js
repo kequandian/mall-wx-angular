@@ -10,16 +10,21 @@ angular.module('wholesale.controller', ['wholesale.service'])
 
             initCode();
             function initCode(){
+
                 if(wCateCache.isPcs == 0){
+                    console.log(1)
                     $state.go('home.sellerPage');
                 }else if(wCateCache.isPcs == -1){
+                    console.log(2)
                     isCrown = $stateParams.isCrown;
                     if(isCrown != null && isCrown == 'true'){
+                        console.log(3)
                         $scope.is_crown = true;
                         //获取省市区
                         AllPCD();
                         //getWholesaleInfo();
                     }else if(isCrown != null && isCrown == 'false'){
+                        console.log(4)
                         $scope.is_crown = false;
                     }
                 }

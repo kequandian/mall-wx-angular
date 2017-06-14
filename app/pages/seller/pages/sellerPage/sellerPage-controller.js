@@ -73,7 +73,7 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                         .then(function (json) {
                             if (json.status_code == 0) {
                                 $scope.userInfo = json.data;
-                                //console.log(angular.toJson($scope.userInfo));
+                                //console.log('userInfo: ' + angular.toJson($scope.userInfo));
                                 UserInfo.register_date = $scope.userInfo.register_date;
 
                                 $rootScope.profile_session.userInfo = $scope.userInfo;
@@ -93,7 +93,7 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $scope.owner_balance = json.data;
-                            //console.log(angular.toJson($scope.owner_balance));
+                            //console.log('owner_balance: ' + angular.toJson($scope.owner_balance));
 
                             $scope.owner_balance.is_member = $scope.owner_balance.is_agent
                                 || $scope.owner_balance.is_partner
@@ -228,14 +228,19 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                         if (json.status_code == 0) {
 
                             var wholesaleInfo = json.data;
+
                             if(wholesaleInfo != null){
                                 if(wholesaleInfo.wholesaleRegion != null){
-                                    var wholesaleRegion = wholesaleInfo.wholesaleRegion;
-                                    WholesalePCDCode.province = wholesaleRegion.province;
-                                    WholesalePCDCode.city = wholesaleRegion.city;
-                                    WholesalePCDCode.district = wholesaleRegion.district;
-                                    console.log('wCateCache.isPcs > ' + wCateCache.isPcs);
-                                    $state.go('wholesaleGoodsList');
+                                    if(isCrown){
+                                        var wholesaleRegion = wholesaleInfo.wholesaleRegion;
+                                        WholesalePCDCode.province = wholesaleRegion.province;
+                                        WholesalePCDCode.city = wholesaleRegion.city;
+                                        WholesalePCDCode.district = wholesaleRegion.district;
+                                        console.log('wCateCache.isPcs > ' + wCateCache.isPcs);
+                                        $state.go('wholesaleGoodsList');
+                                    }else{
+                                        $state.go('wholesale',{isCrown: isCrown});
+                                    }
                                 }else{
                                     $state.go('wholesale',{isCrown: isCrown});
                                 }
