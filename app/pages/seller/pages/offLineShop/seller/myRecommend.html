@@ -18,41 +18,78 @@
                 <div class="order-item-text">
 
                     <div class="orders-count">
-                        <p>累计总进货：<span class="pro-red">{{'￥' + (pirchase_summary.total_amount > 0 ? (pirchase_summary.total_amount | number:1) : 0)}}</span></p>
-
-                        <p>本月总进货：<span class="pro-red">{{"￥" + (pirchase_summary.monthly_amount > 0 ? (pirchase_summary.monthly_amount | number:1) : 0)}}</span></p>
+                        <p>本月总进货：
+                            <span class="pro-red">
+                                {{"￥" + (pirchase_summary.monthly_amount > 0 ? (pirchase_summary.monthly_amount | number:1) : 0)}}
+                            </span>
+                        </p>
+                        <div class="check-table">
+                            <span class="check-table-text custom_titlebar_primary">返点比例对照表查看 ></span>
+                        </div>
                     </div>
                     <div class="orders-count">
-                        <p>累计总提成：<span class="pro-black">{{"￥" + (pirchase_summary.total_settled_amount > 0 ? (pirchase_summary.total_settled_amount | number:1) : 0)}}</span></p>
-
-                        <p>本月提成比例：<span class="pro-black">
-                            {{pirchase_summary.monthly_settlement_proportion > 0 ?  pirchase_summary.monthly_settlement_proportion + "%" : 0}}
-                        </span></p>
+                        <p>本月提成比例：
+                            <span class="pro-black">
+                                {{pirchase_summary.monthly_settlement_proportion > 0 ?  pirchase_summary.monthly_settlement_proportion + "%" : 0}}
+                            </span>
+                        </p>
+                        <p>累计总进货：
+                            <span class="pro-red">
+                                {{'￥' + (pirchase_summary.total_amount > 0 ? (pirchase_summary.total_amount | number:1) : 0)}}
+                            </span>
+                        </p>
                     </div>
                     <div class="orders-count">
-                        <p>已提金额：<span class="pro-black">{{"￥" + (pirchase_summary.withdrawn_amount > 0 ? (pirchase_summary.withdrawn_amount | number:1) : 0)}}</span></p>
-
-                        <p>本月总提成：<span class="pro-black">{{"￥" + (pirchase_summary.monthly_settled_amount > 0 ? (pirchase_summary.monthly_settled_amount | number:1) : 0)}}</span></p>
+                        <p>本月总提成：
+                            <span class="pro-black">
+                                {{"￥" + (pirchase_summary.monthly_settled_amount > 0 ? (pirchase_summary.monthly_settled_amount | number:1) : 0)}}
+                            </span>
+                        </p>
+                        <p>累计总提成：
+                            <span class="pro-black">
+                                {{"￥" + (pirchase_summary.total_settled_amount > 0 ? (pirchase_summary.total_settled_amount | number:1) : 0)}}
+                            </span>
+                        </p>
                     </div>
                     <div class="orders-count">
-                        <p>可提金额：<span class="pro-black">{{"￥" + (pirchase_summary.withdrawable_amount > 0 ? (pirchase_summary.withdrawable_amount | number:1) : 0)}}</span></p>
+                        <p>可提金额：
+                            <span class="pro-black">
+                                {{"￥" + (pirchase_summary.withdrawable_amount > 0 ? (pirchase_summary.withdrawable_amount | number:1) : 0)}}
+                            </span>
+                        </p>
+                        <p>已提金额：
+                            <span class="pro-black">
+                                {{"￥" + (pirchase_summary.withdrawn_amount > 0 ? (pirchase_summary.withdrawn_amount | number:1) : 0)}}
+                            </span>
+                        </p>
                     </div>
                 </div>
 
                 <div class="order-list">
-
-                    <div class="order-list-item" ng-repeat="item in pirchase_summary.my_recommended_sellers">
-                        <div class="p-order-type">用户昵称：{{item.user_name}}</div>
+                    <!--<div class="order-list-item" ng-repeat="item in pirchase_summary.my_recommended_sellers">-->
+                    <div class="order-list-item">
+                        <!--<div class="p-order-type">用户昵称：{{item.user_name}}</div>-->
                         <div class="orders-count">
-                            <p>本月进货：<span class="pro-black">{{"￥" + (item.monthly_amount | number:1)}}</span></p>
+                            <p>用户昵称：{{item.user_name}}</span></p>
                             <p>累计进货：<span class="pro-black">{{"￥" + (item.total_amount | number:1)}}</span></p>
                         </div>
                         <div class="orders-count">
-                            <p>本月提成：<span class="pro-black">{{"￥" + (item.monthly_settled_amount | number:1)}}</span></p>
+                            <p>本月进货：<span class="pro-black">{{"￥" + (item.monthly_amount | number:1)}}</span></p>
                             <p>累计提成：<span class="pro-black">{{"￥" + (item.total_settled_amount | number:1)}}</span></p>
                         </div>
-                    </div>
+                        <div class="orders-count">
+                            <p>本月提成：<span class="pro-black">{{"￥" + (item.monthly_settled_amount | number:1)}}</span></p>
+                        </div>
+                        <div class="check-recommend" ng-click="toggle_order_item_list(show_list)">
+                            <span>查看明细</span>
+                            <div class="{{show_order_item_list(show_list) ? 'arrow-down' : 'arrow-up'}}">
+                                <i></i>
+                            </div>
+                        </div>
+                        <div style="width: 100%; height: 100px; background-color: white" ng-show="show_order_item_list(show_list)">
 
+                        </div>
+                    </div>
                 </div>
 
             </div>

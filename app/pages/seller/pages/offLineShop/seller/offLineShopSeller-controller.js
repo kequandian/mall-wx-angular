@@ -380,6 +380,23 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
             }
 
+            //show coupon list
+            $scope.show_list = {
+                isShow:false
+            };
+            $scope.toggle_order_item_list = function(show_list){
+                if(show_list.isShow === undefined){
+                    return;
+                }
+                show_list.isShow = !show_list.isShow;
+            };
+            $scope.show_order_item_list = function(show_list){
+                if(show_list.isShow === undefined){
+                    return;
+                }
+                return show_list.isShow;
+            };
+
         }])
 
 
