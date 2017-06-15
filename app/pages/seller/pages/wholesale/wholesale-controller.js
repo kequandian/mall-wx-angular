@@ -86,7 +86,7 @@ angular.module('wholesale.controller', ['wholesale.service'])
 
             //申请皇冠按钮
             $scope.crownApplyAction = function(){
-                $state.go('crownSellerAuthentication', {levelStatus: true});
+                $state.go('crownSellerAuthentication', {levelStatus: true,isMe:'me'});
             };
 
             //取消按钮

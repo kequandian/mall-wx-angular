@@ -888,21 +888,20 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
     }])
 
     /*
-     * 皇冠经销商授权
+     * 皇冠、星级经销商授权
      * */
     .controller('CrownSellerAuthenticationController', ['$scope','$state','$stateParams','$timeout', 'SellerTeamFty',
         function ($scope,$state,$stateParams,$timeout, SellerTeamFty) {
 
 
             var levelStatus = $stateParams.levelStatus;
-            console.log('levelStatus: ' +　levelStatus);
+            var isMe = $stateParams.isMe;
+            //console.log('levelStatus: ' +　levelStatus);
             var sellerType;
             var show_tips = document.getElementById('show_tips');
 
+            $scope.userInfo = {};
             $scope.action_text = '提交授权申请';
-            $scope.init_placeholder_id = "要与被授权人的UID一致";
-            $scope.init_placeholder_name = "要与被授权人个人信息的姓名一致";
-            $scope.init_placeholder_phone = "要与被授权人个人信息的手机号一致";
 
             if(levelStatus != null){
                 console.log("zzz: " + levelStatus);
@@ -911,13 +910,44 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     document.title = "线下皇冠经销商授权";
                     console.log("线下皇冠经销商授权");
                     $scope.is_crown = levelStatus;
+
+                    if(isMe == 'me'){
+                        $scope.is_disabled = true;
+                        $scope.init_placeholder_id = "要与个人信息的ID号一致";
+                        $scope.init_placeholder_name = "要与个人信息的姓名一致";
+                        $scope.init_placeholder_phone = "要与个人信息的手机号一致";
+                        getUserInfo();
+                    }else{
+                        $scope.is_disabled = false;
+                        $scope.init_placeholder_id = "要与被授权人的UID一致";
+                        $scope.init_placeholder_name = "要与被授权人个人信息的姓名一致";
+                        $scope.init_placeholder_phone = "要与被授权人个人信息的手机号一致";
+                    }
+
                 }else if(levelStatus == 'false'){
                     console.log(2);
                     document.title = "线下星级经销商授权";
                     console.log("线下星级经销商授权");
                     $scope.is_star = levelStatus;
+                    $scope.is_disabled = false;
+                    $scope.init_placeholder_id = "要与被授权人的UID一致";
+                    $scope.init_placeholder_name = "要与被授权人个人信息的姓名一致";
+                    $scope.init_placeholder_phone = "要与被授权人个人信息的手机号一致";
                 }
 
+            }
+            function getUserInfo(){
+                SellerTeamFty.myInfoService()
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            $scope.userInfo.uid = json.data.uid;
+                            console.log('个人信息：' + angular.toJson(json))
+                        }else{
+                            console.log('获取个人信息失败：' + angular.toJson(json));
+                        }
+                    }, function(error){
+                        console.log('获取个人信息失败：' + angular.toJson(error));
+                    })
             }
 
             $scope.apply_action = function(uid, real_name, phone){
@@ -945,10 +975,15 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     return;
                 }
 
-                if($scope.is_agent){
+                console.log(uid)
+                console.log(real_name)
+                console.log(phone)
+                return
+
+                if(levelStatus == 'true'){
                     crownSeller(uid,real_name,phone);
                 }else{
-                    starSeller(real_name,phone,sellerType);
+                    //starSeller(real_name,phone,sellerType);
                 }
 
             };

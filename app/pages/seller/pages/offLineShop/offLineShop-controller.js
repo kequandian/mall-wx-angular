@@ -48,12 +48,12 @@ angular.module('offLineShop.controller', ['offLineShop.service'])
 
             //进入皇冠经销授权页
             $scope.crown_seller_authorization_action = function(){
-                $state.go('crownSellerAuthentication', {levelStatus: true});
+                $state.go('crownSellerAuthentication', {levelStatus: true, isMe:'default'});
             };
 
             //进入星级经销授权页
             $scope.star_seller_authorization_action = function(){
-                $state.go('crownSellerAuthentication', {levelStatus: false});
+                $state.go('crownSellerAuthentication', {levelStatus: false, isMe:'default'});
             };
 
 

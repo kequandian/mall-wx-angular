@@ -97,7 +97,7 @@ angular.module('offLineShop.route',[])
              * 皇冠经销授权
              * */
             .state('crownSellerAuthentication', {
-                url:'/crownSellerAuthentication/:levelStatus',
+                url:'/crownSellerAuthentication/:levelStatus/:isMe',
                 templateUrl: 'pages/seller/pages/offLineShop/seller/sellerAuthorization/crownSellerAuthentication.html',
                 controller:'CrownSellerAuthenticationController',
                 resolve: {
