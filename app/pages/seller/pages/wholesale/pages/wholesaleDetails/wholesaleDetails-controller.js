@@ -492,7 +492,7 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                     p_item.price = buy_price;
                 }
 
-                //console.log("item::" + angular.toJson(item));
+                //console.log("item:" + angular.toJson(item));
                 p_item.product_id = item.id;
                 p_item.quantity = quantity;
                 p_item.product_name = item.name;
@@ -504,6 +504,8 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                 //批发状态
                 p_item.marketing = 'WHOLESALE';
                 p_item.wholesaleData.marketing_id = $scope.wholesale_info.id;
+                //p_item.wholesaleData.original_price = item.price;
+                //p_item.wholesaleData.pricings = $scope.wholesale_info.pricings;
 
                 //如果规格为空
                 if(product_specification_id == null){
@@ -517,6 +519,7 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                 p_info.push(p_item);
 
                 console.log('p_info: ' + angular.toJson(p_info));
+                //console.log('details price: ' + $scope.details.price);
                 //return;
                 //保存配送地信息
                 if($scope.cannot_deliver){
@@ -541,6 +544,10 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
 
                             $rootScope.settle_product_code = p_info;
                             $rootScope.settle_product_totalToPay = p_info[0].price * p_info[0].quantity;
+
+                            WholesalePCDCode.province = region_body.province;
+                            WholesalePCDCode.city = region_body.city;
+                            WholesalePCDCode.district = region_body.district;
 
                             var newUrl = '#/cart-settlement';
                             var title = '结算';
@@ -685,10 +692,6 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                     region_body.province = pcd_change.value.split(' ')[0];
                     region_body.city = pcd_change.value.split(' ')[1];
                     region_body.district = pcd_change.value.split(' ')[2];
-
-                    WholesalePCDCode.province = region_body.province;
-                    WholesalePCDCode.city = region_body.city;
-                    WholesalePCDCode.district = region_body.district;
                     console.log('变更完成: ' + $scope.pcd_change_price)
 
                 }
@@ -741,7 +744,6 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                     input3=null;
                 }
             };
-
 
             /*
              * 获取省市区

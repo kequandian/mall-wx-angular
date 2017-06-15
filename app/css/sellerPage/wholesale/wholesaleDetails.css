@@ -281,7 +281,7 @@
 }
 
 #wholesaleDetails .select-pcd .select-pcd-input{
-    width: 50%;
+    width: 60%;
     height: 33px;
     font-size: 13px;
     color: white;
@@ -298,6 +298,28 @@
     text-align: center;
     padding-right: 5px;
     padding-top: 3px;
+}
+
+#wholesaleDetails .select-pcd .select-pcd-arrow{
+    width: 31px;
+    height: 33px;
+    line-height: 15px;
+    font-size: 8px;
+    color: #E7C22C;
+    float: right;
+    text-align: center;
+    position: relative;
+}
+
+#wholesaleDetails .select-pcd .select-pcd-arrow i{
+    width: 16px;
+    height: 16px;
+    background-size: 8px 16px;
+    background-repeat: no-repeat;
+    background-image: url(../../../img/sellerPage/offLineShop/wholesale-details-arrow.png);
+    position: absolute;
+    top: 10px;
+    right: 8px;
 }
 
 
