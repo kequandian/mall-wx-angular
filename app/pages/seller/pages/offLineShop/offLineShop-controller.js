@@ -19,7 +19,7 @@ angular.module('offLineShop.controller', ['offLineShop.service'])
             };
 
             $scope.my_recommend_action = function(){
-                return;
+                //return;
                 $state.go('myRecommend');
             };
 
