@@ -268,6 +268,18 @@
                         {type: 'css', path: 'css/sellerPage/offlineSeller/sellerAuthorization.css'}],
                     cache: false
                 }, {
+                    name: 'LookupTable',
+                    files: ['pages/seller/pages/offLineShop/seller/offLineShopSeller-controller.js',
+                        'pages/seller/pages/offLineShop/seller/offLineShopSeller-service.js',
+                        {type: 'css', path: 'css/sellerPage/offlineSeller/lookupTable.css'}],
+                    cache: false
+                }, {
+                    name: 'CheckTableData',
+                    files: ['pages/seller/pages/offLineShop/seller/offLineShopSeller-controller.js',
+                        'pages/seller/pages/offLineShop/seller/offLineShopSeller-service.js',
+                        {type: 'css', path: 'css/sellerPage/offlineSeller/checkTableData.css'}],
+                    cache: false
+                }, {
                     name: 'MyRecommend',
                     files: ['pages/seller/pages/offLineShop/seller/offLineShopSeller-controller.js',
                         'pages/seller/pages/offLineShop/seller/offLineShopSeller-service.js',

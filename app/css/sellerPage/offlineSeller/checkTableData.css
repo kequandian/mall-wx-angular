@@ -1,0 +1,46 @@
+#checkTableData{
+    background-color: #ffffff;
+    height: 100%;
+}
+
+#checkTableData .my-recommend-content{
+}
+
+#checkTableData .item-stable{
+    width: 100%;
+    height: 44px;
+    line-height: 44px;
+    color:white;
+    /*background-color: #C50303;*/
+    text-align: center;
+    position: fixed;
+}
+
+#checkTableData .item-children-list{
+    height: auto;
+    background-color: #ffffff;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+#checkTableData .item-children-list .product-item{
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #cccccc;
+    padding-top: 44px;
+}
+
+#checkTableData .item-children-list .product-item .product-title-name{
+    height: 25px;
+    line-height: 28px;
+    font-size: 12px;
+    padding: 0 6px;
+}
+
+#checkTableData .item-children-list .product-item .product-item-details{
+    width: 100%;
+    height: 25px;
+    line-height: 23px;
+    text-align: center;
+    font-size: 12px;
+}

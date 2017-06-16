@@ -180,8 +180,8 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
     /*
      * 我的推荐
      * */
-    .controller('MyRecommendController', ['$scope','$filter', 'SellerTeamFty','UserInfo',
-        function ($scope,$filter, SellerTeamFty, UserInfo) {
+    .controller('MyRecommendController', ['$scope','$state','$filter', 'SellerTeamFty','UserInfo',
+        function ($scope,$state,$filter, SellerTeamFty, UserInfo) {
 
             //title
             document.title = "我的推荐";
@@ -365,7 +365,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 SellerTeamFty.getPurchaseSummaryService(select_dtae_format)
                     .then(function(json){
                         if(json.status_code == 0){
-                            //console.log(angular.toJson(json));
+                            console.log('我的推荐' + angular.toJson(json));
                             //console.log("json count: " + json.data.my_recommended_sellers.length);
                             $scope.pirchase_summary = json.data;
                         }else{
@@ -397,8 +397,17 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 return show_list.isShow;
             };
 
-        }])
+            //查看比例对照表
+            $scope.check_table_action = function(){
+                $state.go('lookupTable');
+            };
 
+            //查看明细
+            $scope.check_table_data_action = function(){
+                $state.go('checkTableData');
+            }
+
+        }])
 
      /*
      * 提现申请
@@ -1065,6 +1074,24 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     show_tips.style.display = 'none';
                 }, 4000);
             }
+
+    }])
+
+    /*
+     * 我的推荐-比例对照表
+     * */
+    .controller('LookupTableController', ['$scope','$state','$stateParams', 'SellerTeamFty',
+        function ($scope,$state,$stateParams, SellerTeamFty) {
+
+
+    }])
+
+    /*
+     * 我的推荐-查看明细
+     * */
+    .controller('CheckTableDataController', ['$scope','$state','$stateParams', 'SellerTeamFty',
+        function ($scope,$state,$stateParams, SellerTeamFty) {
+
 
     }])
 

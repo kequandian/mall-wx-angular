@@ -1,0 +1,40 @@
+#lookupTable{
+    background-color: #ffffff;
+    height: 100%;
+}
+
+#lookupTable .my-recommend-content{
+}
+
+#lookupTable .item-stable{
+    width: 100%;
+    height: 44px;
+    line-height: 44px;
+    color:white;
+    /*background-color: #C50303;*/
+    text-align: center;
+    position: fixed;
+}
+
+#lookupTable .lookup-table-list{
+    width: 100%;
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+#lookupTable .lookup-table-list .table-item{
+    width: 100%;
+    height: 38px;
+    line-height: 38px;
+    font-size: 13px;
+    background-color: #E9EDEF;
+}
+
+#lookupTable .lookup-table-list .table-item .item-content{
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    color: #5D696B;
+    float: left;
+}

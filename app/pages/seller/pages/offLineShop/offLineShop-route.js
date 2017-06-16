@@ -106,4 +106,32 @@ angular.module('offLineShop.route',[])
                     }]
                 }
             })
+
+            /*
+             * 我的推荐--返点比例对照表
+             * */
+            .state('lookupTable', {
+                url:'/lookupTable',
+                templateUrl: 'pages/seller/pages/offLineShop/seller/sellerAuthorization/lookupTable.html',
+                controller:'LookupTableController',
+                resolve: {
+                    loadData: ['$ocLazyLoad', function ($ocLazyLoad) {
+                        return $ocLazyLoad.load('LookupTable');
+                    }]
+                }
+            })
+
+            /*
+             * 我的推荐--查看明细
+             * */
+            .state('checkTableData', {
+                url:'/checkTableData',
+                templateUrl: 'pages/seller/pages/offLineShop/seller/sellerAuthorization/checkTableData.html',
+                controller:'CheckTableDataController',
+                resolve: {
+                    loadData: ['$ocLazyLoad', function ($ocLazyLoad) {
+                        return $ocLazyLoad.load('CheckTableData');
+                    }]
+                }
+            })
     }]);
