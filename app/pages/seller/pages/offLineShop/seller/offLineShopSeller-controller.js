@@ -367,7 +367,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                         if(json.status_code == 0){
                             console.log('我的推荐' + angular.toJson(json));
                             //console.log("json count: " + json.data.my_recommended_sellers.length);
-                            $scope.pirchase_summary = json.data;
+                            $scope.pirchase_summary = json.data[0];
                         }else{
                             $.toast('获取信息失败','cancel');
                             console.log(angular.toJson(json));
@@ -403,8 +403,9 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
             };
 
             //查看明细
-            $scope.check_table_data_action = function(){
-                $state.go('checkTableData');
+            $scope.check_table_data_action = function(item){
+                console.log(angular.toJson(item));
+                //$state.go('checkTableData');
             }
 
         }])

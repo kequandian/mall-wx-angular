@@ -2,73 +2,43 @@
   "status_code": 0,
   "data": [
     {
-      "monthly_settled_amount": 0,
-      "id": 7,
-      "transferred_amount": 0,
-      "transferred": 0,
-      "settlement_proportion": 2,
-      "monthly_amount": 20000,
-      "seller_id": 2,
-      "statistic_month": "2016-12-01"
-    },
-    {
-      "monthly_settled_amount": 60,
-      "id": 2,
-      "transferred_amount": 0,
-      "transferred": 0,
-      "settlement_proportion": 2,
-      "monthly_amount": 1200,
-      "seller_id": 2,
-      "statistic_month": "2017-01-01"
-    },
-    {
-      "monthly_settled_amount": 0,
-      "id": 11,
-      "transferred_amount": 0,
-      "transferred": 0,
-      "settlement_proportion": 0,
-      "monthly_amount": 0,
-      "seller_id": 2,
-      "statistic_month": "2017-02-01"
-    },
-    {
-      "monthly_settled_amount": 0,
-      "id": 16,
-      "transferred_amount": 0,
-      "transferred": 0,
-      "settlement_proportion": 0,
-      "monthly_amount": 0,
-      "seller_id": 2,
-      "statistic_month": "2017-03-01"
-    },
-    {
-      "monthly_settled_amount": 0,
-      "id": 19,
-      "transferred_amount": 0,
-      "transferred": 0,
-      "settlement_proportion": 0,
-      "monthly_amount": 0,
-      "seller_id": 2,
-      "statistic_month": "2017-04-01"
-    },
-    {
-      "monthly_settled_amount": 0,
-      "id": 25,
-      "transferred_amount": 0,
-      "transferred": 0,
-      "settlement_proportion": 0,
-      "monthly_amount": 0,
-      "seller_id": 2,
-      "statistic_month": "2017-05-01"
-    },
-    {
-      "monthly_settled_amount": 0,
+      "total_amount": 27270,
+      "monthly_settled_amount": 1380,
       "id": 38,
-      "transferred_amount": 0,
-      "transferred": 0,
-      "settlement_proportion": 0,
-      "monthly_amount": 0,
+      "total_settled_amount": 1440,
+      "transferred_amount": 138000,
+      "transferred": 1,
+      "settlement_proportion": 20,
+      "monthly_amount": 6070,
       "seller_id": 2,
+      "my_recommended_sellers": [
+        {
+          "monthly_settled_amount": 0,
+          "id": 85,
+          "uid": "11111",
+          "transferred_amount": 0,
+          "user_name": "11111",
+          "transferred": 0,
+          "settlement_proportion": 20,
+          "monthly_amount": 3000,
+          "seller_id": 384,
+          "avatar": null,
+          "statistic_month": "2017-06-01"
+        },
+        {
+          "monthly_settled_amount": 0,
+          "id": 83,
+          "uid": "22222",
+          "transferred_amount": 0,
+          "user_name": "22222",
+          "transferred": 0,
+          "settlement_proportion": 20,
+          "monthly_amount": 3900,
+          "seller_id": 385,
+          "avatar": null,
+          "statistic_month": "2017-06-01"
+        }
+      ],
       "statistic_month": "2017-06-01"
     }
   ]

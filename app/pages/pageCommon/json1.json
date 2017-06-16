@@ -1,21 +1,45 @@
-[
-  {
-    "created_date": "2017-06-09 16:13:07",
-    "weight": 300,
-    "product_id": 86,
-    "marketing": null,
-    "product_name": "∂‡∑“„Â‘°»È…Ó≤„”™»Û1kg+«ÂÕ∏ÀÆ»Û„Â‘°“∫300g",
-    "product_specification_name": null,
-    "stock_balance": 990,
-    "bulk": null,
-    "fare_id": 1,
-    "id": 552,
-    "cover": "http://o9ixtumvv.bkt.clouddn.com/20161027142109202-vYuLGrE8.jpg",
-    "price": 46.8,
-    "marketing_id": null,
-    "user_id": 2,
-    "quantity": 1,
-    "product_specification_id": null,
-    "$checked": true
-  }
-]
+{
+  "status_code": 0,
+  "data": [
+    {
+      "total_amount": 27310,
+      "monthly_settled_amount": 1380,
+      "id": 38,
+      "total_settled_amount": 1440,
+      "transferred_amount": 138000,
+      "transferred": 1,
+      "settlement_proportion": 20,
+      "monthly_amount": 6110,
+      "seller_id": 2,
+      "my_recommended_sellers": [
+        {
+          "monthly_settled_amount": 0,
+          "id": 85,
+          "uid": "11111",
+          "transferred_amount": 0,
+          "user_name": "11111",
+          "transferred": 0,
+          "settlement_proportion": 20,
+          "monthly_amount": 3000,
+          "seller_id": 384,
+          "avatar": null,
+          "statistic_month": "2017-06-01"
+        },
+        {
+          "monthly_settled_amount": 0,
+          "id": 83,
+          "uid": "22222",
+          "transferred_amount": 0,
+          "user_name": "22222",
+          "transferred": 0,
+          "settlement_proportion": 20,
+          "monthly_amount": 3900,
+          "seller_id": 385,
+          "avatar": null,
+          "statistic_month": "2017-06-01"
+        }
+      ],
+      "statistic_month": "2017-06-01"
+    }
+  ]
+}
