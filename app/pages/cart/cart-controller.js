@@ -409,9 +409,9 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
         }])
 
-    .controller('SettlementController', ['$scope', '$state', '$stateParams', '$location', '$rootScope','$timeout', 'AddressManagerFty', 'CartFty','BalanceSession',
+    .controller('SettlementController', ['$scope', '$state', '$stateParams', '$location', '$rootScope','$timeout','$interval', 'AddressManagerFty', 'CartFty','BalanceSession',
         'PointRate', '$ocLazyLoad','areasStatus','goodListParams','AutoSelectCoupon','WholesalePCDCode','wCateCache',
-        function ($scope, $state, $stateParams, $location, $rootScope,$timeout, AddressManagerFty, CartFty,BalanceSession, PointRate,
+        function ($scope, $state, $stateParams, $location, $rootScope,$timeout,$interval, AddressManagerFty, CartFty,BalanceSession, PointRate,
                   $ocLazyLoad,areasStatus,goodListParams,AutoSelectCoupon,WholesalePCDCode,wCateCache) {
 
 
@@ -590,6 +590,44 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     }, function(error){
                         console.log('获取批发配送地信息失败: ' + angular.toJson(error));
                     })
+            }
+
+            //更改pcd变更价格
+            $scope.settlement_pcd_change = function(){
+
+                var interval = $interval(function(){
+                    var dis_class = document.getElementsByClassName('weui_actionsheet_toggle');
+                    console.log(dis_class.length);
+                    if(dis_class.length == 0){
+                        if(wCateCache.returnStatus == 'details'
+                            || wCateCache.returnStatus == 'cart'){
+                            is_wholesale_pcd_change(wCateCache.returnStatus);
+                        }
+                        $interval.cancel(interval);
+                    }
+                }, 1000);
+            };
+
+            //判断是否有更改地址
+            function is_wholesale_pcd_change(returnStatus){
+
+                var province = WholesalePCDCode.province;
+                var city = WholesalePCDCode.city;
+                var district = WholesalePCDCode.district;
+
+                if($scope.currentContact.province == province
+                    && $scope.currentContact.city == city
+                    && $scope.currentContact.district == district ){
+                    console.log('默认配送地');
+                }else{
+                    console.log('以改变配送地');
+                    if(returnStatus == 'details'){
+                        $state.go('wholesaleGoodsList');
+                    }else if(returnStatus == 'cart'){
+                        $state.go('home.cart');
+                    }
+                }
+
             }
 
             //获取运费信息
