@@ -1,7 +1,7 @@
 angular.module('my.controller', ['my.service'])
 
-    .controller('MyController', ['$scope','$state','$rootScope','MyFty','$ocLazyLoad','cateLeftIndex','cateCacheCode',
-        function($scope,$state,$rootScope, MyFty, $ocLazyLoad,cateLeftIndex,cateCacheCode){
+    .controller('MyController', ['$scope','$state','$rootScope','MyFty','$ocLazyLoad','cateLeftIndex','cateCacheCode','wCateCache',
+        function($scope,$state,$rootScope, MyFty, $ocLazyLoad,cateLeftIndex,cateCacheCode,wCateCache){
 
             //title
             document.title = "个人中心";
@@ -171,6 +171,12 @@ angular.module('my.controller', ['my.service'])
                         console.log('获取订单失败：' + error);
                     })
             }
+
+            //进入地址设置
+            $scope.goToAddressManager = function(){
+                wCateCache.isCrown = false;
+                $state.go('addressManager');
+            };
 
             //default category params
             //cateCacheCode.index_first=0;

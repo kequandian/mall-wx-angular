@@ -8,8 +8,8 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
         }
     })
     .controller('CartController', ['$scope', '$state', '$rootScope', 'CartFty','$ocLazyLoad','cateLeftIndex',
-        'cateCacheCode',
-        function ($scope, $state, $rootScope, CartFty, $ocLazyLoad,cateLeftIndex,cateCacheCode) {
+        'cateCacheCode','wCateCache',
+        function ($scope, $state, $rootScope, CartFty, $ocLazyLoad,cateLeftIndex,cateCacheCode,wCateCache) {
 
             //title
             document.title = "购物车";
@@ -320,6 +320,8 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 console.log('购物车: ' + angular.toJson(newCartItems));
                 return;
 
+                wCateCache.returnStatus = 'cart';
+
                 $rootScope.settle_product_code = $scope.checkedCarts;
                 $rootScope.settle_product_totalToPay = pay;
 
@@ -408,13 +410,14 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
         }])
 
     .controller('SettlementController', ['$scope', '$state', '$stateParams', '$location', '$rootScope','$timeout', 'AddressManagerFty', 'CartFty','BalanceSession',
-        'PointRate', '$ocLazyLoad','areasStatus','goodListParams','AutoSelectCoupon','WholesalePCDCode',
+        'PointRate', '$ocLazyLoad','areasStatus','goodListParams','AutoSelectCoupon','WholesalePCDCode','wCateCache',
         function ($scope, $state, $stateParams, $location, $rootScope,$timeout, AddressManagerFty, CartFty,BalanceSession, PointRate,
-                  $ocLazyLoad,areasStatus,goodListParams,AutoSelectCoupon,WholesalePCDCode) {
+                  $ocLazyLoad,areasStatus,goodListParams,AutoSelectCoupon,WholesalePCDCode,wCateCache) {
 
 
             $ocLazyLoad.load('Jquery').then(function () {
                 $ocLazyLoad.load('JqueryWeUI').then(function () {
+                    console.log('return status: ' + wCateCache.returnStatus);
                     console.log('settlement:jquery loaded');
                 })
             });

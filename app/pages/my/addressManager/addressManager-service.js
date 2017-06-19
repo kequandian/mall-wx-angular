@@ -119,6 +119,24 @@ angular.module('addressManager.service', [])
                         deferred.reject(data);
                     });
                 return deferred.promise;
+            },
+
+            //±£¥Ê≈‰ÀÕµÿ÷∑
+            saveWholesalePCDService: function (pcdBody) {
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + '/wholesale_region';
+                $http.post(url,pcdBody,{
+                    headers: {
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
+                })
+                    .success(function (data) {
+                        deferred.resolve(data);
+                    })
+                    .error(function (data) {
+                        deferred.reject(data);
+                    });
+                return deferred.promise;
             }
         }
     }]);

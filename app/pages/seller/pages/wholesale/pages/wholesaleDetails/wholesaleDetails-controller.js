@@ -1,8 +1,8 @@
 angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
 
         .controller('WholesaleDetailsController', ['$scope', '$state', '$stateParams', '$rootScope', 'WholesaleDetailsFty',
-        'PointRate','WholesalePCDCode', '$ocLazyLoad','$interval',
-        function ($scope, $state, $stateParams, $rootScope, WholesaleDetailsFty, PointRate,WholesalePCDCode, $ocLazyLoad,$interval) {
+        'PointRate','WholesalePCDCode', '$ocLazyLoad','$interval','wCateCache',
+        function ($scope, $state, $stateParams, $rootScope, WholesaleDetailsFty, PointRate,WholesalePCDCode, $ocLazyLoad,$interval,wCateCache) {
 
             $ocLazyLoad.load('Jquery').then(function () {
                 $ocLazyLoad.load('JqueryWeUI').then(function () {
@@ -89,7 +89,7 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                         if(json.status_code == 0){
                             $scope.wholesale_info = json.data;
                             product_id = json.data.product_id;
-                            console.log("商品批发详情: " + angular.toJson(json));
+                            //console.log("商品批发详情: " + angular.toJson(json));
                         }else{
                             console.log("获取商品批发详情失败: " + angular.toJson(json));
                         }
@@ -521,12 +521,29 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                 console.log('p_info: ' + angular.toJson(p_info));
                 //console.log('details price: ' + $scope.details.price);
                 //return;
+                wCateCache.returnStatus = 'details';
+
+                $rootScope.settle_product_code = p_info;
+                $rootScope.settle_product_totalToPay = p_info[0].price * p_info[0].quantity;
+
+                var newUrl = '#/cart-settlement';
+                var title = '结算';
+                var c_state = history.state;
+                window.history.pushState(c_state, title, newUrl);
+
+                $state.go('cart-settlement', {
+                    carts: $scope.checkedCarts,
+                    totalToPay: p_info[0].price * p_info[0].quantity,
+                    totalFreight: item.freight
+                });
+
+
                 //保存配送地信息
-                if($scope.cannot_deliver){
+                /*if($scope.cannot_deliver){
                     $.toast('该地区不支持配送服务','cancel');
                 }else{
                     saveRegion(item.freight,quantity,p_info);
-                }
+                }*/
 
             };
 

@@ -77,7 +77,9 @@ angular.module('moduleValueJs',[])
         loading:false,
         load_more_btn_show: true,
         codeItem:null,
-        isPcd:-1
+        isPcd:-1,
+        isCrown:false,
+        returnStatus:'default'
     })
 
     //商品批发

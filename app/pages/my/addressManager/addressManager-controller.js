@@ -1,9 +1,12 @@
 angular.module('addressManager.controller', ['addressManager.service'])
 
     .controller('AddressManagerController', ['$scope', '$state', '$stateParams', '$rootScope', 'AddressManagerFty',
-        '$ocLazyLoad', function ($scope, $state, $stateParams,$rootScope, AddressManagerFty, $ocLazyLoad) {
+        '$ocLazyLoad','wCateCache','WholesalePCDCode',
+        function ($scope, $state, $stateParams,$rootScope, AddressManagerFty, $ocLazyLoad,wCateCache,WholesalePCDCode) {
+
             var pcd;
 
+            $scope.is_wholesale = false;
             AllContacts();
 
             //$ocLazyLoad.load('Jquery').
@@ -50,6 +53,9 @@ angular.module('addressManager.controller', ['addressManager.service'])
                                 //console.log($scope.currentContact);
                             }
                         });
+                        if(wCateCache.isCrown){
+                            $scope.is_wholesale = true;
+                        }
 
                     }, function (error) {
                         console.log(error);
@@ -218,6 +224,15 @@ angular.module('addressManager.controller', ['addressManager.service'])
                     //取消操作
                 });
             };
+            //进入商品批发列表
+            $scope.goToWholesaleList = function(item){
+                console.log(angular.toJson(item));
+                if(item.is_default){
+                    saveWholesalePCD(item);
+                }else{
+                    setDefaultContact(item.id);
+                }
+            };
 
             $scope.defaultContact = function (id) {
                 if (checkDefault(id)) {
@@ -226,9 +241,19 @@ angular.module('addressManager.controller', ['addressManager.service'])
                 }
 
                 $.confirm("", "是否设为默认地址?", function () {
-                    AddressManagerFty.defaultContact(id).then(
-                        function (result) {
-                            //$scope.contact.is_default=1;
+                    setDefaultContact(id);
+                }, function () {
+                    //取消操作
+                    AllContacts();
+                });
+            };
+
+            function setDefaultContact(id){
+                AddressManagerFty.defaultContact(id).then(
+                    function (result) {
+                        //$scope.contact.is_default=1;
+                        if(result.status_code == 0){
+
                             angular.forEach($scope.contacts, function (data, index) {
                                 data.is_default = 0;
                                 if (data.id == id) {
@@ -236,15 +261,42 @@ angular.module('addressManager.controller', ['addressManager.service'])
                                     $scope.currentContact = data;
                                 }
                             });
+                            if(wCateCache.isCrown){
+                                saveWholesalePCD($scope.currentContact);
+                            }
+                        }else{
+                            console.log('设置默认地址失败: ' + angular.toJson(result));
+                        }
 
-                        }, function (error) {
-                            AllContacts();
-                            console.log(error);
-                        });
-                }, function () {
-                    //取消操作
-                    AllContacts();
-                });
+                    }, function (error) {
+                        console.log('设置默认地址失败: ' + angular.toJson(result));
+                        AllContacts();
+                    });
+            }
+
+            //保存配送地
+            function saveWholesalePCD(item){
+
+                var pcd_body = {};
+                pcd_body.province = item.province;
+                pcd_body.city = item.city;
+                pcd_body.district = item.district;
+
+                AddressManagerFty.saveWholesalePCDService(pcd_body)
+                    .then(function (json) {
+                        //$scope.provinces = result.data;
+                        if(json.status_code == 0){
+                            console.log('保存成功：' + angular.toJson(json));
+                            WholesalePCDCode.province = item.province;
+                            WholesalePCDCode.city = item.city;
+                            WholesalePCDCode.district = item.district;
+                            $state.go('wholesaleGoodsList');
+                        }else{
+                            console.log('保存配送地址失败：' + angular.toJson(json));
+                        }
+                    }, function (error) {
+                        console.log('保存配送地址失败：' + angular.toJson(error));
+                    })
             }
 
             function checkDefault(id) {

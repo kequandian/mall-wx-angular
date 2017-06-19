@@ -221,9 +221,16 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
             $scope.wholesale = function(isCrown,crownShip){
                 console.log(isCrown);
                 //console.log(crownShip);
-
                 wCateCache.isPcs = -1;
-                SellerPageFty.getWholesaleService()
+                //$state.go('wholesale',{isCrown: isCrown});
+                if(isCrown){
+                    wCateCache.isCrown = isCrown;
+                    $state.go('addressManager');
+                }else{
+                    $state.go('wholesale',{isCrown: isCrown});
+                }
+
+                /*SellerPageFty.getWholesaleService()
                     .then(function (json) {
                         if (json.status_code == 0) {
 
@@ -252,7 +259,7 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                         }
                     }, function (error) {
                         console.log('获取商品批发信息失败: ' + angular.toJson(error));
-                    })
+                    })*/
             };
 
         }])
