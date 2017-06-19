@@ -629,7 +629,7 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
             };
 
             //计算剩余时间
-            $scope.count_time = function(startTime, endTime){
+            $scope.count_time = function(endTime,index){
                 var start = Date.parse(new Date());
                 var end = Date.parse(new Date(endTime.replace(/-/g, "/")));
                 var newDate = end - start;  //时间差的毫秒数
@@ -645,38 +645,52 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                     var seconds = Math.round(leave3/1000);
                     //console.log(" 相差 "+days+"天 "+hours+"小时 "+minutes+" 分钟"+seconds+" 秒")
 
-                    return hours + ':'+ minutes + ':' + seconds
+                    if(hours<10){
+                        hours = "0"+ hours;
+                    }
+                    if(minutes<10){
+                        minutes = "0"+ minutes;
+                    }
+                    if(seconds<10){
+                        seconds = "0"+ seconds;
+                    }
+                    return hours + ':'+ minutes + ':' + seconds;
+
+                    //countdown(hours,minutes,seconds,index);
+                    //cdown(newDate,index);
+
                 }else{
                     return '已超时'
                 }
 
             };
 
-
-
-
-            // 秒杀计时器
-            function countdown(){
+            // 单个计时器
+            function countdown(hours,minutes,seconds,index){
                 if($window.timer){
                     clearInterval($window.timer);
                 }
                 // 倒计时
                 var timeObj={
-                    h:1,
-                    m:37,
-                    s:13
+                    h:0,
+                    m:0,
+                    s:0
                 };
 
-                var timeStr=toDouble(timeObj.h)+toDouble(timeObj.m)+toDouble(timeObj.s);
-                var timeList=document.getElementsByClassName('time-text');
-                for(var i=0;i<timeList.length;i++){
-                    timeList[i].innerHTML=timeStr[i];
+                timeObj.h = hours;
+                timeObj.m = minutes;
+                timeObj.s = seconds;
+
+                var timeStr = toDouble(timeObj.h)+toDouble(timeObj.m)+toDouble(timeObj.s);
+                var timeList = document.getElementsByClassName('time-text-' + index);
+                for(var i = 0; i < timeList.length; i++){
+                    timeList[i].innerHTML = timeStr[i];
                 }
                 function toDouble(num){
                     if(num<10){
-                        return '0'+num;
+                        return '0' + num;
                     }else{
-                        return ''+num;
+                        return '' + num;
                     }
                 }
 
@@ -701,6 +715,65 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                         timeList[i].innerHTML=timeStr[i];
                     }
                 },1000)
+            }
+
+            //多个计时器
+            function cdown(timeStamp,index){
+                var addTimer = function(){
+                    var list = [],
+                        interval;
+
+                    return function(timeStamp,index){
+                        if(!interval){
+                            interval = setInterval(go,1000);
+                        }else{
+                            console.log('索引'+ index+'停止计时')
+                            clearInterval(interval);
+                        }
+                        list.push({ele:document.getElementById('time-text-'+index),time:timeStamp});
+                    }
+
+                    function go() {
+                        for (var i = 0; i < list.length; i++) {
+                            list[i].ele.innerHTML = changeTimeStamp(list[i].time);
+                            if (!list[i].time){
+                                console.log('')
+                                list.splice(i--, 1000);
+                            }
+                        }
+                    }
+
+                    //传入unix时间戳，得到倒计时
+                    function changeTimeStamp(timeStamp){
+                        var distancetime = new Date().getTime() - new Date(timeStamp*1000).getTime();
+                        if(distancetime > 0){
+                            //如果大于0.说明尚未到达截止时间
+                            var ms = Math.floor(distancetime%1000);
+                            var sec = Math.floor(distancetime/1000%60);
+                            var min = Math.floor(distancetime/1000/60%60);
+                            var hour =Math.floor(distancetime/1000/60/60%24);
+
+                            if(ms<100){
+                                ms = "0"+ ms;
+                            }
+                            if(sec<10){
+                                sec = "0"+ sec;
+                            }
+                            if(min<10){
+                                min = "0"+ min;
+                            }
+                            if(hour<10){
+                                hour = "0"+ hour;
+                            }
+
+                            return hour + ":" +min + ":" +sec + ":" +ms;
+                        }else{
+                            //若否，就是已经到截止时间了
+                            return "已截止！"
+                        }
+                    }
+                }();
+                return addTimer(timeStamp,index);
             }
 
 

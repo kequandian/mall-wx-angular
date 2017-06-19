@@ -89,7 +89,7 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                         if(json.status_code == 0){
                             $scope.wholesale_info = json.data;
                             product_id = json.data.product_id;
-                            //console.log("商品批发详情: " + angular.toJson(json));
+                            console.log("商品批发详情: " + angular.toJson(json));
                         }else{
                             console.log("获取商品批发详情失败: " + angular.toJson(json));
                         }
@@ -627,7 +627,7 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                         producePriceChange($scope.wholesale_info);
                         $interval.cancel(interval);
                     }
-                }, 1000);
+                }, 800);
             };
 
             //变更价格

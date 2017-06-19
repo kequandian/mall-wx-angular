@@ -26,25 +26,33 @@
             </div>
             <div class="product-price">
 
-                <span style="margin-right:2px">{{pcd_change_price |currency:"￥"}}</span>
-                <span class="point">/ {{(pcd_change_price*point_rate) | number:0}}积分</span>
-
-                <!--<span class="rebate" ng-if="product_rebate > 0">
-                    <span class="product-rebate-small">送</span>
-                    <span class="product-rebate">{{(product_rebate*point_rate) | number:0}}</span>
-                    <span  class="product-rebate-small">积分</span>
-                </span>-->
+                <span style="margin-right:2px;">{{pcd_change_price |currency:"￥"}}</span>
+                <span class="point">/ {{(pcd_change_price*point_rate) | number:0}}积分 </span>
 
                 <span class="rebate">
+                    <span class="product-retail-small">
+                        {{wholesale_info.settlement_proportion > 0 ? '【推荐最高返' + wholesale_info.settlement_proportion + '%】': ''}}
+                    </span>
+                </span>
+
+                <!--<span class="rebate">
                     <span class="product-retail-small">线下建议零售价:</span>
                     <span class="product-retail">{{wholesale_info.suggested_retail_price}}</span>
                     <span class="product-retail-small">元/瓶</span>
-                </span>
+                </span>-->
 
                 <div class="product-price-market">
                     <span>市场价：</span><s>{{details.suggested_price | currency:'￥'}}</s>
-                    <div class="freight_if" ng-if="details.weight > 0">毛重：{{details.weight/1000}}kg</div>
-                    <div class="freight_if" ng-if="!details.weight > 0">{{fare_info.name}}</div>
+                </div>
+                <div class="product-price-market">
+                    <div class="star-price">
+                        <span style="margin-right: 10px;" ng-if="wholesale_info.settlement_proportion > 0">
+                            {{wholesale_info.settlement_proportion > 0 ? '星级经销价:' + wholesale_info.settlement_proportion + '元/瓶': ''}}
+                        </span>
+                        <span ng-if="wholesale_info.suggested_retail_price > 0">
+                            {{wholesale_info.suggested_retail_price > 0 ? '现零售价:' + wholesale_info.suggested_retail_price + '元/瓶': ''}}
+                        </span>
+                    </div>
                 </div>
             </div>
 
