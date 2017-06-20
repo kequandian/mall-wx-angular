@@ -857,7 +857,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     .then(function(json){
                         if(json.status_code == 0){
                             $scope.settlement_record_list = json.data;
-                            console.log(angular.toJson(json))
+                            //console.log(angular.toJson(json))
                         }else{
                             console.log('获取结算明细失败: ' + angular.toJson(json));
                         }

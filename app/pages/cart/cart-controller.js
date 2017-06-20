@@ -620,15 +620,58 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     && $scope.currentContact.district == district ){
                     console.log('默认配送地');
                 }else{
-                    console.log('以改变配送地');
-                    if(returnStatus == 'details'){
-                        $state.go('wholesaleGoodsList');
-                    }else if(returnStatus == 'cart'){
-                        $state.go('home.cart');
-                    }
+                    console.log('配送地已改变: ' + angular.toJson($scope.currentContact));
+                    updateDefaultAddress($scope.currentContact,returnStatus);
+
                 }
 
             }
+
+            //更改默认地址
+            function updateDefaultAddress(contact,returnStatus){
+
+                CartFty.defaultContactService(contact.id)
+                    .then(function(json){
+                        if(json.status_code == 0){
+
+                            var new_pcd = {};
+                            new_pcd.province = contact.province;
+                            new_pcd.city = contact.city;
+                            new_pcd.district = contact.district;
+
+                            saveWholesaleRegion(new_pcd,returnStatus);
+                        }else{
+                            console.log('更改默认地址失败：' + angular.toJson(json));
+                        }
+                    }, function(error){
+                        console.log('更改默认地址失败：' + angular.toJson(error));
+                    })
+            }
+
+            //保存配送地
+            function saveWholesaleRegion(pcdBody,returnStatus){
+                CartFty.saveWholesaleRegionService(pcdBody)
+                    .then(function (json) {
+                        //$scope.provinces = result.data;
+                        if(json.status_code == 0){
+
+                            console.log('保存成功：' + angular.toJson(json));
+                            WholesalePCDCode.province = pcdBody.province;
+                            WholesalePCDCode.city = pcdBody.city;
+                            WholesalePCDCode.district = pcdBody.district;
+                            if(returnStatus == 'details'){
+                                $state.go('wholesaleGoodsList');
+                            }else if(returnStatus == 'cart'){
+                                $state.go('home.cart');
+                            }
+                        }else{
+                            console.log('保存配送地址失败：' + angular.toJson(json));
+                        }
+                    }, function (error) {
+                        console.log('保存配送地址失败：' + angular.toJson(error));
+                    })
+            }
+
 
             //获取运费信息
             $scope.productFrieghts = {
