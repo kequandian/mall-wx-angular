@@ -27,7 +27,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     function (result) {
                         if (result.status_code == 0) {
                             $scope.carts = result.data;
-                            //console.log('购物车信息：' + angular.toJson(result.data));
+                            console.log('购物车信息：' + angular.toJson(result.data));
                             if ($scope.carts.length > 0) {
 
                                 var c_count = 0;
@@ -313,7 +313,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 console.log('isNormal: ' + isNormal);
                 console.log('isWholesale: ' + isWholesale);
                 if(isNormal > 0 && isWholesale > 0){
-                    $.toast('只能购买同一类型的商品','cancel');
+                    $.toast('不能同时购买批发和普通类型的商品','cancel');
                     return;
                 }
                 console.log('购物车: ' + newCartItems.length);
