@@ -1,67 +1,32 @@
 {
-  "status_code": 0,
-  "data": {
-    "totalRow": 1,
-    "totalPage": 1,
-    "pageNumber": 1,
-    "pageSize": 30,
-    "firstPage": true,
-    "lastPage": true,
-    "list": [
-      {
-        "cover": "http://o9ixtumvv.bkt.clouddn.com/20170605122348113-hl0fVx3E.png",
-        "agent_proportion": 25,
-        "sale": 3687,
-        "product": {
-          "free_shipping": 0,
-          "freight": 0,
-          "last_modified_date": "2017-06-08 09:44:28",
-          "promoted": 1,
-          "specifications": [],
-          "sales": 4403,
-          "cover": "http://o9ixtumvv.bkt.clouddn.com/20161027143355732-VFN0L9yd.jpg",
-          "category_id": 36,
-          "price": 39.9,
-          "id": 85,
-          "sort_order": 83,
-          "barcode": null,
-          "store_location": null,
-          "cost_price": 39.9,
-          "covers": [
-            "http://o9ixtumvv.bkt.clouddn.com/20161027143355732-VFN0L9yd.jpg"
-          ],
-          "weight": 717,
-          "stock_balance": 38870,
-          "brand_id": null,
-          "unit": "80",
-          "suggested_price": 39.9,
-          "name": "力士LUX爽肤闪亮冰爽沐浴乳护肤滋润720ml",
-          "short_name": "闪亮冰爽沐浴乳",
-          "created_date": "2016-10-27 14:13:54",
-          "fare_id": 1,
-          "bulk": null,
-          "partner_level_zone": 2,
-          "view_count": 505,
-          "status": "ONSELL"
-        },
-        "category_id": 2,
-        "product_id": 85,
-        "marketing_name": "力士LUX爽肤闪亮",
-        "description": null,
-        "settlement_proportion": 30,
-        "id": 2,
-        "pricing": {
-          "wholesale_id": 2,
-          "price": 20,
-          "id": 20,
-          "suggested_retail_price": 15,
-          "suggested_wholesale_price": 12,
-          "region": "广东",
-          "is_default": 0,
-          "enabled": 1
-        },
-        "status": "ONSELL"
-      }
-    ]
-  }
+  "payment_type": "WECHAT",
+  "order_items": [
+    {
+      "product_id": 58,
+      "quantity": 3,
+      "product_specification_id": null,
+      "marketing_id": 1
+    },
+    {
+      "product_id": 85,
+      "quantity": 1,
+      "product_specification_id": null,
+      "marketing_id": 2
+    }
+  ],
+  "contact": {
+    "zip": null,
+    "province": "广东",
+    "user_id": 2,
+    "phone": "12563256698",
+    "city": "广州",
+    "contact_user": "huang",
+    "street": null,
+    "district": "越秀区",
+    "street_number": null,
+    "id": 222,
+    "detail": "123号",
+    "is_default": 1
+  },
+  "marketing": "WHOLESALE"
 }

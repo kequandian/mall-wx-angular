@@ -46,8 +46,8 @@
                 </div>
                 <div class="product-price-market">
                     <div class="star-price">
-                        <span style="margin-right: 10px;" ng-if="wholesale_info.settlement_proportion > 0">
-                            {{wholesale_info.settlement_proportion > 0 ? '星级经销价:' + wholesale_info.settlement_proportion + '元/瓶': ''}}
+                        <span style="margin-right: 10px;" ng-if="wholesale_info.pricing.suggested_wholesale_price > 0">
+                            {{wholesale_info.pricing.suggested_wholesale_price > 0 ? '星级经销价:' + wholesale_info.pricing.suggested_wholesale_price + '元/瓶': ''}}
                         </span>
                         <span ng-if="wholesale_info.pricing.suggested_retail_price > 0">
                             {{wholesale_info.pricing.suggested_retail_price > 0 ? '现零售价:' + wholesale_info.pricing.suggested_retail_price + '元/瓶': ''}}

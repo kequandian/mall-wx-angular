@@ -1,45 +1,29 @@
 {
-  "status_code": 0,
-  "data": [
+  "payment_type": "WECHAT",
+  "order_items": [
     {
-      "total_amount": 27310,
-      "monthly_settled_amount": 1380,
-      "id": 38,
-      "total_settled_amount": 1440,
-      "transferred_amount": 138000,
-      "transferred": 1,
-      "settlement_proportion": 20,
-      "monthly_amount": 6110,
-      "seller_id": 2,
-      "my_recommended_sellers": [
-        {
-          "monthly_settled_amount": 0,
-          "id": 85,
-          "uid": "11111",
-          "transferred_amount": 0,
-          "user_name": "11111",
-          "transferred": 0,
-          "settlement_proportion": 20,
-          "monthly_amount": 3000,
-          "seller_id": 384,
-          "avatar": null,
-          "statistic_month": "2017-06-01"
-        },
-        {
-          "monthly_settled_amount": 0,
-          "id": 83,
-          "uid": "22222",
-          "transferred_amount": 0,
-          "user_name": "22222",
-          "transferred": 0,
-          "settlement_proportion": 20,
-          "monthly_amount": 3900,
-          "seller_id": 385,
-          "avatar": null,
-          "statistic_month": "2017-06-01"
-        }
-      ],
-      "statistic_month": "2017-06-01"
+      "product_id": 86,
+      "quantity": 1,
+      "product_specification_id": null
+    },
+    {
+      "product_id": 41,
+      "quantity": 1,
+      "product_specification_id": null
     }
-  ]
+  ],
+  "contact": {
+    "zip": null,
+    "province": "广东",
+    "user_id": 2,
+    "phone": "12563256698",
+    "city": "广州",
+    "contact_user": "huang",
+    "street": null,
+    "district": "越秀区",
+    "street_number": null,
+    "id": 222,
+    "detail": "123号",
+    "is_default": 1
+  }
 }
