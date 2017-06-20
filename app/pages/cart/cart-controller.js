@@ -655,7 +655,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                         //$scope.provinces = result.data;
                         if(json.status_code == 0){
 
-                            console.log('保存成功：' + angular.toJson(json));
+                            //console.log('保存成功：' + angular.toJson(json));
                             WholesalePCDCode.province = pcdBody.province;
                             WholesalePCDCode.city = pcdBody.city;
                             WholesalePCDCode.district = pcdBody.district;

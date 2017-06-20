@@ -1,7 +1,7 @@
-angular.module('wholesale.controller', ['wholesale.service'])
+angular.module('addWholesaleAddress.controller', ['addWholesaleAddress.service'])
 
-        .controller('WholesaleController', ['$scope','$state','$stateParams', 'WholesaleFty','WholesalePCDCode','wCateCache',
-        function($scope,$state,$stateParams, WholesaleFty,WholesalePCDCode,wCateCache){
+        .controller('AddWholesaleAddressController', ['$scope','$state','$stateParams', 'aAddWholesaleAddressFty','WholesalePCDCode','wCateCache',
+        function($scope,$state,$stateParams, aAddWholesaleAddressFty,WholesalePCDCode,wCateCache){
 
             document.title = '商品批发';
             var isCrown = null;

@@ -223,6 +223,8 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                 //console.log(crownShip);
                 wCateCache.isPcs = -1;
                 //$state.go('wholesale',{isCrown: isCrown});
+
+
                 if(isCrown){
                     wCateCache.isCrown = isCrown;
                     $state.go('addressManager');

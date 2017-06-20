@@ -40,7 +40,8 @@
         'pieceGroupGoodsList.route',
         'wholesale.route',
         'wholesaleGoodsList.route',
-        'wholesaleDetails.route'
+        'wholesaleDetails.route',
+        'addWholesaleAddress.route'
 
     ]).config(["$urlRouterProvider", '$ocLazyLoadProvider','$locationProvider',
         function ($urlRouterProvider, $ocLazyLoadProvider,$locationProvider) {
@@ -333,6 +334,14 @@
                         'pages/seller/pages/wholesale/pages/wholesaleDetails/wholesaleDetails-service.js',
                         {type: 'css', path: 'css/cart/cart.css'},
                         {type: 'css', path: 'css/sellerPage/wholesale/wholesaleDetails.css'}],
+                    cache: false
+                }, {
+                    name: 'AddWholesaleAddress',
+                    files: [
+                        'pages/seller/pages/wholesale/pages/addWholesaleAddress/addWholesaleAddress-controller.js',
+                        'pages/seller/pages/wholesale/pages/addWholesaleAddress/addWholesaleAddress-service.js',
+                        {type: 'css', path: 'css/cart/cart.css'},
+                        {type: 'css', path: 'css/sellerPage/wholesale/addWholesaleAddress.css'}],
                     cache: false
                 }
 

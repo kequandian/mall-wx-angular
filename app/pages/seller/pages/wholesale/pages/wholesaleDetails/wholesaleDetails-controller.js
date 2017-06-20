@@ -27,6 +27,7 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
             var pcd = null;
             $scope.pcd_change_price = 0;
             $scope.cannot_deliver = false;
+            $scope.fare_info ={};
 
             if(province != null && city != null && district != null){
                 $scope.pcd = province + ' ' + city + ' ' + district;
@@ -89,6 +90,7 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                         if(json.status_code == 0){
                             $scope.wholesale_info = json.data;
                             product_id = json.data.product_id;
+                            $scope.fare_info.is_incl_postage = 1;
                             //console.log("商品批发详情: " + angular.toJson(json));
                         }else{
                             console.log("获取商品批发详情失败: " + angular.toJson(json));
@@ -97,11 +99,11 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                         console.log("获取商品批发详情失败: " + angular.toJson(error));
                     }).finally(function(){
                         //变更价格
-                        producePriceChange($scope.wholesale_info)
+                        //producePriceChange($scope.wholesale_info);
                         //商品详情
                         detailsInfo();
                         //获取省市区
-                        AllPCD();
+                        //AllPCD();
                     })
             }
 
@@ -162,7 +164,7 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                             }
 
                             //运费
-                            $scope.fare_info = $scope.details.fare_template;
+                            /*$scope.fare_info = $scope.details.fare_template;
 
                             //console.log("运费信息：" + angular.toJson($scope.fare_info))
 
@@ -172,7 +174,7 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                                 if(item.is_default){
                                     $scope.fare_info.default_amount = item.first_amount;
                                 }
-                            })
+                            })*/
 
                         } else {
                             if(json.message == 'product.is.offsell'){
@@ -480,16 +482,16 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                     fightGroupData:{},
                     wholesaleData:{}
                 };
-                var buy_price = 0;
+                //var buy_price = 0;
                 if (item.specifications.length > 0) {
                     angular.forEach(item.specifications, function (v, k) {
                         if (v.id == product_specification_id) {
-                            buy_price = v.price;
+                            //buy_price = v.price;
                             p_item.product_specification_name = v.name;
                             p_item.stock_balance = v.stock_balance;
                         }
                     });
-                    p_item.price = buy_price;
+                    p_item.price = $scope.wholesale_info.pricing.price;
                 }
 
                 //console.log("item:" + angular.toJson(item));
@@ -510,7 +512,7 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                 //如果规格为空
                 if(product_specification_id == null){
                     p_item.stock_balance = item.stock_balance;
-                    p_item.price = $scope.pcd_change_price;
+                    p_item.price = $scope.wholesale_info.pricing.price;
                 }
 
                 p_item.product_specification_id = product_specification_id;
@@ -630,7 +632,7 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                 //}else{
                 //    return 'height: 35px; border-top: 1px solid #ECECEC;'
                 //}
-                return 'height: 75px; border-top: 1px solid #ECECEC;'
+                return 'height: 35px; border-top: 1px solid #ECECEC;'
             };
 
 

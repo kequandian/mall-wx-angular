@@ -404,8 +404,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
             //查看明细
             $scope.check_table_data_action = function(item){
-                console.log(angular.toJson(item));
-                //$state.go('checkTableData');
+                $state.go('checkTableData');
             }
 
         }])

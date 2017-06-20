@@ -26,8 +26,8 @@
             </div>
             <div class="product-price">
 
-                <span style="margin-right:2px;">{{pcd_change_price |currency:"￥"}}</span>
-                <span class="point">/ {{(pcd_change_price*point_rate) | number:0}}积分 </span>
+                <span style="margin-right:2px;">{{wholesale_info.pricing.price > 0 ? '￥'+(wholesale_info.pricing.price | number:2) : '￥0'}}</span>
+                <span class="point">/ {{(wholesale_info.pricing.price > 0 ? wholesale_info.pricing.price*point_rate : 0) | number:0}}积分 </span>
 
                 <span class="rebate">
                     <span class="product-retail-small">
@@ -49,8 +49,8 @@
                         <span style="margin-right: 10px;" ng-if="wholesale_info.settlement_proportion > 0">
                             {{wholesale_info.settlement_proportion > 0 ? '星级经销价:' + wholesale_info.settlement_proportion + '元/瓶': ''}}
                         </span>
-                        <span ng-if="wholesale_info.suggested_retail_price > 0">
-                            {{wholesale_info.suggested_retail_price > 0 ? '现零售价:' + wholesale_info.suggested_retail_price + '元/瓶': ''}}
+                        <span ng-if="wholesale_info.pricing.suggested_retail_price > 0">
+                            {{wholesale_info.pricing.suggested_retail_price > 0 ? '现零售价:' + wholesale_info.pricing.suggested_retail_price + '元/瓶': ''}}
                         </span>
                     </div>
                 </div>
@@ -74,13 +74,8 @@
                     <span>默认配送：{{default_express}}</span>
                 </div>
 
-                <!--<div class="product_tips custom_text_primary_medium" ng-if="fare_info.title != null && fare_info.content != null">
-                    <span class="p1">{{"【"+fare_info.title+"】"}}</span>
-                    <span class="p2">{{fare_info.content}}</span>
-                </div>-->
-
                 <!--<div class="select-pcd custom_titlebar_primary" id="wholesale_pcd">-->
-                <div class="select-pcd custom_titlebar_primary">
+                <div class="select-pcd custom_titlebar_primary" ng-if="false">
                     <span>配送至:</span>
                     <!--<input id="city-picker" type="text" placeholder="广东省 广州市 白云区" class="select-pcd-input custom_titlebar_primary"
                            style="color: white;{{cannot_deliver ? 'width:50%;':'width:70%;'}}"
