@@ -1,12 +1,11 @@
 angular.module('addressManager.controller', ['addressManager.service'])
 
     .controller('AddressManagerController', ['$scope', '$state', '$stateParams', '$rootScope', 'AddressManagerFty',
-        '$ocLazyLoad','wCateCache','WholesalePCDCode',
-        function ($scope, $state, $stateParams,$rootScope, AddressManagerFty, $ocLazyLoad,wCateCache,WholesalePCDCode) {
+        '$ocLazyLoad',
+        function ($scope, $state, $stateParams,$rootScope, AddressManagerFty, $ocLazyLoad) {
 
             var pcd;
 
-            $scope.is_wholesale = false;
             AllContacts();
 
             //$ocLazyLoad.load('Jquery').
@@ -53,9 +52,6 @@ angular.module('addressManager.controller', ['addressManager.service'])
                                 //console.log($scope.currentContact);
                             }
                         });
-                        if(wCateCache.isCrown){
-                            $scope.is_wholesale = true;
-                        }
 
                     }, function (error) {
                         console.log(error);
@@ -261,9 +257,6 @@ angular.module('addressManager.controller', ['addressManager.service'])
                                     $scope.currentContact = data;
                                 }
                             });
-                            if(wCateCache.isCrown){
-                                saveWholesalePCD($scope.currentContact);
-                            }
                         }else{
                             console.log('设置默认地址失败: ' + angular.toJson(result));
                         }
@@ -272,31 +265,6 @@ angular.module('addressManager.controller', ['addressManager.service'])
                         console.log('设置默认地址失败: ' + angular.toJson(result));
                         AllContacts();
                     });
-            }
-
-            //保存配送地
-            function saveWholesalePCD(item){
-
-                var pcd_body = {};
-                pcd_body.province = item.province;
-                pcd_body.city = item.city;
-                pcd_body.district = item.district;
-
-                AddressManagerFty.saveWholesalePCDService(pcd_body)
-                    .then(function (json) {
-                        //$scope.provinces = result.data;
-                        if(json.status_code == 0){
-                            console.log('保存成功：' + angular.toJson(json));
-                            WholesalePCDCode.province = item.province;
-                            WholesalePCDCode.city = item.city;
-                            WholesalePCDCode.district = item.district;
-                            $state.go('wholesaleGoodsList');
-                        }else{
-                            console.log('保存配送地址失败：' + angular.toJson(json));
-                        }
-                    }, function (error) {
-                        console.log('保存配送地址失败：' + angular.toJson(error));
-                    })
             }
 
             function checkDefault(id) {

@@ -519,8 +519,7 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                 $scope.checkedCarts.push(item);
 
                 p_info.push(p_item);
-
-                console.log('p_info: ' + angular.toJson(p_info));
+                //console.log('p_info: ' + angular.toJson(p_info));
                 //console.log('details price: ' + $scope.details.price);
                 //return;
                 wCateCache.returnStatus = 'details';

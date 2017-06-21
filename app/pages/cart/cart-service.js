@@ -232,24 +232,6 @@ angular.module('cart.service', [])
                         console.log(data);
                     });
                 return deferred.promise;
-            },
-
-            //±£¥Ê≈‰ÀÕµÿ÷∑
-            saveWholesaleRegionService: function (pcdBody) {
-            var deferred = $q.defer();
-            var url = GlobalVariable.SERVER_PATH + '/wholesale_region';
-            $http.post(url,pcdBody,{
-                headers: {
-                    'Authorization': GlobalVariable.ACCESS_TOKEN
-                }
-            })
-                .success(function (data) {
-                    deferred.resolve(data);
-                })
-                .error(function (data) {
-                    deferred.reject(data);
-                });
-            return deferred.promise;
-        }
+            }
         };
     }]);

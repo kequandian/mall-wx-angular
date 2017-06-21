@@ -1,29 +1,31 @@
 {
-  "payment_type": "WECHAT",
-  "order_items": [
-    {
-      "product_id": 86,
-      "quantity": 1,
-      "product_specification_id": null
-    },
-    {
-      "product_id": 41,
-      "quantity": 1,
-      "product_specification_id": null
+  "status_code": 0,
+  "data": {
+    "categories": [
+      {
+        "name": "个人护理",
+        "id": 2,
+        "sort_order": 100
+      },
+      {
+        "name": "织物洗涤",
+        "id": 1,
+        "sort_order": 100
+      }
+    ],
+    "contact": {
+      "zip": null,
+      "province": "河北",
+      "user_id": 2,
+      "phone": "13652985475",
+      "city": "石家庄",
+      "contact_user": "huang",
+      "street": null,
+      "district": "长安区",
+      "street_number": null,
+      "id": 228,
+      "detail": "1122号",
+      "is_default": 1
     }
-  ],
-  "contact": {
-    "zip": null,
-    "province": "广东",
-    "user_id": 2,
-    "phone": "12563256698",
-    "city": "广州",
-    "contact_user": "huang",
-    "street": null,
-    "district": "越秀区",
-    "street_number": null,
-    "id": 222,
-    "detail": "123号",
-    "is_default": 1
   }
 }

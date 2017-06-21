@@ -1,114 +1,92 @@
 angular.module('addWholesaleAddress.controller', ['addWholesaleAddress.service'])
 
-        .controller('AddWholesaleAddressController', ['$scope','$state','$stateParams', 'aAddWholesaleAddressFty','WholesalePCDCode','wCateCache',
-        function($scope,$state,$stateParams, aAddWholesaleAddressFty,WholesalePCDCode,wCateCache){
+        .controller('AddWholesaleAddressController', ['$scope','$state','$stateParams', 'AddWholesaleAddressFty','WholesalePCDCode','wCateCache',
+        function($scope,$state,$stateParams, AddWholesaleAddressFty,WholesalePCDCode,wCateCache){
 
-            document.title = '商品批发';
-            var isCrown = null;
-            var wholesaleInfo = null;
+            document.title = '新增地址';
             var pcd = null;
 
             initCode();
             function initCode(){
-
-                if(wCateCache.isPcs == 0){
-                    console.log(1)
-                    $state.go('home.sellerPage');
-                }else if(wCateCache.isPcs == -1){
-                    console.log(2)
-                    isCrown = $stateParams.isCrown;
-                    if(isCrown != null && isCrown == 'true'){
-                        console.log(3)
-                        $scope.is_crown = true;
-                        //获取省市区
-                        //AllPCD();
-                        //getWholesaleInfo();
-                    }else if(isCrown != null && isCrown == 'false'){
-                        console.log(4)
-                        $scope.is_crown = false;
-                    }
-                }
+                AllPCD();//获取省市区
             }
 
-            //获取商品批发信息
-            function getWholesaleInfo(){
-                WholesaleFty.getWholesaleInfoService()
-                    .then(function(json){
-                        if(json.status_code == 0){
-                            wholesaleInfo = json.data;
-                            console.log("商品批发分类：" + angular.toJson(json));
+            $scope.addContactAction = function(){
 
-                            if(wholesaleInfo != null){
-                                if(wholesaleInfo.wholesaleRegion != null){
-                                    var wholesaleRegion = wholesaleInfo.wholesaleRegion;
-                                    WholesalePCDCode.province = wholesaleRegion.province;
-                                    WholesalePCDCode.city = wholesaleRegion.city;
-                                    WholesalePCDCode.district = wholesaleRegion.district;
-                                    console.log('wCateCache.isPcs > ' + wCateCache.isPcs);
-                                    $state.go('wholesaleGoodsList');
-                                }else{
-                                }
-                            }
-                        }else{
-                            console.log("获取商品批发信息失败：" + angular.toJson(json));
-                        }
-                    }, function(error) {
-                        console.log("获取商品批发信息失败：" + angular.toJson(error));
-                    }).finally(function(){
-                        console.log("finally");
-                    })
+                var pcd_1 = document.getElementById('city-picker');
+                $scope.pcd = pcd_1.value;
 
-            }
-
-            //进入商品批发列表
-            $scope.goToWholesaleGoodsList = function(){
-
-                var pcd = document.getElementById('city-picker');
-
-                if(pcd.value === undefined || pcd.value === null || pcd.value == ''){
-                    $.toast('请选择配送地区', 'cancel');
-                    return;
+                if (!angular.isString($scope.contact.contact_user)
+                    || $scope.contact.contact_user.length == 0) {
+                    $.toast('收货人不能为空', 'cancel');
+                    return
+                }
+                if (!angular.isString($scope.contact.phone)
+                    || $scope.contact.phone.length == 0) {
+                    $.toast('手机号不能为空', 'cancel');
+                    return
+                } else if (!checkPhone($scope.contact.phone)) {
+                    $.toast('手机号码无效', 'cancel');
+                    return
+                }
+                if (!angular.isString($scope.pcd)
+                    || $scope.pcd.length == 0) {
+                    $.toast('所在地区不能为空', 'cancel');
+                    return
+                }
+                if (!angular.isString($scope.contact.detail)
+                    || $scope.contact.detail.length == 0) {
+                    $.toast('详细地址不能为空', 'cancel');
+                    return
                 }
 
-                var pcd_body = {};
-                var pcd_list = pcd.value.split(' ');
-                WholesalePCDCode.province = pcd_list[0];
-                WholesalePCDCode.city = pcd_list[1];
-                WholesalePCDCode.district = pcd_list[2];
+                var pcd = $scope.pcd;
+                var pcds = pcd.split(/\s/);
+                if (pcds.length > 0) {
+                    $scope.contact.province = pcds[0];
+                }
+                if (pcds.length > 1) {
+                    $scope.contact.city = pcds[1];
+                }
+                if (pcds.length > 2) {
+                    $scope.contact.district = pcds[2];
+                }
 
-                pcd_body.province = pcd_list[0];
-                pcd_body.city = pcd_list[1];
-                pcd_body.district = pcd_list[2];
-                console.log('pcdBody：' + angular.toJson(pcd_body));
-                saveWholesaleRegion(pcd_body);
-                //$state.go('wholesaleGoodsList');
+                // convert is_default from boolean to int
+                $scope.contact.is_default = 1;
+
+                console.log(angular.toJson($scope.contact));
+
+                //return;
+
+                setDefaultContact($scope.contact)
+
             };
 
-            //申请皇冠按钮
-            $scope.crownApplyAction = function(){
-                $state.go('crownSellerAuthentication', {levelStatus: true,isMe:'me'});
-            };
+            //检查手机号
+            function checkPhone(str) {
+                var isphone = /^((\+|0)86)?\d{11}$/.test(str);
+                return isphone;
+            }
 
-            //取消按钮
-            $scope.crownApplyCancelAction = function(){
-                $state.go('home.sellerPage');
-            };
-
-            //保存配送地址
-            function saveWholesaleRegion(pcdBody){
-                WholesaleFty.saveWholesaleRegionService(pcdBody)
-                    .then(function (json) {
-                        //$scope.provinces = result.data;
-                        if(json.status_code == 0){
-                            console.log('保存成功：' + angular.toJson(json));
-                            $state.go('wholesaleGoodsList');
+            //新增地址
+            function setDefaultContact(body){
+                AddWholesaleAddressFty.addDefaultContactService(body).then(
+                    function (result) {
+                        if(result.status_code == 0){
+                            $state.go('wholesale',{isCrown: true});
                         }else{
-                            console.log('保存配送地址失败：' + angular.toJson(json));
+                            console.log('设置默认地址失败: ' + angular.toJson(result));
                         }
+
                     }, function (error) {
-                        console.log('保存配送地址失败：' + angular.toJson(error));
-                    })
+                        console.log('设置默认地址失败: ' + angular.toJson(result));
+                        AllContacts();
+                    });
             }
+
+
+
 
 
             //判断是否为苹果
@@ -136,6 +114,8 @@ angular.module('addWholesaleAddress.controller', ['addWholesaleAddress.service']
                 }
             }
 
+
+
             //隐藏键盘
             $scope.keyboard_hidden = function(){
 
@@ -159,10 +139,10 @@ angular.module('addWholesaleAddress.controller', ['addWholesaleAddress.service']
             };
 
             /*
-            * 获取省市区
-            * */
+             * 获取省市区
+             * */
             function AllPCD() {
-                WholesaleFty.getPCDService()
+                AddWholesaleAddressFty.getPCDService()
                     .then(function (result) {
                         //$scope.provinces = result.data;
                         if(result.status_code == 0){
@@ -322,7 +302,6 @@ angular.module('addWholesaleAddress.controller', ['addWholesaleAddress.service']
 
                 }($);
             }
-
 
 
         }]);

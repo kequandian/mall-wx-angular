@@ -1,0 +1,25 @@
+#addWholesaleAddress{
+}
+
+#addWholesaleAddress .title-content{
+    height: 32px;
+    line-height: 32px;
+    background-color: white;
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+#addWholesaleAddress .weui_label{
+    font-size: 13px;
+}
+
+#addWholesaleAddress .pcd-arrow-i .weui_cell .pce-arrow{
+    width: 16px;
+    height: 16px;
+    background-size: 8px 16px;
+    background-repeat: no-repeat;
+    background-image: url(../../../img/sellerPage/offLineShop/arrow.png);
+    position: absolute;
+    top: 13px;
+    right: 8px;
+}

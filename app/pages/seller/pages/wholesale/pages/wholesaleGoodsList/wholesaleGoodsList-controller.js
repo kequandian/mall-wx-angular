@@ -22,7 +22,7 @@ angular.module('wholesaleGoodsList.controller', ['wholesaleGoodsList.service'])
             initCode();
             function initCode(){
                 console.log("商品批发");
-                wCateCache.isPcs = 0;
+                wCateCache.isPcs = -1;
                 getNavInfo();
                 //getWholesaleGoodsList(1);
             }

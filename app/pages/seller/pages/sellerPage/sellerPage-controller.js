@@ -222,15 +222,15 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                 console.log(isCrown);
                 //console.log(crownShip);
                 wCateCache.isPcs = -1;
-                //$state.go('wholesale',{isCrown: isCrown});
+                $state.go('wholesale',{isCrown: isCrown});
 
 
-                if(isCrown){
-                    wCateCache.isCrown = isCrown;
-                    $state.go('addressManager');
-                }else{
-                    $state.go('wholesale',{isCrown: isCrown});
-                }
+                //if(isCrown){
+                //    wCateCache.isCrown = isCrown;
+                //    $state.go('addressManager');
+                //}else{
+                //    $state.go('wholesale',{isCrown: isCrown});
+                //}
 
                 /*SellerPageFty.getWholesaleService()
                     .then(function (json) {

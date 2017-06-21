@@ -38,11 +38,33 @@ angular.module('wholesale.service', [])
                 return deferred.promise;
             },
 
-            //保存配送地址
-            saveWholesaleRegionService: function (pcdBody) {
+            //获取地址列表
+            getContactsService: function () {
                 var deferred = $q.defer();
-                var url = GlobalVariable.SERVER_PATH + '/wholesale_region';
-                $http.post(url,pcdBody,{
+                var url = GlobalVariable.SERVER_PATH + '/contact';
+                $http({
+                    method: 'GET',
+                    url: url,
+                    headers: {
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
+                })
+                    .success(function (data) {
+                        deferred.resolve(data);
+                    })
+                    .error(function (data) {
+                        deferred.reject(data);
+                    });
+                return deferred.promise;
+            },
+
+            //删除配送地址
+            deleteContactService: function (id) {
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + '/contact/' + id;
+                $http({
+                    method: 'DELETE',
+                    url: url,
                     headers: {
                         'Authorization': GlobalVariable.ACCESS_TOKEN
                     }

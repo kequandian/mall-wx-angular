@@ -27,7 +27,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     function (result) {
                         if (result.status_code == 0) {
                             $scope.carts = result.data;
-                            console.log('购物车信息：' + angular.toJson(result.data));
+                            //console.log('购物车信息：' + angular.toJson(result.data));
                             if ($scope.carts.length > 0) {
 
                                 var c_count = 0;
@@ -316,9 +316,9 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     $.toast('不能同时购买批发和普通类型的商品','cancel');
                     return;
                 }
-                console.log('购物车: ' + newCartItems.length);
-                console.log('购物车: ' + angular.toJson(newCartItems));
-                return;
+                //console.log('购物车: ' + newCartItems.length);
+                //console.log('购物车: ' + angular.toJson(newCartItems));
+                //return;
 
                 wCateCache.returnStatus = 'cart';
 
@@ -581,9 +581,9 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 CartFty.getWholesalePCDService()
                     .then(function(json){
                         if(json.status_code == 0){
-                            WholesalePCDCode.province = json.data.wholesaleRegion.province;
-                            WholesalePCDCode.city = json.data.wholesaleRegion.city;
-                            WholesalePCDCode.district = json.data.wholesaleRegion.district;
+                            WholesalePCDCode.province = json.data.contact.province;
+                            WholesalePCDCode.city = json.data.contact.city;
+                            WholesalePCDCode.district = json.data.contact.district;
                         }else{
                             console.log('获取批发配送地信息失败: ' + angular.toJson(json));
                         }
@@ -634,41 +634,16 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     .then(function(json){
                         if(json.status_code == 0){
 
-                            var new_pcd = {};
-                            new_pcd.province = contact.province;
-                            new_pcd.city = contact.city;
-                            new_pcd.district = contact.district;
-
-                            saveWholesaleRegion(new_pcd,returnStatus);
-                        }else{
-                            console.log('更改默认地址失败：' + angular.toJson(json));
-                        }
-                    }, function(error){
-                        console.log('更改默认地址失败：' + angular.toJson(error));
-                    })
-            }
-
-            //保存配送地
-            function saveWholesaleRegion(pcdBody,returnStatus){
-                CartFty.saveWholesaleRegionService(pcdBody)
-                    .then(function (json) {
-                        //$scope.provinces = result.data;
-                        if(json.status_code == 0){
-
-                            //console.log('保存成功：' + angular.toJson(json));
-                            WholesalePCDCode.province = pcdBody.province;
-                            WholesalePCDCode.city = pcdBody.city;
-                            WholesalePCDCode.district = pcdBody.district;
                             if(returnStatus == 'details'){
                                 $state.go('wholesaleGoodsList');
                             }else if(returnStatus == 'cart'){
                                 $state.go('home.cart');
                             }
                         }else{
-                            console.log('保存配送地址失败：' + angular.toJson(json));
+                            console.log('更改默认地址失败：' + angular.toJson(json));
                         }
-                    }, function (error) {
-                        console.log('保存配送地址失败：' + angular.toJson(error));
+                    }, function(error){
+                        console.log('更改默认地址失败：' + angular.toJson(error));
                     })
             }
 
@@ -701,7 +676,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                         if(json.status_code == 0){
                             console.log("获取的邮费信息" + angular.toJson(json));
 
-                            if(settle_product_code[0].fightGroupData == undefined || JSON.stringify(settle_product_code[0].fightGroupData) != '{}'){
+                            if(settle_product_code[0].fightGroupData != undefined && JSON.stringify(settle_product_code[0].fightGroupData) != '{}'){
                                 console.log('开团邮费');
                                 if(settle_product_code[0].fightGroupData.free_shipping == 1){
                                     console.log('包邮');
