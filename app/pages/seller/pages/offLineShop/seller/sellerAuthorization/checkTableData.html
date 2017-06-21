@@ -7,12 +7,16 @@
         </div>
 
         <div class="item-children-list">
-            <div class="product-item">
+            <div class="product-item" ng-repeat="item in seller_product_list">
                 <div class="product-title-name custom_text_primary">
-                    <span>超效洁净护理洗衣液</span>
+                    <span>{{item.prduct_name}}</span>
                 </div>
                 <div class="product-item-details custom_text_primary">
-                    <span>进货金额: 1920.0; 提成比例: 20%; 预期提成: ￥384.0</span>
+                    <span>
+                        进货金额: {{item.amount>0 ? '￥'+item.amount : '0'}};
+                        提成比例: {{item.product_settlement_proportion>0 ? item.product_settlement_proportion+'%' : '0'}};
+                        预期提成: {{item.expected_reward>0 ? '￥'+item.expected_reward : '0'}}
+                    </span>
                 </div>
             </div>
         </div>

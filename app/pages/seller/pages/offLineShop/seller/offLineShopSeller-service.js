@@ -148,6 +148,40 @@ angular.module('sellerTeam.service', [])
                         return deferred.reject(data);
                     });
                 return deferred.promise;
+            },
+
+            // 获取经销商进货明细
+            getPurchaseJournalService: function (id) {
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + "/physical_purchase_journal/" + id;
+                $http.get(url,{
+                    headers:{
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
+                })
+                    .success(function (data) {
+                        return deferred.resolve(data);
+                    }).error(function (data) {
+                        return deferred.reject(data);
+                    });
+                return deferred.promise;
+            },
+
+            // 获取比例对照表
+            getPhysicalProportionService: function () {
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + "/physical_proportion";
+                $http.get(url,{
+                    headers:{
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
+                })
+                    .success(function (data) {
+                        return deferred.resolve(data);
+                    }).error(function (data) {
+                        return deferred.reject(data);
+                    });
+                return deferred.promise;
             }
         }
     }]);

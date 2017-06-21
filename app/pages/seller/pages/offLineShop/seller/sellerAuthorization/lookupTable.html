@@ -15,12 +15,12 @@
                     <span>返点比例</span>
                 </div>
             </div>
-            <div class="table-item" style="margin-top: 4px;">
+            <div class="table-item" style="margin-top: 4px;" ng-repeat="item in physical_proportion_list">
                 <div class="item-content">
-                    <span>200-399</span>
+                    <span>{{item.min_amount}}-{{item.max_amount}}</span>
                 </div>
                 <div class="item-content">
-                    <span>10%</span>
+                    <span>{{item.percentage}}%</span>
                 </div>
             </div>
         </div>

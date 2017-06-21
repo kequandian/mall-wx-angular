@@ -2,74 +2,64 @@
   "status_code": 0,
   "data": [
     {
-      "monthly_settled_amount": 0,
-      "id": 7,
-      "transferred_amount": 0,
-      "transferred": 0,
-      "settlement_proportion": 2,
-      "monthly_amount": 20000,
-      "seller_id": 2,
-      "statistic_month": "2016-12-01"
+      "min_amount": 200,
+      "percentage": 10,
+      "max_amount": 399,
+      "id": 1
     },
     {
-      "monthly_settled_amount": 60,
-      "id": 2,
-      "transferred_amount": 0,
-      "transferred": 0,
-      "settlement_proportion": 2,
-      "monthly_amount": 1200,
-      "seller_id": 2,
-      "statistic_month": "2017-01-01"
+      "min_amount": 400,
+      "percentage": 20,
+      "max_amount": 599,
+      "id": 2
     },
     {
-      "monthly_settled_amount": 0,
-      "id": 11,
-      "transferred_amount": 0,
-      "transferred": 0,
-      "settlement_proportion": 0,
-      "monthly_amount": 0,
-      "seller_id": 2,
-      "statistic_month": "2017-02-01"
+      "min_amount": 600,
+      "percentage": 30,
+      "max_amount": 799,
+      "id": 3
     },
     {
-      "monthly_settled_amount": 0,
-      "id": 16,
-      "transferred_amount": 0,
-      "transferred": 0,
-      "settlement_proportion": 0,
-      "monthly_amount": 0,
-      "seller_id": 2,
-      "statistic_month": "2017-03-01"
+      "min_amount": 800,
+      "percentage": 40,
+      "max_amount": 999,
+      "id": 4
     },
     {
-      "monthly_settled_amount": 0,
-      "id": 19,
-      "transferred_amount": 0,
-      "transferred": 0,
-      "settlement_proportion": 0,
-      "monthly_amount": 0,
-      "seller_id": 2,
-      "statistic_month": "2017-04-01"
+      "min_amount": 1000,
+      "percentage": 50,
+      "max_amount": 1199,
+      "id": 5
     },
     {
-      "monthly_settled_amount": 0,
-      "id": 25,
-      "transferred_amount": 0,
-      "transferred": 0,
-      "settlement_proportion": 0,
-      "monthly_amount": 0,
-      "seller_id": 2,
-      "statistic_month": "2017-05-01"
+      "min_amount": 1200,
+      "percentage": 60,
+      "max_amount": 1399,
+      "id": 6
     },
     {
-      "monthly_settled_amount": 1380,
-      "id": 38,
-      "transferred_amount": 138000,
-      "transferred": 1,
-      "settlement_proportion": 20,
-      "monthly_amount": 10110,
-      "seller_id": 2,
-      "statistic_month": "2017-06-01"
+      "min_amount": 1400,
+      "percentage": 70,
+      "max_amount": 1599,
+      "id": 7
+    },
+    {
+      "min_amount": 1600,
+      "percentage": 80,
+      "max_amount": 1799,
+      "id": 8
+    },
+    {
+      "min_amount": 1800,
+      "percentage": 90,
+      "max_amount": 1999,
+      "id": 9
+    },
+    {
+      "min_amount": 2000,
+      "percentage": 100,
+      "max_amount": -1,
+      "id": 10
     }
   ]
 }

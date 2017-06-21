@@ -365,8 +365,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 SellerTeamFty.getPurchaseSummaryService(select_dtae_format)
                     .then(function(json){
                         if(json.status_code == 0){
-                            console.log('我的推荐' + angular.toJson(json));
-                            //console.log("json count: " + json.data.my_recommended_sellers.length);
+                            console.log('我的推荐: ' + angular.toJson(json));
                             $scope.pirchase_summary = json.data[0];
                         }else{
                             $.toast('获取信息失败','cancel');
@@ -404,7 +403,8 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
             //查看明细
             $scope.check_table_data_action = function(item){
-                $state.go('checkTableData');
+                console.log(item.seller_id)
+                $state.go('checkTableData',{sellerId: item.seller_id});
             }
 
         }])
@@ -698,7 +698,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
     .controller('SettlementRecordController', ['$scope','$state','$filter','UserInfo','SellerTeamFty',
         function ($scope, $state,$filter,UserInfo,SellerTeamFty) {
 
-            document.title = "结算明细";
+            document.title = "结算记录";
 
             console.log('UserInfo: ' + angular.toJson(UserInfo));
 
@@ -1083,6 +1083,28 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
     .controller('LookupTableController', ['$scope','$state','$stateParams', 'SellerTeamFty',
         function ($scope,$state,$stateParams, SellerTeamFty) {
 
+            document.title = "比例对照表";
+
+            initCode();
+
+            function initCode(){
+                getPhysicalProportion();
+            }
+
+            //获取线下经销商进货明细
+            function getPhysicalProportion(){
+                SellerTeamFty.getPhysicalProportionService()
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            $scope.physical_proportion_list = json.data;
+                            console.log('获取比例对照表：' + angular.toJson(json))
+                        }else{
+                            console.log('获取比例对照表失败：' + angular.toJson(json))
+                        }
+                    }, function(error){
+                        console.log('获取比例对照表失败：' + angular.toJson(error))
+                    })
+            }
 
     }])
 
@@ -1091,6 +1113,34 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
      * */
     .controller('CheckTableDataController', ['$scope','$state','$stateParams', 'SellerTeamFty',
         function ($scope,$state,$stateParams, SellerTeamFty) {
+
+
+            document.title = "进货明细";
+
+            var seller_id = 0;
+
+            initCode();
+
+            function initCode(){
+                seller_id = $stateParams.sellerId;
+                console.log(seller_id)
+                getPurchaseJournal(seller_id)
+            }
+
+            //获取线下经销商进货明细
+            function getPurchaseJournal(id){
+                SellerTeamFty.getPurchaseJournalService(id)
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            $scope.seller_product_list = json.data;
+                            console.log('获取进货明细：' + angular.toJson(json))
+                        }else{
+                            console.log('获取进货明细失败：' + angular.toJson(json))
+                        }
+                    }, function(error){
+                        console.log('获取进货明细失败：' + angular.toJson(error))
+                    })
+            }
 
 
     }])

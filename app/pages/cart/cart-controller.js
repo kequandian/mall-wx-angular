@@ -27,7 +27,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     function (result) {
                         if (result.status_code == 0) {
                             $scope.carts = result.data;
-                            //console.log('购物车信息：' + angular.toJson(result.data));
+                            console.log('购物车信息：' + angular.toJson(result.data));
                             if ($scope.carts.length > 0) {
 
                                 var c_count = 0;

@@ -1,57 +1,45 @@
 {
   "status_code": 0,
-  "data": {
-    "cover": "http://o9ixtumvv.bkt.clouddn.com/20170605122348113-hl0fVx3E.png",
-    "agent_proportion": 5,
-    "sale": 3714,
-    "product": {
-      "free_shipping": 0,
-      "freight": 0,
-      "last_modified_date": "2017-06-08 09:44:28",
-      "promoted": 1,
-      "specifications": [],
-      "sales": 4431,
-      "cover": "http://o9ixtumvv.bkt.clouddn.com/20161027143355732-VFN0L9yd.jpg",
-      "category_id": 36,
-      "price": 39.9,
-      "id": 85,
-      "sort_order": 83,
-      "barcode": null,
-      "store_location": null,
-      "cost_price": 39.9,
-      "covers": [
-        "http://o9ixtumvv.bkt.clouddn.com/20161027143355732-VFN0L9yd.jpg"
+  "data": [
+    {
+      "transferred": 1,
+      "my_recommended_sellers": [
+        {
+          "uid": "11111",
+          "transferred": 0,
+          "transferred_amount": 0,
+          "user_name": "11111",
+          "statistic_month": "2017-06-01",
+          "monthly_amount": 3000,
+          "settlement_proportion": 20,
+          "avatar": null,
+          "id": 85,
+          "monthly_settled_amount": 0,
+          "seller_id": 384
+        },
+        {
+          "uid": "22222",
+          "transferred": 0,
+          "transferred_amount": 0,
+          "user_name": "22222",
+          "statistic_month": "2017-06-01",
+          "monthly_amount": 3900,
+          "settlement_proportion": 20,
+          "avatar": null,
+          "id": 83,
+          "monthly_settled_amount": 0,
+          "seller_id": 385
+        }
       ],
-      "weight": 717,
-      "stock_balance": 38842,
-      "brand_id": null,
-      "unit": "80",
-      "suggested_price": 39.9,
-      "name": "力士LUX爽肤闪亮冰爽沐浴乳护肤滋润720ml",
-      "short_name": "闪亮冰爽沐浴乳",
-      "created_date": "2016-10-27 14:13:54",
-      "fare_id": 1,
-      "bulk": null,
-      "partner_level_zone": 2,
-      "view_count": 568,
-      "status": "ONSELL"
-    },
-    "category_id": 2,
-    "product_id": 85,
-    "marketing_name": "力士LUX爽肤闪亮",
-    "description": null,
-    "settlement_proportion": 30,
-    "id": 2,
-    "pricing": {
-      "wholesale_id": 2,
-      "price": 30,
-      "id": 26,
-      "suggested_retail_price": 18,
-      "suggested_wholesale_price": 16,
-      "region": null,
-      "is_default": 1,
-      "enabled": 1
-    },
-    "status": "ONSELL"
-  }
+      "transferred_amount": 138000,
+      "total_amount": 31310,
+      "statistic_month": "2017-06-01",
+      "monthly_amount": 10110,
+      "total_settled_amount": 1440,
+      "settlement_proportion": 20,
+      "id": 38,
+      "monthly_settled_amount": 1380,
+      "seller_id": 2
+    }
+  ]
 }

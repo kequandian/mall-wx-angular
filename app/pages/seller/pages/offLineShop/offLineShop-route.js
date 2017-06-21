@@ -125,7 +125,7 @@ angular.module('offLineShop.route',[])
              * 我的推荐--查看明细
              * */
             .state('checkTableData', {
-                url:'/checkTableData',
+                url:'/checkTableData/:sellerId',
                 templateUrl: 'pages/seller/pages/offLineShop/seller/sellerAuthorization/checkTableData.html',
                 controller:'CheckTableDataController',
                 resolve: {
