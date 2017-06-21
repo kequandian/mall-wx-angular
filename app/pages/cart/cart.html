@@ -43,8 +43,9 @@
                             <a ui-sref="details({productId:cart.product_id})"
                                ng-if="cart.product_specification_name != null">
                                 <h4 class="item-title" style="{{check_stock_balance(cart.stock_balance)}}">
-                                    {{cart.product_name | cutText:true:16:"..."}}</h4>
-
+                                    <span ng-if="cart.marketing_id != null" style="{{cart.stock_balance > 0 ? 'color: #4EAD00':'color: #BCBCBC;'}}">【批发】</span>
+                                    <span>{{cart.product_name | cutText:true:16:"..."}}</span>
+                                </h4>
                                 <div class="item-spec" style="{{check_stock_balance(cart.stock_balance)}}">
                                     规格：{{cart.product_specification_name}}
                                 </div>
@@ -52,7 +53,8 @@
                             <a ui-sref="details({productId:cart.product_id})"
                                ng-if="cart.product_specification_name == null">
                                 <div class="item-title-2" style="{{check_stock_balance(cart.stock_balance)}}">
-                                    {{cart.product_name}}
+                                    <span ng-if="cart.marketing_id != null" style="{{cart.stock_balance > 0 ? 'color: #4EAD00':'color: #BCBCBC;'}}">【批发】</span>
+                                    <span>{{cart.product_name}}</span>
                                 </div>
                             </a>
 
