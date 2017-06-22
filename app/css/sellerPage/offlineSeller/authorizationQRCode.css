@@ -2,7 +2,25 @@
 
 }
 
-#authorizationQRCode #light .auth-qrcode-img{
+
+#authorizationQRCode .auth-qrcode_content{
+    /*display: none;*/
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    right: 10%;
+    text-align: center;
+    /*width: 50%;*/
+    height: 400px;
+    /*padding: 16px;*/
+    border-radius: 12px;
+    /*background-color: #F8F8F8;*/
+    background-color: #FFFFFF;
+    z-index:1002;
+    overflow:auto
+}
+
+#authorizationQRCode .auth-qrcode_content .auth-qrcode-img{
     margin: 0 auto;
     width: 220px;
     height: 220px;
@@ -11,7 +29,7 @@
     bottom: 50px;
 }
 
-#authorizationQRCode #light .auth-qrcode-img img{
+#authorizationQRCode .auth-qrcode-img img{
     width: 220px;
     height: 220px;
     bottom: 8px;
