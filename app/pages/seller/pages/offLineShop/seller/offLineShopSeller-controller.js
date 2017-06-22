@@ -1240,11 +1240,14 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 loadScript("lib/qrcodejs/qrcode.min.js", function () {
 
                     var qrcode = new QRCode(divhtml, {
-                        width: 800,
-                        height: 800
+                        text: invitationUrl,
+                        width: 1024,
+                        height: 1024
+
                     });
-                    qrcode.clear();
-                    qrcode.makeCode(invitationUrl);
+                    //qrcode.clear();
+                    //qrcode.makeCode(invitationUrl);
+                    //console.log("invitationUrl: " + invitationUrl);
                 });
             }
 
