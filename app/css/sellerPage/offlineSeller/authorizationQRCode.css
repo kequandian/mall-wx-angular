@@ -1,3 +1,19 @@
 #authorizationQRCode{
 
 }
+
+#authorizationQRCode #light .auth-qrcode-img{
+    margin: 0 auto;
+    width: 220px;
+    height: 220px;
+    /*line-height: 230px;*/
+    background-color: white;
+    bottom: 50px;
+}
+
+#authorizationQRCode #light .auth-qrcode-img img{
+    width: 220px;
+    height: 220px;
+    bottom: 8px;
+}
+
