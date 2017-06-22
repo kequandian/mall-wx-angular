@@ -195,23 +195,6 @@ angular.module('cart.service', [])
                 return deferred.promise;
             },
 
-            //获取商品批发配送地
-            getWholesalePCDService: function () {
-                var deferred = $q.defer();
-                var url = GlobalVariable.SERVER_PATH + "/wholesale_category";
-                $http.get(url,{
-                    headers: {
-                        'Authorization': GlobalVariable.ACCESS_TOKEN
-                    }
-                })
-                    .success(function (data) {
-                        return deferred.resolve(data);
-                    }).error(function (data) {
-                        return deferred.reject(data);
-                    });
-                return deferred.promise;
-            },
-
             //更改默认地址
             defaultContactService: function(id){
                 var deferred = $q.defer();

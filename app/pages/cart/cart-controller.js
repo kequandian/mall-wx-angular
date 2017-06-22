@@ -326,8 +326,8 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     $.toast('不能同时购买批发和普通类型的商品','cancel');
                     return;
                 }
-                //console.log('购物车: ' + newCartItems.length);
-                //console.log('购物车: ' + angular.toJson(newCartItems));
+                console.log('购物车: ' + newCartItems.length);
+                console.log('购物车: ' + angular.toJson(newCartItems));
                 //return;
 
                 wCateCache.returnStatus = 'cart';
@@ -436,6 +436,11 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             document.title = "结算";
             $scope.settlementCarts = [];
             $scope.save_total_price = 0;
+
+            var province = null;
+            var city = null;
+            var district = null;
+
             var pieceGroupCouponItem = $rootScope.pieceGroupCouponItem;
 
             //提交订单
@@ -464,6 +469,10 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                             if (data.is_default == 1) {
                                 $scope.currentContact = data;
                                 //console.log($scope.currentContact);
+
+                                province = $scope.currentContact.province;
+                                city = $scope.currentContact.city;
+                                district = $scope.currentContact.district;
                             }
                         });
 
@@ -473,7 +482,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                             $scope.total_price = $scope.pay;
                             $scope.save_total_price = $scope.total_price;
                             //下单前计算优惠信息
-                            if(settle_product_code[0].wholesaleData == undefined
+                            if(JSON.stringify(settle_product_code[0].wholesaleData) == undefined
                                 || JSON.stringify(settle_product_code[0].wholesaleData)=="{}"){
                                 coupon();
                             }else{
@@ -519,13 +528,6 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             }else{
                 //console.log("含有拼团信息: " + angular.toJson(settlementCarts.fightGroupData));
                 fightGroupsPayStatus();
-            }
-
-            //获取批发配送地
-            if(settlementCarts.wholesaleData == undefined ||
-                JSON.stringify(settlementCarts.wholesaleData) == '{}'){
-            }else{
-                getWholesalePCD();
             }
 
             angular.forEach($scope.settlementCarts, function (data, index) {
@@ -586,44 +588,24 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 }
             }
 
-            //获取批发配送地
-            function getWholesalePCD(){
-                CartFty.getWholesalePCDService()
-                    .then(function(json){
-                        if(json.status_code == 0){
-                            WholesalePCDCode.province = json.data.contact.province;
-                            WholesalePCDCode.city = json.data.contact.city;
-                            WholesalePCDCode.district = json.data.contact.district;
-                        }else{
-                            console.log('获取批发配送地信息失败: ' + angular.toJson(json));
-                        }
-                    }, function(error){
-                        console.log('获取批发配送地信息失败: ' + angular.toJson(error));
-                    })
-            }
-
             //更改pcd变更价格
             $scope.settlement_pcd_change = function(){
-
-                var interval = $interval(function(){
-                    var dis_class = document.getElementsByClassName('weui_actionsheet_toggle');
-                    console.log(dis_class.length);
-                    if(dis_class.length == 0){
-                        if(wCateCache.returnStatus == 'details'
-                            || wCateCache.returnStatus == 'cart'){
+                console.log('JSON.stringify(settle_product_code[0].wholesaleData): ' + JSON.stringify(settle_product_code[0].wholesaleData))
+                if(JSON.stringify(settle_product_code[0].wholesaleData) != undefined
+                    && JSON.stringify(settle_product_code[0].wholesaleData)!="{}"){
+                    var interval = $interval(function(){
+                        var dis_class = document.getElementsByClassName('weui_actionsheet_toggle');
+                        console.log(dis_class.length);
+                        if(dis_class.length == 0){
                             is_wholesale_pcd_change(wCateCache.returnStatus);
+                            $interval.cancel(interval);
                         }
-                        $interval.cancel(interval);
-                    }
-                }, 1000);
+                    }, 1000);
+                }
             };
 
             //判断是否有更改地址
             function is_wholesale_pcd_change(returnStatus){
-
-                var province = WholesalePCDCode.province;
-                var city = WholesalePCDCode.city;
-                var district = WholesalePCDCode.district;
 
                 if($scope.currentContact.province == province
                     && $scope.currentContact.city == city
@@ -930,7 +912,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     }
 
                     //商品批发
-                    if(settle_product_code[0].wholesaleData == undefined
+                    if(JSON.stringify(settle_product_code[0].wholesaleData) == undefined
                         || JSON.stringify(settle_product_code[0].wholesaleData)=="{}"){
                         console.log("商品批发settle_product_code is null");
                     }else{
@@ -1097,7 +1079,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 $scope.productFrieghts.province = $scope.currentContact.province;
                 $scope.productFrieghts.city = $scope.currentContact.city;
 
-                if(settle_product_code[0].wholesaleData == undefined
+                if(JSON.stringify(settle_product_code[0].wholesaleData) == undefined
                     || JSON.stringify(settle_product_code[0].wholesaleData)=="{}"){
                     getFrieght();
                 }else{
