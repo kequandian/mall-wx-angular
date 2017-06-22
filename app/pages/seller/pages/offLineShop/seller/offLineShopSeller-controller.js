@@ -1206,6 +1206,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
             var recommender_name = null;
             var type_status = null;
             var apply_status = null;
+            $scope.isCrownApply = '请通知被授权人扫码加入';
 
             initCode();
 
@@ -1214,6 +1215,11 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 recommender_name = $stateParams.recommenderName;
                 type_status = $stateParams.typeStatus;
                 apply_status = $stateParams.applyStatus;
+                if(type_status == 'crown'){
+                    $scope.isCrownApply = '请通知被授权人扫码加入皇冠经销商';
+                }else if(type_status == 'star'){
+                    $scope.isCrownApply = '请通知被授权人扫码加入星级经销商';
+                }
                 initQrcode();
             }
 
