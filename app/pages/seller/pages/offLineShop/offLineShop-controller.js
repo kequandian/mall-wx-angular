@@ -53,38 +53,38 @@ angular.module('offLineShop.controller', ['offLineShop.service'])
             //进入皇冠经销授权页
             $scope.crown_seller_authorization_action = function(){
                 type_status = 'crown';
-                /*$state.go('authorizationqrcode',{
+                $state.go('authorizationqrcode',{
                     recommenderId: UserInfo.recommender_id,
                     recommenderName:UserInfo.recommender_name,
                     typeStatus: type_status,
                     applyStatus: 'recommend'
-                });*/
-                $state.go('applyauthentication',
+                });
+                /*$state.go('applyauthentication',
                     {
                         recommenderId: UserInfo.recommender_id,
                         recommenderName:UserInfo.recommender_name,
                         typeStatus: type_status,
                         applyStatus: 'recommend'
-                    });
+                    });*/
             };
 
             //进入星级经销授权页
             $scope.star_seller_authorization_action = function(){
                 type_status = 'star';
-                /*$state.go('authorizationqrcode',{
+                $state.go('authorizationqrcode',{
                     recommenderId: UserInfo.recommender_id,
                     recommenderName:UserInfo.recommender_name,
                     typeStatus: type_status,
                     applyStatus: 'recommend'
-                });*/
+                });
 
-                $state.go('applyauthentication',
+                /*$state.go('applyauthentication',
                     {
                         recommenderId: UserInfo.recommender_id,
                         recommenderName:UserInfo.recommender_name,
                         typeStatus: type_status,
                         applyStatus: 'recommend'
-                    });
+                    });*/
             };
 
 
