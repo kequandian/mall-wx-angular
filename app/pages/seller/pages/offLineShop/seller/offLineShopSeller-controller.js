@@ -1133,7 +1133,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     .then(function(json){
                         if(json.status_code == 0){
                             $scope.seller_product_list = json.data;
-                            //console.log('获取进货明细：' + angular.toJson(json));
+                            console.log('获取进货明细：' + angular.toJson(json));
                         }else{
                             console.log('获取进货明细失败：' + angular.toJson(json));
                         }
