@@ -27,7 +27,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     function (result) {
                         if (result.status_code == 0) {
                             $scope.carts = result.data;
-                            console.log('购物车信息：' + angular.toJson(result.data));
+                            //console.log('购物车信息：' + angular.toJson(result.data));
                             if ($scope.carts.length > 0) {
 
                                 var c_count = 0;
@@ -206,7 +206,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     return;
                 }
                 $scope.carts.forEach(function (it) {
-                    if(it.stock_balance > 0){
+                    if(it.stock_balance > 0 && it.price != null){
                         it.$checked = $scope.$allChecked;
                     }
                 });
@@ -251,6 +251,16 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 return $scope.carts.some(function (it) {
                     return it.$checked;
                 });
+            };
+            //checkbox 是否开启
+            $scope.checkDisabled = function(item){
+                if(item.stock_balance <= 0){
+                    return true;
+                }
+                if(item.price == null){
+                    return true;
+                }
+                return false;
             };
 
             //去结算

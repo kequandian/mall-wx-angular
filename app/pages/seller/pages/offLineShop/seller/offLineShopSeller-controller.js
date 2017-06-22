@@ -365,7 +365,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 SellerTeamFty.getPurchaseSummaryService(select_dtae_format)
                     .then(function(json){
                         if(json.status_code == 0){
-                            console.log('我的推荐: ' + angular.toJson(json));
+                            //console.log('我的推荐: ' + angular.toJson(json));
                             $scope.pirchase_summary = json.data[0];
                         }else{
                             $.toast('获取信息失败','cancel');
@@ -403,7 +403,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
             //查看明细
             $scope.check_table_data_action = function(item){
-                console.log(item.seller_id)
+                //console.log(item.seller_id)
                 $state.go('checkTableData',{sellerId: item.seller_id});
             }
 
@@ -1097,7 +1097,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     .then(function(json){
                         if(json.status_code == 0){
                             $scope.physical_proportion_list = json.data;
-                            console.log('获取比例对照表：' + angular.toJson(json))
+                            //console.log('获取比例对照表：' + angular.toJson(json))
                         }else{
                             console.log('获取比例对照表失败：' + angular.toJson(json))
                         }
@@ -1123,7 +1123,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
             function initCode(){
                 seller_id = $stateParams.sellerId;
-                console.log(seller_id)
+                //console.log(seller_id)
                 getPurchaseJournal(seller_id)
             }
 
@@ -1133,12 +1133,12 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     .then(function(json){
                         if(json.status_code == 0){
                             $scope.seller_product_list = json.data;
-                            console.log('获取进货明细：' + angular.toJson(json))
+                            //console.log('获取进货明细：' + angular.toJson(json));
                         }else{
-                            console.log('获取进货明细失败：' + angular.toJson(json))
+                            console.log('获取进货明细失败：' + angular.toJson(json));
                         }
                     }, function(error){
-                        console.log('获取进货明细失败：' + angular.toJson(error))
+                        console.log('获取进货明细失败：' + angular.toJson(error));
                     })
             }
 

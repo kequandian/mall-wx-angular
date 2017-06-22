@@ -161,6 +161,19 @@
     text-align:center;
     margin-right: 5px;
 }
+
+#cart .cart-list li .item-info .item-image .product-no-sale{
+    width: 85px;
+    /*height:85px;*/
+    color: white;
+    font-size: 13px;
+    position: absolute;
+    z-index: 0;
+    background-color:rgba(0,0,0,0.7);
+    padding: 22px 0;
+    margin-left: 5px;
+}
+
 #cart .cart-list li .item-info .item-image img {
     width: 85px;
     height:85px;

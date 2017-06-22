@@ -32,14 +32,14 @@
                     <div class="" ng-hide="cart_item_price">
                         <input class="cart-checkbox" type="checkbox" id="check{{cart.id}}"
                                ng-model="cart.$checked" ng-change="checkItem(cart)"
-                               ng-disabled="cart.stock_balance <= 0">
+                               ng-disabled="checkDisabled(cart)">
                         <label class="ion-ios-checkmark cart-item-label" for="check{{cart.id}}"></label>
                     </div>
                     <div class="item-info">
                         <div class="item-image" ng-click="goToDetails(cart.product_id)">
-                            <!--<div style="position: absolute;z-index: 0; background-color:rgba(0,0,0,0.7);width: 85px;height:85px; color: white; font-size: 13px;">
+                            <div class="product-no-sale" ng-if="cart.price == null">
                                 <span>该区域暂不支持此商品</span>
-                            </div>-->
+                            </div>
                             <img ng-src="{{cart.cover | defaultCover}}">
                         </div>
                         <div class="">
