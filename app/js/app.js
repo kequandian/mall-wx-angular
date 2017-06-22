@@ -343,6 +343,12 @@
                         {type: 'css', path: 'css/cart/cart.css'},
                         {type: 'css', path: 'css/sellerPage/wholesale/addWholesaleAddress.css'}],
                     cache: false
+                }, {
+                    name: 'AuthorizationQRCode',
+                    files: ['pages/seller/pages/offLineShop/seller/offLineShopSeller-controller.js',
+                        'pages/seller/pages/offLineShop/seller/offLineShopSeller-service.js',
+                        {type: 'css', path: 'css/sellerPage/offlineSeller/authorizationQRCode.css'}],
+                    cache: false
                 }
 
                 ]

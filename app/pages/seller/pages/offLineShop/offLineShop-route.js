@@ -96,8 +96,8 @@ angular.module('offLineShop.route',[])
             /*
              * 皇冠经销授权
              * */
-            .state('crownSellerAuthentication', {
-                url:'/crownSellerAuthentication/:levelStatus/:isMe',
+            .state('applyauthentication', {
+                url:'/applyauthentication/:recommenderId/:recommenderName/:typeStatus/:applyStatus',
                 templateUrl: 'pages/seller/pages/offLineShop/seller/sellerAuthorization/crownSellerAuthentication.html',
                 controller:'CrownSellerAuthenticationController',
                 resolve: {
@@ -131,6 +131,20 @@ angular.module('offLineShop.route',[])
                 resolve: {
                     loadData: ['$ocLazyLoad', function ($ocLazyLoad) {
                         return $ocLazyLoad.load('CheckTableData');
+                    }]
+                }
+            })
+
+            /*
+             * 申请经销商二维码
+             * */
+            .state('authorizationqrcode', {
+                url:'/authorizationqrcode/:recommenderId/:recommenderName/:typeStatus/:applyStatus',
+                templateUrl: 'pages/seller/pages/offLineShop/seller/sellerAuthorization/authorizationQRCode.html',
+                controller:'AuthorizationQRCodeController',
+                resolve: {
+                    loadData: ['$ocLazyLoad', function ($ocLazyLoad) {
+                        return $ocLazyLoad.load('AuthorizationQRCode');
                     }]
                 }
             })

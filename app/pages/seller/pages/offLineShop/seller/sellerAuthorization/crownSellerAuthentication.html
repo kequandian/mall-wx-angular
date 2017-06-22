@@ -1,19 +1,36 @@
 <div id="sellerAuthorization">
 
-    <form ng-submit="apply_action(userInfo.uid,userInfo.real_name,userInfo.phone)">
+    <form ng-submit="apply_action(userInfo)">
         <!-- 基本信息 -->
         <div class="weui_cells weui_cells_form settlement-font">
-            <div class="weui_cell">
+            <div class="weui_cell" ng-if="is_own">
                 <div class="weui_cell_hd">
-                    <label class="weui_label">ID号：</label>
+                    <label class="weui_label" style="width: 72px;">推荐人ID：</label>
                 </div>
                 <div class="weui_cell_bd weui_cell_primary">
-                    <input class="weui_input" type="text" placeholder="{{init_placeholder_id}}" ng-disabled="is_disabled" ng-model="userInfo.uid">
+                    <input class="weui_input" type="text" placeholder="UID" ng-disabled="true" ng-model="userInfo.recommender_id">
+                </div>
+            </div>
+            <div class="weui_cell" ng-if="is_own">
+                <div class="weui_cell_hd">
+                    <label class="weui_label" style="width: 72px;">推荐人：</label>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="text" placeholder="推荐人姓名" ng-disabled="true" ng-model="userInfo.recommender_name">
+                </div>
+            </div>
+
+            <div class="weui_cell">
+                <div class="weui_cell_hd">
+                    <label class="weui_label" style="width: 72px;">ID号：</label>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="text" placeholder="{{init_placeholder_id}}" ng-disabled="true" ng-model="userInfo.uid">
                 </div>
             </div>
             <div class="weui_cell">
                 <div class="weui_cell_hd">
-                    <label class="weui_label">姓名：</label>
+                    <label class="weui_label" style="width: 72px;">姓名：</label>
                 </div>
                 <div class="weui_cell_bd weui_cell_primary">
                     <input class="weui_input" type="text" placeholder="{{init_placeholder_name}}" ng-model="userInfo.real_name">
@@ -21,7 +38,7 @@
             </div>
             <div class="weui_cell">
                 <div class="weui_cell_hd">
-                    <label class="weui_label">手机：</label>
+                    <label class="weui_label" style="width: 72px;">手机：</label>
                 </div>
                 <div class="weui_cell_bd weui_cell_primary">
                     <input class="weui_input" type="tel" placeholder="{{init_placeholder_phone}}" ng-model="userInfo.phone" ng-init="">
@@ -31,11 +48,11 @@
 
         </div>
 
-        <div class="tips_txt custom_text_primary" ng-if="is_crown == 'true'">
+        <div class="tips_txt custom_text_primary" ng-if="is_crown">
             <div>注意：新皇冠经销商加入需在 3 小时内在批发中心首次进货满 2000 元, 若超过时间系统将自动取消皇冠经销商资格</div>
         </div>
 
-        <div class="tips_txt custom_text_primary" ng-if="is_star == 'false'">
+        <div class="tips_txt custom_text_primary" ng-if="is_star">
             <div>注意：新皇冠经销商加入需在 3 小时内在批发中心首次进货满 2000 元, 若超过时间系统将自动取消皇冠经销商资格</div>
         </div>
 

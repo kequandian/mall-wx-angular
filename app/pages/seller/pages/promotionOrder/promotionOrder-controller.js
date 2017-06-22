@@ -31,7 +31,7 @@ angular.module('promotionOrder.controller', ['promotionOrder.service', 'seller.s
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $scope.rewards = json.data;
-                            console.log(angular.toJson(json.data));
+                            //console.log(angular.toJson(json.data));
 
                             var order_rewards = $scope.rewards.order_item_rewards;
                             $scope.rewards.orders = mergedOrderList(order_rewards);

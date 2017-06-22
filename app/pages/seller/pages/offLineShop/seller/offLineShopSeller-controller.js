@@ -14,7 +14,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $scope.my_team = json.data;
-                            console.log(angular.toJson(json.data));
+                            //console.log(angular.toJson(json.data));
                         }else{
                             console.log(angular.toJson(json.data));
                         }
@@ -920,54 +920,61 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
         function ($scope,$state,$stateParams,$timeout, SellerTeamFty) {
 
 
-            var levelStatus = $stateParams.levelStatus;
-            var isMe = $stateParams.isMe;
-            //console.log('levelStatus: ' +　levelStatus);
-            var sellerType;
+            var recommender_id = $stateParams.recommenderId;
+            var recommender_name = $stateParams.recommenderName;
+            var type_status = $stateParams.typeStatus;
+            var apply_status = $stateParams.applyStatus;
             var show_tips = document.getElementById('show_tips');
 
             $scope.userInfo = {};
             $scope.action_text = '提交授权申请';
+            $scope.is_crown = false;
+            $scope.is_star = false;
+            $scope.is_own = false;
 
-            if(levelStatus != null){
-                console.log("zzz: " + levelStatus);
-                if(levelStatus == 'true'){
+            if(type_status != null){
+                if(type_status == 'crown'){
                     console.log(1);
                     document.title = "线下皇冠经销商授权";
                     console.log("线下皇冠经销商授权");
-                    $scope.is_crown = levelStatus;
+                    $scope.is_crown = true;
 
-                    if(isMe == 'me'){
-                        $scope.is_disabled = true;
+                    if(apply_status == 'own'){
+                        console.log('me');
+                        $scope.is_own = false;
                         $scope.init_placeholder_id = "要与个人信息的ID号一致";
                         $scope.init_placeholder_name = "要与个人信息的姓名一致";
                         $scope.init_placeholder_phone = "要与个人信息的手机号一致";
-                        getUserInfo();
-                    }else{
-                        $scope.is_disabled = false;
+                    }else if(apply_status == 'recommend'){
+                        console.log('not me');
+                        $scope.is_own = true;
+                        $scope.userInfo.recommender_id = recommender_id;
+                        $scope.userInfo.recommender_name = recommender_name;
                         $scope.init_placeholder_id = "要与被授权人的UID一致";
                         $scope.init_placeholder_name = "要与被授权人个人信息的姓名一致";
                         $scope.init_placeholder_phone = "要与被授权人个人信息的手机号一致";
                     }
 
-                }else if(levelStatus == 'false'){
+                }else if(type_status == 'star'){
                     console.log(2);
                     document.title = "线下星级经销商授权";
                     console.log("线下星级经销商授权");
-                    $scope.is_star = levelStatus;
-                    $scope.is_disabled = false;
+                    $scope.is_star = true;
+                    $scope.is_own = true;
+                    $scope.userInfo.recommender_id = recommender_id;
+                    $scope.userInfo.recommender_name = recommender_name;
                     $scope.init_placeholder_id = "要与被授权人的UID一致";
                     $scope.init_placeholder_name = "要与被授权人个人信息的姓名一致";
                     $scope.init_placeholder_phone = "要与被授权人个人信息的手机号一致";
                 }
-
+                getUserInfo();
             }
             function getUserInfo(){
                 SellerTeamFty.myInfoService()
                     .then(function(json){
                         if(json.status_code == 0){
                             $scope.userInfo.uid = json.data.uid;
-                            console.log('个人信息：' + angular.toJson(json))
+                            //console.log('个人信息：' + angular.toJson(json))
                         }else{
                             console.log('获取个人信息失败：' + angular.toJson(json));
                         }
@@ -976,9 +983,11 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     })
             }
 
-            $scope.apply_action = function(uid, real_name, phone){
+            $scope.apply_action = function(userInfo){
 
-                sellerType = 'CROWN';
+                var uid = userInfo.uid;
+                var real_name = userInfo.real_name;
+                var phone = userInfo.phone;
 
                 if(!angular.isString(uid) || uid.length==0){
                     $.toast('ID不能为空', 'cancel');
@@ -1001,21 +1010,66 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     return;
                 }
 
-                console.log(uid)
-                console.log(real_name)
-                console.log(phone)
-                return
+                console.log(userInfo.recommender_id)
+                console.log(userInfo.recommender_name)
+                console.log(userInfo.uid)
+                console.log(userInfo.real_name)
+                console.log(userInfo.phone)
+                //return
 
-                if(levelStatus == 'true'){
-                    crownSeller(uid,real_name,phone);
-                }else{
+                if(type_status == 'crown'){
+                    if(apply_status == 'own'){
+                        console.log('自己申请皇冠经销商')
+                        //ownCrownSeller(uid,real_name,phone);
+                    }else if(apply_status == 'recommend'){
+                        console.log('推荐申请皇冠经销商')
+                        //recommendCrownSeller(uid,real_name,phone);
+                    }
+                }else if(type_status == 'star'){
+                    console.log('推荐申请星级经销商')
                     //starSeller(real_name,phone,sellerType);
                 }
 
+
             };
 
-            //皇冠经销申请
-            function crownSeller(uid,real_name,phone){
+            function checkPhone(str){
+                var isphone = /^((\+|0)86)?\d{11}$/.test(str);
+                return isphone;
+            }
+
+            //皇冠经销申请--recommend
+            function recommendCrownSeller(uid,real_name,phone){
+                SellerTeamFty.authorizeService(uid,real_name,phone)
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            $.toast('申请已提交,请等待审核');
+                            $state.go('offLineShop');
+                        }else{
+                            $.toast.prototype.defaults.duration = 2000;
+                            if (json.message == 'user.already.crownship') {
+                                showTips("授权失败,该用户已经是皇冠级别");
+                            }else if(json.message == "invalid.real_name"){
+                                showTips("授权失败,真实姓名与被授权人个人信息上的不一致");
+                            }else if(json.message == "real_name.is.empty"){
+                                showTips("被授权人未填写个人信息，请到“积分中心，我的信息”填写后再授权");
+                            }else if(json.message == "invalid.phone"){
+                                showTips("授权失败,手机号码与被授权人个人信息上的不一致");
+                            }else if(json.message == "apply.already.exist"){
+                                showTips("您已提交授权，无需再提交");
+                            }else {
+                                $.toast('授权失败', 'cancel');
+                            }
+                            console.log(angular.toJson(json));
+                        }
+                    },function(error){
+                        $.toast('授权失败', 'cancel');
+                        console.log(angular.toJson(error));
+                    })
+            }
+
+            //皇冠经销申请--own
+            function ownCrownSeller(uid,real_name,phone){
                 SellerTeamFty.authorizeService(uid,real_name,phone)
                     .then(function(json){
                         if(json.status_code == 0){
@@ -1059,11 +1113,6 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                         $.toast('申请失败', 'cancel');
                         console.log(angular.toJson(error));
                     })
-            }
-
-            function checkPhone(str){
-                var isphone = /^((\+|0)86)?\d{11}$/.test(str);
-                return isphone;
             }
 
             //show tips
@@ -1111,7 +1160,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
     /*
      * 我的推荐-查看明细
      * */
-    .controller('CheckTableDataController', ['$scope','$state','$stateParams', 'SellerTeamFty',
+    .controller('CheckTableDataController', ['$scope','$state','$stateParams', 'SellerTeamFty','UserInfo',
         function ($scope,$state,$stateParams, SellerTeamFty) {
 
 
@@ -1123,7 +1172,6 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
             function initCode(){
                 seller_id = $stateParams.sellerId;
-                //console.log(seller_id)
                 getPurchaseJournal(seller_id)
             }
 
@@ -1140,6 +1188,68 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     }, function(error){
                         console.log('获取进货明细失败：' + angular.toJson(error));
                     })
+            }
+
+
+    }])
+
+    /*
+     * 申请经销商二维码
+     * */
+    .controller('AuthorizationQRCodeController', ['$scope','$state','$stateParams', 'SellerTeamFty',
+        function ($scope,$state,$stateParams, SellerTeamFty) {
+
+
+            document.title = "申请二维码";
+
+            var recommender_id = null;
+            var recommender_name = null;
+            var type_status = null;
+            var apply_status = null;
+
+            initCode();
+
+            function initCode(){
+                recommender_id = $stateParams.recommenderId;
+                recommender_name = $stateParams.recommenderName;
+                type_status = $stateParams.typeStatus;
+                apply_status = $stateParams.applyStatus;
+                initQrcode();
+            }
+
+            function initQrcode(){
+                var fallbackRUL = null;
+                var localURL = window.location.href;
+
+                var newLocalURL = localURL.substr(0, localURL.indexOf('#'));
+
+                if(type_status == 'crown'){
+                    fallbackRUL = '?fallback=applyauthentication-'+ recommender_id +'-'+ recommender_name +'-'+ apply_status +'-'+ type_status;
+                }else if(type_status == 'star'){
+                    fallbackRUL = '?fallback=applyauthentication-'+ recommender_id +'-'+ recommender_name +'-'+ apply_status +'-'+ type_status;
+                }
+
+                var divhtml = document.getElementById("dituContent");
+                var invitationUrl = newLocalURL + fallbackRUL;
+                loadScript("lib/qrcodejs/qrcode.min.js", function () {
+
+                    var qrcode = new QRCode(divhtml, {
+                        width: 220,
+                        height: 220
+                    });
+                    qrcode.clear();
+                    qrcode.makeCode(invitationUrl);
+                });
+            }
+
+            function loadScript(src, callback) {
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                if (callback)script.onload = callback;
+
+                var sc = document.getElementsByTagName("head")[0];
+                sc.appendChild(script);
+                script.src = src;
             }
 
 
