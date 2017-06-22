@@ -1230,9 +1230,9 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 var newLocalURL = localURL.substr(0, localURL.indexOf('#'));
 
                 if(type_status == 'crown'){
-                    fallbackRUL = '?fallback=applyauthentication-'+ recommender_id +'-'+ recommender_name +'-'+ apply_status +'-'+ type_status;
+                    fallbackRUL = '?fallback=applyauthentication-'+ recommender_id +'-'+ apply_status +'-'+ type_status;
                 }else if(type_status == 'star'){
-                    fallbackRUL = '?fallback=applyauthentication-'+ recommender_id +'-'+ recommender_name +'-'+ apply_status +'-'+ type_status;
+                    fallbackRUL = '?fallback=applyauthentication-'+ recommender_id +'-'+ apply_status +'-'+ type_status;
                 }
 
                 var divhtml = document.getElementById("dituContent");
@@ -1242,8 +1242,8 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     var qrcode = new QRCode(divhtml, {
                         text: invitationUrl,
                         width: 1024,
-                        height: 1024
-
+                        height: 1024,
+                        correctLevel : QRCode.CorrectLevel.H
                     });
                     //qrcode.clear();
                     //qrcode.makeCode(invitationUrl);
