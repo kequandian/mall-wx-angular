@@ -436,6 +436,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             document.title = "结算";
             $scope.settlementCarts = [];
             $scope.save_total_price = 0;
+            $scope.isWholesaleData = false;
 
             var province = null;
             var city = null;
@@ -522,12 +523,17 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
             //拼团支付方式
             var settlementCarts = $scope.settlementCarts[0];
-            if(settlementCarts.fightGroupData == undefined ||
+            if(JSON.stringify(settlementCarts.fightGroupData) == undefined ||
                 JSON.stringify(settlementCarts.fightGroupData) == '{}'){
                 $scope.isSimplePayStatus = true;
             }else{
                 //console.log("含有拼团信息: " + angular.toJson(settlementCarts.fightGroupData));
                 fightGroupsPayStatus();
+            }
+
+            if(JSON.stringify(settlementCarts.wholesaleData) != undefined &&
+                JSON.stringify(settlementCarts.wholesaleData) != '{}'){
+                $scope.isWholesaleData = true;
             }
 
             angular.forEach($scope.settlementCarts, function (data, index) {
@@ -590,7 +596,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
             //更改pcd变更价格
             $scope.settlement_pcd_change = function(){
-                console.log('JSON.stringify(settle_product_code[0].wholesaleData): ' + JSON.stringify(settle_product_code[0].wholesaleData))
+                //console.log('JSON.stringify(settle_product_code[0].wholesaleData): ' + JSON.stringify(settle_product_code[0].wholesaleData))
                 if(JSON.stringify(settle_product_code[0].wholesaleData) != undefined
                     && JSON.stringify(settle_product_code[0].wholesaleData)!="{}"){
                     var interval = $interval(function(){
@@ -666,7 +672,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 CartFty.frieghtService($scope.productFrieghts)
                     .then(function(json){
                         if(json.status_code == 0){
-                            console.log("获取的邮费信息" + angular.toJson(json));
+                            //console.log("获取的邮费信息" + angular.toJson(json));
 
                             if(settle_product_code[0].fightGroupData != undefined && JSON.stringify(settle_product_code[0].fightGroupData) != '{}'){
                                 console.log('开团邮费');
@@ -723,7 +729,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                         if(json.status_code == 0){
                             //console.log("获取下单前计算优惠信息：" + angular.toJson(json));
 
-                            if(settle_product_code[0].fightGroupData == undefined
+                            if(JSON.stringify(settle_product_code[0].fightGroupData) == undefined
                                 || JSON.stringify(settle_product_code[0].fightGroupData) != "{}"){
                                 if(pieceGroupCouponItem.id > 0){
                                     var p_d_coupon_item = null;
@@ -925,7 +931,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                         });
                     }
 
-                    if(WholesalePCDCode.province != null
+                    /*if(WholesalePCDCode.province != null
                         && WholesalePCDCode.city != null
                         || WholesalePCDCode.district != null){
 
@@ -940,7 +946,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                             return;
                         }
 
-                    }
+                    }*/
 
                     //console.log('提交成功')
                     //console.log("orderInfo: " + angular.toJson($scope.order));
@@ -1070,6 +1076,17 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                         /*end function*/
                     })
                 });
+            };
+
+            //地址显示--检查是否批发
+            $scope.check_wholesale = function(contacts,isWholesaleData){
+                if(contacts.length > 5 && isWholesaleData){
+                    return 'height: 77%; overflow-x: hidden; overflow-y: scroll;';
+                }else if(contacts.length > 5 && !isWholesaleData){
+                    return 'height: 87%; overflow-x: hidden; overflow-y: scroll;';
+                }else{
+                    return '';
+                }
             };
 
             //选择地址

@@ -76,9 +76,15 @@
                     <div class="weui_actionsheet" id="weui_actionsheet">
                         <div class="weui_actionsheet_menu">
                             <div class="weui_panel" style="{{contacts.length >= 5 ? 'height:400px;':''}}">
-                                <div class="weui_panel_hd">选择收货地址 <span id="c_address_action" class="custom_text_primary">添加地址</span></div>
 
-                                <div style="{{contacts.length >= 5 ? 'height: 85%; overflow-x: hidden; overflow-y: scroll;':''}}">
+                                <div style="padding: 10px 5px; font-size: 10px;" class="custom_text_primary" ng-if="isWholesaleData">
+                                    <span><i style="font-weight: bold">温馨提示: </i>由于不同区域的价格及品类有所差异,更改收货地址可能出现结算
+                                        价格及品类有所改变,并且注意更改后该商品在该区域的供售价</span>
+                                </div>
+
+                                <div class="weui_panel_hd" style="border-top: 1px solid #cccccc;">选择收货地址 <span id="c_address_action" class="custom_text_primary">添加地址</span></div>
+
+                                <div style="{{check_wholesale(contacts,isWholesaleData)}}">
 
                                     <div class="weui_panel_bd" ng-repeat="contact in contacts">
                                         <div class="weui_media_box weui_media_text">
@@ -88,6 +94,9 @@
                                                     {{contact.province}}{{contact.city}}{{contact.district}}
                                                     {{contact.street}}{{contact.street_number}} {{contact.detail}}
                                                 </p>
+                                                <div class="contect-item-edit-btn" ng-if="isWholesaleData">
+                                                    <span>编辑</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
