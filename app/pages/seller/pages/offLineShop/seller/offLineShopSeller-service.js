@@ -184,11 +184,11 @@ angular.module('sellerTeam.service', [])
                 return deferred.promise;
             },
 
-            // 获取申请通知
-            getApplyNoticeService: function () {
+            // 推荐皇冠，星级经销商授权
+            recommendCrownSellerService: function (apply_code) {
                 var deferred = $q.defer();
-                var url = GlobalVariable.SERVER_PATH + "/physical_crown_tips";
-                $http.get(url,{
+                var url = GlobalVariable.SERVER_PATH + "/physical_seller";
+                $http.post(url,apply_code,{
                     headers:{
                         'Authorization': GlobalVariable.ACCESS_TOKEN
                     }

@@ -1068,28 +1068,27 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     $.toast('uid不能为空', 'cancel');
                     return;
                 }
-
-                console.log(userInfo.recommender_id)
-                //console.log(userInfo.recommender_name)
-                console.log(userInfo.uid)
-                console.log(userInfo.real_name)
-                console.log(userInfo.phone)
                 //return
 
                 var apply_code = {};
-                apply_code.real_name
+                apply_code.real_name = real_name;
+                apply_code.phone = phone;
 
                 if(type_status == 'crown'){
                     if(apply_status == 'own'){
-                        console.log('自己申请皇冠经销商')
-                        //ownCrownSeller(uid,real_name,phone);
+                        console.log('自己申请皇冠经销商');
+                        apply_code.type = 'CROWN';
+                        ownCrownSeller(apply_code);
                     }else if(apply_status == 'rec'){
                         console.log('推荐申请皇冠经销商')
-                        //recommendCrownSeller(uid,real_name,phone);
+                        apply_code.uid = recommenderId;
+                        apply_code.type = 'CROWN';
+                        recommendCrownSeller(apply_code);
                     }
                 }else if(type_status == 'star'){
                     console.log('推荐申请星级经销商')
-                    //starSeller(real_name,phone,sellerType);
+                    apply_code.uid = recommenderId;
+                    recommendCrownSeller(apply_code);
                 }
 
 
@@ -1100,13 +1099,13 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 return isphone;
             }
 
-            //皇冠经销申请--recommend
-            function recommendCrownSeller(recommenderId,uid,real_name,phone){
-                SellerTeamFty.authorizeService(uid,real_name,phone)
+            //皇冠，星级经销申请--recommend
+            function recommendCrownSeller(apply_code){
+                SellerTeamFty.recommendCrownSellerService(apply_code)
                     .then(function(json){
                         if(json.status_code == 0){
                             $.toast('申请已提交,请等待审核');
-                            $state.go('offLineShop');
+                            $state.go('home.sellerPage');
                         }else{
                             $.toast.prototype.defaults.duration = 2000;
                             if (json.message == 'user.already.crownship') {
@@ -1131,44 +1130,27 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
             }
 
             //皇冠经销申请--own
-            function ownCrownSeller(uid,real_name,phone){
-                SellerTeamFty.authorizeService(uid,real_name,phone)
+            function ownCrownSeller(apply_code){
+                SellerTeamFty.applyService(apply_code,real_name,apply_code,phone,apply_code,type)
                     .then(function(json){
                         if(json.status_code == 0){
                             $.toast('申请已提交,请等待审核');
-                            $state.go('offLineShop');
+                            $state.go('home.sellerPage');
                         }else{
                             $.toast.prototype.defaults.duration = 2000;
                             if (json.message == 'user.already.crownship') {
-                                showTips("授权失败,该用户已经是皇冠级别");
+                                showTips("申请失败,该用户已经是皇冠级别");
                             }else if(json.message == "invalid.real_name"){
-                                showTips("授权失败,真实姓名与被授权人个人信息上的不一致");
+                                showTips("申请失败,真实姓名与个人信息上的不一致");
                             }else if(json.message == "real_name.is.empty"){
-                                showTips("被授权人未填写个人信息，请到“积分中心，我的信息”填写后再授权");
+                                showTips("申请人未填写个人信息，请到“积分中心，我的信息”填写后再申请");
                             }else if(json.message == "invalid.phone"){
-                                showTips("授权失败,手机号码与被授权人个人信息上的不一致");
+                                showTips("申请失败,手机号码与个人信息上的不一致");
                             }else if(json.message == "apply.already.exist"){
                                 showTips("您已提交授权，无需再提交");
                             }else {
-                                $.toast('授权失败', 'cancel');
+                                $.toast('申请失败', 'cancel');
                             }
-                            console.log(angular.toJson(json));
-                        }
-                    },function(error){
-                        $.toast('授权失败', 'cancel');
-                        console.log(angular.toJson(error));
-                    })
-            }
-
-            //星级经销申请
-            function starSeller(real_name,phone,sellerType){
-                SellerTeamFty.applyService(real_name,phone,sellerType)
-                    .then(function(json){
-                        if(json.status_code == 0){
-                            $.toast('申请已提交,请等待审核');
-                            $state.go('sellerPage');
-                        }else{
-                            $.toast('申请失败', 'cancel');
                             console.log(angular.toJson(json));
                         }
                     },function(error){
@@ -1215,6 +1197,15 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     }, function(error){
                         console.log('获取比例对照表失败：' + angular.toJson(error))
                     })
+            }
+
+            //组合格式
+            $scope.convert_amount = function(min, max){
+                if(max == -1){
+                    return min + '-以上';
+                }else{
+                    return min + '-' + max;
+                }
             }
 
     }])

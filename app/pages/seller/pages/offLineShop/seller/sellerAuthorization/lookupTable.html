@@ -17,7 +17,7 @@
             </div>
             <div class="table-item" style="margin-top: 4px;" ng-repeat="item in physical_proportion_list">
                 <div class="item-content">
-                    <span>{{item.min_amount}}-{{item.max_amount < 0 ? '以上':item.max_amount}}</span>
+                    <span>{{convert_amount(item.min_amount,item.max_amount)}}</span>
                 </div>
                 <div class="item-content">
                     <span>{{item.percentage}}%</span>
