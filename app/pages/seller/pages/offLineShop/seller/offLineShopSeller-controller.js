@@ -1241,7 +1241,10 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
                     var qrcode = new QRCode(divhtml, {
                         width: 800,
-                        height: 800
+                        height: 800,
+                        colorDark:"#000000",
+                        colorLight:"#ffffff",
+                        correctLevel:QRCode.CorrectLevel.L
                     });
                     qrcode.clear();
                     qrcode.makeCode(invitationUrl);
