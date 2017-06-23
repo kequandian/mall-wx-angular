@@ -4,16 +4,12 @@
         申请需知
     </div>
     <div class="apply-notice-title">
-        {{sys_ann_title}}
-        title
+        {{apply_notice.name}}
     </div>
-    <div class="apply-notice-content" ng-bind-html="sys_ann_content | to_trusted">
-    </div>
-    <div class="apply-notice-content">
-        content
+    <div class="apply-notice-content" ng-bind-html="apply_notice.content | to_trusted">
     </div>
 
-    <div class="confirm-content">
+    <div class="confirm-content" ng-if="false">
         <div class="confirm-notice">
             <input class="address-checkbox" id="add" type="checkbox" value="默认地址"
                    ng-model="isReadNotice">
@@ -25,7 +21,7 @@
 
     <div class="confirm-content">
         <div class="confirm-btn">
-            <div class="ok-btn" ng-class="isReadNotice ? 'weui_btn_primary' : 'not-read-notice'" ng-click="isReadNotice ? ok_action() : ''">
+            <div class="ok-btn weui_btn_primary" ng-click="ok_action()">
                 <span>同意</span>
             </div>
             <div class="cancel-btn not-read-notice" ng-click="cancel_action()">

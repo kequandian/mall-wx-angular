@@ -925,7 +925,6 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
             //var recommender_name = $stateParams.recommenderName;
             var type_status = $stateParams.typeStatus;
             var apply_status = $stateParams.applyStatus;
-            $scope.isReadNotice = false;
 
             console.log(recommender_id);
             console.log(type_status);
@@ -934,7 +933,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
             initCode();
 
             function initCode(){
-                //getApplyNotice()
+                getApplyNotice()
             }
 
             function getApplyNotice(){
@@ -1293,7 +1292,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     params = window.location.href.split('?');
                     var longParam = params[1];
                     var param = longParam.split('#')[0];
-                    param = param + '&fallback=applynotice-'+ recommender_id +'-'+ apply_status +'-'+ type_status;
+                    param = param + '&fallback=applynotice-'+ recommender_id +'-'+ type_status +'-'+ apply_status;
                     newurl = '?' + param;
 
                     newLocalURL = params[0] + newurl;
@@ -1305,7 +1304,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                      }*/
                 }else{
                     params = window.location.href.split('#');
-                    newurl = '?fallback=applynotice-'+ recommender_id +'-'+ apply_status +'-'+ type_status;
+                    newurl = '?fallback=applynotice-'+ recommender_id +'-'+ type_status +'-'+ apply_status;
                     newLocalURL = params[0] + newurl;
                     /*if(type_status == 'crown'){
                         fallbackRUL = '?fallback=applynotice-'+ recommender_id +'-'+ apply_status +'-'+ type_status;

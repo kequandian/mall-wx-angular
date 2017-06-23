@@ -154,7 +154,7 @@ angular.module('offLineShop.route',[])
              * */
             .state('applynotice', {
                 url:'/applynotice/:recommenderId/:typeStatus/:applyStatus',
-                templateUrl: 'seller/sellerAuthorization/applynotice.html',
+                templateUrl: 'pages/seller/pages/offLineShop/seller/sellerAuthorization/applynotice.html',
                 controller:'ApplynoticeController',
                 resolve: {
                     loadData: ['$ocLazyLoad', function ($ocLazyLoad) {
