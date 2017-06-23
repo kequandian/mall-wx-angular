@@ -1043,6 +1043,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
             $scope.apply_action = function(userInfo){
 
+                var recommenderId = userInfo.recommender_id;
                 var uid = userInfo.uid;
                 var real_name = userInfo.real_name;
                 var phone = userInfo.phone;
@@ -1075,6 +1076,9 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 console.log(userInfo.phone)
                 //return
 
+                var apply_code = {};
+                apply_code.real_name
+
                 if(type_status == 'crown'){
                     if(apply_status == 'own'){
                         console.log('自己申请皇冠经销商')
@@ -1097,7 +1101,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
             }
 
             //皇冠经销申请--recommend
-            function recommendCrownSeller(uid,real_name,phone){
+            function recommendCrownSeller(recommenderId,uid,real_name,phone){
                 SellerTeamFty.authorizeService(uid,real_name,phone)
                     .then(function(json){
                         if(json.status_code == 0){
