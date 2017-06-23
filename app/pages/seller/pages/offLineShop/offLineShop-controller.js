@@ -53,38 +53,34 @@ angular.module('offLineShop.controller', ['offLineShop.service'])
             //进入皇冠经销授权页
             $scope.crown_seller_authorization_action = function(){
                 type_status = 'crown';
-                $state.go('authorizationqrcode',{
-                    recommenderId: UserInfo.recommender_id,
-                    recommenderName:UserInfo.recommender_name,
-                    typeStatus: type_status,
-                    applyStatus: 'recommend'
-                });
-                /*$state.go('applyauthentication',
+                //$state.go('authorizationqrcode',{
+                //    recommenderId: UserInfo.recommender_id,
+                //    typeStatus: type_status,
+                //    applyStatus: 'rec'
+                //});
+                $state.go('applyauth',
                     {
                         recommenderId: UserInfo.recommender_id,
-                        recommenderName:UserInfo.recommender_name,
                         typeStatus: type_status,
-                        applyStatus: 'recommend'
-                    });*/
+                        applyStatus: 'rec'
+                    });
             };
 
             //进入星级经销授权页
             $scope.star_seller_authorization_action = function(){
                 type_status = 'star';
-                $state.go('authorizationqrcode',{
-                    recommenderId: UserInfo.recommender_id,
-                    recommenderName:UserInfo.recommender_name,
-                    typeStatus: type_status,
-                    applyStatus: 'recommend'
-                });
+                //$state.go('authorizationqrcode',{
+                //    recommenderId: UserInfo.recommender_id,
+                //    typeStatus: type_status,
+                //    applyStatus: 'rec'
+                //});
 
-                /*$state.go('applyauthentication',
+                $state.go('applyauth',
                     {
                         recommenderId: UserInfo.recommender_id,
-                        recommenderName:UserInfo.recommender_name,
                         typeStatus: type_status,
-                        applyStatus: 'recommend'
-                    });*/
+                        applyStatus: 'rec'
+                    });
             };
 
 

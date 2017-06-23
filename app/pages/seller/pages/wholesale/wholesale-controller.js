@@ -86,10 +86,9 @@ angular.module('wholesale.controller', ['wholesale.service'])
 
             //申请皇冠按钮
             $scope.crownApplyAction = function(){
-                $state.go('applyauthentication',
+                $state.go('applyauth',
                     {
                         recommenderId: -1,
-                        recommenderName:-1,
                         typeStatus: 'crown',
                         applyStatus: 'own'
                     });

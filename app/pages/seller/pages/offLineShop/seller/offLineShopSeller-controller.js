@@ -921,7 +921,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
 
             var recommender_id = $stateParams.recommenderId;
-            var recommender_name = $stateParams.recommenderName;
+            //var recommender_name = $stateParams.recommenderName;
             var type_status = $stateParams.typeStatus;
             var apply_status = $stateParams.applyStatus;
             var show_tips = document.getElementById('show_tips');
@@ -945,11 +945,11 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                         $scope.init_placeholder_id = "要与个人信息的ID号一致";
                         $scope.init_placeholder_name = "要与个人信息的姓名一致";
                         $scope.init_placeholder_phone = "要与个人信息的手机号一致";
-                    }else if(apply_status == 'recommend'){
+                    }else if(apply_status == 'rec'){
                         console.log('not me');
                         $scope.is_own = true;
                         $scope.userInfo.recommender_id = recommender_id;
-                        $scope.userInfo.recommender_name = recommender_name;
+                        //$scope.userInfo.recommender_name = recommender_name;
                         $scope.init_placeholder_id = "要与被授权人的UID一致";
                         $scope.init_placeholder_name = "要与被授权人个人信息的姓名一致";
                         $scope.init_placeholder_phone = "要与被授权人个人信息的手机号一致";
@@ -962,7 +962,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     $scope.is_star = true;
                     $scope.is_own = true;
                     $scope.userInfo.recommender_id = recommender_id;
-                    $scope.userInfo.recommender_name = recommender_name;
+                    //$scope.userInfo.recommender_name = recommender_name;
                     $scope.init_placeholder_id = "要与被授权人的UID一致";
                     $scope.init_placeholder_name = "要与被授权人个人信息的姓名一致";
                     $scope.init_placeholder_phone = "要与被授权人个人信息的手机号一致";
@@ -1011,7 +1011,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 }
 
                 console.log(userInfo.recommender_id)
-                console.log(userInfo.recommender_name)
+                //console.log(userInfo.recommender_name)
                 console.log(userInfo.uid)
                 console.log(userInfo.real_name)
                 console.log(userInfo.phone)
@@ -1021,7 +1021,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     if(apply_status == 'own'){
                         console.log('自己申请皇冠经销商')
                         //ownCrownSeller(uid,real_name,phone);
-                    }else if(apply_status == 'recommend'){
+                    }else if(apply_status == 'rec'){
                         console.log('推荐申请皇冠经销商')
                         //recommendCrownSeller(uid,real_name,phone);
                     }
@@ -1203,7 +1203,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
             document.title = "申请二维码";
 
             var recommender_id = null;
-            var recommender_name = null;
+            //var recommender_name = null;
             var type_status = null;
             var apply_status = null;
             $scope.isCrownApply = '请通知被授权人扫码加入';
@@ -1212,7 +1212,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
             function initCode(){
                 recommender_id = $stateParams.recommenderId;
-                recommender_name = $stateParams.recommenderName;
+                //recommender_name = $stateParams.recommenderName;
                 type_status = $stateParams.typeStatus;
                 apply_status = $stateParams.applyStatus;
                 if(type_status == 'crown'){
@@ -1230,9 +1230,9 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 var newLocalURL = localURL.substr(0, localURL.indexOf('#'));
 
                 if(type_status == 'crown'){
-                    fallbackRUL = '?fallback=applyauthentication-'+ recommender_id +'-'+ recommender_name +'-'+ apply_status +'-'+ type_status;
+                    fallbackRUL = '?fallback=applyauth-'+ recommender_id +'-'+ apply_status +'-'+ type_status;
                 }else if(type_status == 'star'){
-                    fallbackRUL = '?fallback=applyauthentication-'+ recommender_id +'-'+ recommender_name +'-'+ apply_status +'-'+ type_status;
+                    fallbackRUL = '?fallback=applyauth-'+ recommender_id +'-'+ apply_status +'-'+ type_status;
                 }
 
                 var divhtml = document.getElementById("dituContent");
@@ -1240,14 +1240,14 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 loadScript("lib/qrcodejs/qrcode.min.js", function () {
 
                     var qrcode = new QRCode(divhtml, {
-                        width: 800,
-                        height: 800,
-                        colorDark:"#000000",
-                        colorLight:"#ffffff",
-                        correctLevel:QRCode.CorrectLevel.L
+                        text: invitationUrl,
+                        width: 1024,
+                        height: 1024,
+                        correctLevel : QRCode.CorrectLevel.H
                     });
-                    qrcode.clear();
-                    qrcode.makeCode(invitationUrl);
+                    //qrcode.clear();
+                    //qrcode.makeCode(invitationUrl);
+                    console.log("invitationUrl: " + invitationUrl);
                 });
             }
 

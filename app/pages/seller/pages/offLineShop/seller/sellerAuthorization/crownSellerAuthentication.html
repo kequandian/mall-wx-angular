@@ -11,18 +11,9 @@
                     <input class="weui_input" type="text" placeholder="UID" ng-disabled="true" ng-model="userInfo.recommender_id">
                 </div>
             </div>
-            <div class="weui_cell" ng-if="is_own">
-                <div class="weui_cell_hd">
-                    <label class="weui_label" style="width: 72px;">推荐人：</label>
-                </div>
-                <div class="weui_cell_bd weui_cell_primary">
-                    <input class="weui_input" type="text" placeholder="推荐人姓名" ng-disabled="true" ng-model="userInfo.recommender_name">
-                </div>
-            </div>
-
             <div class="weui_cell">
                 <div class="weui_cell_hd">
-                    <label class="weui_label" style="width: 72px;">ID号：</label>
+                    <label class="weui_label" style="width: 72px;">我的ID号：</label>
                 </div>
                 <div class="weui_cell_bd weui_cell_primary">
                     <input class="weui_input" type="text" placeholder="{{init_placeholder_id}}" ng-disabled="true" ng-model="userInfo.uid">

@@ -76,7 +76,7 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                                 //console.log('userInfo: ' + angular.toJson($scope.userInfo));
                                 UserInfo.register_date = $scope.userInfo.register_date;
                                 UserInfo.recommender_id = $scope.userInfo.uid;
-                                UserInfo.recommender_name = $scope.userInfo.real_name;
+                                //UserInfo.recommender_name = $scope.userInfo.real_name;
 
                                 $rootScope.profile_session.userInfo = $scope.userInfo;
                             }
