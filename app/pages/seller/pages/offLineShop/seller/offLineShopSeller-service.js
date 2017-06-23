@@ -199,6 +199,23 @@ angular.module('sellerTeam.service', [])
                         return deferred.reject(data);
                     });
                 return deferred.promise;
+            },
+
+            // 查看申请须知
+            getApplyNoticeService: function () {
+                var deferred = $q.defer();
+                var url = GlobalVariable.SERVER_PATH + "/physical_crown_tips";
+                $http.get(url,{
+                    headers:{
+                        'Authorization': GlobalVariable.ACCESS_TOKEN
+                    }
+                })
+                    .success(function (data) {
+                        return deferred.resolve(data);
+                    }).error(function (data) {
+                        return deferred.reject(data);
+                    });
+                return deferred.promise;
             }
         }
     }]);
