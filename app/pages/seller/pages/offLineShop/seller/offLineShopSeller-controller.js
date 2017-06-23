@@ -973,10 +973,17 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
     /*
      * 皇冠、星级经销商授权
      * */
-    .controller('CrownSellerAuthenticationController', ['$scope','$state','$stateParams','$timeout', 'SellerTeamFty',
-        function ($scope,$state,$stateParams,$timeout, SellerTeamFty) {
+    .controller('CrownSellerAuthenticationController', ['$scope','$state','$stateParams','$timeout','$ocLazyLoad', 'SellerTeamFty',
+        function ($scope,$state,$stateParams,$timeout,$ocLazyLoad, SellerTeamFty) {
 
             document.title = '授权申请';
+
+
+            $ocLazyLoad.load('Jquery').then(function () {
+                $ocLazyLoad.load('JqueryWeUI').then(function () {
+                    //console.log("sellerAuthentication:jquery loaded");
+                })
+            });
 
             var recommender_id = $stateParams.recommenderId;
             //var recommender_name = $stateParams.recommenderName;
