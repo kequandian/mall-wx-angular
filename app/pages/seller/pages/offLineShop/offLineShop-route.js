@@ -150,7 +150,7 @@ angular.module('offLineShop.route',[])
             })
 
             /*
-             * 申请经销商需知
+             * 申请经销商须知
              * */
             .state('applynotice', {
                 url:'/applynotice/:recommenderId/:typeStatus/:applyStatus',
