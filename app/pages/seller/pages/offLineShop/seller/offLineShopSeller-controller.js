@@ -1285,25 +1285,39 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
             function initQrcode(){
                 var fallbackRUL = null;
                 var localURL = window.location.href;
-
+                var newurl = null;
+                var newLocalURL = null;
+                var params = null;
                 if(localURL.indexOf('?') >= 0){
-                    if(type_status == 'crown'){
-                        fallbackRUL = '&fallback=applynotice-'+ recommender_id +'-'+ apply_status +'-'+ type_status;
-                    }else if(type_status == 'star'){
-                        fallbackRUL = '&fallback=applynotice-'+ recommender_id +'-'+ apply_status +'-'+ type_status;
-                    }
+
+                    params = window.location.href.split('?');
+                    var longParam = params[1];
+                    var param = longParam.split('#')[0];
+                    param = param + '&fallback=applynotice-'+ recommender_id +'-'+ apply_status +'-'+ type_status;
+                    newurl = '?' + param;
+
+                    newLocalURL = params[0] + newurl;
+
+                    /*if(type_status == 'crown'){
+                     param = param + '&fallback=applynotice-'+ recommender_id +'-'+ apply_status +'-'+ type_status;
+                     }else if(type_status == 'star'){
+                     param = param + '&fallback=applynotice-'+ recommender_id +'-'+ apply_status +'-'+ type_status;
+                     }*/
                 }else{
-                    if(type_status == 'crown'){
+                    params = window.location.href.split('#');
+                    newurl = '?fallback=applynotice-'+ recommender_id +'-'+ apply_status +'-'+ type_status;
+                    newLocalURL = params[0] + newurl;
+                    /*if(type_status == 'crown'){
                         fallbackRUL = '?fallback=applynotice-'+ recommender_id +'-'+ apply_status +'-'+ type_status;
                     }else if(type_status == 'star'){
                         fallbackRUL = '?fallback=applynotice-'+ recommender_id +'-'+ apply_status +'-'+ type_status;
-                    }
+                    }*/
                 }
 
-                var newLocalURL = localURL.substr(0, localURL.indexOf('#'));
+                console.log('二维码url：' + newLocalURL);
 
                 var divhtml = document.getElementById("dituContent");
-                var invitationUrl = newLocalURL + fallbackRUL;
+                var invitationUrl = newLocalURL;
                 loadScript("lib/qrcodejs/qrcode.min.js", function () {
 
                     var qrcode = new QRCode(divhtml, {
