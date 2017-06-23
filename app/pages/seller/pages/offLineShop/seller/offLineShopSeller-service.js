@@ -187,7 +187,7 @@ angular.module('sellerTeam.service', [])
             // 获取申请通知
             getApplyNoticeService: function () {
                 var deferred = $q.defer();
-                var url = GlobalVariable.SERVER_PATH + "/physical_proportion";
+                var url = GlobalVariable.SERVER_PATH + "/physical_crown_tips";
                 $http.get(url,{
                     headers:{
                         'Authorization': GlobalVariable.ACCESS_TOKEN

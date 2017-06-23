@@ -914,12 +914,12 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
     }])
 
     /*
-     * 经销商申请须知
+     * 经销商申请需知
      * */
     .controller('ApplynoticeController', ['$scope','$state','$stateParams', 'SellerTeamFty',
         function ($scope,$state,$stateParams, SellerTeamFty) {
 
-            document.title = '申请须知';
+            document.title = '申请需知';
 
             var recommender_id = $stateParams.recommenderId;
             //var recommender_name = $stateParams.recommenderName;
@@ -942,12 +942,12 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     .then(function(json){
                         if(json.status_code == 0){
                             $scope.apply_notice = json.data;
-                            //console.log('获取申请须知：' + angular.toJson(json))
+                            console.log('获取申请需知：' + angular.toJson(json))
                         }else{
-                            console.log('获取申请须知失败：' + angular.toJson(json))
+                            console.log('获取申请需知失败：' + angular.toJson(json))
                         }
                     }, function(error){
-                        console.log('获取申请须知失败：' + angular.toJson(error))
+                        console.log('获取申请需知失败：' + angular.toJson(error))
                     })
             }
 
@@ -1240,7 +1240,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     .then(function(json){
                         if(json.status_code == 0){
                             $scope.seller_product_list = json.data;
-                            console.log('获取进货明细：' + angular.toJson(json));
+                            //console.log('获取进货明细：' + angular.toJson(json));
                         }else{
                             console.log('获取进货明细失败：' + angular.toJson(json));
                         }
@@ -1313,8 +1313,6 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                         fallbackRUL = '?fallback=applynotice-'+ recommender_id +'-'+ apply_status +'-'+ type_status;
                     }*/
                 }
-
-                console.log('二维码url：' + newLocalURL);
 
                 var divhtml = document.getElementById("dituContent");
                 var invitationUrl = newLocalURL;

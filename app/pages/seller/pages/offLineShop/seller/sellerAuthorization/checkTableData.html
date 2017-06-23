@@ -9,7 +9,7 @@
         <div class="item-children-list">
             <div class="product-item" ng-repeat="item in seller_product_list">
                 <div class="product-title-name custom_text_primary">
-                    <span>{{item.product_name}}</span>
+                    <span>{{item.product_name | cutText:true:10:'...'}}</span>
                 </div>
                 <div class="product-item-details custom_text_primary">
                     <span>

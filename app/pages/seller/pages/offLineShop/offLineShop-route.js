@@ -150,11 +150,11 @@ angular.module('offLineShop.route',[])
             })
 
             /*
-             * 申请经销商须知
+             * 申请经销商需知
              * */
             .state('applynotice', {
                 url:'/applynotice/:recommenderId/:typeStatus/:applyStatus',
-                templateUrl: 'pages/seller/pages/offLineShop/seller/sellerAuthorization/applynotice.html',
+                templateUrl: 'seller/sellerAuthorization/apply-notice.html',
                 controller:'ApplynoticeController',
                 resolve: {
                     loadData: ['$ocLazyLoad', function ($ocLazyLoad) {
