@@ -148,4 +148,18 @@ angular.module('offLineShop.route',[])
                     }]
                 }
             })
+
+            /*
+             * 申请经销商须知
+             * */
+            .state('applynotice', {
+                url:'/applynotice/:recommenderId/:typeStatus/:applyStatus',
+                templateUrl: 'pages/seller/pages/offLineShop/seller/sellerAuthorization/applynotice.html',
+                controller:'ApplynoticeController',
+                resolve: {
+                    loadData: ['$ocLazyLoad', function ($ocLazyLoad) {
+                        return $ocLazyLoad.load('SellerAuthorization');
+                    }]
+                }
+            })
     }]);

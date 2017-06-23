@@ -58,7 +58,7 @@ angular.module('offLineShop.controller', ['offLineShop.service'])
                     typeStatus: type_status,
                     applyStatus: 'rec'
                 });
-                //$state.go('applyauth',
+                //$state.go('applynotice',
                 //    {
                 //        recommenderId: UserInfo.recommender_id,
                 //        typeStatus: type_status,
@@ -75,7 +75,7 @@ angular.module('offLineShop.controller', ['offLineShop.service'])
                     applyStatus: 'rec'
                 });
 
-                //$state.go('applyauth',
+                //$state.go('applynotice',
                 //    {
                 //        recommenderId: UserInfo.recommender_id,
                 //        typeStatus: type_status,

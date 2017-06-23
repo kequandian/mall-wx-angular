@@ -1,0 +1,36 @@
+<div id="applyNotice">
+
+    <div class="apply-notice-head custom_text_primary">
+        申请须知
+    </div>
+    <div class="apply-notice-title">
+        {{sys_ann_title}}
+        title
+    </div>
+    <div class="apply-notice-content" ng-bind-html="sys_ann_content | to_trusted">
+    </div>
+    <div class="apply-notice-content">
+        content
+    </div>
+
+    <div class="confirm-content">
+        <div class="confirm-notice">
+            <input class="address-checkbox" id="add" type="checkbox" value="默认地址"
+                   ng-model="isReadNotice">
+            <label id="address-manager-check" for="add"  class="ion-ios-checkmark active address-check-label"></label>
+            <div class="address-check-text custom_text_primary_medium">已阅览须知</div>
+        </div>
+
+    </div>
+
+    <div class="confirm-content">
+        <div class="confirm-btn">
+            <div class="ok-btn" ng-class="isReadNotice ? 'weui_btn_primary' : 'not-read-notice'" ng-click="isReadNotice ? ok_action() : ''">
+                <span>同意</span>
+            </div>
+            <div class="cancel-btn not-read-notice" ng-click="cancel_action()">
+                <span>不同意</span>
+            </div>
+        </div>
+    </div>
+</div>

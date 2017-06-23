@@ -914,11 +914,70 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
     }])
 
     /*
+     * 经销商申请须知
+     * */
+    .controller('ApplynoticeController', ['$scope','$state','$stateParams', 'SellerTeamFty',
+        function ($scope,$state,$stateParams, SellerTeamFty) {
+
+            document.title = '申请须知';
+
+            var recommender_id = $stateParams.recommenderId;
+            //var recommender_name = $stateParams.recommenderName;
+            var type_status = $stateParams.typeStatus;
+            var apply_status = $stateParams.applyStatus;
+            $scope.isReadNotice = false;
+
+            console.log(recommender_id)
+            console.log(type_status)
+            console.log(apply_status)
+
+            initCode();
+
+            function initCode(){
+                //getApplyNotice()
+            }
+
+            function getApplyNotice(){
+                SellerTeamFty.getApplyNoticeService()
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            $scope.apply_notice = json.data;
+                            //console.log('获取申请须知：' + angular.toJson(json))
+                        }else{
+                            console.log('获取申请须知失败：' + angular.toJson(json))
+                        }
+                    }, function(error){
+                        console.log('获取申请须知失败：' + angular.toJson(error))
+                    })
+            }
+
+            //确认按钮
+            $scope.ok_action = function(){
+                $state.go('applyauth',
+                    {
+                        recommenderId: recommender_id,
+                        typeStatus: type_status,
+                        applyStatus: apply_status
+                    });
+            };
+
+            //取消按钮
+            $scope.cancel_action = function(){
+                $state.go('home.homePage');
+            }
+
+
+
+
+    }])
+
+    /*
      * 皇冠、星级经销商授权
      * */
     .controller('CrownSellerAuthenticationController', ['$scope','$state','$stateParams','$timeout', 'SellerTeamFty',
         function ($scope,$state,$stateParams,$timeout, SellerTeamFty) {
 
+            document.title = '授权申请';
 
             var recommender_id = $stateParams.recommenderId;
             //var recommender_name = $stateParams.recommenderName;
@@ -1227,13 +1286,21 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 var fallbackRUL = null;
                 var localURL = window.location.href;
 
-                var newLocalURL = localURL.substr(0, localURL.indexOf('#'));
-
-                if(type_status == 'crown'){
-                    fallbackRUL = '?fallback=applyauth-'+ recommender_id +'-'+ apply_status +'-'+ type_status;
-                }else if(type_status == 'star'){
-                    fallbackRUL = '?fallback=applyauth-'+ recommender_id +'-'+ apply_status +'-'+ type_status;
+                if(localURL.indexOf('?') >= 0){
+                    if(type_status == 'crown'){
+                        fallbackRUL = '&fallback=applynotice-'+ recommender_id +'-'+ apply_status +'-'+ type_status;
+                    }else if(type_status == 'star'){
+                        fallbackRUL = '&fallback=applynotice-'+ recommender_id +'-'+ apply_status +'-'+ type_status;
+                    }
+                }else{
+                    if(type_status == 'crown'){
+                        fallbackRUL = '?fallback=applynotice-'+ recommender_id +'-'+ apply_status +'-'+ type_status;
+                    }else if(type_status == 'star'){
+                        fallbackRUL = '?fallback=applynotice-'+ recommender_id +'-'+ apply_status +'-'+ type_status;
+                    }
                 }
+
+                var newLocalURL = localURL.substr(0, localURL.indexOf('#'));
 
                 var divhtml = document.getElementById("dituContent");
                 var invitationUrl = newLocalURL + fallbackRUL;
