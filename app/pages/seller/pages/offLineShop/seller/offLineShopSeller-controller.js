@@ -927,9 +927,9 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
             var apply_status = $stateParams.applyStatus;
             $scope.isReadNotice = false;
 
-            console.log(recommender_id)
-            console.log(type_status)
-            console.log(apply_status)
+            console.log(recommender_id);
+            console.log(type_status);
+            console.log(apply_status);
 
             initCode();
 
