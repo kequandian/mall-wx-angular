@@ -214,8 +214,13 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
             $scope.off_line_shop = function(is_physical){
 
 
-
                 if(is_physical == 2){
+
+                    /*if($scope.owner_balance.is_physical && $scope.owner_balance.is_crown && $scope.owner_balance.is_temp_crown){
+                        $.alert('请于X小时内完成XX元的批发，成为真正线下皇冠商才可以进入。','提示');
+                    }else{
+                        $state.go('offLineShop');
+                    }*/
                     $state.go('offLineShop');
                 }else if(is_physical == 1){
                     $state.go('sellerAuthorization',{isAgent:false});
