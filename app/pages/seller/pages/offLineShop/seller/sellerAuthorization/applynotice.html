@@ -1,4 +1,4 @@
-<div id="applyNotice">
+<div id="applyNotice" ng-if="!youIsAgent">
 
     <div class="apply-notice-head custom_text_primary">
         申请须知
@@ -28,5 +28,21 @@
                 <span>不同意</span>
             </div>
         </div>
+    </div>
+</div>
+
+<div id="youIsAgent" ng-if="youIsAgent">
+
+    <!-- 是否皇冠经销商 -->
+    <div class="partner-content">
+
+        <div class="is-not-crown">
+
+            <div class="crown-text">
+                <span>您已进是皇冠经销商,不能再授权</span>
+            </div>
+
+        </div>
+
     </div>
 </div>
