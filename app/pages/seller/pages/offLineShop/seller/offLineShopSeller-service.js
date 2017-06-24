@@ -202,9 +202,9 @@ angular.module('sellerTeam.service', [])
             },
 
             // 查看申请须知
-            getApplyNoticeService: function () {
+            getApplyNoticeService: function (type) {
                 var deferred = $q.defer();
-                var url = GlobalVariable.SERVER_PATH + "/physical_crown_tips";
+                var url = GlobalVariable.SERVER_PATH + "/physical_apply_tips?type=" + type;
                 $http.get(url,{
                     headers:{
                         'Authorization': GlobalVariable.ACCESS_TOKEN

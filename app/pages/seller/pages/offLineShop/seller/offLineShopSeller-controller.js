@@ -936,10 +936,19 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
             function initCode(){
                 getUserInfo();
+                //getOwnerLevel();
             }
 
             function getApplyNotice(){
-                SellerTeamFty.getApplyNoticeService()
+                var type;
+                if(type_status == 'crown'){
+                    console.log('CROWN须知')
+                    type = 'CROWN';
+                }else if(type_status == 'star'){
+                    console.log('STAR须知')
+                    type = 'STAR';
+                }
+                SellerTeamFty.getApplyNoticeService(type)
                     .then(function(json){
                         if(json.status_code == 0){
                             $scope.apply_notice = json.data;
@@ -968,6 +977,8 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                                 $scope.youIsNotCrown = true;
                                 getApplyNotice();
                             }
+                            //$scope.youIsNotCrown = true;
+                            //getApplyNotice();
                         }else{
                             console.log('获取级别信息失败：' + angular.toJson(json))
                         }
@@ -980,7 +991,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 SellerTeamFty.myInfoService()
                     .then(function(json){
                         if(json.status_code == 0){
-                            console.log('个人信息：' + angular.toJson(json))
+                            //console.log('个人信息：' + angular.toJson(json))
                              if(recommender_id == json.data.uid){
                                 $.alert("不能推荐自己申请皇冠经销商", "提示", function(){
                                     $state.go('home.homePage');
@@ -988,7 +999,6 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                              }else{
                                  getOwnerLevel();
                              }
-                            //getOwnerLevel();
                         }else{
                             console.log('获取个人信息失败：' + angular.toJson(json));
                         }

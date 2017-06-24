@@ -219,7 +219,8 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                     if($scope.owner_balance.is_crown_ship_temp){
 
                         if($scope.owner_balance.msg != null){
-                            $.alert('请于'+ $scope.owner_balance.msg.interval +'小时内完成'+ $scope.owner_balance.msg.targetAmount +'元的批发，成为真正线下皇冠商才可以进入。','提示');
+                            //$.alert('请于'+ $scope.owner_balance.msg.interval +'小时内完成'+ $scope.owner_balance.msg.targetAmount +'元的批发，成为真正线下皇冠商才可以进入。','提示');
+                            $.alert($scope.owner_balance.msg ,'提示');
                         }else{
                             console.log("owner_balance-->msg is null");
                         }
