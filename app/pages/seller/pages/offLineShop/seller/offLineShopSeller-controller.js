@@ -916,8 +916,8 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
     /*
      * 经销商申请须知
      * */
-    .controller('ApplynoticeController', ['$scope','$state','$stateParams', 'SellerTeamFty',
-        function ($scope,$state,$stateParams, SellerTeamFty) {
+    .controller('ApplynoticeController', ['$scope','$state','$stateParams', 'SellerTeamFty','UserInfo',
+        function ($scope,$state,$stateParams, SellerTeamFty,UserInfo) {
 
             document.title = '申请须知';
 
@@ -925,10 +925,6 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
             //var recommender_name = $stateParams.recommenderName;
             var type_status = $stateParams.typeStatus;
             var apply_status = $stateParams.applyStatus;
-
-            console.log(recommender_id);
-            console.log(type_status);
-            console.log(apply_status);
 
             initCode();
 
@@ -941,12 +937,58 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     .then(function(json){
                         if(json.status_code == 0){
                             $scope.apply_notice = json.data;
-                            console.log('获取申请须知：' + angular.toJson(json))
+                            //console.log('获取申请须知：' + angular.toJson(json))
+                            getUserInfo();
+
                         }else{
                             console.log('获取申请须知失败：' + angular.toJson(json))
                         }
                     }, function(error){
                         console.log('获取申请须知失败：' + angular.toJson(error))
+                    })
+            }
+
+            function getOwnerLevel(userInfoData){
+
+                SellerTeamFty.ownerBalanceService()
+                    .then(function(json){
+                        if(json.status_code == 0){
+
+                            //console.log('获取级别信息：' + angular.toJson(json))
+
+                            if(json.data.is_agent){
+                                $.alert("您已经是皇冠经销商", "提示", function(){
+                                    $state.go('home.homePage');
+                                });
+                            }else{
+                                UserInfo.info = userInfoData;
+                            }
+                        }else{
+                            console.log('获取级别信息失败：' + angular.toJson(json))
+                        }
+                    }, function(error){
+                        console.log('获取级别信息失败：' + angular.toJson(error))
+                    })
+            }
+
+            function getUserInfo(){
+                SellerTeamFty.myInfoService()
+                    .then(function(json){
+                        if(json.status_code == 0){
+                            //console.log('个人信息：' + angular.toJson(json))
+
+                             if(recommender_id == json.data.uid){
+                                $.alert("不能推荐自己申请皇冠经销商", "提示", function(){
+                                    $state.go('home.homePage');
+                                });
+                             }else{
+                                getOwnerLevel(json.data);
+                             }
+                        }else{
+                            console.log('获取个人信息失败：' + angular.toJson(json));
+                        }
+                    }, function(error){
+                        console.log('获取个人信息失败：' + angular.toJson(error));
                     })
             }
 
@@ -973,8 +1015,9 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
     /*
      * 皇冠、星级经销商授权
      * */
-    .controller('CrownSellerAuthenticationController', ['$scope','$state','$stateParams','$timeout','$ocLazyLoad', 'SellerTeamFty',
-        function ($scope,$state,$stateParams,$timeout,$ocLazyLoad, SellerTeamFty) {
+    .controller('CrownSellerAuthenticationController', ['$scope','$state','$stateParams','$timeout','$ocLazyLoad',
+        'SellerTeamFty','UserInfo',
+        function ($scope,$state,$stateParams,$timeout,$ocLazyLoad, SellerTeamFty,UserInfo) {
 
             document.title = '授权申请';
 
@@ -1032,20 +1075,9 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     $scope.init_placeholder_name = "要与被授权人个人信息的姓名一致";
                     $scope.init_placeholder_phone = "要与被授权人个人信息的手机号一致";
                 }
-                getUserInfo();
-            }
-            function getUserInfo(){
-                SellerTeamFty.myInfoService()
-                    .then(function(json){
-                        if(json.status_code == 0){
-                            $scope.userInfo.uid = json.data.uid;
-                            //console.log('个人信息：' + angular.toJson(json))
-                        }else{
-                            console.log('获取个人信息失败：' + angular.toJson(json));
-                        }
-                    }, function(error){
-                        console.log('获取个人信息失败：' + angular.toJson(error));
-                    })
+                $scope.userInfo.uid = UserInfo.info.uid;
+                $scope.userInfo.real_name = UserInfo.info.real_name;
+                $scope.userInfo.phone = UserInfo.info.phone;
             }
 
             $scope.apply_action = function(userInfo){
