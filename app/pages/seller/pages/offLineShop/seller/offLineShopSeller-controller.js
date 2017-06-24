@@ -957,12 +957,13 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                             //console.log('获取级别信息：' + angular.toJson(json))
 
                             if(json.data.is_agent){
-                                $.alert("您已经是皇冠经销商", "提示", function(){
+                                $.alert("您已经是皇冠经销商,不能再授权", "提示", function(){
                                     $state.go('home.homePage');
                                 });
                             }else{
                                 UserInfo.info = userInfoData;
                             }
+                            //UserInfo.info = userInfoData;
                         }else{
                             console.log('获取级别信息失败：' + angular.toJson(json))
                         }
@@ -984,6 +985,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                              }else{
                                 getOwnerLevel(json.data);
                              }
+                            //getOwnerLevel(json.data);
                         }else{
                             console.log('获取个人信息失败：' + angular.toJson(json));
                         }
@@ -1107,7 +1109,14 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     $.toast('uid不能为空', 'cancel');
                     return;
                 }
-                //return
+
+                if(UserInfo.info.followed != 0){
+                   $.alert("请先关注公众号，才能进行授权申请", "提示", function(){
+                       $state.go('home.homePage');
+                   });
+                    return;
+                }
+                //return;
 
                 var apply_code = {};
                 apply_code.real_name = real_name;
