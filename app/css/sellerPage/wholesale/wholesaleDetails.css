@@ -106,7 +106,7 @@
 
 #wholesaleDetails .product-price .product-retail-small{
     color: #734284;
-    font-size: 9px;
+    font-size: 12px;
 }
 #wholesaleDetails .product-price .product-retail{
     font-size: 14px;
@@ -355,6 +355,10 @@
 
 #wholesaleDetails .details-promise-div span{
     margin-left: 2px;
+}
+
+#wholesaleDetails .details-promise-div .wholesale-details-tips{
+    line-height: 50px;
 }
 
 #wholesaleDetails .d-p-d-right{

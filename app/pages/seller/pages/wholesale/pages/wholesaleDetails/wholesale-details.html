@@ -31,7 +31,7 @@
 
                 <span class="rebate">
                     <span class="product-retail-small">
-                        {{wholesale_info.settlement_proportion > 0 ? '【推荐最高返' + wholesale_info.settlement_proportion + '%】': ''}}
+                        {{wholesale_info.settlement_proportion > 0 ? '【推荐最高提成' + wholesale_info.settlement_proportion + '%】': ''}}
                     </span>
                 </span>
 
@@ -94,7 +94,7 @@
             </div>
         </div>
 
-        <div class="details-promise">
+        <div class="details-promise" ng-if="false">
             <div class="details-promise-div">
                 <div class="d-p-d-right">
                     <!--<img src="img/details/details-promise.png">-->
@@ -110,6 +110,14 @@
                     <!--<img src="img/details/details-promise.png">-->
                     <label class="ion-ios-checkmark custom_text_primary_medium"></label>
                     <span>假一赔十</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="details-promise" style="border-top: 1px solid #e3e3e3;">
+            <div class="details-promise-div">
+                <div class="wholesale-details-tips custom_text_primary">
+                    <span>批发商品, 一旦发货将不支持退货</span>
                 </div>
             </div>
         </div>

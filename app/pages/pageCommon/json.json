@@ -1,26 +1,45 @@
 {
   "status_code": 0,
-  "data": {
-    "next_partner_level": {
-      "level": 4,
-      "headcount_quota": 3,
-      "name": "四星经销商",
-      "id": 4
-    },
-    "is_physical": true,
-    "total_reward": 1429.98,
-    "is_seller": true,
-    "balance": 10002054.86,
-    "partner_level": {
-      "level": 3,
-      "headcount_quota": 2,
-      "name": "三星经销商",
-      "id": 3
-    },
-    "is_crown_ship_temp": false,
-    "is_partner": true,
-    "is_agent": true,
-    "partner_pool_count": 0,
-    "is_crown": true
-  }
+  "data": [
+    {
+      "transferred": 1,
+      "my_recommended_sellers": [
+        {
+          "uid": "11111",
+          "transferred": 0,
+          "transferred_amount": 0,
+          "user_name": "11111",
+          "statistic_month": "2017-06-01",
+          "monthly_amount": 3000,
+          "settlement_proportion": 20,
+          "avatar": null,
+          "id": 85,
+          "monthly_settled_amount": 0,
+          "seller_id": 384
+        },
+        {
+          "uid": "22222",
+          "transferred": 0,
+          "transferred_amount": 0,
+          "user_name": "22222",
+          "statistic_month": "2017-06-01",
+          "monthly_amount": 3900,
+          "settlement_proportion": 20,
+          "avatar": null,
+          "id": 83,
+          "monthly_settled_amount": 0,
+          "seller_id": 385
+        }
+      ],
+      "transferred_amount": 138000,
+      "total_amount": 31310,
+      "statistic_month": "2017-06-01",
+      "monthly_amount": 10110,
+      "total_settled_amount": 1440,
+      "settlement_proportion": 20,
+      "id": 38,
+      "monthly_settled_amount": 1380,
+      "seller_id": 2
+    }
+  ]
 }
