@@ -916,10 +916,16 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
     /*
      * 经销商申请须知
      * */
-    .controller('ApplynoticeController', ['$scope','$state','$stateParams', 'SellerTeamFty',
-        function ($scope,$state,$stateParams, SellerTeamFty) {
+    .controller('ApplynoticeController', ['$scope','$state','$stateParams','$ocLazyLoad', 'SellerTeamFty',
+        function ($scope,$state,$stateParams,$ocLazyLoad, SellerTeamFty) {
 
             document.title = '申请须知';
+
+            $ocLazyLoad.load('Jquery').then(function () {
+                $ocLazyLoad.load('JqueryWeUI').then(function () {
+                    //console.log("Applynotice:jquery loaded");
+                })
+            });
 
             var recommender_id = $stateParams.recommenderId;
             //var recommender_name = $stateParams.recommenderName;
@@ -1017,10 +1023,9 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
             document.title = '授权申请';
 
-
             $ocLazyLoad.load('Jquery').then(function () {
                 $ocLazyLoad.load('JqueryWeUI').then(function () {
-                    //console.log("sellerAuthentication:jquery loaded");
+                    //console.log("Applynotice:jquery loaded");
                 })
             });
 
@@ -1035,6 +1040,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
             $scope.is_crown = false;
             $scope.is_star = false;
             $scope.is_own = false;
+            var is_followed;
 
             if(type_status != null){
                 if(type_status == 'crown'){
@@ -1085,7 +1091,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                             $scope.userInfo.uid = json.data.uid;
                             $scope.userInfo.real_name = json.data.real_name;
                             $scope.userInfo.phone = json.data.phone;
-                            $scope.is_follows = json.data.followed;
+                            is_followed = json.data.followed;
                         }else{
                             console.log('获取个人信息失败：' + angular.toJson(json));
                         }
@@ -1122,7 +1128,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     return;
                 }
 
-                if(is_follows != 0){
+                if(is_followed != 0){
                    $.alert("请先关注公众号，才能进行授权申请", "提示", function(){
                        $state.go('home.homePage');
                    });
