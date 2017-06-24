@@ -931,7 +931,6 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
             //var recommender_name = $stateParams.recommenderName;
             var type_status = $stateParams.typeStatus;
             var apply_status = $stateParams.applyStatus;
-            $scope.youIsAgent = false;
 
             initCode();
 
@@ -939,7 +938,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 getUserInfo();
             }
 
-            function getApplyNotice(jsonData){
+            function getApplyNotice(){
                 SellerTeamFty.getApplyNoticeService()
                     .then(function(json){
                         if(json.status_code == 0){
@@ -963,7 +962,10 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
                             if(json.data.is_agent){
                                 $scope.youIsAgent = true;
+                                $scope.youIsNotAgent = false;
                             }else{
+                                $scope.youIsAgent = false;
+                                $scope.youIsNotAgent = true;
                                 getApplyNotice();
                             }
                         }else{
@@ -986,6 +988,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                              }else{
                                  getOwnerLevel();
                              }
+                            //getOwnerLevel();
                         }else{
                             console.log('获取个人信息失败：' + angular.toJson(json));
                         }

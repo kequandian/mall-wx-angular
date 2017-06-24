@@ -1179,6 +1179,11 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 return isphone;
             }
 
+            //进入编辑地址
+            $scope.goToEditAddress = function(){
+
+            };
+
             var pcd;
 
             $ocLazyLoad.load('Jquery').then(function () {
