@@ -960,12 +960,12 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
                             //console.log('获取级别信息：' + angular.toJson(json))
 
-                            if(json.data.is_agent){
-                                $scope.youIsAgent = true;
-                                $scope.youIsNotAgent = false;
+                            if(json.data.is_crown && json.data.is_physical){
+                                $scope.youIsCrown = true;
+                                $scope.youIsNotCrown = false;
                             }else{
-                                $scope.youIsAgent = false;
-                                $scope.youIsNotAgent = true;
+                                $scope.youIsCrown = false;
+                                $scope.youIsNotCrown = true;
                                 getApplyNotice();
                             }
                         }else{
@@ -980,7 +980,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 SellerTeamFty.myInfoService()
                     .then(function(json){
                         if(json.status_code == 0){
-                            //console.log('个人信息：' + angular.toJson(json))
+                            console.log('个人信息：' + angular.toJson(json))
                              if(recommender_id == json.data.uid){
                                 $.alert("不能推荐自己申请皇冠经销商", "提示", function(){
                                     $state.go('home.homePage');
