@@ -1080,12 +1080,15 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
             //地址显示--检查是否批发
             $scope.check_wholesale = function(contacts,isWholesaleData){
+                console.log('contacts: ' + contacts.length);
                 if(contacts.length > 5 && isWholesaleData){
-                    return 'height: 77%; overflow-x: hidden; overflow-y: scroll;';
+                    $scope.contact_list_container_height = 'height: 77%; overflow-x: hidden; overflow-y: scroll;';
+                    $scope.select_contact = 'width: calc(100% - 45px);';
                 }else if(contacts.length > 5 && !isWholesaleData){
-                    return 'height: 87%; overflow-x: hidden; overflow-y: scroll;';
+                    $scope.contact_list_container_height = 'height: 87%; overflow-x: hidden; overflow-y: scroll;';
+                    $scope.select_contact = 'width:100%;';
                 }else{
-                    return '';
+                    $scope.contact_list_container_height = '';
                 }
             };
 
@@ -1180,8 +1183,8 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             }
 
             //进入编辑地址
-            $scope.goToEditAddress = function(){
-
+            $scope.goToEditAddress = function(contact){
+                $state.go('edit-address',{data:contact});
             };
 
             var pcd;

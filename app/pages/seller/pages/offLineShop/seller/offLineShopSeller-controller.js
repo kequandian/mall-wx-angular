@@ -999,6 +999,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                              }else{
                                  getOwnerLevel();
                              }
+                            //getOwnerLevel();
                         }else{
                             console.log('获取个人信息失败：' + angular.toJson(json));
                         }
@@ -1031,8 +1032,8 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
      * 皇冠、星级经销商授权
      * */
     .controller('CrownSellerAuthenticationController', ['$scope','$state','$stateParams','$timeout','$ocLazyLoad',
-        'SellerTeamFty',
-        function ($scope,$state,$stateParams,$timeout,$ocLazyLoad, SellerTeamFty) {
+        '$location','$window','SellerTeamFty',
+        function ($scope,$state,$stateParams,$timeout,$ocLazyLoad,$location,$window, SellerTeamFty) {
 
             document.title = '授权申请';
 
@@ -1094,7 +1095,6 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
             }
 
 
-
             function getUserInfo(){
                 SellerTeamFty.myInfoService()
                     .then(function(json){
@@ -1141,12 +1141,6 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     return;
                 }
 
-                if(is_followed != 0){
-                   $.alert("请先关注公众号，才能进行授权申请", "提示", function(){
-                       $state.go('home.homePage');
-                   });
-                    return;
-                }
                 //return;
 
                 var apply_code = {};
@@ -1159,17 +1153,16 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                         apply_code.type = 'CROWN';
                         ownCrownSeller(apply_code);
                     }else if(apply_status == 'rec'){
-                        console.log('推荐申请皇冠经销商')
+                        console.log('推荐申请皇冠经销商');
                         apply_code.uid = recommenderId;
                         apply_code.type = 'CROWN';
                         recommendCrownSeller(apply_code);
                     }
                 }else if(type_status == 'star'){
-                    console.log('推荐申请星级经销商')
+                    console.log('推荐申请星级经销商');
                     apply_code.uid = recommenderId;
                     recommendCrownSeller(apply_code);
                 }
-
 
             };
 
@@ -1183,8 +1176,23 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 SellerTeamFty.recommendCrownSellerService(apply_code)
                     .then(function(json){
                         if(json.status_code == 0){
-                            $.toast('申请已提交,请等待审核');
-                            $state.go('home.sellerPage');
+
+
+                            if(is_followed != 0){
+                                var follow_us_url = SellerTeamFty.getFollowUsUrl();
+                                if(follow_us_url != null && follow_us_url != ""){
+                                    $.alert("请先关注公众号，才能进行授权申请", "提示", function(){
+                                        $window.location.href = follow_us_url;
+                                    });
+                                }else{
+                                    $.alert("请先关注公众号，才能进行授权申请", "提示", function(){
+                                        $state.go('home.homePage');
+                                    });
+                                }
+                            }else{
+                                $.toast('申请已提交,请等待审核');
+                                $state.go('home.sellerPage');
+                            }
                         }else{
                             $.toast.prototype.defaults.duration = 2000;
                             if (json.message == 'user.already.crownship') {

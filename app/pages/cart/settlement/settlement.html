@@ -26,7 +26,7 @@
                         <div class="weui_panel_bd">
                             <div class="weui_media_box weui_media_small_appmsg">
                                 <div class="weui_cells weui_cells_access">
-                                    <a class="weui_cell" href="javascript:;" id="showAddress" ng-if="contacts.length > 0" ng-click="settlement_pcd_change()">
+                                    <a class="weui_cell" href="javascript:;" id="showAddress" ng-if="contacts.length > 0" ng-click="settlement_pcd_change(); check_wholesale(contacts,isWholesaleData)">
                                         <input type="hidden" id="show_address_status" ng-model="show_address_status">
                                         <div class="weui_cell_bd weui_cell_primary" style="min-height: 69px;">
                                             <!--<p>添加收货地址</p>-->
@@ -84,19 +84,19 @@
 
                                 <div class="weui_panel_hd" style="border-top: 1px solid #cccccc;">选择收货地址 <span id="c_address_action" class="custom_text_primary">添加地址</span></div>
 
-                                <div style="{{check_wholesale(contacts,isWholesaleData)}}">
+                                <div style="{{contact_list_container_height}}">
 
                                     <div class="weui_panel_bd" ng-repeat="contact in contacts">
                                         <div class="weui_media_box weui_media_text">
-                                            <div class="selectContact" ng-click="changeContact(contact)">
+                                            <div class="selectContact" style="{{select_contact}}" ng-click="changeContact(contact)">
                                                 <h4 class="weui_media_desc">{{contact.contact_user}} {{contact.phone}}</h4>
                                                 <p class="weui_media_desc">
                                                     {{contact.province}}{{contact.city}}{{contact.district}}
                                                     {{contact.street}}{{contact.street_number}} {{contact.detail}}
                                                 </p>
-                                                <div class="contect-item-edit-btn" ng-if="false" ng-click="goToEditAddress()">
-                                                    <span>编辑</span>
-                                                </div>
+                                            </div>
+                                            <div class="contect-item-edit-btn" ng-if="isWholesaleData" ng-click="goToEditAddress(contact)">
+                                                <span>编辑</span>
                                             </div>
                                         </div>
                                     </div>

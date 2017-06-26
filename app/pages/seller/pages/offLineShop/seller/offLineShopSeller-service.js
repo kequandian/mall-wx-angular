@@ -1,6 +1,12 @@
 angular.module('sellerTeam.service', [])
     .factory('SellerTeamFty', ['$http','$q','GlobalVariable', function($http,$q,GlobalVariable) {
         return{
+
+            //关注公众号URL
+            getFollowUsUrl:function(){
+                return GlobalVariable.FOLLOW_US_URL;
+            },
+
             // 获取线下团队
             getOffLineSellerTeamsService: function () {
                 var deferred = $q.defer();

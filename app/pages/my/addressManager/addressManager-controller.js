@@ -133,8 +133,14 @@ angular.module('addressManager.controller', ['addressManager.service'])
                     });
             };
 
+
+
+
             //提交修改地址
             $scope.editContactSubmit = function () {
+
+                $state.go('cart-settlement');
+                return;
 
                 var pcd = document.getElementById('city-picker');
                 $scope.pcd = pcd.value;
@@ -181,7 +187,11 @@ angular.module('addressManager.controller', ['addressManager.service'])
                 AddressManagerFty.editContact($scope.contact.id, $scope.contact).then(
                     function (result) {
                         //console.log(result);
-                        $state.go('addressManager');
+                        if(result.status_code == 0){
+                            $state.go('addressManager');
+                        }else{
+                            $state.go('addressManager');
+                        }
                     }, function (error) {
                         $.toast('更新地址失败', 'cancel');
                         console.log(error);
