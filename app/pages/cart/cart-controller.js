@@ -396,15 +396,16 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 CartFty.editCountService(products)
                     .then(function (json) {
 
-                        console.log('修改成功：' + angular.toJson(json));
+                        //console.log('修改成功：' + angular.toJson(json));
                         if (json.status_code == 0) {
                             var count = 0;
-                            angular.forEach($scope.carts, function (v, k) {
+                            angular.forEach(json.data, function (v, k) {
                                 count += v.quantity;
                             });
                             $rootScope.cartCount = count;
                             $rootScope.detailsCartCount = count;
-                            $state.go('home.cart', {},{reload:true});
+
+                            //$state.go('home.cart', {},{reload:true});
                         } else {
                             console.log("修改失败：" + angular.toJson(json))
                         }

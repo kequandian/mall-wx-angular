@@ -15,6 +15,8 @@ angular.module('home.controller', ['home.service'])
                 $scope.currentId = nValue;
             });
             scope.$watch('cartCount', function (nValue, oValue) {
+                console.log('oValue: ' + oValue);
+                console.log('nValue: ' + nValue);
                 $scope.home_tabs[3].c_number = nValue;
             });
             scope.$watch('redPoint', function (nValue, oValue) {
