@@ -2,6 +2,7 @@
     width: 100%;
     height: 100%;
     overflow-x: hidden;
+    background-color: #fff;
 }
 
 
@@ -28,7 +29,7 @@
     width: 100%;
     height: 100%;
     /*background-size: 100% 100%;*/
-    /*background-image: url("../../../img/sellerPage/wholesale/wholesale-bg-3.png");*/
+    /*background-image: url("../../../img/sellerPage/wholesale/wholesale-bg.png");*/
     position: absolute;
     z-index: 0;
 }
@@ -116,7 +117,7 @@
     background-image: url(../../../img/sellerPage/wholesale/wholesale-region-null-message-img-2.png);
     position: absolute;
     left: 50%;
-    bottom: 18%;
+    bottom: 20%;
     margin-top: -46px;
     text-align: center;
     margin-bottom: 95px;
@@ -199,30 +200,30 @@
 
 #wholesale .default-content .select-btn{
     margin:0 auto;
-    width: 92px;
-    height: 92px;
-    background-size: 92px 92px;
+    width: 100px;
+    height: 100px;
+    background-size: 100px 100px;
     background-image: url("../../../img/sellerPage/wholesale/wholesale-btn-2.png");
     position: absolute;
     left: 50%;
     bottom: 18%;
-    margin-left: -46px; /*要居中的div的宽度的一半*/
-    margin-top: -46px; /*要居中的div的高度的一半*/
+    margin-left: -50px; /*要居中的div的宽度的一半*/
+    margin-top: -50px; /*要居中的div的高度的一半*/
     text-align: center;
     color: #ffffff;
 }
 
 #wholesale .default-content .select-btn .btn-ok-text{
     width: 100%;
-    height: 41px;
-    line-height: 70px;
+    height: 45px;
+    line-height: 77px;
     font-size: 14px;
 }
 
 #wholesale .default-content .select-btn .btn-check-text{
     width: 100%;
     height: 41px;
-    line-height: 28px;
+    line-height: 30px;
     font-size: 12px;
 }
 
