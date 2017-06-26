@@ -116,25 +116,25 @@ input::-webkit-inner-spin-button {
 }
 
 .cart_count{
-    position:absolute;
-    /*bottom:10px;*/
+    position: absolute;
+    /* bottom: 10px; */
     top: 3px;
-    right: 0;
-    background-color:red;
-    min-width: 16px;
-    min-height: 12px;
-    line-height:12px;
-    /*padding: 1px 1px;*/
-    text-align:center;
-    color:#fff;
-    border-radius:10px; /*半圆*/
-    font-weight:500;
+    right: 1px;
+    background-color: red;
+    min-width: 13px;
+    min-height: 13px;
+    line-height: 13px;
+    /* padding: 1px 1px; */
+    text-align: center;
+    color: #fff;
+    border-radius: 50%;
+    font-weight: 500;
     font-size: xx-small;
     font-family: 'Arial';
-    /*center offset 10px*/
-    /*left: 10px;*/
-    /*margin-left: 50%;*/
-    padding: 0 4px;
+    /* left: 10px; */
+    /* margin-left: 50%; */
+    padding: 1px 1px;
+    /* text-align: center; */
 }
 
 .red_point{

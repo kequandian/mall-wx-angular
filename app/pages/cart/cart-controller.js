@@ -32,9 +32,10 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
                                 var c_count = 0;
                                 angular.forEach($scope.carts, function (v, k) {
-                                    c_count += (v.weight * v.quantity);
+                                    //c_count += (v.weight * v.quantity);
+                                    c_count += v.quantity;
                                 });
-                                c_count = c_count/1000;
+                                //c_count = c_count/1000;
                                 $rootScope.cartCount = c_count;
                                 $rootScope.detailsCartCount = c_count;
 
