@@ -119,7 +119,7 @@ input::-webkit-inner-spin-button {
     position: absolute;
     /* bottom: 10px; */
     top: 3px;
-    right: 1px;
+    right: 10px;
     background-color: red;
     min-width: 13px;
     min-height: 13px;
@@ -132,7 +132,6 @@ input::-webkit-inner-spin-button {
     font-size: xx-small;
     font-family: 'Arial';
     /* left: 10px; */
-    /* margin-left: 50%; */
     padding: 1px 1px;
     /* text-align: center; */
 }

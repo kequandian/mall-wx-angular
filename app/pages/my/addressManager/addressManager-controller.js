@@ -1,8 +1,8 @@
 angular.module('addressManager.controller', ['addressManager.service'])
 
     .controller('AddressManagerController', ['$scope', '$state', '$stateParams', '$rootScope', 'AddressManagerFty',
-        '$ocLazyLoad',
-        function ($scope, $state, $stateParams,$rootScope, AddressManagerFty, $ocLazyLoad) {
+        '$ocLazyLoad','WholesalePCDCode','wCateCache',
+        function ($scope, $state, $stateParams,$rootScope, AddressManagerFty, $ocLazyLoad,WholesalePCDCode,wCateCache) {
 
             var pcd;
 
@@ -139,9 +139,6 @@ angular.module('addressManager.controller', ['addressManager.service'])
             //提交修改地址
             $scope.editContactSubmit = function () {
 
-                $state.go('cart-settlement');
-                return;
-
                 var pcd = document.getElementById('city-picker');
                 $scope.pcd = pcd.value;
 
@@ -184,12 +181,47 @@ angular.module('addressManager.controller', ['addressManager.service'])
                     $scope.contact.district = pcds[2];
                 }
 
+                //console.log('提交的地址信息：' + angular.toJson($scope.contact));
+
+                //return;
+
+
                 AddressManagerFty.editContact($scope.contact.id, $scope.contact).then(
                     function (result) {
-                        //console.log(result);
+                        //console.log('更新成功: ' + angular.toJson(result));
                         if(result.status_code == 0){
-                            $state.go('addressManager');
+
+                            var d_province = WholesalePCDCode.province;
+                            var d_city = WholesalePCDCode.city;
+                            var d_district = WholesalePCDCode.district;
+                            var type_status = wCateCache.returnStatus;
+
+                            if(d_province != null && d_city != null && d_district != null){
+
+                                var default_pced = result.data;
+
+                                if(default_pced != null && default_pced.is_default == 1){
+                                    if(d_province == default_pced.province
+                                        && d_city == default_pced.city
+                                        && d_district == default_pced.district){
+                                        $state.go('cart-settlement');
+                                    }else{
+                                        if(type_status == 'details'){
+                                            $state.go('wholesaleGoodsList');
+                                        }else if(type_status == 'cart'){
+                                            $state.go('home.cart');
+                                        }
+                                    }
+                                }else{
+                                    $state.go('cart-settlement');
+                                }
+
+                            }else{
+                                $state.go('addressManager');
+                            }
+
                         }else{
+                            $.toast('更新地址失败', 'cancel');
                             $state.go('addressManager');
                         }
                     }, function (error) {
@@ -211,6 +243,10 @@ angular.module('addressManager.controller', ['addressManager.service'])
 
                 //title
                 document.title = "修改地址";
+
+                WholesalePCDCode.province = null;
+                WholesalePCDCode.city = null;
+                WholesalePCDCode.district = null;
 
                 //console.log(item);
                 $state.go('edit-address', {data: item});

@@ -327,8 +327,8 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     $.toast('不能同时购买批发和普通类型的商品','cancel');
                     return;
                 }
-                console.log('购物车: ' + newCartItems.length);
-                console.log('购物车: ' + angular.toJson(newCartItems));
+                //console.log('购物车: ' + newCartItems.length);
+                //console.log('购物车: ' + angular.toJson(newCartItems));
                 //return;
 
                 wCateCache.returnStatus = 'cart';
@@ -377,6 +377,12 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     productItem.product_id = v.product_id;
                     productItem.quantity = parseInt(v.quantity);
                     productItem.product_specification_id = v.product_specification_id;
+
+                    if(v.marketing_id != null && v.marketing != null){
+                        productItem.marketing_id = v.marketing_id;
+                        productItem.marketing = v.marketing;
+                    }
+
                     products.push(productItem);
                 });
 
@@ -391,7 +397,8 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     $scope.footer_hide = false;
                 }
 
-                //console.log(angular.toJson($scope.carts));
+                //console.log('修改购物车商品数量： ' + angular.toJson(products));
+                //return;
 
                 CartFty.editCountService(products)
                     .then(function (json) {
@@ -473,9 +480,18 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                                 $scope.currentContact = data;
                                 //console.log($scope.currentContact);
 
-                                province = $scope.currentContact.province;
-                                city = $scope.currentContact.city;
-                                district = $scope.currentContact.district;
+                                if(JSON.stringify(settle_product_code[0].wholesaleData) != undefined
+                                    && JSON.stringify(settle_product_code[0].wholesaleData)!="{}"){
+
+                                    province = $scope.currentContact.province;
+                                    city = $scope.currentContact.city;
+                                    district = $scope.currentContact.district;
+
+                                    WholesalePCDCode.province = province;
+                                    WholesalePCDCode.city = city;
+                                    WholesalePCDCode.district = district;
+                                }
+
                             }
                         });
 
@@ -596,7 +612,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 }
             }
 
-            //更改pcd变更价格
+            // pcd change
             $scope.settlement_pcd_change = function(){
                 //console.log('JSON.stringify(settle_product_code[0].wholesaleData): ' + JSON.stringify(settle_product_code[0].wholesaleData))
                 if(JSON.stringify(settle_product_code[0].wholesaleData) != undefined
@@ -1170,7 +1186,29 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
                 CartFty.addContact($scope.contact)
                     .then(function (result) {
-                        AllContacts();
+                        if(result.status_code == 0){
+                            console.log('新增地址成功： ' + angular.toJson(result));
+                            if(JSON.stringify(settle_product_code[0].wholesaleData) != undefined
+                                && JSON.stringify(settle_product_code[0].wholesaleData)!="{}"){
+
+                                if(WholesalePCDCode.province != $scope.contact.province
+                                    && WholesalePCDCode.city != $scope.contact.city
+                                    && WholesalePCDCode.district != $scope.contact.district){
+
+                                    if(wCateCache.returnStatus == 'details'){
+                                        $state.go('wholesaleGoodsList');
+                                    }else if(wCateCache.returnStatus == 'cart'){
+                                        $state.go('home.cart');
+                                    }
+                                }else{
+                                    AllContacts();
+                                }
+                            }else{
+                                AllContacts();
+                            }
+                        }else{
+                            console.log('新增地址失败： ' + angular.toJson(result));
+                        }
                         //$state.go('cart-settlement',{}, {reload: true});
                     }, function (error) {
                         console.log(error);
