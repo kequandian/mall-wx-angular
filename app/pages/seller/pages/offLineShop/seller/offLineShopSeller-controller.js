@@ -1181,11 +1181,11 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                             if(is_followed != 0){
                                 var follow_us_url = SellerTeamFty.getFollowUsUrl();
                                 if(follow_us_url != null && follow_us_url != ""){
-                                    $.alert("请先关注公众号，才能进行授权申请", "提示", function(){
+                                    $.alert("请关注公众号完成授权申请", "提示", function(){
                                         $window.location.href = follow_us_url;
                                     });
                                 }else{
-                                    $.alert("请先关注公众号，才能进行授权申请", "提示", function(){
+                                    $.alert("请关注公众号完成授权申请", "提示", function(){
                                         $state.go('home.homePage');
                                     });
                                 }
@@ -1225,11 +1225,11 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                             if(is_followed != 0){
                                 var follow_us_url = SellerTeamFty.getFollowUsUrl();
                                 if(follow_us_url != null && follow_us_url != ""){
-                                    $.alert("请先关注公众号，才能进行授权申请", "提示", function(){
+                                    $.alert("请关注公众号完成授权申请", "提示", function(){
                                         $window.location.href = follow_us_url;
                                     });
                                 }else{
-                                    $.alert("请先关注公众号，才能进行授权申请", "提示", function(){
+                                    $.alert("请关注公众号完成授权申请", "提示", function(){
                                         $state.go('home.homePage');
                                     });
                                 }
