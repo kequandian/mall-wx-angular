@@ -113,7 +113,7 @@
     width: 140px;
     height: 65px;
     background-size: 140px 65px;
-    background-image: url(../../../img/sellerPage/wholesale/wholesale-region-null-message-img.png);
+    background-image: url(../../../img/sellerPage/wholesale/wholesale-region-null-message-img-2.png);
     position: absolute;
     left: 50%;
     bottom: 18%;
@@ -202,13 +202,14 @@
     width: 92px;
     height: 92px;
     background-size: 92px 92px;
-    background-image: url("../../../img/sellerPage/wholesale/wholesale-btn.png");
+    background-image: url("../../../img/sellerPage/wholesale/wholesale-btn-2.png");
     position: absolute;
     left: 50%;
     bottom: 18%;
     margin-left: -46px; /*要居中的div的宽度的一半*/
     margin-top: -46px; /*要居中的div的高度的一半*/
     text-align: center;
+    color: #ffffff;
 }
 
 #wholesale .default-content .select-btn .btn-ok-text{
