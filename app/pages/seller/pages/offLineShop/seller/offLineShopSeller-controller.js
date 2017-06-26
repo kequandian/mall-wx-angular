@@ -1221,8 +1221,22 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 SellerTeamFty.applyService(apply_code,real_name,apply_code,phone,apply_code,type)
                     .then(function(json){
                         if(json.status_code == 0){
-                            $.toast('申请已提交,请等待审核');
-                            $state.go('home.sellerPage');
+
+                            if(is_followed != 0){
+                                var follow_us_url = SellerTeamFty.getFollowUsUrl();
+                                if(follow_us_url != null && follow_us_url != ""){
+                                    $.alert("请先关注公众号，才能进行授权申请", "提示", function(){
+                                        $window.location.href = follow_us_url;
+                                    });
+                                }else{
+                                    $.alert("请先关注公众号，才能进行授权申请", "提示", function(){
+                                        $state.go('home.homePage');
+                                    });
+                                }
+                            }else{
+                                $.toast('申请已提交,请等待审核');
+                                $state.go('home.sellerPage');
+                            }
                         }else{
                             $.toast.prototype.defaults.duration = 2000;
                             if (json.message == 'user.already.crownship') {
