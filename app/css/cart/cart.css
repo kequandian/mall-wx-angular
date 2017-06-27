@@ -311,7 +311,8 @@
     position: relative;
     left: 0;
     right: 0;
-    bottom: 57px;
+    /*bottom: 57px;*/
+    bottom: 102px;
     z-index:1
 }
 #cart #foot .footLeft  {
