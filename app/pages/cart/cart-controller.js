@@ -422,8 +422,18 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             }
 
             //进入商品详情
-            $scope.goToDetails = function(productId){
-                $state.go('details',{productId:productId});
+            $scope.goToDetails = function(item){
+
+                if(item.price == null){
+                    return;
+                }
+
+                if(item.marketing_id != null && item.marketing != null){
+                    $state.go('wholesaleDetails',{wholesaleId:item.marketing_id});
+                }else{
+                    $state.go('details',{productId:item.product_id});
+                }
+
             }
 
         }])

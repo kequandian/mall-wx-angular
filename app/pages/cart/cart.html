@@ -36,14 +36,14 @@
                         <label class="ion-ios-checkmark cart-item-label" for="check{{cart.id}}"></label>
                     </div>
                     <div class="item-info">
-                        <div class="item-image" ng-click="goToDetails(cart.product_id)">
+                        <div class="item-image" ng-click="goToDetails(cart)">
                             <div class="product-no-sale" ng-if="cart.price == null">
                                 <span>该区域暂不支持此商品</span>
                             </div>
                             <img ng-src="{{cart.cover | defaultCover}}">
                         </div>
                         <div class="">
-                            <a ui-sref="details({productId:cart.product_id})"
+                            <a ng-click="goToDetails(cart)"
                                ng-if="cart.product_specification_name != null">
                                 <h4 class="item-title" style="{{check_stock_balance(cart.stock_balance)}}">
                                     <span ng-if="cart.marketing_id != null" style="{{cart.stock_balance > 0 ? 'color: #4EAD00':'color: #BCBCBC;'}}">【批发】</span>
@@ -53,7 +53,7 @@
                                     规格：{{cart.product_specification_name}}
                                 </div>
                             </a>
-                            <a ui-sref="details({productId:cart.product_id})"
+                            <a ng-click="goToDetails(cart)"
                                ng-if="cart.product_specification_name == null">
                                 <div class="item-title-2" style="{{check_stock_balance(cart.stock_balance)}}">
                                     <span ng-if="cart.marketing_id != null" style="{{cart.stock_balance > 0 ? 'color: #4EAD00':'color: #BCBCBC;'}}">【批发】</span>
