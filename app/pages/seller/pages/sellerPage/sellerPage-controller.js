@@ -96,7 +96,7 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $scope.owner_balance = json.data;
-                            console.log('owner_balance: ' + angular.toJson($scope.owner_balance));
+                            //console.log('owner_balance: ' + angular.toJson($scope.owner_balance));
 
                             $scope.owner_balance.is_member = $scope.owner_balance.is_agent
                                 || $scope.owner_balance.is_partner
