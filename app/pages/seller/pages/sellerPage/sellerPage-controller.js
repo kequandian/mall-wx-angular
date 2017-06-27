@@ -40,6 +40,7 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
             document.title = "积分中心";
 
             $scope.point_rate = PointRate.rate;
+            $scope.isSimpleMember = false; //是否显示商品批发入口
 
             $rootScope.tabsNumber = 3;
             cateLeftIndex.cate_nav_index = 0;
@@ -95,7 +96,7 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $scope.owner_balance = json.data;
-                            //console.log('owner_balance: ' + angular.toJson($scope.owner_balance));
+                            console.log('owner_balance: ' + angular.toJson($scope.owner_balance));
 
                             $scope.owner_balance.is_member = $scope.owner_balance.is_agent
                                 || $scope.owner_balance.is_partner
@@ -110,7 +111,12 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                             }
 
                             if(json.data.is_crown && json.data.is_physical){
+                                $scope.isSimpleMember = true;
                                 $scope.is_physical = 2;
+                            }else if(!json.data.is_crown && json.data.is_physical && json.data.is_partner){
+                                $scope.isSimpleMember = true;
+                            }else{
+                                $scope.isSimpleMember = false;
                             }
 
                             /// save session
@@ -234,11 +240,14 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
             };
 
             //商品批发
-            $scope.wholesale = function(isCrown,crownShip){
-                console.log(isCrown);
-                //console.log(crownShip);
-                wCateCache.isPcs = -1;
-                $state.go('wholesale',{isCrown: isCrown});
+            $scope.wholesale = function(owner_balance){
+
+                if(owner_balance.is_crown && owner_balance.is_physical){
+                    wCateCache.isPcs = -1;
+                    $state.go('wholesale',{isCrown: owner_balance.is_crown});
+                }else if(!owner_balance.is_crown && owner_balance.is_physical && owner_balance.is_partner){
+                    $.alert('您还不是皇冠经销商无权查看，请与所属皇冠经销商联系','提示');
+                }
 
 
                 //if(isCrown){

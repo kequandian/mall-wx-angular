@@ -24,8 +24,8 @@ angular.module('wholesale.controller', ['wholesale.service'])
                     $state.go('home.sellerPage');
                 }else if(wCateCache.isPcs == -1){
                     console.log(2)
-                    isCrown = $stateParams.isCrown;
-                    if(isCrown != null && isCrown == 'true'){
+                    //isCrown = $stateParams.isCrown;
+                    /*if(isCrown != null && isCrown == 'true'){
                         console.log(3)
                         $scope.is_crown = true;
                         //地址列表
@@ -33,7 +33,10 @@ angular.module('wholesale.controller', ['wholesale.service'])
                     }else if(isCrown != null && isCrown == 'false'){
                         console.log(4)
                         $scope.is_crown = false;
-                    }
+                    }*/
+
+                    //地址列表
+                    getDefaultAddress();
                 }
             }
 
