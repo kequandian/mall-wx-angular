@@ -1421,7 +1421,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     });
                     //qrcode.clear();
                     //qrcode.makeCode(invitationUrl);
-                    console.log("invitationUrl: " + invitationUrl);
+                    //console.log("invitationUrl: " + invitationUrl);
                 });
             }
 
