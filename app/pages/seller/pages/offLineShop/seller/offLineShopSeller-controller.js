@@ -1218,7 +1218,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
             //皇冠经销申请--own
             function ownCrownSeller(apply_code){
-                SellerTeamFty.applyService(apply_code,real_name,apply_code,phone,apply_code,type)
+                SellerTeamFty.applyService(apply_code.real_name,apply_code.phone,apply_code.type)
                     .then(function(json){
                         if(json.status_code == 0){
 
