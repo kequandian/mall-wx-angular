@@ -1415,8 +1415,8 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
                     var qrcode = new QRCode(divhtml, {
                         text: invitationUrl,
-                        width: 1024,
-                        height: 1024,
+                        width: 220,
+                        height: 220,
                         correctLevel : QRCode.CorrectLevel.H
                     });
                     //qrcode.clear();
