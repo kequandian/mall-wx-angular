@@ -64,7 +64,13 @@ angular.module('homePage.controller', ['homePage.service'])
             var n = value.lastIndexOf('/');
             var id = value.substr(n + 1, value.length);
 
-            return 'details({productId:' + id + '})';
+            if(value.indexOf('category') >= 0){
+                return 'home.category({categoryId:' + id + ',categoryType:"default"})';
+            }else if(value.indexOf('details') >= 0){
+                return 'details({productId:' + id + '})';
+            }
+            return "#";
+
         }
     })    
     //默认分类广告图片
@@ -254,7 +260,7 @@ angular.module('homePage.controller', ['homePage.service'])
                         .then(function (json) {
                             if (json.status_code == 0) {
                                 $scope.ad_list = json.data;
-                                //console.log(angular.toJson($scope.ad_list));
+                                //console.log('广告： ' + angular.toJson($scope.ad_list));
 
                                 $rootScope.ad_session.ad_list = $scope.ad_list;
                             }
@@ -425,7 +431,7 @@ angular.module('homePage.controller', ['homePage.service'])
 
             //推荐商品
             $scope.goToGoodsList = function (item, index) {
-                console.log("item.id: " + angular.toJson(item.id));
+                //console.log("item: " + angular.toJson(item));
                 //goodListParams.typeNumber = item.id;
                 //if(item.sub_categories.length > 0){
                 //    goodListParams.promoted = true;
@@ -437,13 +443,14 @@ angular.module('homePage.controller', ['homePage.service'])
                 //default category params
                 //cateCacheCode.index_first=index;
                 //cateCacheCode.index_second=0;
+
                 cateCacheCode.cate_session=-1;
                 cateCacheCode.second_cate=null;
                 cateCacheCode.product_list=item;
                 cateCacheCode.product_id=-1;
                 cateCacheCode.loading=false;
                 cateCacheCode.load_more_btn_show= true;
-                //console.log(angular.toJson(item))
+
                 $state.go('home.category',{categoryId:-1,categoryType:'default'});
             };
 
