@@ -1304,9 +1304,9 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
             //组合格式
             $scope.convert_amount = function(min, max){
                 if(max == -1){
-                    return min + '-以上';
+                    return min + '元-以上';
                 }else{
-                    return min + '-' + max;
+                    return min + '-' + max + '元';
                 }
             }
 
