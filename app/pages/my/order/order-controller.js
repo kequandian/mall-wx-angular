@@ -151,8 +151,22 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             //批发订单-退款退货
             $scope.isMarketing = function(item, num){
 
+                //console.log('orderNumber: ' + item.order_number)
+                //console.log('status: ' + item.status)
                 if(item.marketing == 'WHOLESALE'){
-                    return false;
+                    if(num == 3){
+                        if(item.status == 'CONFIRMED_DELIVER_PENDING'){
+                            return true
+                        }else{
+                            return false;
+                        }
+                    }else if(num == 1){
+                        if(item.status == 'DELIVERED_CONFIRM_PENDING'){
+                            return false
+                        }else{
+                            return true;
+                        }
+                    }
                 }
 
                 if(num == 3){
@@ -559,7 +573,9 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             }
 
             //批发订单-退款退货
-            $scope.isMarketing = function(item, num){
+            $scope.isMarketingPayed = function(item, num){
+
+                return true;
 
                 if(item.marketing == 'WHOLESALE'){
                     return false;
