@@ -7,6 +7,15 @@ angular.module('sellerTeam.service', [])
                 return GlobalVariable.FOLLOW_US_URL;
             },
 
+            //申请皇冠提示
+            getCrownTips: function(){
+                return GlobalVariable.APPLY_PHYSICAL_CROWN_TEXT
+            },
+            //申请星级提示
+            getStarTips: function(){
+                return GlobalVariable.APPLY_PHYSICAL_SELLER_TEXT
+            },
+
             // 获取线下团队
             getOffLineSellerTeamsService: function () {
                 var deferred = $q.defer();

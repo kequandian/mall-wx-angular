@@ -1060,6 +1060,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 if(type_status == 'crown'){
                     console.log(1);
                     document.title = "线下皇冠经销商授权";
+                    $scope.apply_type_tips = SellerTeamFty.getCrownTips();
                     console.log("线下皇冠经销商授权");
                     $scope.is_crown = true;
 
