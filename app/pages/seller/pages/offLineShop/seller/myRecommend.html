@@ -83,11 +83,6 @@
                                     {{item.monthly_amount > 0 ? "￥" + (item.monthly_amount | number:1) : '0'}}
                                 </span>
                             </p>
-                            <p>期望提成：
-                                <span class="pro-black">
-                                    {{item.monthly_expected_settled_amount > 0 ? "￥" + (item.monthly_expected_settled_amount | number:1) : '0'}}
-                                </span>
-                            </p>
                             <!--<p>累计提成：-->
                                 <!--<span class="pro-black">-->
                                     <!--{{item.total_settled_amount > 0 ? "￥" + (item.total_settled_amount | number:1) : '0'}}-->
@@ -97,7 +92,7 @@
                         <div class="recommend-item-data">
                             <p>最高提成：
                                 <span class="pro-black">
-                                    {{item.monthly_settled_amount > 0 ? "￥" + (item.monthly_settled_amount | number:1) : '0'}}
+                                    {{item.monthly_expected_settled_amount > 0 ? "￥" + (item.monthly_expected_settled_amount | number:1) : '0'}}
                                 </span>
                             </p>
                         </div>
