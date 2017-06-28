@@ -1058,10 +1058,9 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
             if(type_status != null){
                 if(type_status == 'crown'){
-                    console.log(1);
-                    document.title = "线下皇冠经销商授权";
-                    $scope.apply_type_tips = SellerTeamFty.getCrownTips();
                     console.log("线下皇冠经销商授权");
+                    document.title = "线下皇冠经销商授权";
+                    $scope.apply_type_tips = autoWordWrap(SellerTeamFty.getCrownTips());
                     $scope.is_crown = true;
 
                     if(apply_status == 'own'){
@@ -1081,9 +1080,9 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     }
 
                 }else if(type_status == 'star'){
-                    console.log(2);
-                    document.title = "线下星级经销商授权";
                     console.log("线下星级经销商授权");
+                    document.title = "线下星级经销商授权";
+                    $scope.apply_type_tips = autoWordWrap(SellerTeamFty.getStarTips());
                     $scope.is_star = true;
                     $scope.is_own = true;
                     $scope.userInfo.recommender_id = recommender_id;
@@ -1093,6 +1092,13 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     $scope.init_placeholder_phone = "要与被授权人个人信息的手机号一致";
                 }
                 getUserInfo();
+            }
+
+
+            //处理换行
+            function autoWordWrap(content){
+                var newContent = content.replace(/\n/g, '<br />');
+                return '<div>'+newContent+'</div>';
             }
 
 

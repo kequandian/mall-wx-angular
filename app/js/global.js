@@ -9,8 +9,8 @@ angular.module('global', [])
         SELLER_SHIP: 'YES',
         FOLLOW_US_URL: 'http://www.kequandian.net',
         CAN_APPLY_CROWN: true,
-        APPLY_PHYSICAL_CROWN_TEXT:'皇冠tips',
-        APPLY_PHYSICAL_SELLER_TEXT:'星级tips'
+        APPLY_PHYSICAL_CROWN_TEXT:'',
+        APPLY_PHYSICAL_SELLER_TEXT:''
     })
     .value('LoginSession', {
         token: 'token'

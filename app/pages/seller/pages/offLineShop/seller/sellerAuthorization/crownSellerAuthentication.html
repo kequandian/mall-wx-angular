@@ -40,7 +40,7 @@
         </div>
 
         <div class="tips_txt custom_text_primary">
-            <div>{{apply_type_tips}}</div>
+            <div ng-bind-html="apply_type_tips | to_trusted"></div>
         </div>
 
         <div class="custom_weui_btn_border">
