@@ -148,6 +148,26 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                 return OrderCommon.OrderStatus(orderStatus);
             };
 
+            //批发订单-退款退货
+            $scope.isMarketing = function(item, num){
+
+                if(item.marketing == 'WHOLESALE'){
+                    return false;
+                }
+
+                if(num == 3){
+                    if(item.status == 'PAID_DELIVER_PENDING'){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }else if(num == 1){
+                    return true;
+                }
+                return true;
+
+            };
+
             //订单销售类型
             $scope.marketing_status_all = function(status){
                 if(status == null){
@@ -538,6 +558,26 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                     })
             }
 
+            //批发订单-退款退货
+            $scope.isMarketing = function(item, num){
+
+                if(item.marketing == 'WHOLESALE'){
+                    return false;
+                }
+
+                if(num == 3){
+                    if(item.status == 'PAID_DELIVER_PENDING'){
+                        return true
+                    }else{
+                        return false;
+                    }
+                }else if(num == 1){
+                    return true
+                }
+                return true;
+
+            };
+
         }])
 
     /* 待收货 */
@@ -698,6 +738,25 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                     })
                 });
                 /*end lazy*/
+            };
+
+            //批发订单-退款退货
+            $scope.isMarketingDel = function(item, num){
+                //console.log('orderNumber: ' + item.order_number)
+                //console.log('status: ' + item.status)
+                if(item.marketing == 'WHOLESALE'){
+                    return false;
+                }
+
+                if(num == 1){
+                    if(item.isDelivered){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }
+                return true;
+
             };
 
         }])
