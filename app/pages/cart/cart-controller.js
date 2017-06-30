@@ -983,7 +983,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     CartFty.addOrder($scope.order).then(
                         function (result) {
                             if(result.status_code == 0){
-                                console.log('提交成功：' + angular.toJson(result));
+                                //console.log('提交成功：' + angular.toJson(result));
                                 $scope.settlementCarts = [];
                                 $scope.order_number = result.data.order_number;
                                 deleteProducts($scope.settlementData);
