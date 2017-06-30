@@ -556,8 +556,8 @@ angular.module('category.controller', ['category.service'])
                     $state.go('piecegroup',{pieceGroupId:item.id, masterId:0});
                 }*/
                 $rootScope.pieceGroupCouponItem.id = 0;
-                //$state.go('piecegroup',{pieceGroupId:item.piece_group_purchase_id, masterId:item.id});
-                $state.go('piecegroup',{pieceGroupId:item.piece_group_purchase_id, masterId:0});
+                $state.go('piecegroup',{pieceGroupId:item.piece_group_purchase_id, masterId:item.id});
+                //$state.go('piecegroup',{pieceGroupId:item.piece_group_purchase_id, masterId:0});
             };
 
 

@@ -27,13 +27,7 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
 
             console.log("product_id> " + product_id);
             console.log("master_id> " + master_id);
-            console.log("master_user_id> " + $scope.master_user_id);
-
-            if(master_id > 0){
-                $scope.isMasterOpen = true;
-            }else{
-                $scope.isMasterOpen = false;
-            }
+            console.log("user_id> " + $scope.master_user_id);
 
             var marketingType = null;
             var marketingId = null;
@@ -574,17 +568,39 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                             product_id = json.data.product_id;
                             start = Date.parse(new Date());
 
-                            //判断拼团订单时候超时
-                            angular.forEach(json.data.promoted_masters, function(v, k){
-
-                                end = Date.parse(new Date(v.end_time.replace(/-/g, "/")));
-                                newTimeStamp = end - start;  //时间差的毫秒数
-                                if(newTimeStamp > 0){
-                                    if(promoted_masters.length < 3){
+                            if(master_id > 0){
+                                angular.forEach(json.data.promoted_masters, function(v, k){
+                                    if(master_id == v.id){
                                         promoted_masters.push(v);
                                     }
-                                }
-                            });
+                                });
+                                //判断拼团订单时候超时
+                                angular.forEach(json.data.promoted_masters, function(v, k){
+                                    end = Date.parse(new Date(v.end_time.replace(/-/g, "/")));
+                                    newTimeStamp = end - start;  //时间差的毫秒数
+                                    if(newTimeStamp > 0){
+                                        if(promoted_masters.length < 3){
+                                            if(master_id != v.id){
+                                                promoted_masters.push(v);
+                                            }
+                                        }
+                                    }
+                                });
+
+                            }else{
+                                //判断拼团订单时候超时
+                                angular.forEach(json.data.promoted_masters, function(v, k){
+
+                                    end = Date.parse(new Date(v.end_time.replace(/-/g, "/")));
+                                    newTimeStamp = end - start;  //时间差的毫秒数
+                                    if(newTimeStamp > 0){
+                                        if(promoted_masters.length < 3){
+                                            promoted_masters.push(v);
+                                        }
+                                    }
+                                });
+                            }
+
 
                             if(promoted_masters.length > 0){
                                 $scope.promoted_masters = promoted_masters;

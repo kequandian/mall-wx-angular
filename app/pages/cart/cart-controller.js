@@ -751,7 +751,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             function coupon(){
                 var products = $scope.product_list;
                 var p_g_coupon_list=[];
-                console.log("products: " + angular.toJson(products));
+                //console.log("products: " + angular.toJson(products));
                 CartFty.countCouponService(products)
                     .then(function(json){
                         if(json.status_code == 0){
