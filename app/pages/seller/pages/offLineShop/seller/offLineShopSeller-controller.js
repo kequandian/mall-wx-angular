@@ -1184,22 +1184,28 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     .then(function(json){
                         if(json.status_code == 0){
 
-
-                            if(is_followed != 0){
-                                var follow_us_url = SellerTeamFty.getFollowUsUrl();
-                                if(follow_us_url != null && follow_us_url != ""){
-                                    $.alert("请关注公众号完成授权申请", "提示", function(){
-                                        $window.location.href = follow_us_url;
-                                    });
-                                }else{
-                                    $.alert("请关注公众号完成授权申请", "提示", function(){
-                                        $state.go('home.homePage');
-                                    });
-                                }
+                            if(angular.isString(json.message)){
+                                $.alert("您的授权申请已提交人工审核，请耐心等待", "提示", function(){
+                                    $state.go('home.homePage');
+                                });
                             }else{
-                                $.toast('申请已提交,请等待审核');
-                                $state.go('home.sellerPage');
+                                if(is_followed != 0){
+                                    var follow_us_url = SellerTeamFty.getFollowUsUrl();
+                                    if(follow_us_url != null && follow_us_url != ""){
+                                        $.alert("请关注公众号完成授权申请", "提示", function(){
+                                            $window.location.href = follow_us_url;
+                                        });
+                                    }else{
+                                        $.alert("请关注公众号完成授权申请", "提示", function(){
+                                            $state.go('home.homePage');
+                                        });
+                                    }
+                                }else{
+                                    $.toast('申请已提交,请等待审核');
+                                    $state.go('home.sellerPage');
+                                }
                             }
+
                         }else{
                             $.toast.prototype.defaults.duration = 2000;
                             if (json.message == 'user.already.crownship') {
@@ -1212,8 +1218,6 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                                 showTips("授权失败,手机号码与被授权人个人信息上的不一致");
                             }else if(json.message == "apply.already.exist"){
                                 showTips("您已提交授权，无需再提交");
-                            }else if(json.message == "apply.success.please.waiting.for.manual.audit"){
-                                showTips("您的授权申请已提交人工审核，请耐心等待");
                             }else {
                                 $.toast('授权失败', 'cancel');
                             }
@@ -1231,7 +1235,11 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     .then(function(json){
                         if(json.status_code == 0){
 
-                            if(is_followed != 0){
+                            if(angular.isString(json.message)){
+                                $.alert("您的授权申请已提交人工审核，请耐心等待", "提示", function(){
+                                    $state.go('home.homePage');
+                                });
+                            }else if(is_followed != 0){
                                 var follow_us_url = SellerTeamFty.getFollowUsUrl();
                                 if(follow_us_url != null && follow_us_url != ""){
                                     $.alert("请关注公众号完成授权申请", "提示", function(){
@@ -1258,8 +1266,6 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                                 showTips("申请失败,手机号码与个人信息上的不一致");
                             }else if(json.message == "apply.already.exist"){
                                 showTips("您已提交授权，无需再提交");
-                            }else if(json.message == "apply.success.please.waiting.for.manual.audit"){
-                                showTips("您的授权申请已提交人工审核，请耐心等待");
                             }else {
                                 $.toast('申请失败', 'cancel');
                             }
