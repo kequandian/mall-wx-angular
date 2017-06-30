@@ -1,7 +1,8 @@
 angular.module('pieceGroup.controller', ['pieceGroup.service'])
 
-    .controller('PieceGroupController', ['$scope', '$state', '$stateParams', '$rootScope','$window', 'PieceGroupFty', 'PointRate', '$ocLazyLoad',
-        function ($scope, $state, $stateParams, $rootScope,$window, PieceGroupFty, PointRate, $ocLazyLoad) {
+    .controller('PieceGroupController', ['$scope', '$state', '$stateParams', '$rootScope','$window',
+        'PieceGroupFty', 'PointRate', '$ocLazyLoad','$interval',
+        function ($scope, $state, $stateParams, $rootScope,$window, PieceGroupFty, PointRate, $ocLazyLoad,$interval) {
 
             $ocLazyLoad.load('Jquery').then(function () {
                 $ocLazyLoad.load('JqueryWeUI').then(function () {
@@ -601,7 +602,6 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                                 });
                             }
 
-
                             if(promoted_masters.length > 0){
                                 $scope.promoted_masters = promoted_masters;
                             }else{
@@ -670,7 +670,35 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                     if(seconds<10){
                         seconds = "0"+ seconds;
                     }
-                    return hours + ':'+ minutes + ':' + seconds;
+                    $scope.newTime = hours + ':'+ minutes + ':' + seconds;
+
+                    //var one_minute = $interval(function(){
+                    //    $scope.newTime -= 1000;
+                    //},1000);
+
+                    if($scope.newTime == '00:00:00'){
+                        //判断拼团订单时候超时
+                        var promoted_masters = [];
+                        var start1 = 0;
+                        var end1 = 0;
+                        var newTimeStamp = 0;
+                        angular.forEach($scope.fightGroupsdetails.promoted_masters, function(v, k){
+
+                            end1 = Date.parse(new Date(v.end_time.replace(/-/g, "/")));
+                            newTimeStamp = end1 - start1;  //时间差的毫秒数
+                            if(newTimeStamp > 0){
+                                if(promoted_masters.length < 3){
+                                    promoted_masters.push(v);
+                                }
+                            }
+                        });
+
+                        if(promoted_masters.length > 0){
+                            $scope.promoted_masters = promoted_masters;
+                        }else{
+                            $scope.promoted_masters = null;
+                        }
+                    }
 
                     //countdown(hours,minutes,seconds,index);
                     //cdown(newDate,index);

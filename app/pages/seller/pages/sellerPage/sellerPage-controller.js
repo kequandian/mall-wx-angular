@@ -96,7 +96,7 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $scope.owner_balance = json.data;
-                            //console.log('owner_balance: ' + angular.toJson($scope.owner_balance));
+                            console.log('owner_balance: ' + angular.toJson($scope.owner_balance));
 
                             $scope.owner_balance.is_member = $scope.owner_balance.is_agent
                                 || $scope.owner_balance.is_partner
@@ -112,7 +112,11 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
 
                             if(json.data.is_crown && json.data.is_physical){
                                 $scope.isSimpleMember = true;
-                                $scope.is_physical = 2;
+                                if(json.data.is_crown_ship_temp){
+                                    $scope.is_physical = 3;
+                                }else{
+                                    $scope.is_physical = 2;
+                                }
                             }else if(!json.data.is_crown && json.data.is_physical && json.data.is_partner){
                                 $scope.isSimpleMember = true;
                             }else{
