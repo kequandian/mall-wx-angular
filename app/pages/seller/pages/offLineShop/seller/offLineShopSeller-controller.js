@@ -1258,6 +1258,8 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                                 showTips("申请失败,手机号码与个人信息上的不一致");
                             }else if(json.message == "apply.already.exist"){
                                 showTips("您已提交授权，无需再提交");
+                            }else if(json.message == "apply.success.please.waiting.for.manual.audit"){
+                                showTips("您的授权申请已提交人工审核，请耐心等待");
                             }else {
                                 $.toast('申请失败', 'cancel');
                             }
