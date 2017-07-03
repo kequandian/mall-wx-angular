@@ -112,6 +112,12 @@ angular.module('homePage.controller', ['homePage.service'])
             $scope.followus = HomePageFty.getFollowusUrl();
             $rootScope.follow_url = HomePageFty.getFollowusUrl();
 
+            var scope1 = $rootScope;
+            scope1.$watch('closePCD',function(nValue, oValue){
+                $('.close-picker').click();
+                $('#city-picker').click();
+            });
+
             // cut off the fallback route from details
             /*cutoffFallback();
 

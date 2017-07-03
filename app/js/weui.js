@@ -264,8 +264,8 @@ $(function () {
                 title: "请选择收货地址"
             });
         })
-        //批发页---配送地址
-        .on('click', '#wholesale_pcd', function () {
+        //经销商申请页--地址
+        .on('click', '#auth_pcd', function () {
             $("#city-picker").cityPicker({
                 title: "请选择配送地址"
             });

@@ -35,6 +35,15 @@
                     <input class="weui_input" type="tel" placeholder="{{init_placeholder_phone}}" ng-model="userInfo.phone" ng-init="">
                 </div>
             </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd">
+                    <label class="weui_label" style="width: 72px;">地区：</label>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary" id="auth_pcd">
+                    <input id="city-picker" type="text" placeholder="设置地区" class="select-pcd-input"
+                           ng-model="pcd" ng-readonly="true" ng-click="keyboard_hidden_auth();">
+                </div>
+            </div>
 
 
         </div>

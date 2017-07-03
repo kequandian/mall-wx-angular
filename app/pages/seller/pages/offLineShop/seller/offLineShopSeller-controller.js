@@ -916,8 +916,8 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
     /*
      * 经销商申请须知
      * */
-    .controller('ApplynoticeController', ['$scope','$state','$stateParams','$ocLazyLoad', 'SellerTeamFty',
-        function ($scope,$state,$stateParams,$ocLazyLoad, SellerTeamFty) {
+    .controller('ApplynoticeController', ['$scope','$state','$stateParams','$ocLazyLoad','$rootScope', 'SellerTeamFty',
+        function ($scope,$state,$stateParams,$ocLazyLoad,$rootScope, SellerTeamFty) {
 
             document.title = '申请须知';
 
@@ -925,6 +925,12 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 $ocLazyLoad.load('JqueryWeUI').then(function () {
                     //console.log("Applynotice:jquery loaded");
                 })
+            });
+            //自动关闭pcd控件
+            var scope1 = $rootScope;
+            scope1.$watch('closePCD',function(nValue, oValue){
+                $('.close-picker').click();
+                $('#city-picker').click();
             });
 
             var recommender_id = $stateParams.recommenderId;
@@ -1055,6 +1061,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
             $scope.is_star = false;
             $scope.is_own = false;
             var is_followed;
+            AllPCD();//获取省市区
 
             if(type_status != null){
                 if(type_status == 'crown'){
@@ -1127,6 +1134,8 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 var real_name = userInfo.real_name;
                 var phone = userInfo.phone;
 
+                var pcd_info = document.getElementById('city-picker');
+
                 if(!angular.isString(uid) || uid.length==0){
                     $.toast('ID不能为空', 'cancel');
                     return;
@@ -1148,11 +1157,22 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     return;
                 }
 
-                //return;
+                if(pcd_info.value === undefined || pcd_info.value == null || pcd_info.value == ''){
+                    $.toast('请设置地区', 'cancel');
+                    return;
+                }
 
+                var pcd_list = pcd_info.value.split(' ');
                 var apply_code = {};
                 apply_code.real_name = real_name;
                 apply_code.phone = phone;
+                apply_code.province = pcd_list[0];
+                apply_code.city = pcd_list[1];
+                apply_code.district = pcd_list[2];
+
+                //console.log(angular.toJson(apply_code));
+                //return;
+
 
                 if(type_status == 'crown'){
                     if(apply_status == 'own'){
@@ -1285,6 +1305,219 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     show_tips.style.display = 'none';
                 }, 4000);
             }
+
+
+            /*
+             * 获取省市区
+             * */
+            function AllPCD() {
+                SellerTeamFty.getAuthPCDService()
+                    .then(function (result) {
+                        //$scope.provinces = result.data;
+                        if(result.status_code == 0){
+                            pcd = result.data;
+                            showPCD();
+                        }else{
+                            console.log('获取省市区失败：' + angular.toJson(result));
+                        }
+                    }, function (error) {
+                        console.log('获取省市区失败：' + angular.toJson(error));
+                    })
+            }
+
+            function showPCD() {
+                // jshint ignore: start
+                +function ($) {
+
+                    $.rawCitiesData = pcd;
+                    //console.log(pcd);
+
+                }($);
+                // jshint ignore: end
+
+                /* global $:true */
+                /* jshint unused:false*/
+
+                +function ($) {
+                    "use strict";
+
+                    var defaults;
+
+                    $.fn.cityPicker = function (params) {
+                        params = $.extend({}, defaults, params);
+                        return this.each(function () {
+
+                            var format = function (data) {
+                                var result = [];
+                                for (var i = 0; i < data.length; i++) {
+                                    var d = data[i];
+                                    if (d.name === "请选择") continue;
+                                    result.push(d.name);
+                                }
+                                if (result.length) return result;
+                                return [""];
+                            };
+
+                            var area_list = function (data) {
+                                if (!data.area_list) return [""];
+                                return format(data.area_list);
+                            };
+
+                            var getCities = function (d) {
+                                for (var i = 0; i < raw.length; i++) {
+                                    if (raw[i].name === d) return area_list(raw[i]);
+                                }
+                                return [""];
+                            };
+
+                            var getDistricts = function (p, c) {
+                                for (var i = 0; i < raw.length; i++) {
+                                    if (raw[i].name === p) {
+                                        for (var j = 0; j < raw[i].area_list.length; j++) {
+                                            if (raw[i].area_list[j].name === c) {
+                                                return area_list(raw[i].area_list[j]);
+                                            }
+                                        }
+                                    }
+                                }
+                                return [""];
+                            };
+
+                            var raw = $.rawCitiesData;
+                            var provinces = raw.map(function (d) {
+                                return d.name;
+                            });
+                            var initCities = area_list(raw[0]);
+                            var initDistricts = area_list(raw[0].area_list[0]);
+
+                            var currentProvince = provinces[0];
+                            var currentCity = initCities[0];
+                            var currentDistrict = initDistricts[0];
+
+                            var cols = [
+                                {
+                                    values: provinces,
+                                    cssClass: "col-province"
+                                },
+                                {
+                                    values: initCities,
+                                    cssClass: "col-city"
+                                }
+                            ];
+
+                            if (params.showDistrict) cols.push({
+                                values: initDistricts,
+                                cssClass: "col-district"
+                            });
+
+                            var config = {
+
+                                cssClass: "city-picker",
+                                rotateEffect: false,  //为了性能
+
+                                onChange: function (picker, values, displayValues) {
+                                    var newProvince = picker.cols[0].value;
+                                    var newCity;
+                                    if (newProvince !== currentProvince) {
+                                        var newCities = getCities(newProvince);
+                                        newCity = newCities[0];
+                                        var newDistricts = getDistricts(newProvince, newCity);
+                                        picker.cols[1].replaceValues(newCities);
+                                        if (params.showDistrict) picker.cols[2].replaceValues(newDistricts);
+                                        currentProvince = newProvince;
+                                        currentCity = newCity;
+                                        picker.updateValue();
+                                        return;
+                                    }
+                                    if (params.showDistrict) {
+                                        newCity = picker.cols[1].value;
+                                        if (newCity !== currentCity) {
+                                            picker.cols[2].replaceValues(getDistricts(newProvince, newCity));
+                                            currentCity = newCity;
+                                            picker.updateValue();
+                                        }
+                                    }
+                                },
+
+                                cols: cols
+                            };
+
+                            if (!this) return;
+                            var p = $.extend(config, params);
+                            //计算value
+                            var val = $(this).val();
+                            if (val) {
+                                p.value = val.split(" ");
+                                if (p.value[0]) {
+                                    currentProvince = p.value[0];
+                                    p.cols[1].values = getCities(p.value[0]);
+                                }
+
+                                if (p.value[1]) {
+                                    currentCity = p.value[1];
+                                    params.showDistrict && (p.cols[2].values = getDistricts(p.value[0], p.value[1]));
+                                } else {
+                                    currentDistrict = p.value[2];
+                                    params.showDistrict && (p.cols[2].values = getDistricts(p.value[0], p.cols[1].values[0]));
+                                }
+                            }
+                            $(this).picker(p);
+                        });
+                    };
+
+                    defaults = $.fn.cityPicker.prototype.defaults = {
+                        showDistrict: true //是否显示地区选择
+                    };
+
+                }($);
+            }
+
+            //判断是否为苹果
+            var isIPHONE = navigator.userAgent.toUpperCase().indexOf('IPHONE')!= -1;
+
+            // 元素失去焦点隐藏iphone的软键盘
+            function objBlur(id,time){
+                if(typeof id != 'string') throw new Error('objBlur()参数错误');
+                var obj = document.getElementById(id),
+                    time = time || 500,
+                    docTouchend = function(event){
+                        if(event.target!= obj){
+                            setTimeout(function(){
+                                obj.blur();
+                                document.removeEventListener('touchend', docTouchend,false);
+                            },time);
+                        }
+                    };
+                if(obj){
+                    obj.addEventListener('focus', function(){
+                        document.addEventListener('touchend', docTouchend,false);
+                    },false);
+                }else{
+                    throw new Error('objBlur()没有找到元素');
+                }
+            }
+
+            //隐藏键盘
+            $scope.keyboard_hidden_auth = function(){
+
+                document.getElementById('city-picker').blur();
+
+                var userInput = document.getElementById('contact_user');
+                userInput.blur();
+                var phoneInput = document.getElementById('contact_phone');
+                phoneInput.blur();
+                var contactInput = document.getElementById('contact_detail');
+                contactInput.blur();
+
+                if(isIPHONE){
+                    var input1 = new objBlur('contact_user');
+                    input1=null;
+                    var input2 = new objBlur('contact_phone');
+                    input2=null;
+                    var input3 = new objBlur('contact_detail');
+                    input3=null;
+                }
+            };
 
     }])
 

@@ -536,6 +536,10 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
 
             //进入购物车
             $scope.goToCart = function(){
+
+                //$interval.cancel(one_second);
+                //one_second = undefined;
+
                 var newUrl = '#/home/cart';
                 var title = '购物车';
                 var c_state = history.state;
@@ -645,6 +649,7 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
             };
 
             //计算剩余时间
+            //var one_second;
             $scope.count_time = function(endTime,index){
                 var start = Date.parse(new Date());
                 var end = Date.parse(new Date(endTime.replace(/-/g, "/")));
@@ -672,11 +677,15 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                     }
                     $scope.newTime = hours + ':'+ minutes + ':' + seconds;
 
-                    //var one_minute = $interval(function(){
+                    //one_second = $interval(function(){
                     //    $scope.newTime -= 1000;
+                    //    $interval.cancel(one_second);
+                    //    one_second = undefined;
                     //},1000);
 
-                    if($scope.newTime == '00:00:00'){
+                    if($scope.newTime == '00:50:00'){
+
+                        console.log('重新获取小伙伴拼团列表：' + $scope.newTime);
                         //判断拼团订单时候超时
                         var promoted_masters = [];
                         var start1 = 0;

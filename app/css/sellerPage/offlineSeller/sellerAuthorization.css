@@ -34,6 +34,14 @@
     font-size: 14px;
 }
 
+#sellerAuthorization .weui_cells .select-pcd-input{
+    width: 100%;
+    height: 33px;
+    font-size: 14px;
+    color: black;
+    border: none;
+}
+
 #sellerAuthorization .tips_txt{
     /*width: 100%;*/
     padding: 6px 12px;
