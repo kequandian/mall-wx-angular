@@ -1204,27 +1204,34 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     .then(function(json){
                         if(json.status_code == 0){
 
+
                             if(angular.isString(json.message)){
-                                $.alert("您的授权申请已提交人工审核，请耐心等待", "提示", function(){
-                                    $state.go('home.homePage');
-                                });
-                            }else{
-                                if(is_followed != 0){
-                                    var follow_us_url = SellerTeamFty.getFollowUsUrl();
-                                    if(follow_us_url != null && follow_us_url != ""){
-                                        $.alert("请关注公众号完成授权申请", "提示", function(){
-                                            $window.location.href = follow_us_url;
-                                        });
+                                if(json.message == 'apply.success'){
+                                    if(is_followed != 0){
+                                        var follow_us_url = SellerTeamFty.getFollowUsUrl();
+                                        if(follow_us_url != null && follow_us_url != ""){
+                                            $.alert("请关注公众号完成授权申请", "提示", function(){
+                                                $window.location.href = follow_us_url;
+                                            });
+                                        }else{
+                                            $.alert("请关注公众号完成授权申请", "提示", function(){
+                                                $state.go('home.homePage');
+                                            });
+                                        }
                                     }else{
-                                        $.alert("请关注公众号完成授权申请", "提示", function(){
-                                            $state.go('home.homePage');
-                                        });
+                                        $.toast('申请已提交,请等待审核');
+                                        $state.go('home.sellerPage');
                                     }
                                 }else{
-                                    $.toast('申请已提交,请等待审核');
-                                    $state.go('home.sellerPage');
+
+                                    $.alert("您的授权申请已提交人工审核，请耐心等待", "提示", function(){
+                                        $state.go('home.homePage');
+                                    });
                                 }
+                            }else{
+                                console.log('message is null');
                             }
+
 
                         }else{
                             $.toast.prototype.defaults.duration = 2000;
@@ -1256,23 +1263,30 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                         if(json.status_code == 0){
 
                             if(angular.isString(json.message)){
-                                $.alert("您的授权申请已提交人工审核，请耐心等待", "提示", function(){
-                                    $state.go('home.homePage');
-                                });
-                            }else if(is_followed != 0){
-                                var follow_us_url = SellerTeamFty.getFollowUsUrl();
-                                if(follow_us_url != null && follow_us_url != ""){
-                                    $.alert("请关注公众号完成授权申请", "提示", function(){
-                                        $window.location.href = follow_us_url;
-                                    });
+                                if(json.message == 'apply.success'){
+                                    if(is_followed != 0){
+                                        var follow_us_url = SellerTeamFty.getFollowUsUrl();
+                                        if(follow_us_url != null && follow_us_url != ""){
+                                            $.alert("请关注公众号完成授权申请", "提示", function(){
+                                                $window.location.href = follow_us_url;
+                                            });
+                                        }else{
+                                            $.alert("请关注公众号完成授权申请", "提示", function(){
+                                                $state.go('home.homePage');
+                                            });
+                                        }
+                                    }else{
+                                        $.toast('申请已提交,请等待审核');
+                                        $state.go('home.sellerPage');
+                                    }
                                 }else{
-                                    $.alert("请关注公众号完成授权申请", "提示", function(){
+                                    $.alert("您的授权申请已提交人工审核，请耐心等待", "提示", function(){
                                         $state.go('home.homePage');
                                     });
                                 }
-                            }else{
-                                $.toast('申请已提交,请等待审核');
-                                $state.go('home.sellerPage');
+
+                            }else {
+                                console.log('message is null');
                             }
                         }else{
                             $.toast.prototype.defaults.duration = 2000;
