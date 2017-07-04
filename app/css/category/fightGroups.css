@@ -5,6 +5,7 @@
     overflow-y: scroll;
     /*overflow: hidden;*/
     background-color: #efeff3;
+    margin-bottom: 140px;
 }
 
 #fightGroups .fight-groups {
@@ -169,8 +170,7 @@
     height:auto;
     box-sizing: border-box;
     overflow: hidden;
-    /*margin-bottom: 42px;*/
-    padding-bottom: 8px;
+    margin-bottom: 50px;
 }
 
 #fightGroups .pro-content .product-item{
@@ -228,26 +228,29 @@
 
 
 #fightGroups .pro-content .product-item .p-content{
+    height: 32px;
     line-height: 32px;
     font-size: 14px;
     background-color: white;
-    display: flex;
     padding: 0 7px 0 7px;
 }
 
 #fightGroups .pro-content .product-item .product-price{
+    width: 50%;
     color:red;
     text-align: left;
-    flex: 1;
     justify-content: flex-start;
+    float: left;
 }
 
 #fightGroups .pro-content .product-item .product-buy-count{
+    width: 50%;
     color:#A8A8A8;
     text-align: right;
     flex: 1;
     justify-content: flex-end;
     font-size: 12px;
+    float: right;
 }
 
 
