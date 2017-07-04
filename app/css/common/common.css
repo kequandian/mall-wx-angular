@@ -119,11 +119,11 @@ input::-webkit-inner-spin-button {
     position: absolute;
     /* bottom: 10px; */
     top: 3px;
-    right: 10px;
+    /* right: 10px; */
     background-color: red;
-    min-width: 13px;
-    min-height: 13px;
-    line-height: 13px;
+    min-width: 14px;
+    min-height: 14px;
+    line-height: 15px;
     /* padding: 1px 1px; */
     text-align: center;
     color: #fff;
@@ -131,9 +131,10 @@ input::-webkit-inner-spin-button {
     font-weight: 500;
     font-size: xx-small;
     font-family: 'Arial';
-    /* left: 10px; */
-    padding: 1px 1px;
+    left: 50%;
+    padding: 2px 2px;
     /* text-align: center; */
+    margin-left: 4px;
 }
 
 .red_point{
