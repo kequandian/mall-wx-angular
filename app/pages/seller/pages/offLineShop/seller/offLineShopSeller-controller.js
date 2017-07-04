@@ -1060,7 +1060,6 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
             $scope.is_crown = false;
             $scope.is_star = false;
             $scope.is_own = false;
-            var is_followed;
             AllPCD();//获取省市区
 
             if(type_status != null){
@@ -1118,7 +1117,6 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                             $scope.userInfo.uid = json.data.uid;
                             $scope.userInfo.real_name = json.data.real_name;
                             $scope.userInfo.phone = json.data.phone;
-                            is_followed = json.data.followed;
                         }else{
                             console.log('获取个人信息失败：' + angular.toJson(json));
                         }
@@ -1207,23 +1205,20 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
                             if(angular.isString(json.message)){
                                 if(json.message == 'apply.success'){
-                                    if(is_followed != 0){
-                                        var follow_us_url = SellerTeamFty.getFollowUsUrl();
-                                        if(follow_us_url != null && follow_us_url != ""){
-                                            $.alert("请关注公众号完成授权申请", "提示", function(){
-                                                $window.location.href = follow_us_url;
-                                            });
-                                        }else{
-                                            $.alert("请关注公众号完成授权申请", "提示", function(){
-                                                $state.go('home.homePage');
-                                            });
-                                        }
+                                    $.toast('申请已提交,请等待审核');
+                                    $state.go('home.sellerPage');
+                                }else if(json.message == 'user.hasn\'t.followed.wechat'){
+                                    var follow_us_url = SellerTeamFty.getFollowUsUrl();
+                                    if(follow_us_url != null && follow_us_url != ""){
+                                        $.alert("请关注公众号完成授权申请", "提示", function(){
+                                            $window.location.href = follow_us_url;
+                                        });
                                     }else{
-                                        $.toast('申请已提交,请等待审核');
-                                        $state.go('home.sellerPage');
+                                        $.alert("请关注公众号完成授权申请", "提示", function(){
+                                            $state.go('home.homePage');
+                                        });
                                     }
                                 }else{
-
                                     $.alert("您的授权申请已提交人工审核，请耐心等待", "提示", function(){
                                         $state.go('home.homePage');
                                     });
@@ -1264,20 +1259,18 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
                             if(angular.isString(json.message)){
                                 if(json.message == 'apply.success'){
-                                    if(is_followed != 0){
-                                        var follow_us_url = SellerTeamFty.getFollowUsUrl();
-                                        if(follow_us_url != null && follow_us_url != ""){
-                                            $.alert("请关注公众号完成授权申请", "提示", function(){
-                                                $window.location.href = follow_us_url;
-                                            });
-                                        }else{
-                                            $.alert("请关注公众号完成授权申请", "提示", function(){
-                                                $state.go('home.homePage');
-                                            });
-                                        }
+                                    $.toast('申请已提交,请等待审核');
+                                    $state.go('home.sellerPage');
+                                }else if(json.message == 'user.hasn\'t.followed.wechat'){
+                                    var follow_us_url = SellerTeamFty.getFollowUsUrl();
+                                    if(follow_us_url != null && follow_us_url != ""){
+                                        $.alert("请关注公众号完成授权申请", "提示", function(){
+                                            $window.location.href = follow_us_url;
+                                        });
                                     }else{
-                                        $.toast('申请已提交,请等待审核');
-                                        $state.go('home.sellerPage');
+                                        $.alert("请关注公众号完成授权申请", "提示", function(){
+                                            $state.go('home.homePage');
+                                        });
                                     }
                                 }else{
                                     $.alert("您的授权申请已提交人工审核，请耐心等待", "提示", function(){
