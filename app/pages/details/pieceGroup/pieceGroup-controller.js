@@ -649,8 +649,12 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
             };
 
             //计算剩余时间
-            //var one_second;
+            var one_second;
             $scope.count_time = function(endTime,index){
+
+                //if(one_second){
+                //    clearInterval(one_second);
+                //}
                 var start = Date.parse(new Date());
                 var end = Date.parse(new Date(endTime.replace(/-/g, "/")));
                 var newDate = end - start;  //时间差的毫秒数
@@ -683,7 +687,7 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                     //    one_second = undefined;
                     //},1000);
 
-                    if($scope.newTime == '00:50:00'){
+                    if($scope.newTime == '00:00:00'){
 
                         console.log('重新获取小伙伴拼团列表：' + $scope.newTime);
                         //判断拼团订单时候超时

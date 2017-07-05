@@ -1202,7 +1202,6 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     .then(function(json){
                         if(json.status_code == 0){
 
-
                             if(angular.isString(json.message)){
                                 if(json.message == 'apply.success'){
                                     $.toast('申请已提交,请等待审核');
@@ -1243,11 +1242,11 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                             }else {
                                 $.toast('授权失败', 'cancel');
                             }
-                            console.log(angular.toJson(json));
+                            console.log('授权失败: ' + angular.toJson(json));
                         }
                     },function(error){
                         $.toast('授权失败', 'cancel');
-                        console.log(angular.toJson(error));
+                        console.log('授权失败: ' + angular.toJson(error));
                     })
             }
 
@@ -1296,11 +1295,11 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                             }else {
                                 $.toast('申请失败', 'cancel');
                             }
-                            console.log(angular.toJson(json));
+                            console.log('申请失败: ' + angular.toJson(json));
                         }
                     },function(error){
                         $.toast('申请失败', 'cancel');
-                        console.log(angular.toJson(error));
+                        console.log('申请失败: ' + angular.toJson(error));
                     })
             }
 
