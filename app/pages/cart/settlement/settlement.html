@@ -287,7 +287,9 @@
                     <span class="custom_text_primary">{{c_name}}</span>
                     <!--<label name=""></label>-->
 
-                    <div class="more-coupon" ng-click="toggle_coupon(show_list)" ng-if="count_coupon != null && count_coupon.length > 0">
+                    <div class="more-coupon"
+                         ng-click="toggle_coupon(show_list)"
+                         ng-if="count_coupon != null && count_coupon.length > 0 && !isPieceGroup">
                         <span class="custom_text_primary">更多</span>
                         <div class="{{show_coupon_list(show_list) ? 'arrow-down' : 'arrow-up'}}">
                             <i></i>

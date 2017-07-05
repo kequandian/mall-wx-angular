@@ -310,10 +310,14 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 angular.forEach(checkedItems, function(v, k){
                     if(v.marketing == null && v.marketing_id == null){
                         isNormal++;
-                        newCartItems.push(v);
+                        newItem = v;
+                        newItem.fightGroupData={};
+                        newItem.wholesaleData={};
+                        newCartItems.push(newItem);
                     }else if(v.marketing != null && v.marketing_id != null){
                         isWholesale++;
                         newItem = v;
+                        newItem.fightGroupData={};
                         newItem.wholesaleData={};
                         newItem.wholesaleData.marketing = marketing;
                         newItem.wholesaleData.marketing_id = v.marketing_id;
@@ -321,8 +325,8 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     }
                 });
 
-                console.log('isNormal: ' + isNormal);
-                console.log('isWholesale: ' + isWholesale);
+                //console.log('isNormal: ' + isNormal);
+                //console.log('isWholesale: ' + isWholesale);
                 if(isNormal > 0 && isWholesale > 0){
                     $.toast('不能同时购买批发和普通类型的商品','cancel');
                     return;
@@ -333,7 +337,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
                 wCateCache.returnStatus = 'cart';
 
-                $rootScope.settle_product_code = $scope.checkedCarts;
+                $rootScope.settle_product_code = newCartItems;
                 $rootScope.settle_product_totalToPay = pay;
 
                 var newUrl = '#/cart-settlement';
@@ -342,7 +346,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 window.history.pushState(c_state, title, newUrl);
 
                 $state.go('cart-settlement', {
-                    carts: $scope.checkedCarts,
+                    carts: newCartItems,
                     totalToPay: pay,
                     totalFreight: freight
                 });
@@ -523,7 +527,8 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                             $scope.productFrieghts.province = $scope.currentContact.province;
                             $scope.productFrieghts.city = $scope.currentContact.city;
 
-                            if(JSON.stringify(settle_product_code[0].wholesaleData)=="{}"){
+                            if(JSON.stringify(settle_product_code[0].wholesaleData) == undefined
+                                || JSON.stringify(settle_product_code[0].wholesaleData)=="{}"){
                                 getFrieght();
                             }else{
                                 $scope.product_frieght = 0;
@@ -731,7 +736,9 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                             }
 
                             //下单前计算优惠信息
-                            if(JSON.stringify(settle_product_code[0].wholesaleData)=="{}"){
+                            console.log('xxxx: ' + angular.toJson(settle_product_code[0]))
+                            if(JSON.stringify(settle_product_code[0].wholesaleData) == undefined
+                                || JSON.stringify(settle_product_code[0].wholesaleData)=="{}"){
                                 coupon();
                             }else{
                                 $scope.count_coupon = null;
@@ -751,14 +758,15 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
             function coupon(){
                 var products = $scope.product_list;
                 var p_g_coupon_list=[];
+                $scope.isPieceGroup = false;
                 //console.log("products: " + angular.toJson(products));
                 CartFty.countCouponService(products)
                     .then(function(json){
                         if(json.status_code == 0){
-                            //console.log("获取下单前计算优惠信息：" + angular.toJson(json));
+                            console.log("获取下单前计算优惠信息：" + angular.toJson(json));
 
-                            if(JSON.stringify(settle_product_code[0].fightGroupData) == undefined
-                                || JSON.stringify(settle_product_code[0].fightGroupData) != "{}"){
+                            if(JSON.stringify(settle_product_code[0].fightGroupData) != undefined
+                                && JSON.stringify(settle_product_code[0].fightGroupData) != "{}"){
                                 if(pieceGroupCouponItem.id > 0){
                                     var p_d_coupon_item = null;
                                     angular.forEach(json.data, function(value, index){
@@ -768,9 +776,11 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                                     });
 
                                     if(p_d_coupon_item != null){
-                                        $scope.count_coupon = p_d_coupon_item;
-                                        $scope.c_name = $scope.count_coupon.coupon_name;
-                                        $scope.total_price = $scope.count_coupon.final_price + $scope.product_frieght;
+                                        p_g_coupon_list.push(p_d_coupon_item);
+                                        $scope.count_coupon = p_g_coupon_list;
+                                        $scope.isPieceGroup = true;
+                                        //$scope.c_name = $scope.count_coupon.coupon_name;
+                                        //$scope.total_price = $scope.count_coupon.final_price + $scope.product_frieght;
                                     }
 
                                 }else{
@@ -806,10 +816,16 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                                 //console.log("$scope.count_coupon: " + angular.toJson($scope.count_coupon));
                             }else{
                                 console.log(5);
-                                $scope.count_coupon = json.data;
+                                angular.forEach(json.data, function(value, index){
+                                    if(value.coupon_type != 'MARKETING_PIECE_GROUP'){
+                                        p_g_coupon_list.push(value);
+                                    }
+                                });
+                                $scope.count_coupon = p_g_coupon_list;
                             }
 
                             if($scope.count_coupon != null && $scope.count_coupon.length > 0){
+                                console.log("拼团idlist");
                                 if(AutoSelectCoupon.is_auto){
                                     $scope.c_name = $scope.count_coupon[0].coupon_name;
                                     $scope.count_coupon[0].$checked = true;

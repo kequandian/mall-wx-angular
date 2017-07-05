@@ -1026,7 +1026,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
             //取消按钮
             $scope.cancel_action = function(){
-                $state.go('authorizationPage');
+                $state.go('home.homePage');
             }
 
 
