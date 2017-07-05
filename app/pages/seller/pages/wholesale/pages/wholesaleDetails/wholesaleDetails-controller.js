@@ -91,7 +91,7 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                             $scope.wholesale_info = json.data;
                             product_id = json.data.product_id;
                             $scope.fare_info.is_incl_postage = 1;
-                            //console.log("商品批发详情: " + angular.toJson(json));
+                            console.log("商品批发详情: " + angular.toJson(json));
                         }else{
                             console.log("获取商品批发详情失败: " + angular.toJson(json));
                         }

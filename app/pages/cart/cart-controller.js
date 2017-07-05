@@ -763,7 +763,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 CartFty.countCouponService(products)
                     .then(function(json){
                         if(json.status_code == 0){
-                            console.log("获取下单前计算优惠信息：" + angular.toJson(json));
+                            //console.log("获取下单前计算优惠信息：" + angular.toJson(json));
 
                             if(JSON.stringify(settle_product_code[0].fightGroupData) != undefined
                                 && JSON.stringify(settle_product_code[0].fightGroupData) != "{}"){

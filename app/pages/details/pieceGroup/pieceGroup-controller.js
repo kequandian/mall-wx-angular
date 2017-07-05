@@ -567,7 +567,7 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                 PieceGroupFty.getFightGroupsDetailsService(id)
                     .then(function(json){
                         if(json.status_code == 0){
-                            //console.log(angular.toJson(json));
+                            //console.log('fightGroupsdetails: ' + angular.toJson(json));
                             $scope.fightGroupsdetails = json.data;
                             marketingId = json.data.id;
                             product_id = json.data.product_id;
