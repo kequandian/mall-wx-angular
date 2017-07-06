@@ -1131,8 +1131,8 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     .then(function(json){
                         if(json.status_code == 0){
 
-                            if(json.province != null && json.city != null && json.district != null){
-                                $scope.pcd = json.province + ' ' + json.city + ' ' + json.district
+                            if(json.data.province != null && json.data.city != null && json.data.district != null){
+                                $scope.pcd = json.data.province + ' ' + json.data.city + ' ' + json.data.district
                             }else{
                                 $scope.pcd = '';
                             }
