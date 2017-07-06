@@ -17,31 +17,33 @@
 
                     <div oc-lazy-load="FiveStar">
                         <p class="user-lv-text">
-                            <i ng-if="owner_balance.is_member">级别: &nbsp;</i>
+                            <div ng-if="owner_balance.is_member" style="width: 34px;font-size: 12px;float: left;">级别: &nbsp;</div>
                             <!--<span ng-if="owner_balance.is_seller">销售商&nbsp;</span>-->
                             <!--<span ng-if="owner_balance.is_agent">代理商&nbsp;</span>-->
                             <!--<span ng-if="owner_balance.is_partner">经销商</span>-->
-                            <i ng-if="lv_text(owner_balance.is_seller,owner_balance.is_agent,owner_balance.is_partner)">{{lv_name}}</i>
+                            <div
+                                    ng-if="lv_text(owner_balance.is_seller,owner_balance.is_agent,owner_balance.is_partner)"
+                                    style="width: 40px; font-size: 12px;float: left;">{{lv_name}}</div>
+
                             <!--<span class="five-star-parent" ng-if="owner_balance.is_agent==0 && owner_balance.is_partner">-->
 
-                            <i class="shop-icon" ng-if="owner_balance.is_physical">
-                                <img src="img/sellerPage/shop-status-icon.png">
-                            </i>
+                            <div class="shop-icon" ng-if="owner_balance.is_physical" style="width: 18px;  float: left">
+                                <img src="img/sellerPage/shop-status-icon.png"
+                                     style="width: 18px; height: 16px;margin-left:-2px; border-radius: 0;">
+                            </div>
 
-                            <i class="five-star-parent" ng-if="owner_balance.is_crown==false && owner_balance.is_seller && owner_balance.partner_level.level <= 6">
+                            <p class="five-star-parent" ng-if="owner_balance.is_crown==false && owner_balance.is_seller && owner_balance.partner_level.level <= 6">
                                 <five-star rank-src="lib/custom/img/yellow_star.png" src="lib/custom/img/white_star.png"
                                            style="margin-top:1px;"
                                            rank="{{owner_balance.partner_level.level}}"></five-star>
-                                <!--<level-progress style="margin-top:21px; margin-left: 2px;"
-                                                value="{{owner_balance.level_percent}}"></level-progress>-->
-                            </i>
+                            </div>
 
                             <!--<span ng-if="owner_balance.is_agent==0 && owner_balance.is_partner" style="margin-top:15px;font-size:9px">{{owner_balance.level_percent}}%</span>-->
 
-                            <i id="crown-parent" class="crown-parent" ng-if="owner_balance.is_crown">
-                            <!--<span class="crown-parent" ng-if="owner_balance.is_seller">-->
+                            <div id="crown-parent" class="crown-parent" ng-if="owner_balance.is_crown" style="width: 28px; float: left;margin-left:-3px;">
+                            <!--<div id="crown-parent" class="crown-parent" ng-if="false" style="width: 28px; float: left">-->
                                   <img src="img/sellerPage/crown.png" class="agent_crown_img">
-                            </i>
+                            </div>
                         </p>
                     </div>
 
