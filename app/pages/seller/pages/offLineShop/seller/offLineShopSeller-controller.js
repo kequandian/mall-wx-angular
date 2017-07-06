@@ -1117,11 +1117,31 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                             $scope.userInfo.uid = json.data.uid;
                             $scope.userInfo.real_name = json.data.real_name;
                             $scope.userInfo.phone = json.data.phone;
+                            getPcdInfo();
                         }else{
                             console.log('获取个人信息失败：' + angular.toJson(json));
                         }
                     }, function(error){
                         console.log('获取个人信息失败：' + angular.toJson(error));
+                    })
+            }
+
+            function getPcdInfo(){
+                SellerTeamFty.getOffLineSellerTeamsService()
+                    .then(function(json){
+                        if(json.status_code == 0){
+
+                            if(json.province != null && json.city != null && json.district != null){
+                                $scope.pcd = json.province + ' ' + json.city + ' ' + json.district
+                            }else{
+                                $scope.pcd = '';
+                            }
+
+                        }else{
+                            console.log('获取个人线下经销信息失败：' + angular.toJson(json));
+                        }
+                    }, function(error){
+                        console.log('获取个人线下经销信息失败：' + angular.toJson(error));
                     })
             }
 

@@ -1,45 +1,20 @@
 {
   "status_code": 0,
-  "data": [
-    {
-      "transferred": 1,
-      "my_recommended_sellers": [
-        {
-          "uid": "11111",
-          "transferred": 0,
-          "transferred_amount": 0,
-          "user_name": "11111",
-          "statistic_month": "2017-06-01",
-          "monthly_amount": 3000,
-          "settlement_proportion": 20,
-          "avatar": null,
-          "id": 85,
-          "monthly_settled_amount": 0,
-          "seller_id": 384
-        },
-        {
-          "uid": "22222",
-          "transferred": 0,
-          "transferred_amount": 0,
-          "user_name": "22222",
-          "statistic_month": "2017-06-01",
-          "monthly_amount": 3900,
-          "settlement_proportion": 20,
-          "avatar": null,
-          "id": 83,
-          "monthly_settled_amount": 0,
-          "seller_id": 385
-        }
-      ],
-      "transferred_amount": 138000,
-      "total_amount": 31310,
-      "statistic_month": "2017-06-01",
-      "monthly_amount": 10110,
-      "total_settled_amount": 1440,
-      "settlement_proportion": 20,
-      "id": 38,
-      "monthly_settled_amount": 1380,
-      "seller_id": 2
-    }
-  ]
+  "data": {
+    "parent_seller_id": null,
+    "parent": null,
+    "city": null,
+    "children_count": 0,
+    "user_name": "jingfei",
+    "total_settled_amount": 0,
+    "avatar": null,
+    "uid": "U011602090944090001",
+    "province": null,
+    "total_amount": 0,
+    "children": [],
+    "district": null,
+    "id": 90,
+    "created_date": "2017-07-03 16:58:07",
+    "seller_id": 2
+  }
 }
