@@ -268,15 +268,18 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             //立即付款
             $scope.weixin_pay = function (order) {
 
-                //console.log(angular.toJson(order))
-                //return;
-
-                if(order.payment_type == "POINT" && BalanceSession.balance >= order.totalPrice){
-                    window.location.href = '/app/payment/ppay/' + order.order_number;//积分
+                if(order.payment_type == "POINT"){
+                    if(BalanceSession.balance >= order.totalPrice){
+                        window.location.href = '/app/payment/ppay/' + order.order_number;//积分
+                    }else{
+                        $.alert('您的积分不足','提示');
+                    }
                 }else if(order.payment_type == "WECHAT"){
                     window.location.href = '/app/payment/wpay/' + order.order_number; //微信
                 }else{
-                    window.location.href = '/app/payment/wpay/' + order.order_number; //微信
+                    // default to wechat
+                    $.alert('支付异常请联系客服','提示');
+                    console.log("支付异常：" + angular.toJson(order));
                 }
 
             };
@@ -443,13 +446,18 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
             //立即付款
             $scope.weixin_pay = function (order) {
 
-                if(order.payment_type == "POINT" && BalanceSession.balance >= order.totalPrice){
-                    window.location.href = '/app/payment/ppay/' + order.order_number;//积分
+                if(order.payment_type == "POINT"){
+                    if(BalanceSession.balance >= order.totalPrice){
+                        window.location.href = '/app/payment/ppay/' + order.order_number;//积分
+                    }else{
+                        $.alert('您的积分不足','提示');
+                    }
                 }else if(order.payment_type == "WECHAT"){
                     window.location.href = '/app/payment/wpay/' + order.order_number; //微信
                 }else{
                     // default to wechat
-                    window.location.href = '/app/payment/wpay/' + order.order_number; //微信
+                    $.alert('支付异常请联系客服','提示');
+                    console.log("支付异常：" + angular.toJson(order));
                 }
             }
 
