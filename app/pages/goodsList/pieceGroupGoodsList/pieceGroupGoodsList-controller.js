@@ -17,7 +17,7 @@ angular.module('pieceGroupGoodsList.controller', ['pieceGroupGoodsList.service']
                         if(json.status_code == 0){
                             $scope.pieceGroupGoodsList = json.data.list;
                             $scope.coupon_item = $rootScope.pieceGroupCouponItem;
-                            //console.log(angular.toJson($scope.coupon_item));
+                            //console.log('免单拼团列表' + angular.toJson($scope.coupon_item));
                         }else{
                             console.log('获取免单商品信息失败：' + angular.toJson(json));
                         }
@@ -35,7 +35,7 @@ angular.module('pieceGroupGoodsList.controller', ['pieceGroupGoodsList.service']
 
 
             $scope.goToOpenGroup = function(item){
-                console.log('获取免单商品信息失败：' + angular.toJson(item));
+                //console.log('获取免单商品信息：' + angular.toJson(item));
                 $state.go('piecegroup',{pieceGroupId:item.id, masterId:0});
             };
 

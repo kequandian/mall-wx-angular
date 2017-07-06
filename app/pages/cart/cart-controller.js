@@ -799,7 +799,11 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                                                     p_g_coupon_list.push(value);
                                                 }
                                             });
-                                            $scope.count_coupon = p_g_coupon_list;
+                                            if(settle_product_code[0].fightGroupData.master_free == 1){
+                                                $scope.count_coupon = p_g_coupon_list;
+                                            }else{
+                                                $scope.count_coupon = null;
+                                            }
 
                                         }else if(settle_product_code[0].fightGroupData.coupon_usage == 2){
                                             console.log(4);
@@ -808,7 +812,11 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                                                     p_g_coupon_list.push(value);
                                                 }
                                             });
-                                            $scope.count_coupon = p_g_coupon_list;
+                                            if(settle_product_code[0].fightGroupData.master_free == 1){
+                                                $scope.count_coupon = p_g_coupon_list;
+                                            }else{
+                                                $scope.count_coupon = null;
+                                            }
                                         }
                                     }
                                 }

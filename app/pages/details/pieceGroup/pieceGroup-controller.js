@@ -452,16 +452,16 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                     }else{
                         console.log("开团");
                         p_item.marketing_id = $scope.fightGroupsdetails.id;
+                        p_item.fightGroupData.master_free = $scope.fightGroupsdetails.master_free;
                     }
                 }else{
                     console.log("普通购买");
                 }
                 p_info.push(p_item);
 
-                //console.log("$scope.fightGroupsdetails: " + angular.toJson($scope.fightGroupsdetails));
-                console.log("单前用户id: " + $rootScope.master_id);
-                console.log("活动id: " +  $scope.fightGroupsdetails.id);
-                console.log(angular.toJson(p_info));
+                //console.log("单前用户id: " + $rootScope.master_id);
+                //console.log("活动id: " +  $scope.fightGroupsdetails.id);
+                //console.log(angular.toJson(p_info));
                 //return;
 
                 var newUrl = '';
