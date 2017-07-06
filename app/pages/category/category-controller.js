@@ -487,7 +487,7 @@ angular.module('category.controller', ['category.service'])
                     .then(function(json){
                         if(json.status_code == 0){
 
-                            //console.log(angular.toJson(json.data));
+                            //console.log('拼团列表' + angular.toJson(json.data));
                             if(json.data.promoted_master != null){
                                 $scope.promotedMaster = json.data.promoted_master;
                                 $scope.promotedMaster.isMasterOrder = true;
