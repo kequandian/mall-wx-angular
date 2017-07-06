@@ -26,9 +26,9 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
 
             $scope.master_user_id = $rootScope.master_id;
 
-            console.log("product_id> " + product_id);
-            console.log("master_id> " + master_id);
-            console.log("user_id> " + $scope.master_user_id);
+            console.log("product_id > " + product_id);
+            console.log("团长 id > " + master_id);
+            console.log("用户 id > " + $scope.master_user_id);
 
             var marketingType = null;
             var marketingId = null;
@@ -448,6 +448,7 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                         }else{
                             p_item.marketing_id = $scope.master_item.id;
                         }
+                        //p_item.fightGroupData.isMasterFree = 1;
                     }else{
                         console.log("开团");
                         p_item.marketing_id = $scope.fightGroupsdetails.id;
@@ -567,7 +568,7 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                 PieceGroupFty.getFightGroupsDetailsService(id)
                     .then(function(json){
                         if(json.status_code == 0){
-                            //console.log('fightGroupsdetails: ' + angular.toJson(json));
+                            //console.log('拼团详情信息: ' + angular.toJson(json));
                             $scope.fightGroupsdetails = json.data;
                             marketingId = json.data.id;
                             product_id = json.data.product_id;
