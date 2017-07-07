@@ -1260,7 +1260,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                             }else if(json.message == "apply.already.exist"){
                                 showTips("您已提交授权，无需再提交");
                             }else if(json.message == "seller.already.physical"){
-                                showTips("授权失败，您已经是线下经销商");
+                                showTips("授权失败，您已经是星级经销商");
                             }
                             else {
                                 $.toast('授权失败', 'cancel');
