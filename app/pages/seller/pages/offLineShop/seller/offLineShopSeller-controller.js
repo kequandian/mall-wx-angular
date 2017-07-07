@@ -1250,7 +1250,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                         }else{
                             $.toast.prototype.defaults.duration = 2000;
                             if (json.message == 'user.already.crownship') {
-                                showTips("授权失败,该用户已经是皇冠级别");
+                                showTips("授权失败,您已经是皇冠经销商");
                             }else if(json.message == "invalid.real_name"){
                                 showTips("授权失败,真实姓名与被授权人个人信息上的不一致");
                             }else if(json.message == "real_name.is.empty"){
@@ -1259,7 +1259,10 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                                 showTips("授权失败,手机号码与被授权人个人信息上的不一致");
                             }else if(json.message == "apply.already.exist"){
                                 showTips("您已提交授权，无需再提交");
-                            }else {
+                            }else if(json.message == "seller.already.physical"){
+                                showTips("授权失败，您已经是星级经销商");
+                            }
+                            else {
                                 $.toast('授权失败', 'cancel');
                             }
                             console.log('授权失败: ' + angular.toJson(json));
