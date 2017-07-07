@@ -164,6 +164,16 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                 return false;
             };
 
+            //显示经销商星星
+            $scope.isSellerStar = function(isCrown, isSeller, level){
+
+                if(!isCrown && isSeller && 0 < level <= 6){
+                    return true;
+                }
+                return false;
+
+            };
+
 
             //推广二维码
             $scope.initQrcode = function (q_r_code) {

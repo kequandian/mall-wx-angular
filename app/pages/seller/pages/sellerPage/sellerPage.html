@@ -36,6 +36,7 @@
                             </div>
 
                             <div ng-if="!(owner_balance.is_crown) && owner_balance.is_seller && 0 < (owner_balance.partner_level.level) <= 6">
+                                <!--<div ng-if="isSellerStar(owner_balance.is_crown,owner_balance.is_seller,owner_balance.partner_level.level)">-->
                                 <div class="five-star-parent"
                                      oc-lazy-load="FiveStar">
                                     <five-star rank-src="lib/custom/img/yellow_star.png" src="lib/custom/img/white_star.png"
