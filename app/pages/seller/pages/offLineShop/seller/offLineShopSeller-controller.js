@@ -1259,7 +1259,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                                 showTips("授权失败,手机号码与被授权人个人信息上的不一致");
                             }else if(json.message == "apply.already.exist"){
                                 showTips("您已提交授权，无需再提交");
-                            }else if(json.message == "apply.already.exist"){
+                            }else if(json.message == "seller.already.physical"){
                                 showTips("授权失败，您已经是线下经销商");
                             }
                             else {
