@@ -31,9 +31,10 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
         }
     })
 
-    .controller('SellerPageController', ['$scope', '$state', '$rootScope', 'SellerPageFty', 'BalanceSession', 'UserInfo', 'DWStatus',
-        'withdrawBalance', 'cateLeftIndex','PointRate','GlobalVariable','wCateCache','WholesalePCDCode',
-        function ($scope, $state, $rootScope, SellerPageFty, BalanceSession, UserInfo, DWStatus, withdrawBalance, cateLeftIndex,
+    .controller('SellerPageController', ['$scope', '$state', '$rootScope','$ocLazyLoad',
+        'SellerPageFty', 'BalanceSession', 'UserInfo', 'DWStatus','withdrawBalance', 'cateLeftIndex','PointRate',
+        'GlobalVariable','wCateCache','WholesalePCDCode',
+        function ($scope, $state, $rootScope, $ocLazyLoad, SellerPageFty, BalanceSession, UserInfo, DWStatus, withdrawBalance, cateLeftIndex,
                   PointRate,GlobalVariable,wCateCache,WholesalePCDCode) {
 
             //title
