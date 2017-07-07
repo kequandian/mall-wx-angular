@@ -93,12 +93,18 @@
     margin-top: 7px;
 }
 
-#profile .user-detail .user-lv-text i{
+#profile .user-detail .user-lv-text p{
     float: left;
 }
 
 #profile .user-detail .user-lv-text .shop-icon{
     padding:0 0 0 3px;
+}
+
+#profile .user-detail .user-lv-text .shop-icon{
+    width: 18px;
+    height: 18px;
+    float: left;
 }
 
 #profile .user-detail .user-lv-text .shop-icon img{

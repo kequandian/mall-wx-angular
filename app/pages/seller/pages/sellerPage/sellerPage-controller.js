@@ -31,9 +31,10 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
         }
     })
 
-    .controller('SellerPageController', ['$scope', '$state', '$rootScope', 'SellerPageFty', 'BalanceSession', 'UserInfo', 'DWStatus',
-        'withdrawBalance', 'cateLeftIndex','PointRate','GlobalVariable','wCateCache','WholesalePCDCode',
-        function ($scope, $state, $rootScope, SellerPageFty, BalanceSession, UserInfo, DWStatus, withdrawBalance, cateLeftIndex,
+    .controller('SellerPageController', ['$scope', '$state', '$rootScope','$ocLazyLoad',
+        'SellerPageFty', 'BalanceSession', 'UserInfo', 'DWStatus','withdrawBalance', 'cateLeftIndex','PointRate',
+        'GlobalVariable','wCateCache','WholesalePCDCode',
+        function ($scope, $state, $rootScope, $ocLazyLoad, SellerPageFty, BalanceSession, UserInfo, DWStatus, withdrawBalance, cateLeftIndex,
                   PointRate,GlobalVariable,wCateCache,WholesalePCDCode) {
 
             //title
@@ -96,7 +97,7 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $scope.owner_balance = json.data;
-                            console.log('owner_balance: ' + angular.toJson($scope.owner_balance));
+                            //console.log('owner_balance: ' + angular.toJson($scope.owner_balance));
 
                             $scope.owner_balance.is_member = $scope.owner_balance.is_agent
                                 || $scope.owner_balance.is_partner

@@ -363,8 +363,6 @@
 
 #sellerPage .five-star-parent {
     /*position: absolute;*/
-    bottom: 2px;
-    padding-left: 2px;
 }
 
 #sellerPage .five-star-parent img{
@@ -377,6 +375,7 @@
 #sellerPage .crown-parent {
     /*position: absolute;*/
     /*bottom: 2px;*/
+    width: 28px;
     padding-left: 4px;
     margin-bottom: 1px;
 }
@@ -385,7 +384,7 @@
     width: 28px;
     height: auto;
     position: absolute;
-    bottom: -16px;
+    bottom: 0px;
 }
 
 .weui_grid:active {
