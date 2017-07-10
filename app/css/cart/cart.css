@@ -181,7 +181,7 @@
     margin-left: 5px;
 }
 #cart .cart-list li .item-info .item-title {
-    height: 23px;
+    height: auto;
     overflow:hidden;
     padding-right:10px;
     line-height:25px;

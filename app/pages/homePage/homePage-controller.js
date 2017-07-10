@@ -583,7 +583,7 @@ angular.module('homePage.controller', ['homePage.service'])
                             console.log("获取拼团商品信息: " + angular.toJson(json));
                         }
                     }, function(error){
-                        console.log(angular.toJson(error))
+                        console.log("获取拼团商品信息: " + angular.toJson(error));
                     })
             }
 
