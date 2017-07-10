@@ -92,6 +92,9 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                             product_id = json.data.product_id;
                             $scope.fare_info.is_incl_postage = 1;
                             //console.log("商品批发详情: " + angular.toJson(json));
+
+                            //商品详情
+                            detailsInfo();
                         }else{
                             console.log("获取商品批发详情失败: " + angular.toJson(json));
                         }
@@ -100,8 +103,6 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                     }).finally(function(){
                         //变更价格
                         //producePriceChange($scope.wholesale_info);
-                        //商品详情
-                        detailsInfo();
                         //获取省市区
                         //AllPCD();
                     })
@@ -114,7 +115,7 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $scope.details = json.data;
-                            //console.log(angular.toJson(json.data));
+                            //console.log("商品详情信息: " + angular.toJson(json.data));
 
                             $scope.details_stock_balance = $scope.details.stock_balance;
                             $scope.details_price = $scope.details.price;
@@ -175,6 +176,13 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                                     $scope.fare_info.default_amount = item.first_amount;
                                 }
                             })*/
+
+                            //商品描述
+                            if($scope.wholesale_info.description != null){
+                                $scope.description_info = $scope.wholesale_info.description;
+                            }else{
+                                $scope.description_info = $scope.details.description;
+                            }
 
                         } else {
                             if(json.message == 'product.is.offsell'){

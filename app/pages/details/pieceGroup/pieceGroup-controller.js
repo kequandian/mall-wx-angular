@@ -90,7 +90,7 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $scope.details = json.data;
-                            //console.log(angular.toJson(json.data));
+                            //console.log("商品详情信息: " + angular.toJson(json.data));
 
                             $scope.details_stock_balance = $scope.details.stock_balance;
                             $scope.details_price = $scope.details.price;
@@ -613,7 +613,12 @@ angular.module('pieceGroup.controller', ['pieceGroup.service'])
                                 $scope.promoted_masters = null;
                             }
 
-                            //console.log(angular.toJson($scope.promoted_masters));
+                            //商品描述
+                            if($scope.fightGroupsdetails.description != null){
+                                $scope.description_info = $scope.fightGroupsdetails.description;
+                            }else{
+                                $scope.description_info = $scope.fightGroupsdetails.product.description;
+                            }
 
                             //商品详情信息
                             detailsInfo();
