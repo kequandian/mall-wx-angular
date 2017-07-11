@@ -1745,15 +1745,20 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
     .controller('OffLineMessageInfoController', ['$scope','$state', 'SellerTeamFty',
         function ($scope,$state, SellerTeamFty) {
 
-
             document.title = "公告信息";
-
 
             getMessageInfo();
 
             function getMessageInfo(){
                 SellerTeamFty.getMessageInfoService()
                     .then(function(json){
+
+                        if(json.status_code == 0){
+                            //console.log('线下公告信息：' + angular.toJson(json));
+                            $scope.off_line_sys_message = json.data;
+                        }else{
+                            console.log('获取线下公告信息失败：' + angular.toJson(json))
+                        }
 
                     }, function(error){
                         console.log('获取线下公告信息失败：' + angular.toJson(error))

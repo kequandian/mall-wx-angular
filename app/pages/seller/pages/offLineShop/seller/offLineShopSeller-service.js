@@ -273,7 +273,7 @@ angular.module('sellerTeam.service', [])
             //获取线下公告信息
             getMessageInfoService: function () {
                 var deferred = $q.defer();
-                var url = GlobalVariable.SERVER_PATH + '/pcd?all=true';
+                var url = GlobalVariable.SERVER_PATH + "/physical_apply_tips?type=ANNOUNCE";
                 $http({
                     method: 'GET',
                     url: url,
