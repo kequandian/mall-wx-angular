@@ -6,7 +6,7 @@
             <img src="img/sellerPage/offLineShop/seller-team-member-img.png">
             <span class="title-name">团队朋友</span>
             <div class="team-count">
-                <span class="custom_flat_primary_medium">{{my_team.children.length > 0 ? my_team.children.length + ' 人' : '0 人'}}</span>
+                <span class="custom_flat_primary_medium">{{my_team_count > 0 ? my_team_count + ' 人' : '0 人'}}</span>
             </div>
         </div>
 
@@ -14,7 +14,7 @@
 
     <div class="sellerTeam-content">
 
-        <div class="t-m-item" ng-repeat="item in my_team.children">
+        <div class="t-m-item" ng-repeat="item in my_team">
             <div class="item-left">
                 <img ng-src="{{item.avatar}}">
             </div>

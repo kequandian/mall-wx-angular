@@ -11,8 +11,9 @@ angular.module('offLineShop.route',[])
                 }]
             }
         })
+            //经销团队
             .state('sellerTeam', {
-            url:'/sellerTeam',
+            url:'/sellerTeam/:levelstatus',
             templateUrl: 'pages/seller/pages/offLineShop/seller/sellerTeam.html',
             controller:'SellerTeamController',
             resolve: {
@@ -159,6 +160,20 @@ angular.module('offLineShop.route',[])
                 resolve: {
                     loadData: ['$ocLazyLoad', function ($ocLazyLoad) {
                         return $ocLazyLoad.load('SellerAuthorization');
+                    }]
+                }
+            })
+
+            /*
+             * 公告信息
+             * */
+            .state('offlinemessageInfo', {
+                url:'/offlinemessageInfo',
+                templateUrl: 'pages/seller/pages/offLineShop/seller/offLineMessageInfo.html',
+                controller:'OffLineMessageInfoController',
+                resolve: {
+                    loadData: ['$ocLazyLoad', function ($ocLazyLoad) {
+                        return $ocLazyLoad.load('OffLineMessageInfo');
                     }]
                 }
             })

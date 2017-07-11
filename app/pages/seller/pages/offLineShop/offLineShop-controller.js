@@ -8,9 +8,14 @@ angular.module('offLineShop.controller', ['offLineShop.service'])
             //title
             document.title = "线下门店";
 
+            //星级团队
+            $scope.star_team_action = function(){
+                $state.go('sellerTeam', {levelstatus: 'star'});
+            };
 
-            $scope.seller_team_action = function(){
-                $state.go('sellerTeam');
+            //皇冠团队
+            $scope.crwon_team_action = function(){
+                $state.go('sellerTeam', {levelstatus: 'crown'});
             };
 
             $scope.seller_authorization_action = function(){
@@ -34,6 +39,10 @@ angular.module('offLineShop.controller', ['offLineShop.service'])
             $scope.settlement_record_action = function(){
                 $state.go('settlementRecord');
             };
+            //公告信息
+            $scope.offline_message_info = function(){
+                $state.go('offlinemessageInfo');
+            }
 
         }])
 

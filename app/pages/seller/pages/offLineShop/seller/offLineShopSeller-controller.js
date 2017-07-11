@@ -3,18 +3,21 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
     /*
      * 经销团队
      * */
-    .controller('SellerTeamController', ['$scope', 'SellerTeamFty',
-        function ($scope, SellerTeamFty) {
+    .controller('SellerTeamController', ['$scope','$stateParams', 'SellerTeamFty',
+        function ($scope,$stateParams, SellerTeamFty) {
 
             //title
             document.title = "经销团队";
+
+            var level_status = $stateParams.levelstatus;
+
             myTeam();
             function myTeam(){
                 SellerTeamFty.getOffLineSellerTeamsService()
                     .then(function (json) {
                         if (json.status_code == 0) {
-                            $scope.my_team = json.data;
-                            //console.log(angular.toJson(json.data));
+                            //console.log("团队列表：" + angular.toJson(json.data));
+                            list_info(level_status,json.data);
                         }else{
                             console.log(angular.toJson(json.data));
                         }
@@ -22,6 +25,24 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                         $.toast('获取信息失败', 'cancel');
                         console.log(angular.toJson(error));
                     })
+            }
+
+            function list_info(status, json){
+
+                var newList = null;
+                if(status == 'star'){
+                    if(json.children != null){
+                        newList = json.children
+                    }
+                }else if(status == 'crown'){
+                    if(json.crown_children != null){
+                        newList = json.crown_children
+                    }
+                }
+                if(newList != null){
+                    $scope.my_team_count = newList.length;
+                    $scope.my_team = newList;
+                }
             }
 
         }])
@@ -1593,7 +1614,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
     /*
      * 我的推荐-查看明细
      * */
-    .controller('CheckTableDataController', ['$scope','$state','$stateParams', 'SellerTeamFty','UserInfo',
+    .controller('CheckTableDataController', ['$scope','$state','$stateParams', 'SellerTeamFty',
         function ($scope,$state,$stateParams, SellerTeamFty) {
 
 
@@ -1717,5 +1738,30 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
     }])
 
+
+    /*
+     * 公告信息
+     * */
+    .controller('OffLineMessageInfoController', ['$scope','$state', 'SellerTeamFty',
+        function ($scope,$state, SellerTeamFty) {
+
+
+            document.title = "公告信息";
+
+
+            getMessageInfo();
+
+            function getMessageInfo(){
+                SellerTeamFty.getMessageInfoService()
+                    .then(function(json){
+
+                    }, function(error){
+                        console.log('获取线下公告信息失败：' + angular.toJson(error))
+                    })
+            }
+
+
+
+        }])
 
 ;
