@@ -367,14 +367,47 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                     //取消操作
                 });
 
+            };
+
+            //取消待付款订单
+            $scope.all_cancel_pay_order = function(orderNumber){
+
+                $.confirm('', '确认要取消订单吗？', function () {
+                    OrderFty.cancelPayOrderService(orderNumber)
+                        .then(function (json) {
+                            $ocLazyLoad.load('Jquery').then(function () {
+                                $ocLazyLoad.load('JqueryWeUI').then(function () {
+
+                                    if (json.status_code == 0) {
+                                        //$state.go('order.all', {}, {reload: true});
+
+                                        angular.forEach($scope.order_list, function(v , k){
+                                            if(v.order_number == orderNumber){
+                                                $scope.order_list.splice(k,1);
+                                            }
+                                        });
+
+                                        $.toast('移除成功');
+
+                                    } else {
+                                        $.toast('移除失败', 'cancel');
+                                    }
+                                })
+                            })
+                        }, function (error) {
+                            console.log(angular.toJson(error));
+                        })
+                }, function () {
+                    //取消操作
+                });
             }
 
 
         }])
 
     /* 待付款 */
-    .controller('payController', ['$scope', '$state', '$rootScope', '$timeout', 'OrderFty', 'OrderCommon','BalanceSession',
-        function ($scope, $state, $rootScope, $timeout, OrderFty, OrderCommon, BalanceSession) {
+    .controller('payController', ['$scope', '$state', '$rootScope', '$timeout','$ocLazyLoad', 'OrderFty', 'OrderCommon','BalanceSession',
+        function ($scope, $state, $rootScope, $timeout,$ocLazyLoad, OrderFty, OrderCommon, BalanceSession) {
 
             $rootScope.orderTabsIndex = 2;
             //$.showLoading("正在加载...");
@@ -459,6 +492,38 @@ angular.module('my.order.controller', ['my.order.service', 'order.common'])
                     $.alert('支付异常请联系客服','提示');
                     console.log("支付异常：" + angular.toJson(order));
                 }
+            }
+
+            //取消待付款订单
+            $scope.cancel_pay_order = function(orderNumber){
+
+                $.confirm('', '确认要取消订单吗？', function () {
+                    OrderFty.cancelPayOrderService(orderNumber)
+                        .then(function (json) {
+                            $ocLazyLoad.load('Jquery').then(function () {
+                                $ocLazyLoad.load('JqueryWeUI').then(function () {
+
+                                    if (json.status_code == 0) {
+                                        //$state.go('order.all', {}, {reload: true});
+                                        angular.forEach($scope.payList, function(v , k){
+                                            if(v.order_number == orderNumber){
+                                                $scope.payList.splice(k,1);
+                                            }
+                                        });
+
+                                        $.toast('移除成功');
+
+                                    } else {
+                                        $.toast('移除失败', 'cancel');
+                                    }
+                                })
+                            })
+                        }, function (error) {
+                            console.log(angular.toJson(error));
+                        })
+                }, function () {
+                    //取消操作
+                });
             }
 
         }])
