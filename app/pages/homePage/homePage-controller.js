@@ -69,7 +69,7 @@ angular.module('homePage.controller', ['homePage.service'])
             }else if(value.indexOf('details') >= 0){
                 return 'details({productId:' + id + '})';
             }
-            return "#";
+            return value;
 
         }
     })    
@@ -599,6 +599,49 @@ angular.module('homePage.controller', ['homePage.service'])
                     }, function(error){
                         console.log('获取个人信息失败：', angular.toJson(error));
                     })
+            }
+
+            //页面广告跳转
+            $scope.ad_banner_url_action = function(url){
+                if(url==null || url===undefined || url.length==0){
+                    return;
+                }
+                var n = url.lastIndexOf('/');
+                var id = url.substr(n + 1, url.length);
+
+                if(url.indexOf('category') >= 0){
+                    console.log(1);
+                    if(url.indexOf('pieceGroup') >= 0){
+                        console.log(2);
+                        $state.go('home.category',{categoryId:-1,categoryType:'pieceGroup'});
+                    }else{
+                        console.log(3);
+                        if(id > 0){
+                            console.log(4);
+                            $state.go('home.category',{categoryId:id,categoryType:'default'});
+                        }else{
+                            console.log(5);
+                            $state.go('home.category',{categoryId:-1,categoryType:'default'});
+                        }
+                    }
+                }else if(url.indexOf('details') >= 0){
+                    console.log(6);
+                    $state.go('details',{productId:id});
+                }
+            };
+
+            //判断广告是否是详情页跳转
+            $scope.isDetailsPage = function(url){
+
+                if(url==null || url===undefined || url.length==0){
+                    return  '#';
+                }
+
+                if(url.indexOf('details') >= 0){
+                    return '#'
+                }
+                return url;
+
             }
 
 
