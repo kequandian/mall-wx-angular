@@ -399,7 +399,7 @@ angular.module('category.controller', ['category.service'])
                 //console.log("content12345:"+angular.toJson(content));
                 if(content.sub_categories.length > 0){
                     angular.forEach(content.sub_categories,function(v, k){
-                        li_width = li_width + (v.name.length * 15 + 20) + 3;
+                        li_width = li_width + (v.name.length * 15 + 22) + 3;
                     });
                     //var count = content.sub_categories.length * 105 + 5;
                     //count = "width:" + count + "px;";

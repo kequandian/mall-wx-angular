@@ -5,6 +5,7 @@ angular.module('category.service', [])
             categoryService: function () {
                 var deferred = $q.defer();
                 var url = GlobalVariable.SERVER_PATH + "/product_category";
+                //var url = "http://www.shufamy.com/rest/product_category";
                 $http.get(url,{
                     headers: {
                         'Authorization': GlobalVariable.ACCESS_TOKEN
