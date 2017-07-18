@@ -610,22 +610,16 @@ angular.module('homePage.controller', ['homePage.service'])
                 var id = url.substr(n + 1, url.length);
 
                 if(url.indexOf('category') >= 0){
-                    console.log(1);
                     if(url.indexOf('pieceGroup') >= 0){
-                        console.log(2);
                         $state.go('home.category',{categoryId:-1,categoryType:'pieceGroup'});
                     }else{
-                        console.log(3);
                         if(id > 0){
-                            console.log(4);
                             $state.go('home.category',{categoryId:id,categoryType:'default'});
                         }else{
-                            console.log(5);
                             $state.go('home.category',{categoryId:-1,categoryType:'default'});
                         }
                     }
                 }else if(url.indexOf('details') >= 0){
-                    console.log(6);
                     $state.go('details',{productId:id});
                 }
             };
