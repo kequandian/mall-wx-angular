@@ -1650,8 +1650,8 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
     /*
      * 申请经销商二维码
      * */
-    .controller('AuthorizationQRCodeController', ['$scope','$state','$stateParams', 'SellerTeamFty',
-        function ($scope,$state,$stateParams, SellerTeamFty) {
+    .controller('AuthorizationQRCodeController', ['$scope','$state','$stateParams', 'SellerTeamFty','QRCodeUrlParams',
+        function ($scope,$state,$stateParams, SellerTeamFty,QRCodeUrlParams) {
 
 
             document.title = "申请二维码";
@@ -1665,10 +1665,14 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
             initCode();
 
             function initCode(){
-                recommender_id = $stateParams.recommenderId;
+                /*recommender_id = $stateParams.recommenderId;
                 //recommender_name = $stateParams.recommenderName;
                 type_status = $stateParams.typeStatus;
-                apply_status = $stateParams.applyStatus;
+                apply_status = $stateParams.applyStatus;*/
+                recommender_id = QRCodeUrlParams.recommenderId;
+                //recommender_name = $stateParams.recommenderName;
+                type_status = QRCodeUrlParams.typeStatus;
+                apply_status = QRCodeUrlParams.applyStatus;
                 if(type_status == 'crown'){
                     $scope.isCrownApply = '请通知被授权人扫码加入皇冠经销商';
                 }else if(type_status == 'star'){
@@ -1708,6 +1712,8 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                         fallbackRUL = '?fallback=applynotice-'+ recommender_id +'-'+ apply_status +'-'+ type_status;
                     }*/
                 }
+
+                console.log(newLocalURL);
 
                 var divhtml = document.getElementById("dituContent");
                 var invitationUrl = newLocalURL;
