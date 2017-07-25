@@ -88,7 +88,7 @@ angular.module('homePage.controller', ['homePage.service'])
         function ($scope, $rootScope, $state, HomePageFty, areasStatus, goodListParams, $anchorScroll, $ocLazyLoad,
                   cateLeftIndex,$timeout,PointRate,BalanceSession,cateCacheCode,sysAnn) {
 
-
+            document.title = HomePageFty.getMallName();
 
             $scope.point_rate = PointRate.rate;
 
@@ -649,7 +649,7 @@ angular.module('homePage.controller', ['homePage.service'])
     .controller('SystemAnnouncementController', ['$scope', '$rootScope', '$state', 'HomePageFty','$ocLazyLoad','sysAnn',
     function ($scope, $rootScope, $state, HomePageFty,$ocLazyLoad,sysAnn) {
 
-
+        document.title = HomePageFty.getMallName();
 
         $ocLazyLoad.load('Jquery').then(function () {
             $ocLazyLoad.load('JqueryWeUI').then(function () {
