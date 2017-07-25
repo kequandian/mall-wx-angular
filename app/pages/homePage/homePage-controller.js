@@ -443,10 +443,14 @@ angular.module('homePage.controller', ['homePage.service'])
                 //default category params
                 //cateCacheCode.index_first=index;
                 //cateCacheCode.index_second=0;
+                var newItem = item;
+                newItem.sub_categories = [];
+                newItem.products = null;
+                //return;
 
                 cateCacheCode.cate_session=-1;
                 cateCacheCode.second_cate=null;
-                cateCacheCode.product_list=item;
+                cateCacheCode.product_list=newItem;
                 cateCacheCode.product_id=-1;
                 cateCacheCode.loading=false;
                 cateCacheCode.load_more_btn_show= true;

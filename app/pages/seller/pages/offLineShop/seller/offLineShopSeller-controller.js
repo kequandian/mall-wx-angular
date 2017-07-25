@@ -1670,7 +1670,6 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 type_status = $stateParams.typeStatus;
                 apply_status = $stateParams.applyStatus;*/
                 recommender_id = QRCodeUrlParams.recommenderId;
-                //recommender_name = $stateParams.recommenderName;
                 type_status = QRCodeUrlParams.typeStatus;
                 apply_status = QRCodeUrlParams.applyStatus;
                 if(type_status == 'crown'){
