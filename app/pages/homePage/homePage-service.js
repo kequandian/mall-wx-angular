@@ -43,7 +43,11 @@ angular.module('homePage.service', [])
                     return GlobalVariable.FOLLOW_US_URL;
                 },
 
-                // »ñÈ¡·ÖÏúÓà¶îÊý¾Ý
+                getMallName: function() {
+                    return GlobalVariable.MALL_NAME;
+                },
+
+                // ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 getBalanceService: function () {
                     var deferred = $q.defer();
                     var url = GlobalVariable.SERVER_PATH + "/owner_balance";
@@ -60,7 +64,7 @@ angular.module('homePage.service', [])
                     return deferred.promise;
                 },
 
-                // »ñÈ¡·ÖÏúÓà¶îÊý¾Ý
+                // ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 getSystemAnnouncementService: function () {
                     var deferred = $q.defer();
                     var url = GlobalVariable.SERVER_PATH + "/system_announcement";
@@ -77,7 +81,7 @@ angular.module('homePage.service', [])
                     return deferred.promise;
                 },
 
-                // ¼ì²é¸ÃÓÃ»§ÊÇ·ñÓÐÎ´¼¤»îµÄÓÅ»Ý¾í
+                // ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å»Ý¾ï¿½
                 getCouponNotifyService: function () {
                     var deferred = $q.defer();
                     var url = GlobalVariable.SERVER_PATH + "/coupon_notify";
@@ -94,7 +98,7 @@ angular.module('homePage.service', [])
                     return deferred.promise;
                 },
 
-                // »ñÈ¡Æ´ÍÅÐÅÏ¢
+                // ï¿½ï¿½È¡Æ´ï¿½ï¿½ï¿½ï¿½Ï¢
                 getHomeFightGroupsService: function () {
                     var deferred = $q.defer();
                     var url = GlobalVariable.SERVER_PATH + "/piece_group_purchase?pageNumber=1&pageSize=10";
@@ -111,7 +115,7 @@ angular.module('homePage.service', [])
                     return deferred.promise;
                 },
 
-                // »ñÈ¡¸öÈËÐÅÏ¢
+                // ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
                 homePageGetUserInfoService: function () {
                     var deferred = $q.defer();
                     var url = GlobalVariable.SERVER_PATH + "/profile";
