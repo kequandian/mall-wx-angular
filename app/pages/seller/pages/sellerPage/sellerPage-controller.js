@@ -70,11 +70,20 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                     $rootScope.profile_session = {}
                 }
 
+                if(localStorage['registerDate'] != null){
+                    localStorage.removeItem('registerDate');
+                }
+                if(localStorage['recommenderId'] != null){
+                    localStorage.removeItem('recommenderId');
+                }
+
                 if (!loaded) {
                     SellerPageFty.sellerUserInfoService()
                         .then(function (json) {
                             if (json.status_code == 0) {
                                 $scope.userInfo = json.data;
+                                localStorage['registerDate'] = $scope.userInfo.register_date;
+                                localStorage['recommenderId'] = $scope.userInfo.uid;
                                 //console.log('userInfo: ' + angular.toJson($scope.userInfo));
                                 UserInfo.register_date = $scope.userInfo.register_date;
                                 UserInfo.recommender_id = $scope.userInfo.uid;

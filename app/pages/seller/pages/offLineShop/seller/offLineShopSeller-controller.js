@@ -201,11 +201,13 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
     /*
      * 我的推荐
      * */
-    .controller('MyRecommendController', ['$scope','$state','$filter', 'SellerTeamFty','UserInfo',
-        function ($scope,$state,$filter, SellerTeamFty, UserInfo) {
+    .controller('MyRecommendController', ['$scope','$state','$filter', 'SellerTeamFty',
+        function ($scope,$state,$filter, SellerTeamFty) {
 
             //title
             document.title = "我的推荐";
+
+            var register_date = localStorage['registerDate'];
 
             // 年月
             $scope.yearDefault = getDefaultYears();
@@ -227,13 +229,13 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
                 var years = [];
 
-                var registered = !(UserInfo.register_date === undefined || UserInfo.register_date == null || UserInfo.register_date.length == 0);
+                var registered = !(register_date === undefined || register_date == null || register_date.length == 0);
                 var curYear = new Date().getYear() + 1900;
-                var regDate = registered ? fixIOSDate(UserInfo.register_date) : new Date();
+                var regDate = registered ? fixIOSDate(register_date) : new Date();
                 var regYear = regDate.getYear() + 1900;
 
                 if(isNaN(regDate)) {
-                    years.push({key: 1900, value: UserInfo.register_date});
+                    years.push({key: 1900, value: register_date});
                     years.push({key: curYear, value: curYear + '年'});
                 }
 
@@ -256,8 +258,8 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 //    return defaultMons;
                 //}
 
-                var registered = !(UserInfo.register_date === undefined || UserInfo.register_date == null || UserInfo.register_date.length == 0);
-                var regDate = registered ? fixIOSDate(UserInfo.register_date) : new Date();
+                var registered = !(register_date === undefined || register_date == null || register_date == 0);
+                var regDate = registered ? fixIOSDate(register_date) : new Date();
                 var regMonth = regDate.getMonth();
                 var regYear = regDate.getYear() + 1900;
 
@@ -1644,14 +1646,13 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     })
             }
 
-
     }])
 
     /*
      * 申请经销商二维码
      * */
-    .controller('AuthorizationQRCodeController', ['$scope','$state','$stateParams', 'SellerTeamFty','QRCodeUrlParams',
-        function ($scope,$state,$stateParams, SellerTeamFty,QRCodeUrlParams) {
+    .controller('AuthorizationQRCodeController', ['$scope','$state','$stateParams', 'SellerTeamFty',
+        function ($scope,$state,$stateParams, SellerTeamFty) {
 
 
             document.title = "申请二维码";
@@ -1665,13 +1666,10 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
             initCode();
 
             function initCode(){
-                /*recommender_id = $stateParams.recommenderId;
+                recommender_id = $stateParams.recommenderId;
                 //recommender_name = $stateParams.recommenderName;
                 type_status = $stateParams.typeStatus;
-                apply_status = $stateParams.applyStatus;*/
-                recommender_id = QRCodeUrlParams.recommenderId;
-                type_status = QRCodeUrlParams.typeStatus;
-                apply_status = QRCodeUrlParams.applyStatus;
+                apply_status = $stateParams.applyStatus;
                 if(type_status == 'crown'){
                     $scope.isCrownApply = '请通知被授权人扫码加入皇冠经销商';
                 }else if(type_status == 'star'){
@@ -1742,7 +1740,6 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
 
 
     }])
-
 
     /*
      * 公告信息

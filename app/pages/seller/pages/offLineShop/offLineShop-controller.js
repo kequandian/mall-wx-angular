@@ -51,8 +51,8 @@ angular.module('offLineShop.controller', ['offLineShop.service'])
     /*
      * 经销授权nav
      * */
-    .controller('AuthorizationPageController', ['$scope','$state','$filter','OffLineShopFty','UserInfo','QRCodeUrlParams',
-        function ($scope, $state,$filter,OffLineShopFty,UserInfo,QRCodeUrlParams) {
+    .controller('AuthorizationPageController', ['$scope','$state','OffLineShopFty',
+        function ($scope, $state,OffLineShopFty) {
 
             document.title = "经销授权";
 
@@ -62,11 +62,8 @@ angular.module('offLineShop.controller', ['offLineShop.service'])
             //进入皇冠经销授权页
             $scope.crown_seller_authorization_action = function(){
                 type_status = 'crown';
-                QRCodeUrlParams.recommenderId = UserInfo.recommender_id;
-                QRCodeUrlParams.typeStatus = type_status;
-                QRCodeUrlParams.applyStatus = 'rec';
                 $state.go('authorizationqrcode',{
-                    recommenderId: UserInfo.recommender_id,
+                    recommenderId: localStorage['recommenderId'],
                     typeStatus: type_status,
                     applyStatus: 'rec'
                 });
@@ -81,11 +78,8 @@ angular.module('offLineShop.controller', ['offLineShop.service'])
             //进入星级经销授权页
             $scope.star_seller_authorization_action = function(){
                 type_status = 'star';
-                QRCodeUrlParams.recommenderId = UserInfo.recommender_id;
-                QRCodeUrlParams.typeStatus = type_status;
-                QRCodeUrlParams.applyStatus = 'rec';
                 $state.go('authorizationqrcode',{
-                    recommenderId: UserInfo.recommender_id,
+                    recommenderId: localStorage['recommenderId'],
                     typeStatus: type_status,
                     applyStatus: 'rec'
                 });
