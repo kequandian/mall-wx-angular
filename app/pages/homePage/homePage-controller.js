@@ -167,7 +167,6 @@ angular.module('homePage.controller', ['homePage.service'])
 
             //获取推荐商品
             if ($rootScope.rec_session.rec_product.length == 0) {
-
                 $rootScope.rec_session.loading_in_progress = true;
                 getRecommendProduct(page_number, PAGE_SIZE);
 
@@ -445,7 +444,6 @@ angular.module('homePage.controller', ['homePage.service'])
                 //cateCacheCode.index_second=0;
                 var newItem = item;
                 newItem.sub_categories = [];
-                newItem.products = null;
                 //return;
 
                 cateCacheCode.cate_session=-1;
