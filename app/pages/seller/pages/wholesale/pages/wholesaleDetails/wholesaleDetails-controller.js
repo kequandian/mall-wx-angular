@@ -200,6 +200,24 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
                     })
             }
 
+            //星级经销价
+            $scope.wholesale_price = function(price, wholesaleUnit, productUnit){
+                if(wholesaleUnit === undefined || wholesaleUnit === null || wholesaleUnit == ""){
+                    return '星级经销价: ' + price + '/' + productUnit
+                }else{
+                    return '星级经销价: ' + price + '/' + wholesaleUnit
+                }
+            };
+
+            //现零售价
+            $scope.retail_price = function(price, wholesaleUnit, productUnit){
+                if(wholesaleUnit === undefined || wholesaleUnit === null || wholesaleUnit == ""){
+                    return '现零售价: ' + price + '/' + productUnit
+                }else{
+                    return '现零售价: ' + price + '/' + wholesaleUnit
+                }
+            };
+
             //获取快递公司
             function expressInfo(){
                 WholesaleDetailsFty.expressSerivce()
