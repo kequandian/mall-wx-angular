@@ -41,7 +41,8 @@
         'wholesale.route',
         'wholesaleGoodsList.route',
         'wholesaleDetails.route',
-        'addWholesaleAddress.route'
+        'addWholesaleAddress.route',
+        'myAgent.route'
 
     ]).config(["$urlRouterProvider", '$ocLazyLoadProvider','$locationProvider',
         function ($urlRouterProvider, $ocLazyLoadProvider,$locationProvider) {
@@ -354,6 +355,36 @@
                     files: ['pages/seller/pages/offLineShop/seller/offLineShopSeller-controller.js',
                         'pages/seller/pages/offLineShop/seller/offLineShopSeller-service.js',
                         {type: 'css', path: 'css/sellerPage/offlineSeller/offLineMessageInfo.css'}],
+                    cache: false
+                }, {
+                    name: 'MyAgent',
+                    files: ['pages/seller/pages/myAgent/myAgent-controller.js',
+                        'pages/seller/pages/myAgent/myAgent-service.js',
+                        {type: 'css', path: 'css/sellerPage/myAgent.css'}],
+                    cache: false
+                }, {
+                    name: 'CommissionPage',
+                    files: ['pages/seller/pages/myAgent/pages/myAgentSubPage-controller.js',
+                        'pages/seller/pages/myAgent/pages/myAgentSubPage-service.js',
+                        {type: 'css', path: 'css/sellerPage/myAgent/commissionPage.css'}],
+                    cache: false
+                }, {
+                    name: 'CommissionPageLookupTable',
+                    files: ['pages/seller/pages/myAgent/pages/myAgentSubPage-controller.js',
+                        'pages/seller/pages/myAgent/pages/myAgentSubPage-service.js',
+                        {type: 'css', path: 'css/sellerPage/myAgent/commissionPageLookupTable.css'}],
+                    cache: false
+                }, {
+                    name: 'CommissionCheckTable',
+                    files: ['pages/seller/pages/myAgent/pages/myAgentSubPage-controller.js',
+                        'pages/seller/pages/myAgent/pages/myAgentSubPage-service.js',
+                        {type: 'css', path: 'css/sellerPage/myAgent/commissionPageCheckTableData.css'}],
+                    cache: false
+                }, {
+                    name: 'ComPageSettlementRecord',
+                    files: ['pages/seller/pages/myAgent/pages/myAgentSubPage-controller.js',
+                        'pages/seller/pages/myAgent/pages/myAgentSubPage-service.js',
+                        {type: 'css', path: 'css/sellerPage/myAgent/commissionPageSettlementRecord.css'}],
                     cache: false
                 }
 

@@ -1,0 +1,39 @@
+<div id="comPageSettlementRecord">
+
+    <div class="my-recommend-content">
+
+        <div class="item-stable custom_titlebar_primary">
+
+            <select class="weui_select year" ng-options="i.key as i.value for i in yearDefault" ng-model="year"
+                    ng-init="year=thisYear" ng-change="selectedYearAction()" ng-if="false">
+            </select>
+            结算明细
+            <select class="weui_select mon" ng-options="i.key as i.value for i in monDefault" ng-model="mon"
+                    ng-init="mon=thisMon" ng-change="getExchangeRecordAction()" ng-if="false">
+            </select>
+
+        </div>
+
+        <div class="record-content">
+
+            <div class="settlement_record_null" ng-if="settlement_record_list.length == 0">没有结算记录</div>
+
+            <div class="list-item"
+                 ng-repeat="item in settlement_record_list"
+                 ng-if="settlement_record_list.length > 0">
+            <!--<div class="list-item">-->
+                <div class="item-left">
+                    <span>{{convert_date(item.statistic_month)}}</span>
+                </div>
+                <div class="item-right">
+                    <span>提成金额:
+                        <i style="color: #C50303;">{{item.monthly_settled_amount > 0 ? '￥'+(item.monthly_settled_amount | number:2):'0'}}
+                        </i></span>
+                    <span style="margin-left: 10px;">已转换积分: <i style="color: #C50303;">{{item.transferred_amount | number:0}}</i></span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

@@ -1,7 +1,7 @@
 angular.module('myAgent.service', [])
     .factory('MyAgentFty', ['$http','$q','GlobalVariable', function($http,$q,GlobalVariable) {
         return{
-            // 获取更新数据数据
+            // 获取我的代理数据
             myAgentService: function () {
                 var deferred = $q.defer();
                 var url = GlobalVariable.SERVER_PATH + "/product_favorite";

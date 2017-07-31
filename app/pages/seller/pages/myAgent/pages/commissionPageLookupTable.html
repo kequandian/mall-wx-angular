@@ -1,0 +1,28 @@
+<div id="comPagelookupTable">
+
+    <div class="my-recommend-content">
+
+        <div class="lookup-table-list" style="position: fixed; height: 44px;" >
+            <div class="table-item custom_titlebar_primary"  style="height: 44px;" >
+                <div class="item-content" style="color:white;">
+                    <div class="content-left" style="border-right: 1px solid  #884b7c;"><span>回款金额</span></div>
+                </div>
+                <div class="item-content" style="color:white; line-height: 44px;">
+                    <span>提成比例</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lookup-table-list">
+            <div class="table-item table-item-bg" style="margin-top: 4px;" ng-repeat="item in physical_proportion_list">
+                <div class="item-content">
+                    <div class="content-left" style="border-right: 1px solid  #B2B3B5;"><span>{{convert_amount(item.min_amount,item.max_amount)}}</span></div>
+                </div>
+                <div class="item-content">
+                    <span>{{item.percentage}}%</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

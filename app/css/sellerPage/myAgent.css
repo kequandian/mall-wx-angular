@@ -3,50 +3,42 @@
     height: 100%;
 }
 
-#myAgent .myAgent-title-img img{
+#myAgent .myAgent-content{
     width: 100%;
-    height: 160px;
-    position: fixed;
+    height: auto;
 }
 
-#myAgent #myAgent-content{
-    margin: 0 5px 5px 5px;
-    overflow-x: hidden;
-    overflow-y: scroll;
+#myAgent .myAgent-content .content-item{
+    width: 100%;
+    height: 42px;
+    line-height: 42px;
+    position: relative;
+    border-bottom: 1px solid #cccccc;
+    background-color: white;
 }
 
-#myAgent-content .item-stable{
-    height: 38px;
-    line-height: 38px;
-    background-color: #F1F1F1;
-    border-top: 1px solid #710909;
-    border-left: 1px solid #710909;
-    border-right: 1px solid #710909;
-    /*border-bottom: 1px solid #710909;*/
-    padding-left: 10px;
-}
-
-#myAgent-content .active{
-    background-color: #DDDDDD;
-}
-
-#myAgent-content .item-arrow-right{
+#myAgent .myAgent-content .content-item img{
     width: 20px;
     height: 20px;
-    font-size: 35px;
-    float: right;
-    margin-top: 7px;
-    margin-right: 10px;
-    background-size: 20px 20px;
-    background-repeat: no-repeat;
-    background-image: url(../../img/sellerPage/commission/item-arrow.png);
+    position: absolute;
+    top:11px;
+    left:10px;
 }
 
-#myAgent-content .item-accordion{
-    background-color: white;
-    padding: 5px;
-    /*border-top: 1px solid #710909;*/
-    border-left: 1px solid #710909;
-    border-right: 1px solid #710909;
-    /*border-bottom: 1px solid #710909;*/
+#myAgent .myAgent-content .content-item span{
+    height: 42px;
+    position: absolute;
+    font-size: 14px;
+    left:40px;
+}
+
+#myAgent .myAgent-content .content-item i{
+    width: 16px;
+    height: 16px;
+    background-size: 8px 16px;
+    background-repeat: no-repeat;
+    background-image: url(../../img/sellerPage/offLineShop/arrow.png);
+    position: absolute;
+    top: 13px;
+    right: 0px;
 }

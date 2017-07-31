@@ -1,4 +1,4 @@
-angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session'])
+angular.module('sellerPage.controller', ['sellerPage.service'])
     /*.directive('bindJavascript', function () {
      return {
      restrict: 'A',
@@ -312,6 +312,11 @@ angular.module('sellerPage.controller', ['sellerPage.service', 'seller.session']
                         console.log('获取商品批发信息失败: ' + angular.toJson(error));
                     })*/
             };
+
+            //我的代理
+            $scope.my_agent = function(){
+                $state.go('myAgent');
+            }
 
         }])
 

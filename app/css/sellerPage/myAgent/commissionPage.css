@@ -1,0 +1,244 @@
+#commissionPage{
+    width: 100%;
+    height: 100%;
+}
+
+#commissionPage .promotionOrder-content{
+}
+
+#commissionPage .item-stable{
+    height: 44px;
+    line-height: 44px;
+    color:white;
+    /*background-color: #C50303;*/
+    text-align: center;
+}
+
+/*#commissionPage .active{
+    background-color: #C50303;
+}*/
+
+#commissionPage .item-arrow-right{
+    width: 20px;
+    height: 20px;
+    font-size: 35px;
+    float: right;
+    margin-top: 9px;
+    margin-right: 10px;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-image: url(../../../img/sellerPage/orders/order-item-arrow.png);
+}
+
+#commissionPage .item-accordion{
+    background-color: white;
+    padding-top: 6px;
+    /*padding: 5px;*/
+}
+
+#commissionPage .orders-count .check-table{
+    width: 46%;
+    float: right;
+    color:white;
+}
+
+#commissionPage .orders-count .check-table .check-table-text{
+    padding: 4px 10px;
+    border-radius: 5px;
+}
+
+#commissionPage .order-item-explain{
+    font-size: 12px;;
+    line-height: 20px;
+    color:#A3A3A3;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 5px;
+    float: none;
+}
+
+#commissionPage .order-list{
+    margin-top: 8px;
+    background-color: white;
+    margin-bottom: 5px;
+}
+
+#commissionPage .order-list-item{
+    /*border-top: 1px solid #cccccc;*/
+    border-bottom: 1px solid #cccccc;
+    padding:7px;
+    /*margin-top: 5px;*/
+    /*margin-bottom: 5px;*/
+    background-color: #E9EDEE;
+    color: #5D696B;
+    font-size: 13px;
+    border-bottom: 1px solid #cccccc;
+}
+
+#commissionPage .order-list-item .p-order-number{
+    height: 22px;
+}
+
+/*#commissionPage .order-list-item .p-order-type{*/
+/*}*/
+
+/*#commissionPage .order-list-item .p-order-price{*/
+/*}*/
+
+/*#commissionPage .order-list-item .p-order-time{*/
+/*}*/
+
+
+#commissionPage .order-item-text{
+    font-size: 12px;
+    height: 65px;
+    line-height: 24px;
+    color: #5D696B;
+    padding: 15px 10px 0 10px;
+    border-bottom: 1px solid #cccccc;
+}
+
+#commissionPage .orders-count{
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+#commissionPage .orders-count p{
+    width: 53%;
+    float: left;
+}
+
+
+#commissionPage .recommend-list{
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+#commissionPage .recommend-list .recommend-list-item{
+    width: 100%;
+    height: auto;
+    /*padding:7px;*/
+    background-color: #E9EDEE;
+    color: #5D696B;
+    font-size: 13px;
+    border-bottom: 1px solid #cccccc;
+    position: relative;
+    padding: 5px 0;
+}
+
+#commissionPage .recommend-list .recommend-list-item .recommend-item-data{
+    height: 22px;
+    line-height: 22px;
+    padding: 0 6px;
+    text-align: left;
+}
+
+#commissionPage .recommend-list .recommend-list-item .recommend-item-data p{
+    width: 50%;
+    float: left;
+}
+
+#commissionPage .recommend-list .recommend-list-item .check-recommend{
+    width: 65px;
+    height: 20px;
+    line-height: 20px;
+    position: absolute;
+    right: 5px;
+    bottom: 1px;
+    font-size: 10px;
+    padding: 2px;
+    text-align: center;
+}
+
+#commissionPage .recommend-list .item-children-list{
+    height: auto;
+    background-color: #ffffff;
+}
+
+#commissionPage .recommend-list .item-children-list .product-item{
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #cccccc;
+}
+
+#commissionPage .recommend-list .item-children-list .product-item .product-title-name{
+    height: 25px;
+    line-height: 28px;
+    font-size: 12px;
+    padding: 0 6px;
+}
+
+#commissionPage .recommend-list .item-children-list .product-item .product-item-details{
+    width: 100%;
+    height: 25px;
+    line-height: 23px;
+    text-align: center;
+    font-size: 12px;
+}
+
+
+
+/*color*/
+.pro-black{
+    color: #3A3A3A;
+}
+.pro-red{
+    color: #C50303;
+}
+
+#commissionPage .weui_select{
+    width: 30%;
+    color:#fff;
+}
+
+#commissionPage .year{
+    position: absolute;
+    left:0px;
+    direction: ltr;
+    width: 25%;
+}
+
+#commissionPage .mon{
+    position: absolute;
+    right:10px;
+    direction: rtl;
+    width: 25%;
+}
+
+#commissionPage  option{
+    color: #000;
+}
+
+
+/*color*/
+.pro-black{
+    color: #3A3A3A;
+}
+.pro-red{
+    color: #C50303;
+}
+
+#commissionPage .weui_select{
+    width: 30%;
+    color:#fff;
+}
+
+#commissionPage .year{
+    position: absolute;
+    left:0px;
+    direction: ltr;
+    width: 25%;
+}
+
+#commissionPage .mon{
+    position: absolute;
+    right:10px;
+    direction: rtl;
+    width: 25%;
+}
+
+#commissionPage  option{
+    color: #000;
+}
+

@@ -1,64 +1,18 @@
 <div id="myAgent">
-    <div class="myAgent-title-img">
-        <img src="img/sellerPage/commission/myAgent-title.png">
-    </div>
 
+    <div class="myAgent-content">
 
-    <div id="myAgent-content">
-
-        <div style="border-bottom: 1px solid #710909; margin-top: 165px;">
-            <div ng-repeat="group in my_agent_groups">
-                <div class="item-stable"
-                     ng-click="toggleGroup(group)"
-                     ng-class="{active: isGroupShown(group)}"
-                        >
-                    2016-05-17<span style="font-size: 12px;">代理佣金明细表</span>
-                    <i class="item-arrow-right"></i>
-                </div>
-                <div class="item-accordion"
-                     ng-repeat="item in group.items"
-                     ng-show="isGroupShown(group)"
-                        >
-
-                    <table style="width: 100%; border: 1px solid #cccccc;">
-                        <thead style="background-color: #AB0E45; text-align: center; color:white;">
-                        <tr style="height: 32px;">
-                            <td>代理区域</td>
-                            <td>订单</td>
-                            <td>佣金</td>
-                        </tr>
-                        </thead>
-                        <tbody style="text-align: center; font-size: 16px; color:#9D9D9D;">
-                        <tr style="height: 32px;">
-                            <td>广州海珠区</td>
-                            <td>183</td>
-                            <td>￥1276.00</td>
-                        </tr>
-                        <tr style="height: 32px;">
-                            <td>广州越秀区</td>
-                            <td>183</td>
-                            <td>￥1276.00</td>
-                        </tr>
-
-                        <tr style="height: 32px;">
-                            <td>广州白云区</td>
-                            <td>183</td>
-                            <td>￥1276.00</td>
-                        </tr>
-
-                        </tbody>
-                        <tfoot>
-                        <tr>
-                            <td colspan="3" style="border-top: 1px solid #cccccc; font-size: 14px; color:#9D9D9D;">
-                                <span style="color: red">合计:</span>
-                                本月总佣金：588.00元（其中3500.00元确认，2300.00元待确认），总订单数：3308
-                            </td>
-                        </tr>
-                        </tfoot>
-                    </table>
-
-                </div>
-            </div>
+        <div class="content-item" ng-click="commission_action()">
+            <img src="img/sellerPage/myAgent/commission-icon.png">
+            <span>提成明细</span>
+            <i></i>
         </div>
+
+        <div class="content-item" ng-click="settlement_action()">
+            <img src="img/sellerPage/myAgent/settlement-icon.png">
+            <span>结算记录</span>
+            <i></i>
+        </div>
+
     </div>
 </div>

@@ -1,0 +1,84 @@
+<div id="commissionPage">
+
+        <div class="my-recommend-content">
+
+            <div class="item-stable custom_titlebar_primary">
+
+                <select class="weui_select year" ng-options="i.key as i.value for i in yearDefault" ng-model="year"
+                        ng-init="year=thisYear" ng-change="onSelectedYear()">
+                </select>
+                提成明细
+                <select class="weui_select mon" ng-options="i.key as i.value for i in monDefault" ng-model="mon"
+                        ng-init="mon=thisMon" ng-change="postOrder()">
+                </select>
+
+            </div>
+
+            <div class="item-accordion" >
+                <div class="order-item-text">
+
+                    <div class="orders-count custom_text_primary">
+                        <p>年终奖励提成：
+                            <span class="pro-red">
+                                {{"￥" + (pirchase_summary.monthly_amount > 0 ? (pirchase_summary.monthly_amount | number:1) : 0)}}
+                            </span>
+                        </p>
+                        <div class="check-table" ng-click="com_check_table_action()">
+                            <span class="check-table-text custom_titlebar_primary">年终奖励对照查看 ></span>
+                        </div>
+                    </div>
+                    <div class="orders-count custom_text_primary">
+                        <p>本月总提成：
+                            <span class="pro-black">
+                                {{pirchase_summary.settlement_proportion > 0 ?  pirchase_summary.settlement_proportion + "%" : 0}}
+                            </span>
+                        </p>
+                    </div>
+                </div>
+
+                <!--<div class="recommend-list" ng-repeat="item in pirchase_summary.my_recommended_sellers">-->
+                    <div class="recommend-list">
+                    <div class="recommend-list-item">
+                        <div class="recommend-item-data">
+                            <p>代理区域：<span>{{item.user_name}}</span></p>
+                        </div>
+                        <div class="recommend-item-data">
+                            <p>订单金额：
+                                <span class="pro-black">
+                                    {{item.monthly_amount > 0 ? "￥" + (item.monthly_amount | number:1) : '0'}}
+                                </span>
+                            </p>
+                        </div>
+                        <div class="recommend-item-data">
+                            <p>提成比例：
+                                <span class="pro-black">
+                                    {{item.monthly_expected_settled_amount > 0 ? "￥" + (item.monthly_expected_settled_amount | number:1) : '0'}}
+                                </span>
+                            </p>
+                        </div>
+
+                        <div class="recommend-item-data">
+                            <p>本月提成：
+                                <span class="pro-black">
+                                    {{item.monthly_expected_settled_amount > 0 ? "￥" + (item.monthly_expected_settled_amount | number:1) : '0'}}
+                                </span>
+                            </p>
+                        </div>
+
+                        <div class="recommend-item-data">
+                            <p>年累计订单金额：
+                                <span class="pro-black">
+                                    {{item.monthly_expected_settled_amount > 0 ? "￥" + (item.monthly_expected_settled_amount | number:1) : '0'}}
+                                </span>
+                            </p>
+                        </div>
+
+                        <div class="check-recommend" ng-click="com_check_table_data_action()">
+                            <span class="custom_text_primary">订单明细</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+</div>

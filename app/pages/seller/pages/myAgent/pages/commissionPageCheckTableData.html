@@ -1,0 +1,25 @@
+<div id="checkTableData">
+
+    <div class="my-recommend-content">
+
+        <div class="item-stable custom_titlebar_primary">
+            <span>订单明细</span>
+        </div>
+
+        <div class="item-children-list">
+            <div class="product-item" ng-repeat="item in seller_product_list">
+                <div class="product-title-name custom_text_primary">
+                    <span>{{item.product_name | cutText:true:10:'...'}}</span>
+                </div>
+                <div class="product-item-details custom_text_primary">
+                    <span>
+                        进货金额: {{item.amount>0 ? '￥'+item.amount : '0'}};
+                        提成比例: {{item.product_settlement_proportion>0 ? item.product_settlement_proportion+'%' : '0'}};
+                        最高提成: {{item.expected_reward>0 ? '￥'+item.expected_reward : '0'}}
+                    </span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

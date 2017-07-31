@@ -1,0 +1,49 @@
+#comPagelookupTable{
+    background-color: #ffffff;
+    height: 100%;
+}
+
+#comPagelookupTable .my-recommend-content{
+}
+
+#comPagelookupTable .item-stable{
+    width: 100%;
+    height: 44px;
+    line-height: 44px;
+    color:white;
+    /*background-color: #C50303;*/
+    text-align: center;
+    position: fixed;
+}
+
+#comPagelookupTable .lookup-table-list{
+    width: 100%;
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+#comPagelookupTable .lookup-table-list .table-item{
+    width: 100%;
+    height: 38px;
+    line-height: 38px;
+    font-size: 13px;
+}
+
+#comPagelookupTable .lookup-table-list .table-item .item-content{
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    color: #5D696B;
+    float: left;
+}
+
+#comPagelookupTable .lookup-table-list .table-item .item-content .content-left{
+    width: 100%;
+    height: 100%;
+    line-height: 44px;
+}
+
+.table-item-bg{
+    background-color: #E9EDEF;
+}
