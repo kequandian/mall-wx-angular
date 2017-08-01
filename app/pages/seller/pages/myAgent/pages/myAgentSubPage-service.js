@@ -19,7 +19,7 @@ angular.module('myAgentSubPage.service', [])
             // 查看线下推荐进货明细
             getPurchaseSummaryService: function (select_date) {
                 var deferred = $q.defer();
-                var url = GlobalVariable.SERVER_PATH + "/physical_purchase_summary?month=" + select_date;
+                var url = GlobalVariable.SERVER_PATH + "/agent_summary?month=" + select_date;
                 $http.get(url,{
                     headers:{
                         'Authorization': GlobalVariable.ACCESS_TOKEN
@@ -36,7 +36,7 @@ angular.module('myAgentSubPage.service', [])
             // 获取比例对照表
             getPhysicalProportionService: function () {
                 var deferred = $q.defer();
-                var url = GlobalVariable.SERVER_PATH + "/physical_proportion";
+                var url = GlobalVariable.SERVER_PATH + "/physical_agent_bonus";
                 $http.get(url,{
                     headers:{
                         'Authorization': GlobalVariable.ACCESS_TOKEN

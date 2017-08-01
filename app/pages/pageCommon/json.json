@@ -1,62 +1,69 @@
 {
   "status_code": 0,
   "data": {
-    "agent_proportion": 3,
-    "product": {
-      "free_shipping": 0,
-      "freight": 0,
-      "last_modified_date": "2017-07-17 14:55:27",
-      "promoted": 1,
-      "specifications": [],
-      "sales": 52,
-      "cover": "http://images.10mup.com/20170708154457918-gkpUE7r4.jpg",
-      "category_id": 80,
-      "price": 28,
-      "id": 673,
-      "sort_order": 1,
-      "barcode": "6932470700323",
-      "store_location": null,
-      "cost_price": 22,
-      "covers": [
-        "http://images.10mup.com/20170708154457918-gkpUE7r4.jpg",
-        "http://images.10mup.com/20170708154458229-dCJtylz0.jpg",
-        "http://images.10mup.com/20170708154459263-Njov8p8f.jpg"
-      ],
-      "weight": 0,
-      "stock_balance": 548,
-      "brand_id": 1,
-      "unit": "瓶",
-      "suggested_price": 58.9,
-      "name": "十美优品净澈水润型沐浴露600ml",
-      "short_name": "净澈水润型沐浴露",
-      "created_date": "2017-07-08 15:44:59",
-      "fare_id": 5,
-      "bulk": null,
-      "partner_level_zone": 2,
-      "view_count": 277,
-      "status": "ONSELL"
-    },
-    "description": null,
-    "cover": "http://images.10mup.com/20170711175634098-mEgwWBbB.jpg",
-    "marketing_short_name": "净澈水润型沐浴露",
-    "sale": 50,
-    "unit": "箱",
-    "category_id": 1,
-    "product_id": 673,
-    "marketing_name": "十美优品净澈水润型沐浴露600ml*4瓶/箱",
-    "settlement_proportion": 20,
-    "id": 14,
-    "sort_order": 1,
-    "pricing": {
-      "wholesale_id": 14,
-      "price": 80,
-      "id": 193,
-      "suggested_retail_price": 28,
-      "suggested_wholesale_price": 23,
-      "region": null,
-      "is_default": 1,
-      "enabled": 1
-    },
-    "status": "ONSELL"
+    "provinces": [
+      {
+        "allow_inferior": 1,
+        "pcd_name": "广东",
+        "bonus": [
+          {
+            "min_amount": 0,
+            "percentage": 20,
+            "pcd_id": 2147,
+            "max_amount": 300,
+            "id": 4
+          },
+          {
+            "min_amount": 300,
+            "percentage": 30,
+            "pcd_id": 2147,
+            "max_amount": 600,
+            "id": 5
+          },
+          {
+            "min_amount": 600,
+            "percentage": 50,
+            "pcd_id": 2147,
+            "max_amount": -1,
+            "id": 6
+          }
+        ],
+        "turnover_quota": null,
+        "pcd_id": 2147,
+        "pcd_type": "p",
+        "id": 19,
+        "agent_physical_settlement_percentage": 10,
+        "physical_settlement_percentage": 50,
+        "cash_deposit": null
+      }
+    ],
+    "cities": [
+      {
+        "allow_inferior": 1,
+        "pcd_name": "广州",
+        "bonus": [],
+        "turnover_quota": null,
+        "pcd_id": 2148,
+        "pcd_type": "c",
+        "id": 2164,
+        "agent_physical_settlement_percentage": 10,
+        "physical_settlement_percentage": null,
+        "cash_deposit": null
+      }
+    ],
+    "districts": [
+      {
+        "allow_inferior": 1,
+        "pcd_name": "广州",
+        "bonus": [],
+        "turnover_quota": null,
+        "pcd_id": 2148,
+        "pcd_type": "c",
+        "id": 2164,
+        "agent_physical_settlement_percentage": 10,
+        "physical_settlement_percentage": null,
+        "cash_deposit": null
+      }
+    ]
   }
 }
