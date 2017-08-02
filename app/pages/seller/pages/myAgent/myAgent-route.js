@@ -29,7 +29,7 @@ angular.module('myAgent.route', [])
          * 年终奖励对照表
          * */
         .state('commissionPageLookupTable', {
-            url:'/commissionPageLookupTable',
+            url:'/commissionPageLookupTable/:pcdId',
             templateUrl: 'pages/seller/pages/myAgent/pages/commissionPageLookupTable.html',
             controller:'CommissionLookupTableController',
             resolve: {
@@ -40,7 +40,7 @@ angular.module('myAgent.route', [])
         })
 
         /*
-         * 年终奖励对照表
+         * 明细
          * */
         .state('commissionPageCheckTable', {
             url:'/commissionPageCheckTable',
@@ -54,7 +54,7 @@ angular.module('myAgent.route', [])
         })
 
         /*
-         * 年终奖励对照表
+         *
          * */
         .state('comPageSettlementRecord', {
             url:'/comPageSettlementRecord',

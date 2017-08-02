@@ -32,19 +32,8 @@
 
 #commissionPage .item-accordion{
     background-color: white;
-    padding-top: 6px;
+    /*padding-top: 6px;*/
     /*padding: 5px;*/
-}
-
-#commissionPage .orders-count .check-table{
-    width: 46%;
-    float: right;
-    color:white;
-}
-
-#commissionPage .orders-count .check-table .check-table-text{
-    padding: 4px 10px;
-    border-radius: 5px;
 }
 
 #commissionPage .order-item-explain{
@@ -137,6 +126,18 @@
 #commissionPage .recommend-list .recommend-list-item .recommend-item-data p{
     width: 50%;
     float: left;
+}
+
+
+#commissionPage .recommend-list .recommend-list-item .recommend-item-data .check-table{
+    width: 46%;
+    float: right;
+    color:white;
+}
+
+#commissionPage .recommend-list .recommend-list-item .recommend-item-data .check-table .check-table-text{
+    padding: 4px 10px;
+    border-radius: 5px;
 }
 
 #commissionPage .recommend-list .recommend-list-item .check-recommend{

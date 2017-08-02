@@ -176,7 +176,7 @@ angular.module('myAgentSubPage.controller', ['myAgentSubPage.service'])
                 MyAgentSubPageFty.getPurchaseSummaryService(select_dtae_format)
                     .then(function(json){
                         if(json.status_code == 0){
-                            //console.log('提成明细: ' + angular.toJson(json));
+                            console.log('提成明细: ' + angular.toJson(json));
                             $scope.commission_info = json.data;
                         }else{
                             $.toast('获取信息失败','cancel');
@@ -205,8 +205,9 @@ angular.module('myAgentSubPage.controller', ['myAgentSubPage.service'])
             };
 
             //进入年终奖励对照表
-            $scope.com_check_table_action = function(){
-                $state.go('commissionPageLookupTable');
+            $scope.com_check_table_action = function(pcdId){
+
+                $state.go('commissionPageLookupTable',{pcdId:pcdId});
             };
 
             //进入订单明细
@@ -226,16 +227,17 @@ angular.module('myAgentSubPage.controller', ['myAgentSubPage.service'])
             initCode();
 
             function initCode(){
-                getPhysicalProportion();
+                var pcd_id = $stateParams.pcdId;
+                getPhysicalProportion(pcd_id);
             }
 
             //获取线下经销商进货明细
-            function getPhysicalProportion(){
-                MyAgentSubPageFty.getPhysicalProportionService()
+            function getPhysicalProportion(pcd_id){
+                MyAgentSubPageFty.getPhysicalProportionService(pcd_id)
                     .then(function(json){
                         if(json.status_code == 0){
+                            console.log('获取比例对照表：' + angular.toJson(json));
                             $scope.physical_agent_bonus_list = json.data;
-                            console.log('获取比例对照表：' + angular.toJson(json))
                         }else{
                             console.log('获取比例对照表失败：' + angular.toJson(json))
                         }

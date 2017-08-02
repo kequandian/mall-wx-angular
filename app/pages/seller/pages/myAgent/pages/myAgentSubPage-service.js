@@ -34,9 +34,9 @@ angular.module('myAgentSubPage.service', [])
             },
 
             // 获取比例对照表
-            getPhysicalProportionService: function () {
+            getPhysicalProportionService: function (id) {
                 var deferred = $q.defer();
-                var url = GlobalVariable.SERVER_PATH + "/physical_agent_bonus";
+                var url = GlobalVariable.SERVER_PATH + "/physical_agent_bonus?pcd_id=" + id;
                 $http.get(url,{
                     headers:{
                         'Authorization': GlobalVariable.ACCESS_TOKEN

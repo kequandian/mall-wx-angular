@@ -14,12 +14,14 @@
         </div>
 
         <div class="lookup-table-list">
-            <div class="table-item table-item-bg" style="margin-top: 4px;" ng-repeat="item in physical_agent_bonus_list">
-                <div class="item-content">
-                    <div class="content-left" style="border-right: 1px solid  #B2B3B5;"><span>{{convert_amount(item.min_amount,item.max_amount)}}</span></div>
-                </div>
-                <div class="item-content">
-                    <span>{{item.percentage}}%</span>
+            <div style="margin-top: 44px;" >
+                <div class="table-item table-item-bg" style="margin-top: 4px;" ng-repeat="item in physical_agent_bonus_list">
+                    <div class="item-content">
+                        <div class="content-left" style="border-right: 1px solid  #B2B3B5;"><span>{{convert_amount(item.min_amount,item.max_amount)}}</span></div>
+                    </div>
+                    <div class="item-content">
+                        <span>{{item.percentage}}%</span>
+                    </div>
                 </div>
             </div>
         </div>

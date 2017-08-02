@@ -15,7 +15,7 @@
             </div>
 
             <div class="item-accordion" >
-                <div class="order-item-text">
+                <div class="order-item-text" ng-if="false">
 
                     <div class="orders-count custom_text_primary">
                         <p>年终奖励提成：
@@ -36,11 +36,15 @@
                     </div>
                 </div>
 
-                <div class="recommend-list" ng-repeat="item in commission_info.agent_summaries">
+                <div class="recommend-list" ng-repeat="item in commission_info">
                     <!--<div class="recommend-list">-->
                     <div class="recommend-list-item">
-                        <div class="recommend-item-data">
+                        <div class="recommend-item-data" style="margin-top: 10px;">
                             <p>代理区域：<span>{{item.pcd_name}}</span></p>
+
+                            <div class="check-table" ng-click="com_check_table_action(item.pcd_id)">
+                                <span class="check-table-text custom_titlebar_primary">年终奖励对照查看 ></span>
+                            </div>
                         </div>
                         <div class="recommend-item-data">
                             <p>订单金额：
@@ -69,6 +73,14 @@
                             <p>年累计订单金额：
                                 <span class="pro-black">
                                     {{item.monthly_expected_settled_amount > 0 ? "￥" + (item.monthly_expected_settled_amount | number:1) : '0'}}
+                                </span>
+                            </p>
+                        </div>
+
+                        <div class="recommend-item-data">
+                            <p>年终奖励提成：
+                                <span class="pro-red">
+                                    {{bonus_summaries_count(commission_info.bonus_summaries)}}
                                 </span>
                             </p>
                         </div>
