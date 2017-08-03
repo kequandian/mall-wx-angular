@@ -1,69 +1,83 @@
 {
   "status_code": 0,
-  "data": {
-    "provinces": [
-      {
-        "allow_inferior": 1,
-        "pcd_name": "广东",
-        "bonus": [
-          {
-            "min_amount": 0,
-            "percentage": 20,
-            "pcd_id": 2147,
-            "max_amount": 300,
-            "id": 4
-          },
-          {
-            "min_amount": 300,
-            "percentage": 30,
-            "pcd_id": 2147,
-            "max_amount": 600,
-            "id": 5
-          },
-          {
-            "min_amount": 600,
-            "percentage": 50,
-            "pcd_id": 2147,
-            "max_amount": -1,
-            "id": 6
-          }
-        ],
-        "turnover_quota": null,
-        "pcd_id": 2147,
-        "pcd_type": "p",
-        "id": 19,
-        "agent_physical_settlement_percentage": 10,
-        "physical_settlement_percentage": 50,
-        "cash_deposit": null
-      }
-    ],
-    "cities": [
-      {
-        "allow_inferior": 1,
-        "pcd_name": "广州",
-        "bonus": [],
-        "turnover_quota": null,
-        "pcd_id": 2148,
-        "pcd_type": "c",
-        "id": 2164,
-        "agent_physical_settlement_percentage": 10,
-        "physical_settlement_percentage": null,
-        "cash_deposit": null
-      }
-    ],
-    "districts": [
-      {
-        "allow_inferior": 1,
-        "pcd_name": "广州",
-        "bonus": [],
-        "turnover_quota": null,
-        "pcd_id": 2148,
-        "pcd_type": "c",
-        "id": 2164,
-        "agent_physical_settlement_percentage": 10,
-        "physical_settlement_percentage": null,
-        "cash_deposit": null
-      }
-    ]
-  }
+  "data": [
+    {
+      "settled_amount": 200,
+      "amount": 2000,
+      "transferred": 1,
+      "transferred_amount": 20000,
+      "pcd_name": "广东",
+      "statistic_month": "2017-07-01",
+      "pcd_id": 2147,
+      "settlement_proportion": 10,
+      "id": 6,
+      "end_month": null,
+      "seller_id": 11014
+    },
+    {
+      "settled_amount": 100,
+      "amount": 1000,
+      "transferred": 1,
+      "transferred_amount": 10000,
+      "pcd_name": "广东",
+      "statistic_month": "2017-08-01",
+      "pcd_id": 2147,
+      "settlement_proportion": 10,
+      "id": 7,
+      "end_month": null,
+      "seller_id": 11014
+    },
+    {
+      "settled_amount": 500,
+      "amount": 1000,
+      "transferred": 1,
+      "transferred_amount": 50000,
+      "pcd_name": "广东",
+      "statistic_month": "2016-01-01",
+      "pcd_id": 2147,
+      "settlement_proportion": 50,
+      "id": 9,
+      "end_month": "2016-12-01",
+      "seller_id": 11014
+    },
+    {
+      "settled_amount": 111,
+      "amount": 555,
+      "transferred": 1,
+      "transferred_amount": 11100,
+      "pcd_name": "广东-广州",
+      "statistic_month": "2017-07-01",
+      "pcd_id": 2148,
+      "settlement_proportion": 10,
+      "id": 10,
+      "end_month": null,
+      "seller_id": 11014
+    },
+    {
+      "settled_amount": 250,
+      "amount": 2500,
+      "transferred": 1,
+      "transferred_amount": 25000,
+      "pcd_name": "广东-广州",
+      "statistic_month": "2017-07-01",
+      "pcd_id": 2148,
+      "settlement_proportion": 10,
+      "id": 11,
+      "end_month": null,
+      "seller_id": 11014
+    },
+    {
+      "settled_amount": 50,
+      "amount": 1000,
+      "transferred": 1,
+      "transferred_amount": 50000,
+      "pcd_name": "广东-广州-萝岗区",
+      "statistic_month": "2017-08-01",
+      "pcd_id": 2158,
+      "settlement_proportion": 10,
+      "id": 12,
+      "end_month": null,
+      "seller_id": 11014
+    }
+  ]
 }

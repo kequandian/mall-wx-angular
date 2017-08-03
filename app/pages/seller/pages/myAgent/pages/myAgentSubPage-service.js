@@ -53,7 +53,7 @@ angular.module('myAgentSubPage.service', [])
             // 获取结算明细
             getSettlementRecordService: function (startTime,endTime) {
                 var deferred = $q.defer();
-                var url = GlobalVariable.SERVER_PATH + "/physical_purchase_summary";
+                var url = GlobalVariable.SERVER_PATH + "/agent_summary";
                 $http.get(url,{
                     headers:{
                         'Authorization': GlobalVariable.ACCESS_TOKEN
