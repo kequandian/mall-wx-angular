@@ -176,7 +176,7 @@ angular.module('myAgentSubPage.controller', ['myAgentSubPage.service'])
                 MyAgentSubPageFty.getPurchaseSummaryService(select_dtae_format)
                     .then(function(json){
                         if(json.status_code == 0){
-                            //console.log('提成明细: ' + angular.toJson(json));
+                            console.log('提成明细: ' + angular.toJson(json));
                             $scope.commission_info = json.data;
                         }else{
                             $.toast('获取信息失败','cancel');
