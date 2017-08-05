@@ -51,8 +51,8 @@ angular.module('offLineShop.controller', ['offLineShop.service'])
     /*
      * 经销授权nav
      * */
-    .controller('AuthorizationPageController', ['$scope','$state','OffLineShopFty',
-        function ($scope, $state,OffLineShopFty) {
+    .controller('AuthorizationPageController', ['$scope','$state','$ocLazyLoad','OffLineShopFty',
+        function ($scope, $state,$ocLazyLoad,OffLineShopFty) {
 
             document.title = "经销授权";
 
@@ -62,6 +62,7 @@ angular.module('offLineShop.controller', ['offLineShop.service'])
             //进入皇冠经销授权页
             $scope.crown_seller_authorization_action = function(){
                 type_status = 'crown';
+
                 $state.go('authorizationqrcode',{
                     recommenderId: localStorage['recommenderId'],
                     typeStatus: type_status,

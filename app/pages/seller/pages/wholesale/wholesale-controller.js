@@ -8,7 +8,6 @@ angular.module('wholesale.controller', ['wholesale.service'])
             $scope.default_pcd = null;
             var pcd = null;
 
-
             $ocLazyLoad.load('Jquery').then(function () {
                 $ocLazyLoad.load('JqueryWeUI').then(function () {
                     //console.log("homePage:jquery loaded");
