@@ -59,12 +59,27 @@ angular.module('offLineShop.controller', ['offLineShop.service'])
             var type_status = null;
             //console.log('UserInfo: ' + angular.toJson(UserInfo));
 
+            var uid = null;
+            getUserInfo();
+            function getUserInfo(){
+                OffLineShopFty.sellerUserInfoService()
+                    .then(function (json) {
+                        if (json.status_code == 0) {
+                            uid = json.data.uid;
+                            //console.log(angular.toJson(uid))
+                        }
+                    }, function (error) {
+                        $.toast('获取个人信息失败', 'cancel');
+                        console.log('获取个人信息失败：' + error);
+                    })
+            }
+
             //进入皇冠经销授权页
             $scope.crown_seller_authorization_action = function(){
                 type_status = 'crown';
 
                 $state.go('authorizationqrcode',{
-                    recommenderId: localStorage['recommenderId'],
+                    recommenderId: uid,
                     typeStatus: type_status,
                     applyStatus: 'rec'
                 });
@@ -80,7 +95,7 @@ angular.module('offLineShop.controller', ['offLineShop.service'])
             $scope.star_seller_authorization_action = function(){
                 type_status = 'star';
                 $state.go('authorizationqrcode',{
-                    recommenderId: localStorage['recommenderId'],
+                    recommenderId: uid,
                     typeStatus: type_status,
                     applyStatus: 'rec'
                 });
