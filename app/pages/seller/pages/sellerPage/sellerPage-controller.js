@@ -40,8 +40,15 @@ angular.module('sellerPage.controller', ['sellerPage.service'])
             //title
             document.title = "积分中心";
 
+            $ocLazyLoad.load('Jquery').then(function () {
+                $ocLazyLoad.load('JqueryWeUI').then(function () {
+                    //console.log("sellerPage:jquery loaded");
+                })
+            });
+
             $scope.point_rate = PointRate.rate;
             $scope.isSimpleMember = false; //是否显示商品批发入口
+            $scope.isShowMyAgent = false; //是否显示我的代理入口
 
             $rootScope.tabsNumber = 3;
             cateLeftIndex.cate_nav_index = 0;
@@ -51,13 +58,6 @@ angular.module('sellerPage.controller', ['sellerPage.service'])
             getUserInfo();
             //分销余额
             getOwnerBalance();
-
-            //自动关闭pcd控件
-            var scope1 = $rootScope;
-            scope1.$watch('closePCD',function(nValue, oValue){
-                $('.close-picker').click();
-                $('#city-picker').click();
-            });
 
             function getUserInfo() {
                 var loaded = false;
@@ -131,6 +131,10 @@ angular.module('sellerPage.controller', ['sellerPage.service'])
                                 $scope.isSimpleMember = true;
                             }else{
                                 $scope.isSimpleMember = false;
+                            }
+
+                            if(json.data.is_agent && json.data.is_physical){
+                                $scope.isShowMyAgent = true;
                             }
 
                             /// save session

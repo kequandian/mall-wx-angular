@@ -1,7 +1,7 @@
 angular.module('wholesale.controller', ['wholesale.service'])
 
-        .controller('WholesaleController', ['$scope','$state','$stateParams','$ocLazyLoad', 'WholesaleFty','WholesalePCDCode','wCateCache',
-        function($scope,$state,$stateParams,$ocLazyLoad, WholesaleFty,WholesalePCDCode,wCateCache){
+        .controller('WholesaleController', ['$scope','$state','$stateParams','$ocLazyLoad','$rootScope', 'WholesaleFty','WholesalePCDCode','wCateCache',
+        function($scope,$state,$stateParams,$ocLazyLoad,$rootScope, WholesaleFty,WholesalePCDCode,wCateCache){
 
             document.title = '商品批发';
             var isCrown = null;
@@ -14,6 +14,12 @@ angular.module('wholesale.controller', ['wholesale.service'])
                 })
             });
 
+            //自动关闭pcd控件
+            var scope1 = $rootScope;
+            scope1.$watch('closePCD',function(nValue, oValue){
+                $('.close-picker').click();
+                $('#city-picker').click();
+            });
 
             initCode();
             function initCode(){

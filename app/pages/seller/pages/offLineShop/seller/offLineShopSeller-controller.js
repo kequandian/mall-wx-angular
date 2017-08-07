@@ -1654,7 +1654,6 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
     .controller('AuthorizationQRCodeController', ['$scope','$state','$stateParams', 'SellerTeamFty',
         function ($scope,$state,$stateParams, SellerTeamFty) {
 
-
             document.title = "申请二维码";
 
             var recommender_id = null;
