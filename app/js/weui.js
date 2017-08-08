@@ -1,14 +1,14 @@
 $(function () {
 
-    if(window.navigator.userAgent.toLowerCase().match(/MicroMessenger/i) == 'micromessenger'){
-        $('body').addClass('index_body');//添加禁止滚动的样式
-    }else{
-        $('body').removeClass('index_body');//去除禁止滚动的样式
-    }
+    //if(window.navigator.userAgent.toLowerCase().match(/MicroMessenger/i) == 'micromessenger'){
+    //    $('body').addClass('index_body');//添加禁止滚动的样式
+    //}else{
+    //    $('body').removeClass('index_body');//去除禁止滚动的样式
+    //}
 
-    //$('body').on('touchmove', function(event){
-    //    event.preventDefault();
-    //});
+    $('body').on('touchmove', function(event){
+        event.preventDefault();
+    });
     // searchbar
     $('#container').on('focus', '#search_input', function () {
         var $weuiSearchBar = $('#search_bar');

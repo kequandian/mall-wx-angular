@@ -56,11 +56,6 @@
     <!--<link rel="stylesheet" href="css/order/express.css">-->
     <!--<link rel="stylesheet" href="css/my/salesReturn.css">-->
     <!--<link rel="stylesheet" href="css/searchPage/searchPage.css">-->
-    <script type="text/javascript">
-//        document.querySelector('body').addEventListener('touchstart', function (ev) {
-//            event.preventDefault();
-//        });
-    </script>
 </head>
 
 <body ontouchstart="">
@@ -73,7 +68,7 @@
         <img src="img/spinner.png" class="spinner-loader spinner-rotating"/>
     </div>
 
-    <div id="container" style="background-color: #efeff3;">
+    <div id="container" style="background-color: #efeff3; overflow-x: hidden; overflow-y: scroll;">
         <div ui-view></div>
     </div>
 </div>
