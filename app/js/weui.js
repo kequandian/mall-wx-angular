@@ -10,7 +10,7 @@ $(function () {
     //    event.preventDefault();
     //});
 
-    var overscroll = function(el) {
+    /*var overscroll = function(el) {
         el.addEventListener('touchstart', function() {
             var top = el.scrollTop
                 , totalScroll = el.scrollHeight
@@ -40,7 +40,7 @@ $(function () {
         if(!evt._isScroller) {
             evt.preventDefault();
         }
-    });
+    });*/
 
 
     // searchbar
