@@ -203,9 +203,9 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
             //星级经销价
             $scope.wholesale_price = function(price, wholesaleUnit, productUnit){
                 if(wholesaleUnit === undefined || wholesaleUnit === null || wholesaleUnit == ""){
-                    return '星级经销价: ' + price + '/' + productUnit
+                    return '星级经销价: ' + price + '元/' + productUnit
                 }else{
-                    return '星级经销价: ' + price + '/' + wholesaleUnit
+                    return '星级经销价: ' + price + '元/' + wholesaleUnit
                 }
             };
 
