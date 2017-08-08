@@ -4,8 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
-    <meta name="x5-fullscreen" content="true">
-    <meta name="full-screen" content="yes">
     <title>十美优品商城</title>
 
     <!--<base href="/biliya-mall-wechat-html/app/index.html">-->
@@ -59,9 +57,14 @@
     <!--<link rel="stylesheet" href="css/my/salesReturn.css">-->
     <!--<link rel="stylesheet" href="css/searchPage/searchPage.css">-->
     <script type="text/javascript">
-        document.querySelector('body').addEventListener('touchstart', function (ev) {
-            event.preventDefault();
-        });
+//        document.querySelector('body').addEventListener('touchstart', function (ev) {
+//            event.preventDefault();
+//        });
+        if(window.navigator.userAgent.toLowerCase().match(/MicroMessenger/i) == 'micromessenger'){
+            $('body').addClass('index_body');//添加禁止滚动的样式
+        }else{
+            $('body').removeClass('index_body');//去除禁止滚动的样式
+        }
     </script>
 </head>
 
