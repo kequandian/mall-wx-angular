@@ -176,7 +176,7 @@ angular.module('myAgentSubPage.controller', ['myAgentSubPage.service'])
                 MyAgentSubPageFty.getPurchaseSummaryService(select_dtae_format)
                     .then(function(json){
                         if(json.status_code == 0){
-                            console.log('提成明细: ' + angular.toJson(json));
+                            //console.log('提成明细: ' + angular.toJson(json));
                             $scope.commission_info = json.data;
                         }else{
                             $.toast('获取信息失败','cancel');
@@ -191,16 +191,34 @@ angular.module('myAgentSubPage.controller', ['myAgentSubPage.service'])
             }
 
             //计算年终奖励提成
-            $scope.bonus_summaries_count = function(bonus_summaries_list){
-
-                if(bonus_summaries_list === undefined || bonus_summaries_list === null || bonus_summaries_list.length == 0){
+            $scope.bonus_summaries_count = function(commission_info){
+                if(commission_info === undefined || commission_info === null || commission_info.length == 0){
                     return "0";
                 }else{
                     var b_s_count = 0;
-                    angular.forEach(bonus_summaries_list, function(v, k){
-                        b_s_count += v.settled_amount;
+                    angular.forEach(commission_info, function(v, k){
+
+                        if(v.bonus != null && v.bonus.settled_amount > 0){
+                            b_s_count += (v.bonus.settled_amount);
+                        }
                     });
                     return "￥" + b_s_count;
+                }
+            };
+
+            //计算本月提成
+            $scope.month_settled_amount = function(commission_info){
+                if(commission_info === undefined || commission_info === null || commission_info.length == 0){
+                    return "0";
+                }else{
+                    var m_s_count = 0;
+                    angular.forEach(commission_info, function(v, k){
+
+                        if(v.settled_amount != null && v.settled_amount > 0){
+                            m_s_count += v.settled_amount;
+                        }
+                    });
+                    return "￥" + m_s_count;
                 }
             };
 

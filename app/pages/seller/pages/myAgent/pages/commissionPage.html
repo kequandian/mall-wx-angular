@@ -20,12 +20,12 @@
                     <div class="orders-count custom_text_primary">
                         <p>年终奖励提成：
                             <span class="pro-red">
-                                {{bonus_summaries_count(commission_info.bonus_summaries)}}
+                                {{bonus_summaries_count(commission_info)}}
                             </span>
                         </p>
                         <p>本月总提成：
-                            <span class="pro-black">
-                                {{commission_info.total_settled_amount > 0 ?  "￥" + commission_info.total_settled_amount : 0}}
+                            <span class="pro-red">
+                                {{month_settled_amount(commission_info)}}
                             </span>
                         </p>
                     </div>
@@ -68,7 +68,7 @@
                         <div class="recommend-item-data">
                             <p>年累计订单金额：
                                 <span class="pro-black">
-                                    {{item.monthly_expected_settled_amount > 0 ? "￥" + (item.monthly_expected_settled_amount | number:1) : '0'}}
+                                    {{item.year_statistic_amount > 0 ? "￥" + (item.year_statistic_amount | number:1) : '0'}}
                                 </span>
                             </p>
                         </div>
@@ -76,7 +76,7 @@
                         <div class="recommend-item-data">
                             <p>年终奖励提成：
                                 <span class="pro-black">
-                                    {{item.monthly_expected_settled_amount > 0 ? "￥" + (item.monthly_expected_settled_amount | number:1) : '0'}}
+                                    {{item.bonus != null ? "￥" + (item.bonus.settled_amount | number:1) : '0'}}
                                 </span>
                             </p>
                         </div>
