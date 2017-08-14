@@ -193,7 +193,6 @@ angular.module('myAgentSubPage.controller', ['myAgentSubPage.service'])
             //计算年终奖励提成
             $scope.bonus_summaries_count = function(commission_info){
                 if(commission_info === undefined || commission_info === null || commission_info.length == 0){
-                    return "0";
                 }else{
                     var b_s_count = 0;
                     angular.forEach(commission_info, function(v, k){
@@ -202,7 +201,11 @@ angular.module('myAgentSubPage.controller', ['myAgentSubPage.service'])
                             b_s_count += (v.bonus.settled_amount);
                         }
                     });
-                    return "￥" + b_s_count;
+                    if(b_s_count > 0){
+                        return "￥" + (b_s_count.toFixed(1));
+                    }else{
+                        return "0";
+                    }
                 }
             };
 
@@ -218,7 +221,11 @@ angular.module('myAgentSubPage.controller', ['myAgentSubPage.service'])
                             m_s_count += v.settled_amount;
                         }
                     });
-                    return "￥" + m_s_count;
+                    if(m_s_count > 0){
+                        return "￥" + (m_s_count.toFixed(1));
+                    }else{
+                        return "0";
+                    }
                 }
             };
 
