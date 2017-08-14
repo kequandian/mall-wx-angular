@@ -1,8 +1,17 @@
 {
-  "createTime": "2017-08-02 21:35:00",
-  "id": "892740517817057280",
-  "item": "[{\"data\":\"感谢主来到我们中间,指引我们方向\",\"order\":\"1\"},{\"data\":\"感谢主赐予我们食物,请求主为我们洁净这份食物\",\"order\":\"2\"},{\"data\":\"全能的主啊,你是我脚下的明灯\",\"order\":\"3\"},{\"data\":\"阿门\",\"order\":\"4\"}]",
-  "type": "1",
-  "updateTime": "",
-  "userId": "891833015042654208"
+  "isCheck": false,
+  "type": "2",
+  "church": "喜乐家园",
+  "churchType": 0,
+  "birthday": "2017-08-09",
+  "decissionTime": null,
+  "baptized": null,
+  "serviceTime": "",
+  "sex": 2,
+  "name": "GOD",
+  "serviceAreas": [],
+  "selectedServiceAreas": [],
+  "noServiceChecked": false,
+  "mediatorTime": "",
+  "serviceArea": ""
 }
