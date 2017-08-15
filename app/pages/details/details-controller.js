@@ -222,6 +222,7 @@ angular.module('details.controller', ['details.service'])
             $scope.spec_item_name = null;
 
             $scope.get_input_value = function (item) {
+                //console.log(angular.toJson(item))
                 $scope.product_property_value = item;
 
                 $scope.spec_item_price = item.price;
@@ -309,7 +310,9 @@ angular.module('details.controller', ['details.service'])
                 var product_specification_id = null;
                 var int_quantity = parseInt(quantity);
                 var isFightGroups = $scope.is_fight_groups;
-                console.log(int_quantity);
+                var product_info = productInfo;
+                //console.log("productInfo",angular.toJson(productInfo));
+                //console.log("$scope.product_property_value",angular.toJson($scope.product_property_value));
 
                 if ($scope.product_property_value != null) {
                     product_specification_id = $scope.product_property_value.id;
@@ -458,6 +461,7 @@ angular.module('details.controller', ['details.service'])
                 p_item.weight = item.weight;
                 p_item.bulk = item.bulk;
 
+                //console.log("p_item",angular.toJson(p_item));
                 if(product_specification_id == null){
                     p_item.stock_balance = item.stock_balance;
                     p_item.price = item.price;
@@ -469,9 +473,9 @@ angular.module('details.controller', ['details.service'])
                 p_info.push(p_item);
 
                 $rootScope.settle_product_code = p_info;
-                $rootScope.settle_product_totalToPay = item.price * quantity;
+                $rootScope.settle_product_totalToPay = p_item.price * quantity;
 
-                //console.log(angular.toJson(p_info));
+                //console.log("p_info",angular.toJson(p_info));
                 //return;
 
                 var newUrl = '#/cart-settlement';
