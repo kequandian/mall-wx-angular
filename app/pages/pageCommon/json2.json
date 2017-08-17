@@ -1,48 +1,118 @@
-{
-  "status_code": 0,
-  "data": [
-    {
-      "amount": 1000,
-      "transferred": 1,
-      "pcd_name": "广东",
-      "bonus": {
-        "settled_amount": 500,
-        "amount": 5000,
-        "transferred": 1,
-        "transferred_amount": 50000,
-        "pcd_name": "广东",
-        "statistic_month": "2016-07-05",
-        "pcd_id": 2147,
-        "year_statistic_amount": 0,
-        "settlement_proportion": 10,
-        "id": 1,
-        "end_month": "2017-07-05",
-        "seller_id": 11014
+[
+  {
+    "children": [
+      {
+        "label": "东城区",
+        "pid": "2",
+        "value": "3",
+        "type": "d"
       },
-      "statistic_month": "2017-07-01",
-      "pcd_id": 2147,
-      "year_statistic_amount": 3000,
-      "settled_amount": 100,
-      "transferred_amount": 10000,
-      "settlement_proportion": 10,
-      "id": 2,
-      "end_month": null,
-      "seller_id": 11014
-    },
-    {
-      "amount": 2000,
-      "transferred": 1,
-      "pcd_name": "广东-广州",
-      "bonus": null,
-      "statistic_month": "2017-07-01",
-      "pcd_id": 2148,
-      "year_statistic_amount": 1200,
-      "settled_amount": 200,
-      "transferred_amount": 20000,
-      "settlement_proportion": 10,
-      "id": 3,
-      "end_month": null,
-      "seller_id": 11014
-    }
-  ]
-}
+      {
+        "label": "西城区",
+        "pid": "2",
+        "value": "4",
+        "type": "d"
+      },
+      {
+        "label": "崇文区",
+        "pid": "2",
+        "value": "5",
+        "type": "d"
+      },
+      {
+        "label": "宣武区",
+        "pid": "2",
+        "value": "6",
+        "type": "d"
+      },
+      {
+        "label": "朝阳区",
+        "pid": "2",
+        "value": "7",
+        "type": "d"
+      },
+      {
+        "label": "丰台区",
+        "pid": "2",
+        "value": "8",
+        "type": "d"
+      },
+      {
+        "label": "石景山区",
+        "pid": "2",
+        "value": "9",
+        "type": "d"
+      },
+      {
+        "label": "海淀区",
+        "pid": "2",
+        "value": "10",
+        "type": "d"
+      },
+      {
+        "label": "门头沟区",
+        "pid": "2",
+        "value": "11",
+        "type": "d"
+      },
+      {
+        "label": "房山区",
+        "pid": "2",
+        "value": "12",
+        "type": "d"
+      },
+      {
+        "label": "通州区",
+        "pid": "2",
+        "value": "13",
+        "type": "d"
+      },
+      {
+        "label": "顺义区",
+        "pid": "2",
+        "value": "14",
+        "type": "d"
+      },
+      {
+        "label": "昌平区",
+        "pid": "2",
+        "value": "15",
+        "type": "d"
+      },
+      {
+        "label": "大兴区",
+        "pid": "2",
+        "value": "16",
+        "type": "d"
+      },
+      {
+        "label": "平谷区",
+        "pid": "2",
+        "value": "17",
+        "type": "d"
+      },
+      {
+        "label": "怀柔区",
+        "pid": "2",
+        "value": "18",
+        "type": "d"
+      },
+      {
+        "label": "密云县",
+        "pid": "2",
+        "value": "19",
+        "type": "d"
+      },
+      {
+        "label": "延庆县",
+        "pid": "2",
+        "value": "20",
+        "type": "d"
+      }
+    ],
+    "label": "北京",
+    "pid": "1",
+    "value": "2",
+    "type": "c"
+  }
+]

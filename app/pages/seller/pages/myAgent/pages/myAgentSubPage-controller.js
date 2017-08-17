@@ -202,7 +202,7 @@ angular.module('myAgentSubPage.controller', ['myAgentSubPage.service'])
                         }
                     });
                     if(b_s_count > 0){
-                        return "￥" + (b_s_count.toFixed(1));
+                        return "￥" + (b_s_count.toFixed(2));
                     }else{
                         return "0";
                     }
@@ -222,7 +222,7 @@ angular.module('myAgentSubPage.controller', ['myAgentSubPage.service'])
                         }
                     });
                     if(m_s_count > 0){
-                        return "￥" + (m_s_count.toFixed(1));
+                        return "￥" + (m_s_count.toFixed(2));
                     }else{
                         return "0";
                     }
