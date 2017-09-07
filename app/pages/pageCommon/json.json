@@ -1,16 +1,44 @@
-{ "mediatorId":"1",
-  "avatar":"22",
-  "hobby":"22",
-  "name":"22",
-  "birthday":"2017-01-20 12:22:26",
-  "province":"22",
-  "city":"22",
-  "district":"2017-01-20 12:22:26",
-  "decissionTime":"2017-01-20 12:22:26",
-  "hobby":"2017-02-20 12:22:26",
-  "serviceTime":"2017-01-20 12:22:26",
-  "baptized":"2017-01-20 12:22:26",
-  "mediatorTime":"2017-01-20 12:22:26",
-  "church":"10",
-  "serviceArea":"10"
+{
+  "checkLike": false,
+  "comments": [
+    {
+      "articleId": "900541747238883330",
+      "content": "很好很强大",
+      "createdTime": "2017-09-01 22:38:43",
+      "id": "903628186889580546",
+      "userId": "890943583494160384"
+    }
+  ],
+  "articleImageList": [
+    {
+      "articleId": "900541747238883330",
+      "id": "900541747297603585",
+      "url": "http://112.74.26.228:8000/876708082437197824/f1316a72-0e05-4eba-8565-1066ead282f8.jpg"
+    }
+  ],
+  "articleContent": {
+    "articleId": "900541747238883330",
+    "content": "好好",
+    "id": "900541747276632066"
+  },
+  "likeUserIds": [],
+  "commentUserIds": [
+    890943583494160400
+  ],
+  "article": {
+    "categoryId": "882783718376513540",
+    "createdTime": "2017-08-24 10:14:18",
+    "favoriteCount": 0,
+    "id": "900541747238883330",
+    "likeCount": 0,
+    "recommended": 0,
+    "sticky": 0,
+    "summary": "好好",
+    "title": "好",
+    "typeId": "882783718376513536",
+    "userId": "895173519385935873",
+    "visitCount": 0
+  },
+  "commentCount": "1",
+  "likes": []
 }

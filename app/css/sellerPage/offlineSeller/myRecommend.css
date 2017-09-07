@@ -84,8 +84,10 @@
 }
 
 #myRecommend .recommend-list .recommend-list-item .recommend-item-data p{
-    width: 50%;
-    float: left;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #myRecommend .recommend-list .recommend-list-item .check-recommend{

@@ -388,7 +388,7 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                 SellerTeamFty.getPurchaseSummaryService(select_dtae_format)
                     .then(function(json){
                         if(json.status_code == 0){
-                            console.log('我的推荐: ' + angular.toJson(json));
+                            //console.log('我的推荐: ' + angular.toJson(json));
                             $scope.pirchase_summary = json.data[0];
                         }else{
                             $.toast('获取信息失败','cancel');

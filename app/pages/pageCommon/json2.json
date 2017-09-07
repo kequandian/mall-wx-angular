@@ -1,118 +1,29 @@
-[
-  {
-    "children": [
-      {
-        "label": "东城区",
-        "pid": "2",
-        "value": "3",
-        "type": "d"
-      },
-      {
-        "label": "西城区",
-        "pid": "2",
-        "value": "4",
-        "type": "d"
-      },
-      {
-        "label": "崇文区",
-        "pid": "2",
-        "value": "5",
-        "type": "d"
-      },
-      {
-        "label": "宣武区",
-        "pid": "2",
-        "value": "6",
-        "type": "d"
-      },
-      {
-        "label": "朝阳区",
-        "pid": "2",
-        "value": "7",
-        "type": "d"
-      },
-      {
-        "label": "丰台区",
-        "pid": "2",
-        "value": "8",
-        "type": "d"
-      },
-      {
-        "label": "石景山区",
-        "pid": "2",
-        "value": "9",
-        "type": "d"
-      },
-      {
-        "label": "海淀区",
-        "pid": "2",
-        "value": "10",
-        "type": "d"
-      },
-      {
-        "label": "门头沟区",
-        "pid": "2",
-        "value": "11",
-        "type": "d"
-      },
-      {
-        "label": "房山区",
-        "pid": "2",
-        "value": "12",
-        "type": "d"
-      },
-      {
-        "label": "通州区",
-        "pid": "2",
-        "value": "13",
-        "type": "d"
-      },
-      {
-        "label": "顺义区",
-        "pid": "2",
-        "value": "14",
-        "type": "d"
-      },
-      {
-        "label": "昌平区",
-        "pid": "2",
-        "value": "15",
-        "type": "d"
-      },
-      {
-        "label": "大兴区",
-        "pid": "2",
-        "value": "16",
-        "type": "d"
-      },
-      {
-        "label": "平谷区",
-        "pid": "2",
-        "value": "17",
-        "type": "d"
-      },
-      {
-        "label": "怀柔区",
-        "pid": "2",
-        "value": "18",
-        "type": "d"
-      },
-      {
-        "label": "密云县",
-        "pid": "2",
-        "value": "19",
-        "type": "d"
-      },
-      {
-        "label": "延庆县",
-        "pid": "2",
-        "value": "20",
-        "type": "d"
-      }
-    ],
-    "label": "北京",
-    "pid": "1",
-    "value": "2",
-    "type": "c"
-  }
-]
+{
+  "articleImageList": [
+    {
+      "articleId": "891943715870097408",
+      "id": "891943715886874624",
+      "url": "http://112.74.26.228:8000/876708082437197824/30987d39-0a2d-401e-81bb-5c5ab9e7ad6c.jpg"
+    }
+  ],
+  "articleContent": {
+    "articleId": "891943715870097408",
+    "content": "test test..",
+    "id": "891943715878486016"
+  },
+  "article": {
+    "categoryId": "882783718376513541",
+    "createdTime": "2017-07-31 16:48:48",
+    "favoriteCount": 0,
+    "id": "891943715870097408",
+    "likeCount": 0,
+    "recommended": 0,
+    "sticky": 0,
+    "summary": "test test..",
+    "title": "TEST",
+    "typeId": "882783718376513536",
+    "userId": "891940175307096064",
+    "visitCount": 0
+  },
+  "commentCount": "0"
+}
