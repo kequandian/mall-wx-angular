@@ -97,6 +97,11 @@
                             </p>
                         </div>
                         <!--<div class="check-recommend" ng-click="toggle_order_item_list(show_list)">-->
+
+                        <div class="{{itemLevelCss(item.level)}}">
+                            <img src="{{itemLevelIcon}}"/>
+                        </div>
+
                         <div class="check-recommend" ng-click="check_table_data_action(item)">
                             <span class="custom_text_primary">查看明细</span>
                             <!--<div class="{{show_order_item_list(show_list) ? 'arrow-down' : 'arrow-up'}}">

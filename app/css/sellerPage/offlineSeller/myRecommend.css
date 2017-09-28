@@ -90,6 +90,38 @@
     text-overflow: ellipsis;
 }
 
+#myRecommend .recommend-list .recommend-list-item .seller-teams-type-one{
+    line-height: 20px;
+    position: absolute;
+    right: 30px;
+    bottom: 32px;
+    font-size: 10px;
+    padding: 2px;
+    text-align: center;
+}
+
+#myRecommend .recommend-list .recommend-list-item .seller-teams-type-one img{
+    width: 15px;
+    /*height: 26px;*/
+}
+
+
+
+#myRecommend .recommend-list .recommend-list-item .seller-teams-type-two{
+    line-height: 20px;
+    position: absolute;
+    right: 27px;
+    bottom: 32px;
+    font-size: 10px;
+    padding: 2px;
+    text-align: center;
+}
+
+#myRecommend .recommend-list .recommend-list-item .seller-teams-type-two img{
+    width: 21px;
+    /*height: 26px;*/
+}
+
 #myRecommend .recommend-list .recommend-list-item .check-recommend{
     width: 65px;
     height: 20px;

@@ -106,8 +106,23 @@
 
 #wholesaleDetails .product-price .product-retail-small{
     color: #734284;
-    font-size: 12px;
+    font-size: 13px;
 }
+
+#wholesaleDetails .product-price .product-retail-small .type-one-icon{
+    width: 12px;
+    height: 12px;
+    margin-top: 9px;
+    margin-left: 5px;
+}
+
+#wholesaleDetails .product-price .product-retail-small .type-two-icon{
+    width: 17px;
+    height: 12px;
+    margin-top: 9px;
+    margin-left: 5px;
+}
+
 #wholesaleDetails .product-price .product-retail{
     font-size: 14px;
     font-weight: bold;
@@ -126,12 +141,13 @@
 #wholesaleDetails .product-price-market span{
     font-size: 13px;
     color:#7D7D7D;
-    float: left;
+    float: right;
 }
 #wholesaleDetails .product-price-market s{
     font-size: 12px;
-    float: left;
-    margin-top: 4px;
+    float: right;
+    margin-top: 2px;
+    margin-right: 10px;
 }
 
 #wholesaleDetails .product-price-market .freight_if{
@@ -146,11 +162,12 @@
 
 #wholesaleDetails .product-price-market .star-price{
     font-size: 8px;
-    height: 28px;
+    height: 23px;
     line-height: 33px;
     /*color:#F15353;*/
     color:#7D7D7D;
     position: absolute;
+    left: 5px;
 }
 
 #wholesaleDetails .product-price s{
@@ -237,7 +254,7 @@
 }
 
 #wholesaleDetails .product-f-left span{
-    margin-left: 12px;
+    margin-left: 10px;
 }
 
 #wholesaleDetails .product-f-right{

@@ -29,11 +29,20 @@
                 <span style="margin-right:2px;">{{wholesale_info.pricing.price > 0 ? '￥'+(wholesale_info.pricing.price | number:2) : '￥0'}}</span>
                 <span class="point">/ {{(wholesale_info.pricing.price > 0 ? wholesale_info.pricing.price*point_rate : 0) | number:0}}积分 </span>
 
-                <span class="rebate">
-                    <span class="product-retail-small">
-                        {{wholesale_info.settlement_proportion > 0 ? '【推荐最高提成' + wholesale_info.settlement_proportion + '%】': ''}}
-                    </span>
+                <span class="product-price-market">
+                    <s>{{details.suggested_price | currency:'￥'}}</s><span>市场价：</span>
                 </span>
+
+                <!--{{wholesale_info.settlement_proportion}}-->
+                <div class="rebate" ng-if="wholesale_info.settlement_proportion > 0">
+                    <div class="product-retail-small">
+                        【推荐最高提成
+                        <img src="img/sellerPage/common/t-type-icon.png" class="type-one-icon"/>
+                        {{wholesale_info.proportionLv1 > 0 ? wholesale_info.proportionLv1 : '0'}}%
+                        <img src="img/sellerPage/common/ts-type-icon.png" class="type-two-icon"/>
+                        {{wholesale_info.proportionLv2 > 0 ? wholesale_info.proportionLv2 : '0'}}%】
+                    </div>
+                </div>
 
                 <!--<span class="rebate">
                     <span class="product-retail-small">线下建议零售价:</span>
@@ -41,16 +50,16 @@
                     <span class="product-retail-small">元/瓶</span>
                 </span>-->
 
-                <div class="product-price-market">
-                    <span>市场价：</span><s>{{details.suggested_price | currency:'￥'}}</s>
-                </div>
+                <!--<div class="product-price-market">-->
+                    <!--<span>市场价：</span><s>{{details.suggested_price | currency:'￥'}}</s>-->
+                <!--</div>-->
                 <div class="product-price-market">
                     <div class="star-price">
-                        <span style="margin-right: 10px;" ng-if="wholesale_info.pricing.suggested_wholesale_price > 0">
-                            {{wholesale_price(wholesale_info.pricing.suggested_wholesale_price,wholesale_info.unit,wholesale_info.product.unit)}}
-                        </span>
                         <span ng-if="wholesale_info.pricing.suggested_retail_price > 0">
                             {{retail_price(wholesale_info.pricing.suggested_retail_price,wholesale_info.unit,wholesale_info.product.unit)}}
+                        </span>
+                        <span style="margin-right: 10px;" ng-if="wholesale_info.pricing.suggested_wholesale_price > 0">
+                            {{wholesale_price(wholesale_info.pricing.suggested_wholesale_price,wholesale_info.unit,wholesale_info.product.unit)}}
                         </span>
                     </div>
                 </div>

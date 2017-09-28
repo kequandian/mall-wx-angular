@@ -10,13 +10,16 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
             document.title = "经销团队";
 
             var level_status = $stateParams.levelstatus;
+            $scope.l_status = level_status;
+
+            //console.log('level_status',level_status)
 
             myTeam();
             function myTeam(){
                 SellerTeamFty.getOffLineSellerTeamsService()
                     .then(function (json) {
                         if (json.status_code == 0) {
-                            //console.log("团队列表：" + angular.toJson(json.data));
+                            console.log("团队列表：" + angular.toJson(json.data));
                             list_info(level_status,json.data);
                         }else{
                             console.log(angular.toJson(json.data));
@@ -36,7 +39,18 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     }
                 }else if(status == 'crown'){
                     if(json.crown_children != null){
-                        newList = json.crown_children
+                        newList = json.crown_children;
+                        var typeOneCount = 0;
+                        var typeTwoCount = 0;
+                        angular.forEach(newList, function(item, index){
+                            if(item.level == 1){
+                                typeOneCount++;
+                            }else if(item.level == 2){
+                                typeTwoCount++;
+                            }
+                        });
+                        $scope.level_type_one = typeOneCount;
+                        $scope.level_type_two = typeTwoCount;
                     }
                 }
                 if(newList != null){
@@ -401,6 +415,18 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                     })
 
             }
+
+            //下级、下下级样式
+            $scope.itemLevelIcon = '';
+            $scope.itemLevelCss = function(level){
+                if(level == 1){
+                    $scope.itemLevelIcon = 'img/sellerPage/common/t-type-icon.png';
+                    return 'seller-teams-type-one';
+                }else if(level == 2){
+                    $scope.itemLevelIcon = 'img/sellerPage/common/ts-type-icon.png';
+                    return 'seller-teams-type-two';
+                }
+            };
 
             //show coupon list
             $scope.show_list = {
