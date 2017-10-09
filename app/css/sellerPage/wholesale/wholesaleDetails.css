@@ -68,10 +68,11 @@
 
 #wholesaleDetails .product-price{
     font-size: 20px;
-    height: 95px;
+    height: auto;
     margin-left: 5px;
     margin-right: 5px;
     color:#F15353;
+    margin-bottom: 6px;
 }
 
 #wholesaleDetails .product-price span{
@@ -101,12 +102,12 @@
 }
 
 #wholesaleDetails .product-price .rebate{
-    margin-right:12px
+    /*margin-right:12px*/
 }
 
 #wholesaleDetails .product-price .product-retail-small{
     color: #734284;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 #wholesaleDetails .product-price .product-retail-small .type-one-icon{
