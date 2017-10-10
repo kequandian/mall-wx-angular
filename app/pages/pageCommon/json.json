@@ -1,44 +1,151 @@
 {
-  "checkLike": false,
-  "comments": [
+  "status_code": 0,
+  "data": [
     {
-      "articleId": "900541747238883330",
-      "content": "很好很强大",
-      "createdTime": "2017-09-01 22:38:43",
-      "id": "903628186889580546",
-      "userId": "890943583494160384"
-    }
-  ],
-  "articleImageList": [
+      "amount": 2600,
+      "transferred": 0,
+      "pcd_name": "广东",
+      "bonus": {
+        "settled_amount": 11969,
+        "amount": 23938,
+        "transferred": 0,
+        "transferred_amount": 0,
+        "statistic_month": "2017-07-25",
+        "pcd_id": 2147,
+        "year_statistic_amount": 0,
+        "settlement_proportion": 50,
+        "id": 19,
+        "end_month": "2018-07-25",
+        "seller_id": 11014
+      },
+      "statistic_month": "2017-10-01",
+      "pcd_id": 2147,
+      "year_statistic_amount": 2600,
+      "settled_amount": 7.8,
+      "transferred_amount": 0,
+      "agentPurchaseJournals": [
+        {
+          "order_user_id": 11019,
+          "agent_proportion": 3,
+          "quantity": 20,
+          "pcd_name": "广东",
+          "pcd_id": 2147,
+          "product_specification_name": null,
+          "product_name": "十美优品净澈水润型沐浴露600ml*4瓶/箱",
+          "order_item_id": 5529,
+          "settled_amount": 4.8,
+          "order_user_name": "关应康",
+          "final_price": 1600,
+          "price": 80,
+          "product_id": 673,
+          "percentage": 10,
+          "marketing_name": "十美优品净澈水润型沐浴露600ml*4瓶/箱",
+          "marketing_id": 14,
+          "id": 1,
+          "create_date": "2017-10-09 11:21:34",
+          "seller_id": 11014,
+          "product_cover": "http://images.10mup.com/20170708154457918-gkpUE7r4.jpg"
+        },
+        {
+          "order_user_id": 11019,
+          "agent_proportion": 3,
+          "quantity": 10,
+          "pcd_name": "广东",
+          "pcd_id": 2147,
+          "product_specification_name": null,
+          "product_name": "碧丽雅超效洁净手洗专用洗衣液1.25L*10瓶/箱",
+          "order_item_id": 5530,
+          "settled_amount": 3,
+          "order_user_name": "关应康",
+          "final_price": 1000,
+          "price": 100,
+          "product_id": 149,
+          "percentage": 10,
+          "marketing_name": "碧丽雅超效洁净手洗专用洗衣液1.25L*10瓶/箱",
+          "marketing_id": 11,
+          "id": 2,
+          "create_date": "2017-10-09 11:21:34",
+          "seller_id": 11014,
+          "product_cover": "http://images.10mup.com/20160914142106802-oFWNcqv1.jpg"
+        }
+      ],
+      "settlement_proportion": 0,
+      "id": 39,
+      "end_month": null,
+      "seller_id": 11014
+    },
     {
-      "articleId": "900541747238883330",
-      "id": "900541747297603585",
-      "url": "http://112.74.26.228:8000/876708082437197824/f1316a72-0e05-4eba-8565-1066ead282f8.jpg"
+      "amount": 2600,
+      "transferred": 0,
+      "pcd_name": "广东-广州",
+      "bonus": {
+        "settled_amount": 212.16,
+        "amount": 10608,
+        "transferred": 0,
+        "transferred_amount": 0,
+        "statistic_month": "2017-07-25",
+        "pcd_id": 2148,
+        "year_statistic_amount": 0,
+        "settlement_proportion": 2,
+        "id": 22,
+        "end_month": "2018-07-25",
+        "seller_id": 11014
+      },
+      "statistic_month": "2017-10-01",
+      "pcd_id": 2148,
+      "year_statistic_amount": 2600,
+      "settled_amount": 7.8,
+      "transferred_amount": 0,
+      "agentPurchaseJournals": [
+        {
+          "order_user_id": 11019,
+          "agent_proportion": 3,
+          "quantity": 20,
+          "pcd_name": "广州",
+          "pcd_id": 2148,
+          "product_specification_name": null,
+          "product_name": "十美优品净澈水润型沐浴露600ml*4瓶/箱",
+          "order_item_id": 5529,
+          "settled_amount": 4.8,
+          "order_user_name": "关应康",
+          "final_price": 1600,
+          "price": 80,
+          "product_id": 673,
+          "percentage": 10,
+          "marketing_name": "十美优品净澈水润型沐浴露600ml*4瓶/箱",
+          "marketing_id": 14,
+          "id": 7,
+          "create_date": "2017-10-09 11:21:34",
+          "seller_id": 11014,
+          "product_cover": "http://images.10mup.com/20170708154457918-gkpUE7r4.jpg"
+        },
+        {
+          "order_user_id": 11019,
+          "agent_proportion": 3,
+          "quantity": 10,
+          "pcd_name": "广州",
+          "pcd_id": 2148,
+          "product_specification_name": null,
+          "product_name": "碧丽雅超效洁净手洗专用洗衣液1.25L*10瓶/箱",
+          "order_item_id": 5530,
+          "settled_amount": 3,
+          "order_user_name": "关应康",
+          "final_price": 1000,
+          "price": 100,
+          "product_id": 149,
+          "percentage": 10,
+          "marketing_name": "碧丽雅超效洁净手洗专用洗衣液1.25L*10瓶/箱",
+          "marketing_id": 11,
+          "id": 8,
+          "create_date": "2017-10-09 11:21:34",
+          "seller_id": 11014,
+          "product_cover": "http://images.10mup.com/20160914142106802-oFWNcqv1.jpg"
+        }
+      ],
+      "settlement_proportion": 0,
+      "id": 42,
+      "end_month": null,
+      "seller_id": 11014
     }
-  ],
-  "articleContent": {
-    "articleId": "900541747238883330",
-    "content": "好好",
-    "id": "900541747276632066"
-  },
-  "likeUserIds": [],
-  "commentUserIds": [
-    890943583494160400
-  ],
-  "article": {
-    "categoryId": "882783718376513540",
-    "createdTime": "2017-08-24 10:14:18",
-    "favoriteCount": 0,
-    "id": "900541747238883330",
-    "likeCount": 0,
-    "recommended": 0,
-    "sticky": 0,
-    "summary": "好好",
-    "title": "好",
-    "typeId": "882783718376513536",
-    "userId": "895173519385935873",
-    "visitCount": 0
-  },
-  "commentCount": "1",
-  "likes": []
+  ]
 }

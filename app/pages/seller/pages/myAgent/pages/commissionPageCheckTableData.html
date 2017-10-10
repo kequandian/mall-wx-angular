@@ -7,15 +7,25 @@
         </div>
 
         <div class="item-children-list">
-            <div class="product-item" ng-repeat="item in seller_product_list">
+            <div class="product-item" ng-repeat="item in agent_purchase_journals">
+            <!--<div class="product-item">-->
                 <div class="product-title-name custom_text_primary">
-                    <span>{{item.product_name | cutText:true:10:'...'}}</span>
+                    <span>产品名称: {{item.product_name | cutText:true:20:'...'}}</span>
                 </div>
                 <div class="product-item-details custom_text_primary">
                     <span>
-                        进货金额: {{item.amount>0 ? '￥'+item.amount : '0'}};
-                        提成比例: {{item.product_settlement_proportion>0 ? item.product_settlement_proportion+'%' : '0'}};
-                        最高提成: {{item.expected_reward>0 ? '￥'+item.expected_reward : '0'}}
+                        进货金额: {{item.sum_final_price>0 ? '￥'+item.sum_final_price : '0'}}
+                    </span>
+                </div>
+                <div class="product-item-details custom_text_primary">
+                    <span>
+                        <!--提成比例: {{proportion_calculation(item.final_price, item.agent_proportion, item.percentage)}}-->
+                        提成比例: {{item.agent_proportion_percentage>0 ? item.agent_proportion_percentage+'%' : '0'}}
+                    </span>
+                </div>
+                <div class="product-item-details custom_text_primary">
+                    <span>
+                        本月提成: {{item.sum_settled_amount>0 ? '￥'+item.sum_settled_amount : '0'}}
                     </span>
                 </div>
             </div>

@@ -50,7 +50,7 @@ angular.module('myAgent.route', [])
                 loadData: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load('CommissionCheckTable');
                 }]
-            }
+            },
         })
 
         /*

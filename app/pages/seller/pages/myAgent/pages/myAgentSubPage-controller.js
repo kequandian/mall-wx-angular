@@ -176,7 +176,7 @@ angular.module('myAgentSubPage.controller', ['myAgentSubPage.service'])
                 MyAgentSubPageFty.getPurchaseSummaryService(select_dtae_format)
                     .then(function(json){
                         if(json.status_code == 0){
-                            //console.log('提成明细: ' + angular.toJson(json));
+                            //console.log('我的代理: ' + angular.toJson(json));
                             $scope.commission_info = json.data;
                         }else{
                             $.toast('获取信息失败','cancel');
@@ -236,7 +236,9 @@ angular.module('myAgentSubPage.controller', ['myAgentSubPage.service'])
             };
 
             //进入订单明细
-            $scope.com_check_table_data_action = function(){
+            $scope.com_check_table_data_action = function(agentPurchaseJournals){
+                localStorage.removeItem('agentPurchaseJournals')
+                localStorage['agentPurchaseJournals'] = JSON.stringify(agentPurchaseJournals);
                 $state.go('commissionPageCheckTable');
             }
         }])
@@ -292,28 +294,21 @@ angular.module('myAgentSubPage.controller', ['myAgentSubPage.service'])
 
             document.title = "订单明细";
 
-            var seller_id = 0;
-
             initCode();
 
             function initCode(){
-                //seller_id = $stateParams.sellerId;
-                //getPurchaseJournal(seller_id)
+                $scope.agent_purchase_journals = JSON.parse(localStorage['agentPurchaseJournals']);
+                //console.log("agent_purchase_journals", angular.toJson($scope.agent_purchase_journals))
             }
 
-            //订单明细
-            function getPurchaseJournal(id){
-                MyAgentSubPageFty.getPurchaseJournalService(id)
-                    .then(function(json){
-                        if(json.status_code == 0){
-                            $scope.seller_product_list = json.data;
-                            //console.log('获取进货明细：' + angular.toJson(json));
-                        }else{
-                            console.log('获取进货明细失败：' + angular.toJson(json));
-                        }
-                    }, function(error){
-                        console.log('获取进货明细失败：' + angular.toJson(error));
-                    })
+            $scope.proportion_calculation = function(final_price, agent_proportion, percentage){
+
+                if(final_price>0 && agent_proportion>0 && percentage>0){
+                    return (final_price * (agent_proportion/100) * (percentage/100)).toFixed(0) + '%';
+                }else{
+                    return '0';
+                }
+
             }
 
         }])
