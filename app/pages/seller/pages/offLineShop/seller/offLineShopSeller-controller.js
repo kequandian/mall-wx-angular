@@ -404,6 +404,8 @@ angular.module('sellerTeam.controller', ['sellerTeam.service'])
                         if(json.status_code == 0){
                             //console.log('我的推荐: ' + angular.toJson(json));
                             $scope.pirchase_summary = json.data[0];
+
+                            //console.log('我的推荐--列表: ', $scope.pirchase_summary.my_recommended_sellers);
                         }else{
                             $.toast('获取信息失败','cancel');
                             console.log(angular.toJson(json));
