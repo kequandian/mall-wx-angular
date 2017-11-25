@@ -86,7 +86,8 @@ angular.module('moduleValueJs',[])
     .value('WholesalePCDCode',{
         province:null,
         city:null,
-        district:null
+        district:null,
+        isAgent:false
     })
 
     .value('QRCodeUrlParams',{

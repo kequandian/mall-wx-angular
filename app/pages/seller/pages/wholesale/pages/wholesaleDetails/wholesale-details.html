@@ -42,9 +42,11 @@
                         <img src="img/sellerPage/common/ts-type-icon.png" class="type-two-icon"/>
                         {{wholesale_info.proportionLv2 > 0 ? wholesale_info.proportionLv2 : '0'}}%
                         】
-                        【<img src="img/sellerPage/common/ts-type-icon.png" class="type-two-icon"/>
-                        代理: {{wholesale_info.agent_proportion > 0 ? wholesale_info.agent_proportion : '0'}}%
-                        】
+                        <i ng-if="isAgent">
+                            【<img src="img/sellerPage/common/ts-type-icon.png" class="type-two-icon"/>
+                            代理: {{wholesale_info.agent_proportion > 0 ? wholesale_info.agent_proportion : '0'}}%
+                            】
+                        </i>
                     </div>
                 </div>
 

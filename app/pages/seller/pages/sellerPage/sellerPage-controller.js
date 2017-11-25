@@ -139,6 +139,7 @@ angular.module('sellerPage.controller', ['sellerPage.service'])
 
                             /// save session
                             BalanceSession.balance = $scope.owner_balance.balance;
+                            WholesalePCDCode.isAgent = $scope.owner_balance.is_agent;
                         }
                     }, function (error) {
                         $.toast('获取信息失败', 'cancel');

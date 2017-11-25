@@ -19,6 +19,7 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
             });
 
             $scope.point_rate = PointRate.rate;
+            $scope.isAgent = WholesalePCDCode.isAgent;
             var wholesaleId = $stateParams.wholesaleId;
             var product_id = 0;
             var province = WholesalePCDCode.province;
