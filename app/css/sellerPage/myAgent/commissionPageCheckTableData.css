@@ -38,10 +38,14 @@
     /*padding: 0 6px;*/
 }
 
+#checkTableData .item-children-list .product-item .product-item-body{
+    display: flex;
+    flex-direction: row;
+}
+
 #checkTableData .item-children-list .product-item .product-item-details{
-    width: 100%;
+    flex: 1;
     height: 25px;
     line-height: 23px;
-    text-align: left;
     font-size: 12px;
 }

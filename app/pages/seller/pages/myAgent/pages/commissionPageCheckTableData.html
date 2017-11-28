@@ -12,21 +12,24 @@
                 <div class="product-title-name custom_text_primary">
                     <span>产品名称: {{item.product_name | cutText:true:20:'...'}}</span>
                 </div>
-                <div class="product-item-details custom_text_primary">
+                <div class="product-item-body">
+
+                    <div class="product-item-details custom_text_primary">
                     <span>
                         进货金额: {{item.sum_final_price>0 ? '￥'+item.sum_final_price : '0'}}
                     </span>
-                </div>
-                <div class="product-item-details custom_text_primary">
+                    </div>
+                    <div class="product-item-details custom_text_primary">
                     <span>
                         <!--提成比例: {{proportion_calculation(item.final_price, item.agent_proportion, item.percentage)}}-->
                         提成比例: {{item.agent_proportion_percentage>0 ? item.agent_proportion_percentage+'%' : '0'}}
                     </span>
-                </div>
-                <div class="product-item-details custom_text_primary">
+                    </div>
+                    <div class="product-item-details custom_text_primary">
                     <span>
                         本月提成: {{item.sum_settled_amount>0 ? '￥'+item.sum_settled_amount : '0'}}
                     </span>
+                    </div>
                 </div>
             </div>
         </div>
