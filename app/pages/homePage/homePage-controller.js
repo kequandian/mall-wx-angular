@@ -463,6 +463,16 @@ angular.module('homePage.controller', ['homePage.service'])
 
             };
 
+            //显示商品列表
+            $scope.isShowProduct = function (isShowProducts){
+                console.log('isShowProducts',isShowProducts)
+                if(isShowProducts == 1){
+                    return true;
+                }else if(isShowProducts == 0){
+                    return false;
+                }
+            };
+
             //红包
             $scope.hide_bg = function(){
                 document.getElementById('red-packet').style.display = 'none';

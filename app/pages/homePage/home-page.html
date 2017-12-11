@@ -149,12 +149,11 @@
                 </div>
             </div>
 
-            <div oc-lazy-load="SquareImg" class="area-product">
-                <div id="homeProductGrids">
+            <div oc-lazy-load="SquareImg">
+                <div id="homeProductGrids" class="area-product" ng-if="isShowProduct(productItem.is_show_products)">
                     <div class="weui_grids">
                         <a ui-sref="details({productId:item.id})" class="weui_grid product_item"
                            ng-repeat="item in productItem.products"
-                           ng-click=""
                                 >
                             <div ng-click="gotoDetail()">
                                 <!--product cover-->
