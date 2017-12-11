@@ -182,7 +182,7 @@ angular.module('homePage.controller', ['homePage.service'])
                         if (json.status_code == 0) {
 
                             $scope.rec_product = json.data;
-                            //console.log(angular.toJson(json.data[0]));
+                            //console.log(angular.toJson(json.data));
 
                         /*    if (pageNumber == 1) {
                                 $scope.rec_product = json.data;
@@ -429,7 +429,7 @@ angular.module('homePage.controller', ['homePage.service'])
             }
 
             //推荐商品
-            $scope.goToGoodsList = function (item, index) {
+            $scope.goToGoodsList = function (item, index ) {
                 //console.log("item: " + angular.toJson(item));
                 //goodListParams.typeNumber = item.id;
                 //if(item.sub_categories.length > 0){
@@ -442,18 +442,25 @@ angular.module('homePage.controller', ['homePage.service'])
                 //default category params
                 //cateCacheCode.index_first=index;
                 //cateCacheCode.index_second=0;
-                var newItem = item;
-                newItem.sub_categories = [];
-                //return;
+                var isShowProducts = item.is_show_products;
+                //console.log('isShowProducts',isShowProducts)
+                if(isShowProducts == 0){
+                    var productId = item.products[0].id;
+                    $state.go('details',{productId:productId});
+                }else if(isShowProducts == 1){
+                    var newItem = item;
+                    newItem.sub_categories = [];
 
-                cateCacheCode.cate_session=-1;
-                cateCacheCode.second_cate=null;
-                cateCacheCode.product_list=newItem;
-                cateCacheCode.product_id=-1;
-                cateCacheCode.loading=false;
-                cateCacheCode.load_more_btn_show= true;
+                    cateCacheCode.cate_session=-1;
+                    cateCacheCode.second_cate=null;
+                    cateCacheCode.product_list=newItem;
+                    cateCacheCode.product_id=-1;
+                    cateCacheCode.loading=false;
+                    cateCacheCode.load_more_btn_show= true;
 
-                $state.go('home.category',{categoryId:-1,categoryType:'default'});
+                    $state.go('home.category',{categoryId:-1,categoryType:'default'});
+                }
+
             };
 
             //红包
