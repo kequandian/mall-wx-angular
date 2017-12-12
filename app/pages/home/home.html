@@ -40,6 +40,7 @@
            ng-class="{weui_bar_item_on : currentId == tab_item.id}"
            ui-sref="{{tab_item.srefName}}"
            ng-click="clickme(tab_item.id)"
+           ng-if="tab_item.is_show_tab"
                 >
             <div class="">
                 <i ng-if="tab_item.c_number > 0" class="{{tab_item.c_count}}">

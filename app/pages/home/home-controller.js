@@ -32,7 +32,8 @@ angular.module('home.controller', ['home.service'])
                 'home_tab_icon': 'weui_tabbar_icon ion-app-biliya-tabs-home',
                 'c_count': null,
                 'c_number': 0,
-                'red_point':false
+                'red_point':false,
+                'is_show_tab':true
             }, {
                 'id': '2',
                 'name': '分类',
@@ -40,15 +41,17 @@ angular.module('home.controller', ['home.service'])
                 'home_tab_icon': 'weui_tabbar_icon ion-app-biliya-tabs-search',
                 'c_count': null,
                 'c_number': 0,
-                'red_point':false
-            }, {
+                'red_point':false,
+                'is_show_tab': GlobalVariable.SHOW_PRODUCT_CATEGORY_MENU
+        }, {
                 'id': '3',
                 'name': GlobalVariable.SELLER_SHIP=='YES' ? '积分中心' : '申请会员',
                 'srefName': GlobalVariable.SELLER_SHIP=='YES' ? '.sellerPage' : GlobalVariable.SELLER_SHIP=='NO' ?  '.becomeDistributor' : '.sellerApplying',
                 'home_tab_icon': 'weui_tabbar_icon ion-app-biliya-tabs-point',
                 'c_count': null,
                 'c_number': 0,
-                'red_point':false
+                'red_point':false,
+                'is_show_tab':true
             }, {
                 'id': '4',
                 'name': '购物车',
@@ -56,7 +59,8 @@ angular.module('home.controller', ['home.service'])
                 'home_tab_icon': 'weui_tabbar_icon ion-app-biliya-tabs-cart',
                 'c_count': 'cart_count',
                 'c_number': 0,
-                'red_point':false
+                'red_point':false,
+                'is_show_tab':true
             }, {
                 'id': '5',
                 'name': '个人中心',
@@ -64,7 +68,8 @@ angular.module('home.controller', ['home.service'])
                 'home_tab_icon': 'weui_tabbar_icon ion-app-biliya-tabs-user',
                 'c_count': null,
                 'c_number': 0,
-                'red_point':false
+                'red_point':false,
+                'is_show_tab':true
             }];
 
 

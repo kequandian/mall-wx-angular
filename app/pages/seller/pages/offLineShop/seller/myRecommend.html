@@ -80,7 +80,7 @@
                         <div class="recommend-item-data">
                             <p>本月进货：
                                 <span class="pro-black">
-                                    {{item.monthly_amount > 0 ? "￥" + (item.monthly_amount | number:1) : '0'}}
+                                    {{item.monthly_amount > 0 ? "￥" + (item.monthly_amount | number:2) : '0'}}
                                 </span>
                             </p>
                             <!--<p>累计提成：-->
@@ -92,11 +92,11 @@
                         <div class="recommend-item-data">
                             <p>最高提成：
                                 <span class="pro-black" ng-if="item.level == 1">
-                                    {{item.monthly_expected_settled_amount > 0 ? "￥" + (item.monthly_expected_settled_amount | number:1) : '0'}}
+                                    {{item.monthly_expected_settled_amount > 0 ? "￥" + (item.monthly_expected_settled_amount | number:2) : '0'}}
                                 </span>
 
                                 <span class="pro-black" ng-if="item.level == 2">
-                                    {{item.monthly_expected_settled_amount_lv2 > 0 ? "￥" + (item.monthly_expected_settled_amount_lv2 | number:1) : '0'}}
+                                    {{item.monthly_expected_settled_amount_lv2 > 0 ? "￥" + (item.monthly_expected_settled_amount_lv2 | number:2) : '0'}}
                                 </span>
                             </p>
                         </div>

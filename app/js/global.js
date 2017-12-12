@@ -10,7 +10,8 @@ angular.module('global', [])
         FOLLOW_US_URL: 'http://www.kequandian.net',
         CAN_APPLY_CROWN: true,
         APPLY_PHYSICAL_CROWN_TEXT:'',
-        APPLY_PHYSICAL_SELLER_TEXT:''
+        APPLY_PHYSICAL_SELLER_TEXT:'',
+        SHOW_PRODUCT_CATEGORY_MENU:true,
     })
     .value('LoginSession', {
         token: 'token'
