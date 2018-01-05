@@ -500,7 +500,7 @@ i{
 }
 
 #content .area-product .pro-item-margin {
-    /*margin: 5px 5px 5px 5px;*/
+    margin: 5px 5px 5px 5px;
 }
 
 #content .home_grid_img {
@@ -835,6 +835,3 @@ i{
     color: white;
     font-size: 14px;
 }
-
-
-
