@@ -499,8 +499,14 @@ i{
     margin-top: 3px;
 }
 
-#content .area-product .pro-item-margin {
-    margin: 5px 5px 5px 5px;
+#content .area-product .product_item:first-child .pro-item-margin {
+    margin: 0px 2px 0px 4px;
+}
+#content .area-product .product_item:last-child .pro-item-margin {
+    margin: 0px 4px 0px 2px;
+}
+#content .area-product .product_item .pro-item-margin {
+    margin: 0px 2px 0px 2px;
 }
 
 #content .home_grid_img {
