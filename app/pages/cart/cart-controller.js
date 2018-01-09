@@ -950,6 +950,7 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
 
                 if ($scope.canSubmitOrder() && GlobalVariable.MID !== undefined) {
                   $scope.order.mid = GlobalVariable.MID;
+                  $scope.order.mname = GlobalVariable.MNAME;
                 }
                 if (!$scope.canSubmitOrder()) {
                   $.toast('请进入商家店铺进行选购', 'cancel');
