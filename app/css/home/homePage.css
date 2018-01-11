@@ -499,8 +499,14 @@ i{
     margin-top: 3px;
 }
 
-#content .area-product .pro-item-margin {
-    /*margin: 5px 5px 5px 5px;*/
+#content #homeProductGrids .weui_grids > a:first-child .pro-item-margin {
+    margin: 0px 2px 0px 4px;
+}
+#content #homeProductGrids .weui_grids > a:nth-last-child(2) .pro-item-margin {
+    margin: 0px 4px 0px 2px;
+}
+#content #homeProductGrids .weui_grids > a .pro-item-margin {
+    margin: 0px 2px 0px 2px;
 }
 
 #content .home_grid_img {
@@ -835,6 +841,3 @@ i{
     color: white;
     font-size: 14px;
 }
-
-
-

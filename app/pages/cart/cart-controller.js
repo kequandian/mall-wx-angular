@@ -443,9 +443,9 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
         }])
 
     .controller('SettlementController', ['$scope', '$state', '$stateParams', '$location', '$rootScope','$timeout','$interval', 'AddressManagerFty', 'CartFty','BalanceSession',
-        'PointRate', '$ocLazyLoad','areasStatus','goodListParams','AutoSelectCoupon','WholesalePCDCode','wCateCache',
+        'PointRate', '$ocLazyLoad','areasStatus','goodListParams','AutoSelectCoupon','WholesalePCDCode','wCateCache', 'GlobalVariable',
         function ($scope, $state, $stateParams, $location, $rootScope,$timeout,$interval, AddressManagerFty, CartFty,BalanceSession, PointRate,
-                  $ocLazyLoad,areasStatus,goodListParams,AutoSelectCoupon,WholesalePCDCode,wCateCache) {
+                  $ocLazyLoad,areasStatus,goodListParams,AutoSelectCoupon,WholesalePCDCode,wCateCache,GlobalVariable) {
 
 
             $ocLazyLoad.load('Jquery').then(function () {
@@ -914,6 +914,14 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                 $state.go('goodsList',{statusNumber:10});
             };
 
+            //如果有定义MID,表示开通了商家零售模式，需要把MID进行提交到order。
+            //如果MID为空，则不能提交订单
+            $scope.canSubmitOrder = function() {
+              var v = (GlobalVariable.MID === undefined) || (GlobalVariable.MID !== undefined && GlobalVariable.MID !== null && GlobalVariable.MID !== "");
+              console.log("canSubmitOrder: ", GlobalVariable.MID, v);
+              return v;
+            }
+
             //提交订单
             $scope.addOrderSubmit = function () {
 
@@ -938,6 +946,15 @@ angular.module('cart.controller', ['cart.service', 'addressManager.service'])
                     }else{
                         delete $scope.order['coupon_id'];
                     }
+                }
+
+                if ($scope.canSubmitOrder() && GlobalVariable.MID !== undefined) {
+                  $scope.order.mid = GlobalVariable.MID;
+                  $scope.order.mname = GlobalVariable.MNAME;
+                }
+                if (!$scope.canSubmitOrder()) {
+                  $.toast('请进入商家店铺进行选购', 'cancel');
+                  return;
                 }
 
                 $scope.order.contact = $scope.currentContact;
