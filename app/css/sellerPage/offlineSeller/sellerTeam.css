@@ -50,12 +50,12 @@
 }
 
 #sellerTeam #nav .content-item .teams-type-one img{
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 19px;
 }
 #sellerTeam #nav .content-item .teams-type-one span{
     color:#89898a;
-    margin-left: 36px;
+    margin-left: 35px;
 }
 
 #sellerTeam #nav .content-item .teams-type-two{
@@ -65,12 +65,12 @@
 }
 
 #sellerTeam #nav .content-item .teams-type-two img{
-    width: 22px;
-    height: 18px;
+    width: 31px;
+    height: 22px;
 }
 #sellerTeam #nav .content-item .teams-type-two span{
     color:#89898a;
-    margin-left: 40px;
+    margin-left: 50px;
 }
 
 #sellerTeam .sellerTeam-content{
@@ -140,17 +140,17 @@
     right: 8px;
 }
 #sellerTeam .sellerTeam-content .item-right .team-icon-one img{
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 19px;
 }
 
 #sellerTeam .sellerTeam-content .item-right .team-icon-two{
     position: absolute;
     top: 27px;
-    right: 8px;
+    right: 1px;
 }
 #sellerTeam .sellerTeam-content .item-right .team-icon-two img{
-    width: 22px;
-    height: 18px;
+    width: 31px;
+    height: 22px;
 }
 
