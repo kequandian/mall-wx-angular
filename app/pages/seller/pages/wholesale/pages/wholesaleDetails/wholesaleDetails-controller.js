@@ -202,21 +202,26 @@ angular.module('wholesaleDetails.controller', ['wholesaleDetails.service'])
             }
 
             //星级经销价
-            $scope.wholesale_price = function(price, wholesaleUnit, productUnit){
-                if(wholesaleUnit === undefined || wholesaleUnit === null || wholesaleUnit == ""){
-                    return '星级经销价: ' + price + '元/' + productUnit
-                }else{
+            $scope.wholesale_price = function(price, suggestedWholesaleUnit, wholesaleUnit, productUnit){
+                if (suggestedWholesaleUnit !== undefined && suggestedWholesaleUnit !== null && suggestedWholesaleUnit !== "") {
+                  return '星级经销价: ' + price + '元/' + suggestedWholesaleUnit;
+                }
+                if(wholesaleUnit !== undefined && wholesaleUnit !== null && wholesaleUnit !== ""){
                     return '星级经销价: ' + price + '元/' + wholesaleUnit
                 }
+
+                return '星级经销价: ' + price + '元/' + productUnit
             };
 
             //现零售价
-            $scope.retail_price = function(price, wholesaleUnit, productUnit){
-                if(wholesaleUnit === undefined || wholesaleUnit === null || wholesaleUnit == ""){
-                    return '现零售价: ' + price + '/' + productUnit
-                }else{
+            $scope.retail_price = function(price, suggestedRetailUnit, wholesaleUnit, productUnit){
+                if (suggestedRetailUnit !== undefined && suggestedRetailUnit !== null && suggestedRetailUnit !== "") {
+                  return '现零售价: ' + price + '/' + suggestedRetailUnit
+                }
+                if(wholesaleUnit !== undefined && wholesaleUnit !== null && wholesaleUnit !== ""){
                     return '现零售价: ' + price + '/' + wholesaleUnit
                 }
+                return '现零售价: ' + price + '/' + productUnit
             };
 
             //获取快递公司

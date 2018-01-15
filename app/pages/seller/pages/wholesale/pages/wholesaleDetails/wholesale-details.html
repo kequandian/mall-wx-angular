@@ -62,10 +62,10 @@
                 <div class="product-price-market">
                     <div class="star-price">
                         <span ng-if="wholesale_info.pricing.suggested_retail_price > 0">
-                            {{retail_price(wholesale_info.pricing.suggested_retail_price,wholesale_info.unit,wholesale_info.product.unit)}}
+                            {{retail_price(wholesale_info.pricing.suggested_retail_price,wholesale_info.suggested_retail_unit,wholesale_info.unit,wholesale_info.product.unit)}}
                         </span>
                         <span style="margin-right: 10px;" ng-if="wholesale_info.pricing.suggested_wholesale_price > 0">
-                            {{wholesale_price(wholesale_info.pricing.suggested_wholesale_price,wholesale_info.unit,wholesale_info.product.unit)}}
+                            {{wholesale_price(wholesale_info.pricing.suggested_wholesale_price,wholesale_info.suggested_wholesale_unit,wholesale_info.unit,wholesale_info.product.unit)}}
                         </span>
                     </div>
                 </div>
