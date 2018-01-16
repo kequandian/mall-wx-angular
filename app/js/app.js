@@ -42,7 +42,15 @@
         'wholesaleGoodsList.route',
         'wholesaleDetails.route',
         'addWholesaleAddress.route',
-        'myAgent.route'
+        'myAgent.route',
+        'businessOrder.route',
+        'allOrder.route',
+        'payOrder.route',
+        'payedOrder.route',
+        'deliveredOrder.route',
+        'finishOrder.route',
+        'pendingMassOrder.route',
+        'businessOrderDetails.route'
 
     ]).config(["$urlRouterProvider", '$ocLazyLoadProvider','$locationProvider',
         function ($urlRouterProvider, $ocLazyLoadProvider,$locationProvider) {
@@ -385,6 +393,63 @@
                     files: ['pages/seller/pages/myAgent/pages/myAgentSubPage-controller.js',
                         'pages/seller/pages/myAgent/pages/myAgentSubPage-service.js',
                         {type: 'css', path: 'css/sellerPage/myAgent/commissionPageSettlementRecord.css'}],
+                    cache: false
+                }, {
+                    name: 'BusinessOrderRecord',
+                    files: ['pages/my/businessOrder/businessOrder-controller.js',
+                        'pages/my/businessOrder/businessOrder-service.js',
+                        {type: 'css', path: 'css/my/businessOrder.css'}],
+                    cache: false
+                }, {
+                    name: 'AllOrder',
+                    files: ['pages/my/businessOrder/tabs/allOrder/allOrder-controller.js',
+                        //'pages/my/businessOrder/tabs/allOrder/allOrder-service.js',
+                        'pages/my/order/order-common-service.js',
+                        {type: 'css', path: 'css/my/businessOrder.css'}],
+                    cache: false
+                }, {
+                    name: 'PayOrder',
+                    files: ['pages/my/businessOrder/tabs/payOrder/payOrder-controller.js',
+                        //'pages/my/businessOrder/tabs/payOrder/payOrder-service.js',
+                        //'pages/my/order/order-common-service.js',
+                        {type: 'css', path: 'css/my/businessOrder.css'}],
+                    cache: false
+                }, {
+                    name: 'PayedOrder',
+                    files: ['pages/my/businessOrder/tabs/payedOrder/payedOrder-controller.js',
+                        //'pages/my/businessOrder/tabs/payedOrder/payedOrder-service.js',
+                        //'pages/my/order/order-common-service.js',
+                        {type: 'css', path: 'css/my/businessOrder.css'}],
+                    cache: false
+                }, {
+                    name: 'DeliveredOrder',
+                    files: ['pages/my/businessOrder/tabs/deliveredOrder/deliveredOrder-controller.js',
+                        //'pages/my/businessOrder/tabs/deliveredOrder/deliveredOrder-service.js',
+                        //'pages/my/order/order-common-service.js',
+                        {type: 'css', path: 'css/my/businessOrder.css'}],
+                    cache: false
+                }, {
+                    name: 'FinishOrder',
+                    files: ['pages/my/businessOrder/tabs/finishOrder/finishOrder-controller.js',
+                        //'pages/my/businessOrder/tabs/finishOrder/finishOrder-service.js',
+                        //'pages/my/order/order-common-service.js',
+                        {type: 'css', path: 'css/my/businessOrder.css'}],
+                    cache: false
+                }, {
+                    name: 'PendingMassOrder',
+                    files: ['pages/my/businessOrder/tabs/pendingMassOrder/pendingMassOrder-controller.js',
+                        //'pages/my/businessOrder/tabs/pendingMassOrder/pendingMassOrder-service.js',
+                        //'pages/my/order/order-common-service.js',
+                        {type: 'css', path: 'css/my/businessOrder.css'}],
+                    cache: false
+                }, {
+                    name: 'BusinessOrderDetails',
+                    files: ['pages/my/businessOrder/orderDetails/orderDetail-controller.js',
+                        'pages/my/businessOrder/orderDetails/orderDetail-service.js',
+                        'pages/my/order/order-common-service.js',
+                        'pages/my/order/express/express-service.js',
+                        'pages/my/order/order-service.js',
+                        {type: 'css', path: 'css/my/businessOrderDetails.css'}],
                     cache: false
                 }
 

@@ -4,8 +4,8 @@ angular.module('global', [])
     .constant('GlobalVariable', {
         // 服务器地址
         SERVER_PATH: 'http://112.74.26.228:10080/rest',
+        ACCESS_TOKEN: 'eyJsb2dpbl9uYW1lIjoidXNlcjEyMyIsInRva2VuIjoiY2MwNTI1YTU3N2VjNzIyYzc2YWFjMmRkOWViODZlYjg1NWQ4YWEwYSJ9',
         //ACCESS_TOKEN: 'eyJsb2dpbl9uYW1lIjoib1hhdU13Y01xR2VWNnpkSEdMXzFDY21qbFFVZyIsInRva2VuIjoiYWJjZmZjMTc3ZTIxODg5YmJlYmY2NGVjM2NhM2M1NjZmOTY0YjU1OCJ9',
-        ACCESS_TOKEN: 'eyJsb2dpbl9uYW1lIjoib1hhdU13Y01xR2VWNnpkSEdMXzFDY21qbFFVZyIsInRva2VuIjoiYWJjZmZjMTc3ZTIxODg5YmJlYmY2NGVjM2NhM2M1NjZmOTY0YjU1OCJ9',
         SELLER_SHIP: 'YES',
         FOLLOW_US_URL: 'http://www.kequandian.net',
         CAN_APPLY_CROWN: true,

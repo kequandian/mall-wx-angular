@@ -1,0 +1,94 @@
+<!--
+/**
+* 申请退货
+*
+* @author Jimmie Hwang
+* @create 2016/6/16
+*
+*/-->
+
+<div id="salesReturn">
+
+    <form ng-submit="">
+
+        <div class="weui_cells weui_cells_form">
+
+            <!--申请服务-->
+            <div class="weui_cell weui_cell_select bg apply">
+                <div class="weui_cell_hd">申请服务 :</div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <select id="test" class="weui_select" disabled ng-options="i.key as i.value for i in returnType"
+                            ng-model="returnType.key">
+                    </select>
+                </div>
+            </div>
+
+            <!--退货原因-->
+           <!-- <div class="weui_cell weui_cell_select bg reason">
+                <div class="weui_cell_hd">退货原因 :</div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <select class="weui_select" ng-options="i.key as i.value for i in returnReason"
+                            ng-model="salesReturn.reason"
+                            ng-init="salesReturn.reason='请选择退货原因'">
+                    </select>
+                </div>
+            </div>-->
+
+            <!--退货金额  returnType.key=='REFUND' ? '退款金额' : '退货金额'-->
+            <div class="weui_cell bg mon">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>{{return_type_text}} : <span class="returnMon">{{total_price}}</span></p>
+                </div>
+            </div>
+            <!--<p class="explain">（最多29.90元，含发货邮费0.00元）</p>-->
+
+            <!--退货说明-->
+            <div class="weui_cells_title bg pad">{{returnType.key=='REFUND' ? '退款说明' : '退货说明'}}</div>
+            <div class="weui_cell ">
+                <textarea class="weui_textarea" placeholder="请输入详细说明" rows="3" ng-model="salesReturn.content"></textarea>
+            </div>
+
+
+            <!--添加图片-->
+            <!--<div class="weui_cells_title bg pad">添加图片</div>-->
+            <!--<div class="weui_uploader_input_wrp add">-->
+
+                <!--<ul ng-if="image_list.length>0" class="weui_uploader_files" ng-repeat="url in image_list">-->
+                    <!--<li class="weui_uploader_file" style="background-image:url({{url}})"></li>-->
+                <!--</ul>-->
+                <!--<input id="inputFileToLoad" onchange="angular.element(this).scope().uploadImage()"  class="weui_uploader_input " type="file" accept="image/jpg,image/jpeg,image/png,image/gif" multiple="">-->
+            <!--</div>-->
+
+
+            <div class="weui_cells_title bg pad">添加图片 (长按删除)</div>
+            <div class="weui_cell_bd weui_cell_primary" style="background-color: white; padding-top: 10px; padding-bottom: 6px;margin-left: 10px;">
+                <div class="weui_uploader">
+
+                    <div class="weui_uploader_bd">
+
+                        <ul ng-if="image_list.length>0" class="weui_uploader_files" ng-repeat="url in image_list">
+                            <li class="weui_uploader_file" style="background-image:url({{url}})"
+                                ng-touchstart="onTouchStart(url)"
+                                ng-touchend="onTouchEnd(url)"></li>
+                        </ul>
+
+                        <div class="weui_uploader_input_wrp">
+                            <input id="inputFileToLoad" onchange="angular.element(this).scope().uploadImage()" class="weui_uploader_input" accept="image/jpg,image/jpeg,image/png,image/gif" multiple="" type="file">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--提交申请-->
+        <div class="custom_weui_btn_border" style="margin-top:50px">
+            <input type="submit" class="weui_btn weui_btn_primary" value="提交申请" ng-click="postSalesReturn()">
+        </div>
+
+    </form>
+
+</div>
+
+
+

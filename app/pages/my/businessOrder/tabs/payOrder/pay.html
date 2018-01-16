@@ -1,0 +1,55 @@
+<div id="businessOrder">
+
+    <div class="orders-min-height orders-info-span">
+
+        <div class="orders-hide-span" ng-hide="payIsNull">
+            <span >没有订单信息</span>
+        </div>
+        <div class="order-item" ng-repeat="items in payList" ng-hide="payShow">
+            <div class="item-order-number">
+                订单号：{{items.order_number}}
+                <span class="piece-group-text" ng-if="marketing_status_pay(items.marketing)">{{marketing_text}}</span>
+                <span class="custom_text_primary">{{order_list_status(items.status)}}</span>
+            </div>
+            <div class="item-order-info" ui-sref="businessOrderDetails({orderNumber:items.order_number})">
+                <div class="o-i-left">
+                    <img ng-src="{{items.cover}}">
+                </div>
+                <div class="o-i-center">
+                <span>
+                 {{items.description |  cutText:true:35:'...'}}
+                </span>
+                </div>
+                <div class="o-i-right">
+                    <span class="o-i-right-span">{{cash_and_point(items.total_price, items.point_exchange_rate, items.payment_type)}}</span>
+                    <p class="o-i-right-i">x1</p>
+                </div>
+            </div>
+            <div class="item-detail-btn" style="border-bottom: 1px solid #cccccc">
+                <div class="order-item-price">总价：{{cash_and_point(items.total_price, items.point_exchange_rate, items.payment_type)}}</div>
+            </div>
+            <div class="item-detail-btn">
+                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_primary item-btn-right"
+                   style="margin-right: 5px;" ng-click="weixin_pay(items)">
+                    立即付款
+                </a>
+                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right" style="margin-right: 5px;"
+                   ng-click="cancel_pay_order(items.order_number)">
+                    取消订单
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- 底部 -->
+    <div id="content-footer" style="display: none;">
+        <div class="content-footer-div">
+            <div class="c-f-d-right">店铺主页</div>
+            <div class="c-f-d-center">会员中心</div>
+            <div class="c-f-d-left">推客申请</div>
+        </div>
+    </div>
+
+</div>

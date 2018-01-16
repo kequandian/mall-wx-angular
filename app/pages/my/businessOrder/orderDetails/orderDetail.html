@@ -1,0 +1,145 @@
+<div id="businessOrderDetails">
+
+    <div style="margin-bottom: 42px;">
+
+        <div class="order_detail_title">
+            <div class="o-d-title-content">
+                <img src="img/my/orderDetails/order-title-img.png">
+                <div>{{order_status(detailsInfo.status)}}</div>
+                <!--<p ng-if="auto_confirm_time(detailsInfo.status)">还剩 {{c_d_day}} 天 {{c_d_hour}} 时自动确认</p>-->
+            </div>
+        </div>
+
+        <div class="logistics-info" ng-if="detailsInfo.status != 'CLOSED_PAY_TIMEOUT' && detailsInfo.status != 'CREATED_PAY_PENDING'">
+            <div class="l-i-left">
+                <img src="img/my/orderDetails/logistics-info-cart.png">
+            </div>
+            <div class="l-i-center-null" ng-if="j_status_code == 1">
+                暂无
+            </div>
+
+            <div ng-if="j_status_code == 0" ng-click="goToExpress(detailsInfo)">
+                <div class="l-i-center custom_text_primary" ng-if="ex_info.length > 0">
+                    <div>{{ex_context}}</div>
+                    <p>{{ex_time}}</p>
+                </div>
+                <div class="l-i-right" ng-if="ex_info.length > 0">
+                    <img src="img/my/orderDetails/logistics-info-arrow.png">
+                </div>
+            </div>
+        </div>
+
+        <!--收货地址-->
+        <div class="order-address">
+            <div class="o-address-img">
+                <img src="img/cart/address.png">
+            </div>
+            <div class="o-address-info">
+                <div class="mail-name">收件人：{{detailsInfo.contact_user}}</div>
+                <div class="mail-phone">{{detailsInfo.phone}}</div>
+                <div class="mail-address">
+                    {{order_address | cutText:true:20:'...'}}
+                </div>
+            </div>
+        </div>
+
+        <!--订单详情-->
+        <div class="order-detail">
+
+            <!--订单状态-->
+            <div class="order-status">
+                <div class="o-status-info">
+                    <div class="o-status">订单状态：{{order_status(detailsInfo.status)}}</div>
+                    <div class="o-number">订单号：{{detailsInfo.order_number}}</div>
+                    <div class="o-total">
+                        {{cash_and_point_top(detailsInfo.total_price, detailsInfo.point_exchange_rate, detailsInfo.payment_type)}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-order-info" ng-repeat="proItem in detailsInfo.order_items" ng-click="goToDetails(proItem.product_id)">
+                <div class="o-i-left">
+                    <img ng-src="{{proItem.cover}}">
+                </div>
+                <div class="o-i-center">
+                    <p>
+                     {{proItem.product_name |  cutText:true:35:'...'}}
+                    </p>
+                </div>
+                <div class="o-i-right">
+                    <div class="o-i-right-span">{{cash_and_point_order_detail(proItem.price, detailsInfo.point_exchange_rate, detailsInfo.payment_type)}}</div>
+                    <!--<s class="o-i-right-span" style="color:#9D9D9D;">{{proItem.price|currency:'￥'}}</s>-->
+                    <div class="o-i-right-i">x{{proItem.quantity}}</div>
+                </div>
+            </div>
+            <!--<div class="o-d-freight">-->
+                <!--<span></span>-->
+            <!--</div>-->
+            <!--<div class="buyer-message">-->
+                <!--<span>买家留言：</span>-->
+            <!--</div>-->
+            <div class="total-price">
+                <span class="total-price-i">
+                    共{{productCount}}件商品  合计：{{cash_and_point_order_detail(detailsInfo.total_price, detailsInfo.point_exchange_rate, detailsInfo.payment_type)}}
+                    (含运费){{cash_and_point_order_detail(detailsInfo.freight, detailsInfo.point_exchange_rate, detailsInfo.payment_type)}}
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div id="content-footer" style="display: none;">
+        <div class="content-footer-div">
+            <div class="c-f-d-right">店铺主页</div>
+            <div class="c-f-d-center">会员中心</div>
+            <div class="c-f-d-left">推客申请</div>
+        </div>
+    </div>
+
+
+
+    <!--<div class="footer" ng-if="detailsInfo.status != 'CLOSED_PAY_TIMEOUT' || detailsInfo.status == 'CLOSED_CONFIRMED' || detailsInfo.status == 'CLOSED_REFUNDED'">-->
+    <div class="footer" ng-if="false">
+        <!-- 待付款 -->
+        <div ng-if="detailsInfo.status == 'CREATED_PAY_PENDING'">
+            <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_primary item-btn-right"
+               style="margin:7px 5px 3px 0;"
+               ng-click="weixin_pay(detailsInfo)">
+                立即付款
+            </a>
+        </div>
+
+        <!-- 待发货 -->
+        <div ng-if="detailsInfo.status == 'CONFIRMED_DELIVER_PENDING' || detailsInfo.status == 'PAID_CONFIRM_PENDING'">
+
+            <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_primary item-btn-right" style="margin:7px 5px 0 0;"
+               ng-click="deliverReminder(detailsInfo.order_number)">
+                提醒发货
+            </a>
+            <a ng-if="false" href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right" style="margin:7px 5px 3px 0;"
+               ng-click="goToSalesReturn(detailsInfo.order_number,detailsInfo.total_price,3)">
+                申请退款
+            </a>
+        </div>
+
+        <!-- 待收货 -->
+        <div ng-if="detailsInfo.status == 'DELIVERING' || detailsInfo.status == 'DELIVERED_CONFIRM_PENDING'">
+            <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_primary item-btn-right" style="margin:7px 5px 3px 0;"
+               ng-click="close_order_action(detailsInfo.order_number)">
+                确认收货
+            </a>
+            <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default item-btn-right" style="margin:7px 5px 3px 0;"
+               ng-click="goToSalesReturn(detailsInfo.order_number,detailsInfo.total_price,1)">
+                申请退货
+            </a>
+        </div>
+
+        <!-- 已完成 -->
+        <a ng-if="detailsInfo.status == 'CLOSED_CONFIRMED' || detailsInfo.status == 'CLOSED_REFUNDED'"
+           href="javascript:;" class="weui_btn weui_btn_mini weui_btn_primary item-btn-right" style="margin:7px 5px 3px 0;"
+           ui-sref="express({orderNumber:items.order_number})">
+            物流详情
+        </a>
+    </div>
+
+</div>

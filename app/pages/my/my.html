@@ -130,6 +130,27 @@
                     </p>
                     <i class="c-red-point" ng-if="is_new_coupon"></i>
                 </a>
+
+                <a ui-sref="businessOrder.allOrder" class="weui_grid" ng-if="showBusinessOrder">
+                    <div class="weui_grid_icon custom_size_img_large">
+                        <img src="img/my/coupon-img.png">
+                    </div>
+                    <p class="weui_grid_label">
+                        商家订单
+                    </p>
+                    <!--<i class="c-red-point" ng-if="is_new_coupon"></i>-->
+                </a>
+
+                <a class="weui_grid" ng-if="showBusinessOrder">
+                    <div class="weui_grid_icon custom_size_img_large">
+                        <img src="img/my/coupon-img.png">
+                    </div>
+                    <p class="weui_grid_label">
+                        商家二维码
+                    </p>
+                    <!--<i class="c-red-point" ng-if="is_new_coupon"></i>-->
+                </a>
+
                 <a ng-if="false" ui-sref="about" class="weui_grid">
                     <div class="weui_grid_icon custom_size_img_large">
                         <img src="img/my/about.png">

@@ -21,6 +21,7 @@ angular.module('my.controller', ['my.service'])
             cateLeftIndex.cate_nav_index = 0;
             cateLeftIndex.goods_list_index = 0;
             $scope.is_new_coupon = false;
+            $scope.showBusinessOrder = false;
 
             var scope = $rootScope;
             scope.$watch('isNewCoupon', function (nValue, oValue) {
@@ -29,6 +30,8 @@ angular.module('my.controller', ['my.service'])
 
             //用户信息
             getUserInfo();
+            //商家用户信息
+            getBusinessUserInfo();
             //获取订单信息
             myOrderList();
 
@@ -131,7 +134,7 @@ angular.module('my.controller', ['my.service'])
                         .then(function (json) {
                             if (json.status_code == 0) {
                                 $scope.userInfo = json.data;
-                                //console.log('userInfo?'+angular.toJson(json.data))
+                                //console.log('userInfo'+angular.toJson(json.data))
 
                                 $rootScope.profile_session.userInfo = $scope.userInfo;
                             }
@@ -141,6 +144,23 @@ angular.module('my.controller', ['my.service'])
                 }else{
                     $scope.userInfo = $rootScope.profile_session.userInfo;
                 }
+            }
+
+
+            function getBusinessUserInfo(){
+
+                MyFty.businessUserInfoService()
+                    .then(function (json) {
+                        if (json.status_code == 0) {
+                            //console.log('商家信息', angular.toJson(json.data))
+                            $scope.showBusinessOrder = true;
+                        } else if (json.status_code == 1){
+                            $scope.showBusinessOrder = false;
+                        }
+
+                    }, function (error) {
+                        $.toast('获取商家信息失败', 'cancel');
+                    })
             }
 
             //获取订单信息

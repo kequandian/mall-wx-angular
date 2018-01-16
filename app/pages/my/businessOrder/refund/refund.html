@@ -1,0 +1,34 @@
+<div id="refund">
+
+    <div class="refund-hide-span" ng-hide="refund_all_null">
+        <span >没有订单信息</span>
+    </div>
+    <div class="refund-item" ng-repeat="item in refund_orders" ng-hide="refund_all_show">
+        <div class="item-refund-order-number">
+            订单号：{{item.order_number}}
+            <span class="item-refund-piece-group-text" ng-if="marketing_status_refund(item.marketing)">{{marketing_text}}</span>
+            <span class="custom_text_primary_medium">{{item.status|refundStatus}}</span>
+        </div>
+        <div class="item-refund-order-info">
+            <div class="o-r-i-left">
+                <img ng-src="{{item.cover}}">
+            </div>
+            <div class="o-r-i-center">
+                <span>
+                 {{item.description |  cutText:true:35:'...'}}
+                </span>
+            </div>
+           <!-- <div class="o-r-i-right">
+                <span class="o-r-i-right-span">交易金额:￥{{items.total_price}}</span>
+                <p class="o-r-i-right-i">x1</p>
+            </div>-->
+        </div>
+        <div class="item-refund-detail-btn" style="border-bottom: 1px solid #cccccc">
+            {{pay_type(item)}}
+            <div class="total">{{sales_return_type_text}}</div>
+            <div class=" total">{{pay_type_text}}</div>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,25 @@
+<div class="weui_tab" id="businessOrder">
+    <div class="weui_navbar">
+        <!--    <a ui-sref=".all" class="weui_navbar_item weui_bar_item_on" whenActive>全部</a>
+            <a ui-sref=".pay" class="weui_navbar_item" whenActive>待付款</a>
+            <a ui-sref=".payed" class="weui_navbar_item" whenActive>待发货</a>
+            <a ui-sref=".delivered" class="weui_navbar_item" whenActive>待收货</a>
+            <a ui-sref=".finish" class="weui_navbar_item" whenActive>已完成</a>-->
+
+        <nav id="nav">
+            <div class="nav-warp">
+                <ul>
+                    <li ng-class="{active : currentBusinessOrderId == title.id}" ng-repeat="title in order_titles"
+                        ui-sref="{{title.srefName}}"
+                        ng-click="clickme(title.id);">
+                        {{title.name}}
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+    </div>
+    <div class="weui_tab_bd">
+        <div ui-view></div>
+    </div>
+</div>
