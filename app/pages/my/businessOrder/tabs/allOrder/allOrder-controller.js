@@ -13,7 +13,7 @@ angular.module('allOrder.controller', [/*'allOrder.service',*/'businessOrder.ser
 
             AllOrders();
             function AllOrders() {
-                BusinessOrderFty.ordersService()
+                BusinessOrderFty.businessOrdersService()
                     .then(function (json) {
                         if (json.status_code == 0) {
                             $scope.orders = json.data;

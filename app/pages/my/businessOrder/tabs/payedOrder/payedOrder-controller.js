@@ -11,7 +11,7 @@ angular.module('payedOrder.controller', [/*'payedOrder.service',*/'businessOrder
 
             payedOrders();
             function payedOrders() {
-                BusinessOrderFty.ordersService()
+                BusinessOrderFty.businessOrdersService()
                     .then(function (json) {
                         if (json.status_code == 0) {
                             var orders = json.data;

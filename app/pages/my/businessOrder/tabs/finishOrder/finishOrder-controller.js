@@ -12,7 +12,7 @@ angular.module('finishOrder.controller', [/*'finishOrder.service',*/'businessOrd
 
             finishOrders();
             function finishOrders() {
-                BusinessOrderFty.ordersService()
+                BusinessOrderFty.businessOrdersService()
                     .then(function (json) {
                         if (json.status_code == 0) {
                             var orders = json.data;

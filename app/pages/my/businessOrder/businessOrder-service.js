@@ -1,7 +1,7 @@
 angular.module('businessOrder.service', [])
     .factory('BusinessOrderFty', ['$http','$q','GlobalVariable', function($http,$q,GlobalVariable) {
         return {
-            ordersService: function (orderStatus) {
+            businessOrdersService: function (orderStatus) {
                 var deferred = $q.defer();
                 var url = GlobalVariable.SERVER_PATH + "/merchant/order";
                 //var url = GlobalVariable.SERVER_PATH + "/merchant/order?status=" + orderStatus;
