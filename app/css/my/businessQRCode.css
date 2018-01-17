@@ -1,0 +1,45 @@
+#businessQRCode{
+    width: 100%;
+    position: relative;
+    background-color: #FFFFFF;
+    text-align: center;
+}
+
+
+#businessQRCode .auth-qrcode_content{
+    /*display: none;*/
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    right: 10%;
+    text-align: center;
+    /*width: 50%;*/
+    height: 220px;
+    /*padding: 16px;*/
+    border-radius: 12px;
+    /*background-color: #F8F8F8;*/
+    z-index:1002;
+    overflow:auto
+}
+
+#businessQRCode .auth-qrcode_content .auth-qrcode-img{
+    margin: 0 auto;
+    width: 220px;
+    height: 220px;
+    /*line-height: 230px;*/
+    background-color: white;
+    bottom: 50px;
+}
+
+#businessQRCode .auth-qrcode-img img{
+    width: 220px;
+    height: 220px;
+    bottom: 8px;
+}
+
+#businessQRCode .qr-tip-footer{
+    font-size: 14px;
+    color: #6e6e6e;
+    padding-top: 250px;
+}
+

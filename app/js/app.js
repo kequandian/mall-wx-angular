@@ -50,7 +50,8 @@
         'deliveredOrder.route',
         'finishOrder.route',
         'pendingMassOrder.route',
-        'businessOrderDetails.route'
+        'businessOrderDetails.route',
+        'businessQRCode.route',
 
     ]).config(["$urlRouterProvider", '$ocLazyLoadProvider','$locationProvider',
         function ($urlRouterProvider, $ocLazyLoadProvider,$locationProvider) {
@@ -450,6 +451,12 @@
                         'pages/my/order/express/express-service.js',
                         'pages/my/order/order-service.js',
                         {type: 'css', path: 'css/my/businessOrderDetails.css'}],
+                    cache: false
+                }, {
+                    name: 'BusinessQRCode',
+                    files: ['pages/my/businessQRCode/businessQRCode-controller.js',
+                        'pages/my/businessQRCode/businessQRCode-service.js',
+                        {type: 'css', path: 'css/my/businessQRCode.css'}],
                     cache: false
                 }
 

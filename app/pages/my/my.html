@@ -133,7 +133,7 @@
 
                 <a ui-sref="businessOrder.allOrder" class="weui_grid" ng-if="showBusinessOrder">
                     <div class="weui_grid_icon custom_size_img_large">
-                        <img src="img/my/coupon-img.png">
+                        <img src="img/my/businessOrder/business-order-icon.png">
                     </div>
                     <p class="weui_grid_label">
                         商家订单
@@ -141,9 +141,9 @@
                     <!--<i class="c-red-point" ng-if="is_new_coupon"></i>-->
                 </a>
 
-                <a class="weui_grid" ng-if="false">
+                <a ui-sref="businessQRCode" class="weui_grid" ng-if="showBusinessOrder">
                     <div class="weui_grid_icon custom_size_img_large">
-                        <img src="img/my/coupon-img.png">
+                        <img src="img/my/businessOrder/business-qrcode-icon.png">
                     </div>
                     <p class="weui_grid_label">
                         商家二维码

@@ -93,7 +93,7 @@ angular.module('moduleValueJs',[])
     .value('QRCodeUrlParams',{
         recommenderId:null,
         typeStatus:null,
-        applyStatus:null
+        applyStatus:null,
     })
 
 
