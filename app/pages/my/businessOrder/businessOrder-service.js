@@ -3,7 +3,7 @@ angular.module('businessOrder.service', [])
         return {
             ordersService: function (orderStatus) {
                 var deferred = $q.defer();
-                var url = GlobalVariable.SERVER_PATH + "/order";
+                var url = GlobalVariable.SERVER_PATH + "/merchant/order";
                 //var url = GlobalVariable.SERVER_PATH + "/merchant/order?status=" + orderStatus;
                 $http.get(url,{
                     headers: {
