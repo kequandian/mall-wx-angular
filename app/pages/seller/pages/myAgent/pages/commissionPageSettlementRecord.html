@@ -24,6 +24,7 @@
             <!--<div class="list-item">-->
                 <div class="item-left">
                     <span>{{convert_date(item.statistic_month)}}</span>
+                    <span ng-if="item.end_month"> ~ {{convert_date(item.end_month)}}</span>
                 </div>
                 <div class="item-right">
                     <span>提成金额:

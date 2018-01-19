@@ -110,11 +110,12 @@
 }
 
 #comPageSettlementRecord .my-recommend-content .record-content .list-item .item-left{
-    width: 90px;
+    width: 100%;
     height: 30px;
     line-height: 30px;
-    text-align: center;
+    text-align: left;
     font-size: 12px;
+    padding-left: 12px;
 }
 
 #comPageSettlementRecord .my-recommend-content .record-content .list-item .item-right{
