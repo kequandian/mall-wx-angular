@@ -146,7 +146,7 @@
                  </div>
              </div>-->
 
-            <div class="footer-collection" ui-sref="home.cart" ng-click="goToCart()">
+            <div ng-if="false" class="footer-collection" ui-sref="home.cart" ng-click="goToCart()">
                 <div class="f-h-top">
                     <!--<img src="img/details/cart-img.png">-->
                     <label class="ion-app-biliya-tabs-cart"></label>
@@ -181,16 +181,16 @@
 
         <div class="detail-footer-right">
             <div class="item-button">
-                <div class="details_buy_css custom_flat_primary_medium" ng-click="buy_status(2,b_status_btn)" ng-class="b_status_btn ? 'product_info':''">
-                    <!--<div class="details_buy_css product_info" ng-click="buy_immediately(details)">-->
+                <!--<div class="details_buy_css custom_flat_primary_medium" ng-click="buy_status(2,b_status_btn)" ng-class="b_status_btn ? 'product_info':''">-->
+                    <div class="details_buy_css custom_flat_primary_medium" ng-click="buy_immediately(details, 1)">
                     <span>立即购买</span>
 
                 </div>
-                <div class="details_cart_css custom_flat_primary_light" ng-click="buy_status(1,b_status_btn)" ng-class="b_status_btn ? 'product_info':''">
-                    <!--<div class="details_cart_css product_info" ng-click="addProductToCart(details.id)">-->
-                    <span>加入购物车</span>
+                <!--<div class="details_cart_css custom_flat_primary_light" ng-click="buy_status(1,b_status_btn)" ng-class="b_status_btn ? 'product_info':''">-->
+                    <!--&lt;!&ndash;<div class="details_cart_css product_info" ng-click="addProductToCart(details.id)">&ndash;&gt;-->
+                    <!--<span>加入购物车</span>-->
 
-                </div>
+                <!--</div>-->
             </div>
         </div>
 

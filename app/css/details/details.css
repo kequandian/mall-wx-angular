@@ -546,7 +546,7 @@
 }*/
 
 #details .footer-cart{
-    width:22%;
+    width:44%;
     height: 50px;
     text-align: center;
     /*margin-left: 16%;*/
@@ -609,7 +609,7 @@
 }
 
 #details .details_buy_css{
-    width: 50%;
+    width: 100%;
     line-height: 50px;
     text-align: center;
     /*background-color: #B668A4;*/

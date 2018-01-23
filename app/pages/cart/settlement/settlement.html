@@ -348,23 +348,23 @@
                         </div>
                     </label>
 
-                    <label class="weui_cell weui_check_label" for="x13">
+                    <!--<label class="weui_cell weui_check_label" for="x13">-->
 
-                        <div class="weui_cell_bd weui_cell_primary">
-                            <!--<div class="payment-method-icon"><img src="img/indexTab/icon_nav_cell.png"></div>-->
-                            <div class="payment-icon">
-                                <!--<img src="img/cart/pay_point.png">-->
-                                <label class="ion-app-biliya-tabs-point custom_text_primary_medium"></label>
-                            </div>
-                            积分兑换
-                        </div>
-                        <div class="weui_cell_ft">
-                            <input type="radio" name="radio1" class="weui_check" id="x13" value="POINT"
-                                   ng-model="order.payment_type"
-                                    ng-change="onPaymentTypeChange()">
-                            <span class="weui_icon_checked"></span>
-                        </div>
-                    </label>
+                        <!--<div class="weui_cell_bd weui_cell_primary">-->
+                            <!--&lt;!&ndash;<div class="payment-method-icon"><img src="img/indexTab/icon_nav_cell.png"></div>&ndash;&gt;-->
+                            <!--<div class="payment-icon">-->
+                                <!--&lt;!&ndash;<img src="img/cart/pay_point.png">&ndash;&gt;-->
+                                <!--<label class="ion-app-biliya-tabs-point custom_text_primary_medium"></label>-->
+                            <!--</div>-->
+                            <!--积分兑换-->
+                        <!--</div>-->
+                        <!--<div class="weui_cell_ft">-->
+                            <!--<input type="radio" name="radio1" class="weui_check" id="x13" value="POINT"-->
+                                   <!--ng-model="order.payment_type"-->
+                                    <!--ng-change="onPaymentTypeChange()">-->
+                            <!--<span class="weui_icon_checked"></span>-->
+                        <!--</div>-->
+                    <!--</label>-->
                 </div>
 
                 <!-- 拼团支付方式 --微信 -->
@@ -430,12 +430,19 @@
             <footer id="foot" class="settlement-foot">
                 <div class="footLeft">
                     <div class="settlement-price">
-                        <div>合计:
-                            <span ng-if="order.payment_type=='WECHAT'" style="color: red;" ng-bind="total_price|currency:'￥'"></span>
-                            <span ng-if="order.payment_type=='POINT'" style="color: red;position:relative;">
-                                <span style="padding-top:9px;" ng-bind="total_price * point_rate | number:0"></span>
-                                <span style="font-size:14px;">积分</span></span>
+                        <div class="settlement-option">
+                            <div class="settlement-buyer-message">
+                                <div>输入金额：</div>
+                                <input type="text" placeholder="" class="settlement-input" ng-value="order.total_price" ng-model="order.total_price">
+                            </div>
                         </div>
+                        <!--<div>合计:-->
+                            <!--<span ng-if="order.payment_type=='WECHAT'" style="color: red;" ng-bind="total_price|currency:'￥'"></span>-->
+                            <!--<span ng-if="order.payment_type=='POINT'" style="color: red;position:relative;">-->
+                                <!--<span style="padding-top:9px;" ng-bind="total_price * point_rate | number:0"></span>-->
+                                <!--<span style="font-size:14px;">积分</span>-->
+                            <!--</span>-->
+                        <!--</div>-->
                     </div>
                 </div>
                 <button ng-if="order.payment_type=='WECHAT'" class="footRight custom_flat_primary_medium" type="submit" ng-disabled="settlementCarts.length==0">确认付款</button>
