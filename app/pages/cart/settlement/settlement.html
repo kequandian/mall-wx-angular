@@ -3,20 +3,20 @@
         <div class="view-cart">
             <!-- 头部 -->
             <!--<header class="header settlement-header">-->
-                <!--<div class="back"><img class="back-img" src="img/cart/back.png"></div>-->
-                <!--<span class="settlement-title">确认订单</span>-->
+            <!--<div class="back"><img class="back-img" src="img/cart/back.png"></div>-->
+            <!--<span class="settlement-title">确认订单</span>-->
             <!--</header>-->
 
             <!-- 安全提示栏 -->
             <!--<div class="weui_panel weui_panel_access hide-area">-->
-                <!--<div class="weui_panel_bd">-->
-                    <!--<div class="weui_media_box weui_media_text safe-tips-text">-->
-                        <!--<p class="weui_media_desc">-->
-                            <!--<i class="weui_icon_safe weui_icon_safe_success"></i>-->
-                            <!--您正在安全购物环境中，请放心购买。-->
-                        <!--</p>-->
-                    <!--</div>-->
-                <!--</div>-->
+            <!--<div class="weui_panel_bd">-->
+            <!--<div class="weui_media_box weui_media_text safe-tips-text">-->
+            <!--<p class="weui_media_desc">-->
+            <!--<i class="weui_icon_safe weui_icon_safe_success"></i>-->
+            <!--您正在安全购物环境中，请放心购买。-->
+            <!--</p>-->
+            <!--</div>-->
+            <!--</div>-->
             <!--</div>-->
 
             <div class="view-container">
@@ -55,14 +55,14 @@
 
 
                                     <!--<div class="weui_cell weui_cell_select weui_select_after">-->
-                                        <!--<div class="weui_cell_hd weui_media_desc">-->
-                                            <!--收货时间-->
-                                        <!--</div>-->
-                                        <!--<div class="weui_cell_bd weui_cell_primary">-->
-                                            <!--<select class="weui_select weui_media_desc" name="receiving_time" ng-options="t.key as t.value for t in receivingTime"-->
-                                                    <!--ng-init="order.receiving_time='anytime'" ng-model="order.receiving_time">-->
-                                            <!--</select>-->
-                                        <!--</div>-->
+                                    <!--<div class="weui_cell_hd weui_media_desc">-->
+                                    <!--收货时间-->
+                                    <!--</div>-->
+                                    <!--<div class="weui_cell_bd weui_cell_primary">-->
+                                    <!--<select class="weui_select weui_media_desc" name="receiving_time" ng-options="t.key as t.value for t in receivingTime"-->
+                                    <!--ng-init="order.receiving_time='anytime'" ng-model="order.receiving_time">-->
+                                    <!--</select>-->
+                                    <!--</div>-->
                                     <!--</div>-->
                                 </div>
                             </div>
@@ -161,18 +161,18 @@
                                         </div>
                                     </div>
                                     <!--<div class="weui_cell settlement-font">-->
-                                        <!--<div class="weui_cell_hd">-->
-                                            <!--<label class="weui_label">邮编</label>-->
-                                        <!--</div>-->
-                                        <!--<div class="weui_cell_bd weui_cell_primary">-->
-                                            <!--<input class="weui_input" type="tel" placeholder="邮编" ng-model="contact.zip">-->
-                                        <!--</div>-->
+                                    <!--<div class="weui_cell_hd">-->
+                                    <!--<label class="weui_label">邮编</label>-->
+                                    <!--</div>-->
+                                    <!--<div class="weui_cell_bd weui_cell_primary">-->
+                                    <!--<input class="weui_input" type="tel" placeholder="邮编" ng-model="contact.zip">-->
+                                    <!--</div>-->
                                     <!--</div>-->
                                     <div class="weui_cell weui_cells_form">
                                         <div class="weui_cell">
                                             <div class="weui_cell_bd weui_cell_primary">
                                                 <textarea class="weui_textarea settlement-font" id="s_contact_detail"  placeholder="请输入详细地址信息" rows="2"
-                                                    ng-model="contact.detail"></textarea>
+                                                          ng-model="contact.detail"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -259,31 +259,31 @@
 
                 <!-- 积分、优惠券 -->
                 <!--<div class="settlement-options">-->
-                    <!--<div class="settlement-option">-->
-                        <!--<div class="deliver-way">可用积分抵￥0.82</div>-->
-                    <!--</div>-->
-                    <!--<div class="settlement-final">-->
-                        <!--<div class="deliver-way">可用优惠券￥10.00</div>-->
-                    <!--</div>-->
+                <!--<div class="settlement-option">-->
+                <!--<div class="deliver-way">可用积分抵￥0.82</div>-->
+                <!--</div>-->
+                <!--<div class="settlement-final">-->
+                <!--<div class="deliver-way">可用优惠券￥10.00</div>-->
+                <!--</div>-->
                 <!--</div>-->
 
 
                 <!-- 结算价格 -->
                 <!--<div class="weui_cells weui_cells_access">-->
-                    <!--<div class="weui_panel_bd">-->
-                        <!--<div class="weui_media_box weui_media_text">-->
-                            <!--<p class="weui_media_desc">商品金额<span class="order-money">{{pay|currency:'￥'}}</span></p>-->
-                            <!--<input type="hidden" ng-model="order.order_items" ng-init="order.order_items=settlementData">-->
-                        <!--</div>-->
-                        <!--<div class="weui_media_box weui_media_text">-->
-                            <!--<p class="weui_media_desc">运费<span class="order-freight">{{freight|currency:'￥'}}</span></p>-->
-                        <!--</div>-->
-                    <!--</div>-->
+                <!--<div class="weui_panel_bd">-->
+                <!--<div class="weui_media_box weui_media_text">-->
+                <!--<p class="weui_media_desc">商品金额<span class="order-money">{{pay|currency:'￥'}}</span></p>-->
+                <!--<input type="hidden" ng-model="order.order_items" ng-init="order.order_items=settlementData">-->
+                <!--</div>-->
+                <!--<div class="weui_media_box weui_media_text">-->
+                <!--<p class="weui_media_desc">运费<span class="order-freight">{{freight|currency:'￥'}}</span></p>-->
+                <!--</div>-->
+                <!--</div>-->
                 <!--</div>-->
 
 
                 <div class="coupon-item" ng-if="count_coupon != null && count_coupon.length > 0">
-                <!--<div class="coupon-item">-->
+                    <!--<div class="coupon-item">-->
                     <span class="custom_text_primary">{{c_name}}</span>
                     <!--<label name=""></label>-->
 
@@ -300,10 +300,10 @@
                 <div class="coupon-list" ng-show="show_coupon_list(show_list)" ng-if="count_coupon != null && count_coupon.length > 0">
                     <div class="c-item"
                          ng-repeat="cItem in count_coupon"
-                            >
-                    <!--<div class="c-item">-->
+                    >
+                        <!--<div class="c-item">-->
                         <!--<div class="c-i-left">-->
-                            <!--<i>{{$index}}1</i>-->
+                        <!--<i>{{$index}}1</i>-->
                         <!--</div>-->
                         <div class="c-i-right">
                             <div class="coupon-name">
@@ -323,7 +323,7 @@
                                ng-model="cItem.$checked"
                                ng-click="get_coupon_item(cItem)"
                                name="coupon-check"
-                                >
+                        >
                         <label class="coupon-checked" for="coupon-check-{{cItem.coupon_id}}"></label>
                     </div>
                 </div>
@@ -343,28 +343,28 @@
                         <div class="weui_cell_ft">
                             <input type="radio" name="radio1" class="weui_check" id="x12" checked="checked" value="WECHAT"
                                    ng-model="order.payment_type"
-                                    ng-change="onPaymentTypeChange()">
+                                   ng-change="onPaymentTypeChange()">
                             <span class="weui_icon_checked"></span>
                         </div>
                     </label>
 
-                    <!--<label class="weui_cell weui_check_label" for="x13">-->
+                    <label class="weui_cell weui_check_label" for="x13">
 
-                        <!--<div class="weui_cell_bd weui_cell_primary">-->
-                            <!--&lt;!&ndash;<div class="payment-method-icon"><img src="img/indexTab/icon_nav_cell.png"></div>&ndash;&gt;-->
-                            <!--<div class="payment-icon">-->
-                                <!--&lt;!&ndash;<img src="img/cart/pay_point.png">&ndash;&gt;-->
-                                <!--<label class="ion-app-biliya-tabs-point custom_text_primary_medium"></label>-->
-                            <!--</div>-->
-                            <!--积分兑换-->
-                        <!--</div>-->
-                        <!--<div class="weui_cell_ft">-->
-                            <!--<input type="radio" name="radio1" class="weui_check" id="x13" value="POINT"-->
-                                   <!--ng-model="order.payment_type"-->
-                                    <!--ng-change="onPaymentTypeChange()">-->
-                            <!--<span class="weui_icon_checked"></span>-->
-                        <!--</div>-->
-                    <!--</label>-->
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <!--<div class="payment-method-icon"><img src="img/indexTab/icon_nav_cell.png"></div>-->
+                            <div class="payment-icon">
+                                <!--<img src="img/cart/pay_point.png">-->
+                                <label class="ion-app-biliya-tabs-point custom_text_primary_medium"></label>
+                            </div>
+                            积分兑换
+                        </div>
+                        <div class="weui_cell_ft">
+                            <input type="radio" name="radio1" class="weui_check" id="x13" value="POINT"
+                                   ng-model="order.payment_type"
+                                   ng-change="onPaymentTypeChange()">
+                            <span class="weui_icon_checked"></span>
+                        </div>
+                    </label>
                 </div>
 
                 <!-- 拼团支付方式 --微信 -->
@@ -408,20 +408,20 @@
 
                 <!-- 发票 -->
                 <!--<div class="weui_cells weui_cells_form">-->
-                    <!--<div class="weui_cell weui_cell_switch">-->
-                        <!--<div class="weui_cell_hd weui_cell_primary">开具发票</div>-->
-                        <!--<div class="weui_cell_ft">-->
-                            <!--<input class="weui_switch" type="checkbox" ng-click="showInvoiceTitle()" ng-model="order.invoice" ng-true-value="1" ng-false-value="0">-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="weui_cell" ng-show="invoiceTitle">-->
-                        <!--<div class="weui_cell_hd">-->
-                            <!--<label class="weui_label invoice-title"><span>发票抬头</span></label>-->
-                        <!--</div>-->
-                        <!--<div class="weui_cell_bd weui_cell_primary">-->
-                            <!--<input class="weui_input settlement-font" type="text" placeholder="请输入发票抬头" ng-model="order.invoice_title">-->
-                        <!--</div>-->
-                    <!--</div>-->
+                <!--<div class="weui_cell weui_cell_switch">-->
+                <!--<div class="weui_cell_hd weui_cell_primary">开具发票</div>-->
+                <!--<div class="weui_cell_ft">-->
+                <!--<input class="weui_switch" type="checkbox" ng-click="showInvoiceTitle()" ng-model="order.invoice" ng-true-value="1" ng-false-value="0">-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="weui_cell" ng-show="invoiceTitle">-->
+                <!--<div class="weui_cell_hd">-->
+                <!--<label class="weui_label invoice-title"><span>发票抬头</span></label>-->
+                <!--</div>-->
+                <!--<div class="weui_cell_bd weui_cell_primary">-->
+                <!--<input class="weui_input settlement-font" type="text" placeholder="请输入发票抬头" ng-model="order.invoice_title">-->
+                <!--</div>-->
+                <!--</div>-->
                 <!--</div>-->
                 <!--{{order}}-->
             </div>
@@ -430,19 +430,12 @@
             <footer id="foot" class="settlement-foot">
                 <div class="footLeft">
                     <div class="settlement-price">
-                        <div class="settlement-option">
-                            <div class="settlement-buyer-message">
-                                <div>输入金额：</div>
-                                <input type="text" placeholder="" class="settlement-input" ng-value="order.total_price" ng-model="order.total_price">
-                            </div>
+                        <div>合计:
+                            <span ng-if="order.payment_type=='WECHAT'" style="color: red;" ng-bind="total_price|currency:'￥'"></span>
+                            <span ng-if="order.payment_type=='POINT'" style="color: red;position:relative;">
+                                <span style="padding-top:9px;" ng-bind="total_price * point_rate | number:0"></span>
+                                <span style="font-size:14px;">积分</span></span>
                         </div>
-                        <!--<div>合计:-->
-                            <!--<span ng-if="order.payment_type=='WECHAT'" style="color: red;" ng-bind="total_price|currency:'￥'"></span>-->
-                            <!--<span ng-if="order.payment_type=='POINT'" style="color: red;position:relative;">-->
-                                <!--<span style="padding-top:9px;" ng-bind="total_price * point_rate | number:0"></span>-->
-                                <!--<span style="font-size:14px;">积分</span>-->
-                            <!--</span>-->
-                        <!--</div>-->
                     </div>
                 </div>
                 <button ng-if="order.payment_type=='WECHAT'" class="footRight custom_flat_primary_medium" type="submit" ng-disabled="settlementCarts.length==0">确认付款</button>
