@@ -1,0 +1,17 @@
+target/*
+build/*
+.idea/*
+.gradle/*
+.svn/*
+*.iml
+*.swp
+*.log
+*.db
+src/main/webapp/bower_components/*
+src/main/webapp/components/*
+src/main/webapp/css/*
+src/main/webapp/img/*
+src/main/webapp/js/*
+src/main/webapp/pages/*
+src/main/webapp/lib/*
+
