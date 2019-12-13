@@ -286,17 +286,21 @@ angular.module('homePage.controller', ['homePage.service'])
                 if (!loaded) {
                     HomePageFty.getAdBanner()
                         .then(function (json) {
+                            console.log("$scope.ad_banner json === ", json)
                             if (json.status_code == 0) {
                                 $scope.ad_banner = json.data;
                                 $scope.ad_banner_1 = $scope.ad_banner[0];
                                 $scope.ad_banner_2 = $scope.ad_banner[1];
                                 $scope.ad_banner_3 = $scope.ad_banner[2];
                                 //console.log("ad-banner-1: "+angular.toJson($scope.ad_banner_1));
+                                console.log("$scope.ad_banner === ",$scope.ad_banner)
 
                                 $rootScope.ad_session.ad_banner = $scope.ad_banner;
+                            }else{
+                                $scope.ad_banner = []
                             }
                         }, function (error) {
-                            console.log(error);
+                            console.log("$scope.ad_banner error ==",error);
                             //$.toast('获取广告列表失败', 'cancel');
                         })
                 } else {

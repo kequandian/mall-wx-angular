@@ -76,12 +76,12 @@ angular.module('category.controller', ['category.service'])
                     cateCount++;
                     //console.log(cateCount + ": " + angular.toJson(item.sub_categories));
                 }
-                if(item.sub_categories != null && item.sub_categories.length > 0 && item.sub_categories[0].sub_categories != null && item.sub_categories[0].sub_categories.length > 0){
+                if(item.sub_categories != null && item.sub_categories.length > 0 && item.sub_categories != null && item.sub_categories.length > 0){
                     cateCount++;
                     //console.log(cateCount + ": " + angular.toJson(item.sub_categories));
                 }
-                //if(item.sub_categories != null && item.sub_categories.length > 0 && item.sub_categories[0].sub_categories != null && item.sub_categories[0].sub_categories.length > 0 &&
-                //    item.sub_categories[0].sub_categories[0].sub_categories != null &&item.sub_categories[0].sub_categories[0].sub_categories.length > 0){
+                //if(item.sub_categories != null && item.sub_categories.length > 0 && item.sub_categories != null && item.sub_categories.length > 0 &&
+                //    item.sub_categories != null &&item.sub_categories.length > 0){
                 //    cateCount++;
                 //    console.log(cateCount + ": " + angular.toJson(item.sub_categories));
                 //}
@@ -130,13 +130,13 @@ angular.module('category.controller', ['category.service'])
                                         countWith($scope.first_cate);
                                         countItemWith($scope.first_cate[0]);
                                         //$scope.productList = cateCacheCode.product_list;
-                                        productList($scope.first_cate[1].sub_categories[0].id);
+                                        productList($scope.first_cate[1].id);
 
                                         cateCacheCode.index_first=$scope.indexFirstCate;
                                         cateCacheCode.index_second=0;
                                         cateCacheCode.cate_session = json.data;
                                         cateCacheCode.second_cate =$scope.first_cate[$scope.indexFirstCate];
-                                        cateCacheCode.product_id = $scope.first_cate[$scope.indexFirstCate].sub_categories[0].id;
+                                        cateCacheCode.product_id = $scope.first_cate[$scope.indexFirstCate].id;
 
                                     }else if(cateCacheCode.product_list.sub_categories.length == 0){
                                         console.log("sub_categories length == 0");
@@ -185,15 +185,15 @@ angular.module('category.controller', ['category.service'])
                                         ad_category_product(categoryId);
 
                                     }else{
-                                        //console.log(angular.toJson(json.data));
+                                        console.log("$scope.first_cate == ", json.data);
                                         $scope.second_cate = $scope.first_cate[0].sub_categories;
                                         countWith($scope.first_cate);
                                         countItemWith($scope.first_cate[0]);
-                                        productList($scope.first_cate[0].sub_categories[0].id);
+                                        productList($scope.first_cate[0].id);
 
                                         cateCacheCode.cate_session = json.data;
                                         cateCacheCode.second_cate = $scope.first_cate[0];
-                                        cateCacheCode.product_id = $scope.first_cate[0].sub_categories[0].id;
+                                        cateCacheCode.product_id = $scope.first_cate[0].id;
                                     }
 
                                 } else {
@@ -348,8 +348,8 @@ angular.module('category.controller', ['category.service'])
                 pageNumber = 1;
                 countItemWith(item);
                 if(item.sub_categories.length > 0){
-                    productList(item.sub_categories[0].id);
-                    cateCacheCode.product_id = item.sub_categories[0].id;
+                    productList(item.id);
+                    cateCacheCode.product_id = item.id;
                 }else{
                     productList(item.id);
                     cateCacheCode.product_id = item.id;
@@ -411,6 +411,8 @@ angular.module('category.controller', ['category.service'])
 
             //products
             function productList(cateId){
+
+                console.log('cateId == ', cateId);
                 if(!cateId > 0){
                     console.log('分类ID有误');
                     return;

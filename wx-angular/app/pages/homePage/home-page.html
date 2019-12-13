@@ -63,7 +63,7 @@
         </div>
 
         <!-- 导航专区 -->
-        <div id="ad_area">
+        <div id="ad_area" ng-if="ad_banner.length > 0">
             <div class="ad-left">
                 <a href="{{isDetailsPage(ad_banner_1.target_url)}}" ng-click="ad_banner_url_action(ad_banner_1.target_url)">
                     <!--<img ng-src="{{ad_banner_1.image != null ? ad_banner_1.image : 'img/home/img1.png'}}">-->
