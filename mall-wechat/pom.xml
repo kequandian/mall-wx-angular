@@ -15,7 +15,9 @@
 
     <properties>
         <!--<wechatHtmlZip>file:///Users/jackyhuang/workspace/biliya-mall-wechat-html/biliya-mall-wechat-html.zip</wechatHtmlZip>-->
-        <wechatHtmlZip>http://120.79.49.72:8000/link/mall-wechat-html/mall-wechat-html.zip</wechatHtmlZip>
+        <!--<wechatHtmlZip>http://120.79.49.72:8000/link/mall-wechat-html/mall-wechat-html.zip</wechatHtmlZip> -->
+        <!-- copy from wx-angular-->
+        <wxAngular>../wx-angular/app</wxAngular>
     </properties>
 
     <!-- 依赖项定义 -->
@@ -66,6 +68,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
             <version>${servlet.version}</version>
         </dependency>
 
@@ -300,14 +303,17 @@
                         <phase>prepare-package</phase>
                         <configuration>
                             <tasks>
-                                <get src="${wechatHtmlZip}"
-                                     dest="target/mall-wechat-html.zip"
-                                     verbose="true"
-                                     maxtime="180"
-                                     retries="3"
-                                     skipexisting="true"
-                                     usetimestamp="true"/>
-                                <unzip src="target/mall-wechat-html.zip" dest="target/" />
+<!--                                <get src="${wechatHtmlZip}"-->
+<!--                                     dest="target/mall-wechat-html.zip"-->
+<!--                                     verbose="true"-->
+<!--                                     maxtime="180"-->
+<!--                                     retries="3"-->
+<!--                                     skipexisting="true"-->
+<!--                                     usetimestamp="true"/>-->
+<!--                                <unzip src="target/mall-wechat-html.zip" dest="target/" />-->
+                                <copy todir="target/dist" overwrite="true">
+                                    <fileset dir="${wxAngular}"/>
+                                </copy>
                                 <copy todir="src/main/webapp/WEB-INF/pages/app" overwrite="true">
                                     <fileset dir="target/dist" includes="*.html" />
                                 </copy>
