@@ -386,7 +386,7 @@ i{
 
 #content .area_title {
     width: 100%;
-    margin-bottom: 52px;
+    /*margin-bottom: 52px;*/
     background-color: #e3e3e3;
 }
 
@@ -412,19 +412,18 @@ i{
 #content .area_title{
     width: 100%;
     height: 48px;
-    line-height: 48px;
     background-color: white;
     text-align: center;
-    /*border-bottom: 1px solid #cccccc;*/
-    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 #content .area_title img{
     width: 24px;
     height: 24px;
-    position: absolute;
-    top: 12px;
-    margin-left: 16px;
+    margin-left: 5px;
 }
 
 #content .area_cover{
@@ -452,7 +451,7 @@ i{
 }
 
 #content .area_cover .area_cover_name .div1{
-    border: 2px solid rgba(255, 255, 255, 0.80);
+    border: 1px solid rgba(255, 255, 255, 0.80);
 }
 
 #content .area_cover .area_cover_name .div1 .div2{
@@ -469,8 +468,8 @@ i{
 
 #content .area-product {
     /*margin: 2px 3px 0px 3px;*/
-    padding: 8px 0;
-    height: auto;
+    /*padding: 8px 0;*/
+    /*height: auto;*/
     background-color: white;
 }
 
