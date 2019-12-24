@@ -156,14 +156,18 @@ angular.module('category.controller', ['category.service'])
                                         countWith($scope.first_cate);
                                         countItemWith($scope.first_cate[$scope.indexFirstCate]);
                                         //$scope.productList = cateCacheCode.product_list;
-                                        productList($scope.first_cate[$scope.indexFirstCate].sub_categories[$scope.indexSecondCate].id);
+                                        console.log("$scope.indexFirstCate === ", $scope.indexFirstCate)
+                                        console.log("scope.first_cate === ", $scope.first_cate[$scope.indexFirstCate].sub_categories[$scope.indexSecondCate].id)
+                                        //productList($scope.first_cate[$scope.indexFirstCate].sub_categories[$scope.indexSecondCate].id);
+                                        productList($scope.first_cate[$scope.indexFirstCate].id);
 
                                         cateCacheCode.index_first = $scope.indexFirstCate;
                                         cateCacheCode.index_second = $scope.indexSecondCate;
                                         cateCacheCode.cate_session = json.data;
                                         cateCacheCode.second_cate =$scope.first_cate[$scope.indexFirstCate];
                                         //console.log('cateCacheCode.second_cate: ' + angular.toJson($scope.first_cate[cateCacheCode.index_first]));
-                                        cateCacheCode.product_id = $scope.first_cate[$scope.indexFirstCate].sub_categories[$scope.indexSecondCate].id;
+                                        //cateCacheCode.product_id = $scope.first_cate[$scope.indexFirstCate].sub_categories[$scope.indexSecondCate].id;
+                                        cateCacheCode.product_id = $scope.first_cate[$scope.indexFirstCate].id;
                                     }
 
                                 } else {
@@ -216,7 +220,7 @@ angular.module('category.controller', ['category.service'])
             //首页广告商品类别
             function ad_category_product(cateId){
 
-                console.log('cateId: ' + cateId);
+                console.log('cateId: 广告 == ', cateId);
                 if(!cateId > 0){
                     console.log('分类ID有误');
                     return;
@@ -423,7 +427,7 @@ angular.module('category.controller', ['category.service'])
                             if (pageNumber == 1) {
                                 $scope.productList = json.data;
                                 console.log('pageNumber = 1 ');
-                                //console.log('productList: '+ angular.toJson($scope.productList));
+                                console.log('productList: ', $scope.productList);
                                 if ($scope.productList.products.length >= 10) {
                                     $scope.load_more_btn_show = true;
                                     loading = false;
@@ -586,12 +590,11 @@ angular.module('category.controller', ['category.service'])
                         }, 500);
 
                     }else if(categoryType == 'default'){
-                        console.log('defaultloading : ' + loading);
+                        console.log('defaultloading : ', loading);
                         setTimeout(function(){
                             $(".pro-content").infinite().on("infinite", function() {
-                                console.log('loading : ' + loading);
+                                console.log('loading : ', loading);
                                 if(loading){
-                                    console.log('loading : ' + loading);
                                     return;
                                 }
                                 loading = true;

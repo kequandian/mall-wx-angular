@@ -447,7 +447,6 @@ angular.module('homePage.controller', ['homePage.service'])
                 //cateCacheCode.index_first=index;
                 //cateCacheCode.index_second=0;
                 var isShowProducts = item.is_show_products;
-                //console.log('isShowProducts',isShowProducts)
                 if(isShowProducts == 0){
                     var productId = item.products[0].id;
                     $state.go('details',{productId:productId});
