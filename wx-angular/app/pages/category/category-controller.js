@@ -156,18 +156,23 @@ angular.module('category.controller', ['category.service'])
                                         countWith($scope.first_cate);
                                         countItemWith($scope.first_cate[$scope.indexFirstCate]);
                                         //$scope.productList = cateCacheCode.product_list;
-                                        console.log("$scope.indexFirstCate === ", $scope.indexFirstCate)
-                                        console.log("scope.first_cate === ", $scope.first_cate[$scope.indexFirstCate].sub_categories[$scope.indexSecondCate].id)
-                                        //productList($scope.first_cate[$scope.indexFirstCate].sub_categories[$scope.indexSecondCate].id);
-                                        productList($scope.first_cate[$scope.indexFirstCate].id);
+                                        //console.log("$scope.indexFirstCate === ", $scope.indexFirstCate)
+                                        //console.log("scope.first_cate === ", $scope.first_cate[$scope.indexFirstCate].sub_categories[$scope.indexSecondCate].id)
+                                        //分类 分层判断
+                                        console.log("$scope.first_cate[$scope.indexFirstCate] == ", $scope.first_cate[$scope.indexFirstCate])
+                                        if($scope.first_cate[$scope.indexFirstCate].sub_categories.length > 0){
+                                            productList($scope.first_cate[$scope.indexFirstCate].sub_categories[$scope.indexSecondCate].id);
+                                            cateCacheCode.product_id = $scope.first_cate[$scope.indexFirstCate].sub_categories[$scope.indexSecondCate].id;
+                                        }else{
+                                            productList($scope.first_cate[$scope.indexFirstCate].id);
+                                            cateCacheCode.product_id = $scope.first_cate[$scope.indexFirstCate].id;
+                                        }
 
                                         cateCacheCode.index_first = $scope.indexFirstCate;
                                         cateCacheCode.index_second = $scope.indexSecondCate;
                                         cateCacheCode.cate_session = json.data;
                                         cateCacheCode.second_cate =$scope.first_cate[$scope.indexFirstCate];
                                         //console.log('cateCacheCode.second_cate: ' + angular.toJson($scope.first_cate[cateCacheCode.index_first]));
-                                        //cateCacheCode.product_id = $scope.first_cate[$scope.indexFirstCate].sub_categories[$scope.indexSecondCate].id;
-                                        cateCacheCode.product_id = $scope.first_cate[$scope.indexFirstCate].id;
                                     }
 
                                 } else {

@@ -1,6 +1,6 @@
-# 索芙特木瓜小屋详细设计说明书
+# 索芙特木瓜小屋详细设计说明书 <div id="Instructions"></div>
 
-# 用户API
+# 用户注册 <div id="Register"></div>
     POST http://112.74.26.228:10080/rest/register
     可使用用户名/手机 注册。 使用手机时，验证码是必选的。 获取验证码的API见下面。
     {
@@ -16,7 +16,7 @@
 	    "status_code": 0
     }
 
-# 获取手机验证码
+# 获取手机验证码 <div id="SMS"></div>
     POST http://112.74.26.228:10080/rest/pub/sms
     会发送短信到填写的手机上。
     {
@@ -29,7 +29,7 @@
 	    "status_code": 0
     }
 
-# 验证手机验证码
+# 验证手机验证码 <div id="SMS_Verify"></div>
     POST http://112.74.26.228:10080/rest/pub/sms_verify
     {
         "phone": "13800000001",
@@ -41,7 +41,7 @@
         "status_code": 0
     }
 
-# 登录
+# 登录 <div id="Login"></div>
     POST http://112.74.26.228:10080/rest/login
     可以根据需要组合，如:
     username + password,
@@ -62,7 +62,7 @@
         }
     }
 
-# 登出系统
+# 登出系统 <div id="Logout"></div>
     GET http://112.74.26.228:10080/rest/logout
     Header: Authorization: eyJ0b2tlbiI6IjU2MDlhMGJhOTBhZmFhMzI4NWZkZDk1ZjcxMTAyNjlmOGZmMGFiZDkiLCJsb2dpbl9uYW1lIjoiYWJjIn0=
     Successful Return:
@@ -71,7 +71,7 @@
         "status_code": 0
     }
 
-# 修改密码
+# 修改密码 <div id="Password"></div>
     POST http://112.74.26.228:10080/rest/password
     Header: Authorization: eyJ0b2tlbiI6IjU2MDlhMGJhOTBhZmFhMzI4NWZkZDk1ZjcxMTAyNjlmOGZmMGFiZDkiLCJsb2dpbl9uYW1lIjoiYWJjIn0=
     Data:
@@ -90,7 +90,7 @@
         "status_code": 1
     }
 
-# 忘记密码
+# 忘记密码 <div id="Forget_Password"></div>
     POST http://112.74.26.228:10080/rest/pub/forget_password
     Header: Authorization: eyJ0b2tlbiI6IjU2MDlhMGJhOTBhZmFhMzI4NWZkZDk1ZjcxMTAyNjlmOGZmMGFiZDkiLCJsb2dpbl9uYW1lIjoiYWJjIn0=
     Data:
@@ -110,7 +110,7 @@
         "status_code": 1
     }
 
-# 绑定手机
+# 绑定手机 <div id="Phone"></div>
     POST http://112.74.26.228:10080/rest/phone
     Header: Authorization: eyJ0b2tlbiI6IjU2MDlhMGJhOTBhZmFhMzI4NWZkZDk1ZjcxMTAyNjlmOGZmMGFiZDkiLCJsb2dpbl9uYW1lIjoiYWJjIn0=
     Data:
@@ -129,7 +129,7 @@
         "status_code": 1
     }
 
-# 移动应用的微信登录
+# 移动应用的微信登录 <div id="Login_Wxapp"></div>
     POST http://112.74.26.228:10080/rest/login_wxapp
     Param： code - app调起微信授权返回的code。
     Data:
@@ -155,7 +155,7 @@
         "message": "user.not.found"
     }
 
-# 小程序登录
+# 小程序登录 <div id="Login_Wxa"></div>
     POST http://112.74.26.228:10080/rest/login_wxa
     进入小程序时先调用这个接口，如果返回 错误码 user.not.found， 则弹出注册界面，让用户输入 手机/短信验证码，调用 /rest/register_wxa 接口进行注册。
     Param： code - 小程序的wx.login返回的code。
@@ -182,7 +182,7 @@
         "message": "user.not.found"
     }
 
-# 小程序注册
+# 小程序注册 <div id="Register_Wxa"></div>
     POST http://112.74.26.228:10080/rest/register_wxa
     Param： phone - 手机号
         openid - login API返回的openid
@@ -207,7 +207,7 @@
         "message": "phone.already.exist"
     }
 
-# 查看个人Profile
+# 查看个人Profile <div id="Profile"></div>
     GET http://112.74.26.228:10080/rest/profile
     Header: Authorization: eyJ0b2tlbiI6IjU2MDlhMGJhOTBhZmFhMzI4NWZkZDk1ZjcxMTAyNjlmOGZmMGFiZDkiLCJsb2dpbl9uYW1lIjoiYWJjIn0=
     Return:
@@ -240,7 +240,7 @@
         }
     }
 
-# 更新个人Profile
+# 更新个人Profile <div id="Update_Profile"></div>
     POST http://112.74.26.228:10080/rest/profile
     Header: Authorization: eyJ0b2tlbiI6IjU2MDlhMGJhOTBhZmFhMzI4NWZkZDk1ZjcxMTAyNjlmOGZmMGFiZDkiLCJsb2dpbl9uYW1lIjoiYWJjIn0=
     DATA:
@@ -259,7 +259,7 @@
         "message": "profile.updated"
     }
 
-# 根据userID列表查看用户头像等信息
+# 根据userID列表查看用户头像等信息 <div id="User_Info"></div>
     POST http://112.74.26.228:10080/rest/pub/user_info
     data:
     { "ids": [ 1, 2, 4 ] }
@@ -288,7 +288,7 @@
         ]
     }
 
-# 省市区数据
+# 省市区数据 <div id="PCD"></div>
     GET http://112.74.26.228:10080/rest/pcd?all=true&province=广东&city=广州
     Para:
     1. all - optinal, 一次性返回所有的数据
@@ -394,9 +394,9 @@
         }]
     }
 
-# 商城API
+# 商城API <div id="Mall_Api"></div>
 
-# 获取商城全局配置项
+# 获取商城全局配置项 <div id="Global_Config"></div>
     GET http://112.74.26.228:10080/rest/global_config
     Return:
     {
@@ -408,7 +408,7 @@
         }
     }
 
-#获取产品类别列表
+# 获取产品类别列表 <div id="Product_Category"></div>
     GET http://112.74.26.228:10080/rest/product_category?promoted=true
     Parameter:
     promoted - optional, 如果指定该参数，则在一级类别下面返回类别该类别（包括它子类别）下的推荐产品列表。
@@ -481,7 +481,7 @@
         }]
     }
 
-# 获取某类别下的产品列表
+# 获取某类别下的产品列表 <div id="Product_Category_By_Id"></div>
     只列出 ONSELL 状态的产品
     GET http://112.74.26.228:10080/rest/product_category/id?pageNumber=1&pageSize=50&orderByDesc=view_count&orderBy=price&orderBy=sales&promoted=true
     para:
@@ -551,7 +551,7 @@
         }
     }
 
-# 产品热门关键字
+# 产品热门关键字 <div id="Product_Hit_Word"></div>
     GET http://112.74.26.228:10080/rest/product_hit_word
     return:
     {
@@ -565,7 +565,7 @@
         ]
     }
 
-# 产品搜索
+# 产品搜索 <div id="Product_Search"></div>
     GET http://112.74.26.228:10080/rest/product_search?pageNumber=1&pageSize=20&name=abc&barCode=234234&orderByDesc=view_count&orderBy=price&orderBy=sales
     para: pageNumber - 当前页，默认1
     pageSize - 每页记录数，默认50
@@ -626,7 +626,7 @@
         }]
     }
 
-# 获取所有产品列表
+# 获取所有产品列表 <div id="Product_List"></div>
     只列出 ONSELL 状态的产品
     GET http://112.74.26.228:10080/rest/product?all=true
     参数： all - true 时查询所有产品列表。其他参数会忽略。
@@ -660,7 +660,7 @@
         }]
     }
 
-# 获取推荐产品列表
+# 获取推荐产品列表 <div id="Product_Zone"></div>
     只列出 ONSELL 状态的产品
     GET http://112.74.26.228:10080/rest/product?pageNumber=1&pageSize=50&zone=1
     Para:
@@ -698,7 +698,7 @@
         }]
     }
 
-# 查看产品详情
+# 查看产品详情 <div id="Product_Details"></div>
     GET http://112.74.26.228:10080/rest/product/id
     {
         "status_code": 0,
@@ -833,7 +833,7 @@
         }
     }
 
-# 订单状态说明
+# 订单状态说明 <div id="Order_Status"></div>
     CREATED_PAY_PENDING － 待支付
     CLOSED_PAY_TIMEOUT － 支付超时关闭
     CLOSED_CANCELED － 已取消
@@ -847,7 +847,7 @@
     CLOSED_REFUNDED － 已退款
     CONFIRMED_PICK_PENDING - 待取货
 
-# 我的订单列表
+# 我的订单列表 <div id="My_Order_List"></div>
     GET http://112.74.26.228:10080/rest/order?pageNumber=1&pageSize=20&status=CREATED_PAY_PENDDING
     Para:
     pageNumber - 页数，可空，默认1
@@ -918,7 +918,7 @@
         }]
     }
 
-# 我的退货退款订单列表
+# 我的退货退款订单列表 <div id="Refund_Order"></div>
     GET http://112.74.26.228:10080/rest/refund_order?pageNumber=1&pageSize=20
     Para:
     pageNumber - 页数，可空，默认1
@@ -1204,7 +1204,7 @@
         }]
     }
 
-# 我的订单详情
+# 我的订单详情 <div id="My_Order_Details"></div>
     GET http://112.74.26.228:10080/rest/order/0000000401456137520088034
     Query Para: Order Number - 订单号
     Header: Authorization: eyJ0b2tlbiI6IjczYmI2MWFjNmRlN2E0NDVlOGI4MzNmZjlkYWJlYjI4NTBhMzg0NmMiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
@@ -1275,7 +1275,7 @@
         "status_code": 1
     }
 
-# 我的订单数量统计
+# 我的订单数量统计 <div id="Order_Count"></div>
     GET http://112.74.26.228:10080/rest/order_count
     Header: Authorization: eyJ0b2tlbiI6IjczYmI2MWFjNmRlN2E0NDVlOGI4MzNmZjlkYWJlYjI4NTBhMzg0NmMiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
     Return:
@@ -1290,7 +1290,7 @@
         }
     }
 
-# 提醒发货
+# 提醒发货 <div id="Order_Deliver_Reminder"></div>
     GET http://112.74.26.228:10080/rest/order_deliver_reminder/0000000401456137520088034
     Query Para: Order Number - 订单号
     Header: Authorization: eyJ0b2tlbiI6IjczYmI2MWFjNmRlN2E0NDVlOGI4MzNmZjlkYWJlYjI4NTBhMzg0NmMiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
@@ -1300,7 +1300,7 @@
         "status_code": 0
     }
 
-# 订单评价
+# 订单评价 <div id="Order_Comment"></div>
     PUT http://112.74.26.228:10080/rest/order_comment/0000000401456137520088034
     Query Para: Order Number - 订单号
     Header: Authorization: eyJ0b2tlbiI6IjczYmI2MWFjNmRlN2E0NDVlOGI4MzNmZjlkYWJlYjI4NTBhMzg0NmMiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
@@ -1312,7 +1312,7 @@
         "status_code": 0
     }
 
-# 新建订单
+# 新建订单 <div id="New_Order"></div>
     POST http://112.74.26.228:10080/rest/order
     参考 下单前计算优惠信息 api 返回的优惠券，选择一个优惠劵进行下单。
     到支付宝支付时，把order-number的值赋给out_trade_no进行支付。
@@ -1415,7 +1415,7 @@
         }
     }
 
-# 店员新建订单
+# 店员新建订单 <div id="New_Store_Order"></div>
     POST http://112.74.26.228:10080/rest/store/order
     Header: Authorization: eyJ0b2tlbiI6IjczYmI2MWFjNmRlN2E0NDVlOGI4MzNmZjlkYWJlYjI4NTBhMzg0NmMiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
     Data:
@@ -1457,7 +1457,7 @@
     }
     Return: 同“新建订单api”
 
-# 店员更新订单状态
+# 店员更新订单状态 <div id="Update_Store_Order"></div>
     PUT http://112.74.26.228:10080/rest/store/order/<order-number>
     Header: Authorization: eyJ0b2tlbiI6IjczYmI2MWFjNmRlN2E0NDVlOGI4MzNmZjlkYWJlYjI4NTBhMzg0NmMiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
     注：店员操作的订单有两种：
@@ -1503,7 +1503,7 @@
         "message": "更新订单成功"
     }
 
-# 店员查看门店订单列表（线上，线下订单都在这里查看）
+# 店员查看门店订单列表（线上，线下订单都在这里查看） <div id="Check_Store_Orders"></div>
     GET http://112.74.26.228:10080/rest/store/order?pageNumber=1&pageSize=30&storeId=xxx&type=STORE_ORDER&status=CREATED_PAY_PENDING&status=PAID_CONFIRM_PENDING&contactUser=zhangsan&phone=111111&orderNumber=aaa&startTime=2018-05-01&endTime=2018-05-20
     Header: Authorization: eyJ0b2tlbiI6IjczYmI2MWFjNmRlN2E0NDVlOGI4MzNmZjlkYWJlYjI4NTBhMzg0NmMiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
     Paras:
@@ -1584,7 +1584,7 @@
         }
     }
 
-# 店员查看门店订单详情
+# 店员查看门店订单详情 <div id="Store_Order_Details_By_Id"></div>
     GET http://112.74.26.228:10080/rest/store/order/<order-number>
     Header: Authorization: eyJ0b2tlbiI6IjczYmI2MWFjNmRlN2E0NDVlOGI4MzNmZjlkYWJlYjI4NTBhMzg0NmMiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
     Return:
@@ -1667,7 +1667,7 @@
         }
     }
 
-# 店员新建售后单
+# 店员新建售后单 <div id="Order_Customer_Service"></div>
     POST http://112.74.26.228:10080/rest/store/order_customer_service
     Header: Authorization: eyJ0b2tlbiI6IjczYmI2MWFjNmRlN2E0NDVlOGI4MzNmZjlkYWJlYjI4NTBhMzg0NmMiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
     Data:
@@ -1725,7 +1725,7 @@
         "message": "order.customer.service.created"
     }
 
-# 店员查看单个售后单
+# 店员查看单个售后单 <div id="Order_Customer_Service_By_Number"></div>
     GET http://112.74.26.228:10080/rest/store/order_customer_service/<service_number>
     Para:
     service_number: 售后单号
@@ -1885,7 +1885,7 @@
         }
     }
 
-# 店员查看订单数量统计
+# 店员查看订单数量统计 <div id="Store_Order_Count_By_StoreId"></div>
     GET http://112.74.26.228:10080/rest/store/order_count?storeId=1
     Header: Authorization: eyJ0b2tlbiI6IjczYmI2MWFjNmRlN2E0NDVlOGI4MzNmZjlkYWJlYjI4NTBhMzg0NmMiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
     Param:
@@ -1905,7 +1905,7 @@
         }
     }
 
-# 店员查看售后单列表
+# 店员查看售后单列表 <div id="Store_Order_Customer_Service_List"></div>
     GET http://112.74.26.228:10080/rest/store/order_customer_service?pageNumber=1&pageSize=30&
     storeId=123&serviceType=RETURN&serviceNumber=1234&startTime=2018-01-01&endTime=2018-02-02
     Para:
@@ -1951,7 +1951,7 @@
         }
     }
 
-# 删除订单
+# 删除订单 <div id="Delete_Order"></div>
     DELETE http://112.74.26.228:10080/rest/order/<order-number>
     注意：
     只有订单状态为一下四种时可以删除：
@@ -1968,7 +1968,7 @@
         "message": "order.delete.success"
     }
 
-# 分享订单拿优惠券
+# 分享订单拿优惠券 <div id="Order_Share"></div>
     POST http://112.74.26.228:10080/rest/order_share
     只有CLOSED_CONFIRMED的订单才可以分享。
     Header: Authorization: eyJ0b2tlbiI6IjczYmI2MWFjNmRlN2E0NDVlOGI4MzNmZjlkYWJlYjI4NTBhMzg0NmMiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
@@ -1985,7 +1985,7 @@
         }
     }
 
-# 查看售后原因列表
+# 查看售后原因列表 <div id="Customer_Service_Type"></div>
     GET http://112.74.26.228:10080/rest/customer_service_type
     Header: Authorization: eyJ0b2tlbiI6IjczYmI2MWFjNmRlN2E0NDVlOGI4MzNmZjlkYWJlYjI4NTBhMzg0NmMiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
     Return:
@@ -2003,7 +2003,7 @@
         ]
     }
 
-# 新建售后单
+# 新建售后单 <div id="New_Order_Customer_Service"></div>
     POST http://112.74.26.228:10080/rest/order_customer_service
     订单到达 DELIVERED_CONFIRM_PENDING (待收货） 可以发起退货申请  
     订单状态变成 CANCELED_RETURN_PENDING  （待退货），订单项状态变为 退货中， 退货单状态为新建
@@ -2034,7 +2034,7 @@
             ]
     }
 
-# 查看售后单
+# 查看售后单 <div id="Check_Order_Customer_Service"></div>
     GET http://112.74.26.228:10080/rest/order_customer_service/:id
     Header: Authorization: eyJ0b2tlbiI6IjczYmI2MWFjNmRlN2E0NDVlOGI4MzNmZjlkYWJlYjI4NTBhMzg0NmMiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
     Parameter: id
@@ -2074,7 +2074,7 @@
         }
     }
 
-# 更新售后单
+# 更新售后单 <div id="Update_Order_Customer_Service"></div>
     PUT http://112.74.26.228:10080/rest/order_customer_service/:id
     对申请退货的订单更新物流信息.
     Header: Authorization: eyJ0b2tlbiI6IjczYmI2MWFjNmRlN2E0NDVlOGI4MzNmZjlkYWJlYjI4NTBhMzg0NmMiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
@@ -2086,13 +2086,13 @@
         "content": "anymessage" //optional， 回复给平台的消息
     }
 
-# 微信支付
+# 微信支付 <div id="wpay"></div>
     GET http://www.kequandian.net/app/payment/wpay/<order-number>
     微商城专用支付URL。
     注意： 这个URL不是API的地址，是app所在服务器的地址. 可以直接访问 /app/payment/wpay/<order_number>
     新建订单成功后，把order_number作为参数调用这个URL，会发引微信支付请求。
 
-# 微信支付码生成
+# 微信支付码生成 <div id="Wx_Push_Order"></div>
     POST http://112.74.26.228:10080/rest/wx/push_order
     Header: Authorization: eyJ0b2tlbiI6IjczYmI2MWFjNmRlN2E0NDVlOGI4MzNmZjlkYWJlYjI4NTBhMzg0NmMiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
     PC商城/PAD端 用于生成支付二维码。
@@ -2119,7 +2119,7 @@
         }
     }
 
-# 确认订单
+# 确认订单 <div id="Confirm_Order"></div>
     PUT http://112.74.26.228:10080/rest/order/0000000101455770560193531
     用户收货后确认订单。订单当前状态是 DELIVERED_CONFIRM_PENDING 时才可以确认。
     parameter: ORDER-NUMBER
@@ -2139,7 +2139,7 @@
         "status_code": 1
     }
 
-# 查看订单物流信息
+# 查看订单物流信息 <div id="Express_Info"></div>
     GET http://112.74.26.228:10080/rest/express_info?order_number=0000000101455770560193531
     parameter:
     order_number - ORDER-NUMBER
@@ -2199,7 +2199,7 @@
         "status_code": 1
     }
 
-# 购物车列表
+# 购物车列表 <div id="Shopping_Cart"></div>
     GET http://112.74.26.228:10080/rest/shopping_cart
     Header: Authorization: eyJ0b2tlbiI6IjczYmI2MWFjNmRlN2E0NDVlOGI4MzNmZjlkYWJlYjI4NTBhMzg0NmMiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
     Return:
@@ -2247,7 +2247,7 @@
         }]
     }
 
-# 添加到购物车
+# 添加到购物车 <div id="Add_Shopping_Cart"></div>
     POST http://112.74.26.228:10080/rest/shopping_cart?increase=false
     如果已存在，则更新，如果quantity是0，则删除。
     parameter:
@@ -2301,7 +2301,7 @@
         }]
     }
 
-# 删除购物车
+# 删除购物车 <div id="Clean_Shopping_Cart"></div>
     清空购物车
     DELETE http://112.74.26.228:10080/rest/shopping_cart
     Header: Authorization: eyJ0b2tlbiI6IjczYmI2MWFjNmRlN2E0NDVlOGI4MzNmZjlkYWJlYjI4NTBhMzg0NmMiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
@@ -2311,7 +2311,7 @@
         "data": "shopping_cart.delete.success"
     }
 
-# 我的地址列表
+# 我的地址列表 <div id="Contact"></div>
     GET http://112.74.26.228:10080/rest/contact
     Header: Authorization: eyJ0b2tlbiI6IjQzN2NhZjRiYjQxOWZhZGEwZDgwYmFmMTEzYjY0OGNlMzdiM2NmYWQiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
     Return:
@@ -2333,7 +2333,7 @@
         }]
     }
 
-# 添加新地址
+# 添加新地址 <div id="Add_Contact"></div>
     POST http://112.74.26.228:10080/rest/contact
     Header: Authorization: eyJ0b2tlbiI6IjQzN2NhZjRiYjQxOWZhZGEwZDgwYmFmMTEzYjY0OGNlMzdiM2NmYWQiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
     Data:
@@ -2355,7 +2355,7 @@
         "data": "contact.saved"
     }
 
-# 更新地址
+# 更新地址 <div id="Update_Contact"></div>
     PUT http://112.74.26.228:10080/rest/contact/id
     Header: Authorization: eyJ0b2tlbiI6IjQzN2NhZjRiYjQxOWZhZGEwZDgwYmFmMTEzYjY0OGNlMzdiM2NmYWQiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
     Data:
@@ -2390,7 +2390,7 @@
         }
     }
 
-# 删除地址
+# 删除地址 <div id="Delete_Contact"></div>
     DELETE http://112.74.26.228:10080/rest/contact/id
     Header: Authorization: eyJ0b2tlbiI6IjQzN2NhZjRiYjQxOWZhZGEwZDgwYmFmMTEzYjY0OGNlMzdiM2NmYWQiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
     Return:
@@ -2399,7 +2399,7 @@
         "data": "contact.deleted"
     }
 
-# 得到默认地址
+# 得到默认地址 <div id="default_Contact"></div>
     GET http://112.74.26.228:10080/rest/default_contact
     Header: Authorization: eyJ0b2tlbiI6IjQzN2NhZjRiYjQxOWZhZGEwZDgwYmFmMTEzYjY0OGNlMzdiM2NmYWQiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
     Return:
@@ -2421,7 +2421,7 @@
         }
     }
 
-# 更新默认地址
+# 更新默认地址 <div id="Update_default_Contact"></div>
     PUT http://112.74.26.228:10080/rest/default_contact/id
     Header: Authorization: eyJ0b2tlbiI6IjQzN2NhZjRiYjQxOWZhZGEwZDgwYmFmMTEzYjY0OGNlMzdiM2NmYWQiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
     Return:
@@ -2430,7 +2430,7 @@
         "status_code": 0
     }
 
-# 默认快递
+# 默认快递 <div id="Default_Express"></div>
     GET http://112.74.26.228:10080/rest/default_express
     Return:
     {
@@ -2444,7 +2444,7 @@
         }
     }
 
-# 运费计算
+# 运费计算 <div id="Product_Carriage"></div>
     POST http://112.74.26.228:10080/rest/product_carriage
     Data:
         {
@@ -2471,7 +2471,7 @@
         }
     }
 
-# 查询产品限购
+# 查询产品限购 <div id="Product_Purchase_Strategy"></div>
     GET http://112.74.26.228:10080/rest/product_purchase_strategy?productId=234&quantity=2
     parameter:
     productId - 产品ID
@@ -2490,9 +2490,9 @@
         "message": "超出购买限额, 限购2件, 你过去10天内已购买过1件. "
     }
 
-# 拥金API
+# 拥金API <div id="Commissions_Api"></div>
 
-# 查看提现账号信息
+# 查看提现账号信息 <div id="Withdraw_Account"></div>
     GET http://112.74.26.228:10080/rest/withdraw_account
     Header: Authorization: eyJ0b2tlbiI6IjQzN2NhZjRiYjQxOWZhZGEwZDgwYmFmMTEzYjY0OGNlMzdiM2NmYWQiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
     Return:
@@ -2508,7 +2508,7 @@
         }]
     }
 
-# 添加提现账号信息
+# 添加提现账号信息 <div id="Add_Withdraw_Account"></div>
     POST http://112.74.26.228:10080/rest/withdraw_account
     Header: Authorization: eyJ0b2tlbiI6IjQzN2NhZjRiYjQxOWZhZGEwZDgwYmFmMTEzYjY0OGNlMzdiM2NmYWQiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
     Type:
@@ -2530,7 +2530,7 @@
         "status_code": 0
     }
 
-# 删除提现账号信息
+# 删除提现账号信息 <div id="Delete_Withdraw_Account"></div>
     DELETE http://112.74.26.228:10080/rest/withdraw_account/id
     Header: Authorization: eyJ0b2tlbiI6IjQzN2NhZjRiYjQxOWZhZGEwZDgwYmFmMTEzYjY0OGNlMzdiM2NmYWQiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
     Parameter:
@@ -2541,7 +2541,7 @@
         "status_code": 0
     }
 
-# 查看余额
+# 查看余额 <div id="Owner_Balance"></div>
     GET http://112.74.26.228:10080/rest/owner_balance
     Header: Authorization: eyJ0b2tlbiI6IjQzN2NhZjRiYjQxOWZhZGEwZDgwYmFmMTEzYjY0OGNlMzdiM2NmYWQiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
     Success Return:
@@ -2574,7 +2574,7 @@
         "msg": "您现在是临时线下皇冠商，成为永久线下皇冠商需要在4小时内完成2000元的批发任务"  //如果是临时线下皇冠商，则会出现 //此提示
     }
 
-# 申请提现
+# 申请提现 <div id="Apply_Owner_Balance"></div>
     POST http://112.74.26.228:10080/rest/owner_balance
     Header: Authorization: eyJ0b2tlbiI6IjQzN2NhZjRiYjQxOWZhZGEwZDgwYmFmMTEzYjY0OGNlMzdiM2NmYWQiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
     Data:
@@ -2594,7 +2594,7 @@
         "status_code": 1
     }
 
-# 查看提现历史记录
+# 查看提现历史记录 <div id="History_Owner_Balance"></div>
     GET http://112.74.26.228:10080/rest/reward_cash
     Parameters:
     page_number - optional, 页码，default 1;
@@ -2630,7 +2630,7 @@
         ]
     }
 
-# 查看分成订单汇总信息
+# 查看分成订单汇总信息 <div id="Order_Item_Reward"></div>
     GET http://112.74.26.228:10080/rest/order_item_reward
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
     查询参数:
@@ -2752,7 +2752,7 @@
         }
     }
 
-# 查看产品分成
+# 查看产品分成 <div id="Product_Settlement"></div>
     GET http://112.74.26.228:10080/rest/product_settlement?id=<product-id>&marketingType=<type>&marketingId=<id>
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
     查询参数:
@@ -2765,9 +2765,9 @@
         "data": 30.00
     }
 
-# 分销API
+# 分销API <div id="Seller"></div>
 
-# 我的分销商层次信息
+# 我的分销商层次信息 <div id="Seller_Level"></div>
     GET http://112.74.26.228:10080/rest/seller_level
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
     Return:
@@ -2780,7 +2780,7 @@
         }
     }
 
-# 我的分销商信息
+# 我的分销商信息 <div id="My_Seller"></div>
     GET http://112.74.26.228:10080/rest/seller
     返回下一级的朋友
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
@@ -2890,7 +2890,7 @@
         }
     }
 
-# 下级分销商信息
+# 下级分销商信息 <div id="My_Seller_Lower_Level"></div>
     GET http://112.74.26.228:10080/rest/seller/seller_id
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
     Parameter: seller_id - 下级分销商ID
@@ -2940,7 +2940,7 @@
         }
     }
 
-# 申请成为分销商
+# 申请成为分销商 <div id="Apply_Seller"></div>
     POST http://112.74.26.228:10080/rest/seller
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
     申请成为皇冠商时的前提：申请成为皇冠商开关已打开
@@ -2958,7 +2958,7 @@
         }
     }
 
-# 以扫码方式申请成为某皇冠商的"线下经销商"或"线下皇冠商"
+# 以扫码方式申请成为某皇冠商的"线下经销商"或"线下皇冠商" <div id="Apply_Physical_Seller"></div>
     POST http://112.74.26.228:10080/rest/physical_seller
     成为皇冠商前提：以扫码方式申请成为皇冠商的开关已经打开
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
@@ -3000,7 +3000,7 @@
         "message": "cannot.apply.yourself"
     }
 
-# 线下经销商查看线下信息
+# 线下经销商查看线下信息 <div id="Physical_Seller_Details"></div>
     GET http://112.74.26.228:10080/rest/physical_seller
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
     Return:
@@ -3073,7 +3073,7 @@
         }
     }
 
-# 线下皇冠商查看进货结算明细
+# 线下皇冠商查看进货结算明细 <div id="Physical_Purchase_Summary"></div>
     GET http://112.74.26.228:10080/rest/physical_purchase_summary?month=2017-06
     Parameter:
     month - optional, 要查询的月份，格式yyyy-MM,如果不传该参数，则返回所有月份的记录，用于‘结算记录‘UI。如果传了参数，则返回该月的明细，用于‘我的推荐’UI。
@@ -3134,7 +3134,7 @@
         ]
     }
 
-# 线下代理商查看进货结算明细
+# 线下代理商查看进货结算明细 <div id="Agent_Summary"></div>
     GET http://112.74.26.228:10080/rest/agent_summary?month=2017-08
     Parameter:
     month - optional, 要查询的月份，格式yyyy-MM,如果不传该参数，则返回所有月份的记录，用于‘结算记录‘UI。如果传了参数，则返回该月的明细。
@@ -3270,7 +3270,7 @@
         ]
     }
 
-# 线下代理商查看年终奖励对照表
+# 线下代理商查看年终奖励对照表 <div id="Physical_Agent_Bonus"></div>
     GET http://112.74.26.228:10080/rest/physical_agent_bonus?pcd_id=1
     Paras:
     pcd_id: required，地区id
@@ -3295,7 +3295,7 @@
         ]
     }
 
-# 线下皇冠商查看被推荐人的进货明细列表
+# 线下皇冠商查看被推荐人的进货明细列表 <div id="Physical_Purchase_Journal"></div>
     GET http://112.74.26.228:10080/rest/physical_purchase_journal/:seller_id?month=2017-06
     Req Para:
     seller_id: required，被推荐人的seller_id
@@ -3334,7 +3334,7 @@
         ]
     }
 
-# 线下分成比例对照表
+# 线下分成比例对照表 <div id="Physical_Proportion"></div>
     GET http://112.74.26.228:10080/rest/physical_proportion
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
     Resp:
@@ -3368,7 +3368,7 @@
         ]
     }
 
-# 皇冠经销商,星级经销商申请需知
+# 皇冠经销商,星级经销商申请需知 <div id="Physical_Apply_Tips"></div>
     GET http://112.74.26.228:10080/rest/physical_apply_tips?type=CROWN
     para:
     type: required，（CROWN 皇冠经销商， STAR星级经销商, ANNOUNCE 线下门店系统公告)
@@ -3387,7 +3387,7 @@
         }
     }
 
-# 申请成为合伙人
+# 申请成为合伙人 <div id="Copartner"></div>
     POST http://112.74.26.228:10080/rest/copartner
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
     Data:
@@ -3408,7 +3408,7 @@
         "message": "already.copartner"
     }
 
-# 合伙人查看团队列表
+# 合伙人查看团队列表 <div id="Copartner"></div>
     GET http://112.74.26.228:10080/rest/copartner
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
     Success Resp:
@@ -3442,7 +3442,7 @@
         "message": "not.a.copartner"
     }
 
-# 合伙人查看分成
+# 合伙人查看分成 <div id="Copartner_Settlement"></div>
     GET http://112.74.26.228:10080/rest/copartner_settlement?month=2018-08
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
     Success Resp:
@@ -3491,7 +3491,7 @@
         }
     }
 
-# 合伙人查看结算记录
+# 合伙人查看结算记录 <div id="Copartner_Settlement_History"></div>
     GET http://112.74.26.228:10080/rest/copartner_settlement
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
     Success Resp:
@@ -3504,7 +3504,7 @@
         }]
     }
 
-# 合伙人查看团队成员的进货提成明细
+# 合伙人查看团队成员的进货提成明细 <div id="Copartner_Settlement_By_Id"></div>
     GET http://112.74.26.228:10080/rest/copartner_settlement/:sellerid?month=2018-08
     Param: sellerId - 团队成员的sellerid
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
@@ -3521,9 +3521,9 @@
         ]
     }
 
-# 会员API
+# 会员API <div id="Member_Api"></div>
 
-# 会员级别列表
+# 会员级别列表 <div id="Member_Level"></div>
     GET http://112.74.26.228:10080/rest/member_level
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
     resp:
@@ -3552,7 +3552,7 @@
         }]
     }
 
-# 会员信息
+# 会员信息 <div id="Member_Detail"></div>
     GET http://112.74.26.228:10080/rest/member
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
     resp:
@@ -3572,7 +3572,7 @@
         }
     }
 
-# 更新会员信息
+# 更新会员信息 <div id="Update_Member_Detail"></div>
     PUT http://112.74.26.228:10080/rest/member
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
     data:
@@ -3590,7 +3590,7 @@
         "status_code": 0
     }
 
-# 优惠券列表
+# 优惠券列表 <div id="Coupon"></div>
     GET http://112.74.26.228:10080/rest/coupon?status=ACTIVATION&pageNumber=1&pageSize=10
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
     查询参数： status - optional, 状态， 默认返回 ACTIVATION 状态的。
@@ -3642,7 +3642,7 @@
         }
     }
 
-# 点击分享链接领取优惠券
+# 点击分享链接领取优惠券 <div id="Share_Coupon"></div>
     POST http://112.74.26.228:10080/rest/coupon
     用户须关注公众号才可以激活优惠券。
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
@@ -3696,7 +3696,7 @@
         }
     }
 
-# 激活优惠券
+# 激活优惠券 <div id="Activation_Coupon"></div>
     PUT http://112.74.26.228:10080/rest/coupon/id
     领取（激活）优惠券, 用户须关注公众号才可以激活优惠券。
     parameter:
@@ -3717,7 +3717,7 @@
         "message": "activate.success"
     }
 
-# 删除优惠券
+# 删除优惠券 <div id="Delete_Coupon"></div>
     DELETE http://112.74.26.228:10080/rest/coupon/id
     parameter:
     id - integer, 优惠券ID
@@ -3728,7 +3728,7 @@
         "message": "delete.success"
     }
 
-# 用户优惠券通知
+# 用户优惠券通知 <div id="Coupon_Notify"></div>
     GET http://112.74.26.228:10080/rest/coupon_notify
     如果还没通知过用户，那么首页可以弹出红包框。
     如果 ‘has_unread_coupon' 为true，那么需要对‘个人中心，优惠券’ 添加红点 提示用户。
@@ -3758,7 +3758,7 @@
         }
     }
 
-# 下单前计算优惠信息
+# 下单前计算优惠信息 <div id="Coupon_Calculation"></div>
     POST http://112.74.26.228:10080/rest/coupon_calculation?phone=13800000001
     Para:
     phone - optional， 用户手机号，查询该用户的优惠券优惠信息,pad端用
@@ -3797,7 +3797,7 @@
         }
     ]
 
-# 查看我的优惠券分享信息
+# 查看我的优惠券分享信息 <div id="My_Coupon_Share"></div>
     GET http://112.74.26.228:10080/rest/coupon_share
     下单完成后用户对红包进行了分享，这个api可以查看分享过的列表。
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
@@ -3817,7 +3817,7 @@
         ]
     }
 
-# 我的钱包
+# 我的钱包 <div id="My_Wallet"></div>
     GET http://112.74.26.228:10080/rest/wallet?phone=1380000001
     Param: phone - 可选，要查看的会员手机号码，管理员可以根据这个参数查看该用户的钱包
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
@@ -3834,7 +3834,7 @@
         }
     }
 
-# 钱包充值
+# 钱包充值 <div id="Wallet_Charge"></div>
     POST http://112.74.26.228:10080/rest/wallet_charge
     充值后调用 支付 页面接口 /payment/wpay/:id?orderType=Wallet
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
@@ -3859,7 +3859,7 @@
         }
     }
 
-# 钱包流水记录
+# 钱包流水记录 <div id="Wallet_History"></div>
     GET http://112.74.26.228:10080/rest/wallet_history?pageNumber=1&pageSize=30
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
     amount 本次充值额。 balance 本次充值后账户的余额。 gift_amount: 本次充值赠送额 gift_balance: 充值后赠送帐户的余额。
@@ -3869,7 +3869,7 @@
         "data": []
     }
 
-# 使用钱包支付
+# 使用钱包支付 <div id="Wallet_Pay"></div>
     POST http://112.74.26.228:10080/rest/wallet_pay
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
     Data:
@@ -3891,7 +3891,7 @@
         "message": "ok"
     }
 
-# PAD端使用钱包支付
+# PAD端使用钱包支付 <div id="Wallet_Pay_Pad"></div>
     POST http://112.74.26.228:10080/rest/admin/wallet_pay
     Pre-cond:
     先调用发送短信验证码给会员手机。
@@ -3914,7 +3914,7 @@
         "message": "ok"
     }
 
-# 重置钱包支付密码
+# 重置钱包支付密码 <div id="Wallet_Password"></div>
     POST http://112.74.26.228:10080/rest/wallet_password
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
     Data:
@@ -3928,7 +3928,7 @@
         "message": "ok"
     }
 
-# 验证钱包支付密码
+# 验证钱包支付密码 <div id="Wallet_Verify_Password"></div>
     POST http://112.74.26.228:10080/rest/wallet_verify_password
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
     Data:
@@ -3941,7 +3941,7 @@
         "message": "ok"
     }
 
-# 检查是否已设置支付密码
+# 检查是否已设置支付密码 <div id="Is_Set_Wallet_Password"></div>
     GET http://112.74.26.228:10080/rest/wallet_password
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
     Success Return:
@@ -3950,11 +3950,11 @@
         "data": true
     }
 
-# 优惠券类型列表
+# 优惠券类型列表 <div id="Coupon_Type"></div>
     GET http://localhost:8080/rest/admin/coupon_type
     Return:
 
-# 后台赠送优惠券
+# 后台赠送优惠券 <div id="Coupon_Service"></div>
     POST http://localhost:8080/rest/admin/coupon
     Data:
     {
@@ -3968,9 +3968,9 @@
         "message": "ok"
     }
 
-# 营销API
+# 营销API <div id="Marketing_Api"></div>
 
-# 拼团列表
+# 拼团列表 <div id="Piece_Group_Purchase"></div>
     GET http://112.74.26.228:10080/rest/piece_group_purchase?pageNumber=1&pageSize=0&masterFree=1
     Req Paras:
     pageNumber: optional, 页码, default 1
@@ -4040,7 +4040,7 @@
         }
     }
 
-# 拼团详情
+# 拼团详情 <div id="Piece_Group_Purchase_Details"></div>
     GET http://112.74.26.228:10080/rest/piece_group_purchase/:id
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
     Req Paras:
