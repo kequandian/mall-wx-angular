@@ -4136,7 +4136,7 @@
         "message": "pieceGroupPurchase.not.found"
     }
 
-# 我的拼团列表
+# 我的拼团列表 <div id="Piece_Group_Purchase_List"></div>
     GET http://112.74.26.228:10080/rest/my_piece_group_purchase?pageNumber=1&pageSize=10&status=OPENING
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
     Req Paras:
@@ -4188,7 +4188,7 @@
         }
     }
 
-# 我的拼团详情
+# 我的拼团详情 <div id="My_Piece_Group_Purchase_Details"></div>
     GET http://112.74.26.228:10080/rest/my_piece_group_purchase/:id
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
     Req Paras:
@@ -4282,7 +4282,7 @@
         "message": "not.your.pieceGroupPurchase"
     }
 
-# 团长详情
+# 团长详情 <div id="Piece_Group_Purchase_Master"></div>
     GET http://112.74.26.228:10080/rest/piece_group_purchase_master/:id
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
     Req para: id: 团长id
@@ -4352,7 +4352,7 @@
         }
     }
 
-# 开团
+# 开团 <div id="Add_Piece_Group_Purchase"></div>
     POST http://112.74.26.228:10080/rest/order
     参考 下单前计算优惠信息 api 返回的优惠券，选择一个优惠劵进行下单。
     到支付宝支付时，把order-number的值赋给out_trade_no进行支付。
@@ -4377,7 +4377,7 @@
     }
     Return: 同“新建订单api”
 
-# 参团
+# 参团 <div id="Join_Piece_Group_Purchase"></div>
     POST http://112.74.26.228:10080/rest/order
     参考 下单前计算优惠信息 api 返回的优惠券，选择一个优惠劵进行下单。
     到支付宝支付时，把order-number的值赋给out_trade_no进行支付。
@@ -4402,7 +4402,7 @@
     }
     Return: 同“新建订单api”
 
-# 批发类别列表
+# 批发类别列表 <div id="Wholesale_Category"></div>
     GET http://112.74.26.228:10080/rest/wholesale_category
     Header: Authorization: eyJ0b2tlbiI6IjczYmI2MWFjNmRlN2E0NDVlOGI4MzNmZjlkYWJlYjI4NTBhMzg0NmMiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
     Returns:
@@ -4438,7 +4438,7 @@
         }
     }
 
-# 批发列表
+# 批发列表 <div id="Wholesale_List"></div>
     GET http://112.74.26.228:10080/rest/wholesale?categoryId=1
     Tips：如果用户没有设置默认配送地区，则此api不返回批发列表。如果有设置，则只返回配送到用户的默认配送地区的批发列表。
     Header: Authorization: eyJ0b2tlbiI6IjczYmI2MWFjNmRlN2E0NDVlOGI4MzNmZjlkYWJlYjI4NTBhMzg0NmMiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
@@ -4533,7 +4533,7 @@
         }
     }
 
-# 批发详情
+# 批发详情 <div id="Wholesale_Detail"></div>
     GET http://112.74.26.228:10080/rest/wholesale/:id
     Tips：如果用户没有设置默认配送地区，则此api不返回指定的批发详情。
     Para:
@@ -4649,7 +4649,7 @@
         }
     }
 
-# 新建批发订单
+# 新建批发订单 <div id="Add_Wholesale_Order"></div>
     POST http://112.74.26.228:10080/rest/order
     参考 下单前计算优惠信息 api 返回的优惠券，选择一个优惠劵进行下单。
     到支付宝支付时，把order-number的值赋给out_trade_no进行支付。
@@ -4671,7 +4671,7 @@
     }
     Return: 同“新建订单api”
 
-# 试用装列表
+# 试用装列表 <div id="Trial_List"></div>
     GET http://112.74.26.228:10080/rest/trial
     Header: Authorization: eyJ0b2tlbiI6IjczYmI2MWFjNmRlN2E0NDVlOGI4MzNmZjlkYWJlYjI4NTBhMzg0NmMiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
     Return:
@@ -4698,7 +4698,7 @@
         ]
     }
 
-# 试用装详情
+# 试用装详情 <div id="Trial_Detail"></div>
     GET http://112.74.26.228:10080/rest/trial/:id
     Header: Authorization: eyJ0b2tlbiI6IjczYmI2MWFjNmRlN2E0NDVlOGI4MzNmZjlkYWJlYjI4NTBhMzg0NmMiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
     Return:
@@ -4779,7 +4779,7 @@
         }
     }
 
-# 新建试用装申请订单
+# 新建试用装申请订单 <div id="Add_Trial_Apply"></div>
     POST http://112.74.26.228:10080/rest/order
     Header: Authorization: eyJ0b2tlbiI6IjczYmI2MWFjNmRlN2E0NDVlOGI4MzNmZjlkYWJlYjI4NTBhMzg0NmMiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
     Data:
@@ -4797,7 +4797,7 @@
     }
     Return: 同“新建订单api”
 
-# 我的试用装申请列表
+# 我的试用装申请列表 <div id="My_Trial_Apply"></div>
     GET http://112.74.26.228:10080/rest/trial/application?pageNumber=1&pageSize=30
     Header: Authorization: eyJ0b2tlbiI6IjczYmI2MWFjNmRlN2E0NDVlOGI4MzNmZjlkYWJlYjI4NTBhMzg0NmMiLCJsb2dpbl9uYW1lIjoiYWRtaW4ifQ==
     public static enum Status {
@@ -4836,9 +4836,9 @@
         }
     }
 
-# 其它配置
+# 其它配置 <div id="Other_Api"></div>
 
-# 意见反馈
+# 意见反馈 <div id="Feedback"></div>
     POST http://112.74.26.228:10080/rest/feedback
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
     Data:
@@ -4860,7 +4860,7 @@
         "status_code": 1
     }
 
-# 常见问题类型
+# 常见问题类型 <div id="faq_type"></div>
     GET http://112.74.26.228:10080/rest/faq_type
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
     Return:
@@ -4875,7 +4875,7 @@
         }]
     }
 
-# 常见问题
+# 常见问题 <div id="faq_List"></div>
     GET http://112.74.26.228:10080/rest/faq?typeId=1&pageNumber=1&pageSize=20
     Header: Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
     Query Parameter:
@@ -4895,7 +4895,7 @@
         }]
     }
 
-# 关于商城
+# 关于商城 <div id="About"></div>
     GET http://112.74.26.228:10080/rest/about_mall
     Return:
     {
@@ -4907,7 +4907,7 @@
         }
     }
 
-# 广告
+# 广告 <div id="AB"></div>
     GET http://112.74.26.228:10080/rest/ad
     返回所有广告组别的广告。
     Return:
@@ -4947,7 +4947,7 @@
         }]
     }
 
-# 客服QQ
+# 客服QQ <div id="KF_qq"></div>
     GET http://112.74.26.228:10080/rest/kf_qq
     返回QQ列表。
     Return:
@@ -4969,7 +4969,7 @@
         ]
     }
 
-# Base64上传图片
+# Base64上传图片 <div id="upload_image"></div>
     POST http://112.74.26.228:10080/rest/upload_image
     通过POST base64 编码的图片来上传
     Header:
@@ -4982,7 +4982,7 @@
         "data": "http://112.74.26.228:8000/upload/2016-06-30/20160630113427-00803.jpg"
     }
 
-    #form上传图片
+# form上传图片 <div id="upload_image_x"></div>
     POST http://112.74.26.228:10080/rest/upload_image_x
     通过POST form 上传
     Header:
@@ -5004,7 +5004,7 @@
         ]
     }
 
-# 系统公告
+# 系统公告 <div id="system_announcement"></div>
     GET http://112.74.26.228:10080/rest/system_announcement
     Header:
     Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
@@ -5027,7 +5027,7 @@
         ]
     }
 
-# 微信公众号访问域名
+# 微信公众号访问域名 <div id="host_prefix"></div>
     GET http://112.74.26.228:10080/rest/wx/host_prefix
     Header:
     Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
@@ -5038,9 +5038,9 @@
         "data": "https://www.muaskin.com/wx"
     }
 
-# 收藏宝贝
+# 收藏宝贝 <div id="favorite_api"></div>
 
-# 返回收藏宝贝列表
+# 返回收藏宝贝列表 <div id="favorite_list"></div>
     GET http://112.74.26.228:10080/rest/product_favorite?pageNumber=1&pageSize=20
     Query Parameter:
     pageNumber - optional, 页数
@@ -5077,7 +5077,7 @@
         }]
     }
 
-# 添加收藏宝贝
+# 添加收藏宝贝 <div id="add_product_favorite"></div>
     POST http://112.74.26.228:10080/rest/product_favorite
     Header:
     Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
@@ -5096,7 +5096,7 @@
         "status_code": 1
     }
 
-# 删除收藏宝贝
+# 删除收藏宝贝 <div id="delete_product_favorite"></div>
     DELETE http://112.74.26.228:10080/rest/product_favorite/id
     Header:
     Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
@@ -5113,9 +5113,9 @@
         "status_code": 1
     }
 
-# 打单系统API
+# 打单系统API <div id="order_sys_api"></div>
 
-# 快递公司列表
+# 快递公司列表 <div id="express"></div>
     GET http://112.74.26.228:10080/rest/admin/express
     Header:
     Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
@@ -5143,7 +5143,7 @@
         }]
     }
 
-# 订单列表
+# 订单列表 <div id="admin_express"></div>
     GET http://112.74.26.228:10080/rest/admin/order?status=CONFIRMED_DELIVER_PENDING&status=DELIVERING&started_date=1313432434&end_date=1334453432424&order_number=32432432432&order_number=23432432432
     Query Parameter:
     status - optional, 订单状态，可以同时提供多个值，各个值间是“或”的关系。如果为空，则查询CONFIRMED_DELIVER_PENDING状态的订单。
@@ -5339,7 +5339,7 @@
         }]
     }
 
-# 批量更新订单发货信息
+# 批量更新订单发货信息 <div id="admin_deliver"></div>
     POST http://112.74.26.228:10080/rest/admin/deliver
     Header:
     Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
@@ -5355,7 +5355,7 @@
         "status_code": 0
     }
 
-# 批量完成订单发货
+# 批量完成订单发货 <div id="admin_delivered"></div>
     POST http://112.74.26.228:10080/rest/admin/delivered
     Header:
     Authorization: eyJ0b2tlbiI6IjMxODhiZmUxMzM2ZjY0MGQ5ZmU3OTUxMDZkYTUzMjE5MDJlODAwZjAiLCJsb2dpbl9uYW1lIjoiMTIzIn0=
@@ -5369,7 +5369,7 @@
         "status_code": 0
     }
 
-# 支付宝支付
+# 支付宝支付 <div id="ali"></div>
     POST http://host:port/rest/ali/push_order
 
     Data:
